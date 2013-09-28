@@ -6,7 +6,7 @@
 <title>Welcome! | e-TESDA: Work</title>
 
 
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -50,7 +50,7 @@
   		</div>
         
   		<div class="modal-body">
-        <form method="post" action='login_validation' name="">
+        <form method="post" action='<?php echo base_url('main/login_validation'); ?>' name="">
             <p><input type="text" class="span3" name="email" id="email" placeholder="Email" style="margin-left:155px;"></p>
             <p><input type="password" class="span3" name="userpassword" id="userpassword" placeholder="Password" style="margin-left:155px;"></p>
             <p><button type="submit" class="btn btn-primary" style="margin-left:162px;">Login</button>
