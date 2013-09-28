@@ -108,7 +108,7 @@
                                 </a>
                                 <a href="#" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
-                                    <img src="assets/img/icons/glyphicons_352_nameplate.png" width="20"> 
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> 
                                     <br>Profile
                                 </h5>
                                 </a>

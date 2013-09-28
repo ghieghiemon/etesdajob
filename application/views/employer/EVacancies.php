@@ -5,7 +5,7 @@
     	<div class="span9">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_264_vcard.png" width="25"> Posted Vacancies
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Posted Vacancies
                 </h3>
                 
                 <div style="width:930px;height:470px;overflow:auto;"><!--start scrollable table-->      
@@ -29,7 +29,7 @@
                               </td>
                               
                               <td>
-                              	  <a href="EVacancyDetails.html" class="vColor">	
+                                  <a href="<?php echo base_url()?>main/employer_appsperjob" class="vColor">	
                                   	Welder Assistant
                                   </a>
                                   <br>
@@ -107,7 +107,7 @@
             	<div class="input-append" align="center">
                     <input class="span9" type="text" placeholder="Search">
                     <a href="#" class="btn">
-                        <img src="assets/img/icons/glyphicons_027_search.png" width="15">
+                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="15">
                     </a>
                 </div><!--end search-->
 				<br>
@@ -129,3 +129,5 @@
 
 </div><!--End div-->
 </div><!--End Container fluid-->
+
+<hr>
