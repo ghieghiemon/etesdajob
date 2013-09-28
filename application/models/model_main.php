@@ -502,7 +502,7 @@ class Model_main extends CI_Model {
         $query = $db1->query("SELECT * from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.userid = $userid
+                                WHERE a.appid = $userid
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();

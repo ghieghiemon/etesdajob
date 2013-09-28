@@ -425,7 +425,7 @@ class Main extends CI_Controller {
         $jobtitle = $this->input->post('jobtitle');
         $region = $this->input->post('regionid');
         $city = $this->input->post('cityid');
-        if($this->model_main->employer_checkjobstatus('Agribusiness',1,1))
+        if($this->model_main->employer_checkjobstatus($jobtitle,$region,$city))
         {
             echo json_encode(array('result' => true));
         }

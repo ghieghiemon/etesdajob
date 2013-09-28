@@ -48,7 +48,158 @@
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
-    	<div class="span9">
+    	<div class="span3">
+        	<div class="well wellMarg2b">
+            	<div class="row-fluid">
+                  <div align="center">
+                  <span class="badge badge-important">
+                  	<h6>
+                          <a href="#" class="numAppC2">
+                              4 Vacancies Left 
+                          </a>
+                     </h6>
+                  </span>
+                  </div>
+              </div><!--end vacancies left-->
+              
+                <div style="width:310px;height:518px;overflow:auto;margin-top:10px"><!--start scrollable table-->
+                	<div class="well">
+                    	<h5 class="media-heading previewColor">
+                            | Details
+                        </h5>
+                        
+                    	<table class="vdAppMarg">
+                                <thead>
+                                    <tr>
+                                        <th class="span5" style="text-align:center"></th>
+                                        <th class="span5" style="text-align:center"></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody class="recName">
+                                    <tr>
+                                      <td class="vdDesc">
+                                          Date Posted:
+                                      </td>
+                                      
+                                      <td>	
+                                          09/23/2013
+                                          <br>
+                                          <font class="vEditDate2">
+                                              Last edited: 09/23/2013
+                                          </font>
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          Effectivity:
+                                      </td>
+                                      
+                                      <td>
+                                          3 DAYS LEFT
+                                          <br>
+                                          <button class="btn btn-mini btn-info">Edit</button>
+                                      </td>
+                                     
+                                    </tr>
+                                    
+                                     <tr>
+                                      <td class="vdDesc">
+                                          Location:
+                                      </td>
+                                      
+                                      <td>
+                                          NCR | Makati City
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          Description:
+                                      </td>
+                                      
+                                      <td>
+                                          Assist lead welder 
+                                      </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                    </div><!--end well-->
+                    
+                    <div class="well">
+                    	<h5 class="media-heading previewColor">
+                            | Qualifications
+                        </h5>
+                        
+                    	<table class="vdAppMarg">
+                                <thead>
+                                    <tr>
+                                        <th class="span5" style="text-align:center"></th>
+                                        <th class="span5" style="text-align:center"></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody class="recName">
+                                    <tr>
+                                      <td class="vdDesc">
+                                          Sex:
+                                      </td>
+                                      
+                                      <td>	
+                                          Male
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                     <tr>
+                                      <td class="vdDesc">
+                                          Age Range:
+                                      </td>
+                                      
+                                      <td>
+                                          25-40
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          Certification/s:
+                                      </td>
+                                      
+                                      <td>
+                                          Electrical Istallation & Maintenance NCII
+                                      </td>
+                                     
+                                    </tr>
+                                    
+                                     <tr>
+                                      <td class="vdDesc">
+                                          Competencies:
+                                      </td>
+                                      
+                                      <td>
+                                          Wiring, Hello, Hi
+                                      </td>
+                                      
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div><!--end well-->
+                     
+                    
+                </div><!--end scrollable-->
+            </div><!--end well-->
+        	
+        </div><!--end span left folumn-->
+        
+        <div class="span9">
         	<div class="well">
             	<h3 class="media-heading">
                     <img src="assets/img/icons/glyphicons_144_folder_open.png" width="30"> 
@@ -233,166 +384,9 @@
                   </div> <!--end tab content-->
                   </div> <!--end tabbable-->
             </div><!--end well-->
-        </div><!--end span left folumn-->
-        
-        <div class="span3">
-        	<div class="well wellMarg2">
-            	<div class="row-fluid">
-                  <div align="center">
-                  <span class="badge badge-important">
-                  	<h6>
-                          <a href="#" class="numAppC2">
-                              4 Vacancies Left 
-                          </a>
-                     </h6>
-                  </span>
-                  </div>
-              </div><!--end vacancies left-->
-              
-                <div style="width:310px;height:518px;overflow:auto;margin-top:10px"><!--start scrollable table-->
-                	<div class="well">
-                    	<h5 class="media-heading previewColor">
-                            | Details
-                        </h5>
-                        
-                    	<table class="vdAppMarg">
-                                <thead>
-                                    <tr>
-                                        <th class="span5" style="text-align:center"></th>
-                                        <th class="span5" style="text-align:center"></th>
-                                    </tr>
-                                </thead>
-                                
-                                <tbody class="recName">
-                                    <tr>
-                                      <td class="vdDesc">
-                                          Date Posted:
-                                      </td>
-                                      
-                                      <td>	
-                                          09/23/2013
-                                          <br>
-                                          <font class="vEditDate2">
-                                              Last edited: 09/23/2013
-                                          </font>
-                                      </td>
-                                      
-                                    </tr>
-                                    
-                                     <tr>
-                                      <td class="vdDesc">
-                                          Status:
-                                      </td>
-                                      
-                                      <td>
-                                          Active
-                                      </td>
-                                      
-                                    </tr>
-                                    
-                                    <tr>
-                                      <td class="vdDesc">
-                                          Effectivity:
-                                      </td>
-                                      
-                                      <td>
-                                          3 days left
-                                      </td>
-                                     
-                                    </tr>
-                                    
-                                     <tr>
-                                      <td class="vdDesc">
-                                          Location:
-                                      </td>
-                                      
-                                      <td>
-                                          NCR | Makati City
-                                      </td>
-                                      
-                                    </tr>
-                                    
-                                    <tr>
-                                      <td class="vdDesc">
-                                          Description:
-                                      </td>
-                                      
-                                      <td>
-                                          Assist lead welder 
-                                      </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                    </div><!--end well-->
-                    
-                    <div class="well">
-                    	<h5 class="media-heading previewColor">
-                            | Qualifications
-                        </h5>
-                        
-                    	<table class="vdAppMarg">
-                                <thead>
-                                    <tr>
-                                        <th class="span5" style="text-align:center"></th>
-                                        <th class="span5" style="text-align:center"></th>
-                                    </tr>
-                                </thead>
-                                
-                                <tbody class="recName">
-                                    <tr>
-                                      <td class="vdDesc">
-                                          Sex:
-                                      </td>
-                                      
-                                      <td>	
-                                          Male
-                                      </td>
-                                      
-                                    </tr>
-                                    
-                                     <tr>
-                                      <td class="vdDesc">
-                                          Age Range:
-                                      </td>
-                                      
-                                      <td>
-                                          25-40
-                                      </td>
-                                      
-                                    </tr>
-                                    
-                                    <tr>
-                                      <td class="vdDesc">
-                                          Certification/s:
-                                      </td>
-                                      
-                                      <td>
-                                          Electrical Istallation & Maintenance NCII
-                                      </td>
-                                     
-                                    </tr>
-                                    
-                                     <tr>
-                                      <td class="vdDesc">
-                                          Competencies:
-                                      </td>
-                                      
-                                      <td>
-                                          Wiring, Hello, Hi
-                                      </td>
-                                      
-                                    </tr>
-                                </tbody>
-                            </table>
-                    </div><!--end well-->
-                     
-                    
-                </div><!--end scrollable-->
-            </div><!--end well-->
         </div><!--end span right column-->
     </div><!--end row-->
 
 </div><!--End div-->
 </div><!--End Container fluid-->
-<hr>
+      <hr>
