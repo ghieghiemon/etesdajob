@@ -134,10 +134,10 @@ class Model_main extends CI_Model {
     }
     public function get_userid($email){
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT userid from users WHERE email = '$email'");
+        $query = $db2->query("SELECT appid from applicants a JOIN users u  ON a.userid=u.userid WHERE u.email = '$email'");
         foreach ($query->result() as $row)
         {
-         return $row->userid;}
+         return $row->appid;}
         $db2->close();
     }
 //employer
@@ -424,7 +424,7 @@ class Model_main extends CI_Model {
     public function get_jsname(){
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE userid = $id");
+        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");
         return $query->result_array();
         $db2->close();
     }
@@ -452,7 +452,7 @@ class Model_main extends CI_Model {
            as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
              FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
              JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-             WHERE j.userid = $userid AND j.applied = 0
+             WHERE j.appid = $userid AND j.applied = 0
                ORDER BY dateposted DESC");
         return $query->result_array();
        $db1->close();
