@@ -474,9 +474,25 @@ class Main extends CI_Controller {
     }
     public function jobseeker_jobmarketpage()
     {
-        $this->jobseeker_header();
-        $this->load->view('jobseeker/JSJobMarket');
-        $this->load->view('footer');
+        $this->load->model('model_main');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $jobs = $this->model_main->get_alljobs();
+        
+        $suggested = array();
+        foreach($jobs as $a)
+        {
+            if($this->model_main->match($a['jobno'],$id))
+            {
+                print_r($this->model_main->match($a['jobno'],$id));
+                $row['jobtitle'] = $a['jobtitle'];
+                array_push($suggested, $row);
+            }
+        }
+        
+        $data['suggested'] = $suggested;
+//        $this->jobseeker_header();
+//        $this->load->view('jobseeker/JSJobMarket',$data);
+//        $this->load->view('footer');
     }  
     public function apply_job($jobno,$invno)
     {

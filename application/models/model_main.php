@@ -522,6 +522,54 @@ class Model_main extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    public function get_alljobs()
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM job_vacancies ORDER BY dateposted DESC
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+//    public function get_jscert($id)
+//    {
+//        $db2 = $this->load->database('default', TRUE);
+//        $query = $db1->query("SELECT * from applicants_certificates where appid=$id
+//                            ");
+//        return $query->result_array();
+//        $db2->close();
+//    }
+    public function get_jobcert($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM job_certifications where jobno = $jobno
+                            ");
+        return $query->num_rows();
+        $db1->close();
+    }
+    public function get_matchedCert($jobno,$id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * from etesda.job_certifications jc
+                                JOIN etesda.job_vacancies v ON v.jobno = jc.jobno
+                                JOIN tesda_centraldb.applicants_certificates ac ON ac.certificateid = jc.ncid
+                                WHERE ac.appid = $id AND jc.jobno = $jobno
+                                ORDER BY v.dateposted DESC
+                            ");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
+    public function match($jobno, $id)
+    {
+        $matchedCert = $this->get_matchedCert($jobno, $id);
+        $requiredCert = $this->get_jobcert($jobno);
+        
+        if($matchedCertm == $requiredCert)
+            return true;
+        else
+            return false;
+    }
 }
 
 /* End of file user.php */

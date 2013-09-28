@@ -35,7 +35,10 @@
                             </thead>
                             
                             <tbody class="recName">
-                                <tr>
+                            <?php
+                            foreach($suggested as $a)
+                            {
+                               echo '<tr>
                                     <td>
                                         <input type="checkbox">
                                     </td>
@@ -44,9 +47,9 @@
                                         09/23/2013 to 09/30/2013
                                     </td>
                                     
-                                    <td>
-                                        Lead Welder
-                                    </td>
+                                    <td>';
+                                echo $a['jobtitle'];
+                                echo '</td>
                                    
                                     <td>
                                         <a href="#" class="recAppName">
@@ -65,39 +68,9 @@
                                     <td>
                                         <span class="label">15 Left </span>
                                     </td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    
-                                    <td>
-                                        09/23/2013 to 09/30/2013
-                                    </td>
-                                    
-                                    <td>
-                                        Junior Welder
-                                    </td>
-                                   
-                                    <td>
-                                        <a href="#" class="recAppName">
-                                            DMCI
-                                        </a>
-                                    </td>
-                                    
-                                    <td>
-                                        NCR | Taguig City
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label label-info">20 Applied</span>
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label">15 Left </span>
-                                    </td>
-                                </tr>                          
+                                </tr>';
+                            }
+                            ?>                       
                                 
                             </tbody>
                         </table>	
