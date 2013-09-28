@@ -21,10 +21,7 @@ clear: both;
 height: 20px;
 }
 
-a:link, a:visited {
-color: #77BACE;
-text-decoration: none;
-}
+
 
 a:hover {
 text-decoration: underline;
@@ -196,7 +193,7 @@ aside#sidebar {
 width: 23%;
 background: #E0E0E3 url(../images/sidebar.png) repeat;
 float: left;
-min-height: 500px;
+min-height: 630px;
 margin-top: -4px;
 }
 
@@ -437,8 +434,26 @@ margin-right: 0;
 float: left;
 }
 
+.width_quarter {
+width: 34%;
+margin-left:5px;
+float: left;
+}
+
 .width_3_quarter {
 width: 66%;
+margin-right: 0;
+float: left;
+}
+
+.width_4 {
+width: 63%;
+margin-right: 0;
+float: left;
+}
+
+.width_5 {
+width: 98%;
 margin-right: 0;
 float: left;
 }
@@ -497,7 +512,6 @@ margin: -5px 0 0 0;
 .tablesorter td{
 margin: 0;
 padding: 0;
-border-bottom: 1px dotted #ccc;
 }
 
 .tablesorter thead tr {
@@ -573,9 +587,10 @@ html ul.tabs li:last-child, html ul.tabs li:last-child a  {
 }
 
 #main .module header h3.tabs_involved {
-display: block;
-width: 60%;
-float: left;
+font-weight:bold;
+font-size:18px;
+margin-top:1px;
+margin-left:5px;
 }
 
 /* Messages */
@@ -881,3 +896,4 @@ color: #32510F;
 padding: 10px 0;
 text-indent: 40px;
 font-size: 14px;}
+
