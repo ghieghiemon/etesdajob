@@ -203,123 +203,30 @@
  
                                 
             <div id="container">  
-            <table id="test">
-            
-            <thead>
-                <th>Checkbox</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-            </thead>
-            <tbody class="recName">
-                <tr>
-                    <td><input type="checkbox" id="c1" /></td>
-                    <td>A</td>
-                    <td>A</td>
-                    <td>A</td>
-                </tr>
+                <table id="newtable">
+                    <thead>
+                        <th>Col 1</th>
+                        <th>Col 2</th>
+                        <th>Col 3</th>
+                        <th>Col 4</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>2</td>
+                        </tr>
+                    </tbody>
+                </table>
                 
-                <tr>
-                    <td><input type="checkbox" id="c2" /></td>
-                    <td>B</td>
-                    <td>B</td>
-                    <td>B</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c3" /></td>
-                    <td>C</td>
-                    <td>C</td>
-                    <td>C</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c4" /></td>
-                    <td>D</td>
-                    <td>D</td>
-                    <td>D</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c5" /></td>
-                    <td>E</td>
-                    <td>E</td>
-                    <td>E</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c6" /></td>
-                    <td>F</td>
-                    <td>F</td>
-                    <td>F</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c7" /></td>
-                    <td>G</td>
-                    <td>G</td>
-                    <td>G</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c8" /></td>
-                    <td>H</td>
-                    <td>H</td>
-                    <td>H</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c9" /></td>
-                    <td>I</td>
-                    <td>I</td>
-                    <td>I</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c10" /></td>
-                    <td>J</td>
-                    <td>J</td>
-                    <td>J</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c11" /></td>
-                    <td>K</td>
-                    <td>K</td>
-                    <td>K</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c12" /></td>
-                    <td>L</td>
-                    <td>L</td>
-                    <td>L</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c13" /></td>
-                    <td>M</td>
-                    <td>M</td>
-                    <td>M</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c14" /></td>
-                    <td>N</td>
-                    <td>N</td>
-                    <td>N</td>
-                </tr>
-                
-                <tr>
-                    <td><input type="checkbox" id="c15" /></td>
-                    <td>O</td>
-                    <td>O</td>
-                    <td>O</td>
-                </tr>
-              
-                
-            </tbody>
-        </table>
+           
                             </div><!--end scrollable table-->
                             <br><br>
             			<div class="row-fluid">
@@ -349,7 +256,7 @@
        
        $(document).ready(function(){
           
-           $('#test').dataTable({
+           $('#newtable').dataTable({
                 "sPaginationType": "full_numbers"
             });
            
@@ -365,5 +272,6 @@
             chart1.colors = ['#99C', '#609', '#6CC', '#33F'];
             chart1.randomColors = true;
             chart1.draw();
+            
    </script>
 </body>
