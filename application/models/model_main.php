@@ -525,7 +525,7 @@ class Model_main extends CI_Model {
     public function get_alljobs()
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM job_vacancies ORDER BY dateposted DESC
+        $query = $db1->query("SELECT * FROM job_vacancies GROUP BY jobno ORDER BY dateposted DESC 
                             ");
         return $query->result_array();
         $db1->close();
@@ -541,7 +541,7 @@ class Model_main extends CI_Model {
     public function get_jobcert($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM job_certifications where jobno = $jobno
+        $query = $db1->query("SELECT * FROM job_certifications where jobno = $jobno 
                             ");
         return $query->num_rows();
         $db1->close();
@@ -556,21 +556,14 @@ class Model_main extends CI_Model {
                                 WHERE ac.appid = $id AND jc.jobno = $jobno
                                 ORDER BY v.dateposted DESC
                             ");
-        return $query->result_array();
+        $result = $query->num_rows();
+        return $result;
+        
         $db1->close();
         $db2->close();
     }
-    public function match($jobno, $id)
-    {
-        $matchedCert = $this->get_matchedCert($jobno, $id);
-        $requiredCert = $this->get_jobcert($jobno);
-        
-        if($matchedCertm == $requiredCert)
-            return true;
-        else
-            return false;
-    }
 }
+
 
 /* End of file user.php */
 /* Location: ./application/models/user.php */

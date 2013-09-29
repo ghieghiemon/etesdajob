@@ -472,27 +472,42 @@ class Main extends CI_Controller {
         $this->load->view('jobseeker/JSMyAppDetail',$data);
         $this->load->view('footer');
     }
+    public function match($jobno, $id)
+    {
+        $this->load->model('model_main');
+        $matchedCert = $this->model_main->get_matchedCert($jobno, $id);
+        $requiredCert = $this->model_main->get_jobcert($jobno);
+        
+        if(!($matchedCert < $requiredCert))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+            
+    }
     public function jobseeker_jobmarketpage()
     {
         $this->load->model('model_main');
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $jobs = $this->model_main->get_alljobs();
-        
         $suggested = array();
         foreach($jobs as $a)
         {
-            if($this->model_main->match($a['jobno'],$id))
+            
+            if($this->match($a['jobno'],$id))
             {
-                print_r($this->model_main->match($a['jobno'],$id));
                 $row['jobtitle'] = $a['jobtitle'];
                 array_push($suggested, $row);
             }
         }
         
         $data['suggested'] = $suggested;
-//        $this->jobseeker_header();
-//        $this->load->view('jobseeker/JSJobMarket',$data);
-//        $this->load->view('footer');
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSJobMarket',$data);
+        $this->load->view('footer');
     }  
     public function apply_job($jobno,$invno)
     {
