@@ -454,7 +454,7 @@ class Main extends CI_Controller {
     public function jobseeker_myappspage()
     {
         $this->load->model('model_main');
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['invites'] = $this->model_main->get_myinvites($id);
         $data['myapp'] = $this->model_main->get_myapplications($id);
         
@@ -464,7 +464,7 @@ class Main extends CI_Controller {
     }
     public function jobseeker_myappsdetail($jobno)
     {
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['appdetails'] = $this->model_main->get_jobdetails($jobno);
         $data['myapps'] =$this->model_main->get_mysideapplications($id,$jobno);
         
@@ -491,7 +491,7 @@ class Main extends CI_Controller {
     public function jobseeker_jobmarketpage()
     {
         $this->load->model('model_main');
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $jobs = $this->model_main->get_alljobs();
         $suggested = array();
         foreach($jobs as $a)
@@ -512,7 +512,7 @@ class Main extends CI_Controller {
     public function apply_job($jobno,$invno)
     {
         $this->load->model('model_main');
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $this->model_main->apply_job($id,$jobno);
         $this->model_main->accept_job($invno);
         

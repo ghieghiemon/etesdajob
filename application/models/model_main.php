@@ -132,12 +132,20 @@ class Model_main extends CI_Model {
          return $row->city;}
         $db1->close();
     }
-    public function get_userid($email){
+    public function get_appid($email){
         $db2 = $this->load->database('default', TRUE);
         $query = $db2->query("SELECT appid from applicants a JOIN users u  ON a.userid=u.userid WHERE u.email = '$email'");
         foreach ($query->result() as $row)
         {
          return $row->appid;}
+        $db2->close();
+    }
+    public function get_userid($email){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT userid from users WHERE email = '$email'");
+        foreach ($query->result() as $row)
+        {
+         return $row->userid;}
         $db2->close();
     }
 //employer
@@ -530,14 +538,10 @@ class Model_main extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-//    public function get_jscert($id)
-//    {
-//        $db2 = $this->load->database('default', TRUE);
-//        $query = $db1->query("SELECT * from applicants_certificates where appid=$id
-//                            ");
-//        return $query->result_array();
-//        $db2->close();
-//    }
+    public function get_qualifiedJobs()
+    {
+        
+    }
     public function get_jobcert($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
