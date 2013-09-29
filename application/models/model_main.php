@@ -430,7 +430,7 @@ class Model_main extends CI_Model {
     }
 //jobseeker
     public function get_jsname(){
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $db2 = $this->load->database('default', TRUE);
         $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");
         return $query->result_array();
@@ -530,6 +530,28 @@ class Model_main extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    public function get_dob($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $query = $db2->query("SELECT birthday from applicants WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+         return $row->birthday;
+        }
+        $db2->close();
+    }
+    public function get_sex($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $query = $db2->query("SELECT ismale from applicants WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+         return $row->ismale;
+        }
+        $db2->close();
+    }
     public function get_alljobs()
     {
         $db1 = $this->load->database('local', TRUE);
@@ -538,9 +560,23 @@ class Model_main extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-    public function get_qualifiedJobs()
+    function age_from_dob($dob) {
+        return floor((time() - strtotime($dob)) / 31556926);
+    }
+    public function get_qualifiedjobs($sex, $dob)
     {
-        
+        if ($sex==1)
+                $sex='Male';
+        else 
+            $sex='Female';
+        $age = $this->age_from_dob($dob);
+
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * from job_vacancies j join job_certifications c on j.jobno = c.jobno 
+                                    where (j.sex = '$sex' or j.sex = 'Both') 
+                                    AND ($age BETWEEN j.agestart AND j.ageend) GROUP BY j.jobno");
+        return $query->result_array();
+        $db1->close();
     }
     public function get_jobcert($jobno)
     {

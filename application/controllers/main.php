@@ -493,18 +493,32 @@ class Main extends CI_Controller {
         $this->load->model('model_main');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $jobs = $this->model_main->get_alljobs();
+        $dob = $this->model_main->get_dob($id);
+        $sex = $this->model_main->get_sex($id);
+        $qualified = $this->model_main->get_qualifiedjobs($dob, $sex);
+        
         $suggested = array();
         foreach($jobs as $a)
         {
             
             if($this->match($a['jobno'],$id))
             {
-                $row['jobtitle'] = $a['jobtitle'];
-                array_push($suggested, $row);
+                array_push($suggested, $a);
             }
         }
         
-        $data['suggested'] = $suggested;
+        foreach($qualified as $a)
+        {
+            $jobno[]=$a['jobno'];
+        }
+        
+        $final = array();
+        foreach ($suggested as $a)
+        {
+            if(in_array($a['jobno'],$jobno))
+                    array_push($final, $a);
+        }
+        $data['suggested'] = $final;
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobMarket',$data);
         $this->load->view('footer');
