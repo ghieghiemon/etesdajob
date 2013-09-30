@@ -519,6 +519,8 @@ class Main extends CI_Controller {
                     array_push($final, $a);
         }
         $data['suggested'] = $final;
+        
+        $data['jobs'] = $jobs;
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobMarket',$data);
         $this->load->view('footer');

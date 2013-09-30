@@ -96,7 +96,21 @@
                             </thead>
                             
                             <tbody class="recName">
-                                <tr>
+                            <?php
+                            foreach($suggested as $a)
+                            {
+                                $jobno[]=$a['jobno'];
+                            }
+
+//                            $final = array();
+//                            foreach ($suggested as $a)
+//                            {
+//                                if(in_array($a['jobno'],$jobno))
+//                                        array_push($final, $a);
+//                            }
+                            foreach($jobs as $a)
+                            {
+                                echo '<tr>
                                     <td>
                                         <input type="checkbox">
                                     </td>
@@ -105,9 +119,9 @@
                                         09/23/2013 to 09/30/2013
                                     </td>
                                     
-                                    <td>
-                                        Lead Welder
-                                    </td>
+                                    <td>';
+                                 echo $jobtitle;
+                                    echo '</td>
                                    
                                     <td>
                                         <a href="#" class="recAppName">
@@ -119,46 +133,18 @@
                                         NCR | Pasig City
                                     </td>
                                     
-                                    <td>
-                                        <span class="label label-info">20 Applied</span>
-                                    </td>
+                                    <td>';
+                                 if(in_array($a['jobno'],$jobno))
+                                        echo '<span class="label label-info">20 Applied</span>';
+                                 echo '</td>
                                     
                                     <td>
                                         <span class="label">10 Left </span>
                                     </td>
-                                </tr>
-                                
-                                <tr>
-                                    <td>
-                                        <input type="checkbox">
-                                    </td>
-                                    
-                                    <td>
-                                        09/23/2013 to 09/30/2013
-                                    </td>
-                                    
-                                    <td>
-                                        Junior Welder
-                                    </td>
-                                   
-                                    <td>
-                                        <a href="#" class="recAppName">
-                                            DMCI
-                                        </a>
-                                    </td>
-                                    
-                                    <td>
-                                        NCR | Taguig City
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label label-info">20 Applied</span>
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label">15 Left </span>
-                                    </td>
-                                </tr>                          
+                                </tr>';
+                                }
+                                ?>
+                                                      
                                 
                             </tbody>
                         </table>	
