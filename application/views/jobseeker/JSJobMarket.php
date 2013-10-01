@@ -132,9 +132,10 @@
                     
                     <div class="tab-pane" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                        	<table class="tableJM table-hover table-condensed table-striped" id='newtable'>
+                            
+                            <div id="container">
+                        	<table  id="newtable">
                             <thead>
-                                <tr>
                                     <th class="span3" style="text-align:center">Job Title</th>
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
@@ -142,9 +143,9 @@
                                     <th class="span1" style="text-align:center"></th>
                                     <th class="span1" style="text-align:center"></th>
                                     <th class="span1" style="text-align:center">Action</th>
-                                </tr>
                             </thead>
                             
+<!--                            <tbody class="recName">-->
                             <tbody class="recName">
                                 <?php
                             foreach($suggested as $a)
@@ -190,7 +191,8 @@
                                 }
                                 ?>
                             </tbody>
-                        </table>		
+                        </table>
+                            </div>
                         </div><!--end scrollable-->
                     </div> <!--end tab pane invited-->
                     
@@ -205,10 +207,6 @@
 
 </div><!--End div-->
 </div><!--End Container fluid-->
- 
-            
-             
-
 
       <hr>
 <script type="text/javascript">
@@ -218,7 +216,7 @@
            $('#newtable').dataTable({
                 "sPaginationType": "full_numbers"
             });
-           
+		   
        });
         
-    </script>
+</script>

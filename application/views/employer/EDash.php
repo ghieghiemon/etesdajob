@@ -198,9 +198,6 @@
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="UR">
                         	<div style="width:940px;height:220px;overflow:auto;">
-                            <!--start scrollable table-->
-                            
- 
                                 
             <div id="container">  
                 <table id="newtable">

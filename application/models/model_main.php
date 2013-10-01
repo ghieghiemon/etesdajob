@@ -460,7 +460,7 @@ class Model_main extends CI_Model {
            as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
              FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
              JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-             WHERE j.appid = $userid AND j.applied = 0
+             WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
                ORDER BY dateposted DESC");
         return $query->result_array();
        $db1->close();
@@ -484,7 +484,7 @@ class Model_main extends CI_Model {
     public function apply_job($userid, $jobno)
     {    
         $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO applications(userid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'Unscreened', 1,CURDATE(), CURTIME())";
+        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'New Applicant', 1,CURDATE(), CURTIME())";
         $db1->query($sql,array($userid, $jobno));
         $db1->close();
     }
@@ -507,10 +507,10 @@ class Model_main extends CI_Model {
     public function get_myapplications($userid){
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT * from etesda.applications a
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.appid = $userid
+                                WHERE a.appid = $userid GROUP BY v.jobno
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();
@@ -523,7 +523,7 @@ class Model_main extends CI_Model {
         $query = $db1->query("SELECT * from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.userid = $userid AND v.jobno != $jobno
+                                WHERE a.appid = $userid AND v.jobno != $jobno GROUP BY v.jobno
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();

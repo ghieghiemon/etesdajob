@@ -3,7 +3,7 @@
 foreach($invites as $a)
 {
 ?>
-   <div class="modal hide fade" id="apply<?php echo $a['jobno']?>">
+   <div class="modal hide fade" id="view<?php echo $a['jobno']?>">
 <?php
     echo '<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
@@ -199,8 +199,8 @@ foreach($invites as $a)
   
   	<div class="modal-footer">';
         ?>
-  	<a  href="<?php echo base_url()?>main/apply_job/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-info">Apply</a>
-    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	
+    	<a class="btn btn-primary" data-dismiss="modal">Close</a> 
   	
      </div>
     </div>
@@ -218,196 +218,14 @@ foreach($invites as $a)
 <?php
     echo '<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Vacancy Summary</h3>
+    	<br>
   	</div>
-
+    
 	<div class="modal-body">
-                <span id="label1"></span>
-		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
-        	<div class="row-fluid">
-            	<div class="span6">
-                	<table class="previewMarg">
-                          <thead>
-                              <tr>
-                                  <th class="span1"></th>
-                                  <th class="span4"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                              <tr>
-                                  <td class="previewDet">
-                                      Job Title:
-                                  </td>
-                                  <td>
-                                      <font class="previewDet2">';
-     echo $a['jobtitle'];
-     echo '</font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Description:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">
-                                      	<span id="description" name="description"></span>
-                                      </font>
-                                  </td>
-                              </tr>
-                               <tr>
-                                  <td class="previewDet">
-                                      Industry:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">
-                                      	<span id="industry" name="industry"></span>
-                                      </font>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                </div><!--end span-->
-                
-                <div class="span6">
-                	<table class="previewMarg2">
-                          <thead>
-                              <tr>
-                                  <th class="span3"></th>
-                                  <th class="span2"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                          	  <tr>
-                                  <td class="previewDet">
-                                      Region: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="region" name="region"></span>
-                                      </font>	
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      City/Province: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="city" name="city"></span>	
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Number of Vacancies: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="vacant" name="vacant"></span>
-                                      </font>	
-                                  </td>
-                              </tr>
-                             
-                              <tr>
-                                  <td class="previewDet">
-                                      Effectivity: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="effect" name="effect"></span>	
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                          </tbody>
-                      </table>
-                </div>
-            </div><!--end row-fluid-->
-        <hr class="hrLeagTab">
-            
-        <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
-        	<div class="row-fluid">
-            	<div class="span6">
-                	<table class="previewMarg">
-                          <thead>
-                              <tr>
-                                  <th class="span2"></th>
-                                  <th class="span4"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                              <tr>
-                                  <td class="previewDet">
-                                      Sex:
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="msex" name="msex"></span>	
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Age Range:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">
-                                      	<span id="sAge" name="sAge"></span> - <span id="eAge" name="eAge"></span>	
-                                      </font>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                </div><!--end span-->
-                
-                <div class="span6">
-                	<p class="previewCCS">
-                		<strong>CERTIFICATION/S:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
-                    </p>
-                   
-                   <p class="previewCCS">
-                		<strong>COMPETENCIES:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
-                    </p>
-                    
-                   <p class="previewCCS">
-                		<strong>SKILLS:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
-                    </p>
-                </div><!--end span-->
-                
-               
-            </div><!--end row-fluid-->
-        <hr class="hrLeagTab">
-        
-        <h4 class="media-heading previewColor">| PHASES</h4>
-        	<p class="previewPhase">
-            	Unscreened, Screened, Exam, Interview, Hire, Reject
-            </p>
-	</div>
-  
+    	<p class="delete">
+           <strong> Are you sure you want to decline?</strong>
+        </p>
+    </div>
   	<div class="modal-footer">';
         ?>
   	<a  href="<?php echo base_url()?>main/decline_job/<?php echo $a['invitationno']?>" class="btn btn-danger">Decline</a>
@@ -418,6 +236,11 @@ foreach($invites as $a)
 <?php
 }
 ?>
+  	<div class="modal-footer">
+  		<a  href="<?php echo base_url()?>main/decline_job/<?php echo $a['invitationno']?>" class="btn btn-danger">Decline</a>
+    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a>
+     </div>
+</div>
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -566,11 +389,12 @@ foreach($invites as $a)
                 	<table class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
-                                <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                
                                 <th class="span2" style="text-align:center">Job Title</th>
                                 <th class="span3" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
                                 <th class="span2" style="text-align:center">Location</th>
+                                <th class="span2" style="text-align:center">Date & Time Applied</th>
                                 <th class="span4" style="text-align:center">Status</th>
                             </tr>
                         </thead>
@@ -579,9 +403,7 @@ foreach($invites as $a)
                         foreach($myapp as $a)
                         {
                             echo '<tr>
-                                <td>
-                                    09/09/2013  0930pm
-                                </td>
+                                
                                 
                                 <td>';
                             echo $a['jobtitle'];
@@ -598,7 +420,9 @@ foreach($invites as $a)
                                 <td>
                                     NCR | Pasig City
                                 </td>
-                                
+                                <td>';
+                             echo $a['datereceived'];
+                              echo  '</td>
                                 <td>
                                     <div class="statusB">';
                             echo $a['status'];
@@ -673,9 +497,9 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                                 ?>
-                                    <button type="button" data-toggle="modal" data-target="#apply<?php echo $a['jobno']?>" class="btn btn-mini">
+                                    <a href="<?php echo base_url()?>main/apply_job/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
-                                    </button>
+                                    </a>
                                     
                                     <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
