@@ -6571,6 +6571,13 @@ height: 150px;
   border-bottom: 1px solid #CCC;
 }
 
+.hrLeagTabNew {
+  margin: 5px 0;
+  border: 0;
+  border-top: 0px solid #666;
+  border-bottom: 1px solid #FFF;
+}
+
 .hrDiscuss {
 	margin: 5px 0;
   border: 0;
@@ -7015,7 +7022,6 @@ margin-bottom:3px;
 	font-style:oblique;
 	font-weight:bold;
 	color:#90C;
-	margin-left:10px;
 	margin-top:15px;
 }
 
@@ -8272,14 +8278,15 @@ margin-bottom:3px;
 }
 
 .DisTitleLeft {
-  	font-size: 14px;
+  	font-size: 13px;
 	font-weight:bold;
 	color:#333;
+	margin-left:-28px;
 }
 
 .DisDetLeft {
-	font-size:12px;
-	margin-left:20px;
+	font-size:10px;
+	margin-left:-5px;
 }
 
 .beInv {
@@ -9185,6 +9192,11 @@ margin-bottom:3px;
 	color:#63F;
 }
 
+.wellMargA {
+	margin-left:-5px;
+	margin-right:-4px;
+}
+
 .wellMarg {
 	margin-left:-15px;
 }
@@ -9205,6 +9217,16 @@ margin-bottom:3px;
 	margin-left:-40px;
 	background-color:#CCC;
 	border-color:#FFF;
+}
+
+.wellMarg3b {
+	margin-right:-30px;
+	background-color:#CCC;
+	border-color:#FFF;
+}
+
+.wellMargCE {
+	margin-left: -4px;
 }
 
 .wellUpMarg {
@@ -9491,6 +9513,15 @@ body {
    margin-left:5px;
 }
 
+.myStyle2EditV3 select {
+   height: 25px;
+   font-size: 12px;
+   line-height: 14px;
+   width:107px;
+   margin-left:0px;
+   margin-top:4px;
+}
+
 .myStyle3EditV textarea[rows] {
    height: 75px;
    width:194px;
@@ -9582,6 +9613,12 @@ body {
 	font-size:12px;
 	font-family:Tahoma, Geneva, sans-serif;
 	margin-left:45px;
+}
+
+.vdDesc2b {
+	font-size:12px;
+	font-family:Tahoma, Geneva, sans-serif;
+	margin-left:65px;
 }
 
 .vdDesc3 {
@@ -9904,4 +9941,26 @@ body {
 .invEmailMarg {
 	margin-top:-25px;
 	margin-bottom:10px;
+}
+
+.lPicMarg {
+	margin-top:-35px;
+}
+
+.wellMargLeag {
+	margin-bottom:10px
+}
+
+.editMargLeag {
+	margin-top:-10px;
+}
+
+.extendNote {
+	font-size:14px;
+	font-style:oblique;
+	font-weight:bold;
+}
+
+.extendNoteA{
+	color:#90C;
 }

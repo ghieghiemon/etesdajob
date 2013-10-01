@@ -6,7 +6,7 @@
 	<meta charset="utf-8"/>
 	<title>TESDA</title>
 	
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/layout.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/layout.css" type="text/css" media="screen" />
     <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
@@ -71,7 +71,7 @@
                         	
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                	<img src="<?php echo base_url()?>assets/bootstrap/img/TESDA.jpg" width="20"style="margin-left:-15px;"> TESDA
+                                	<img src="assets/img/TESDA.jpg" width="20"style="margin-left:-15px;"> TESDA
                                     <b class="caret"></b>
                                 </a>
                                 
@@ -91,7 +91,7 @@
 <div class="modal hide fade" id="invE">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
-    	<h4><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_010_envelope.png"> Invite people to join TESDA Job Portal </h4>
+    	<h4><img src="assets/img/icons/glyphicons_010_envelope.png"> Invite people to join TESDA Job Portal </h4>
   	</div>
 
 	<div class="modal-body" align="center">
@@ -111,7 +111,7 @@
 <div class="modal hide fade" id="ModEventAttend">
   	<div class="modal-header">
   			<a class="close" data-dismiss="modal">x</a>
-			<h3><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
+			<h3><img src="assets/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
   	</div><!--end modal-header-->
 
   	<div class="modal-footer"> <!--Modal members-->
@@ -131,7 +131,7 @@
                     <tbody>
                     	<tr>
                         	<td>
-                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -142,7 +142,7 @@
                             </td>
                             
                             <td>
-                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -205,7 +205,7 @@
 		<article class="module width_4" style="margin-left:5px">
 		<header>
         <h3 class="tabs_involved"> 
-        	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_010_envelope.png" width="20">
+        	<img src="assets/img/icons/glyphicons_010_envelope.png" width="20">
         	Invite people to join
         </h3>
 		<ul class="tabs" style="margin-top:-44px;">
@@ -337,8 +337,8 @@
                             </p>
           		
                 			<p class="evDetails3">
-                            	<em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> 02/07/2013 
-                                	| <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
+                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 02/07/2013 
+                                	| <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
                                 </em><br>
                                 <strong>Location</strong>: NCR | Pasay City <br>
                                 <strong>Venue:</strong> SMX Convention Hall <br>
@@ -351,7 +351,7 @@
      				<div class="row-fluid">
 						<div class="span2">
                         	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="<?php echo base_url()?>assets/bootstrap/img/ld6.jpg" class="thumbnail" height="12" style="margin-left:10px;">
+                            	<img src="assets/img/ld6.jpg" class="thumbnail" height="12" style="margin-left:10px;">
                             </a>
                             
                         </div>
@@ -363,8 +363,8 @@
                             </p>
                             
                             <p class="evDetails3">
-                            	<em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> 02/12/2013 
-                                	| <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> 10:00am
+                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 02/12/2013 
+                                	| <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 10:00am
                                 </em><br>
                                 <strong>Location</strong>: NCR | Mandaluyong City <br>
                                 <strong>Venue:</strong> Mega Trade Hall, SM Mega Mall<br>
@@ -376,7 +376,7 @@
 					<div class="row-fluid">
     					<div align="right" style="margin-top:-15px;margin-right:5px;">
                             <a href="#">
-                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                                <img src="assets/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
     				</div> <!--end row fluid upcoming events-->
@@ -385,7 +385,7 @@
         
         <article class="module width_5" style="margin-left:5px;margin-top:10px;">
 			<header>
-            <h3 class="tabs_involved"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="20"> Employment Report</font>
+            <h3 class="tabs_involved"><img src="assets/img/icons/glyphicons_041_charts.png" width="20"> Employment Report</font>
             	<form class="form-horizontal" style="margin-right:-80px;">
                     <div class="myStyle2T2" align="right">
                         <select name="Industry">
@@ -418,18 +418,18 @@
 	</section>
 	
    
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-button.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
 </body>
 
 
