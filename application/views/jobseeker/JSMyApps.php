@@ -236,11 +236,7 @@ foreach($invites as $a)
 <?php
 }
 ?>
-  	<div class="modal-footer">
-  		<a  href="<?php echo base_url()?>main/decline_job/<?php echo $a['invitationno']?>" class="btn btn-danger">Decline</a>
-    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a>
-     </div>
-</div>
+  	
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -451,12 +447,12 @@ foreach($invites as $a)
                 	<table class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
-                                <th class="span2" style="text-align:center">Effectivity</th>
+                                
                                 <th class="span2" style="text-align:center">Job Title</th>
                                 <th class="span2" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
                                 <th class="span2" style="text-align:center">Location</th>
-                                <th class="span1" style="text-align:center"></th>
+                                <th class="span2" style="text-align:center">Effectivity</th>
                                 <th class="span1" style="text-align:center"></th>
                                 <th class="span4" style="text-align:center">Options</th>
                             </tr>
@@ -467,11 +463,7 @@ foreach($invites as $a)
                           foreach($invites as $a)
                           {
                             echo '<tr>
-                                <td>';
-                            echo $a['dateposted'];
-                            echo ' to ';
-                            echo $a['expirationdate'];
-                            echo '</td>
+                                
                                 <td>';
                             echo $a['jobtitle'];
                             echo '</td>
@@ -486,10 +478,15 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                             echo '</td>
-                                <td>
-                                    <span class="label label-info">20 Applied</span>
-                                </td>
-                                
+                               
+                                <td>';
+                            $date2 = $a['expirationdate'];
+                                $date = date('Y-m-d');
+                                $diff = abs(strtotime($date2) - strtotime($date));
+
+                                $days = round((($diff/24)/60)/60);
+                                echo $days. " days left";
+                            echo '</td>
                                 <td>
                                     <span class="label">';
                             echo $a['vacanciesleft'];
@@ -497,7 +494,7 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                                 ?>
-                                    <a href="<?php echo base_url()?>main/apply_job/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+                                    <a href="<?php echo base_url()?>main/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
                                     </a>
                                     

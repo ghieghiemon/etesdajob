@@ -71,8 +71,9 @@
                     <div class="tab-content"> <!--start tab content-->
                     <div class="tab-pane active" id="SGS">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                            
-                        	<table class="tableJM table-hover table-condensed table-striped">
+                            <div id="container">
+                        	<table id ="newtable" >
+                                    
                             <thead>
                                 <tr>
                                     <th class="span3" style="text-align:center">Job Title</th>
@@ -92,22 +93,28 @@
                                  echo '<tr>
                                     
                                     <td>';
+                                 echo $a['jobno'];
                                        echo $a['jobtitle'];
                                 echo '</td>
                                    
                                     <td>
-                                        <a href="#" class="recAppName">
-                                            SM Corp
-                                        </a>
+                                        <a href="#" class="recAppName">';
+                                echo $a['companyName'];
+                                echo '</a>
                                     </td>
                                     
                                     <td>
                                         NCR | Pasig City
                                     </td>
                                     
-                                    <td>
-                                        09/23/2013 to 09/30/2013
-                                    </td>
+                                    <td>';
+                                $date2 = $a['expirationdate'];
+                                $date = date('Y-m-d');
+                                $diff = abs(strtotime($date2) - strtotime($date));
+
+                                $days = round((($diff/24)/60)/60);
+                                echo $days. " days left";
+                                echo '</td>
                                     
                                     <td>
                                         <span class="label label-info">20 Applied</span>
@@ -118,15 +125,18 @@
                                     </td>
                                     
                                     
-                                    <td>
-                                    	<button class="btn btn-mini btn-info">Apply</button>
-                                    </td>
+                                    <td>';
+                                    ?>
+                             <a class="btn btn-mini btn-info" href="<?php echo base_url()?>main/apply_job/<?php echo $a['jobno']?>">Apply</a>
+                             <?php    
+                             echo '</td>
                                 </tr>';
                             }
                             ?>    
                                
                             </tbody>
-                        </table>	
+                        </table>
+                            </div>
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invited-->
                     
@@ -134,7 +144,7 @@
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             
                             <div id="container">
-                        	<table  id="newtable">
+                        	<table  id="second">
                             <thead>
                                     <th class="span3" style="text-align:center">Job Title</th>
                                     <th class="span2" style="text-align:center">Company Name</th>
@@ -161,18 +171,23 @@
                                     echo '</td>
                                    
                                     <td>
-                                        <a href="#" class="recAppName">
-                                            SM Corp
-                                        </a>
+                                        <a href="#" class="recAppName">';
+                                echo $a['companyName'];
+                                echo '</a>
                                     </td>
                                     
                                     <td>
                                         NCR | Pasig City
                                     </td>
                                     
-                                    <td>
-                                        09/23/2013 to 09/30/2013
-                                    </td>
+                                    <td>';
+                                $date2 = $a['expirationdate'];
+                                $date = date('Y-m-d');
+                                $diff = abs(strtotime($date2) - strtotime($date));
+
+                                $days = round((($diff/24)/60)/60);
+                                echo $days. " days left";
+                                 echo '</td>
                                     
                                     <td>
                                         <span class="label label-info">20 Applied</span>
@@ -214,6 +229,18 @@
        $(document).ready(function(){
           
            $('#newtable').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#second').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   

@@ -500,13 +500,11 @@ class Main extends CI_Controller {
         $suggested = array();
         foreach($jobs as $a)
         {
-            
             if($this->match($a['jobno'],$id))
             {
                 array_push($suggested, $a);
             }
         }
-        
         foreach($qualified as $a)
         {
             $jobno[]=$a['jobno'];
@@ -518,6 +516,8 @@ class Main extends CI_Controller {
             if(in_array($a['jobno'],$jobno))
                     array_push($final, $a);
         }
+        
+        
         $data['suggested'] = $final;
         
         $data['jobs'] = $jobs;
@@ -525,12 +525,20 @@ class Main extends CI_Controller {
         $this->load->view('jobseeker/JSJobMarket',$data);
         $this->load->view('footer');
     }  
-    public function apply_job($jobno,$invno)
+    public function apply_jobinvite($jobno,$invno)
     {
         $this->load->model('model_main');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $this->model_main->apply_job($id,$jobno);
         $this->model_main->accept_job($invno);
+        
+        $this->jobseeker_myappsdetail($jobno);
+    }
+    public function apply_job($jobno)
+    {
+        $this->load->model('model_main');
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $this->model_main->apply_job($id,$jobno);
         
         $this->jobseeker_myappsdetail($jobno);
     }
