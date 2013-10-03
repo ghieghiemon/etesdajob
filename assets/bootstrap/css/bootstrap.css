@@ -9097,6 +9097,23 @@ margin-bottom:3px;
   border-top: 3px solid #FFF;
 }
 
+.tableInvCJS3 {
+	width: 580px;
+	height:1px;
+  	margin-bottom: 20px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
+}
+
+.tableInvCJS3 td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
+
 .tableMA2 {
 	width: 910px;
 	height:1px;
@@ -9428,7 +9445,61 @@ body {
 	 border-width:0px;
 }
 
+.SUpFont {
+	font-size:12px;
+	font-weight:bold;
+	text-align:left;
+}
 
+.SUpFont2 {
+	font-size:12px;
+	font-weight:bold;
+	text-align:left;
+	margin-top:-4px;
+}
+
+.SUpFont3 {
+	font-size:13px;
+	font-style:oblique;
+}
+
+.myStyleSUp input[type="text"] {
+   height: 17px;
+   width:235px;
+   font-size: 12px;
+   line-height: 14px;
+}
+
+.myStylePQS input[type="text"] {
+   height: 22px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+}
+
+.myStylePQS2 input[type="text"] {
+   height: 22px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-top:-2px;
+}
+
+.myStyle2PQS select {
+   height: 30px;
+   font-size: 12px;
+   line-height: 14px;
+   width:277px;
+   margin-top:-4px;
+}
+
+.myStyle2PQS2 select {
+   height: 30px;
+   font-size: 12px;
+   line-height: 14px;
+   width:137px;
+   margin-top:2px;
+}
 .myStyleQS input[type="text"] {
    height: 15px;
    width:265px;
@@ -9692,6 +9763,26 @@ body {
 	font-size:12px;
 	font-weight: bold;
 	color:#93C;
+}
+
+.pubLpic {
+  display: block;
+  width:125px;
+  height:100px;
+  margin-left:15px;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
 }
 
 .thumbnailLPic {
@@ -9963,4 +10054,22 @@ body {
 
 .extendNoteA{
 	color:#90C;
+}
+
+.whatsNFont {
+	font-size:32px;
+	font-weight:bold;
+	color:#909;
+	text-align:center;
+}
+
+.pVac {
+	font-size:12px;
+	font-style:oblique;
+	margin-left:20px;
+	font-weight:bold;
+}
+
+.compPicMarg {
+	margin-left:5px;
 }
