@@ -10,7 +10,8 @@ class Main extends CI_Controller {
 //public
     public function publicpage()
     {
-        $this->load->view('public/Pub');
+        $this->load->view('public/header');
+        $this->load->view('public/Public');
     }
 //register
     public function  registerpage()
