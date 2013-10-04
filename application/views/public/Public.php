@@ -1,49 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 
-<title>Welcome! | e-TESDA: Work</title>
-
-
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
- 
- 	<link rel="stylesheet" href="css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
-        <script src="js/jquery-2.0.2.min.js" type="text/javascript"></script>
-        <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
- 
- 	<!-- Add jQuery library -->
-		<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-
-	<!-- Add fancyBox main JS and CSS files -->
-		<script type="text/javascript" src="css/jquery.fancybox.js?v=2.1.4"></script>
-        
-	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.4" media="screen" />
-
- 	<!-- Add mousewheel plugin (this is optional) -->
-		<script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-
-	<!-- Add Button helper (this is optional) -->
-		<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-buttons.css?v=1.0.5" />
-		<script type="text/javascript" src="js/jquery.fancybox-buttons.js?v=1.0.5"></script>
- 
-  </head>
 
   <body>
   
-   
                
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
