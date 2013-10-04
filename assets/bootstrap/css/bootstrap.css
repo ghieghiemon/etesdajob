@@ -7782,6 +7782,21 @@ margin-bottom:3px;
   border-top: 3px solid #FFF;
 }
 
+.tablePPV {
+	width: 595px;
+	height:1px;
+  	margin-bottom: 20px;
+	overflow:auto;
+}
+
+.tablePPV td {
+  padding: 1px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
+
 .srchJSInv {
 	 margin-top:-20px;
 	 margin-right:100px;
@@ -10072,4 +10087,21 @@ body {
 
 .compPicMarg {
 	margin-left:5px;
+}
+
+.PProfE{
+	height:80px;
+	width:90px;
+	margin-left:1px;
+}
+
+.PProfE2 {
+	background-color:white;
+	white-space:nowrap;
+	width: 600px;
+	height:10px;
+	margin-top:-7px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
 }
