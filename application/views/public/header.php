@@ -40,6 +40,8 @@
 		<script type="text/javascript" src="js/jquery.fancybox-buttons.js?v=1.0.5"></script>
  
   </head>
+  <body>
+  
 <div class="navbar navbar-inverse navbar-fixed-top"> <!--start body code-->
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -59,11 +61,12 @@
                             <li class="dropdown">
                                 <ul class="nav pull-right">
                                     <li class="dropdown">
-									<input type="text" style="margin-top:15px;"id="EM" name="EM" placeholder="Email Address">
-									<input type="text" style="margin-top:15px;" id="PW" name="PW" placeholder="Password">
+                                        <form method="post" action="<?php echo base_url()?>main/login_validation" class="dropdown">
+                                            <input type="text" style="margin-top:15px;"id="email" name="email" placeholder="Email Address">
+                                            <input type="password" style="margin-top:15px;" id="userpassword" name="userpassword" placeholder="Password">
 									
-                                        <li><a href="#">Login</a></li>
-                                       
+                                            <button type="submit">Login</button>
+                                        </form>
                                     </li>
                                 </ul>
                             </li>

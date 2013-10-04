@@ -6876,6 +6876,16 @@ margin-bottom:3px;
 	margin-top:-5px;
 }
 
+.industLabel3P{
+	font-size:12px;
+	font-weight:bold;
+	color:#903;
+	text-align:center;
+	margin-left:-35px;
+	margin-top:-3px;
+}
+
+
 .legendIn {
 	font-size:12px;
 	font-weight:bold;
@@ -9164,6 +9174,26 @@ margin-bottom:3px;
   border-top: 3px solid #FFF;
 }
 
+.tableJMP {
+	width: 920px;
+	height:1px;
+  	margin-bottom: 20px;
+	margin-top:-7px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
+	font-size:14px;
+}
+
+.tableJMP td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+  font-size:12px;
+}
+
 .tableInv {
 	width: 1200px;
 	height:1px;
@@ -9556,6 +9586,14 @@ body {
  
 }
 
+.myStyleQS3P input[type="text"] {
+   height: 30px;
+   width:270px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+ 
+}
 .myStyle3QS select {
    height: 30px;
    font-size: 12px;

@@ -1,8 +1,4 @@
-
-
-  <body>
-  
-               
+             
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -355,7 +351,7 @@
                             
                             <td  class="myStyleSUp">
                             	<label class="SUpFont">Email</label>
-                            	<input type="text" id="email">
+                            	<input type="text" id="email" name="email">
                             </td>
                         </tr>
                         
@@ -365,7 +361,7 @@
                             
                             <td  class="myStyleSUp">
                             	<label class="SUpFont2">Password</label>
-                            	<input type="text" id="PW">
+                            	<input type="text" id="userpassword" name="userpassowrd">
                             </td>
                         </tr>
                         
@@ -669,4 +665,3 @@
     
 </body>
 
-</html>

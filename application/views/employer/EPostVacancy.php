@@ -1,4 +1,4 @@
-<body>
+
 <!--publish vacancy modal start-->
 <div class="modal hide fade" id="pubV">
   	<div class="modal-header">
