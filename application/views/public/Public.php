@@ -136,109 +136,35 @@
                 </div>
                 <div style="width:610px;height:130px;overflow:auto;"><!--start scrollable table-->
                     <table class="tableInd">
-                        <thead> <!-- start pictures per industry-->
-                          <tr>
-                            <th><a href=""><img src="assets/img/agri.png" class="PIndustry2"/></a></th>
-                            <th><a href=""><img src="assets/img/auto.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/const.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/deco.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/elec.png" class="PIndustry2" /></a></th>
-                            <th><a href="l"><img src="assets/img/foot.png" class="PIndustry2"/></a></th>
-                            <th><a href=""><img src="assets/img/furni.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/garments.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/health.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/heat.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/it.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/maritime.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/metals.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/processed.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/pyro.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/tourism.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/tvet.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/util.png" class="PIndustry2" /></a></th>
-                            <th><a href=""><img src="assets/img/whole.png" class="PIndustry2" /></a></th>
+                         <!-- start pictures per industry-->
+                        <thead>
+                             <tr>
+                        <?php
+                        foreach($industries as $a)
+                        {
+                        ?>
+                            <th><a href="<?php echo base_url()?>pub/industries"><img src="<?php echo base_url()?>assets/bootstrap/img<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
+                         <!-- end pictures per industry-->
+                        <?php
+                        }
+                        ?>
                             </tr>
-                        </thead> <!-- end pictures per industry-->
-                        
+                        </thead>
                         <tbody> <!-- start fields for how many job vacancies per industry-->
                           <tr>
+                        <?php
+                        foreach($industries as $a)
+                        {
+                        ?>
                             <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
+                                <a href=""><div class="industLabel2"><?php echo $a['totalvacancies']?></div></a>
                             </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href=""><div class="industLabel2">(2)</div></a>
-                            </td>
-                          </tr>
-                        </tbody> <!-- end fields for how many job vacancies per industry-->
+                        <?php
+                        }
+                        ?>
+                            </tr>
+                        </tbody>
+                         <!-- end fields for how many job vacancies per industry-->
                       </table>
                 </div> <!--end viewport-->
                 

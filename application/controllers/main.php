@@ -10,8 +10,13 @@ class Main extends CI_Controller {
 //public
     public function publicpage()
     {
+        $this->load->model('model_pub');
+        
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+        
         $this->load->view('public/header');
-        $this->load->view('public/Public');
+        $this->load->view('public/Public',$data);
+        //ADD FOOTER
     }
 //register
     public function  registerpage()

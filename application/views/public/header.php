@@ -61,11 +61,11 @@
                             <li class="dropdown">
                                 <ul class="nav pull-right">
                                     <li class="dropdown">
-                                        <form method="post" action="<?php echo base_url()?>main/login_validation" class="dropdown">
-                                            <input type="text" style="margin-top:15px;"id="email" name="email" placeholder="Email Address">
-                                            <input type="password" style="margin-top:15px;" id="userpassword" name="userpassword" placeholder="Password">
-									
-                                            <button type="submit">Login</button>
+                                    	<form method="post" action="<?php echo base_url()?>main/login_validation" class="dropdown">
+                                            <input type="text" class="span2" style="margin-top:-10px;margin-bottom:-40px;"id="email" name="email" placeholder="Email Address">
+                                            <input type="password" class="span2" style="margin-top:-10px;margin-bottom:-40px;" id="userpassword" name="userpassword" placeholder="Password">
+                                        
+                                        <button type='submit' class="btn" style="margin-top:-9px;margin-left:4px;"><strong>Login</strong></button>
                                         </form>
                                     </li>
                                 </ul>
@@ -75,3 +75,4 @@
                </div> <!--/container fluid-->
                </div> <!--/.navbar-inner -->
                </div> <!--/.navbar -->
+               
