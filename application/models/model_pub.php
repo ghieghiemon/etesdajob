@@ -13,7 +13,7 @@ class Model_pub extends CI_Model {
         $db1->close();
         $db2->close();
     }
-   
+    
 }
 
 

@@ -29,7 +29,7 @@
 	<div class="span12">
     	<div class="well">
         	<h4 class="media-heading">
-            	 <img src="assets/img/icons/glyphicons_089_building.png" width="25"> Industries
+            	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="25"> Industries
             </h4>
        	 	
             <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
@@ -40,105 +40,30 @@
                     <table class="tableInd">
                         <thead> <!-- start pictures per industry-->
                           <tr>
-                            <th><a href="PindustryResult.html"><img src="assets/img/agri.png" class="PIndustry2"/></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/auto.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/const.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/deco.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/elec.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/foot.png" class="PIndustry2"/></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/furni.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/garments.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/health.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/heat.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/it.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/maritime.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/metals.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/processed.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/pyro.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/tourism.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/tvet.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/util.png" class="PIndustry2" /></a></th>
-                            <th><a href="PindustryResult.html"><img src="assets/img/whole.png" class="PIndustry2" /></a></th>
-                            </tr>
+                            <?php
+                            foreach($industries as $a)
+                            {
+                            ?>
+                                <th><a href="<?php echo base_url()?>pub/search_industries"><img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
+                             <!-- end pictures per industry-->
+                            <?php
+                            }
+                            ?>
+                          </tr>
                         </thead> <!-- end pictures per industry-->
                         
                         <tbody> <!-- start fields for how many job vacancies per industry-->
                           <tr>
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                                <a href="PindustryResult.html"><div class="industLabel2">(2)</div></a>
-                            </td>
+                            <?php
+                            foreach($industries as $a)
+                            {
+                            ?>
+                                <td>
+                                    <a href=""><div class="industLabel2"><?php echo $a['totalvacancies']?></div></a>
+                                </td>
+                            <?php
+                            }
+                            ?>
                           </tr>
                         </tbody> <!-- end fields for how many job vacancies per industry-->
                       </table>
@@ -147,7 +72,7 @@
                 <div class="row-fluid">
                     <div class="pull-right">
                         <a href="PIndustries.html" class="pull-right">
-                            <img src="assets/img/icons/glyphicons_187_more.png">
+                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                         </a>
                     </div>
                 </div><!--end row-->
@@ -160,7 +85,7 @@
     	<div class="span3">
         	<div class="well wellUpMarg wellMarg2b">
                 <h5 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
                     
                     <div style="width:310px;height:320px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
@@ -214,17 +139,17 @@
             <div class="span9">
             	<div class="well wellMarg wellUpMarg">
                     <h4 class="media-heading">
-                         <img src="assets/img/icons/glyphicons_264_vcard.png" width="25"> Job Market 
+                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Job Market 
                          <font class="media-heading vName2">
                             | Agriculture & Fishery
                         </font>
                     </h4>
                     
                     <div style="width:920px;height:313px;overflow:auto;"><!--start scrollable table-->
-                            
-                        	<table class="tableJMP table-hover table-condensed table-striped">
+                       <div id="container">
+                       <table id ="newtable" >
+                        	<!--<table class="tableJMP table-hover table-condensed table-striped">-->
                             <thead>
-                                <tr>
                                     <th class="span3" style="text-align:center">Job Title</th>
                                     <th class="span3" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
@@ -232,7 +157,6 @@
                                     <th class="span1" style="text-align:center"></th>
                                     <th class="span1" style="text-align:center"></th>
                                     <th class="span1" style="text-align:center">Action</th>
-                                </tr>
                             </thead>
                             
                             <tbody class="recName">
@@ -318,4 +242,15 @@
 
 
       <hr>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#newtable').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
 </body>

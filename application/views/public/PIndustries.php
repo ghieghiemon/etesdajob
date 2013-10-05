@@ -28,14 +28,14 @@
 	<div class="span12">
     	<div class="well">
         	<h4 class="media-heading">
-            	 <img src="assets/img/icons/glyphicons_089_building.png" width="25"> Industries
+            	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="25"> Industries
             </h4>
        	 	
             <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                 Legend:  (#) - no. of vacancies
             </div>
             
-            <div style="width:1140px;height:390px;overflow:auto;margin-top:15px;margin-bottom:15px;margin-left:70px;"><!--start scrollable table-->
+           <div style="width:1140px;height:390px;overflow-x:hidden;margin-top:15px;margin-bottom:15px;margin-left:70px;"><!--start scrollable table-->
             	<table>
                 	<thead>
                     	<tr>
@@ -51,7 +51,7 @@
                     
                     <tbody>
                     	<tr><!--start pic 1st row-->
-                        	<td>
+                            <td>
                             	<a href="PIndustryResult.html"><img src="assets/img/agri.png" class="IndustPic"/></a>
                             </td>
                             
@@ -78,7 +78,12 @@
                             <td>
                             	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
                             </td>
-
+                            <td>
+                            	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
+                            </td>
+                            <td>
+                            	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
+                            </td>
                        </tr><!--end pic 1st row-->
                        
                        <tr><!--start label 1st row--> 
@@ -109,128 +114,16 @@
                             <td>
                             	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
                             </td>
+                            <td>
+                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
+                            </td>
+                            <td>
+                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
+                            </td>
                         </tr><!--end label 1st row-->
-
-						<tr><!--start pic 2nd row-->
-                        	<td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/garments.png" class="IndustPic"/></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/health.png" class="IndustPic"/></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/heat.png" class="IndustPic"/></a>
-                            </td>
-                            
-                        	<td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/it.png" class="IndustPic"/></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/maritime.png" class="IndustPic" /></a>
-                            </td>
-                        
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/metals.png" class="IndustPic" /></a>
-                            </td>
-                        
-                            <td>
-                            	<a href="PIndusrytResult.html"><img src="assets/img/processed.png" class="IndustPic" /></a>
-                            </td>
-                            
-                       </tr><!--end pic 2nd row-->
-                       
-                       <tr><!--start label 2nd row--> 
-                            <td>
-                            	<a href="PIndusrytResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                       
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                        </tr><!--end label 2nd row-->
-                        
-                        <tr><!--start pic 3rd row-->
-                        	
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/pyro.png" class="IndustPic" /></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndusrytResult.html"><img src="assets/img/tourism.png" class="IndustPic" /></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/tvet.png" class="IndustPic" /></a>
-                            </td>
-
-                        	<td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/util.png" class="IndustPic"/></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/whole.png" class="IndustPic" /></a>
-                            </td>
-                        
-                            <td>
-                            </td>
-                            
-                            <td>
-                            </td>
-
-                       </tr><!--end pic 3rd row-->
-                       
-                       <tr><!--start label 3rd row--> 
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                       
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            </td>
-                            
-                            <td>
-                            </td>
-                        </tr><!--end label 3rd row-->
                     </tbody>
                 </table>
+               
             </div><!--end scrollable-->
             
     	</div><!--end well-->

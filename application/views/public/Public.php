@@ -143,7 +143,7 @@
                         foreach($industries as $a)
                         {
                         ?>
-                            <th><a href="<?php echo base_url()?>pub/industries"><img src="<?php echo base_url()?>assets/bootstrap/img<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
+                            <th><a  href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>"><img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
                          <!-- end pictures per industry-->
                         <?php
                         }
@@ -170,7 +170,7 @@
                 
                 <div class="row-fluid">
                 <div class="pull-right">
-                    <a href="#" class="pull-right">
+                    <a href="<?php echo base_url()?>pub/industries" class="pull-right">
                         <img src="assets/img/icons/glyphicons_187_more.png">
                     </a>
                 </div>
