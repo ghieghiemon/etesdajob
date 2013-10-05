@@ -13,7 +13,38 @@ class Model_pub extends CI_Model {
         $db1->close();
         $db2->close();
     }
-    
+    public function get_perIndustryVacancies($sectorid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
+                            JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
+                            WHERE sectorid = $sectorid
+                            GROUP BY j.jobno ORDER BY j.dateposted DESC ");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
+    public function get_industryName($sectorid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT sectorName FROM sectors WHERE sectorID = $sectorid");
+        foreach ($query->result() as $row)
+        {
+            return $row->sectorName;
+        }
+        $db2->close();
+    }
+    public function count_jobApplications($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
+        }
+        $db1->close();
+    }
 }
 
 

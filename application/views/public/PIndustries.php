@@ -36,94 +36,29 @@
             </div>
             
            <div style="width:1140px;height:390px;overflow-x:hidden;margin-top:15px;margin-bottom:15px;margin-left:70px;"><!--start scrollable table-->
-            	<table>
-                	<thead>
-                    	<tr>
-                        	<th class="span2"></th>
-                            <th class="span2"></th>
-                            <th class="span2"></th>
-                            <th class="span2"></th>
-                            <th class="span2"></th>
-                            <th class="span2"></th>
-                            <th class="span2"></th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody>
-                    	<tr><!--start pic 1st row-->
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/agri.png" class="IndustPic"/></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/auto.png" class="IndustPic" /></a>
-                            </td>
-                        
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/const.png" class="IndustPic" /></a>
-                            </td>
-                        
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/deco.png" class="IndustPic" /></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/elec.png" class="IndustPic" /></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/foot.png" class="IndustPic" /></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
-                            </td>
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
-                            </td>
-                            <td>
-                            	<a href="PIndustryResult.html"><img src="assets/img/furni.png" class="IndustPic" /></a>
-                            </td>
-                       </tr><!--end pic 1st row-->
-                       
-                       <tr><!--start label 1st row--> 
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                       
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                            <td>
-                            	<a href="PIndustryResult.html"><div class="industLabel3P">(2)</div></a>
-                            </td>
-                        </tr><!--end label 1st row-->
-                    </tbody>
-                </table>
-               
+                    <?php
+                    $counter = 0;
+                    $row_limit = 7; // Change this accdg to your preference
+                    $new_row = true;
+
+                    foreach($industries as $a)
+                    {
+                        ?>
+                        <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd">
+                        <h5 class="media-heading">
+                            <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"> 
+                            <br>(<?php echo $a['totalvacancies']?>)
+                        </h5>
+                        </a>
+                        <?php
+                        $counter += 1;
+                        if($counter % $row_limit == 0)
+                        {
+                            echo '</br>';
+                            $new_row = true;
+                        }
+                    }
+                    ?>
             </div><!--end scrollable-->
             
     	</div><!--end well-->

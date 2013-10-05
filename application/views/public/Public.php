@@ -6,7 +6,7 @@
     	<div class="span3">
         	<div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
             	<br>
                 <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
@@ -54,7 +54,7 @@
             
             <div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_266_flag.png" width="17"> Events
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="17"> Events
                 </h5>
                 
                 <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
@@ -122,7 +122,7 @@
         
         <div class="span6">
         	<div class="well wellMarg wellUpMarg">
-            	<h5 class="media-heading"><img src="assets/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
+            	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                	<p class="whatsNFont" >
                 	110 job vacancies nationwide!
                 </p>
@@ -130,42 +130,24 @@
             
           
             <div class="well wellMarg wellUpMarg">
-            	<h5 class="media header"><img src="assets/img/icons/glyphicons_089_building.png" width="18"> Industries</h5>
+            	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="18"> Industries</h5>
                 <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                     Legend:  (#) - no. of vacancies
                 </div>
-                <div style="width:610px;height:130px;overflow:auto;"><!--start scrollable table-->
-                    <table class="tableInd">
-                         <!-- start pictures per industry-->
-                        <thead>
-                             <tr>
-                        <?php
-                        foreach($industries as $a)
-                        {
+                <div class="nav PProfE2" style="width:610px;height:130px;margin-top:10px;margin-bottom:-5px;overflow:auto;">
+                   <?php 
+                    foreach ($industries as $a)
+                    {
                         ?>
-                            <th><a  href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>"><img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
-                         <!-- end pictures per industry-->
-                        <?php
-                        }
-                        ?>
-                            </tr>
-                        </thead>
-                        <tbody> <!-- start fields for how many job vacancies per industry-->
-                          <tr>
-                        <?php
-                        foreach($industries as $a)
-                        {
-                        ?>
-                            <td>
-                                <a href=""><div class="industLabel2"><?php echo $a['totalvacancies']?></div></a>
-                            </td>
-                        <?php
-                        }
-                        ?>
-                            </tr>
-                        </tbody>
-                         <!-- end fields for how many job vacancies per industry-->
-                      </table>
+                        <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd">
+                        <h5 class="media-heading">
+                            <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"> 
+                            <br>(<?php echo $a['totalvacancies']?>)
+                        </h5>
+                        </a>
+                    <?php
+                    }
+                    ?>  
                 </div> <!--end viewport-->
                 
                 <div class="row-fluid">
@@ -180,7 +162,7 @@
             <div class="row-fluid">
             	<div class="span12">
                 	<div class="well wellMarg wellUpMarg">
-                    	<h5 class="media-heading"><img src="assets/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
+                    	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
                     	<div style="width:620px;height:295px;overflow:auto;"><!--start scrollable table-->
                             <div class="row-fluid"> <!--start row fluid universal leagues-->
                             
@@ -259,7 +241,7 @@
         <div class="span3">
         	<div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK
                 </h5>
                 
                 <table>
@@ -337,7 +319,7 @@
             
             <div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_037_coins.png" width="20"> Companies
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_037_coins.png" width="20"> Companies
                 </h5>
                 
                 <div style="width:295px;height:290px;overflow:auto;"><!--start scrollable table-->

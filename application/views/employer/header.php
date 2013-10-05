@@ -82,7 +82,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#p">
+                    <a class="brand" href="<?php echo base_url()?>main/employer_dashboard">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:200px;margin-top:-2px;">

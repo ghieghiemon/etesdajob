@@ -36,38 +36,22 @@
                 Legend:  (#) - no. of vacancies
             </div>
             
-            <div style="width:1240px;height:130px;overflow:auto;margin-top:15px;margin-bottom:15px;margin-left:5px;"><!--start scrollable table-->
-                    <table class="tableInd">
-                        <thead> <!-- start pictures per industry-->
-                          <tr>
-                            <?php
-                            foreach($industries as $a)
-                            {
-                            ?>
-                                <th><a href="<?php echo base_url()?>pub/search_industries"><img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndustry2"/></a></th>
-                             <!-- end pictures per industry-->
-                            <?php
-                            }
-                            ?>
-                          </tr>
-                        </thead> <!-- end pictures per industry-->
-                        
-                        <tbody> <!-- start fields for how many job vacancies per industry-->
-                          <tr>
-                            <?php
-                            foreach($industries as $a)
-                            {
-                            ?>
-                                <td>
-                                    <a href=""><div class="industLabel2"><?php echo $a['totalvacancies']?></div></a>
-                                </td>
-                            <?php
-                            }
-                            ?>
-                          </tr>
-                        </tbody> <!-- end fields for how many job vacancies per industry-->
-                      </table>
-                </div> <!--end scrollable-->
+            <div class="nav PProfE2" style="width:1240px;height:130px;margin-top:10px;margin-bottom:-5px;overflow:auto;">
+                <?php 
+                foreach ($industries as $a)
+                {
+                    ?>
+                    <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd">
+                    <h5 class="media-heading">
+                        <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"> 
+                        <br>(<?php echo $a['totalvacancies']?>)
+                    </h5>
+                    </a>
+                <?php
+                }
+                ?>                    
+
+            </div><!--end scrollable-->
                 
                 <div class="row-fluid">
                     <div class="pull-right">
@@ -141,7 +125,7 @@
                     <h4 class="media-heading">
                          <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Job Market 
                          <font class="media-heading vName2">
-                            | Agriculture & Fishery
+                            | <?php echo $sectorName ?>
                         </font>
                     </h4>
                     
@@ -160,15 +144,18 @@
                             </thead>
                             
                             <tbody class="recName">
+                            <?php
+                            foreach($vacancies as $a)
+                            {   
+                            ?>
                                 <tr>
-                                    
                                     <td>
-                                        Welder Assistant
+                                       <?php echo $a['jobtitle']?>
                                     </td>
                                    
                                     <td>
                                         <a href="#" class="recAppName">
-                                            SM Corp
+                                        <?php echo $a['companyName']?>
                                         </a>
                                     </td>
                                     
@@ -177,15 +164,26 @@
                                     </td>
                                     
                                     <td>
-                                        09/23/2013 to 09/30/2013
+                                        <?php
+                                        $date2 = $a['expirationdate'];
+                                        $date = date('Y-m-d');
+                                        $diff = abs(strtotime($date2) - strtotime($date));
+
+                                        $days = round((($diff/24)/60)/60);
+                                        echo $days. " days left";
+                                        ?>
                                     </td>
                                     
                                     <td>
-                                        <span class="label label-info">20 Applied</span>
+                                        <span class="label label-info">
+                                            <?php
+                                                $appcount = $this->model_pub->count_jobApplications($a['jobno']);
+                                                echo $appcount;
+                                            ?> Applied</span>
                                     </td>
                                     
                                     <td>
-                                        <span class="label">15 Left </span>
+                                        <span class="label"><?php echo $a['vacanciesleft']?> Left </span>
                                     </td>
                                     
                                     
@@ -193,40 +191,9 @@
                                     	<a href="#signIn" data-toggle="modal" class="btn btn-mini btn-info">Apply</a>
                                     </td>
                                 </tr>
-                                
-                                <tr>
-                                    
-                                    <td>
-                                        Junior Welder
-                                    </td>
-                                   
-                                    <td>
-                                        <a href="#" class="recAppName">
-                                            DMCI
-                                        </a>
-                                    </td>
-                                    
-                                    <td>
-                                        NCR | Taguig City
-                                    </td>
-                                    
-                                    <td>
-                                        09/23/2013 to 09/30/2013
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label label-info">20 Applied</span>
-                                    </td>
-                                    
-                                    <td>
-                                        <span class="label">15 Left </span>
-                                    </td>
-                                    
-                                    <td>
-                                    	<a href="#signIn" data-toggle="modal" class="btn btn-mini btn-info">Apply</a>
-                                    </td>
-                                </tr>                          
-                                
+                            <?php
+                            }
+                            ?> 
                             </tbody>
                         </table>	
                         </div><!--end scrollable--> 
