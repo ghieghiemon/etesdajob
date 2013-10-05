@@ -1,4 +1,4 @@
-             
+          
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -86,7 +86,7 @@
      				<div class="row-fluid">
 						<div class="span2">
                         	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="assets/img/ld6.jpg" class="thumbnail" height="12">
+                            	<img src="<?php echo base_url()?>assets/bootstrap/img/ld6.jpg" class="thumbnail" height="12">
                             </a>
                             
                         </div>
@@ -112,7 +112,7 @@
     				<div class="row-fluid">
     					<div align="right" style="margin-top:-15px">
                             <a href="#">
-                                <img src="assets/img/icons/glyphicons_187_more.png">
+                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
     				</div> <!--end row fluid upcoming events-->
@@ -153,7 +153,7 @@
                 <div class="row-fluid">
                 <div class="pull-right">
                     <a href="<?php echo base_url()?>pub/industries" class="pull-right">
-                        <img src="assets/img/icons/glyphicons_187_more.png">
+                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                     </a>
                 </div>
                 </div><!--end row-->
@@ -199,7 +199,7 @@
                             <div class="row-fluid">
                             <div class="span3">
                                 <a data-toggle="modal" href="#ModLeagueDes">
-                                    <img src="assets/img/ld3.jpg" class="pubLpic" alt="">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/ld3.jpg" class="pubLpic" alt="">
                                 </a>
                             </div> <!--end span3-->
                             
@@ -208,9 +208,9 @@
                                    <a href="#" class="Name4">Official Tourism Philippines</a><br>
                                    <a href="#" class="label label-info">Welding Industry</a>
                                    <br>
-                                   <img src="assets/img/icons/glyphicons_003_user.png" width="11">
+                                   <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                    by <a href="#" class="Name2">John</a>
-                                   | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since May 2012 <br>
+                                   | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012 <br>
                                    </p>
                                 
                                 <p class="evDetails3">  
@@ -228,7 +228,7 @@
                         </div> <!--end row-fluid-->
                         <div align="right">
                                 <a href="#">
-                                    <img src="assets/img/icons/glyphicons_187_more.png">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                                 </a>
                             </div>
                         </div><!--end scrollable table-->
@@ -323,125 +323,47 @@
                 </h5>
                 
                 <div style="width:295px;height:290px;overflow:auto;"><!--start scrollable table-->
-      				<div class="row-fluid"> <!--start row fluid companies-->
-						
+      		<?php
+                foreach($companies as $a)
+                {
+                    ?>
+                    <div class="row-fluid"> <!--start row fluid companies-->
                         <div class="span2">
                         	<a href="#">
-                            	<img src="assets/img/a4.jpg" class="thumbnail compPicMarg" alt="">
+                                <?php    $pic = $this->model_pub->get_companyPic($a['companyID']); ?>
+                            	<img src="<?php echo base_url()?>employerpics/<?php echo $pic?>" class="thumbnail compPicMarg" alt="">
                             </a>
                         </div>
-        				
         				<div class="span9">
-							<p class="marg2">
-                        		<a href="#" class="Name4">Meralco</a>
-                                
+                                        <p class="marg2">
+                        		<a href="#" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['companyID']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
                                 <br>
                                 <font class="pVac">
                                     No. of Vacancies: 
                                     	<a href="#" class="industLabel2">
-                                        	20
+                                        	<?php echo $a['totalvacancies']?>
                                         </a>
                                 </font>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
-    				
-     				<div class="row-fluid">
-						<div class="span2">
-                        	<a href="#">
-                            	<img src="assets/img/a5.jpg" class="thumbnail compPicMarg" height="12">
-                            </a>
-                            
-                        </div>
-        				
-                       
-        				<div class="span9">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">DMCI Holdings Incorporated</a>
-                                
-                                <br>
-                                <font class="pVac">
-                                    No. of Vacancies: 
-                                    	<a href="#" class="industLabel2">
-                                        	20
-                                        </a>
-                                </font>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
+                                        </p>
+                                        </div>
+                    </div> <!--end row-fluid-->
+                    <?php
+                }
+    		?>
                     
-                    <div class="row-fluid">
-						<div class="span2">
-                        	<a href="#">
-                            	<img src="assets/img/a1.jpg" class="thumbnail compPicMarg" height="12">
+     		 </div><!--end scrollable table-->
+                 <div class="row-fluid">
+    					<div align="right" style="margin-top:-15px">
+                            <a href="#">
+                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                             </a>
-                            
                         </div>
-        				
-                       
-        				<div class="span9">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">Proctor & Gamble</a>
-                                
-                                <br>
-                                <font class="pVac">
-                                    No. of Vacancies: 
-                                    	<a href="#" class="industLabel2">
-                                        	15
-                                        </a>
-                                </font>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
-                    
-                    <div class="row-fluid">
-						<div class="span2">
-                        	<a href="#">
-                            	<img src="assets/img/a2.jpg" class="thumbnail compPicMarg" height="12">
-                            </a>
-                            
-                        </div>
-        				
-                       
-        				<div class="span9">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">Nestle</a>
-                                
-                                <br>
-                                <font class="pVac">
-                                    No. of Vacancies: 
-                                    	<a href="#" class="industLabel2">
-                                        	10
-                                        </a>
-                                </font>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
-                    
-                    <div class="row-fluid">
-						<div class="span2">
-                        	<a href="#">
-                            	<img src="assets/img/a6.jpg" class="thumbnail compPicMarg" height="12">
-                            </a>
-                            
-                        </div>
-        				
-                       
-        				<div class="span9">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">ABS-CBN</a>
-                                
-                                <br>
-                                <font class="pVac">
-                                    No. of Vacancies: 
-                                    	<a href="#" class="industLabel2">
-                                        	7
-                                        </a>
-                                </font>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
-                    </div><!--end scrollable table-->
+    				</div> <!--end row fluid upcoming events-->
             </div><!--end well companies-->
         </div><!--end span right column-->
     </div><!--end row-->

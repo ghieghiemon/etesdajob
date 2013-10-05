@@ -45,6 +45,34 @@ class Model_pub extends CI_Model {
         }
         $db1->close();
     }
+    public function get_companyVacancies()
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT SUM(vacanciesleft) as totalvacancies, companyID from job_vacancies  
+                                GROUP BY companyid ORDER BY totalvacancies DESC");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_companyName($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companyName FROM employer_profile WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+            return $row->companyName;
+        }
+        $db2->close();
+    }
+    public function get_companyPic($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companypic FROM employer_profile WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+            return $row->companypic;
+        }
+        $db2->close();
+    }
 }
 
 

@@ -13,6 +13,7 @@ class Main extends CI_Controller {
         $this->load->model('model_pub');
         
         $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['companies'] = $this->model_pub->get_companyVacancies();
         
         $this->load->view('public/header');
         $this->load->view('public/Public',$data);
