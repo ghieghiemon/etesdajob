@@ -1,12 +1,12 @@
-
- $(document).ready(function(){       //on change
+$(document).ready(function(){       //on change
         $('#lstcomp1').change(function(){ //any select change on the dropdown with id country trigger this code         
             $("#nconame > option").remove(); //first of all clear select items
             var ncoid = $('#lstcomp1').val();  // here we are taking country id of the selected one.
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_competencyname/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val() + "employer/get_competencyname/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
+              // url: $('#base').val() +"employer/get_cities/"+regionid
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -36,7 +36,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_competencydesc/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
+                url: $('#base').val() +"employer/get_competencydesc/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -67,7 +67,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_competencyname/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
+              url: $('#base').val() + "employer/get_competencyname/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -97,7 +97,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_competencydesc/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val() + "employer/get_competencydesc/"+ncoid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'

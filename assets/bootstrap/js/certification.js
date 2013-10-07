@@ -5,7 +5,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_comps/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+                url: $('#base').val() + "employer/get_comps/"+ncid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -34,7 +34,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationname/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val() + "employer/get_certificationname/"+ncid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -64,7 +64,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationdesc/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val() + "employer/get_certificationdesc/"+ncid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -96,7 +96,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationlevel/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+                url: $('#base').val() + "employer/get_certificationlevel/"+ncid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -255,7 +255,8 @@ $(this).remove().appendTo("#lstcomp1");
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationname/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+                url: $('#base').val() + "employer/get_certificationname/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+               
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -285,7 +286,7 @@ $(this).remove().appendTo("#lstcomp1");
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationdesc/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val() + "employer/get_certificationdesc/"+ncid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -316,7 +317,8 @@ $(this).remove().appendTo("#lstcomp1");
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_certificationlevel/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+                url: $('#base').val() + "employer/get_certificationlevel/"+ncid, //here we are calling our user controller and get_cities method with the country_id
+                
                 dataType: "json",
                 
                 success: function(comp) //we're calling the response json array 'cities'
@@ -338,4 +340,38 @@ $(this).remove().appendTo("#lstcomp1");
         });
 
 });
+
+
+    jQuery.fn.filterByText = function(txtSkills, selectSingleMatch) {
+        return this.each(function() {
+            var select = this;
+            var options = [];
+            $(select).find('option').each(function() {
+                options.push({value: $(this).val(), text: $(this).text()});
+            });
+            $(select).data('options', options);
+            $(txtSkills).bind('change keyup', function() {
+                var options = $(select).empty().data('options');
+                var search = $(this).val().trim();
+                var regex = new RegExp(search,"gi");
+              
+                $.each(options, function(i) {
+                    var option = options[i];
+                    if(option.text.match(regex) !== null) {
+                        $(select).append(
+                           $('<option>').text(option.text).val(option.value)
+                        );
+                    }
+                });
+                if (selectSingleMatch === true && $(select).children().length === 1) {
+                    $(select).children().get(0).selected = true;
+                }
+            });            
+        });
+    };
+
+    $(function() {
+        $('#lstcomp1').filterByText($('#txtComps'), true);
+    });
+
 

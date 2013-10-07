@@ -1,4 +1,4 @@
-
+<body>
 <!--publish vacancy modal start-->
 <div class="modal hide fade" id="pubV">
   	<div class="modal-header">
@@ -267,14 +267,12 @@
     	<div class="span12">
         	<div class="well">
                       
-            	<h3 class="media-heading"> 
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/PostVac.png" style="margin-left:-8px;">
-                </h3>
+            	<h4 class="media-heading">Post Vacancy</h4>
                 
                 <div class="row-fluid">
                     <div align="right">
                         
-                        <a id="pub" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg">
+                        <a id="pub" style="margin-top:-50px;" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg">
                             Publish Vacancy
                         </a>
                     </div>
@@ -301,6 +299,7 @@
                                                     	<div class="control-group">
                                                             <label class="control-label lLabel2">Job Title: &nbsp;</label>
                                                             <div class="controls">
+                                                             
                                                                 <input type="text" id="JN" name="JN" placeholder="" >
                                                             </div>
                                                         </div> <!--end JT field-->
@@ -476,9 +475,9 @@
                                         | CERTIFICATION DETAILS
                                     </h5>
                                   
-                                  
+                                 
                           <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
                           <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
                          &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;
         
@@ -495,7 +494,12 @@
                                     <h4 class="media-heading previewColor">
                                         | COMPETENCIES
                                     </h4>
+                                     <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
+                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies">
+                                               
+                                                </div>
                                           <div class="row-fluid marg17 margCCS">
+                                            
                                          <?php 
                                          
                                          $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"'; 
@@ -518,7 +522,7 @@
                                   
                                   
                           <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
                           <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
                          &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
         
@@ -596,8 +600,8 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery.fancybox.pack.js?v=2.1.4"></script>
 
   <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
-        <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
 </body>
 
 <script type="text/javascript">
@@ -648,7 +652,7 @@
             $.ajax({
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
-                url: "main/get_industrycerts/"+industryid, //here we are calling our user controller and get_cities method with the country_id
+               url: $('#base').val()+"main/get_industrycerts/"+industryid, //here we are calling our user controller and get_cities method with the country_id
                 dataType: "json",
                 
                 success: function(ncname) //we're calling the response json array 'cities'
