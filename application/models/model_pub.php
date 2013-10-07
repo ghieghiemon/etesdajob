@@ -136,6 +136,15 @@ class Model_pub extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
+    
+    public function get_createdLeagues($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM league l JOIN league_members m ON l.leagueno = m.leagueno 
+                            WHERE m.userid = $id AND m.positionno = 1");
+        return $query->result_array();
+        $db1->close();
+    }
 }
 
 

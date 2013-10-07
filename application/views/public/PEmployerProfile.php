@@ -146,10 +146,15 @@
                                         </h4>
                                         
                                          <div style="width:590px;height:100px;overflow:auto;" class="PProfE2" ><!--start scrollable table-->
+                                        <?php
+                                        foreach($leagues as $a)
+                                        {
+                                            ?>
+                                             <a href=""><img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="PProfE"/></a>
+                                            <?php
+                                        }
+                                        ?>
                                         
-                                        	<a href=""><img src="assets/img/agri.png" class="PProfE"/></a>
-                                            <a href=""><img src="assets/img/auto.png" class="PProfE"/></a>
-                                            <a href=""><img src="assets/img/agri.png" class="PProfE"/></a>
                                                
                                         </div> <!--end scrillable-->
                                     </div><!--end well-->
