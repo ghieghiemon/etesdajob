@@ -41,15 +41,16 @@
                             
                             <tbody>
                             	<tr>
-                                	<td>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/a4.jpg" class="thumbnail11">
-                                    </td>
-                                    
-                                    <td>
-                                        <?php
+                                    <?php
                                         foreach($profile as $a)
                                         {
                                             ?>
+                                	<td>
+                                    	<img src="<?php echo base_url()?>employerpics/<?php echo $a['companypic']?>" class="thumbnail11">
+                                    </td>
+                                    
+                                    <td>
+                                        
                                     	<p class="proName">
                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> 
                                         	<?php echo $a['companyName']?>
@@ -133,7 +134,7 @@
                                         {
                                             ?>   
                                             <a href="">
-                                            <img src="<?php echo base_url()?>eventpics/<?php $a['eventpic']?>" class="PProfE"/></a>
+                                            <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="PProfE"/></a>
                                             <?php
                                         }
                                         ?>
