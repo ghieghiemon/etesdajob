@@ -4,11 +4,13 @@
 	
     <div class="row-fluid">
     	<div class="span3">
-        	<div class="well wellUpMarg">
+        <div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                	<img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
             	<br>
+                <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
+                
                 <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStylePQS">
@@ -23,42 +25,61 @@
                     </div><!-- end div company -->
 
 					<div class="myStyle2PQS">
-                        <select>
-                            <option>Agriculture & Fishery</option>
-                            <option>Automotive & Land Transportation</option>
-                            <option>Construction</option>
-                            <option>Decorative Arts</option>
-                        </select>
+                        <?php    
+             $drpindustries['0'] = 'Industry';
+            echo form_dropdown('industry', $drpindustries,'0');     
+            ?> 
                     </div>
                     
                     <div class="myStyle2PQS2">
-                        <select name="Region">
-                            <option>NCR</option>
-                            <option>Region I</option>
-                        </select>
-                        
-                        <select name="City">
-                        <option>Pasig</option>
-                        <option>Makati</option>
-                  	</select>
+                    <?php $regions['0'] = 'Region'; ?>
+                    <?php $cities['0'] = 'City'; ?>
+                    <?php 
+                    $params = 'id="region"'; 
+                    echo form_dropdown('regionid', $regions, '0',$params);
+                    ?> 
+
+                    <?php 
+                    $params = 'id="cities"'; 
+                    echo form_dropdown('cityid', $cities, '0', $params);
+                    ?> 
                     </div>
                     
                     <div align="right">
-                    	<a href="#" class="btn btn-info btn-mini">
-                        	Search
-                        </a>
+                    	 <?php 
+                      
+                echo" <input class='btn btn-info btn-mini'";
+                echo form_submit('submit', 'Search');
+                echo form_close(); 
+                ?>
+                        </form>
                     </div>
                     
                 </div><!--end scrollable-->
             </div><!--end well-->
             
-            <div class="well wellUpMarg">
+              <div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="17"> Events
+                	<img src="assets/img/icons/glyphicons_266_flag.png" width="17"> Events
                 </h5>
                 
                 <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
-      				<div class="row-fluid"> <!--start row fluid upcoming events-->
+      		  <!--start row fluid upcoming events-->		
+                   
+                  	<?php
+                    $ctr = 1;
+                    if(count($event) == 0)
+                     {
+                         echo '<p class = "noCommYet">There are no upcoming events</p>';
+                     }
+                     else
+                     {
+                    foreach ($event as $row)
+                     {
+                        if($ctr <3){
+                echo'
+                  <div class="row-fluid"> 
+                                  
 						
                         <div class="span2">
                         	<a data-toggle="modal" href="#ModEventDes">
@@ -67,52 +88,53 @@
                         </div>
         				
         				<div class="span9">
-							<p class="marg2">
-                        		<a href="#" class="Name4">Happy to serve you!</a>
+							<p class="marg2">'?>
+              
+                        		<a href='<?php echo base_url()?>pub/pevent_details/<?php echo $row['eventno']?>' class="Name4">
+                                            
+                                            
+                                       <?php echo $row['eventtitle'];
+                                      echo'  </a>
                             </p>
           		
                 			<p class="evDetails3">
-                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 02/07/2013 
-                                	| <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
-                                </em><br>
-                                <strong>Location</strong>: NCR | Pasay City <br>
-                                <strong>Venue:</strong> SMX Convention Hall <br>
-                            	<span class="btn btn-info btn-mini"><a href="#" class="attendBtn">10 Attendees</a></span>
+                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11">'; 
+                                echo $row['startdate'];
+                                	echo ' | <img src="assets/img/icons/glyphicons_054_clock.png" width="11">';
+                                            echo $row['starttime'];
+                               echo' </em><br>
+                                <strong>Location</strong>: ';
+                                echo $row['region'];
+                               echo' | ';
+                               echo $row['city'];
+                               echo' <br>
+                                <strong>Venue:</strong>';
+                                echo $row['venue'];
+                               echo'<br>
+                            	<span class="btn btn-info btn-mini"><a href="#" class="attendBtn">';
+                                 echo $row['participantscount'];
+                                echo' Attendees
+                                </a></span>
                             </p>
 					
 						</div>
-					</div> <!--end row-fluid-->
+					</div>';
+                                         }
+                     $ctr += 1;
+                     }
+                     }
+                    ?>
+                  
+                  
+                    <!--end row-fluid-->
     				
-     				<div class="row-fluid">
-						<div class="span2">
-                        	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="<?php echo base_url()?>assets/bootstrap/img/ld6.jpg" class="thumbnail" height="12">
-                            </a>
-                            
-                        </div>
-        				
-                       
-        				<div class="span9">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">Employment Expo</a>
-                            </p>
-                            
-                            <p class="evDetails3">
-                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 02/12/2013 
-                                	| <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 10:00am
-                                </em><br>
-                                <strong>Location</strong>: NCR | Mandaluyong City <br>
-                                <strong>Venue:</strong> Mega Trade Hall, SM Mega Mall<br>
-                                <span class="btn btn-info btn-mini "><a href="#" class="attendBtn">800 Attendees </a></span>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
+     			
                     </div><!--end scrollable table-->
                     
     				<div class="row-fluid">
     					<div align="right" style="margin-top:-15px">
                             <a href="#">
-                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                                <img src="assets/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
     				</div> <!--end row fluid upcoming events-->
@@ -123,8 +145,8 @@
         <div class="span6">
         	<div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
-               	<p class="whatsNFont" >
-                	110 job vacancies nationwide!
+               		<p class="whatsNFont" >
+                	<a href='pub/pub_alljob'>110 job vacancies nationwide!</s>
                 </p>
             </div><!--end whats new-->
             

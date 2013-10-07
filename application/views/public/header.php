@@ -22,7 +22,7 @@
  
  <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
  	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
-    
+        <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
@@ -49,6 +49,7 @@
                         	
                             <li class="dropdown">
                                 <ul class="nav pull-right">
+                                    <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
                                     <li class="dropdown">
                                     	<form method="post" action="<?php echo base_url()?>main/login_validation" class="dropdown">
                                             <input type="text" class="span2" style="margin-top:-10px;margin-bottom:-40px;"id="email" name="email" placeholder="Email Address">
