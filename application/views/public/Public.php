@@ -82,9 +82,10 @@
                                   
 						
                         <div class="span2">
-                        	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="assets/img/ld5.jpg" class="thumbnail" alt="">
-                            </a>
+                        	<a data-toggle="modal" href="#ModEventDes">'?>
+                            	<img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>"  class="thumbnail" alt="">
+                                
+                           <?php echo' </a>
                         </div>
         				
         				<div class="span9">
