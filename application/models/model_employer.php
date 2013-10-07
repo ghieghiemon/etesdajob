@@ -22,7 +22,7 @@ class Model_employer extends CI_Model {
     }  
     
     
-    
+
      function get_comps($cert = null)
      {
         $db2 = $this->load->database('default', TRUE);

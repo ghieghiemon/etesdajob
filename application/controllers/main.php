@@ -11,6 +11,7 @@ class Main extends CI_Controller {
     public function publicpage()
     {
         $this->load->model('model_pub');
+        $this->load->model('model_main');
         
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['companies'] = $this->model_pub->get_companyVacancies();
@@ -103,7 +104,7 @@ class Main extends CI_Controller {
               
                  
             } 
-//            }
+            
             else {
                 $this->load->view('public/Pheader');
          $this->load->view('register/SUp');
@@ -241,8 +242,6 @@ class Main extends CI_Controller {
     }
 //employer
 
-    
-     
     public function get_cities($region)
     {
         $this->load->model('model_main');
@@ -250,9 +249,6 @@ class Main extends CI_Controller {
         echo(json_encode($this->model_main->get_cities($region)));
     }
     
-   
-
-//jobseeker
  
     
 //tesda

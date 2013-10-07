@@ -148,25 +148,49 @@ class Model_main extends CI_Model {
          return $row->userid;}
         $db2->close();
     }
-//employer
-    public function get_ename(){
-        $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $query = $db2->query("SELECT companyName from employer_profile WHERE userID = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->companyName;}
-        $db2->close();
+     public function all_events(){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("  
+        SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,hosts,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events
+                                JOIN event_participants on event_participants.eventno = events.eventno 
+                                JOIN event_venue v on v.eventno = events.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+				JOIN reference_city c ON c.cityid = v.city
+                                GROUP BY eventtitle,events.eventno  HAVING COUNT(*)>0
+                                ORDER BY startdate ASC
+                               ");
+            
+        return $query->result_array();
+        
+        $db1->close();
     }
-    public function get_epic(){
-        $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $query = $db2->query("SELECT companypic from employer_profile WHERE userid = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->companypic;}
-        $db2->close();
-    }  
+    
+          public function get_eventdetails($eno){
+    $db1 = $this->load->database('local', TRUE);
+    $query = $db1->query("
+       SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,hosts,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events
+                                JOIN event_participants on event_participants.eventno = events.eventno 
+                                JOIN event_venue v on v.eventno = events.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+				JOIN reference_city c ON c.cityid = v.city
+                                WHERE events.eventno = $eno
+
+            ");
+     
+    return $query->result_array();
+
+    $db1->close();
+    }
+//employer
+
     
     function get_drpindustries()
     {
@@ -243,163 +267,6 @@ class Model_main extends CI_Model {
             }
      }
     
-     function get_comps($cert = null)
-     {
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncoid,ncid, cocname,description FROM nccoc where ncid ='$cert'");
-        $comp = array();
-        if($query->result())
-        {
-            foreach ($query->result() as $comps) 
-            {
-            $comp[$comps->ncoid] = $comps->cocname;
-            }
-            return $comp;
-        }
-        else
-            {
-            return FALSE;
-            }
-     }
-          
-     function get_competencyname($comp = null) 
-     {
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncoid,ncid, cocname,description FROM nccoc where ncoid ='$comp'");
-        $data=array();
-        foreach ($query->result() as $row)
-        {  
-            $data[$row->ncoid] = $row->cocname;
-        }
-            return ($data);     
-     }
-     
-     function get_competencydesc($comp = null) 
-     {
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncoid,ncid, cocname,description FROM nccoc where ncoid ='$comp'");
-        $data=array();
-        foreach ($query->result() as $row)
-        {
-
-            $data[$row->ncoid] = $row->description;
-        }
-            return ($data); 
-     }
-     
-     function getAllComp() 
-     {
-      $db2 = $this->load->database('default', TRUE);
-      $query = $db2->query("SELECT ncoid,ncid, cocname,description FROM nccoc");
-      $data=array();
-      foreach ($query->result() as $row)
-      {
-       $data[$row->ncoid] = $row->cocname;
-      }
-      return ($data);
-     }
-
-    function getAllCerts() 
-    {
-      $db2 = $this->load->database('default', TRUE);
-      $query = $db2->query("SELECT  ncid, ncname,description, level FROM nc_reference");
-      $data=array();
-      foreach ($query->result() as $row)
-      {
-        $data[$row->ncid] = $row->ncname;
-      }
-      return ($data);
-    }
-
-     function get_certificationname($cert = null) 
-     {
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncid, ncname,level,description FROM nc_reference where ncid ='$cert'");
-        $data=array();
-
-        foreach ($query->result() as $row)
-        {
-            $data[$row->ncid] = $row->ncname;
-        }
-            return ($data);   
-     }
-     function get_certificationdesc($cert = null) 
-     {  
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncid, ncname,level,description FROM nc_reference where ncid ='$cert'");
-        $data=array();
-        foreach ($query->result() as $row)
-        {    
-         $data[$row->ncid] = $row->description;
-        }
-         return ($data);   
-     }
-     
-     function get_certificationlevel($cert = null) 
-     {         
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT ncid, ncname,level,description FROM nc_reference where ncid ='$cert'");
-        $data=array();
-
-        foreach ($query->result() as $row)
-        {
-            $data[$row->ncid] = $row->level;
-        }
-            return ($data);        
-     }
-     
-     public function add_jobvacancy($jobtitle,$desc,$companyid, $nov, $region, $city,$industry,$gender, $ageto, $agefrom)
-     {
-        $db1 = $this->load->database('local', TRUE);
-
-        $sql = "INSERT INTO job_vacancies(jobtitle,description, companyid, vacanciesleft,dateposted,expirationdate,  
-                region,city, sectorid,sex,agestart,ageend,status,lastedited) VALUES(?,?,?,?,CURDATE(), DATE_ADD(curdate(), INTERVAL 2 WEEK),?,?,?,?,?,?,1,CURDATE())";
-        $db1->query($sql,array($jobtitle,$desc,$companyid, $nov, $region,$city, $industry,$gender, $ageto, $agefrom));
-        $jobpostid = $db1->insert_id();
-        return $jobpostid;
-        $db1->close();
-     }
-     public function add_jobvacancy3w($jobtitle,$desc,$companyid, $nov, $region, $city,$industry,$gender, $ageto, $agefrom)
-     {
-        $db1 = $this->load->database('local', TRUE);
-
-        $sql = "INSERT INTO job_vacancies(jobtitle,description, companyid, vacanciesleft,dateposted,expirationdate,  
-                region,city, sectorid,sex,agestart,ageend,status,lastedited) VALUES(?,?,?,?,CURDATE(), DATE_ADD(curdate(), INTERVAL 3 WEEK),?,?,?,?,?,?,1,CURDATE())";
-        $db1->query($sql,array($jobtitle,$desc,$companyid, $nov, $region,$city, $industry,$gender, $ageto, $agefrom));
-        $jobpostid = $db1->insert_id();
-        return $jobpostid;
-        $db1->close();
-     }
-
-     public function add_jobvacancy4w($jobtitle,$desc,$companyid, $nov, $region, $city,$industry,$gender, $ageto, $agefrom)
-     {
-        $db1 = $this->load->database('local', TRUE);
-
-        $sql = "INSERT INTO job_vacancies(jobtitle,description, companyid, vacanciesleft,dateposted,expirationdate,  
-                region,city, sectorid,sex,agestart,ageend,status,lastedited) VALUES(?,?,?,?,CURDATE(), DATE_ADD(curdate(), INTERVAL 4 WEEK),?,?,?,?,?,?,1,CURDATE())";
-        $db1->query($sql,array($jobtitle,$desc,$companyid, $nov, $region,$city, $industry,$gender, $ageto, $agefrom));
-        $jobpostid = $db1->insert_id();
-        return $jobpostid;
-        $db1->close();
-    }
-
-    
-    public function add_certifications($jobno, $ncid)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO job_certifications (jobno,ncid) VALUES(?,?)";
-        $db1->query($sql,array($jobno,$ncid));
-        $db1->close();
-
-    }
-    
-    public function add_competencies($jobno, $ncoid)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO job_competencies(jobno,ncoid) VALUES(?,?)";
-        $db1->query($sql,array($jobno,$ncoid));
-        $db1->close();
-    }
     public function get_myvacancies($id)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -429,183 +296,7 @@ class Model_main extends CI_Model {
         $db1->close();
     }
 //jobseeker
-    public function get_jsname(){
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");
-        return $query->result_array();
-        $db2->close();
-    }
-    public function get_jspic(){
-        $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $query = $db2->query("SELECT profile_pic from applicants WHERE userid = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->profile_pic;}
-        $db2->close();
-    } 
-    public function get_jscert()
-    {
-        $db2 = $this->load->database('default', TRUE);
-            $sql = $db2->query("SELECT userid from applicants");
-            return $sql->result_array();
-        $db2->close();
-    }
-    public function get_myinvites($userid)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $db2 = $this->load->database('default', TRUE);
-       $query = $db1->query("SELECT j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
-           as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
-             FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
-             JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-             WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
-               ORDER BY dateposted DESC");
-        return $query->result_array();
-       $db1->close();
-       $db2->close();
-    }
-    public function get_jobdescription($jobno)
-    {
-       $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT description from job_vacancies where jobno = $jobno");
-       foreach ($query->result() as $row)
-       {return $row->description;}
-       $db1->close();
-    }
-    public function get_jobdetails($jobno)
-    {
-       $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
-       return $query->result_array();
-       $db1->close();
-    }
-    public function apply_job($userid, $jobno)
-    {    
-        $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'New Applicant', 1,CURDATE(), CURTIME())";
-        $db1->query($sql,array($userid, $jobno));
-        $db1->close();
-    }
-    public function accept_job($invno)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $db1->query("UPDATE job_invitation
-                                    SET applied = 1
-                                    WHERE invitationno = $invno");
-        $db1->close();
-    }
-    public function decline_job($invno)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("UPDATE job_invitation
-                                    SET applied = 2
-                                    WHERE invitationno = $invno");
-        $db1->close();
-    }
-    public function get_myapplications($userid){
-        $db1 = $this->load->database('local', TRUE);
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived from etesda.applications a
-                                JOIN etesda.job_vacancies v ON v.jobno = a.jobno
-                                JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.appid = $userid GROUP BY v.jobno
-                                ORDER BY a.datereceived DESC
-                            ");
-        return $query->result_array();
-        $db1->close();
-        $db2->close();
-    }
-    public function get_mysideapplications($userid,$jobno){
-        $db1 = $this->load->database('local', TRUE);
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT * from etesda.applications a
-                                JOIN etesda.job_vacancies v ON v.jobno = a.jobno
-                                JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.appid = $userid AND v.jobno != $jobno GROUP BY v.jobno
-                                ORDER BY a.datereceived DESC
-                            ");
-        return $query->result_array();
-        $db1->close();
-        $db2->close();
-    }
-    public function get_dob($id)
-    {
-        $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $query = $db2->query("SELECT birthday from applicants WHERE userid = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->birthday;
-        }
-        $db2->close();
-    }
-    public function get_sex($id)
-    {
-        $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $query = $db2->query("SELECT ismale from applicants WHERE userid = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->ismale;
-        }
-        $db2->close();
-    }
-    public function get_alljobs()
-    {
-        $db2 = $this->load->database('default', TRUE);
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
-                            JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-                            GROUP BY j.jobno ORDER BY j.dateposted DESC 
-                            ");
-        return $query->result_array();
-        $db1->close();
-        $db2->close();
-    }
-    function age_from_dob($dob) {
-        return floor((time() - strtotime($dob)) / 31556926);
-    }
-    public function get_qualifiedjobs($sex, $dob)
-    {
-        if ($sex==1)
-                $sex='Male';
-        else 
-            $sex='Female';
-        $age = $this->age_from_dob($dob);
-
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * from job_vacancies j join job_certifications c on j.jobno = c.jobno 
-                                    where (j.sex = '$sex' or j.sex = 'Both') 
-                                    AND ($age BETWEEN j.agestart AND j.ageend) GROUP BY j.jobno");
-        return $query->result_array();
-        $db1->close();
-    }
-    public function get_jobcert($jobno)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM job_certifications where jobno = $jobno 
-                            ");
-        return $query->num_rows();
-        $db1->close();
-    }
-    public function get_matchedCert($jobno,$id)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT * from etesda.job_certifications jc
-                                JOIN etesda.job_vacancies v ON v.jobno = jc.jobno
-                                JOIN tesda_centraldb.applicants_certificates ac ON ac.certificateid = jc.ncid
-                                WHERE ac.appid = $id AND jc.jobno = $jobno
-                                ORDER BY v.dateposted DESC
-                            ");
-        $result = $query->num_rows();
-        return $result;
-        
-        $db1->close();
-        $db2->close();
-    }
+ 
 }
 
 

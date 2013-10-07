@@ -1,7 +1,7 @@
 <?php
 class Model_jobseeker extends CI_Model {
 //jobseeker
-    public function get_jsname(){
+      public function get_jsname(){
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $db2 = $this->load->database('default', TRUE);
         $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");
@@ -32,7 +32,7 @@ class Model_jobseeker extends CI_Model {
            as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
              FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
              JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-             WHERE j.appid = $userid AND j.applied = 0
+             WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
                ORDER BY dateposted DESC");
         return $query->result_array();
        $db1->close();
@@ -56,7 +56,7 @@ class Model_jobseeker extends CI_Model {
     public function apply_job($userid, $jobno)
     {    
         $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'Unscreened', 1,CURDATE(), CURTIME())";
+        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'New Applicant', 1,CURDATE(), CURTIME())";
         $db1->query($sql,array($userid, $jobno));
         $db1->close();
     }
@@ -79,10 +79,10 @@ class Model_jobseeker extends CI_Model {
     public function get_myapplications($userid){
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT * from etesda.applications a
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.appid = $userid
+                                WHERE a.appid = $userid GROUP BY v.jobno
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();
@@ -95,7 +95,7 @@ class Model_jobseeker extends CI_Model {
         $query = $db1->query("SELECT * from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-                                WHERE a.appid = $userid AND v.jobno != $jobno
+                                WHERE a.appid = $userid AND v.jobno != $jobno GROUP BY v.jobno
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();
@@ -126,13 +126,15 @@ class Model_jobseeker extends CI_Model {
     }
     public function get_alljobs()
     {
+        $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-                            GROUP BY j.jobno ORDER BY j.dateposted DESC  
+                            GROUP BY j.jobno ORDER BY j.dateposted DESC 
                             ");
         return $query->result_array();
         $db1->close();
+        $db2->close();
     }
     function age_from_dob($dob) {
         return floor((time() - strtotime($dob)) / 31556926);
