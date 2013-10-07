@@ -114,6 +114,28 @@ class Model_pub extends CI_Model {
 
         $db1->close();
     }
+    public function get_employerProfile($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * FROM employer_profile WHERE  userID = $id");
+        return $query->result_array();
+        $db2->close();
+    }
+    public function get_postedVacancies($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM job_vacancies WHERE companyID = $id AND status = 1 ORDER BY dateposted");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+    public function get_postedEvents($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM events WHERE createdby = $id ORDER BY startdate");
+        return $query->result_array();
+        $db1->close();
+    }
 }
 
 

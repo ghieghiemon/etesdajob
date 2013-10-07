@@ -4,7 +4,7 @@
 	
     <div class="row-fluid">
     	<div class="span3">
-        <div class="well wellUpMarg">
+        	<div class="well wellUpMarg">
             	<h5 class="media-heading">
                 	<img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
@@ -58,7 +58,7 @@
                 </div><!--end scrollable-->
             </div><!--end well-->
             
-              <div class="well wellUpMarg">
+            <div class="well wellUpMarg">
             	<h5 class="media-heading">
                 	<img src="assets/img/icons/glyphicons_266_flag.png" width="17"> Events
                 </h5>
@@ -146,7 +146,7 @@
         	<div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
-                	<a href='pub/pub_alljob'>110 job vacancies nationwide!</s>
+                	<a href='pub/pub_alljob'>110 job vacancies nationwide!</a>
                 </p>
             </div><!--end whats new-->
             
@@ -358,7 +358,7 @@
                         </div>
         				<div class="span9">
                                         <p class="marg2">
-                        		<a href="#" class="Name4">
+                        		<a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
                                             <?php
                                             $companyName = $this->model_pub->get_companyName($a['companyID']);
                                             echo $companyName;

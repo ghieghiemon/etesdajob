@@ -83,6 +83,19 @@ class Pub extends CI_Controller {
     $this->load->view('public/PEventDetails', $data);
     //$this->load->view('footer');
 }
+
+public function employer_profilepage($id)
+   {
+        $this->load->model('model_pub');
+        
+        $data['profile'] = $this->model_pub->get_employerProfile($id);
+        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
+        $data['events'] = $this->model_pub->get_postedEvents($id);
+        
+        $this->load->view("public/header");
+        $this->load->view("public/PEmployerProfile",$data);
+        $this->load->view("footer");
+   }
     
 }
 ?>
