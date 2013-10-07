@@ -68,8 +68,8 @@ class Pub extends CI_Controller {
             return $search;        
    }
    
-       public function all_job(){
-            //printf($this->input->post('jobname'));
+   public function all_job(){
+
             $this->load->model('model_main');
             $this->load->model('model_pub');
             $search = $this->model_pub->all_job();
@@ -81,7 +81,6 @@ class Pub extends CI_Controller {
     $data['details'] = $this->model_main->get_eventdetails($eno);    
     $this->load->view('public/header');
     $this->load->view('public/PEventDetails', $data);
-    //$this->load->view('footer');
 }
 
 public function employer_profilepage($id)
@@ -96,6 +95,14 @@ public function employer_profilepage($id)
         $this->load->view("public/PEmployerProfile",$data);
         $this->load->view("footer");
    }
+   
+  public function pub_allevents(){
+        $this->load->model('model_main');
+        $data['event'] = $this->model_main->all_events();
+        $this->load->view("public/header");
+        $this->load->view("public/PEventsAll",$data);
+        $this->load->view("footer");
+       }
     
 }
 ?>

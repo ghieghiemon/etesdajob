@@ -133,7 +133,7 @@
                     
     				<div class="row-fluid">
     					<div align="right" style="margin-top:-15px">
-                            <a href="#">
+                            <a href='pub/pub_allevents'>
                                 <img src="assets/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
