@@ -186,11 +186,14 @@
             	<div class="span12">
                 	<div class="well wellMarg wellUpMarg">
                     	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
-                    	<div style="width:620px;height:295px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="width:618px;height:295px;overflow:auto;"><!--start scrollable table-->
                             
                             <?php
+                            $count = 1;
                             foreach ($leagues as $a)
                             {
+                                if($count<3)
+                                {
                             ?>
                             <div class="row-fluid"> <!--start row fluid universal leagues-->
                                 <div class="span3">
@@ -202,27 +205,39 @@
                                 <div class="span8">
                                     <p class="marg2 evDetails3">
                                         <a href="#" class="Name4"><?php echo $a['leaguename']?></a><br>
-                                        <a href="#" class="label label-info">Welding Industry</a>
+                                        <a href="#" class="label label-info">
+                                            <?php
+                                            $sector = $this->model_pub->get_industryName($a['leagueindustry']);
+                                            echo $sector;
+                                            ?>
+                                        </a>
                                         <br>
-                                        <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                        by <a href="#" class="Name2">John</a>
-                                        | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since May 2012 <br>
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                        by <a href="#" class="Name2">
+                                            <?php
+                                            $by = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $by;
+                                            ?>
+                                        </a>
+                                        | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?> <br>
                                     </p>
                                     
                                     <p class="evDetails3">
-                                        Group of TESDA graduates since the year 2000. <br>
+                                        <?php echo $a['leaguedescription']?> <br>
                                     
                                         <span class="btn btn-primary btn-mini">
                                             <a data-toggle="modal" href="#myModal" class="attendBtn">
                                                 &nbsp; Join &nbsp;
                                             </a>
                                         </span>
-                                        <span class="btn btn-info btn-mini"><a data-toggle="modal" href="#ModLeagMembers" class="attendBtn">800 members</a></span>
+                                        <span class="btn btn-info btn-mini"><a data-toggle="modal" href="#ModLeagMembers" class="attendBtn"><?php echo $a['members']?> members</a></span>
                                     </p>
                                 </div> <!--end span7-->
                             </div> <!--end row-fluid-->
-                            <br>
+                                <br>
                             <?php
+                                    $count +=1;
+                                }
                             }
                             ?>
                         <div align="right">
