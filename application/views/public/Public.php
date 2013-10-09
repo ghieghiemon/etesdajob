@@ -187,17 +187,21 @@
                 	<div class="well wellMarg wellUpMarg">
                     	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
                     	<div style="width:620px;height:295px;overflow:auto;"><!--start scrollable table-->
-                            <div class="row-fluid"> <!--start row fluid universal leagues-->
                             
+                            <?php
+                            foreach ($leagues as $a)
+                            {
+                            ?>
+                            <div class="row-fluid"> <!--start row fluid universal leagues-->
                                 <div class="span3">
                                     <a data-toggle="modal" href="#">
-                                        <img src="assets/img/welder2.jpg" class="pubLpic" alt="">
+                                        <img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="pubLpic" alt="">
                                     </a>
                                 </div> <!--end span3-->
                                 
                                 <div class="span8">
                                     <p class="marg2 evDetails3">
-                                        <a href="#" class="Name4">UTG: United TESDA Graduates</a><br>
+                                        <a href="#" class="Name4"><?php echo $a['leaguename']?></a><br>
                                         <a href="#" class="label label-info">Welding Industry</a>
                                         <br>
                                         <img src="assets/img/icons/glyphicons_003_user.png" width="11">
@@ -218,37 +222,9 @@
                                 </div> <!--end span7-->
                             </div> <!--end row-fluid-->
                             <br>
-            
-                            <div class="row-fluid">
-                            <div class="span3">
-                                <a data-toggle="modal" href="#ModLeagueDes">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/ld3.jpg" class="pubLpic" alt="">
-                                </a>
-                            </div> <!--end span3-->
-                            
-                            <div class="span8">
-                                <p class="marg2 evDetails3">
-                                   <a href="#" class="Name4">Official Tourism Philippines</a><br>
-                                   <a href="#" class="label label-info">Welding Industry</a>
-                                   <br>
-                                   <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                   by <a href="#" class="Name2">John</a>
-                                   | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012 <br>
-                                   </p>
-                                
-                                <p class="evDetails3">  
-                                    Collaborate. Learn. Grow. The official league for Tourism graduates. <br>
-                                
-                                    <span class="btn btn-primary btn-mini">
-                                        <a data-toggle="modal" href="#myModal" class="attendBtn">
-                                            &nbsp; Join &nbsp;
-                                        </a>
-                                    </span>
-                                    <span class="btn btn-info btn-mini"><a data-toggle="modal" href="#ModLeagMembers" class="attendBtn">800 members</a></span>
-                                </p>
-                                
-                            </div> <!--end span8-->
-                        </div> <!--end row-fluid-->
+                            <?php
+                            }
+                            ?>
                         <div align="right">
                                 <a href="#">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">

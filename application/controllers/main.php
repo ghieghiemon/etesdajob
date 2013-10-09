@@ -18,7 +18,7 @@ class Main extends CI_Controller {
         $data['event'] = $this->model_main->all_events();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
-        $data['leagues'] = $this->model_main->get_leagues();
+        $data['leagues'] = $this->model_pub->get_leagues();
         
         $this->load->view('public/header');
         $this->load->view('public/Public',$data);
