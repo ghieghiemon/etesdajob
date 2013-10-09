@@ -78,5 +78,6 @@
   <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
   <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
   <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
 </footer>
 </html>

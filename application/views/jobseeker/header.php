@@ -47,6 +47,7 @@
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 
                                     <br>Calendar
+                                    <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
                                 </h5>
                                 </a>
                                 

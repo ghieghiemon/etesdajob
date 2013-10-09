@@ -24,6 +24,8 @@ class Jobseeker extends CI_Controller {
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['invites'] = $this->model_jobseeker->get_myinvites($id);
         $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);

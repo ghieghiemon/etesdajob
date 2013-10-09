@@ -330,45 +330,50 @@ foreach($invites as $a)
             	<h6 class="media-heading">
                 	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h6>
+                   <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
                 
-                <div style="width:280px;height:160px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
-                        <div class="myStyleQS">
+                        <div class="myStylePQS">
                             <input type="text" id="JT" name="JT" placeholder="Job Title">
                         </div>
                     </div><!-- end div job title -->
 
           			<div class="control-group"  style="margin-top:-5px;"><!-- start div company-->
-                        <div class="myStyleQS2">
+                        <div class="myStylePQS2">
                             <input type="text" id="COMP" name="COMP" placeholder="Company">
                         </div>
                     </div><!-- end div company -->
 
-					<div class="myStyle2QS">
-                        <select>
-                            <option>Agriculture & Fishery</option>
-                            <option>Automotive & Land Transportation</option>
-                            <option>Construction</option>
-                            <option>Decorative Arts</option>
-                        </select>
+					<div class="myStyle2PQS">
+                        <?php    
+             $drpindustries['0'] = 'Industry';
+            echo form_dropdown('industry', $drpindustries,'0');     
+            ?> 
                     </div>
                     
-                    <div class="myStyle2QS2">
-                        <select name="Region">
-                            <option>NCR</option>
-                            <option>Region I</option>
-                        </select>
-                        
-                        <select name="City">
-                        <option>Pasig</option>
-                        <option>Makati</option>
-                  	</select>
+                    <div class="myStyle2PQS2">
+                    <?php $regions['0'] = 'Region'; ?>
+                    <?php $cities['0'] = 'City'; ?>
+                    <?php 
+                    $params = 'id="region"'; 
+                    echo form_dropdown('regionid', $regions, '0',$params);
+                    ?> 
+
+                    <?php 
+                    $params = 'id="cities"'; 
+                    echo form_dropdown('cityid', $cities, '0', $params);
+                    ?> 
                     </div>
                     
-                    <div align="right">
-                    	<a href="#" class="btn btn-info">
-                        	Search
-                        </a>
+                            <div align="right">
+                    	 <?php 
+                      
+                echo" <input class='btn btn-info btn-mini'";
+                echo form_submit('submit', 'Search');
+                echo form_close(); 
+                ?>
+                        </form>
                     </div>
                     
                 </div><!--end scrollable-->
@@ -497,7 +502,7 @@ foreach($invites as $a)
                                     <a href="<?php echo base_url()?>main/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
                                     </a>
-                                    
+                                    <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
                                     <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
                                     </button>
@@ -524,38 +529,7 @@ foreach($invites as $a)
       <hr>
 
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-transition.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-alert.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-modal.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-dropdown.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-scrollspy.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-tab.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-tooltip.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-popover.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-button.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-collapse.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-carousel.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap-typeahead.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.min.js"></script>
-
-<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery.fancybox-1.3.4.pack.js"></script>
-
-<!-- Add jQuery library -->
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery-latest.min.js"></script>
-
-<!-- Add mousewheel plugin (this is optional) -->
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.mousewheel-3.0.6.pack.js"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="<?php echo base_url()?>assets/js/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
-<script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+  
 
 <script type="text/javascript">
     $(document).ready(function(){
