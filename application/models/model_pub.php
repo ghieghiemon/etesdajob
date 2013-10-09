@@ -153,6 +153,16 @@ class Model_pub extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
+    
+    public function get_userType($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT usertype from users WHERE userid = '$id'");
+        foreach ($query->result() as $row)
+        {
+         return $row->usertype;}
+        $db2->close();
+    }
 }
 
 

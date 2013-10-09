@@ -98,13 +98,35 @@ class Pub extends CI_Controller {
         $this->load->view("footer");
    }
    
-   public function pub_allevents(){
+   public function pub_allevents()
+   {
         $this->load->model('model_main');
         $data['event'] = $this->model_main->all_events();
         $this->load->view("public/header");
         $this->load->view("public/PEventsAll",$data);
         $this->load->view("footer");
-       }
+   }
+   
+   public function leaguepage()
+   {
+       $this->load->model('model_pub');
+       
+       $data['leagues'] = $this->model_pub->get_leagues(); 
+       
+       $this->load->view("public/header");
+       $this->load->view("public/PLeagues",$data);
+       $this->load->view("footer");
+   }
+   
+   public function leagueviewpage()
+   {
+       $this->load->model('model_pub');
+        
+       
+       $this->load->view("public/header");
+       $this->load->view("public/PLeagueView");
+       $this->load->view("footer");
+   }
     
 }
 ?>

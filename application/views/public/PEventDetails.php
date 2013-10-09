@@ -1,6 +1,4 @@
-<body>
-  
-  
+
 
 <!--start ModAttend-->   
 <div class="modal hide fade" id="ModAttend">
@@ -162,4 +160,3 @@
 
     
 </body>
-</html>
