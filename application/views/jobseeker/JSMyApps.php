@@ -468,7 +468,7 @@ foreach($invites as $a)
                             echo $a['jobtitle'];
                             echo '</td>
                                  <td>';
-                            $desc = $this->model_main->get_jobdescription($a['jobno']);
+                            $desc = $this->model_jobseeker->get_jobdescription($a['jobno']);
                             echo $desc;
                             echo '</td>
                                 <td>

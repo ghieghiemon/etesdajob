@@ -5,8 +5,9 @@ class Jobseeker extends CI_Controller {
       public function jobseeker_header()
     {
         $this->load->model('model_main');
-        $data['name'] = $this->model_main->get_jsname();
-        $data['pic'] = $this->model_main->get_jspic();
+        $this->load->model('model_jobseeker');
+        $data['name'] = $this->model_jobseeker->get_jsname();
+        $data['pic'] = $this->model_jobseeker->get_jspic();
         $this->load->view('jobseeker/header', $data);
     }
     public function jobseeker_dashboard()
@@ -19,9 +20,10 @@ class Jobseeker extends CI_Controller {
     public function jobseeker_myappspage()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $data['invites'] = $this->model_main->get_myinvites($id);
-        $data['myapp'] = $this->model_main->get_myapplications($id);
+        $data['invites'] = $this->model_jobseeker->get_myinvites($id);
+        $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);

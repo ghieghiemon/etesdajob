@@ -209,11 +209,11 @@ class Main extends CI_Controller {
             $this->session->set_userdata($data); 
             $this->load->model('model_main');
                 if($this->model_main->get_usertype()=='APPLICANT')
-            redirect('jobseeker_myappspage');
+            redirect('jobseeker/jobseeker_myappspage');
             else if($this->model_main->get_usertype()=='EMPLOYER')
-                redirect('employer_dashboard');
+                redirect('employer/employer_dashboard');
             else if ($this->model_main->get_usertype()=='JOBADMIN')
-                redirect('tesda_dashboard');
+                redirect('tesda/tesda_dashboard');
 
         }          
         else {

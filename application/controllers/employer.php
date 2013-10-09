@@ -22,7 +22,6 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_employer');
-
         $jobpost = array(
         'comp'=> $this->model_employer->getAllComp(),  
         'cert'=> $this->model_employer->getAllCerts(),
@@ -41,7 +40,6 @@ class Employer extends CI_Controller {
        $this->load->model('model_main');
        $this->load->model('model_employer');
        $companyid = $this->model_main->get_userid($this->session->userdata('email'));
-       //$companyid = 1;
        $jobname = $this->input->post('JN');
        $effect = $this->input->post('effectivity');
        $nov = $this->input->post('NOV');
@@ -111,6 +109,19 @@ class Employer extends CI_Controller {
         header('Content-Type: application/x-json; charset=utf-8');
         echo(json_encode($this->model_employer->get_certificationname($cert)));
     }
+     public function get_certificationdesc($cert)
+    {
+        $this->load->model('model_employer');
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo(json_encode($this->model_employer->get_certificationdesc($cert)));
+    }
+    
+     public function get_certificationlevel($cert)
+    {
+        $this->load->model('model_employer');
+        header('Content-Type: application/x-json; charset=utf-8');
+        echo(json_encode($this->model_employer->get_certificationlevel($cert)));
+    }
     
     public function get_competencyname($comp)
     {
@@ -119,12 +130,6 @@ class Employer extends CI_Controller {
         echo(json_encode($this->model_employer->get_competencyname($comp)));
     }
     
-     public function get_certificationdesc($cert)
-    {
-        $this->load->model('model_employer');
-        header('Content-Type: application/x-json; charset=utf-8');
-        echo(json_encode($this->model_employer->get_certificationdesc($cert)));
-    }
     public function get_competencydesc($comp)
     {
         $this->load->model('model_employer');
@@ -132,12 +137,6 @@ class Employer extends CI_Controller {
         echo(json_encode($this->model_employer->get_competencydesc($comp)));
     }
     
-    public function get_certificationlevel($cert)
-    {
-        $this->load->model('model_employer');
-        header('Content-Type: application/x-json; charset=utf-8');
-        echo(json_encode($this->model_employer->get_certificationlevel($cert)));
-    }
 
     public function employer_appspage()
     {
