@@ -81,120 +81,128 @@
             	<div class="well wellUpMarg">
                 	<h3 class="media-heading">
                     	<a href="PLeagues.html" class="Comm">
-                        	<img src="assets/img/icons/glyphicons_043_group.png" width="35"> Leagues
+                        	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="35"> Leagues
                         </a>
-                        <a href="PLeagView.html" class="media-heading vName2">
-                            | We Love Welders
+                        
+                            <?php
+                                    foreach($discussion as $a)
+                                    {
+                                    ?>
+                            <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="media-heading vName2">
+                            | <?php echo $a['leaguename']?>
                         </a>
                     </h3>
                     
                 	<div>
                             <ul class="nav nav-list">
                                 <div style="margin-left:30px;">
+                                    
                                     <a href="#" class="DisTitleHuge">
-                                        <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="18">
-                                        Where can I find a job here in Manila?</font>
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="18">
+                                         <?php echo $a['discussion']?>
+                                        </font>
                                     </a>
                                     
                                     <br>
                                     <font class="disDetails" style="margin-left:27px;">
-                                        <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                        by <a href="#" class="Name2">John</a> 
-                                        | <font class="tnd">09/28/2013 at 4:25pm</font>
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                        by <a href="#" class="Name2">
+                                               <?php
+                                            $type = $this->model_pub->get_userType($a['postedby']);
+                                            if($type == 'EMPLOYER')
+                                            {
+                                                $by = $this->model_pub->get_companyName($a['postedby']);
+                                                echo $by;
+                                            }
+                                            else if ($type == 'JOBADMIN')
+                                            {
+                                                $by = 'TESDA';
+                                                echo $by;
+                                            }
+                                            else if ($type == 'APPLICANT')
+                                            {
+                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                foreach($by as $b)
+                                                {
+                                                    echo $b['firstname'];
+                                                    echo " ";
+                                                    echo $b['lastname'];
+                                                }
+                                            }
+                                            
+                                            ?>
+                                        </a> 
+                                        | <font class="tnd"><?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
                                 	</font>
+                                    <?php
+                                    }
+                                    ?>
                                 </div> 
                                 
                                 <hr class="hrDiscuss">
                                 
                                 <div style="width:1220px;height:416px;overflow:auto;"><!--start scrollable table-->
                                 <table> <!--start reply details-->
+                                    <?php
+                                    foreach($replies as $a)
+                                    {
+                                    ?>
                                     <tr>
                                         <td>
                                         	<a href="#" class="Name">
-                                             	<img src="assets/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;"> William Willard   
+                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;">
+                                                <?php
+                                            $type = $this->model_pub->get_userType($a['postedby']);
+                                            if($type == 'EMPLOYER')
+                                            {
+                                                $by = $this->model_pub->get_companyName($a['postedby']);
+                                                echo $by;
+                                            }
+                                            else if ($type == 'JOBADMIN')
+                                            {
+                                                $by = 'TESDA';
+                                                echo $by;
+                                            }
+                                            else if ($type == 'APPLICANT')
+                                            {
+                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                foreach($by as $b)
+                                                {
+                                                    echo $b['firstname'];
+                                                    echo " ";
+                                                    echo $b['lastname'];
+                                                }
+                                            }
+                                            
+                                            ?>
                                             </a>
-                                            <font class="tnd">09/28/2013 at 4:26pm</font>
+                                            <font class="tnd"><?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td width="1200px">
                                         <p style="margin-left:75px">
-                                            In 213 Meringin St. Quezon City, there's a recruting agency that you can visit. They're looking for welders for their future project.
+                                           <?php echo $a['discussion']?>
                                              <div class="pull-right">
                                                 <font class="NumLikes">
-                                                	2 likes 
+                                                	<?php echo $a['likes']?> likes 
                                                 </font>&nbsp;
-                                                <a href="#" class="btn btn-mini"><img src="assets/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
+                                                <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
                                             </div>
                                         </p>
                                         </td>
                                     </tr>
-                                    
                                     <tr>
                                         <td>
                                             <hr class="hrLeagTab">
                                         </td>
                                     </tr>
+                                    <?php
+                                    }
+                                    ?>
                                     
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="Name">
-                                            <img src="assets/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;"> Miggy Pinon
-                                            </a>
-                                            <font class="tnd"> 09/28/2013 at 4:38pm </font>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td width="700px">
-                                        <p style="margin-left:75px">
-                                            DOLE will provide a job expo next week in Makati City Trade Hall. Might as well visit that and bring your resume. Who knows, you can get a job! 
-                                             <div class="pull-right">
-                                                <font class="NumLikes">
-                                                	4 likes 
-                                                </font>&nbsp;
-                                                <a href="#" class="btn btn-mini"><img src="assets/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                            </div>
-                                        </p>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>
-                                            <hr class="hrLeagTab">
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>
-                                            <a href="#" class="Name">
-                                            <img src="assets/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;"> Sean Vega
-                                            </a>
-                                            <font class="tnd"> 09/28/2013 at 4:59pm </font>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td width="700px">
-                                        <p style="margin-left:75px">
-                                            Hi I got my job in Mintwo Corporation. They have a lot of projects in BGC, Taguig City. Their office is located in 5th avenue, 11th st. I think they're still hiring until end of the month. 
-                                             <div class="pull-right">
-                                                <font class="NumLikes">
-                                                	12 likes
-                                                </font> 
-                                                &nbsp;<a href="#" class="btn btn-mini"><img src="assets/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                            </div>
-                                        </p>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td>
-                                            <hr class="hrLeagTab">
-                                        </td>
-                                    </tr>
-                                    
+                                   
                                 </table> <!--end reply details-->
                                 </div><!--end scrollable table-->
                                

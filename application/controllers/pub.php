@@ -118,13 +118,28 @@ class Pub extends CI_Controller {
        $this->load->view("footer");
    }
    
-   public function leagueviewpage()
+   public function leagueviewpage($id)
    {
        $this->load->model('model_pub');
-        
+       
+       $data['details'] = $this->model_pub->get_leagueDetails($id); 
+       $data['discs'] = $this->model_pub->get_leagueDiscussions($id); 
+       $data['replies'] = $this->model_pub->get_leagueReplies($id);
        
        $this->load->view("public/header");
-       $this->load->view("public/PLeagueView");
+       $this->load->view("public/PLeagueView",$data);
+       $this->load->view("footer");
+   }
+   
+   public function leaguediscpage($discno)
+   {
+       $this->load->model('model_pub');
+       
+       $data['replies'] = $this->model_pub->get_leagueReplies($discno);
+       $data['discussion'] = $this->model_pub->get_discDetails($discno);
+       
+       $this->load->view("public/header");
+       $this->load->view("public/PLeagueDisc",$data);
        $this->load->view("footer");
    }
     

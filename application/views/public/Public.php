@@ -204,8 +204,8 @@
                                 
                                 <div class="span8">
                                     <p class="marg2 evDetails3">
-                                        <a href="<?php echo base_url()?>pub/leagueviewpage" class="Name4"><?php echo $a['leaguename']?></a><br>
-                                        <a href="#" class="label label-info">
+                                        <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="Name4"><?php echo $a['leaguename']?></a><br>
+                                        <a href="<?php echo base_url('pub/search_industries/' . $a['leagueindustry']); ?>" class="label label-info">
                                             <?php
                                             $sector = $this->model_pub->get_industryName($a['leagueindustry']);
                                             echo $sector;

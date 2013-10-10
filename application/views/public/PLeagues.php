@@ -99,7 +99,7 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href="<?php echo base_url()?>pub/leagueviewpage" class="LeaName3"><?php echo $a['leaguename']?> </a>
+                                	<a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="LeaName3"><?php echo $a['leaguename']?> </a>
                                 	<td>
                                     	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="thumbnail5 ePicMarg">
                                     </td>
@@ -107,7 +107,7 @@
                                     <td>
                                         
                                         <p class="LeaDetails4">
-                                        	<a href="#" class="label label-info">
+                                        	<a href="<?php echo base_url('pub/search_industries/' . $a['leagueindustry']); ?>" class="label label-info">
                                             <?php
                                             $sector = $this->model_pub->get_industryName($a['leagueindustry']);
                                             echo $sector;
@@ -124,7 +124,7 @@
                                             echo $by;
                                             ?></a>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> <?php echo $a['members']?> Members</a>
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> <?php echo $a['members']?> Members</a>
                                         	<br>
                                             <br>
                                             <?php echo $a['leaguedescription']?></p>

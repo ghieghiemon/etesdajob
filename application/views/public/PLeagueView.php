@@ -26,7 +26,7 @@
 <div class="modal hide fade" id="ModLeagMembers">
   	<div class="modal-header">
             <a class="close" data-dismiss="modal">x</a>
-            <h3><img src="assets/img/icons/glyphicons_088_adress_book.png"> Members</h3>
+            <h3><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png"> Members</h3>
   	</div><!--end modal-header-->
 
   	<div class="modal-footer"> <!--Modal members-->
@@ -46,7 +46,7 @@
                     <tbody>
                     	<tr>
                         	<td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -57,7 +57,7 @@
                             </td>
                             
                             <td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -80,12 +80,16 @@
             <div class="span12">
             	<div class="well wellUpMarg">
                 	<h3 class="media-heading">
-                    	<a href="PLeagues.html" class="Comm">
-                        	<img src="assets/img/icons/glyphicons_043_group.png" width="35"> Leagues
+                    	<a href="<?php echo base_url()?>pub/leaguepage" class="Comm">
+                        	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="35"> Leagues
                         </a>
                     </h3>
                     
                 	<div class="well">
+                            <?php
+                            foreach ($details as $a)
+                            {
+                            ?>
                     <table style="margin-left:10px;">
                         	<thead>
                             	<tr>
@@ -97,25 +101,42 @@
                             <tbody>
                             	<tr>
                                 	<td>
-                                    	<img src="assets/img/welder1.jpg" class="thumbnail4" alt="">
+                                    	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="thumbnail4" alt="">
                                     </td>
                                    
                                     <td>
                                     	<p class="lDetMarg">
-                                        <img src="assets/img/util.png" class="LeagueInIcon pull-right" alt="Auto Industry"><img src="assets/img/icons/glyphicons_043_group.png"><a href="PLeagView.html" class="LeaName">We Love Welders</a>
+                                        
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png">
+                                        <a href="" class="LeaName"><?php echo $a['leaguename']?></a><br>
+                                        <a href="<?php echo base_url('pub/search_industries/' . $a['leagueindustry']); ?>" class="label label-info">
+                                            <?php
+                                            $sector = $this->model_pub->get_industryName($a['leagueindustry']);
+                                            echo $sector;
+                                            ?>
+                                                </a><br>
                                         </p>
                                         <p class="LeaDetails lDetMarg2">
-                                        	<strong><img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name3">John</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11" heaight="10"> since May 2012
-                                            | <a data-toggle="modal" href="#ModLeagMembers" class="Name3"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
-                                            	114 Members
+                                        	<strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                            by <a href="#" class="Name3">
+                                                <?php
+                                            $type = $this->model_pub->get_userType($a['createdby']);
+                                            if($type == 'EMPLOYER')
+                                                $by = $this->model_pub->get_companyName($a['createdby']);
+                                            else if ($type == 'JOBADMIN')
+                                                $by = 'TESDA';
+                                            echo $by;
+                                            ?>
+                                            </a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11" heaight="10"> since <?php echo $a['since']?>
+                                            | <a data-toggle="modal" href="#ModLeagMembers" class="Name3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
+                                            	<?php echo $a['members']?> Members
                                               </a>
                                             </strong>
                                             <hr class="hrRApp2">
                                         </p>
                                         <p class="LeaDetails2">
-                                        	<em><strong>League Description:</strong></em> Welders who help each other look for jobs locally and internationally.
+                                        	<em><strong>League Description:</strong></em> <?php echo $a['leaguedescription']?>
                                         </p>
                                         
                                         <br>
@@ -138,7 +159,9 @@
                                 </tr>
                             </tbody>
                     	</table>
-                        
+                        <?php
+                        }
+                        ?>
                         <div class="pull-right" style="margin-left:-60px; margin-top:-105px;">
                             <a href="#signIn" data-toggle="modal" class="LeagueLeave btn btn-primary">
                             	&nbsp; Join &nbsp;
@@ -148,69 +171,65 @@
                         
                         <div class="row-fluid">
                 	<div class="span12">
-            			<h4 class="media header dMarg"><img src="assets/img/icons/glyphicons_319_sort.png">
+            			<h4 class="media header dMarg"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_319_sort.png">
                         	<a href="#"  class="media header DiscHead"> DISCUSSIONS </a>
                         </h4>
                         
                         <div style="width:910px;height:250px;overflow:auto;"><!--start scrollable table-->
                         <ul class="nav nav-list">
+                        <?php
+                        foreach($discs as $a)
+                        {
+                        ?>
                             <li style="margin-left:30px;">
-                                <a href="PLeagDisc.html" class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Where can I find a job here in Manila?
+                                <a href="<?php echo base_url()?>pub/leaguediscpage/<?php echo $a['discussionno']?>" class="DisTitle2">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
+                                    <?php echo $a['discussion']?>
                                 </a>
                                 
                                 <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">John</a> 
-                                    | <font class="tnd"> 09/23/2013</font>
-                                    | <a href="#" class="Name3"> 5 replies </a>
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                    Posted by <a href="#" class="Name3">
+                                        <?php
+                                            $type = $this->model_pub->get_userType($a['postedby']);
+                                            if($type == 'EMPLOYER')
+                                            {
+                                                $by = $this->model_pub->get_companyName($a['postedby']);
+                                                echo $by;
+                                            }
+                                            else if ($type == 'JOBADMIN')
+                                            {
+                                                $by = 'TESDA';
+                                                echo $by;
+                                            }
+                                            else if ($type == 'APPLICANT')
+                                            {
+                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                foreach($by as $b)
+                                                {
+                                                    echo $b['firstname'];
+                                                    echo " ";
+                                                    echo $b['lastname'];
+                                                }
+                                            }
+                                            
+                                            ?>
+                                    </a> 
+                                    | <font class="tnd"><?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
+                                    | <a href="#" class="Name3">
+                                    <?php 
+                                    echo count($replies);
+                                     if(count($replies) <=1 )
+                                         echo " reply";
+                                     else echo " replies";
+                                    ?>  </a>
                                 </font>
                             </li> 
                             <br>
-                            <li style="margin-left:30px;">
-                                <a href="PLeagDisc.html" class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Welders in Dubai have great salary, is this true? </font>
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Ming</a>
-                                    | <font class="tnd"> 09/22/2013</font>
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
+                        <?php
+                        }
+                        ?>
                             
-                            <br>
-                            <li style="margin-left:30px;">
-                                <a href="PLeagDisc.html"  class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Company Y is recruiting welders. Is there any requirements?
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#"  class="Name3">James</a>
-                                    | <font class="tnd"> 09/21/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
-                            
-                            <br>
-                            <li style="margin-left:30px;">
-                                <a href="PLeagDisc.html"  class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Tips on being an expert welder.
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Bong</a>
-                                    | <font class="tnd"> 09/20/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
                         </ul>
                         </div><!--end scrollable table-->
                     
