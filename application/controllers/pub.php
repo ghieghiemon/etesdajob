@@ -142,6 +142,59 @@ class Pub extends CI_Controller {
        $this->load->view("public/PLeagueDisc",$data);
        $this->load->view("footer");
    }
+   
+   public function EJ_DISCUSSION_VIEW($DISCUSSION_NO){
+       
+       $this->load->model('model_pub');
+       $this->load->model('leagues_model');
+       $data['discussion'] = $this->model_pub->get_discDetails($DISCUSSION_NO);
+       $data['recentpage'] = $this->leagues_model->get_total_page($DISCUSSION_NO);
+       $data['discno'] = $DISCUSSION_NO;
+       $this->load->view("public/header", $data);
+       $this->load->view("public/Discussion");
+       //$this->load->view("footer");
+       
+   }
+   
+   public function EJ_GET_PAGE_DISCUSSION($DISCUSSION_NO, $PAGE){
+       
+       $this->load->model('leagues_model');
+       echo '<table>';
+       
+       foreach($this->leagues_model->get_page($DISCUSSION_NO, $PAGE) as $post):
+           
+           echo '<tr>';
+                
+                echo '<td><img src="'.base_url().'assets/bootstrap/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;">' . $post['postedby'] . ' ' . $post['timestamp'] . '</td>';
+       
+           echo '</tr>';
+           
+           echo '<tr>
+           
+           <td width="1200px">
+                                        <p style="margin-left:75px">'
+                                           . $post['reply'] .'
+                                             <div class="pull-right">
+                                                <font class="NumLikes">'
+                                                	. $post['likes'] . 'likes 
+                                                </font>&nbsp;
+                                                <a href="#" class="btn btn-mini"><img src="'.base_url().'assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
+                                            </div>
+                                        </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr class="hrLeagTab">
+                                        </td>
+                                    </tr>';
+
+       endforeach;
+       
+       echo '</table>';
+
+       
+   }
     
 }
 ?>
