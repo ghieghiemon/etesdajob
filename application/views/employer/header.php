@@ -10,7 +10,6 @@
  
  <!-- Add jQuery library -->
 	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
-    
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
@@ -254,5 +253,6 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
+    <script src="j<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="j<?php echo base_url()?>assets/bootstrap/js/datatable.js"></script>
 <!--postV modal end-->

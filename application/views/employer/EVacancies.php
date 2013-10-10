@@ -29,7 +29,7 @@
                               </td>
                               
                               <td>
-                                  <a href="<?php echo base_url()?>main/employer_appsperjob" class="vColor">	
+                                  <a href="<?php echo base_url()?>employer/employer_appsperjob" class="vColor">	
                                   	Welder Assistant
                                   </a>
                                   <br>

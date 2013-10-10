@@ -46,7 +46,7 @@ $route['login_validation'] = "main/login_validation";
 $route['logout'] = "main/logout";
 //employer
 $route['employer_header'] = "main/employer_header";
-$route['employer_dashboard'] = "main/employer_dashboard";
+$route['employer_dashboard'] = "employer/employer_dashboard";
 $route['employer_postvacancypage'] = "main/employer_postvacancypage";
 $route['employer_appspage'] = "main/employer_appspage";
 $route['employer_appsperjob'] ="main/employer_appsperjob";
