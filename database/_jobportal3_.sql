@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 09, 2013 at 01:37 PM
+-- Generation Time: Oct 10, 2013 at 05:21 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -777,7 +777,7 @@ CREATE TABLE IF NOT EXISTS `league_discussions` (
   `leagueno` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
   PRIMARY KEY (`discussionno`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=83 ;
 
 --
 -- Dumping data for table `league_discussions`
@@ -786,26 +786,69 @@ CREATE TABLE IF NOT EXISTS `league_discussions` (
 INSERT INTO `league_discussions` (`discussionno`, `repliedno`, `discussion`, `datereplied`, `postedby`, `leagueno`, `likes`) VALUES
 (12, 0, 'Best course in TESDA?', '2013-08-07 00:00:00', 1, 13, 2),
 (13, 0, 'What''s the best company in Manila?', '2013-08-07 00:00:00', 1, 12, 1),
-(14, 0, 'Any openings abroad?', '2013-08-07 00:00:00', 6, 13, 3),
-(15, 0, 'What''s the best company in Sta. Rosa?', '2013-08-07 00:00:00', 2, 14, 4),
-(16, 0, 'What''s the best company in Ortigas?', '2013-08-07 00:00:00', 16, 15, 1),
-(17, 0, 'Any openings in BGC?', '2013-08-07 00:00:00', 16, 16, 2),
-(18, 0, 'What''s the best company in Las Pinas?', '2013-08-07 00:00:00', 21, 11, 2),
-(19, 0, 'Any openings in Makati?', '2013-08-07 00:00:00', 22, 11, 3),
-(20, 0, 'Any openings in Malate, Manila?', '2013-08-07 00:00:00', 23, 11, 4),
-(21, 0, 'What''s the best company in Pasay?', '2013-08-07 00:00:00', 1, 11, 2),
-(22, 0, 'Wha''s the worst company to work for this year', '2013-08-07 00:00:00', 1, 12, 0),
-(23, 0, 'What''s the best company in Marikina?', '2013-08-07 00:00:00', 26, 15, 2),
-(24, 0, 'What''s the prediction for the BPO Companies n', '2013-08-07 00:00:00', 27, 15, 1),
-(25, 0, 'What''s the best company in Makati?', '2013-08-07 00:00:00', 28, 16, 1),
-(26, 0, 'Wha''s the best company to work for this year?', '2013-08-07 00:00:00', 29, 13, 0),
-(27, 20, 'Horticulture!', '2013-08-07 00:00:00', 1, 13, 10),
-(34, 12, 'Agriculture! The best.', '2013-08-07 00:00:00', 1, 13, 2),
+(14, 18, 'Any openings abroad?', '2013-08-07 00:00:00', 6, 13, 3),
+(15, 18, 'What''s the best company in Sta. Rosa?', '2013-08-07 00:00:00', 2, 14, 4),
+(16, 18, 'What''s the best company in Ortigas?', '2013-08-07 00:00:00', 16, 15, 1),
+(17, 18, 'Any openings in BGC?', '2013-08-07 00:00:00', 16, 16, 2),
+(18, 0, 'What''s the best company in Las Pinas?', '2013-08-07 00:00:00', 14, 18, 2),
+(19, 18, 'Any openings in Makati?', '2013-08-07 00:00:00', 14, 18, 3),
+(20, 18, 'Any openings in Malate, Manila?', '2013-08-07 00:00:00', 14, 18, 4),
+(21, 18, 'What''s the best company in Pasay?', '2013-08-07 00:00:00', 1, 18, 2),
+(22, 18, 'Wha''s the worst company to work for this year', '2013-08-07 00:00:00', 1, 12, 0),
+(23, 18, 'What''s the best company in Marikina?', '2013-08-07 00:00:00', 26, 15, 2),
+(24, 18, 'What''s the prediction for the BPO Companies n', '2013-08-07 00:00:00', 27, 15, 1),
+(25, 18, 'What''s the best company in Makati?', '2013-08-07 00:00:00', 28, 16, 1),
+(26, 18, 'Wha''s the best company to work for this year?', '2013-08-07 00:00:00', 29, 13, 0),
+(27, 18, 'Horticulture!', '2013-07-07 00:00:00', 1, 13, 10),
+(34, 18, 'Agriculture! The best.', '2013-08-07 00:00:00', 1, 13, 2),
 (35, 12, 'Think of the trends these days. :)', '2013-08-07 00:00:00', 2, 13, 3),
 (36, 12, 'Yes, that''s right. ', '2013-08-07 00:00:00', 2, 13, 5),
-(37, 20, 'I dont really know', '2013-08-05 08:48:55', 1, 11, 4),
-(38, 20, 'Hmm I think there is one', '2013-08-05 08:49:06', 1, 11, 4),
-(39, 0, 'How many openings are there?', '2013-08-19 12:31:58', 1, 13, 0);
+(37, 18, 'I dont really know', '2013-08-05 08:48:55', 1, 11, 4),
+(38, 18, 'Hmm I think there is one', '2013-08-05 08:49:06', 1, 11, 4),
+(39, 18, 'How many openings are there?', '2013-08-19 12:31:58', 1, 13, 0),
+(40, 18, 'How many openings are there?', '2013-08-19 12:31:58', 1, 18, 3),
+(41, 18, 'I dont really know', '2013-08-19 12:31:58', 2, 18, 3),
+(42, 18, 'How many openings are there?', '2013-08-19 12:31:58', 14, 18, 3),
+(43, 18, 'I dont really know', '2013-10-19 12:31:58', 1, 18, 3),
+(44, 18, 'How many openings are there?', '2013-10-19 12:31:58', 14, 18, 3),
+(45, 18, 'I dont really know', '2013-10-19 12:31:58', 14, 18, 3),
+(46, 18, 'How many openings are there?', '2013-10-19 12:31:58', 1, 18, 3),
+(47, 18, 'I dont really know', '2013-10-19 12:31:58', 14, 18, 3),
+(48, 18, 'How many openings are there?', '2013-11-19 12:31:58', 1, 18, 33),
+(49, 18, 'I dont really know', '2013-11-19 12:31:58', 14, 18, 3),
+(50, 18, 'How many openings are there?', '2013-11-19 12:31:58', 1, 18, 3),
+(51, 18, 'I dont really know', '2013-11-19 12:31:58', 14, 18, 3),
+(52, 18, 'I dont really know', '2013-11-19 12:31:58', 1, 18, 3),
+(53, 18, 'I dont really know', '2013-11-19 12:31:58', 14, 18, 3),
+(54, 18, 'How many openings are there?', '2013-11-22 12:31:58', 1, 18, 3),
+(55, 18, 'I dont really know', '2013-11-22 12:31:58', 14, 18, 3),
+(56, 18, 'I dont really know', '2013-11-22 12:31:58', 1, 18, 33),
+(57, 18, 'I dont really know', '2013-11-22 12:31:58', 14, 18, 3),
+(58, 18, 'How many openings are there?', '2013-11-22 12:31:58', 1, 18, 3),
+(59, 18, 'I dont really know', '2013-11-22 12:31:58', 14, 18, 3),
+(60, 18, 'How many openings are there?', '2013-11-22 12:31:58', 1, 18, 3),
+(61, 18, 'I dont really know', '2013-11-22 12:31:58', 1, 18, 3),
+(62, 18, 'How many openings are there?', '2013-11-22 12:31:58', 1, 18, 4),
+(63, 18, 'I dont really know', '2013-11-25 12:31:58', 14, 18, 4),
+(64, 18, 'How many openings are there?', '2013-11-25 12:31:58', 14, 18, 4),
+(65, 18, 'I dont really know', '2013-11-25 12:31:58', 14, 18, 4),
+(66, 18, 'How many openings are there?', '2013-11-25 12:31:58', 1, 18, 4),
+(67, 18, 'I dont really know', '2013-11-25 12:31:58', 1, 18, 4),
+(68, 18, 'How many openings are there?', '2013-11-25 12:31:58', 1, 18, 4),
+(69, 18, 'I dont really know', '2013-11-25 12:31:58', 1, 18, 4),
+(70, 18, 'How many openings are there?', '2013-11-25 12:31:58', 14, 18, 4),
+(71, 18, 'I dont really know', '2013-11-25 12:31:58', 14, 18, 2),
+(72, 18, 'How many openings are there?', '2013-11-25 12:31:58', 14, 18, 2),
+(73, 18, 'I dont really know', '2013-11-25 12:31:58', 1, 18, 2),
+(74, 18, 'How many openings are there?', '2013-12-05 12:31:58', 1, 18, 2),
+(75, 18, 'I dont really know', '2013-12-05 12:31:58', 1, 18, 2),
+(76, 18, 'How many openings are there?', '2013-12-05 12:31:58', 14, 18, 2),
+(77, 18, 'I dont really know', '2013-12-05 12:31:58', 1, 18, 1),
+(78, 18, 'How many openings are there?', '2013-12-05 12:31:58', 1, 18, 1),
+(79, 18, 'I dont really know', '2013-12-05 12:31:58', 1, 18, 1),
+(80, 18, 'How many openings are there?', '2013-12-05 12:31:58', 14, 18, 1),
+(81, 18, 'I dont really know', '2013-12-05 12:31:58', 1, 18, 1),
+(82, 18, 'How many openings are there?', '2013-12-05 12:31:58', 1, 18, 1);
 
 -- --------------------------------------------------------
 
