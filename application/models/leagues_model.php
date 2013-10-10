@@ -23,7 +23,7 @@ class Leagues_model extends CI_Model {
             $query = 'select * from league_discussions where repliedno = ? ';
             $query2 = 'select count(*) as c from league_discussions where repliedno = ?';
             $result = $dbconn->query($query, array($postno))->result();
-            $count = $dbconn->query($query2, array($postno))->result()->c;
+            $count = $dbconn->query($query2, array($postno))->result()[0]->c;
             $pages = array();
             $final = array();
             $ctr = 0;
