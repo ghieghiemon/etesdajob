@@ -133,7 +133,7 @@
                                         foreach ($events as $a)
                                         {
                                             ?>   
-                                            <a href="">
+                                            <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>'>
                                             <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="PProfE"/></a>
                                             <?php
                                         }
