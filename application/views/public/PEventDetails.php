@@ -42,7 +42,8 @@
                            echo' <tbody>
                             	<tr>
                                 	<td>';?>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/ld5.jpg" class="thumbnail3" alt="">
+                            <img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>"class="thumbnail3 "/>
+                                 
                                     </td>
                                    <?php
                                     echo'<td>

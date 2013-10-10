@@ -146,11 +146,20 @@
         </div><!--end span left folumn-->
         
         <div class="span6">
-        	<div class="well wellMarg wellUpMarg">
+        	  	<div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
-                	<a href='pub/pub_alljob'>110 job vacancies nationwide!</a>
-                </p>
+                	<a href='pub/pub_alljob'>
+                                     <?php 
+                    foreach ($vacancies as $a)
+                    {
+                             echo $a['totalvacancies'];
+                    }
+                    ?>
+                   
+                            job vacancies nationwide!</a>
+                
+                        </p>
             </div><!--end whats new-->
             
           

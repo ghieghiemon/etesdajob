@@ -2,6 +2,17 @@
 
 class Model_pub extends CI_Model {
     
+     public function get_allVacancies()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT SUM(v.vacanciesleft) as totalvacancies from etesda.job_vacancies v 
+                             where status =1 ORDER BY totalvacancies DESC");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
+    
     public function get_industryVacancies()
     {
         $db2 = $this->load->database('default', TRUE);
