@@ -6,9 +6,7 @@ class Model_employer extends CI_Model {
         $db2 = $this->load->database('default', TRUE);
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $query = $db2->query("SELECT companyName from employer_profile WHERE userID = $id");
-        foreach ($query->result() as $row)
-        {
-         return $row->companyName;}
+        return $query->result_array();
         $db2->close();
     }
     public function get_epic(){

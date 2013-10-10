@@ -6,7 +6,7 @@
     	<div class="span3">
         	<div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
             	<br>
                 <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
@@ -60,7 +60,7 @@
             
             <div class="well wellUpMarg">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_266_flag.png" width="17"> Events
+                	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_266_flag.png" width="17"> Events
                 </h5>
                 
                 <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
@@ -99,10 +99,12 @@
                             </p>
           		
                 			<p class="evDetails3">
-                            	<em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11">'; 
-                                echo $row['startdate'];
-                                	echo ' | <img src="assets/img/icons/glyphicons_054_clock.png" width="11">';
-                                            echo $row['starttime'];
+                            	<em>
+                                '?><img src="<?php echo base_url()?>assets/img/icons/glyphicons_045_calendar.png" width="11">
+                                <?php echo $row['startdate'];
+                                	echo ' | '?>
+                                        <img src="<?php echo base_url()?>assets/img/icons/glyphicons_054_clock.png" width="11">
+                                           <?php echo $row['starttime'];
                                echo' </em><br>
                                 <strong>Location</strong>: ';
                                 echo $row['region'];
@@ -135,7 +137,7 @@
     				<div class="row-fluid">
     					<div align="right" style="margin-top:-15px">
                             <a href='pub/pub_allevents'>
-                                <img src="assets/img/icons/glyphicons_187_more.png">
+                                <img src="<?php echo base_url()?>assets/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
     				</div> <!--end row fluid upcoming events-->

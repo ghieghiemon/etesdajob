@@ -6,7 +6,7 @@
  
 <div class="col1" style="margin-left:16%;">
  
-<h5><img src="<?php echo base_url()?>assets/bootstrap/img/footer-tesda.png" width="50px">&nbsp;&nbsp;&nbsp;<img src="assets/img/certify-logo.png"></h5>
+<h5><img src="<?php echo base_url()?>assets/bootstrap/img/footer-tesda.png" width="50px">&nbsp;&nbsp;&nbsp;<img src="<?php echo base_url()?>assets/img/work-logo.png"></h5>
 
 &#169; 2012, e-TESDA
  <br>
@@ -21,7 +21,7 @@
 <br>
 <a href=#><img src="<?php echo base_url()?>assets/bootstrap/img/learn-logo.png"></a>
 <br><br>
-<a href=#><img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"></a>
+<a href=#><img src="<?php echo base_url()?>assets/bootstrap/img/certify-logo.png"></a>
 <!--- The Second Column of The Four Column Blog Footer --></div>
  
 
@@ -56,7 +56,7 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
     
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery.min.js"></script>

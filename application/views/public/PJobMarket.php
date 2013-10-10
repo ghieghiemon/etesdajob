@@ -96,7 +96,7 @@
                     $ctr = 1;
                     if(count($search) == 0)
                      {
-                         echo '<p class = "noCommYet"> There are no results for this job search </p>';
+                         echo '<p class = "noCommYet"> There are no jobs available</p>';
                      }
                      else
                      {

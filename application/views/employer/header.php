@@ -82,7 +82,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo base_url()?>main/employer_dashboard">
+                    <a class="brand" href="<?php echo base_url()?>employer/employer_dashboard">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:200px;margin-top:-2px;">
@@ -114,14 +114,14 @@
                                 </h5>
                                 </a>
                                 
-                                <a href="<?php echo base_url()?>main/employer_vacancypage" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>employer/employer_vacancypage" class="btn btn-group transBtn">
                                     <h5 class="media-heading">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="17"> 
                                         <br>Vacancies
                                     </h5>
                                 </a>
                                 
-                                <a href="<?php echo base_url()?>main/employer_dashboard" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>employer/employer_dashboard" class="btn btn-group transBtn">
                                   <h5 class="media-heading">
                                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_351_book_open.png" width="20"> 
                                       <br>Dashboard
@@ -140,8 +140,13 @@
                     		</li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                	<img src="<?php echo base_url()?>assets/bootstrap/img/a2.jpg" width="40" height="20" style="margin-left:-11px;"> Nestle
-                                    <b class="caret"></b>
+                                	<img src="<?php echo base_url()?>profilepics/<?php echo $pic;?>" width="25" height="15" style="margin-left:-11px;"> 
+                                     <?php foreach($name as $a)
+                                            {
+                                                echo $a['companyName'];
+                                            }
+                                            ?> 
+                                        <b class="caret"></b>
                                 </a>
                                 
                                 <ul class="dropdown-menu">
@@ -235,4 +240,19 @@
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
 </div>
+       <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-button.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
 <!--postV modal end-->

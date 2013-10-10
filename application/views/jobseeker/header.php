@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="<?php echo base_url()?>main/jobseeker_dashboard">
+                    <a class="brand" href="<?php echo base_url()?>jobseeker/jobseeker_myappspage">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:250px;margin-top:-2px;">
@@ -109,3 +109,19 @@
                </div> <!--/container fluid-->
                </div> <!--/.navbar-inner -->
                </div> <!--/.navbar -->
+               
+    <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-popover.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-button.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
