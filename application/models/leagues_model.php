@@ -21,10 +21,13 @@ class Leagues_model extends CI_Model {
             
             $dbconn = $this->load->database('local', TRUE);
             $query = 'select * from league_discussions where repliedno = ? ';
+            $query2 = 'select count(*) as c from league_discussions where repliedno = ?';
             $result = $dbconn->query($query, array($postno))->result();
+            $count = $dbconn->query($query2, array($postno))->result()->c;
             $pages = array();
             $final = array();
             $ctr = 0;
+            
             foreach($result as $r):
                 
                 $pages[] = array('reply' => $r->discussion, 
@@ -43,6 +46,12 @@ class Leagues_model extends CI_Model {
                 endif;
                 
             endforeach;
+          
+            if(($count % $itemperpage) > 0):
+                
+                $final[] = array_reverse($pages);
+                
+            endif;
             
             return $final[$pageno - 1];
 
