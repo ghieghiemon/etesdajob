@@ -44,8 +44,9 @@ class Jobseeker extends CI_Controller {
     public function match($jobno, $id)
     {
         $this->load->model('model_main');
-        $matchedCert = $this->model_main->get_matchedCert($jobno, $id);
-        $requiredCert = $this->model_main->get_jobcert($jobno);
+        $this->load->model('model_jobseeker');
+        $matchedCert = $this-> model_jobseeker->get_matchedCert($jobno, $id);
+        $requiredCert = $this-> model_jobseeker->get_jobcert($jobno);
         
         if(!($matchedCert < $requiredCert))
         {
@@ -60,11 +61,12 @@ class Jobseeker extends CI_Controller {
     public function jobseeker_jobmarketpage()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $jobs = $this->model_main->get_alljobs();
-        $dob = $this->model_main->get_dob($id);
-        $sex = $this->model_main->get_sex($id);
-        $qualified = $this->model_main->get_qualifiedjobs($dob, $sex);
+        $jobs = $this->model_jobseeker->get_alljobs();
+        $dob = $this->model_jobseeker->get_dob($id);
+        $sex = $this->model_jobseeker->get_sex($id);
+        $qualified = $this->model_jobseeker->get_qualifiedjobs($dob, $sex);
         
         $suggested = array();
         foreach($jobs as $a)
