@@ -70,7 +70,7 @@
                     $ctr = 1;
                     if(count($event) == 0)
                      {
-                         echo '<p class = "noCommYet">There are no upcoming events</p>';
+                         echo '<p class = "noCommYet"> There are no upcoming events</p>';
                      }
                      else
                      {
@@ -135,7 +135,7 @@
                     </div><!--end scrollable table-->
                     
     				<div class="row-fluid">
-    					<div align="right" style="margin-top:-15px">
+                            <div align="right" style="margin-top:-15px">
                             <a href='pub/pub_allevents'>
                                 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_187_more.png">
                             </a>
