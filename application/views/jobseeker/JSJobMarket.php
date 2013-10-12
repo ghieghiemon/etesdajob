@@ -102,7 +102,6 @@
                                  echo '<tr>
                                     
                                     <td>';
-                                 echo $a['jobno'];
                                        echo $a['jobtitle'];
                                 echo '</td>
                                    
@@ -136,7 +135,7 @@
                                     
                                     <td>';
                                     ?>
-                             <a class="btn btn-mini btn-info" href="<?php echo base_url()?>main/apply_job/<?php echo $a['jobno']?>">Apply</a>
+                             <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $a['jobno']?>">Apply</a>
                              <?php    
                              echo '</td>
                                 </tr>';

@@ -228,7 +228,7 @@ foreach($invites as $a)
     </div>
   	<div class="modal-footer">';
         ?>
-  	<a  href="<?php echo base_url()?>main/decline_job/<?php echo $a['invitationno']?>" class="btn btn-danger">Decline</a>
+  	<a  href="<?php echo base_url()?>jobseeker/decline_job/<?php echo $a['invitationno']?>" class="btn btn-danger">Decline</a>
     	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	
      </div>
@@ -499,7 +499,7 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                                 ?>
-                                    <a href="<?php echo base_url()?>main/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+                                    <a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
                                     </a>
                                     <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
