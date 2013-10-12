@@ -34,9 +34,11 @@ class Jobseeker extends CI_Controller {
     }
     public function jobseeker_myappsdetail($jobno)
     {
+         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $data['appdetails'] = $this->model_main->get_jobdetails($jobno);
-        $data['myapps'] =$this->model_main->get_mysideapplications($id,$jobno);
+        $data['appdetails'] = $this->model_jobseeker->get_jobdetails($jobno);
+        $data['myapps'] =$this->model_jobseeker->get_mysideapplications($id,$jobno);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyAppDetail',$data);
@@ -100,24 +102,27 @@ class Jobseeker extends CI_Controller {
     public function apply_jobinvite($jobno,$invno)
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $this->model_main->apply_job($id,$jobno);
-        $this->model_main->accept_job($invno);
+        $this->model_jobseeker->apply_job($id,$jobno);
+        $this->model_jobseeker->accept_job($invno);
         
         $this->jobseeker_myappsdetail($jobno);
     }
     public function apply_job($jobno)
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $this->model_main->apply_job($id,$jobno);
+        $this->model_jobseeker->apply_job($id,$jobno);
         
         $this->jobseeker_myappsdetail($jobno);
     }
     public function decline_job($invno)
     {
         $this->load->model('model_main');
-        $this->model_main->decline_job($invno);
+        $this->load->model('model_jobseeker');
+        $this->model_jobseeker->decline_job($invno);
         
         $this->jobseeker_myappspage();
     }
