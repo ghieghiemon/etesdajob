@@ -244,11 +244,19 @@ class Main extends CI_Controller {
     }
 //employer
 
-    public function get_cities($region)
+  public function get_cities($region)
     {
         $this->load->model('model_main');
+        $cityid= $this->session->userdata('cityid');
+        $cityname=  $this->model_main->get_cityname($cityid);
+        $cities = $this->model_main->get_cities($region);
+        if(($key = array_search($cityname,$cities))!= false)
+                unset($cities[$key]);
+        
         header('Content-Type: application/x-json; charset=utf-8');
-        echo(json_encode($this->model_main->get_cities($region)));
+        
+        echo(json_encode($cities));
+        
     }
     
  
