@@ -205,7 +205,7 @@ class Main extends CI_Controller {
         if($this->form_validation->run())
         {
             $data = array(
-                'email'DFFFF $this->input->post('email'),
+                'email' => $this->input->post('email'),
                 'is_logged_in' => 1
             );
             $this->session->set_userdata($data); 

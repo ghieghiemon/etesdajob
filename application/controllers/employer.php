@@ -152,8 +152,12 @@ class Employer extends CI_Controller {
     }
     public function employer_vacancypage()
     {
+        $this->load->model('model_employer');
+        
+        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
+        
         $this->employer_header();
-        $this->load->view('employer/EVacancies');
+        $this->load->view('employer/EVacancies',$data);
         $this->load->view('footer');
     }
     public function employer_updatevacancy($data)
