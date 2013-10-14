@@ -1,18 +1,17 @@
-<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
-
-<!--update vacancy modal start-->
-
+<body>
+<!--publish vacancy modal start-->
 <div class="modal hide fade" id="pubV">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">x</a>
-    <h3>Vacancy Preview</h3>
-  </div>
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Vacancy Preview</h3>
+  	</div>
 
-<div class="modal-body">
-<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
-        <div class="row-fluid">
-            <div class="span6">
-                <table class="previewMarg">
+	<div class="modal-body">
+                <span id="label1"></span>
+		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
                           <thead>
                               <tr>
                                   <th class="span1"></th>
@@ -28,19 +27,7 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                        <span id="jobname" name="jobname"></span>
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                               <tr>
-                                  <td class="previewDet">
-                                      Effectivity: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      <span id="effect" name="effect"></span>
+                                      	<span id="jobname" name="jobname"></span>
                                       </font>
                                   </td>
                               </tr>
@@ -48,12 +35,22 @@
                               <tr>
                                   <td class="previewDet">
                                       Description:
-                                      
                                   </td>
                                   
                                   <td>
-                                 <font class="previewDet2">
-                                      <span id="description" name="description"></span>
+                                	  <font class="previewDet2">
+                                      	<span id="description" name="description"></span>
+                                      </font>
+                                  </td>
+                              </tr>
+                               <tr>
+                                  <td class="previewDet">
+                                      Industry:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="industry" name="industry"></span>
                                       </font>
                                   </td>
                               </tr>
@@ -62,7 +59,7 @@
                 </div><!--end span-->
                 
                 <div class="span6">
-                <table class="previewMarg2">
+                	<table class="previewMarg2">
                           <thead>
                               <tr>
                                   <th class="span3"></th>
@@ -71,15 +68,15 @@
                           </thead>
                           
                           <tbody class="proPI">
-                           <tr>
+                          	  <tr>
                                   <td class="previewDet">
                                       Region: 
                                   </td>
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      <span id="region" name="region"></span>
-                                      </font>
+                                      	<span id="region" name="region"></span>
+                                      </font>	
                                   </td>
                               </tr>
                               
@@ -90,7 +87,7 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      <span id="city" name="city"></span>
+                                      	<span id="city" name="city"></span>	
                                       </font>
                                   </td>
                               </tr>
@@ -102,10 +99,23 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      <span id="vacant" name="vacant"></span>
+                                      	<span id="vacant" name="vacant"></span>
+                                      </font>	
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                                  <td class="previewDet">
+                                      Effectivity: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="effect" name="effect"></span>	Weeks
                                       </font>
                                   </td>
                               </tr>
+                              
                           </tbody>
                       </table>
                 </div>
@@ -113,9 +123,9 @@
         <hr class="hrLeagTab">
             
         <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
-        <div class="row-fluid">
-            <div class="span6">
-                <table class="previewMarg">
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
                           <thead>
                               <tr>
                                   <th class="span2"></th>
@@ -131,7 +141,8 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      Male
+                                      	<span id="msex" name="msex"></span>	
+                                        
                                       </font>
                                   </td>
                               </tr>
@@ -142,8 +153,8 @@
                                   </td>
                                   
                                   <td>
-                                 <font class="previewDet2">
-                                      25-40 
+                                	  <font class="previewDet2">
+                                      	<span id="sAge" name="sAge"></span> - <span id="eAge" name="eAge"></span>	
                                       </font>
                                   </td>
                               </tr>
@@ -152,260 +163,226 @@
                 </div><!--end span-->
                 
                 <div class="span6">
-                <p class="previewCCS">
-                <strong>CERTIFICATION/S:</strong> 
+                	<p class="previewCCS">
+                		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
+                        <span id="cert" name= "cert"></span>
+                        	
                         </font>
                     </p>
                    
                    <p class="previewCCS">
-                <strong>COMPETENCIES:</strong> 
+                		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-                        hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
+                        	<span id="comp" name= "comp"></span>
                         </font>
                     </p>
-                   
+                    
+                
                 </div><!--end span-->
                 
                
             </div><!--end row-fluid-->
-</div>
+	</div>
   
-  <div class="modal-footer">
-  <button id="repost" class="btn btn-info" >Update</button>
-    <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  </div>
+  	<div class="modal-footer">
+  		<a id="trigger" href="#" class="btn btn-info" data-dismiss="modal">Publish</a>
+    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
 </div>
-<!--update vacancy modal end-->
+<!--publish vacancy modal end-->
+  
+<!--add phase modal start-->
+<div class="modal hide fade" id="addPhase">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Add Phase</h3>
+  	</div>
 
-<!--Update yes or no modal start-->
-<div class="modal hide fade" id="update">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">x</a>
-    <h3></h3>
-  </div>
-
-<div class="modal-body">
-<p class="delete"><strong>
-                        The selected job vacancy is still active. 
-                                Continuing will update the details of the current vacancy.
-                                Would you like to continue?</strong></p>
-        
+	<div class="modal-body">
+		<table>
+        	<thead>
+            	<th class="span3">Choose a phase name</th>
+                <th class="span3">
+                	<input type="text" placeholder="" id="phaseName">
+                </th>
+            </thead>
+        </table>
+	</div>
+  
+  	<div class="modal-footer">
+  		<button type="button" onclick="addphase()" class="btn btn-info" data-dismiss="modal">Save</button>
+    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
 </div>
- 
-    <div class="modal-footer">
-    <div class="pull-right" style="text-align:center">
-    <button class="btn  btn-info">Yes</button>
-        <a href="#" class="btn" data-dismiss="modal">Cancel</a> 
-        </div> 
-    </div>
-</div>
-<!--Update yes or no modal end-->
+<!--add phase modal end-->
 
+<!--edit phase modal start-->
+<div class="modal hide fade" id="editPhase">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Edit Phase</h3>
+  	</div>
+
+	<div class="modal-body">
+		<table>
+        	<thead>
+            	<th class="span3">Choose a phase name</th>
+                <th class="span3">
+                	<input type="text" placeholder="" id="phaseName">
+                </th>
+            </thead>
+        </table>
+	</div>
+  
+  	<div class="modal-footer">
+  		<a href="#" class="btn btn-info" data-dismiss="modal">Save</a>
+    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
+</div>
+<!--edit phase modal end-->
+  
+<!--delete phase modal start-->
+<div class="modal hide fade" id="delPhase">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Delete Phase</h3>
+  	</div>
+
+	<div class="modal-body">
+		<p class="delete">Are you sure you want to delete this phase?</p>
+	</div>
+  
+  	<div class="modal-footer">
+  		<a href="#" class="btn btn-danger" data-dismiss="modal">Okay</a>
+    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
+</div>
+<!--delete phase modal end-->
 
                
-<div class="container">
+<form class="container" method="post" action="employer_postvacancy" id="publish">
 <div style="margin-left: 1%; margin-top: 1%; margin-bottom:-7%">
-    
-<div class="row-fluid">
-    <div class="span12">
-        <div class="well">
-                    <?php
-                        foreach($jobdetails as $a)
-                        {
-                    ?>
-                 <form method="post" action="<?php echo base_url()?>main/employer_checkvalidrepost" id="publish">   
-            <h3 class="media-heading vName">
-                    <img src="assets/img/icons/glyphicons_264_vcard.png" width="25"> 
-                    <?php
-                    echo $a['jobtitle'];
-                    ?>
-                    </h3>
-                    <input type="hidden" name="jobtitle" id="jobtitle" value="<?php echo $a['jobtitle']?>">
-                <input type="hidden" name="jobno" id="jobno" value="<?php echo $a['jobno']?>">
+	<div class="row-fluid">
+    	<div class="span12">
+        	<div class="well">
+                      
+            	<h4 class="media-heading">Post Vacancy</h4>
                 
                 <div class="row-fluid">
                     <div align="right">
-                        <a id="pub" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg2" data-dismiss="modal">
-                       
-                            Update Vacancy
+                        
+                        <a id="pub" style="margin-top:-50px;" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg">
+                            Publish Vacancy
                         </a>
                     </div>
-                <!--end publish button-->
-                <hr class="hrPV2">
+                </div><!--browserend publish button-->
+                <hr class="hrPV">
                 
-            <div class="tabbable tabs-left PVDetMarg"> <!-- start tabs-->
+            	<div class="tabbable tabs-left PVDetMarg"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li class="active rTabLink"><a href="#tab1" data-toggle="tab">Summary</a></li>
+                        <li class="active rTabLink"><a href="#tab1" data-toggle="tab">General Information</a></li>
                         <li class="rTabLink"><a href="#tab2" data-toggle="tab">Qualifications</a></li>
+                      
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="tab1">
-                        <div style="width:1080px;height:360px;overflow:auto;"><!--start scrollable table-->
-                            <div class="row-fluid">
-                                <div class="span12">
-                                <div class="well">
-                                        <div  style="margin-bottom:-5px;">
-                                            <h5 class="media-heading previewColor">| DETAILS</h5> 
-                                          
-                                                  <div class="row-fluid">
-                                                    <div class="span6">
-                                                        <table class="vdTableMarg">
-                                                          <thead>
-                                                              <tr>
-                                                                  <th class="span4" style="text-align:center"></th>
-                                                                  <th class="span5" style="text-align:center"></th>
-                                                                  <th class="span1" style="text-align:center"></th>
-                                                              </tr>
-                                                          </thead>
-                                                          
-                                                          <tbody class="recName">
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    Date Posted:
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    09/23/2013
-                                                                    <br>
-                                                                    <font class="vEditDate2">
-                                                                        Last edited: 09/23/2013
-                                                                    </font>
-                                                                    
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                </td>
-                                                              </tr>
-                                                              
-                                                               <tr>
-                                                                <td class="vdDesc">
-                                                                    Status:
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    <p class="statMarg">
-                                                                    ACTIVE
-                                                                    </p>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                </td>
-                                                              </tr>
-                                                              
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    Effectivity:
-                                                                </td>
-                                                                
-                                                                <td class="myStyle2EditV">
-                                                                   <?php 
-                                                                $options = array(
-                                                                '2'  => '2 weeks',
-                                                                '3'  => '3 weeks',
-                                                                '4'  => '4 weeks',
-
-                                                                );
-                                                                $js = 'id="effectivity"';
-                                                                echo form_dropdown('effectivity', $options, '2', $js);
-
-                                                                ?>
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    
-                                                                </td>
-                                                              </tr>
-                                                              
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    Description:
-                                                                </td>
-                                                                
-                                                                <td class="myStyle3EditV">
-                                                                   <textarea id="desc" name="desc" rows="6"></textarea> 
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                    
-                                                                </td>
-                                                              </tr>        
-                                                          </tbody>
-                                                      </table> 
+                        	<div style="width:1010px;height:360px;overflow:auto;"><!--start scrollable table-->
+                            	<div class="row-fluid">
+                                	<div class="span12">
+                                		<div class="well">
+                                        	<div class="form-horizontal4 GIMarg">
+                                            	    	<div class="row-fluid">
+                                                            
+                                                	<div class="span6">
+                                                    	<div class="control-group">
+                                                            <label class="control-label lLabel2">Job Title: &nbsp;</label>
+                                                            <div class="controls">
+                                                             
+                                                                <input type="text" id="JN" name="JN" placeholder="" >
+                                                            </div>
+                                                        </div> <!--end JT field-->
+                                                        
+                                                        <div class="control-group">
+                                                            <label class="control-label lLabel2">Description: &nbsp;</label>
+                                                            <div class="controls">
+                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ></textarea>
+                                                            </div>
+                                                        </div> <!--end Desc field-->
+                                                        
+                                                        <div class="control-group">
+                                                            <label class="control-label lLabel2">Industry: &nbsp;</label>
+                                                            <div class="controls">
+                                                                   <?php    
+                                                                $industry['#'] = 'Please Select';
+                                                                $params = 'id="industries"'; 
+                                                               echo form_dropdown('industry', $industry,'#',$params);     
+                                                               ?> 
+                                                            </div>
+                                                        </div> <!--end Desc field-->
+                                                        
                                                     </div><!--end span-->
                                                     
                                                     <div class="span6">
-                                                        <strong style="margin-left:70px;">Location</strong>
-                                                        <table>
-                                                          <thead>
-                                                              <tr>
-                                                                  <th class="span4" style="text-align:center"></th>
-                                                                  <th class="span5" style="text-align:center"></th>
-                                                                  <th class="span1" style="text-align:center"></th>
-                                                              </tr>
-                                                          </thead>
-                                                          
-                                                          <tbody class="recName">
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    Region:
-                                                                </td>
-                                                                
-                                                                <td class="myStyle2EditV">
+                                                    	<div class="control-group">
+                                                            <label class="control-label lLabel2">Region: &nbsp;</label>
+                                                            <div class="controls">
                                                                 <?php $regions['#'] = 'Please Select'; ?>
                                                                 <?php $cities['#'] = 'Please Select'; ?>
-                                                                <?php $params = 'id="regions"'; 
-                                                                echo form_dropdown('regionid', $regions, '#',$params);
+                                                                <?php 
+                                                                  $params = 'id="regions"'; 
+                                                                 echo form_dropdown('regionid', $regions, '#',$params);
                                                                 ?> 
-                                                                </td>
-                                                                
-                                                                <td>
-                                                                </td>
-                                                              </tr>
-                                                              
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    City:
-                                                                </td>
-                                                                
-                                                                <td class="myStyle2EditV">
+                                                            </div>
+                                                        </div> <!--end RGN field-->
+                                                        
+                                                        <div class="control-group">
+                                                            <label class="control-label lLabel2">City/Province: &nbsp;</label>
+                                                            <div class="controls">
                                                                 <?php 
                                                                 $params = 'id="cities"'; 
                                                                 echo form_dropdown('cityid', $cities, '#', $params);
                                                                 ?> 
-                                                                </td>
+                                                            </div>
+                                                        </div> <!--end CoP field-->
+                                                        
+                                                		<div class="control-group">
+                                                            <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
+                                                            <div class="controls">
+                                                                    <input type="text" id="NOV" name="NOV" placeholder="" >
+                                                            </div>
+                                                        </div> <!--end NOV field-->
+                                                        
+                                                        <div class="control-group">
+                                                            <label class="control-label lLabel2">Effectivity: &nbsp;</label>
+                                                            <div class="controls">
                                                                 
-                                                                <td>
-                                                                </td>
-                                                              </tr>
-                                                              
-                                                              <tr>
-                                                                <td class="vdDesc">
-                                                                    Vacancies Left:
-                                                                </td>
                                                                 
-                                                                <td class="myStyleEditV">
-                                                                    <input type="number" id="NOV">
-                                                                </td>
+                                                        <?php 
+                                                        $options = array(
+                                                        '2'  => '2 weeks',
+                                                        '3'    => '3 weeks',
+                                                        '4'   => '4 weeks',
+
+                                                        );
+                                                        $js = 'id="effectivity"';
+
+                                                        echo form_dropdown('effectivity', $options, '2', $js);
+
+                                                        ?>
                                                                 
-                                                                <td>
-                                                                </td>
-                                                              </tr>
-                                                          </tbody>
-                                                      </table>
-                                                    </div><!--end span-->
-                                                  </div><!--end row-fluid-->
-                                </div>
-                                </div><!--end well-->
-                                        
-                                        <div class="well">
-                                    <h5 class="media-heading previewColor">| STATUS</h5>
-                                        <font class="vdDesc2">
-                                            Unscreened, Screeened, Exam, Interview, Hired
-                                            </font>
-                                    </div><!--end well-->
+                                                                
+                                                                
+                                                            </div>
+                                                        </div> <!--end EF field-->
+                                                        
+                                                </div><!--end span-->
+                                                
+                                                
+                                                </div><!--end row-fluid-->
+                                			</div>
+                                		</div><!--end well-->
                                     </div><!--end span-->
                                 </div><!--end row-fluid-->
                             </div><!--end scrollable table-->
@@ -413,8 +390,9 @@
                         </div> <!--end tab pane general info-->
                         
                         <div class="tab-pane" id="tab2">
+                        	<div style="width:1010px;height:650px;overflow:auto;"><!--start scrollable table-->
                             <div class="row-fluid">
-                            <div class="span12">
+                            	<div class="span12">
                                 <div class="well">
                                     <div class="form-horizontal4 qualiMarg">
                                         <div class="row-fluid">
@@ -422,17 +400,18 @@
                                                 <div class="control-group">
                                                     <label class="control-label lLabel2" style="margin-left:126px;">Sex: &nbsp;</label>
                                                     <div class="controls">
-                                                        
-                                                          <?php 
-                                                                $options = array(
-                                                                '0'  => 'Female',
-                                                                '1'  => 'Male',
-                                                                '2'  => 'Both',
+                                                         <?php 
+                                                        $options = array(
+                                                        'Female'  => 'Female',
+                                                        'Male'    => 'Male',
+                                                        'Both'   => 'Both',
 
-                                                                );
-                                                                $js = 'id="sex"';
-                                                                echo form_dropdown('sex', $options, '1', $js); ?>
-                                                        
+                                                        );
+                                                        $js = 'id="sex"';
+
+                                                        echo form_dropdown('sex', $options, 'Male', $js);
+
+                                                        ?>
                                                     </div>
                                                 </div> <!--end sex field-->
                                             </div><!--end span-->
@@ -441,385 +420,150 @@
                                                 <div class="control-group">
                                                     <label class="control-label lLabel2" style="margin-left:-84px;">Age Range: &nbsp;</label>
                                                     <div class="control-group"><!-- start div age -->
-                                                        <div class="myStyle12">
-                                                            <input type="text" id="ageto" name="ageto"><strong> to </strong>
-                                                            <input type="text" id="agefrom" name="agefrom">
+                                                        <div class="myStyle12 ">
+                                                       <input type="text" id="ageto" name="ageto"><strong> to </strong>
+                                                       <input type="text" id="agefrom" name="agefrom">
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
                                             </div><!--end span-->
                                         </div><!--end row-fluid-->
                                     </div>
-                                    
-                                    <hr class="hrDicussBig">
-                                    <div class="row-fluid">
-                                    <div class="span6">
-                                        <div class="well">
-                                            <h4 class="media-heading previewColor">
+                             <hr class="hrDicussBig">
+                                   <h4 class="media-heading previewColor">
                                                     | CERTIFICATION/S
                                                 </h4>
-                                                
-                                                <div class="myStyle2VD" align="right">
-                                                    <select name="Industry">
-                                                        <option>Choose Industry</option>
-                                                        <option>Agriculture & Fishery</option>
-                                                    </select>
+                            
+                                    
+                                    
+                                    
+                                        <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
+                                                       <?php    
+                                                                $industry['#'] = 'Choose Industry';
+                                                                $params = 'id="industrycert" style="width:40%" '; 
+                                                               echo form_dropdown('industry', $industry,'#',$params);    
+                                                               
+                                                               ?> 
+                                            
                                                     
                                                     <select name="NC Level">
                                                         <option>NCI</option>
                                                         <option>NCII</option>
                                                     </select>
                                                 </div>
-                                        
-                                        <div style="width:498px;height:160px;overflow:auto;"><!--start scrollable table-->
-                                                <table class="tableCC table-hover table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="span5" style="text-align:center;">Certificate Name</th>
-                                                            <th class="span4" style="text-align:center;">Description</th>
-                                                            <th class="span1" style="text-align:center;">Level</th>
-                                                            <th class="span2" style="text-align:center;">Options</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC I
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires, Connect wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC II
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC III
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                </div><!--end scrollable-->
-                                            </div><!--end well-->
-                                        </div><!--end span-->
-                                        
-                                        <div class="span6">
-                                        <div class="well">
-                                            <h4 class="media-heading previewColor">
-                                                    | YOUR CHOSEN CERTIFICATION/S
-                                                </h4>
-                                        
-                                        <div style="width:498px;height:180px;overflow:auto;"><!--start scrollable table-->
-                                                <table class="tableCC table-hover table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="span5" style="text-align:center;">Certificate Name</th>
-                                                            <th class="span3" style="text-align:center;">Description</th>
-                                                            <th class="span1" style="text-align:center;">Level</th>
-                                                            <th class="span3" style="text-align:center;">Options</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC I
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires, Connect wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC II
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC III
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                </div>                                                            </div><!--end scrollable-->
-                                            </div><!--end well cert-->
-                                        </div><!--end span-->
-                                    </div><!--end row-fluid-->
+
+                                           <div class="row-fluid marg17 margCCS">
+                                         <?php 
+             
+                                        $params = 'multiple="multiple" style="width:25%" name= "cert[]" id="lstcert1"'; 
+                                        echo form_multiselect('certs', $cert, '#', $params ); ?> 
+                                     <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddCert">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                   
+                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelCert">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                     
+                                        <!--<input id="btnAddCert" type="button" class ="btn btn-mini btn-info" style="margin-top:-30px;margin-left:7px;"value="  Add  " />-->
+                                        <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
                                     
-                                    <hr class="hrDicussBigA">
-                                    <div class="row-fluid">
-                                    <div class="span6">
-                                        <div class="well">
-                                            <h4 class="media-heading previewColor">
-                                                    | COMPETENCIES
-                                                </h4>
-                                                
-                                        <div style="width:498px;height:160px;overflow:auto;"><!--start scrollable table-->
-                                                <table class="tableCC table-hover table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="span5" style="text-align:center;">Competency</th>
-                                                            <th class="span4" style="text-align:center;">Description</th>
-                                                            <th class="span1" style="text-align:center;">Level</th>
-                                                            <th class="span2" style="text-align:center;">Options</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC I
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires, Connect wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC II
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC III
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> Add
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                </div><!--end scrollable-->
-                                            </div><!--end well-->
-                                        </div><!--end span-->
-                                        
-                                        <div class="span6">
-                                        <div class="well">
-                                            <h4 class="media-heading previewColor">
-                                                    | YOUR CHOSEN COMPETENCIES
-                                                </h4>
-                                        
-                                        <div style="width:498px;height:160px;overflow:auto;"><!--start scrollable table-->
-                                                <table class="tableCC table-hover table-condensed">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="span5" style="text-align:center;">Competency</th>
-                                                            <th class="span3" style="text-align:center;">Description</th>
-                                                            <th class="span1" style="text-align:center;">Level</th>
-                                                            <th class="span3" style="text-align:center;">Options</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC I
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires, Connect wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC II
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            <td>
-                                                                Electrical Installation & Maintenance
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                Install wires
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                NC III
-                                                            </td>
-                                                            
-                                                            <td>
-                                                                 <button class="btn btn-mini actionPHMarg">
-                                                                    <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove
-                                                                 </button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                                </div><!--end scrollable-->
-                                            </div><!--end well-->
-                                        </div><!--end span-->
-                                    </div><!--end row-fluid-->
-                                    <?php
-                                    }
-                                    ?>
-                                    </form>
-                                    </div><!--end well-->
-                               
-                            </div><!--end span-->
+                                         <select id="lstcert2" name= "certselect[]"multiple="multiple">
+
+                                         </select>
+                                  </div> <!--end row-fluid-->
+                                  
+                                    <h5 class="media-heading previewColor">
+                                        | CERTIFICATION DETAILS
+                                    </h5>
+                                  
+                                 
+                          <div class="row-fluid marg17 margCCS">
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;
+        
+                         <span style="font-weight:bold">Level:</span>
+                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:6%" name= "certlevel[]"multiple="multiple"> </select>
+                         <br>
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "certdesc[]"multiple="multiple"> </select>
+                                 
+                          
+                                  </div> <!--end row-fluid-->
+
+                                 <hr class="hrDicussBig">  
+                                    <h4 class="media-heading previewColor">
+                                        | COMPETENCIES
+                                    </h4>
+                                     <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
+                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies">
+                                               
+                                                </div>
+                                          <div class="row-fluid marg17 margCCS">
+                                            
+                                         <?php 
+                                         
+                                         $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"'; 
+                                         echo form_multiselect('competencies', $comp, '#', $params); ?>                                   
+                                         <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddComp">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelComp">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                        <select id="lstcomp2" name= "compselect[]" multiple="multiple">
+
+                                        </select>
+                                  </div> <!--end row-fluid-->
+                                  
+                                  
+                                    
+                                   
+         <h5 class="media-heading previewColor">
+                                        | COMPETENCY DETAILS
+                                    </h5>
+                                  
+                                  
+                          <div class="row-fluid marg17 margCCS">
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
+        
+                      
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "compdesc[]"multiple="multiple"> </select>
+                                 
+                          
+                                  </div> <!--end row-fluid-->
+                           
+                            
+                            
+
+                            	</div><!--end well-->
+                            	</div><!--end span-->
                             </div><!--end row-fluid-->
+                       	</div><!--end scrollable table-->
                             
                         </div> <!--end tab pane qualifications-->
                         
+                 
+                        
+                        
                 </div> <!--end tab content-->
                 </div> <!--end tabbable-->
+                    
             </div><!--end well-->
         </div><!--end span-->
     </div><!--end row-->
     
     </div><!--End div-->
-</div><!--End Container fluid-->
-
-     <hr>
-     <input type="hidden" id="urlcommand" value="<?php echo base_url("main/employer_checkvalidrepost"); ?>" />
-
+</form><!--End Container fluid-->
  
+            
+             
+
+
+      <hr>
+  
+</body>
+
 <script type="text/javascript">
     $(document).ready(function(){
        
@@ -832,7 +576,7 @@
         
         $("#pub").click(function(){
             
-           $("#jobname").html($("#jobtitle").val());
+           $("#jobname").html($("#JN").val());
            $("#description").html($("#desc").val());
            $("#vacant").html($("#NOV").val());
            $("#effect").html($("#effectivity").val());
@@ -843,38 +587,20 @@
            $("#sAge").html($("#ageto").val())
            $("#eAge").html($("#agefrom").val())
            
-        });
+           $("#cert").html($("#lstcert2").val())
+           $("#comp").html($("#lstcomp2").val())
            
+            
+        });
+            // wait search lng
+            
+        $("#trigger").click(function(){
+                
+        $("#publish").submit();
+        });
+            
         
     });
 </script>
+    
 
-
-
-
-        
-<script type="text/javascript">
-
-            $(document).ready(function(){
-          
-                var v = $('#urlcommand').val();
-                
-                $('#repost').click(function(){
-                               $.ajax({
-                                        url : v,                        
-                                        type: 'post',                   
-                                        dataType: 'json',
-                                        success : function(data) { 
-                                        if(data.result == 'true'){
-                                           alert('Repost Successful'); 
-                                        
-                                        } else { 
-                                            $('#pubV').modal('hide');
-                                            $("#update").modal('show');
-                                        }
-                                }
-                });
-            });
-                });
-
-</script>

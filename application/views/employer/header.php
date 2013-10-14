@@ -171,7 +171,7 @@
         
         <div class="row-fluid optionPV">
         	<div class="span6">
-                    <form method="post" action="<?php echo base_url()?>employer_repost">
+                    <form method="post" action="<?php echo base_url()?>employer/employer_repost">
             	<div class="well">
                 	<h5 class="media-heading previewColor">| Repost Existing Vacancy</h5>
                     <div style="width:248px;height:150px;overflow:auto;"><!--start scrollable table-->
