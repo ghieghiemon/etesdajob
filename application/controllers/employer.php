@@ -3,9 +3,15 @@ class Employer extends CI_Controller {
 //employer
     public function employer_dashboard()
     {
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+        
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
+        
         $this->employer_header();
         $this->load->view('employer/EDash');
-       // $this->load->view('footer');
+        $this->load->view('footer');
     }
     public function employer_header()
     {
@@ -153,7 +159,9 @@ class Employer extends CI_Controller {
     public function employer_vacancypage()
     {
         $this->load->model('model_employer');
+        $this->load->model('model_main');
         
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
         
         $this->employer_header();
