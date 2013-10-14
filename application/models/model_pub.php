@@ -101,7 +101,7 @@ class Model_pub extends CI_Model {
                                 JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
                                
                                 WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND v.sectorid =  $industry  
-                                AND v.city= $cityid
+                                AND v.city= $cityid AND status = 1
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         
@@ -120,7 +120,8 @@ class Model_pub extends CI_Model {
                                 JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                                 JOIN etesda.reference_city c ON c.cityid = v.city
                                 JOIN etesda.reference_region r ON r.regionid = v.region
-                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID                 
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID     
+                                 WHERE j.status = 1
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         

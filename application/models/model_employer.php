@@ -187,6 +187,35 @@ class Model_employer extends CI_Model {
                            from job_vacancies 
                            WHERE companyID = $id
                            ORDER BY jobtitle ASC
+                           
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
+    public function get_myActiveVacancies($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
+                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, vacanciesleft
+                           from job_vacancies 
+                           WHERE companyID = $id AND status = 1
+                           ORDER BY jobtitle ASC
+                           
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
+    public function get_myExpiredVacancies($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
+                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, vacanciesleft
+                           from job_vacancies 
+                           WHERE companyID = $id AND status = 0
+                           ORDER BY jobtitle ASC
+                           
                            ");
         return $sql->result_array();
         $db1->close();
@@ -203,6 +232,16 @@ class Model_employer extends CI_Model {
         else{
             
             return true;
+        }
+        $db1->close();
+    }
+    public function count_jobApplications($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
         }
         $db1->close();
     }
