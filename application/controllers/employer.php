@@ -16,7 +16,6 @@ class Employer extends CI_Controller {
         $data['name'] = $this->model_employer->get_ename();
         $data['pic'] = $this->model_employer->get_epic();
         $this->load->view('employer/header',$data);
-       //  $this->load->view('employer/EDash');
     }
     
     public function employer_postvacancypage()

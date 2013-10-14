@@ -132,10 +132,26 @@
                         <ul class="nav pull-right">
                         	
                         	<li>
-                                    <a data-toggle="modal" href="#postV" class="">
-                                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
-                                    Post Vacancy
-                                </a>
+                                    <?php
+                                    if(count($myvacancies) != 0)
+                                    {
+                                    ?>
+                                        <a data-toggle="modal" href="#postV" class="">
+                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
+                                        Post Vacancy
+                                        </a>
+                                    <?php
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                    <a href="employer_postvacancypage" class="">
+                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
+                                        Post Vacancy
+                                    </a>
+                                    <?php
+                                    }
+                                    ?>
                     		</li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
