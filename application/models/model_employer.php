@@ -245,5 +245,20 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function get_jobApplications($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+    public function get_jobdetails($jobno)
+    {
+       $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
+       return $query->result_array();
+       $db1->close();
+    }
 }
 ?>

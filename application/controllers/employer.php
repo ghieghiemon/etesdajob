@@ -138,10 +138,15 @@ class Employer extends CI_Controller {
     }
     
 
-    public function employer_appsperjob()
+    public function employer_appsperjob($jobno)
     {
+        $this->load->model('model_employer');
+        
+        $data['details'] = $this->model_employer->get_jobdetails($jobno);
+        $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+        
         $this->employer_header();
-        $this->load->view('employer/EAppsPerJob');
+        $this->load->view('employer/EAppsPerJob',$data);
         $this->load->view('footer');
     }
     public function employer_vacancypage()

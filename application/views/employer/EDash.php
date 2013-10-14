@@ -13,13 +13,13 @@
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
-    	<div class="span3">
+    	<div class="span4">
         	<div class="well">
             	<h5 class="media-heading">
             		<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="20"> Briefcase
                 </h5>
               
-                <div style="width:280px;height:220px;overflow:auto; margin-top:10px"><!--start scrollable table-->
+                <div style="width:380px;height:220px;overflow:auto; margin-top:10px"><!--start scrollable table-->
                 <ul class="nav nav-list">
                     <li>
                         <a href="#" class="Comm">
@@ -29,7 +29,7 @@
                                 </font>
                     			<br> 
                                 
-                                <p class="notifAgenda2">
+                                <p class="notifAgendaBig">
                                 	Interview with Dyanne Ocampo for Welder Assistant
                                 </p>
                             </div>
@@ -44,7 +44,7 @@
                                 </font>
                     			<br> 
                                 
-                                <p class="notifAgenda2">
+                                <p class="notifAgendaBig">
                                 	Interview with Dyanne Ocampo for Welder Assistant
                                 </p>
                             </div>
@@ -59,7 +59,7 @@
                                 </font>
                     			<br> 
                                 
-                                <p class="notifAgenda2">
+                                <p class="notifAgendaBig">
                                 	Interview with Dyanne Ocampo for Welder Assistant
                                 </p>
                             </div>
@@ -83,16 +83,16 @@
                 	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> Upcoming Events
                 </h5>
                 
-                <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:380px;height:290px;overflow:auto;"><!--start scrollable table-->
       				<div class="row-fluid"> <!--start row fluid upcoming events-->
 						
-                        <div class="span2">
+                        <div class="span3">
                         	<a data-toggle="modal" href="#ModEventDes">
                             	<img src="<?php echo base_url()?>assets/bootstrap/img/ld5.jpg" class="thumbnail" alt="">
                             </a>
                         </div>
         				
-        				<div class="span9">
+        				<div class="span8">
 							<p class="marg2">
                         		<a href="#" class="Name4">Happy to serve you!</a>
                             </p>
@@ -103,14 +103,14 @@
                                 </em><br>
                                 <strong>Location</strong>: NCR | Pasay City <br>
                                 <strong>Venue:</strong> SMX Convention Hall <br>
-                            	<span class="btn btn-info btn-mini"><a href="#" class="attendBtn">10 Attendees</a></span>
+                            	<span class="btn btn-info btn-mini"><a href="#ModEventAttend" data-toggle="modal" class="attendBtn">10 Attendees</a></span>
                             </p>
 					
 						</div>
 					</div> <!--end row-fluid-->
     				
      				<div class="row-fluid">
-						<div class="span2">
+						<div class="span3">
                         	<a data-toggle="modal" href="#ModEventDes">
                             	<img src="<?php echo base_url()?>assets/bootstrap/img/ld6.jpg" class="thumbnail" height="12">
                             </a>
@@ -118,7 +118,7 @@
                         </div>
         				
                        
-        				<div class="span9">
+        				<div class="span8">
                         	<p class="marg2">
                         		<a href="#" class="Name4">Employment Expo</a>
                             </p>
@@ -129,7 +129,7 @@
                                 </em><br>
                                 <strong>Location</strong>: NCR | Mandaluyong City <br>
                                 <strong>Venue:</strong> Mega Trade Hall, SM Mega Mall<br>
-                                <span class="btn btn-info btn-mini "><a href="#" class="attendBtn">800 Attendees </a></span>
+                                <span class="btn btn-info btn-mini "><a href="#ModEventAttend" data-toggle="modal" class="attendBtn">800 Attendees </a></span>
                             </p>
 						</div>
 					</div> <!--end row-fluid-->
@@ -145,54 +145,8 @@
             </div><!--end well-->
         </div><!--end span left folumn-->
         
-        <div class="span9">
-        	<div class="well wellMarg">
-            	<h4 class="media-heading">
-                	| Posted Vacancies
-                </h4>
-                
-                 <div class="tabbable tabs-left"> <!-- start tabs-->
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Welder Assistant</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Junior Welder</a></li>
-                        <li><a href="#tab3" data-toggle="tab">Lead Welder</a></li>
-                    </ul>
-          
-                    <div class="tab-content"> <!--start tab content-->
-                        <div class="tab-pane active" id="tab1">
-                        	<div style="width:720px;height:230px;overflow:auto;"><!--start scrollable table-->
-          <div class="chart_container_centered">
-
-            <canvas id="chartCanvas13" width="500" height="240">
-                Your web-browser does not support the HTML 5 canvas element.
-            </canvas>
-
-        </div>
-                                    
-                            </div><!--end scrollable table-->
-                            
-                        </div> <!--end tab pane tab1-->
-                        
-                        <div class="tab-pane" id="tab2">
-                        	<div style="width:720px;height:230px;overflow:auto;"><!--start scrollable table-->
-                            	hiiee
-                            </div><!--end scrollable table-->
-                            
-                        </div> <!--end tab pane tab2-->
-                        
-                        <div class="tab-pane" id="tab3">
-                        	<div style="width:720px;height:230px;overflow:auto;"><!--start scrollable table-->
-                            	hiiss
-                            </div><!--end scrollable table-->
-                            
-                        </div> <!--end tab pane tab3--> 
-            
-                   
-                </div> <!--end tab content-->
-                </div> <!--end tabbable-->
-            </div><!--end well-->
-            
-            <div class="well wellMarg wellUpMarg">
+        <div class="span8">
+            <div class="well wellMarg">
             	<h4 class="media-heading">
                 	| Received Applications
                 </h4>
@@ -206,35 +160,211 @@
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="UR">
-                        	<div style="width:940px;height:220px;overflow:auto;">
+                        	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                            	
+                            	<table class="tableUA table-hover table-condensed table-striped">
+                                	<thead>
+                                    	<tr>
+                                            <th class="span2" style="text-align:center">Job Title</th>
+                                            <th class="span2" style="text-align:center">Name</th>
+                                            <th class="span1" style="text-align:center">Location</th>
+                                            <th class="span1" style="text-align:center">Age</th>
+                                            <th class="span1" style="text-align:center">Sex</th>
+                                            <th class="span2" style="text-align:center">Certification</th>
+                                            <th class="span2" style="text-align:center">Competencies</th>
+                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody class="recName">
+                                    	
+                                        <tr>
+                                        	
+                                            <td>
+                                            	Welder Assistant
+                                            </td>
+                                            <td>
+                                            	<a href="#" class="recAppName">
+                                                    Angelica Guerrero
+                                                </a>
+                                            </td>
+                                            
+                                            
+                                            
+                                            <td>
+                                            	NCR | Makati City
+                                            </td>
+                                            
+                                            <td>
+                                            	29
+                                            </td>
+                                            
+                                            <td>
+                                            	F
+                                            </td>
+                                            
+                                            <td>
+                                            	Electrical Installation & Maintenance NCII
+                                            </td>
+                                            
+                                            <td>
+                                            	Wiring, Hello, HI, 
+                                                <font class="more">
+                                                	more...
+                                                </font>
+                                            </td>
+                                            <td>
+                                            	09/09/2013  0930pm
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                                 
-            <div id="container">  
-                <table id="newtable">
-                    <thead>
-                        <th>Col 1</th>
-                        <th>Col 2</th>
-                        <th>Col 3</th>
-                        <th>Col 4</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>2</td>
-                            <td>2</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-           
                             </div><!--end scrollable table-->
-                            <br><br>
+                            
+                            <div class="row-fluid">
+                                <div align="right">
+                                    <a href="">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                                    </a>
+                                </div>
+                            </div> <!--end row fluid-->
+                        </div> <!--end tab pane unscreened--> 
+            
+                    <div class="tab-pane" id="Inv">
+                    	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                            	<table class="tableUA table-hover table-condensed table-striped">
+                                	<thead>
+                                    	<tr>
+                                            <th class="span2" style="text-align:center">Job Title</th>
+                                            <th class="span2" style="text-align:center">Name</th>
+                                            <th class="span1" style="text-align:center">Location</th>
+                                            <th class="span1" style="text-align:center">Age</th>
+                                            <th class="span1" style="text-align:center">Sex</th>
+                                            <th class="span2" style="text-align:center">Certification</th>
+                                            <th class="span2" style="text-align:center">Competencies</th>
+                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody class="recName">
+                                    	
+                                        <tr>
+                                            <td>
+                                            	Welder Assistant
+                                            </td>
+                                            
+                                            <td>
+                                            	<a href="#" class="recAppName">
+                                                    Ruben Mendoza
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                            	NCR | Makati City
+                                            </td>
+                                            
+                                            <td>
+                                            	29
+                                            </td>
+                                            
+                                            <td>
+                                            	F
+                                            </td>
+                                            
+                                            <td>
+                                            	Electrical Installation & Maintenance NCII
+                                            </td>
+                                            
+                                            <td>
+                                            	Wiring, Hello, HI, 
+                                                <font class="more">
+                                                	more...
+                                                </font>
+                                            </td>
+                                            <td>
+                                            	09/09/2013  0930pm
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div><!--end scrollable table-->
+                             
+            				<div class="row-fluid">
+                                <div align="right">
+                                    <a href="">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                                    </a>
+                                </div>
+                            </div> <!--end row fluid-->
+                    </div> <!--end tab pane invited-->
+                    
+                    <div class="tab-pane" id="All">
+                    	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                            	<table class="tableUA table-hover table-condensed table-striped">
+                                	<thead>
+                                    	<tr>
+                                            <th class="span2" style="text-align:center">Job Title</th>
+                                            <th class="span2" style="text-align:center">Name</th>
+                                            <th class="span1" style="text-align:center">Location</th>
+                                            <th class="span1" style="text-align:center">Age</th>
+                                            <th class="span1" style="text-align:center">Sex</th>
+                                            <th class="span2" style="text-align:center">Certification</th>
+                                            <th class="span2" style="text-align:center">Competencies</th>
+                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                            <th class="span1" style="text-align:center">Status</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody class="recName">
+                                    	
+                                        
+                                        <tr>
+                                            <td>
+                                            	<a href="#" class="recAppName">
+                                                    Chelsea Oray
+                                                </a>
+                                            </td>
+                                            
+                                            <td>
+                                            	Welder Assistant
+                                            </td>
+                                            
+                                            <td>
+                                            	NCR | Makati City
+                                            </td>
+                                            
+                                            <td>
+                                            	29
+                                            </td>
+                                            
+                                            <td>
+                                            	F
+                                            </td>
+                                            
+                                            <td>
+                                            	Electrical Installation & Maintenance NCI
+                                            </td>
+                                            
+                                            <td>
+                                            	Wiring, Hello, HI, 
+                                                <font class="more">
+                                                	more...
+                                                </font>
+                                            </td>
+                                            <td>
+                                            	09/09/2013  0930pm
+                                            </td>
+                                            <td>
+                                            	<p class="statusB">Pending</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div><!--end scrollable table-->
+            
             			<div class="row-fluid">
                             <div align="right">
                                 <a href="">
@@ -249,13 +379,59 @@
                 </div> <!--end tabbable-->
                 
             </div><!--end well-->
+            
+            <div class="well wellMarg wellUpMarg">
+            	<h4 class="media-heading">
+                	| Posted Vacancies
+                </h4>
+                
+                 <div class="tabbable tabs-left"> <!-- start tabs-->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">Welder Assistant</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Junior Welder</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Lead Welder</a></li>
+                    </ul>
+          
+                    <div class="tab-content"> <!--start tab content-->
+                        <div class="tab-pane active" id="tab1">
+                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                            	<div class="chart_container_centered">
+
+                            <canvas id="chartCanvas13" width="500" height="240">
+                                Your web-browser does not support the HTML 5 canvas element.
+                            </canvas>
+
+                        </div>
+                            </div><!--end scrollable table-->
+                            
+                        </div> <!--end tab pane tab1-->
+                        
+                        <div class="tab-pane" id="tab2">
+                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                            	hiiee
+                            </div><!--end scrollable table-->
+                            
+                        </div> <!--end tab pane tab2-->
+                        
+                        <div class="tab-pane" id="tab3">
+                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                            	hiiss
+                            </div><!--end scrollable table-->
+                            
+                        </div> <!--end tab pane tab3--> 
+            
+                   
+                </div> <!--end tab content-->
+                </div> <!--end tabbable-->
+            </div><!--end well-->
+            
         </div><!--end span right column-->
     </div><!--end row-->
 
 </div><!--End div-->
 </div><!--End Container fluid-->
-
- </div>
+ 
+    
           
       <hr>
       <script type="text/javascript">

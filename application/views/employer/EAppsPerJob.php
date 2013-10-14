@@ -202,7 +202,7 @@
         <div class="span9">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_144_folder_open.png" width="30"> 
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
                     Applications
                     <font class="media-heading vName2">
                         | Welder Assistant
