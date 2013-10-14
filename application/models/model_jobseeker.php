@@ -28,11 +28,13 @@ class Model_jobseeker extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-       $query = $db1->query("SELECT j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
-           as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
-             FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
-             JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
-             WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
+       $query = $db1->query("SELECT r.region, c.city,  j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
+                                as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
+                                FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
+                                JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+				JOIN etesda.reference_region r ON r.regionid = v.region
+                                WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
                ORDER BY dateposted DESC");
         return $query->result_array();
        $db1->close();
@@ -82,6 +84,8 @@ class Model_jobseeker extends CI_Model {
         $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+				JOIN etesda.reference_region r ON r.regionid = v.region
                                 WHERE a.appid = $userid GROUP BY v.jobno
                                 ORDER BY a.datereceived DESC
                             ");

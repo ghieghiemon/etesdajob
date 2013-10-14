@@ -395,7 +395,7 @@ foreach($invites as $a)
                                 <th class="span3" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
                                 <th class="span2" style="text-align:center">Location</th>
-                                <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                <th class="span2" style="text-align:center">Date Applied</th>
                                 <th class="span4" style="text-align:center">Status</th>
                             </tr>
                         </thead>
@@ -419,10 +419,12 @@ foreach($invites as $a)
                             echo $a['companyName'];
                             echo '</a>
                                 </td>
-                                
-                                <td>
-                                    NCR | Pasig City
-                                </td>
+                                <td>';
+                               echo $a['region'];
+                                echo ' |  ';
+                                echo $a['city'];
+
+                                echo' </td>
                                 <td>';
                              echo $a['datereceived'];
                               echo  '</td>
@@ -482,9 +484,16 @@ foreach($invites as $a)
                                     <a href="#" class="recAppName">';
                             echo $a['companyName'];
                             echo '</a>
+                                </td>';
+                             echo '</a>
                                 </td>
                                 <td>';
-                            echo '</td>
+                               echo $a['region'];
+                                echo ' |  ';
+                                echo $a['city'];
+
+                                echo' </td>
+                                
                                
                                 <td>';
                             $date2 = $a['expirationdate'];
