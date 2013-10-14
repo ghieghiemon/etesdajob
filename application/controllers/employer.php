@@ -178,9 +178,12 @@ class Employer extends CI_Controller {
         $data['cert'] = $this->model_employer->getAllComp();  
         $data['comp'] = $this->model_employer->getAllCerts();
         $data['jobdetails'] = $this->model_jobseeker->get_jobdetails($jobno);
+		print_r($data['jobdetails']);
+		/**
         $data['industry'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $this->employer_updatevacancy($data);
+		**/
     }
     public function employer_checkvalidrepost()
 	{
