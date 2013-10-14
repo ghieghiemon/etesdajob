@@ -143,13 +143,6 @@ class Employer extends CI_Controller {
         echo(json_encode($this->model_employer->get_competencydesc($comp)));
     }
     
-
-    public function employer_appspage()
-    {
-        $this->employer_header();
-        $this->load->view('employer/EAppsPerJob');
-        $this->load->view('footer');
-    }
     public function employer_appsperjob()
     {
         $this->employer_header();

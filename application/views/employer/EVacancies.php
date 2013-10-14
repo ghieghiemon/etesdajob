@@ -22,8 +22,8 @@
                               <thead>
                                   <tr>
                                       <th class="span3" style="text-align:center">Job Title</th>
-                                      <th class="span1" style="text-align:center">Effectivity</th>
                                       <th class="span2" style="text-align:center">Location</th>
+                                      <th class="span1" style="text-align:center">Effectivity</th>
                                       <th class="span2" style="text-align:center">Vacancies Left</th>
                                       <th class="span2" style="text-align:center">Number of Applications</th>
                                       <th class="span3" style="text-align:center"></th>
@@ -31,25 +31,27 @@
                               </thead>
                               
                               <tbody class="recName">
+                                  <?php
+                                  foreach($myvacancies as $a)
+                                  {
+                                  ?>
                                   <tr>
                                       <td>
                                           <font class="vColor">	
-                                            Welder Assistant
+                                          <a href ="<?php echo base_url()?>employer/employer_appsperjob">
+                                            <?php echo $a['jobtitle']?> </a>
                                           </font>
                                           <br>
                                           <font class="vEditDate">
                                             Last edited: 09/23/2013
                                           </font>
                                       </td>
-                                      
-                                      <td>
-                                          4 days left
-                                      </td>
-                                      
                                       <td>
                                           NCR | Makati City
                                       </td>
-                                      
+                                      <td>
+                                          4 days left
+                                      </td>
                                       <td>
                                           20
                                       </td>
@@ -65,43 +67,12 @@
                                       
                                           <a href="EInviteJS.html" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
                                       </td>
+                                      
                                   </tr>
-                                  
-                                  <tr>
-                                      <td>
-                                          <font class="vColor">
-                                          Welder
-                                          </font>
-                                          <br>
-                                          <font class="vEditDate">
-                                            Last edited: 09/23/2013
-                                          </font>
-                                      </td>
-                                      
-                                      <td>
-                                          2 weeks left
-                                      </td>
-                                     
-                                      <td>
-                                          NCR | Makati City
-                                      </td>
-                                      
-                                      <td>
-                                          10
-                                      </td>
-                                      
-                                      <td>
-                                        <a href="EAppsPerJob.html" class="numofApps">
-                                          20
-                                        </a>
-                                      </td>
-                                      
-                                      <td>
-                                          <a href="EUpdateVacancy.html" class="invJS btn btn-primary btn-mini">Update</a>
-                                      
-                                          <a href="EInviteJS.html" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
-                                      </td>
-                                  </tr>                         
+                                  <?php
+                                  }
+                                  ?>
+                                                         
                                   
                               </tbody>
                           </table>	
@@ -214,10 +185,19 @@
 
 </div><!--End div-->
 </div><!--End Container fluid-->
- 
-            
-             
-
 
       <hr>
+      
+      <script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#newtable').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+           
+       });
+        
+    </script>
+    
       </body>

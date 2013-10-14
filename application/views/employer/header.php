@@ -133,7 +133,7 @@
                         	
                         	<li>
                                     <?php
-                                    if(count($myvacancies) != 0)
+                                    if(count($myvacancies) > 0)
                                     {
                                     ?>
                                         <a data-toggle="modal" href="#postV" class="">
@@ -142,10 +142,10 @@
                                         </a>
                                     <?php
                                     }
-                                    else
+                                    else if(count($myvacancies) <= 0)
                                     {
                                     ?>
-                                    <a href="employer_postvacancypage" class="">
+                                    <a href="<?php echo base_url()?>employer/employer_postvacancypage" class="">
                                          <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
                                         Post Vacancy
                                     </a>
