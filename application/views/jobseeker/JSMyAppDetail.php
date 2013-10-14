@@ -12,7 +12,7 @@
                         foreach($appdetails as $a)
                         {echo $a['jobtitle']; 
                         echo' at ';
-                         echo $a['companyID'];
+                         echo $a['companyName'];
                     echo'</font>
                 </h3>
                 
@@ -47,12 +47,13 @@
                                                       Date Posted:
                                                   </td>
                                                   
-                                                  <td>
-                                                      09/23/2013
-                                                      <br>
+                                                  <td>';
+                                                       echo $a['dateposted'];
+                                                     echo' <br>
                                                       <font class="vEditDate2">
-                                                          Last edited: 09/23/2013
-                                                      </font>
+                                                          Last edited: ';
+                                                     echo $a['lastedited'];
+                                                     echo' </font>
                                                       
                                                   </td>
                                                 </tr>
@@ -88,11 +89,9 @@
                                                   </td>
                                                   
                                                   <td>';
-                                                     $region = $this->model_main->get_regionname($a['region']);
-                                                     echo $region;
+                                                      echo $a['region'];
                                                      echo ' | ';
-                                                     $city = $this->model_main->get_cityname($a['city']);
-                                                     echo $city;
+                                                      echo $a['city'];
                                                  echo' </td>
                                                 </tr>
                                                 
