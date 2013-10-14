@@ -193,9 +193,13 @@
                                                             <?php echo $a['jobtitle']?> 
                                                         </td>
                                                         
-                                                        <td>
-                                                        	NCR | Pasig City
-                                                        </td>
+                                                           <?php
+                                                            echo' <td>';
+                                                            echo $a['region'];
+                                                            echo ' |  ';
+                                                            echo $a['city'];
+                                                            echo' </td>';
+                                                            ?>
                                                         
                                                         <td>
                                                             <?php

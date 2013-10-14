@@ -126,10 +126,17 @@
                                      
                                         echo' </td>
                                     
-                                    <td>';
-                                        
-                                       echo $row['expirationdate'];
-                                    echo '</td>
+                                              <td>' ?>
+                                                            <?php
+                                                            $date2 = $row['expirationdate'];
+                                                            $date = date('Y-m-d');
+                                                            $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                            $days = round((($diff/24)/60)/60);
+                                                            echo $days. " days left";
+                                                            ?>
+                                
+                                                       <?php echo' </td>
                                     
                                     <td>
                                         <span class="label label-info">20 Applied</span>

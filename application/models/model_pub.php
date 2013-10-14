@@ -28,8 +28,10 @@ class Model_pub extends CI_Model {
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
+        $query = $db1->query("SELECT *,e.companyName,r.region, c.city FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
+		     	    JOIN etesda.reference_city c ON c.cityid = j.city
+                            JOIN etesda.reference_region r ON r.regionid = j.region
                             WHERE sectorid = $sectorid
                             GROUP BY j.jobno ORDER BY j.dateposted DESC ");
         return $query->result_array();
@@ -135,7 +137,10 @@ class Model_pub extends CI_Model {
     public function get_postedVacancies($id)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM job_vacancies WHERE companyID = $id AND status = 1 ORDER BY dateposted");
+        $query = $db1->query("SELECT *,r.region, c.city  FROM job_vacancies j
+        JOIN etesda.reference_city c ON c.cityid = j.city
+        JOIN etesda.reference_region r ON r.regionid = j.region
+         WHERE companyID = $id AND status = 1 ORDER BY dateposted");
         return $query->result_array();
         $db1->close();
     }
