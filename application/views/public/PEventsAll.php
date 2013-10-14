@@ -83,9 +83,10 @@
                             
                             <tbody>
                            
-                            	<tr>
-                                	<a href="PEventDetails.html" class="LeaName3"> ';
-                                        echo $row['eventtitle'];
+                            	<tr>' ?>
+                                <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $row['eventno']?>' class="LeaName3">
+
+                                     <?php   echo $row['eventtitle'];
                                        echo' </a>
                                 	<td>';?>
                                         <img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>" class="thumbnail7 ePicMarg"/>
