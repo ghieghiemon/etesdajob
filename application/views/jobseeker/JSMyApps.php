@@ -407,8 +407,10 @@ foreach($invites as $a)
                                 
                                 
                                 <td>';
+                            ?><a href='<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>'>
+                            <?php
                             echo $a['jobtitle'];
-                            echo '</td>
+                            echo '</a></td>
                                 <td>';
                             echo $a['description'];
                             echo '</td>

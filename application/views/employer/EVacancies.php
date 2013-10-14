@@ -6,7 +6,7 @@
         <div class="span12">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_264_vcard.png" width="25"> Posted Vacancies
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Posted Vacancies
                 </h3>
                 
                 <div class="tabbable"> <!-- start tabs-->
@@ -31,10 +31,15 @@
                               </thead>
                               
                               <tbody class="recName">
+                                  <?php
+                                  foreach ($myvacancies as $a)
+                                  {
+                                  ?>
                                   <tr>
                                       <td>
                                           <font class="vColor">	
-                                            Welder Assistant
+                                          <a href ="<?php echo base_url()?>employer/employer_appsperjob">
+                                           <?php echo $a['jobtitle']?></a>
                                           </font>
                                           <br>
                                           <font class="vEditDate">
@@ -43,7 +48,14 @@
                                       </td>
                                       
                                       <td>
-                                          4 days left
+                                          <?php
+                                            $date2 = $a['expirationdate'];
+                                            $date = date('Y-m-d');
+                                            $diff = abs(strtotime($date2) - strtotime($date));
+
+                                            $days = round((($diff/24)/60)/60);
+                                            echo $days. " days left";
+                                          ?>
                                       </td>
                                       
                                       <td>
@@ -51,7 +63,7 @@
                                       </td>
                                       
                                       <td>
-                                          20
+                                          <?php echo $a['vacanciesleft']?>
                                       </td>
                                       
                                       <td>
@@ -66,42 +78,10 @@
                                           <a href="EInviteJS.html" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
                                       </td>
                                   </tr>
-                                  
-                                  <tr>
-                                      <td>
-                                          <font class="vColor">
-                                          Welder
-                                          </font>
-                                          <br>
-                                          <font class="vEditDate">
-                                            Last edited: 09/23/2013
-                                          </font>
-                                      </td>
-                                      
-                                      <td>
-                                          2 weeks left
-                                      </td>
-                                     
-                                      <td>
-                                          NCR | Makati City
-                                      </td>
-                                      
-                                      <td>
-                                          10
-                                      </td>
-                                      
-                                      <td>
-                                        <a href="EAppsPerJob.html" class="numofApps">
-                                          20
-                                        </a>
-                                      </td>
-                                      
-                                      <td>
-                                          <a href="EUpdateVacancy.html" class="invJS btn btn-primary btn-mini">Update</a>
-                                      
-                                          <a href="EInviteJS.html" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
-                                      </td>
-                                  </tr>                         
+                                  <?php
+                                  }
+                                  ?>
+                                                      
                                   
                               </tbody>
                           </table>	

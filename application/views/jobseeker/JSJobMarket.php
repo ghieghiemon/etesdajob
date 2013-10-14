@@ -125,11 +125,16 @@
                                 echo '</td>
                                     
                                     <td>
-                                        <span class="label label-info">20 Applied</span>
+                                        <span class="label label-info">';
+                                $count = $this->model_jobseeker->count_jobApplications($a['jobno']);
+                                echo $count;
+                                echo ' Applied</span>
                                     </td>
                                     
                                     <td>
-                                        <span class="label">15 Left </span>
+                                        <span class="label">';
+                                echo $a['vacanciesleft'];
+                                echo ' Left </span>
                                     </td>
                                     
                                     
@@ -166,9 +171,9 @@
 <!--                            <tbody class="recName">-->
                             <tbody class="recName">
                                 <?php
-                            foreach($suggested as $a)
+                            foreach($suggested as $b)
                             {
-                                $jobno[]=$a['jobno'];
+                                $jobno[]=$b['jobno'];
                             }
                             foreach($jobs as $a)
                             {
@@ -198,11 +203,16 @@
                                  echo '</td>
                                     
                                     <td>
-                                        <span class="label label-info">20 Applied</span>
+                                        <span class="label label-info">';
+                                 $count = $this->model_jobseeker->count_jobApplications($a['jobno']);
+                                echo $count;
+                                 echo ' Applied</span>
                                     </td>
                                     
                                     <td>
-                                        <span class="label">15 Left </span>
+                                        <span class="label">';
+                                 echo $a['vacanciesleft'];
+                                 echo ' Left </span>
                                     </td>
                                     
                                     
