@@ -192,34 +192,6 @@ class Model_employer extends CI_Model {
         return $sql->result_array();
         $db1->close();
     }
-    public function get_myActiveVacancies($id)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        
-       $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
-                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, vacanciesleft
-                           from job_vacancies 
-                           WHERE companyID = $id AND status = 1
-                           ORDER BY jobtitle ASC
-                           
-                           ");
-        return $sql->result_array();
-        $db1->close();
-    }
-    public function get_myExpiredVacancies($id)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        
-       $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
-                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, vacanciesleft
-                           from job_vacancies 
-                           WHERE companyID = $id AND status = 0
-                           ORDER BY jobtitle ASC
-                           
-                           ");
-        return $sql->result_array();
-        $db1->close();
-    }
     public function employer_checkjobstatus($jobtitle,$region,$city)
     {
         $db1 = $this->load->database('local', TRUE);

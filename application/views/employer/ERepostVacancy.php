@@ -1,4 +1,4 @@
-<body>
+
 <!--publish vacancy modal start-->
 <div class="modal hide fade" id="pubV">
   	<div class="modal-header">
@@ -191,76 +191,7 @@
   	</div>
 </div>
 <!--publish vacancy modal end-->
-  
-<!--add phase modal start-->
-<div class="modal hide fade" id="addPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Add Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<table>
-        	<thead>
-            	<th class="span3">Choose a phase name</th>
-                <th class="span3">
-                	<input type="text" placeholder="" id="phaseName">
-                </th>
-            </thead>
-        </table>
-	</div>
-  
-  	<div class="modal-footer">
-  		<button type="button" onclick="addphase()" class="btn btn-info" data-dismiss="modal">Save</button>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--add phase modal end-->
-
-<!--edit phase modal start-->
-<div class="modal hide fade" id="editPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Edit Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<table>
-        	<thead>
-            	<th class="span3">Choose a phase name</th>
-                <th class="span3">
-                	<input type="text" placeholder="" id="phaseName">
-                </th>
-            </thead>
-        </table>
-	</div>
-  
-  	<div class="modal-footer">
-  		<a href="#" class="btn btn-info" data-dismiss="modal">Save</a>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--edit phase modal end-->
-  
-<!--delete phase modal start-->
-<div class="modal hide fade" id="delPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Delete Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<p class="delete">Are you sure you want to delete this phase?</p>
-	</div>
-  
-  	<div class="modal-footer">
-  		<a href="#" class="btn btn-danger" data-dismiss="modal">Okay</a>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--delete phase modal end-->
-
-               
+              
 <form class="container" method="post" action="employer_postvacancy" id="publish">
 <div style="margin-left: 1%; margin-top: 1%; margin-bottom:-7%">
 	<div class="row-fluid">
