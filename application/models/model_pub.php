@@ -121,7 +121,7 @@ class Model_pub extends CI_Model {
                                 JOIN etesda.reference_city c ON c.cityid = v.city
                                 JOIN etesda.reference_region r ON r.regionid = v.region
                                 JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID     
-                                 WHERE j.status = 1
+                                 WHERE v.status = 1
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         
