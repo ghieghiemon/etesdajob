@@ -54,14 +54,31 @@
                   <div align="center">
                   <span class="badge badge-important">
                   	<h6>
+                          <?php
+                          foreach ($details as $a)
+                          {
+                          ?>
                           <a href="#" class="numAppC2">
-                              4 Vacancies Left 
+                              <?php 
+                              $left =  $a['vacanciesleft'];
+                              echo $left;
+                              if ($left >1)
+                                  echo " Vacancies";
+                              else 
+                                  echo " Vacancy";
+                              ?>  Left
                           </a>
+                          <?php
+                          }
+                          ?>
                      </h6>
                   </span>
+                      
                   </div>
               </div><!--end vacancies left-->
-              
+              <h3 class="media-heading vNameJA">
+                            Welder Assistant
+                        </h3>
                 <div style="width:310px;height:518px;overflow:auto;margin-top:10px"><!--start scrollable table-->
                 	<div class="well">
                     	<h5 class="media-heading previewColor">

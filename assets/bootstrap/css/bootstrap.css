@@ -10227,3 +10227,9 @@ img.photo{
 	margin-left:5px;
 }
 
+.vNameJA {
+	font-style:oblique;
+	font-size:21px;
+	color:#93C;
+	text-align:center;
+}
