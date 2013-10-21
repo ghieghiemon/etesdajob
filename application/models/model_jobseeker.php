@@ -48,22 +48,14 @@ class Model_jobseeker extends CI_Model {
        {return $row->description;}
        $db1->close();
     }
-//    public function get_jobdetails($jobno)
-//    {
-//       $db1 = $this->load->database('local', TRUE);
-//       $query = $db1->query("SELECT *, r.region, c.city, companyName  from job_vacancies j
-//                            JOIN etesda.reference_city c ON c.cityid = j.city
-//                            JOIN etesda.reference_region r ON r.regionid = j.region
-//                            JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-//                            where jobno = $jobno");
-//       return $query->result_array();
-//       $db1->close();
-//    }
-    
-       public function get_jobdetails($jobno)
+    public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
+       $query = $db1->query("SELECT *, r.region, c.city, companyName  from job_vacancies j
+                            JOIN etesda.reference_city c ON c.cityid = j.city
+                            JOIN etesda.reference_region r ON r.regionid = j.region
+                            JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
+                            where jobno = $jobno");
        return $query->result_array();
        $db1->close();
     }
