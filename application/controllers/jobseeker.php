@@ -126,5 +126,28 @@ class Jobseeker extends CI_Controller {
         
         $this->jobseeker_myappspage();
     }
+    
+           public function js_searchjob()
+    {
+        $this->load->model('model_main');
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
+        $data['search'] = $this->search_job();
+   
+        
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSJobMarket',$data);
+        $this->load->view('footer');
+    }
+    
+      public function search_job()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_pub');
+        $search = $this->model_pub->search_job($this->input->post('JT'),
+                 ($this->input->post('industry')),($this->input->post('cityid')),
+                 ($this->input->post('COMP')));
+        return $search;        
+   }
 }
 ?>
