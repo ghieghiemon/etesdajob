@@ -101,7 +101,7 @@
                      else
                      {
              foreach($search as $row){
-                   if($ctr <3){
+                   if($ctr >=1){
              
                 echo'
                                 <tr>
@@ -139,7 +139,14 @@
                                                        <?php echo' </td>
                                     
                                     <td>
-                                        <span class="label label-info">20 Applied</span>
+                                        <span class="label label-info">'?>
+                                         <?php
+                                                $appcount = $this->model_pub->count_jobApplications($row['jobno']);
+                                                echo $appcount;
+                                            ?>
+                                            Applied
+                                        
+                                    <?php echo'</span>
                                     </td>
                                     
                                     <td>';
