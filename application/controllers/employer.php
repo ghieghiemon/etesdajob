@@ -196,6 +196,32 @@ class Employer extends CI_Controller {
         $this->employer_updatevacancy($data);
 
      }
+    
+//     public function employer_repost()
+//    {
+//        $this->load->model('model_main');
+//        $this->load->model('model_employer');
+//        $this->load->model('model_jobseeker');
+//        $jobno = $this->input->post('jobvacancy');   
+//        $data['cert'] = $this->model_employer->getAllComp();  
+//        $data['comp'] = $this->model_employer->getAllCerts();
+//
+//        $job = $this->model_jobseeker->get_jobdetails($jobno);
+//        $data['jobdetails'] = $job;
+//
+//        $data['jobdetails'] = $this->model_jobseeker->get_jobdetails($jobno);
+//		print_r($data['jobdetails']);
+//
+//        $data['industry'] = $this->model_main->get_drpindustries();
+//        $data['regions'] = $this->model_main->get_regions();
+//        foreach ($job as $a)
+//        {
+//            $city = array('cityid'=> $a['city']);
+//        }
+//        $this->session->set_userdata($city);
+//        $this->employer_updatevacancy($data);
+//	
+//    }
 
     public function employer_checkvalidrepost()
 	{

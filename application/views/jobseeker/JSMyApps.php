@@ -330,7 +330,7 @@ foreach($invites as $a)
             	<h6 class="media-heading">
                 	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h6>
-                   <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
+                   <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>jobseeker/js_searchjob'/>
                 
                 <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
@@ -356,7 +356,7 @@ foreach($invites as $a)
                     <?php $regions['0'] = 'Region'; ?>
                     <?php $cities['0'] = 'City'; ?>
                     <?php 
-                    $params = 'id="region"'; 
+                    $params = 'id="regions"'; 
                     echo form_dropdown('regionid', $regions, '0',$params);
                     ?> 
 
