@@ -76,11 +76,12 @@
                       
                   </div>
               </div><!--end vacancies left-->
-              <h3 class="media-heading vNameJA">
-                            Welder Assistant
-                        </h3>
+              
                 <div style="width:310px;height:518px;overflow:auto;margin-top:10px"><!--start scrollable table-->
                 	<div class="well">
+                            <h3 class="media-heading vNameJA">
+                            Welder Assistant
+                        </h3>
                     	<h5 class="media-heading previewColor">
                             | Details
                         </h5>
