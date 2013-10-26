@@ -237,11 +237,11 @@
                     
                 </div><!--end legend-->
                 
-                <div align="right" class="changeBtnMarg">
+<!--                <div align="right" class="changeBtnMarg">
                 	<a href="#changeStat" data-toggle="modal" class="btn btn-info">
                     	CHANGE STATUS
                     </a>
-                </div><!--end div-->
+                </div>end div-->
                 <br>
                 <hr class="hrDicussBigA">
                 
@@ -261,8 +261,7 @@
                               <table class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox"></th>
-                                          <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                          <th class="span1" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span2" style="text-align:center">Job Title</th>
                                           <th class="span1" style="text-align:center">Location</th>
@@ -271,64 +270,16 @@
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span1" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
+                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
                                   <tbody class="recName">
+                                     
                                       <tr>
-                                          <td>
-                                              <input type="checkbox"> <img src="assets/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;"> 
-                                          </td>
                                           
                                           <td>
-                                              09/09/2013  0930pm
-                                          </td>
-                                          
-                                          <td>
-                                              <a href="EAppsProf.html" class="recAppName">
-                                                 Angelica Guerrero
-                                              </a>
-                                          </td>
-                                          
-                                          <td>
-                                              Welder
-                                          </td>
-                                          
-                                          <td>
-                                              NCR | Makati City
-                                          </td>
-                                          
-                                          <td>
-                                              29
-                                          </td>
-                                          
-                                          <td>
-                                              M
-                                          </td>
-                                          
-                                          <td>
-                                              Electrical Installation & Maintenance NCII
-                                          </td>
-                                          
-                                          <td>
-                                              Wiring, Hello, HI, 
-                                              <font class="more">
-                                                  more...
-                                              </font>
-                                          </td>
-                                          
-                                          <td>
-                                              <p class="statusB">Pending</p>
-                                          </td>
-                                      </tr>
-                                      
-                                      <tr>
-                                          <td>
-                                              <input type="checkbox">
-                                          </td>
-                                          
-                                          <td>
-                                              09/09/2013  0930pm
+                                              09/09/2013 
                                           </td>
                                           
                                           <td>
@@ -338,7 +289,7 @@
                                           </td>
                                           
                                           <td>
-                                              Welder
+                                               <img src="assets/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;"> &nbsp; Welder
                                           </td>
                                           
                                           <td>
@@ -366,6 +317,9 @@
                                           
                                           <td>
                                               <p class="statusB">Pending</p>
+                                          </td>
+                                          <td>
+                                              <p >Change Status</p>
                                           </td>
                                       </tr>
                                       
