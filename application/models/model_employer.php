@@ -183,7 +183,7 @@ class Model_employer extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         
        $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
-                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, vacanciesleft
+                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, CURDATE() as currentdate, vacanciesleft
                            from job_vacancies 
                            WHERE companyID = $id
                            ORDER BY jobtitle ASC
@@ -217,20 +217,92 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
-    public function get_jobApplications($jobno)
+    public function get_newApplicant($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno");
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'New Applicant'");
         return $query->result_array();
         $db1->close();
     }
-    
+    public function get_exam($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Exam'");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_interview1($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Interview1'");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_interview2($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Interview2'");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_requirements($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Requirements'");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_hired($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Hired'");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_jobApplications($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_jobInvites($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT appid FROM job_invitation WHERE jobno = $jobno");
+        return $query->result_array();
+        $db1->close();
+    }
     public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
        $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
        return $query->result_array();
        $db1->close();
+    }
+//    public function get_jobDescription($jobno)
+//    {
+//        $db1 = $this->load->database('local', TRUE);
+//        $query = $db1->query("SELECT description FROM job_vacancies WHERE jobno = $jobno");
+//        foreach ($query->result() as $row)
+//        {
+//            return $row->description;
+//        }
+//        $db1->close();
+//    }
+    public function get_jsName($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");
+        return $query->result_array();
+        $db2->close();
+    }
+     public function change_status($appno,$status)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db1->query("UPDATE applications
+                                    SET status = '$status'
+                                    WHERE applicationid = $appno");
+        $db1->close();
     }
 }
 ?>

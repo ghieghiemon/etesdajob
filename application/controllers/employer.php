@@ -144,6 +144,14 @@ class Employer extends CI_Controller {
         
         $data['details'] = $this->model_employer->get_jobdetails($jobno);
         $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+        $data['newapplicant'] = $this->model_employer->get_newApplicant($jobno);
+        $data['exam'] = $this->model_employer->get_exam($jobno);
+        $data['interview1'] = $this->model_employer->get_interview1($jobno);
+        $data['interview2'] = $this->model_employer->get_interview2($jobno);
+        $data['requirements'] = $this->model_employer->get_requirements($jobno);
+        $data['hired'] = $this->model_employer->get_hired($jobno);
+        
+        $data['invites'] = $this->model_employer->get_jobInvites($jobno);
         
         $this->employer_header();
         $this->load->view('employer/EAppsPerJob',$data);
@@ -240,6 +248,13 @@ class Employer extends CI_Controller {
             echo json_encode(array('result' => false));
         }
         
+    }
+    public function employer_changeStatus($appno)
+    {
+       $this->load->model('model_employer'); 
+       
+       $status = $this->input->post('group1');
+       $this->model_employer->change_status($appno,$status);
     }
     
     // EVENT CALENDAR
