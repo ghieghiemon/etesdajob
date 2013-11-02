@@ -6,56 +6,59 @@ class Leagues_model extends CI_Model {
 	{
 		parent::__construct();
 	}
-              
-        function get_total_page($postid = -1, $itemperpage = 20){
+        
+        function get_topics($id = -1){
             
             $dbconn = $this->load->database('local', TRUE);
-            $query = 'select count(*) as c from league_discussions where repliedno = ?';
-            $result = $dbconn->query($query, array($postid));
-            $dbconn->close();
-            return (($result->result()[0]->c - ($result->result()[0]->c % $itemperpage)) / $itemperpage) + ($result->result()[0]->c % $itemperpage);
             
+            if($id < 0):
+
+                $query = "select * from league_discussions where repliedno = 0";
+                $results = $dbconn->query($query);
+                $dbconn->close();
+                return $results->result();
+            
+            endif;
+            
+            if($id > 0):
+                
+                $query = "select * from league_discussions where repliedno = ? order by datereplied asc";
+                $results = $dbconn->query($query, array($id));
+                $dbconn->close();
+                return $results->result();
+                
+            endif;
+ 
         }
         
-        function get_page($postno = -1, $pageno = -1, $itemperpage = 20){
+        function paginate($topic){
             
-            $dbconn = $this->load->database('local', TRUE);
-            $query = 'select * from league_discussions where repliedno = ? ';
-            $query2 = 'select count(*) as c from league_discussions where repliedno = ?';
-            $result = $dbconn->query($query, array($postno))->result();
-            $count = $dbconn->query($query2, array($postno))->result()[0]->c;
-            $pages = array();
-            $final = array();
-            $ctr = 0;
+            $counter = 0;
+            $page = 1;
+            $paginated = array();
+            $temp = array();
             
-            foreach($result as $r):
+            foreach($topic as $item):
                 
-                $pages[] = array('reply' => $r->discussion, 
-                                'timestamp' => $r->datereplied, 
-                                'postedby' => $r->postedby,
-                                'likes' => $r->likes);
-                $ctr++;
+                $temp[] = $item;
                 
-                if($ctr == $itemperpage):
+                $counter++;
+                
+                if($counter == 20):
                     
-                    $ctr = 0;
-                    
-                    $final[] = array_reverse($pages);
-                    $pages = array();
+                    $counter = 0;
+                    $paginated[$page] = $temp;
+                    $page++;
+                    $temp = array();
                     
                 endif;
                 
             endforeach;
-          
-            if(($count % $itemperpage) > 0):
-                
-                $final[] = array_reverse($pages);
-                
-            endif;
             
-            return $final[$pageno - 1];
-
+            return $paginated;
+            
         }
+        
         
 }
 
