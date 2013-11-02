@@ -63,10 +63,16 @@ class Model_jobseeker extends CI_Model {
        public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
+       $db2 = $this->load->database('default', TRUE);
+       $query = $db1->query("SELECT *,DATE_FORMAT(dateposted, '%M %d %Y') as dateposted from etesda.job_vacancies j join tesda_centraldb.employer_profile e
+                            on e.userID = j.companyID
+                            JOIN etesda.reference_region r ON r.regionid = j.region
+                            JOIN etesda.reference_city c ON c.cityid = j.city
+                            where j.jobno = $jobno");
        return $query->result_array();
        $db1->close();
     }
+   
     public function apply_job($userid, $jobno)
     {    
         $db1 = $this->load->database('local', TRUE);
@@ -88,6 +94,13 @@ class Model_jobseeker extends CI_Model {
         $query = $db1->query("UPDATE job_invitation
                                     SET applied = 2
                                     WHERE invitationno = $invno");
+        $db1->close();
+    }
+     public function get_appdetails($jobno,$appid){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno and appid = $appid
+                            ");
+        return $query->result_array();
         $db1->close();
     }
     public function get_myapplications($userid){
@@ -174,7 +187,9 @@ class Model_jobseeker extends CI_Model {
     public function get_jobcert($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM job_certifications where jobno = $jobno 
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_certifications j
+                             where j.jobno = $jobno 
                             ");
         return $query->num_rows();
         $db1->close();
@@ -195,6 +210,27 @@ class Model_jobseeker extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    public function get_jobCerts($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_certifications j
+                             join tesda_centraldb.nc_reference c on c.ncid = j.ncid where j.jobno = $jobno 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_jobComps($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_competencies j
+                             join tesda_centraldb.nccoc c on c.ncoid = j.ncoid where j.jobno = $jobno 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+    
     
     public function count_jobApplications($jobno)
     {

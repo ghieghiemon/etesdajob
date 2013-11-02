@@ -37,8 +37,11 @@ class Jobseeker extends CI_Controller {
          $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $data['appdetails'] = $this->model_jobseeker->get_jobdetails($jobno);
+        $data['appdetails'] = $this->model_jobseeker->get_appdetails($jobno,$id);
+        $data['jobdetails'] = $this->model_jobseeker->get_jobdetails($jobno);
         $data['myapps'] =$this->model_jobseeker->get_mysideapplications($id,$jobno);
+        $data['cert'] = $this->model_jobseeker->get_jobCerts($jobno);
+        $data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyAppDetail',$data);

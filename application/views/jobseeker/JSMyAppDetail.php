@@ -9,7 +9,7 @@
                     <font class="media-heading vName2">
                         |
                          <?php
-                        foreach($appdetails as $a)
+                        foreach($jobdetails as $a)
                         {echo $a['jobtitle']; 
                         echo' at ';
                          echo $a['companyName'];
@@ -22,10 +22,13 @@
                           	  
                                <div class="well">
                                   <h5 class="media-heading previewColor">| YOUR STATUS</h5>
-                                      <p class="vdDesc2">
-                                      	  
-                                          For Exam on 09/28/2012
-                                      </p>
+                                      <p class="vdDesc2">';
+                                      foreach ($appdetails as $b)
+                                      {
+                                          echo $b['status'];
+                                      }
+                                          //For Exam on 09/28/2012
+                                      echo '</p>
                               </div><!--end well-->
                               	
                               <div class="well">
@@ -49,11 +52,8 @@
                                                   
                                                   <td>';
                                                        echo $a['dateposted'];
-                                                     echo' <br>
-                                                      <font class="vEditDate2">
-                                                          Last edited: ';
-                                                     echo $a['lastedited'];
-                                                     echo' </font>
+                                                     
+                                                     echo' 
                                                       
                                                   </td>
                                                 </tr>
@@ -113,7 +113,7 @@
                               </div><!--end well-->
                               
                               <div class="well">
-                                  <h5 class="media-heading previewColor">| QUALIFICATIONS</h5>
+                                  <h5 class="media-heading previewColor">| JOB QUALIFICATIONS</h5>
                                   
                                   <div class="row-fluid">
                                       <div class="span6">
@@ -129,7 +129,7 @@
                                             <tbody class="recName">
                                                 
                                                 <?php
-                        foreach($appdetails as $a)
+                        foreach($jobdetails as $a)
                         {echo'
                                                 <tr>
                                                   <td class="vdDesc">
@@ -180,7 +180,18 @@
                                                   
                                                   <td>
                                                       <p class="vdDesc2" align="left">
-                                                          Electrical Istallation & Maintenance NCII
+                                                         <?php
+                                                         $count = count($cert);
+                                                         foreach ($cert as $a)
+                                                         {
+                                                             echo $a['ncname'];
+                                                             echo " ". $a['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                                                       </p>
                                                   </td>
                                                   
@@ -193,7 +204,17 @@
                                                   
                                                   <td>
                                                       <p class="vdDesc2" align="left">
-                                                          Wiring, Hello, Hi
+                                                          <?php
+                                                         $count = count($cert);
+                                                         foreach ($comp as $a)
+                                                         {
+                                                             echo $a['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                                                       </p>
                                                   </td>
                                                   
@@ -225,7 +246,7 @@
                             echo '<a href="jobseeker" class="otherApps">';
                             echo $a['jobtitle'];
                             echo ' at ';
-                            echo 'Century';
+                            echo $a['companyName'];
                             echo '</a>
                             <br>';
                         }
