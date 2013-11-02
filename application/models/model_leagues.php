@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Leagues_model extends CI_Model {
+class Model_leagues extends CI_Model {
     
 	function __construct() 
 	{

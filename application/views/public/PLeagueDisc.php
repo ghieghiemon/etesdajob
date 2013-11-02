@@ -1,3 +1,4 @@
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
 <!--modal myModal content-->       
     <div class="modal hide fade" id="signIn">
   		<div class="modal-header">
@@ -142,7 +143,36 @@
                                 <hr class="hrDiscuss">
                                 
                                 <div style="width:1220px;height:416px;overflow:auto;"><!--start scrollable table-->
-                                <table> <!--start reply details-->
+                               <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+                        
+                               
+                        <a href="<?php echo base_url("macandcheese"); ?>">Go back to topic list</a>
+                        <br>
+                        <input type="hidden" id="current_page" value="<?php echo $current_page ?>" />
+                        <?php
+                        $ctr = 1;
+                         echo "Current page: " . $current_page;
+                         echo '<br>Change your page';
+                         ?>
+                        <form id="toblerone" method="get" action="<?php echo base_url('macandcheese/view_topic/'); ?>" >
+                        <input type="hidden" name="id" id="id" value="<?php echo $id ?>" />
+                        <select name="page" id="page">
+
+                            <?php 
+
+                                while($ctr <= $pages):
+
+                                    echo '<option value="' . $ctr . '">' . $ctr . '</option>';
+                                    $ctr++;
+
+                                endwhile;
+
+                            ?>
+
+
+                        </select>
+                        </form>
+                                    <table> <!--start reply details-->
                                     <?php
                                     foreach($replies as $a)
                                     {
@@ -215,10 +245,22 @@
 
 </div><!--End div-->
 </div><!--End Container fluid-->
- 
-            
-             
-
 
       <hr>
+      <script type="text/javascript">
+    
+    
+    $(document).ready(function(){
+       
+       $('#page').val($('#current_page').val());
+       
+       $('#page').change(function(){
+           
+        $('#toblerone').submit();
+           
+       });
+        
+    });
+    
+</script>
 </body>
