@@ -142,7 +142,6 @@
                                 
                                 <hr class="hrDiscuss">
                                 
-                                <div style="width:1220px;height:416px;overflow:auto;"><!--start scrollable table-->
                                <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
                         
                                
@@ -174,7 +173,7 @@
                         </form>
                                     <table> <!--start reply details-->
                                     <?php
-                                    foreach($replies as $a)
+                                    foreach($display as $a)
                                     {
                                     ?>
                                     <tr>
@@ -182,10 +181,10 @@
                                         	<a href="#" class="Name">
                                              	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;">
                                                 <?php
-                                            $type = $this->model_pub->get_userType($a['postedby']);
+                                            $type = $this->model_pub->get_userType($a->postedby);
                                             if($type == 'EMPLOYER')
                                             {
-                                                $by = $this->model_pub->get_companyName($a['postedby']);
+                                                $by = $this->model_pub->get_companyName($a->postedby);
                                                 echo $by;
                                             }
                                             else if ($type == 'JOBADMIN')
@@ -195,7 +194,7 @@
                                             }
                                             else if ($type == 'APPLICANT')
                                             {
-                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                $by = $this->model_pub->get_jsName($a->postedby);
                                                 foreach($by as $b)
                                                 {
                                                     echo $b['firstname'];
@@ -206,17 +205,16 @@
                                             
                                             ?>
                                             </a>
-                                            <font class="tnd"><?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td width="1200px">
                                         <p style="margin-left:75px">
-                                           <?php echo $a['discussion']?>
+                                           <?php echo $a->discussion?>
                                              <div class="pull-right">
                                                 <font class="NumLikes">
-                                                	<?php echo $a['likes']?> likes 
+                                                	<?php echo $a->likes?> likes 
                                                 </font>&nbsp;
                                                 <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
                                             </div>
@@ -234,7 +232,7 @@
                                     
                                    
                                 </table> <!--end reply details-->
-                                </div><!--end scrollable table-->
+                               
                                
                             </ul>
                         </div> <!--end Div-->

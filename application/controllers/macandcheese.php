@@ -24,10 +24,9 @@ class Macandcheese extends CI_Controller {
         function view_topic($id = -1, $page = -1){
             
             if(isset($_GET['id']) && isset($_GET['page'])):
+                
                 $this->load->model('model_pub');
-       $discno = 18;
-       $data['replies'] = $this->model_pub->get_leagueReplies($discno);
-       $data['discussion'] = $this->model_pub->get_discDetails($discno);
+                $data['discussion'] = $this->model_pub->get_discDetails($_GET['id']);
                 $this->load->model("model_leagues");
                 $items = $this->model_leagues->paginate($this->model_leagues->get_topics($_GET['id']));
                 $data['display'] = $items[$_GET['page']];
@@ -55,15 +54,17 @@ class Macandcheese extends CI_Controller {
             endif;
             
             if($page > 0):
-                
+                $this->load->model('model_pub');
                 $this->load->model("model_leagues");
                 $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+                $data['discussion'] = $this->model_pub->get_discDetails($id);
                 $data['display'] = $items[$page];
                 $data['pages'] = count($items);
                 $data['current_page'] = $page;
                 $data['id'] = $id;
-                $this->load->view('kitkat', $data);
-                
+                // $this->load->view('kitkat', $data);
+                $this->load->view("public/header");
+                $this->load->view('public/PLeagueDisc', $data);
             endif;
 
         }
