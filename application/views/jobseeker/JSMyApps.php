@@ -432,9 +432,14 @@ foreach($invites as $a)
                                     <div class="statusB">';
                             echo $a['status'];
                             echo '<br>
-                                        <font class="more">
-                                            3 out of 4 Phases
-                                        </font>
+                                        <font class="more">';
+                            if($a['status']!= "New Applicant")
+                            {
+                                echo $a['requirementdate'];
+                                echo '<br>';
+                                echo $a['requirementtime'];
+                            }
+                            echo '</font>
                                     </div>
                                 </td>
                             </tr>';

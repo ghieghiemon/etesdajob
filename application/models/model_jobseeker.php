@@ -106,7 +106,10 @@ class Model_jobseeker extends CI_Model {
     public function get_myapplications($userid){
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived from etesda.applications a
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived,a.status, 
+                                DATE_FORMAT(a.requirementdate, '%b. %d, %Y') as requirementdate,
+                                DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
+                                from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
                                 JOIN etesda.reference_city c ON c.cityid = v.city
@@ -201,6 +204,32 @@ class Model_jobseeker extends CI_Model {
         $query = $db1->query("SELECT * from etesda.job_certifications jc
                                 JOIN etesda.job_vacancies v ON v.jobno = jc.jobno
                                 JOIN tesda_centraldb.applicants_certificates ac ON ac.certificateid = jc.ncid
+                                WHERE ac.appid = $id AND jc.jobno = $jobno
+                                ORDER BY v.dateposted DESC
+                            ");
+        $result = $query->num_rows();
+        return $result;
+        
+        $db1->close();
+        $db2->close();
+    }
+    public function get_jobcomp($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_competencies j
+                             where j.jobno = $jobno 
+                            ");
+        return $query->num_rows();
+        $db1->close();
+    }
+    public function get_matchedComp($jobno,$id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * from etesda.job_competencies jc
+                                JOIN etesda.job_vacancies v ON v.jobno = jc.jobno
+                                JOIN tesda_centraldb.applicants_competency ac ON ac.compid = jc.ncoid
                                 WHERE ac.appid = $id AND jc.jobno = $jobno
                                 ORDER BY v.dateposted DESC
                             ");

@@ -53,16 +53,27 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_jobseeker');
         $matchedCert = $this-> model_jobseeker->get_matchedCert($jobno, $id);
         $requiredCert = $this-> model_jobseeker->get_jobcert($jobno);
+        $matchedComp = $this-> model_jobseeker->get_matchedComp($jobno, $id);
+        $requiredComp = $this-> model_jobseeker->get_jobcomp($jobno);
         
         if(!($matchedCert < $requiredCert))
         {
-            return true;
+//              return true;
+            if(!($matchedComp < $requiredComp))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
         }
         else
         {
             return false;
         }
-            
+        
+        
     }
     public function jobseeker_jobmarketpage()
     {
