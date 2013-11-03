@@ -61,15 +61,15 @@
                                             <td>
                                                 <?php
                                                   $date2 = $a['expirationdate'];
-                                                  $date3 = new Date($date2);
-                                                  $date = date_default_timezone_get();
-                                                  $days = $date->diff($date2);
-                                                  
-//                                                  $date = date('Y-m-d');
-//                                                  $diff = abs(strtotime($date2) - strtotime($date));
-//
-//                                                  $days = round((($diff/24)/60)/60);
-                                                  echo $days->days;
+//                                                  $date3 = new Date($date2);
+//                                                  $date = date_default_timezone_get();
+//                                                  $days = $date->diff($date2);
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  echo $days;
                                                   echo " days left";
                                                 ?>
                                             </td>
