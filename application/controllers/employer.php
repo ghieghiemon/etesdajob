@@ -155,7 +155,7 @@ class Employer extends CI_Controller {
         
         $this->employer_header();
         $this->load->view('employer/EAppsPerJob',$data);
-        $this->load->view('footer');
+     //   $this->load->view('footer');
     }
     public function employer_vacancypage()
     {
@@ -251,10 +251,14 @@ class Employer extends CI_Controller {
     }
     public function employer_changeStatus($appno)
     {
-       $this->load->model('model_employer'); 
-       
-       $status = $this->input->post('group1');
-       $this->model_employer->change_status($appno,$status);
+        $this->load->model('model_employer'); 
+        $status = $this->input->post('group1');
+        $day =  $this->input->post('day');
+        $month =  $this->input->post('month');
+        $year = $this->input->post('year');
+        $time = $this->input->post('time');
+        $date = $month.",".$day.",".$year; 
+        $this->model_employer->change_status($appno,$status,$date,$time);
     }
     
     // EVENT CALENDAR

@@ -66,7 +66,126 @@
                           </td>
                       </tr>
               </table>
-               
+
+        </div><!--end well-->
+        
+        <div class="well">
+        	<table>
+                  <thead>
+                      <tr>
+                          <th class="span8"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>                                           
+                          <td>
+                              <label style="margin-left:1px;">
+                                   <strong>Select Date:</strong>
+                              </label>
+                                             <select name="month" style = " width:30%" >
+	<option value="1">January
+	<option value="2">February
+	<option value="3">March
+	<option value="4">April
+	<option value="5">May
+	<option value="6">June
+	<option value="7">July
+	<option value="8">August
+	<option value="9">September
+	<option value="10">October
+	<option value="11">November
+	<option value="12">December
+</select>
+<select name="day"style = " width:20%">
+	<option value="1">1
+	<option value="2">2
+	<option value="3">3
+	<option value="4">4
+	<option value="5">5
+	<option value="6">6
+	<option value="7">7
+	<option value="8">8
+	<option value="9">9
+	<option value="10">10
+	<option value="11">11
+	<option value="12">12
+	<option value="13">13
+	<option value="14">14
+	<option value="15">15
+	<option value="16">16
+	<option value="17">17
+	<option value="18">18
+	<option value="19">19
+	<option value="20">20
+	<option value="21">21
+	<option value="22">22
+	<option value="23">23
+	<option value="24">24
+	<option value="25">25
+	<option value="26">26
+	<option value="27">27
+	<option value="28">28
+	<option value="29">29
+	<option value="30">30
+	<option value="31">31
+</select>
+<select name="year"style = " width:20%">
+	<option value="2013">2013
+	<option value="2014">2014
+	<option value="2015">2015
+
+</select>
+                          </td>
+                      </tr>
+
+              </table>
+
+        </div><!--end well-->
+        
+                <div class="well">
+        	<table>
+                  <thead>
+                      <tr>
+                          <th class="span8"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>                                           
+                          <td>
+                              <label style="margin-left:1px;">
+                                   <strong>Select Time:</strong>
+                              </label>
+<select nAMe="time">
+  <option value="00:00">12:00 AM</option>
+  <option value="1:00">1:00 AM</option>
+  <option value="2:00">2:00 AM</option>
+  <option value="3:00">3:00 AM</option>
+  <option value="4:00">4:00 AM</option>
+  <option value="5:00">5:00 AM</option>
+  <option value="6:00">6:00 AM</option>
+  <option value="7:00">7:00 AM</option>
+  <option value="8:00">8:00 AM</option>
+  <option value="9:00">9:00 AM</option>
+  <option value="10:00">10:00 AM</option>
+  <option value="11:00">11:00 AM</option>
+  <option value="12:00">12:00 PM</option>
+  <option value="13:00">1:00 PM</option>
+  <option value="14:00">2:00 PM</option>
+  <option value="15:00">3:00 PM</option>
+  <option value="16:00">4:00 PM</option>
+  <option value="17:00">5:00 PM</option>
+  <option value="18:00">6:00 PM</option>
+  <option value="19:00">7:00 PM</option>
+  <option value="20:00">8:00 PM</option>
+  <option value="21:00">9:00 PM</option>
+  <option value="22:00">10:00 PM</option>
+  <option value="23:00">11:00 PM</option>
+</select>
+                          </td>
+                      </tr>
+
+              </table>
+<br>
         </div><!--end well-->
 	</div>
   
@@ -854,3 +973,71 @@
 </div><!--End Container fluid-->
       <hr>
       </body>
+      <SCRIPT LANGUAGE="JavaScript">
+
+<!-- 
+var date_arr = new Array;
+var days_arr = new Array;
+
+date_arr[0]=new Option("January",31);
+date_arr[1]=new Option("February",28);
+date_arr[2]=new Option("March",31);
+date_arr[3]=new Option("April",30);
+date_arr[4]=new Option("May",31);
+date_arr[5]=new Option("June",30);
+date_arr[6]=new Option("July",31);
+date_arr[7]=new Option("August",30);
+date_arr[8]=new Option("September",30);
+date_arr[9]=new Option("October",31);
+date_arr[10]=new Option("November",31);
+date_arr[11]=new Option("December",30);
+
+function fill_select(f)
+{
+        document.writeln("<SELECT name=\"months\"               onchange=\"update_days(FRM)\">");
+        for(x=0;x<12;x++)
+                document.writeln("<OPTION value=\""+date_arr[x].value+"\">"+date_arr[x].text);
+        document.writeln("</SELECT><SELECT name=\"days\"></SELECT>");
+        selection=f.months[f.months.selectedIndex].value;
+}
+
+function update_days(f)
+{
+        temp=f.days.selectedIndex;
+        for(x=days_arr.length;x>0;x--)
+        {
+                days_arr[x]=null;
+                f.days.options[x]=null;
+         }
+        selection=parseInt(f.months[f.months.selectedIndex].value);
+        ret_val = 0;
+        if(f.months[f.months.selectedIndex].value == 28)
+        {
+                year=parseInt(f.years.options[f.years.selectedIndex].value);
+                if (year % 4 != 0 || year % 100 == 0 ) ret_val=0;
+                else
+                        if (year % 400 == 0)  ret_val=1;
+                        else
+                                ret_val=1;
+        }
+        selection = selection + ret_val;
+        for(x=1;x < selection+1;x++)
+
+        {
+                days_arr[x-1]=new Option(x);
+                f.days.options[x-1]=days_arr[x-1];
+        }
+        if (temp == -1) f.days.options[0].selected=true;
+        else
+             f.days.options[temp].selected=true;
+}
+function year_install(f)
+{
+        document.writeln("<SELECT name=\"years\" onchange=\"update_days(FRM)\">")
+        for(x=2001;x<2101;x++) document.writeln("<OPTION value=\""+x+"\">"+x);
+        document.writeln("</SELECT>");
+        update_days(f)
+}
+
+//-->
+</SCRIPT>

@@ -296,13 +296,16 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
-     public function change_status($appno,$status)
+     public function change_status($appno,$status,$date,$time)
     {
         $db1 = $this->load->database('local', TRUE);
-        $db1->query("UPDATE applications
-                                    SET status = '$status'
-                                    WHERE applicationid = $appno");
+        $db1->query("UPDATE applications SET status = '$status' WHERE applicationid = $appno");
+        $db1->query("UPDATE applications SET requirementtime ='$time' WHERE applicationid = $appno");
+        $db1->query("UPDATE applications SET requirementdate =(STR_TO_DATE('$date','%m,%d,%Y'))
+                     WHERE applicationid = $appno");
         $db1->close();
     }
+
+
 }
 ?>
