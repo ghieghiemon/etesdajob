@@ -182,7 +182,8 @@
                         {
                         ?>
                             <li style="margin-left:30px;">
-                                <a href="<?php echo base_url()?>pub/leaguediscpage/<?php echo $a['discussionno']?>" class="DisTitle2">
+                                
+                                <a href="<?php echo base_url()?>pub/view_topic/<?php echo $a['discussionno']?>" class="DisTitle2">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
                                     <?php echo $a['discussion']?>
                                 </a>
