@@ -26,30 +26,41 @@
 	
     <div class="row-fluid">
     	<div class="span3">
-        	<div class="well wellUpMarg">
-            	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+            
+        	
+            
+            <div class="accordion" id="accordion2">
+  
+    <div class="accordion-heading well">
+      <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">-->
+        	<h5 class="media-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search &#9660;
                 </h5>
-            	<br>
-                <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
+      <!--</a>-->
+   
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
                 
                 <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStylePQS">
-                            <input type="text" id="JT" name="JT" placeholder="Job Title">
+                            <input style = " width:80%" type="text" id="JT" name="JT" placeholder="Job Title">
                         </div>
                     </div><!-- end div job title -->
 
           			<div class="control-group"  style="margin-top:-5px;"><!-- start div company-->
                         <div class="myStylePQS2">
-                            <input type="text" id="COMP" name="COMP" placeholder="Company">
+                            <input style = " width:80%" type="text" id="COMP" name="COMP" placeholder="Company">
                         </div>
                     </div><!-- end div company -->
 
-					<div class="myStyle2PQS">
+	
+                    <div class="myStyle2PQS" >
                         <?php    
              $drpindustries['0'] = 'Industry';
-            echo form_dropdown('industry', $drpindustries,'0');     
+             $params = 'style = " width:85%"'; 
+            echo form_dropdown('industry', $drpindustries,'0',$params);     
             ?> 
                     </div>
                     
@@ -57,28 +68,33 @@
                     <?php $regions['0'] = 'Region'; ?>
                     <?php $cities['0'] = 'City'; ?>
                     <?php 
-                    $params = 'id="region"'; 
+                    $params = 'id="region" style = " width:40%" '; 
                     echo form_dropdown('regionid', $regions, '0',$params);
                     ?> 
 
                     <?php 
-                    $params = 'id="cities"'; 
+                    $params = 'id="cities" style = " width:43%"'; 
                     echo form_dropdown('cityid', $cities, '0', $params);
                     ?> 
                     </div>
                     
-                    <div align="right">
+                    <div style="margin-left:185px;">
                     	 <?php 
                       
                 echo" <input class='btn btn-info btn-mini'";
                 echo form_submit('submit', 'Search');
                 echo form_close(); 
                 ?>
+                        
                         </form>
+           </div>
                     </div>
                     
                 </div><!--end scrollable-->
-            </div><!--end well-->
+      </div>
+    </div>
+ 
+</div>
             
             <div class="well wellUpMarg">
             	<h5 class="media-heading">
@@ -289,12 +305,21 @@
         </div><!--end span middle column-->
         
         <div class="span3">
-        	<div class="well wellMarg wellUpMarg">
-            	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK
-                </h5>
+   
+    <div class="accordion well wellMarg wellUpMarg" id="accordion3"><!--well signup-->
+  
+    <div class="accordion-heading">
+      <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">-->
+       <h5 class="media-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
+           <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK &#9660;
+         </h5>
+      <!--</a>-->
+   
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
                 
-                <table>
+                      <table>
                 	<thead>
                     	<tr>
                         	<th class="span1"></th>
@@ -358,15 +383,25 @@
                     </tbody>
                 </table>
                 
-                <div class="row-fluid">
-                	<div align="right" style="margin-right:20px;">
-                        <a href="#" class="btn btn-mini btn-primary">
-                            Sign Up
-                        </a>
+                
+                    
+                    <div style="margin-left:185px;">
+                    	 <?php 
+                      
+                echo" <input class='btn btn-mini btn-primary'";
+                echo form_submit('submit', 'Sign-up');
+                echo form_close(); 
+                ?>
+                        
+                        </form>
+           
                     </div>
-                </div><!--end signup button-->
-            </div><!--end well signup-->
-            
+                    
+                </div><!--end scrollable-->
+      </div>
+    </div>
+ 
+</div>
             <div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading">
                 	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_037_coins.png" width="20"> Companies

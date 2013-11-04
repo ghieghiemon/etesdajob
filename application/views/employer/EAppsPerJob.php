@@ -499,6 +499,7 @@
                                           </td>
                                           
                                           <td>
+                                              <!--<a href="<?php echo base_url()?>employer/employer_cal/<?php echo $a['jobno']?>/<?php echo $a['applicationid']?>" class="cStatLink">-->
                                                <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
                                               	CHANGE STATUS
                                               </a>

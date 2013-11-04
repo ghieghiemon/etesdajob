@@ -150,15 +150,15 @@ class Jobseeker extends CI_Controller {
    
         
         $this->jobseeker_header();
-        $this->load->view('jobseeker/JSJobMarket',$data);
+        $this->load->view('jobseeker/JSJobSearch',$data);
         $this->load->view('footer');
     }
     
       public function search_job()
     {
         $this->load->model('model_main');
-        $this->load->model('model_pub');
-        $search = $this->model_pub->search_job($this->input->post('JT'),
+        $this->load->model('model_jobseeker');
+        $search = $this->model_jobseeker->search_job($this->input->post('JT'),
                  ($this->input->post('industry')),($this->input->post('cityid')),
                  ($this->input->post('COMP')));
         return $search;        

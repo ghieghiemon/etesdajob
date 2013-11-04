@@ -271,4 +271,26 @@ class Model_jobseeker extends CI_Model {
         }
         $db1->close();
     }
+     public function search_job($id,$jobtitle, $industry ,$cityid,$company){
+         $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+       
+        $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND v.sectorid =  $industry  
+                                AND v.city= $cityid AND status = 1 AND 
+                                ORDER BY dateposted DESC");
+        return $query->result_array();
+        
+
+        $db1->close();
+    }
 }?>
