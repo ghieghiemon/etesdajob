@@ -502,10 +502,10 @@
                 </div><!--end legend-->
                 <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> 
                 <div align="right" class="changeBtnMarg">
-                	<button type="submit" >
-                            <!--href="#changeStat" data-toggle="modal" class="btn btn-info"-->
+                	<!--<button type="submit" >-->
+                        <a href="#changeStat" data-toggle="modal" class="btn btn-info">
                     	CHANGE STATUS
-                    </button>
+                    </a>
                 </div>
                 <br>
                 <hr class="hrDicussBigA">

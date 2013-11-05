@@ -217,6 +217,13 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function get_allnewApplicant($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE companyID = $id AND status = 'New Applicant'");
+        return $query->result_array();
+        $db1->close();
+    }
     public function get_newApplicant($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
