@@ -1,3 +1,12 @@
+ <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+    
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+
+
 <!--change status modal start-->
 <?php foreach ($apps as $a)
 {
@@ -406,11 +415,11 @@
                     
                 </div><!--end legend-->
                 
-<!--                <div align="right" class="changeBtnMarg">
+                <div align="right" class="changeBtnMarg">
                 	<a href="#changeStat" data-toggle="modal" class="btn btn-info">
                     	CHANGE STATUS
                     </a>
-                </div>end div-->
+                </div>
                 <br>
                 <hr class="hrDicussBigA">
                 
@@ -427,17 +436,18 @@
                       <div class="tab-content"> <!--start tab content-->
                       <div class="tab-pane active" id="tab1">
                           <div style="width:920px;height:440px;overflow:auto;"><!--start scrollable table-->
-                              <table class="tableUR2 table-hover table-condensed table-striped">
+                              <!--<table class="tableUR2 table-hover table-condensed table-striped">-->
+                               <div id="container">
+                        	<table id ="newapplicant" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -448,6 +458,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -498,35 +509,30 @@
                                               </font>
                                           </td>
                                           
-                                          <td>
-                                              <!--<a href="<?php echo base_url()?>employer/employer_cal/<?php echo $a['jobno']?>/<?php echo $a['applicationid']?>" class="cStatLink">-->
-                                               <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
-                                              	CHANGE STATUS
-                                              </a>
-                                          </td>
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                               </div>
                           </div><!--end scrollable-->   	
                       </div> <!--end tab pane unscreened-->
                       
                       <div class="tab-pane" id="tab2">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                              <table class="tableUR2 table-hover table-condensed table-striped">
+                              <div id="container">
+                        	<table  id="exam" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -537,6 +543,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -590,34 +597,31 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
-                                          <td>
-                                               <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
-                                              	CHANGE STATUS
-                                              </a>
-                                          </td>
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                          </div>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane Exam-->
                       
                       <div class="tab-pane" id="tab3">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                               <table class="tableUR2 table-hover table-condensed table-striped">
+                              
+                                   <div id="container">
+                        	<table  id="interview1" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -628,6 +632,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -680,34 +685,35 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
-                                          <td>
+<!--                                          <td>
                                                <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
                                               	CHANGE STATUS
                                               </a>
-                                          </td>
+                                          </td>-->
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                                   </div>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane 1st int-->
                       
                       <div class="tab-pane" id="tab4">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                              <table class="tableUR2 table-hover table-condensed table-striped">
+                              <div id="container">
+                        	<table  id="interview2" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -718,6 +724,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -770,34 +777,30 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
-                                          <td>
-                                               <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
-                                              	CHANGE STATUS
-                                              </a>
-                                          </td>
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                              </div>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane 2ns int-->
                       
                       <div class="tab-pane" id="tab5">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                               <table class="tableUR2 table-hover table-condensed table-striped">
+                               <div id="container">
+                        	<table  id="requirements" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -808,6 +811,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -860,34 +864,30 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
-                                          <td>
-                                               <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
-                                              	CHANGE STATUS
-                                              </a>
-                                          </td>
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                               </div>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane hire-->
                       
                       <div class="tab-pane" id="tab6">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                               <table class="tableUR2 table-hover table-condensed table-striped">
+                               <div id="container">
+                        	<table  id="hired" class="tableUR2 table-hover table-condensed table-striped">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
-                                          <th class="span2" style="text-align:center">Date</th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span2" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -898,6 +898,7 @@
                                   ?>   
                                       <tr>
                                           <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -950,17 +951,13 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
-                                          <td>
-                                               <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
-                                              	CHANGE STATUS
-                                              </a>
-                                          </td>
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
+                               </div>
                           </div><!--end scrollable-->
                       </div> 
                      
@@ -1041,4 +1038,71 @@ function year_install(f)
 }
 
 //-->
-</SCRIPT>
+
+      </SCRIPT>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#newapplicant').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#exam').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#interview1').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#interview2').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#requirements').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#hired').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
