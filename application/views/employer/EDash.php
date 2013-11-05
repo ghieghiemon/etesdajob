@@ -20,51 +20,46 @@
                 </h5>
               
                 <div style="width:380px;height:220px;overflow:auto; margin-top:10px"><!--start scrollable table-->
-                <ul class="nav nav-list">
-                    <li>
+              <ul class="nav nav-list">
+                    <?php
+                      $ctr = 1;
+                    if(count($briefcase) == 0)
+                     {
+                         echo '<p class = "noCommYet"> There are no upcoming Exams or Interviews</p>';
+                     }
+                     else
+                     {
+                        foreach($briefcase as $a){
+                            if($ctr >=1)
+                        { 
+                  echo'  <li>
                         <a href="#" class="Comm">
                             <div class="notifAgenda">
-                                <font class="boldSched">
-                                	09/23/2013 | 10:00am-11:00am
-                                </font>
+                                <font class="boldSched">';
+                                	  echo $a['requirementdate'];
+                                       echo' |';
+                                        echo $a['requirementtime'];
+                               echo' </font>
                     			<br> 
                                 
-                                <p class="notifAgendaBig">
-                                	Interview with Dyanne Ocampo for Welder Assistant
-                                </p>
+                                <p class="notifAgenda2">';
+                                	echo $a['status'];
+                                       echo' with ';
+                                        echo $a['firstname'];
+                                        echo' ';
+                                        echo $a['lastname'];
+                                        echo' for ';
+                                        echo $a['jobtitle'];
+                               echo' </p>
                             </div>
                         </a>
-                    </li>
-                    
-                    <li>
-                        <a href="#" class="Comm">
-                            <div  class="notifAgenda">
-                                <font class="boldSched">
-                                	09/23/2013 | 10:00am-11:00am
-                                </font>
-                    			<br> 
-                                
-                                <p class="notifAgendaBig">
-                                	Interview with Dyanne Ocampo for Welder Assistant
-                                </p>
-                            </div>
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="#" class="Comm">
-                            <div  class="notifAgenda">
-                                <font class="boldSched">
-                                	09/23/2013 | 10:00am-11:00am
-                                </font>
-                    			<br> 
-                                
-                                <p class="notifAgendaBig">
-                                	Interview with Dyanne Ocampo for Welder Assistant
-                                </p>
-                            </div>
-                        </a>
-                    </li>
+                    </li>';
+                        }
+                      $ctr += 1;
+                     }
+                     }
+                    ?>
+                       
                     
                 </ul>
                </div><!--end scrollable-->

@@ -305,6 +305,26 @@ class Model_employer extends CI_Model {
                      WHERE applicationid = $appno");
         $db1->close();
     }
+    
+        public function employer_briefcase($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT  v.jobtitle, a.jobno, a.status, a.appid, ap.firstname,ap.lastname,
+                    DATE_FORMAT(a.requirementdate, '%M %d %Y') as requirementdate,
+                    DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
+                    FROM etesda.applications a
+                    JOIN etesda.job_vacancies v ON a.jobno = v.jobno
+
+                    JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
+                    where v.companyID =1 AND a.status ='Interview'
+                    AND requirementdate >= curdate() 
+                            ");
+        return $query->result_array();
+
+
+        $db1->close();
+  }
 
 
 }
