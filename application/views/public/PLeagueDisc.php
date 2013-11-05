@@ -81,7 +81,7 @@
             <div class="span12">
             	<div class="well wellUpMarg">
                 	<h3 class="media-heading">
-                    	<a href="PLeagues.html" class="Comm">
+                    	<a href="<?php echo base_url()?>pub/leaguepage" class="Comm">
                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="35"> Leagues
                         </a>
                         
