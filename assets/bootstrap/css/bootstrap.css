@@ -10238,3 +10238,19 @@ img.photo{
 	font-weight:bold;
 	color:#93C;
 }
+.tableUR2b {
+	width: 510px;
+	height:1px;
+  	margin-bottom: 20px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
+}
+
+.tableUR2 td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
