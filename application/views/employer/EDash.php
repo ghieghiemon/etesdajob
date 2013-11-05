@@ -167,12 +167,15 @@
                                             <th class="span1" style="text-align:center">Sex</th>
                                             <th class="span2" style="text-align:center">Certification</th>
                                             <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                            <th class="span2" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody class="recName">
-                                    	
+                                    	<?php 
+                                        foreach ($newapplicant as $a)
+                                        {
+                                        ?>
                                         <tr>
                                         	
                                             <td>
@@ -180,7 +183,15 @@
                                             </td>
                                             <td>
                                             	<a href="#" class="recAppName">
-                                                    Angelica Guerrero
+                                                   <?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo $b['middlename'];
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>
                                                 </a>
                                             </td>
                                             
@@ -209,21 +220,24 @@
                                                 </font>
                                             </td>
                                             <td>
-                                            	09/09/2013  0930pm
+                                            	   <?php echo $a['datereceived']?> 
                                             </td>
                                         </tr>
+                                        <?php  
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                                 
                             </div><!--end scrollable table-->
                             
-                            <div class="row-fluid">
+<!--                            <div class="row-fluid">
                                 <div align="right">
                                     <a href="">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                                     </a>
                                 </div>
-                            </div> <!--end row fluid-->
+                            </div> end row fluid-->
                         </div> <!--end tab pane unscreened--> 
             
                     <div class="tab-pane" id="Inv">
@@ -238,12 +252,15 @@
                                             <th class="span1" style="text-align:center">Sex</th>
                                             <th class="span2" style="text-align:center">Certification</th>
                                             <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
+                                            <th class="span2" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody class="recName">
-                                    	
+                                    <?php 
+                                        foreach ($all as $a)
+                                        {
+                                        ?>	
                                         <tr>
                                             <td>
                                             	Welder Assistant
@@ -251,7 +268,15 @@
                                             
                                             <td>
                                             	<a href="#" class="recAppName">
-                                                    Ruben Mendoza
+                                                    <?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo $b['middlename'];
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>
                                                 </a>
                                             </td>
                                             
@@ -278,21 +303,24 @@
                                                 </font>
                                             </td>
                                             <td>
-                                            	09/09/2013  0930pm
+                                            	<?php echo $a['datereceived']?> 
                                             </td>
                                         </tr>
+                                        <?php  
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                                 
                             </div><!--end scrollable table-->
                              
-            				<div class="row-fluid">
+<!--            				<div class="row-fluid">
                                 <div align="right">
                                     <a href="">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                                     </a>
                                 </div>
-                            </div> <!--end row fluid-->
+                            </div> end row fluid-->
                     </div> <!--end tab pane invited-->
                     
                     <div class="tab-pane" id="All">

@@ -220,7 +220,10 @@ class Model_employer extends CI_Model {
     public function get_allnewApplicant($id)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE companyID = $id AND status = 'New Applicant'");
+        $query = $db1->query("SELECT * FROM applications a 
+                            JOIN job_vacancies j ON a.jobno = j.jobno
+                            WHERE j.companyID = $id AND a.status = 'New Applicant' 
+                            ORDER BY a.datereceived DESC");
         return $query->result_array();
         $db1->close();
     }
@@ -249,6 +252,13 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_allApplications($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * FROM applications WHERE companyID = $id ");
         return $query->result_array();
         $db1->close();
     }

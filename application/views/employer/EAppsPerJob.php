@@ -539,8 +539,10 @@
                                   
                                   <tbody class="recName">
                                   <?php
+                                  
                                   foreach ($newapplicant as $a)
                                   {
+                                      
                                   ?>   
                                       <tr>
                                           <td>
@@ -597,6 +599,7 @@
                                           
                                       </tr>
                                   <?php
+                                        
                                   }
                                   ?>
                                   </tbody>

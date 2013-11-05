@@ -162,7 +162,7 @@ class Model_jobseeker extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-                            WHERE j.status = 1
+                            WHERE j.status = 1 AND j.expirationdate > curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC 
                             ");
         return $query->result_array();

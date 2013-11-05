@@ -10,6 +10,8 @@ class Employer extends CI_Controller {
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
         $data['newapplicant'] = $this->model_employer->get_newApplicant($id);
+//        $data['all'] = $this->model_employer->get_allApplications($id);
+//        $data['invites'] = $this->model_employer->get_jobInvites($id);
         
         $this->load->view('employer/EDash',$data);
        // $this->load->view('footer');
