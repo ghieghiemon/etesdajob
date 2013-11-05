@@ -10238,6 +10238,14 @@ img.photo{
 	font-weight:bold;
 	color:#93C;
 }
+
+.tableUR2 td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
 .tableUR2b {
 	width: 510px;
 	height:1px;
@@ -10245,6 +10253,8 @@ img.photo{
 	border:thick;
 	border-bottom-color:#FFF;
 	overflow:auto;
+	color:#000;
+	opacity:1.0;
 }
 
 .tableUR2 td {
@@ -10253,4 +10263,10 @@ img.photo{
   text-align: center;
   vertical-align: top;
   border-top: 3px solid #FFF;
+}
+
+.table-stripedB tbody > tr:nth-child(odd) > td,
+.table-stripedB tbody > tr:nth-child(odd) > th {
+  background-color:#99F;
+  text-color:#000;
 }

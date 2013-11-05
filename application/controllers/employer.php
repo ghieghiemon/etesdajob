@@ -150,9 +150,8 @@ class Employer extends CI_Controller {
         $data['apps'] = $this->model_employer->get_jobApplications($jobno);
         $data['newapplicant'] = $this->model_employer->get_newApplicant($jobno);
         $data['exam'] = $this->model_employer->get_exam($jobno);
-        $data['interview1'] = $this->model_employer->get_interview1($jobno);
-        $data['interview2'] = $this->model_employer->get_interview2($jobno);
-        $data['requirements'] = $this->model_employer->get_requirements($jobno);
+        $data['interview'] = $this->model_employer->get_interview($jobno);
+        $data['all'] = $this->model_employer->get_allapps($jobno);
         $data['hired'] = $this->model_employer->get_hired($jobno);
         
         $data['invites'] = $this->model_employer->get_jobInvites($jobno);
@@ -263,6 +262,10 @@ class Employer extends CI_Controller {
         $time = $this->input->post('time');
         $date = $month.",".$day.",".$year; 
         $this->model_employer->change_status($appno,$status,$date,$time);
+    }
+    public function employer_viewchecked()
+    {
+        print_r($this->input->post('check'));
     }
      public function employer_cal($jobno,$appno) {
 		$year = null;

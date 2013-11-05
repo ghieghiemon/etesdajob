@@ -148,14 +148,14 @@
                 
                 <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                    	<li class="active"><a href="#UR" data-toggle="tab">Unscreened</a></li>
+                    	<li class="active"><a href="#UR" data-toggle="tab">New Applicants</a></li>
                         <li><a href="#Inv" data-toggle="tab">Invited</a></li>
                         <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="UR">
-                        	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                        	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
                             	
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
@@ -227,7 +227,7 @@
                         </div> <!--end tab pane unscreened--> 
             
                     <div class="tab-pane" id="Inv">
-                    	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
                                     	<tr>
@@ -296,7 +296,7 @@
                     </div> <!--end tab pane invited-->
                     
                     <div class="tab-pane" id="All">
-                    	<div style="width:830px;height:220px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
                                     	<tr>
@@ -389,7 +389,7 @@
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="tab1">
-                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
                             	<div class="chart_container_centered">
 
                             <canvas id="chartCanvas13" width="500" height="240">
@@ -402,14 +402,14 @@
                         </div> <!--end tab pane tab1-->
                         
                         <div class="tab-pane" id="tab2">
-                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
                             	hiiee
                             </div><!--end scrollable table-->
                             
                         </div> <!--end tab pane tab2-->
                         
                         <div class="tab-pane" id="tab3">
-                        	<div style="width:670px;height:230px;overflow:auto;"><!--start scrollable table-->
+                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
                             	hiiss
                             </div><!--end scrollable table-->
                             

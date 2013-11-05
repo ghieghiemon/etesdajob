@@ -231,24 +231,17 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-    public function get_interview1($jobno)
+    public function get_interview($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Interview1'");
         return $query->result_array();
         $db1->close();
     }
-    public function get_interview2($jobno)
+    public function get_allapps($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Interview2'");
-        return $query->result_array();
-        $db1->close();
-    }
-    public function get_requirements($jobno)
-    {
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Requirements'");
+        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno ");
         return $query->result_array();
         $db1->close();
     }

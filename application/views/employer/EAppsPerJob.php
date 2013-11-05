@@ -15,7 +15,7 @@
 
 	<div class="modal-body">
 		<div class="well">
-                    <table class="tableUR2b table-hover table-condensed table-striped">
+                    <table class="tableUR2b table-hover table-condensed table-stripedB">
                         <thead>
                             <tr>
                                 <th class="span1" style="text-align:center"><input type="checkbox"></th>
@@ -146,25 +146,7 @@
                           <td>
                               <input type="radio" name="group1" value="Interview1" style="margin-left:40px;margin-top:-10px;">
                               <label class="checkbox jCrNC3">
-                                  1st Interview
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Interview2" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  2nd Interview
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Requirements" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                 Requirements
+                                  Interview
                               </label>
                               
                           </td>
@@ -518,11 +500,12 @@
                     </h4>
                     
                 </div><!--end legend-->
-                
+                <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> 
                 <div align="right" class="changeBtnMarg">
-                	<a href="#changeStat" data-toggle="modal" class="btn btn-info">
+                	<button type="submit" >
+                            <!--href="#changeStat" data-toggle="modal" class="btn btn-info"-->
                     	CHANGE STATUS
-                    </a>
+                    </button>
                 </div>
                 <br>
                 <hr class="hrDicussBigA">
@@ -531,10 +514,9 @@
                       <ul class="nav nav-tabs">
                           <li class="active"><a href="#tab1" data-toggle="tab">New Applicants</a></li>
                           <li><a href="#tab2" data-toggle="tab">Exam</a></li>
-                          <li><a href="#tab3" data-toggle="tab">1st Interview</a></li>
-                          <li><a href="#tab4" data-toggle="tab">2nd Interview</a></li>
-                          <li><a href="#tab5" data-toggle="tab">Requirements</a></li>
-                          <li><a href="#tab6" data-toggle="tab">Hire</a></li>
+                          <li><a href="#tab3" data-toggle="tab">Interview</a></li>
+                          <li><a href="#tab4" data-toggle="tab">Hired</a></li>
+                          <li><a href="#tab5" data-toggle="tab">All</a></li>
                       </ul>
             
                       <div class="tab-content"> <!--start tab content-->
@@ -542,7 +524,7 @@
                           <div style="width:920px;height:440px;overflow:auto;"><!--start scrollable table-->
                               <!--<table class="tableUR2 table-hover table-condensed table-striped">-->
                                <div id="container">
-                        	<table id ="newapplicant" class="tableUR2 table-hover table-condensed table-striped">
+                        	<table id ="newapplicant">
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
@@ -626,7 +608,7 @@
                       <div class="tab-pane" id="tab2">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                               <div id="container">
-                        	<table  id="exam" class="tableUR2 table-hover table-condensed table-striped">
+                        	<table  id="exam">
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
@@ -715,7 +697,7 @@
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                               
                                    <div id="container">
-                        	<table  id="interview1" class="tableUR2 table-hover table-condensed table-striped">
+                        	<table  id="interview1" >
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
@@ -731,7 +713,7 @@
                                   
                                   <tbody class="recName">
                                   <?php
-                                  foreach ($interview1 as $a)
+                                  foreach ($interview as $a)
                                   {
                                   ?>   
                                       <tr>
@@ -807,181 +789,7 @@
                       <div class="tab-pane" id="tab4">
                           <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                               <div id="container">
-                        	<table  id="interview2" class="tableUR2 table-hover table-condensed table-striped">
-                                  <thead>
-                                      <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
-                                          <th class="span2" style="text-align:center">Name</th>
-                                          <th class="span1" style="text-align:center">Age</th>
-                                          <th class="span1" style="text-align:center">Sex</th>
-                                          <th class="span2" style="text-align:center">Certification</th>
-                                          <th class="span2" style="text-align:center">Competencies</th>
-                                          <th class="span1" style="text-align:center">Status</th>
-                                      </tr>
-                                  </thead>
-                                  
-                                  <tbody class="recName">
-                                  <?php
-                                  foreach ($interview2 as $a)
-                                  {
-                                  ?>   
-                                      <tr>
-                                          <td>
-                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
-                                              <?php
-                                              foreach ($invites as $c)
-                                              {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
-                                                  
-                                              ?>
-                                              <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
-                                          </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
-                                          
-                                          <td>
-                                              <a href="EAppsProf.html" class="recAppName">
-                                                  <?php
-                                                  $name = $this->model_employer->get_jsName($a['appid']);
-                                                  foreach($name as $b)
-                                                  {
-                                                      echo $b['firstname'];
-                                                      echo $b['middlename'];
-                                                      echo $b['lastname'];
-                                                  }
-                                                  ?>
-                                              </a>
-                                          </td>
-                                          
-                                          
-                                          <td>
-                                              29
-                                          </td>
-                                          
-                                          <td>
-                                              M
-                                          </td>
-                                          
-                                          <td>
-                                              Electrical Installation & Maintenance NCII
-                                          </td>
-                                          
-                                          <td>
-                                              Wiring, Hello, HI, 
-                                              <font class="more">
-                                                  more...
-                                              </font>
-                                          </td>
-                                          <td>
-                                              <p class="statusB"><?php echo $a['status']?></p>
-                                          </td>
-                                      </tr>
-                                  <?php
-                                  }
-                                  ?>
-                                  </tbody>
-                              </table>
-                              </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane 2ns int-->
-                      
-                      <div class="tab-pane" id="tab5">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                               <div id="container">
-                        	<table  id="requirements" class="tableUR2 table-hover table-condensed table-striped">
-                                  <thead>
-                                      <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
-                                          <th class="span2" style="text-align:center">Name</th>
-                                          <th class="span1" style="text-align:center">Age</th>
-                                          <th class="span1" style="text-align:center">Sex</th>
-                                          <th class="span2" style="text-align:center">Certification</th>
-                                          <th class="span2" style="text-align:center">Competencies</th>
-                                          <th class="span1" style="text-align:center">Status</th>
-                                      </tr>
-                                  </thead>
-                                  
-                                  <tbody class="recName">
-                                  <?php
-                                  foreach ($requirements as $a)
-                                  {
-                                  ?>   
-                                      <tr>
-                                          <td>
-                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
-                                              <?php
-                                              foreach ($invites as $c)
-                                              {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
-                                                  
-                                              ?>
-                                              <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
-                                          </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
-                                          
-                                          <td>
-                                              <a href="EAppsProf.html" class="recAppName">
-                                                  <?php
-                                                  $name = $this->model_employer->get_jsName($a['appid']);
-                                                  foreach($name as $b)
-                                                  {
-                                                      echo $b['firstname'];
-                                                      echo $b['middlename'];
-                                                      echo $b['lastname'];
-                                                  }
-                                                  ?>
-                                              </a>
-                                          </td>
-                                          
-                                          
-                                          <td>
-                                              29
-                                          </td>
-                                          
-                                          <td>
-                                              M
-                                          </td>
-                                          
-                                          <td>
-                                              Electrical Installation & Maintenance NCII
-                                          </td>
-                                          
-                                          <td>
-                                              Wiring, Hello, HI, 
-                                              <font class="more">
-                                                  more...
-                                              </font>
-                                          </td>
-                                          <td>
-                                              <p class="statusB"><?php echo $a['status']?></p>
-                                          </td>
-                                      </tr>
-                                  <?php
-                                  }
-                                  ?>
-                                  </tbody>
-                              </table>
-                               </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane hire-->
-                      
-                      <div class="tab-pane" id="tab6">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                               <div id="container">
-                        	<table  id="hired" class="tableUR2 table-hover table-condensed table-striped">
+                        	<table  id="hired" >
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
@@ -1061,12 +869,102 @@
                                   ?>
                                   </tbody>
                               </table>
+                              </div>
+                          </div><!--end scrollable-->
+                      </div> <!--end tab pane 2ns int-->
+                      
+                      <div class="tab-pane" id="tab5">
+                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+                               <div id="container">
+                        	<table  id="all" >
+                                  <thead>
+                                      <tr>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span2" style="text-align:center">Name</th>
+                                          <th class="span1" style="text-align:center">Age</th>
+                                          <th class="span1" style="text-align:center">Sex</th>
+                                          <th class="span2" style="text-align:center">Certification</th>
+                                          <th class="span2" style="text-align:center">Competencies</th>
+                                          <th class="span1" style="text-align:center">Status</th>
+                                      </tr>
+                                  </thead>
+                                  
+                                  <tbody class="recName">
+                                  <?php
+                                  foreach ($all as $a)
+                                  {
+                                  ?>   
+                                      <tr>
+                                          <td>
+                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
+                                              <?php
+                                              foreach ($invites as $c)
+                                              {
+                                                  $appid[] = $c['appid'];
+                                              }
+                                              if(in_array($a['appid'],$appid))
+                                              {
+                                                  
+                                              ?>
+                                              <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
+                                              <?php } ?>
+                                          </td>
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
+                                          </td>
+                                          
+                                          <td>
+                                              <a href="EAppsProf.html" class="recAppName">
+                                                  <?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo $b['middlename'];
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>
+                                              </a>
+                                          </td>
+                                          
+                                          
+                                          <td>
+                                              29
+                                          </td>
+                                          
+                                          <td>
+                                              M
+                                          </td>
+                                          
+                                          <td>
+                                              Electrical Installation & Maintenance NCII
+                                          </td>
+                                          
+                                          <td>
+                                              Wiring, Hello, HI, 
+                                              <font class="more">
+                                                  more...
+                                              </font>
+                                          </td>
+                                          <td>
+                                              <p class="statusB"><?php echo $a['status']?></p>
+                                          </td>
+                                      </tr>
+                                  <?php
+                                  }
+                                  ?>
+                                  </tbody>
+                              </table>
                                </div>
                           </div><!--end scrollable-->
-                      </div> 
+                      </div> <!--end tab pane hire-->
+                      
+                      
                      
                   </div> <!--end tab content-->
                   </div> <!--end tabbable-->
+                </form>
             </div><!--end well-->
         </div><!--end span right column-->
     </div><!--end row-->
@@ -1177,22 +1075,12 @@ function year_install(f)
        });
         
 </script>
+
 <script type="text/javascript">
        
        $(document).ready(function(){
           
-           $('#interview2').dataTable({
-                "sPaginationType": "full_numbers"
-            });
-		   
-       });
-        
-</script>
-<script type="text/javascript">
-       
-       $(document).ready(function(){
-          
-           $('#requirements').dataTable({
+           $('#all').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   
