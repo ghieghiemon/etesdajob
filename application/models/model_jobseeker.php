@@ -271,7 +271,8 @@ class Model_jobseeker extends CI_Model {
         }
         $db1->close();
     }
-     public function search_job($id,$jobtitle, $industry ,$cityid,$company){
+    
+     public function search_job($jobtitle, $industry ,$cityid,$company){
          $db1 = $this->load->database('local', TRUE);
          $db2 = $this->load->database('default', TRUE);
        
@@ -280,17 +281,36 @@ class Model_jobseeker extends CI_Model {
                                 p.companyName FROM 
                                 etesda.job_vacancies v
                                 JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
-                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                                 JOIN etesda.reference_city c ON c.cityid = v.city
                                 JOIN etesda.reference_region r ON r.regionid = v.region
                                 JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
                                
                                 WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND v.sectorid =  $industry  
-                                AND v.city= $cityid AND status = 1 AND 
+                                AND v.city= $cityid AND v.status = 1
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         
 
         $db1->close();
     }
+    
+    public function js_briefcase($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT  v.jobtitle, a.jobno, a.status,  p.companyName,
+                            DATE_FORMAT(a.requirementdate, '%M %d %Y') as requirementdate,
+                            DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
+                            FROM etesda.applications a
+                            JOIN etesda.job_vacancies v ON a.jobno = v.jobno
+                            JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                            where a.appid =$id
+                            AND (a.status ='Exam' or a.status ='Interview' )
+                            AND requirementdate >= curdate() 
+                            ");
+        return $query->result_array();
+
+
+        $db1->close();
+  }
 }?>

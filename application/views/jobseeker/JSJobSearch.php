@@ -141,7 +141,7 @@
                                     <td>
                                         <span class="label label-info">'?>
                                          <?php
-                                                $appcount = $this->model_pub->count_jobApplications($row['jobno']);
+                                                $appcount = $this->model_jobseeker->count_jobApplications($row['jobno']);
                                                 echo $appcount;
                                             ?>
                                             Applied

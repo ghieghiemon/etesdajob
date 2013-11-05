@@ -27,6 +27,7 @@ class Jobseeker extends CI_Controller {
         $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
+        $data['briefcase'] = $this->model_jobseeker->js_briefcase($id);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);
