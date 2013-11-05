@@ -1,6 +1,13 @@
 <?php
 class Employer extends CI_Controller {
 //employer
+    
+    function tiramisu(){
+        
+        print_r($this->input->post('info'));
+        
+    }
+    
     public function employer_dashboard()
     {
         $this->employer_header();
