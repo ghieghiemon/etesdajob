@@ -54,8 +54,11 @@
                                     	<p class="proName">
                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> 
                                         	<?php echo $a['companyName']?>
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_check.png" width="18" class="label-ver">
-                                            <div class="proName2">
+                                            <?php if ($a['verified'] == 1)
+                                            {?>
+                                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_check.png" width="18" class="label-ver">
+                                            <?php } ?>
+                                        <div class="proName2">
                                             	since <?php echo $a['companyExistence']?>
                                             </div>
                                        	</p>
@@ -150,7 +153,7 @@
                                         foreach($leagues as $a)
                                         {
                                             ?>
-                                             <a href=""><img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="PProfE"/></a>
+                                             <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>"><img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="PProfE"/></a>
                                             <?php
                                         }
                                         ?>
