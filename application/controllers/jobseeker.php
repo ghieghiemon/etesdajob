@@ -81,6 +81,9 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
         $jobs = $this->model_jobseeker->get_alljobs();
         $dob = $this->model_jobseeker->get_dob($id);
         $sex = $this->model_jobseeker->get_sex($id);
@@ -145,14 +148,42 @@ class Jobseeker extends CI_Controller {
            public function js_searchjob()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['regions'] = $this->model_main->get_regions();
-        $data['search'] = $this->search_job();
-   
+        $jobs = $this->model_jobseeker->get_alljobs();
+        $dob = $this->model_jobseeker->get_dob($id);
+        $sex = $this->model_jobseeker->get_sex($id);
+        $qualified = $this->model_jobseeker->get_qualifiedjobs($dob, $sex);
         
+        $data['search'] = $this->search_job();
+        $suggested = array();
+        foreach($jobs as $a)
+        {
+            if($this->match($a['jobno'],$id))
+            {
+                array_push($suggested, $a);
+            }
+        }
+        foreach($qualified as $a)
+        {
+            $jobno[]=$a['jobno'];
+        }
+        
+        $final = array();
+        foreach ($suggested as $a)
+        {
+            if(in_array($a['jobno'],$jobno))
+                    array_push($final, $a);
+        }
+        
+        
+        $data['suggested'] = $final;
+        $data['jobs'] = $jobs;
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobSearch',$data);
-        $this->load->view('footer');
+      //  $this->load->view('footer');
     }
     
       public function search_job()

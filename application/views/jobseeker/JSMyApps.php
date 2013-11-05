@@ -374,14 +374,14 @@ foreach($invites as $a)
                     ?> 
                     </div>
                     
-                            <div align="right">
-                    	 <?php 
-                      
-                echo" <input class='btn btn-info btn-mini'";
-                echo form_submit('submit', 'Search');
-                echo form_close(); 
-                ?>
-                        </form>
+                    <div align="right">
+                    <?php 
+
+                    echo" <input class='btn btn-info btn-mini'";
+                    echo form_submit('submit', 'Search');
+                    echo form_close(); 
+                    ?>
+                    </form>
                     </div>
                     
                 </div><!--end scrollable-->

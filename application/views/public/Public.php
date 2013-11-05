@@ -31,7 +31,7 @@
             
             <div class="accordion" id="accordion2">
   
-    <div class="accordion-heading well">
+    <div class="accordion-heading well wellMarg wellUpMarg">
       <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">-->
         	<h5 class="media-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
                 	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search &#9660;
@@ -42,16 +42,16 @@
       <div class="accordion-inner">
             <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
                 
-                <div style="width:280px;height:215px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:280px;height:200px;overflow:auto;"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStylePQS">
-                            <input style = " width:80%" type="text" id="JT" name="JT" placeholder="Job Title">
+                            <input style = " width:90%" type="text" id="JT" name="JT" placeholder="Job Title">
                         </div>
                     </div><!-- end div job title -->
 
           			<div class="control-group"  style="margin-top:-5px;"><!-- start div company-->
                         <div class="myStylePQS2">
-                            <input style = " width:80%" type="text" id="COMP" name="COMP" placeholder="Company">
+                            <input style = " width:90%" type="text" id="COMP" name="COMP" placeholder="Company">
                         </div>
                     </div><!-- end div company -->
 
@@ -59,7 +59,7 @@
                     <div class="myStyle2PQS" >
                         <?php    
              $drpindustries['0'] = 'Industry';
-             $params = 'style = " width:85%"'; 
+             $params = 'style = " width:95%"'; 
             echo form_dropdown('industry', $drpindustries,'0',$params);     
             ?> 
                     </div>
@@ -68,17 +68,17 @@
                     <?php $regions['0'] = 'Region'; ?>
                     <?php $cities['0'] = 'City'; ?>
                     <?php 
-                    $params = 'id="region" style = " width:40%" '; 
+                    $params = 'id="region" style = " width:45%" '; 
                     echo form_dropdown('regionid', $regions, '0',$params);
                     ?> 
 
                     <?php 
-                    $params = 'id="cities" style = " width:43%"'; 
+                    $params = 'id="cities" style = " width:48%"'; 
                     echo form_dropdown('cityid', $cities, '0', $params);
                     ?> 
                     </div>
                     
-                    <div style="margin-left:185px;">
+                    <div style="margin-left:215px;">
                     	 <?php 
                       
                 echo" <input class='btn btn-info btn-mini'";
@@ -96,7 +96,7 @@
  
 </div>
             
-            <div class="well wellUpMarg">
+            <div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading">
                 	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_266_flag.png" width="17"> Events
                 </h5>

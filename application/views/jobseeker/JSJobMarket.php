@@ -5,7 +5,10 @@
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
         <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
-
+ <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
          
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
@@ -16,7 +19,7 @@
                 <h5 class="media-heading">
                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
             </h5>
-                
+                <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>jobseeker/js_searchjob'/>
                 <div style="width:310px;height:500px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStyleQS3">
@@ -31,34 +34,38 @@
                     </div><!-- end div company -->
 
 					<div class="myStyle3QS">
-                        <select>
-                            <option>Agriculture & Fishery</option>
-                            <option>Automotive & Land Transportation</option>
-                            <option>Construction</option>
-                            <option>Decorative Arts</option>
-                        </select>
+                                      <?php    
+             $drpindustries['0'] = 'Industry';
+            echo form_dropdown('industry', $drpindustries,'0');     
+            ?> 
                     </div>
                     
                     <div class="myStyle3QS2">
-                        <select name="Region">
-                            <option>NCR</option>
-                            <option>Region I</option>
-                        </select>
+                         <?php $regions['0'] = 'Region'; ?>
+                    <?php $cities['0'] = 'City'; ?>
+                    <?php 
+                    $params = 'id="regions"'; 
+                    echo form_dropdown('regionid', $regions, '0',$params);
+                    ?> 
                     </div>
                     
                     <div class="myStyle3QS2">                        
-                        <select name="City">
-                        <option>Pasig</option>
-                        <option>Makati</option>
-                  	</select>
+                          <?php 
+                    $params = 'id="cities"'; 
+                    echo form_dropdown('cityid', $cities, '0', $params);
+                    ?> 
                     </div>
                     
-                    <div align="right" class="qsBtn">
-                    	<a href="#" class="btn btn-info">
-                        	Search
-                        </a>
+                 
+                    <div align="right">
+                    <?php 
+
+                    echo" <input class='qsBtn btn btn-info'";
+                    echo form_submit('submit', 'Search');
+                    echo form_close(); 
+                    ?>
+                    </form>
                     </div>
-                    
                 </div><!--end scrollable-->
                 
                 	
@@ -73,12 +80,12 @@
             
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#SGS" data-toggle="tab">Suggested</a></li>
-                        <li><a href="#All" data-toggle="tab">All</a></li>
+                        <li><a href="#SGS" data-toggle="tab">Suggested</a></li>
+                        <li class="active"><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
-                    <div class="tab-pane active" id="SGS">
+                    <div class="tab-pane" id="SGS">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             <div id="container">
                         	<table id ="newtable" >
@@ -153,7 +160,7 @@
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invited-->
                     
-                    <div class="tab-pane" id="All">
+                    <div class="tab-pane active" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             
                             <div id="container">
