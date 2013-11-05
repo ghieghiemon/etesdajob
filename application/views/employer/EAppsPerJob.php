@@ -1015,7 +1015,7 @@ function year_install(f)
             
             if(values.length > 0){            
                 $('#changemodal').html(null);
-                $('#changemodal').load($('#base').val() + "employer/tiramisu", {info: values});
+                $('#changemodal').load($('#base').val() + "employer/employer_view", {info: values});
                 $('#changemodal').modal('show');
             } else {
                 alert('You have to select'); 

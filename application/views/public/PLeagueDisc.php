@@ -145,17 +145,16 @@
                                <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
                         
                                
-                        <a href="<?php echo base_url("macandcheese"); ?>">Go back to topic list</a>
-                        <br>
+                              
                         <input type="hidden" id="current_page" value="<?php echo $current_page ?>" />
                         <?php
                         $ctr = 1;
-                         echo "Current page: " . $current_page;
-                         echo '<br>Change your page';
+//                         echo "Current page: " . $current_page;
+//                         echo 'Page Number: ';
                          ?>
-                        <form id="toblerone" method="get" action="<?php echo base_url('macandcheese/view_topic/'); ?>" >
+                        <form id="toblerone" method="get" action="<?php echo base_url('pub/view_topic/'); ?>" align="right">
                         <input type="hidden" name="id" id="id" value="<?php echo $id ?>" />
-                        <select name="page" id="page">
+                        Page Number: <select name="page" id="page">
 
                             <?php 
 
@@ -172,6 +171,7 @@
                         </select>
                         </form>
                                     <table> <!--start reply details-->
+                                        <hr class="hrLeagTab">
                                     <?php
                                     foreach($display as $a)
                                     {
