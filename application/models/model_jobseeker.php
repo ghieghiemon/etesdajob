@@ -33,8 +33,8 @@ class Model_jobseeker extends CI_Model {
                                 FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
                                 JOIN etesda.reference_city c ON c.cityid = v.city
-				JOIN etesda.reference_region r ON r.regionid = v.region
-                                WHERE j.appid = $userid AND j.applied = 0 GROUP BY j.jobno
+				JOIN etesda.reference_region r ON r.regionid = v.region                    
+                                WHERE j.appid = $userid AND j.applied = 0 AND expirationdate >= curdate() 
                ORDER BY dateposted DESC");
         return $query->result_array();
        $db1->close();
@@ -271,8 +271,7 @@ class Model_jobseeker extends CI_Model {
         }
         $db1->close();
     }
-    
-     public function search_job($jobtitle, $industry ,$cityid,$company){
+       public function search_job($jobtitle, $industry ,$cityid,$company){
          $db1 = $this->load->database('local', TRUE);
          $db2 = $this->load->database('default', TRUE);
        
@@ -287,6 +286,7 @@ class Model_jobseeker extends CI_Model {
                                
                                 WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND v.sectorid =  $industry  
                                 AND v.city= $cityid AND v.status = 1
+                                AND expirationdate >= curdate() 
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         
@@ -314,3 +314,4 @@ class Model_jobseeker extends CI_Model {
         $db1->close();
   }
 }?>
+

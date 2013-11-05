@@ -1,26 +1,52 @@
-<!--modal myModal content-->       
+<!--start ModEventAttend-->
     <div class="modal hide fade" id="myModal">
-  		<div class="modal-header">
-    		<a class="close" data-dismiss="modal">x</a>
-    		<h3>Sign In Required</h3>
-  		</div>
-        
-  		<div class="modal-body">
-           <form method="post" action="<?php echo base_url()?>main/login_validation"  name="login_form">
-            <p><input type="text" class="span3" name="email" id="email" placeholder="Email" style="margin-left:155px;"></p>
-            <p><input type="password" class="span3" name="userpassword" id="userpassword" placeholder="Password" style="margin-left:155px;"></p>
-            <p><button type="submit" class="btn btn-primary" style="margin-left:162px;">Sign in</button>
-            </p>
-   	 	</form>
-        </div>
-        
-        <div class="modal-footer">
-    		Not a member?
-    		<a href="#">Register</a>
- 		</div>
-	</div>
-	<!--end myModal content-->
+  	<div class="modal-header">
+  			<a class="close" data-dismiss="modal">x</a>
+			<h3><img src="assets/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
+  	</div><!--end modal-header-->
 
+  	<div class="modal-footer"> <!--Modal members-->
+  		<div style="margin-left: 5%; margin-top: 1%">
+  			<div style="width:500px;height:300px;overflow:auto;margin-top:-20px;"><!--start scrollable table-->
+            	<table class="table-condensed table-hover">
+                	<thead>
+                	<tr>
+                    	<th class="span2"></th>
+                        <th class="span3"></th>
+                        <th class="span1"></th>
+                        <th class="span2"></th>
+                        <th class="span3"></th>
+                    </tr>
+                    </thead>
+                    
+                    <tbody>
+                    	<tr>
+                        	<td>
+                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            </td>
+                            
+                            <td class="membersLabel2">
+                            	Angelica Guerrero
+                            </td>
+                            
+                            <td>
+                            </td>
+                            
+                            <td>
+                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            </td>
+                            
+                            <td class="membersLabel2">
+                            	Angelica Guerrero
+                            </td>
+                         </tr> <!--one row-->
+                    </tbody>
+                </table><!--end table-->
+            </div><!--end scrollable table-->
+    	</div><!--end modal members-->
+ 	</div><!--end modal-footer-->
+</div>
+<!--end ModEventAttend-->
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
