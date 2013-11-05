@@ -34,6 +34,15 @@ class Nutella extends CI_Model {
             
         }
         
+        function insert($msg){
+            
+            $dbconn = $this->load->database('local', TRUE);
+            $query = "insert into notifs (`msg`) values(?)";
+            $result = $dbconn->query($query, array($msg));
+            $dbconn->close();
+            return $result;
+        }
+        
         
         
 }

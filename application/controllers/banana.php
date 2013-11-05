@@ -29,6 +29,14 @@ class Banana extends CI_Controller {
 
         }
         
+        function insert(){
+            
+            $this->load->model('nutella');
+            $this->nutella->insert($this->input->post('id'));
+            
+            
+        }
+        
 }
 
 /* End of file banana.php */

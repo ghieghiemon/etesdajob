@@ -20,12 +20,25 @@
                         
                  }, dataType: "json"});
                 
-                poll(); }, 5000);
+                poll(); }, 2000);
             })();
- 
+            
+            $('#add').on('click', function(){
+                var msg = $('#notif').val();
+                $.ajax({
+                    url: $('#base').val() + 'banana/insert/',
+                    type: "POST",
+                    data: { id : msg }
+                });
+                $('#notif').val(null);
+            });
+
     });
 
 </script>
+<div id="nothing"></div>
+<textarea id="notif"></textarea><br>
+<button id="add">Add Notif</button>
 
 <table id="notifs">
     
@@ -38,6 +51,7 @@
     </tbody>
     
 </table>
+
 
 <?php
 
