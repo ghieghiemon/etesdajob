@@ -19,32 +19,40 @@
 		<tr><td colspan="2"></td><td><input type="button" name="Save" value="Save" class="save">&nbsp;&nbsp;
 	        <input type="button" name="cancel" value="Cancel" class="cancel"></td></tr>
 	</table>
+<input type="hidden" id="base" value="<?php echo base_url(); ?>" />
+<input type="hidden" value="<?php echo "year:$year,mon:$mon,day:$day";?>" id="bla1" />
 <script>	
 	$('.cancel').click(function(){
 		var data = false;
 		$.fn.colorbox.close(data);
 	});
 	
-	$('.save').click(function(){
-		if($('#event').val().length > 0){
-			$.ajax({
+        $('.save').click(function(){
+            if($('#event').val().length > 0){
+                        alert('valid');
+                       $.ajax({
 				type: 'POST',
 				dataType: 'json',
-				url: "<?php echo site_url("evencal/do_add");?>",
-				data:{<?php echo "year:$year,mon:$mon,day:$day";?>, hour:$('#hour').val(), minute: $('#minute').val(), event:$('#event').val()},
-				success: function(data) {
-					if(data.status){
+                                url: $('#base').val() + 'evencal/do_add',
+                                data: {year:<?php echo $year;?>,mon:<?php echo $mon ?>,day:<?php echo $day; ?>, hour:$('#hour').val(), minute: $('#minute').val(), event:$('#event').val()},
+                                success: function(data){
+                                    if(data.status){
 						//$.fn.colorbox.close(data);
-						window.location = '<?php echo site_url("evencal/detail/$year/$mon/$day")?>';
+						window.location = '<?php echo base_url("evencal/detail/$year/$mon/$day")?>';
 					}else{
 						$('.spacer').html(data.message);
 					}
-				}
-			});
-		}else{
+                                }
+                            });
+                        
+		
+	}else{
 			$('.spacer').html('Please complete the field')
 			$('#event').attr('class','error_require');
 		}
-	});
+        });
+        
+	
+        
 	</script>
 </div>
