@@ -119,7 +119,7 @@ class Employer extends CI_Controller {
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
         $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
 //        $data['all'] = $this->model_employer->get_allApplications($id);
-//        $data['invites'] = $this->model_employer->get_jobInvites($id);
+        $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
         
         $this->load->view('employer/EDash',$data);
        // $this->load->view('footer');

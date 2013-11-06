@@ -178,7 +178,10 @@
                                         <tr>
                                         	
                                             <td>
-                                            	<?php echo $a['jobtitle'];?>
+                                            	<font class="vColor">	
+                                                <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
+                                                 <?php echo $a['jobtitle']?></a>
+                                                </font>
                                             </td>
                                             <td>
                                             	<a href="#" class="recAppName">
@@ -294,92 +297,99 @@
                                     
                                     <tbody class="recName">
                                     <?php 
-                                        foreach ($invited as $a)
+                                        foreach ($invites as $b)
                                         {
-                                        ?>	
-                                        <tr>
-                                            <td>
-                                            	<?php echo $a['jobtitle'];?>
-                                            </td>
-                                            
-                                            <td>
-                                            	<a href="#" class="recAppName">
+                                            $appdetails = $this->model_employer->get_appdetails($b['appid']);
+                                            foreach($appdetails as $a)
+                                            {
+                                            ?>	
+                                            <tr>
+                                                <td>
+                                                    <font class="vColor">	
+                                                    <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
+                                                     <?php echo $a['jobtitle']?></a>
+                                                    </font>
+                                                </td>
+
+                                                <td>
+                                                    <a href="#" class="recAppName">
+                                                      <?php
+                                                      $name = $this->model_employer->get_jsName($a['appid']);
+                                                      foreach($name as $b)
+                                                      {
+                                                          echo $b['firstname'];
+                                                          echo $b['middlename'];
+                                                          echo $b['lastname'];
+                                                      }
+                                                      ?>
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <?php 
+                                            echo $a['region'];
+                                            echo ' |  ';
+                                            echo $a['city'];
+                                            ?>
+                                                </td>
+
+                                                <td>
+                                                     <?php
+                                                  $birthday = $this->model_employer->get_appage($a['appid']);
+                                                  $birthDate = explode("/", $birthday);
+                                                    $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                                  echo $age;
+                                                    ?>
+                                                </td>
+
+                                                <td>
                                                     <?php
-                                                  $name = $this->model_employer->get_jsName($a['appid']);
-                                                  foreach($name as $b)
+                                                    $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                    if ($ismale == 1)
+                                                        echo 'M';
+                                                    else 
+                                                        echo 'F';
+                                                    ?>
+                                                </td>
+
+                                               <td>
+                                                  <?php
+                                                  $nc = $this->model_employer->get_appcert($a['appid']);
+                                                  $count = count($nc);
+                                                  foreach($nc as $c)
                                                   {
-                                                      echo $b['firstname'];
-                                                      echo $b['middlename'];
-                                                      echo $b['lastname'];
+                                                      echo $c['ncname']. " ". $c['level'];  
+                                                      if ($count >1)
+                                                        echo ", ";
+
+                                                     $count--;
                                                   }
                                                   ?>
-                                                </a>
-                                            </td>
-                                            
-                                            <td>
-                                            	<?php 
-                                        echo $a['region'];
-                                        echo ' |  ';
-                                        echo $a['city'];
-                                        ?>
-                                            </td>
-                                            
-                                            <td>
-                                            	 <?php
-                                              $birthday = $this->model_employer->get_appage($a['appid']);
-                                              $birthDate = explode("/", $birthday);
-                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
-                                              echo $age;
-                                                ?>
-                                            </td>
-                                            
-                                            <td>
-                                            	<?php
-                                                $ismale = $this->model_employer->get_appsex($a['appid']);
-                                                if ($ismale == 1)
-                                                    echo 'M';
-                                                else 
-                                                    echo 'F';
-                                                ?>
-                                            </td>
-                                            
-                                           <td>
-                                              <?php
-                                              $nc = $this->model_employer->get_appcert($a['appid']);
-                                              $count = count($nc);
-                                              foreach($nc as $c)
-                                              {
-                                                  echo $c['ncname']. " ". $c['level'];  
-                                                  if ($count >1)
-                                                    echo ", ";
+                                              </td>
 
-                                                 $count--;
-                                              }
-                                              ?>
-                                          </td>
-                                          
-                                          <td>
-                                              <?php
-                                              $coc = $this->model_employer->get_appcomp($a['appid']);
-                                              $count = count($coc);
-                                              foreach($coc as $d)
-                                              {
-                                                  echo $d['cocname']; 
-                                                  if ($count >1)
-                                                    echo ", ";
+                                              <td>
+                                                  <?php
+                                                  $coc = $this->model_employer->get_appcomp($a['appid']);
+                                                  $count = count($coc);
+                                                  foreach($coc as $d)
+                                                  {
+                                                      echo $d['cocname']; 
+                                                      if ($count >1)
+                                                        echo ", ";
 
-                                                 $count--;
-                                              }
-                                              ?> 
-                                              <font class="more">
-                                                  more...
-                                              </font>
-                                          </td>
-                                            <td>
-                                            	<?php echo $a['datereceived']?> 
-                                            </td>
-                                        </tr>
+                                                     $count--;
+                                                  }
+                                                  ?> 
+                                                  <font class="more">
+                                                      more...
+                                                  </font>
+                                              </td>
+                                                <td>
+                                                    <?php echo $a['datereceived']?> 
+                                                </td>
+                                            </tr>
                                         <?php  
+                                            }
                                         }
                                         ?>
                                     </tbody>

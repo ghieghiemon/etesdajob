@@ -41,10 +41,6 @@
                                                 <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
                                                  <?php echo $a['jobtitle']?></a>
                                                 </font>
-                                                <br>
-                                                <font class="vEditDate">
-                                                  Last edited: 09/23/2013
-                                                </font>
                                             </td>
 
                                             <td>
@@ -129,10 +125,6 @@
                                                 <font class="vColor">	
                                                 <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
                                                  <?php echo $a['jobtitle']?></a>
-                                                </font>
-                                                <br>
-                                                <font class="vEditDate">
-                                                  Last edited: 09/23/2013
                                                 </font>
                                             </td>
 

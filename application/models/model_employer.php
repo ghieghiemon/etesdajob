@@ -226,6 +226,21 @@ class Model_employer extends CI_Model {
         return $sql->result_array();
         $db1->close();
     }
+    public function get_appdetails($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT *,a.jobno, v.jobtitle, DATE_FORMAT(v.expirationdate, '%M %d %Y') as expirationdate, 
+                           DATE_FORMAT(v.dateposted, '%m/%d/%Y') as dateposted, CURDATE() as currentdate, v.vacanciesleft
+                           from applications a
+                           JOIN job_vacancies v ON a.jobno = v.jobno
+                           JOIN etesda.reference_city c ON c.cityid = v.city
+                           JOIN etesda.reference_region r ON r.regionid = v.region
+                           WHERE a.appid = $id
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
     public function employer_checkjobstatus($jobtitle,$region,$city)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -392,6 +407,14 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT appid FROM job_invitation WHERE jobno = $jobno");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_jobInvitesApps($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT appid FROM job_invitation i  JOIN job_vacancies v ON i.jobno = v.jobno
+                            WHERE v.companyID = $id AND applied = 1");
         return $query->result_array();
         $db1->close();
     }
