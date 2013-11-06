@@ -23,7 +23,7 @@ class Pub extends CI_Controller {
         
         $this->load->view("public/header");
         $this->load->view("public/PIndustryResult",$data);
-        $this->load->view("footer");
+        $this->load->view("footer2");
    }
    
    public function pub_jobmarketpage()
