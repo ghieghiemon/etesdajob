@@ -4,12 +4,12 @@
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
-    		<div class="span3">
+    	<div class="span3">
         	<div class="well wellMarg2b">
                 <h5 class="media-heading">
-                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                <img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
             </h5>
-                <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>jobseeker/js_searchjob'/>
+                
                 <div style="width:310px;height:500px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStyleQS3">
@@ -24,38 +24,34 @@
                     </div><!-- end div company -->
 
 					<div class="myStyle3QS">
-                                      <?php    
-             $drpindustries['0'] = 'Industry';
-            echo form_dropdown('industry', $drpindustries,'0');     
-            ?> 
+                        <select>
+                            <option>Agriculture & Fishery</option>
+                            <option>Automotive & Land Transportation</option>
+                            <option>Construction</option>
+                            <option>Decorative Arts</option>
+                        </select>
                     </div>
                     
                     <div class="myStyle3QS2">
-                         <?php $regions['0'] = 'Region'; ?>
-                    <?php $cities['0'] = 'City'; ?>
-                    <?php 
-                    $params = 'id="regions"'; 
-                    echo form_dropdown('regionid', $regions, '0',$params);
-                    ?> 
+                        <select name="Region">
+                            <option>NCR</option>
+                            <option>Region I</option>
+                        </select>
                     </div>
                     
                     <div class="myStyle3QS2">                        
-                          <?php 
-                    $params = 'id="cities"'; 
-                    echo form_dropdown('cityid', $cities, '0', $params);
-                    ?> 
+                        <select name="City">
+                        <option>Pasig</option>
+                        <option>Makati</option>
+                  	</select>
                     </div>
                     
-                 
-                    <div align="right">
-                    <?php 
-
-                    echo" <input class='qsBtn btn btn-info'";
-                    echo form_submit('submit', 'Search');
-                    echo form_close(); 
-                    ?>
-                    </form>
+                    <div align="right" class="qsBtn">
+                    	<a href="#" class="btn btn-info">
+                        	Search
+                        </a>
                     </div>
+                    
                 </div><!--end scrollable-->
                 
                 	
@@ -73,7 +69,7 @@
                
           
                  
-                    	<div style="width:920px;height:458px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             
                         	<table class="tableJM table-hover table-condensed table-striped">
                             <thead>

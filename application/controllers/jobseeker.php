@@ -133,6 +133,7 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_jobseeker');
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $this->model_jobseeker->apply_job($id,$jobno);
+        
         $this->jobseeker_myappsdetail($jobno);
     }
     public function decline_job($invno)
@@ -144,7 +145,7 @@ class Jobseeker extends CI_Controller {
         $this->jobseeker_myappspage();
     }
     
-    public function js_searchjob()
+           public function js_searchjob()
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
@@ -182,10 +183,10 @@ class Jobseeker extends CI_Controller {
         $data['jobs'] = $jobs;
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobSearch',$data);
-      //$this->load->view('footer');
+      //  $this->load->view('footer');
     }
     
-    public function search_job()
+      public function search_job()
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
@@ -193,15 +194,6 @@ class Jobseeker extends CI_Controller {
                  ($this->input->post('industry')),($this->input->post('cityid')),
                  ($this->input->post('COMP')));
         return $search;        
-   }
-    public function jobseeker_eventspage()
-    {
-        $this->load->model('model_main');
-        $this->load->model('model_jobseeker');
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
-        $data['event'] = $this->model_main->all_events();
-        $this->jobseeker_header();
-        $this->load->view('jobseeker/JSEvents',$data);     
    }
 }
 ?>

@@ -58,7 +58,7 @@
                                 </h5>
                                 </a>
                                 
-                                <a href="<?php echo base_url()?>jobseeker/jobseeker_eventspage" class="btn btn-group transBtn">
+                                <a href="#" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> 
                                     <br>Events

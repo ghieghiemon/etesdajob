@@ -140,14 +140,6 @@ class Model_main extends CI_Model {
          return $row->appid;}
         $db2->close();
     }
-     public function get_eventno(){
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT eventno FROM etesda.events");
-        foreach ($query->result() as $row)
-        {
-         return $row->eventno;}
-        $db1->close();
-    }
     public function get_userid($email){
         $db2 = $this->load->database('default', TRUE);
         $query = $db2->query("SELECT userid from users WHERE email = '$email'");
@@ -164,12 +156,12 @@ class Model_main extends CI_Model {
         DATE_FORMAT(starttime, '%h:%i %p') as starttime,
         DATE_FORMAT(endtime, '%h:%i %p') as endtime
                                 FROM events
-                                JOIN event_participants ep on ep.eventno = events.eventno 
+                                JOIN event_participants on event_participants.eventno = events.eventno 
                                 JOIN event_venue v on v.eventno = events.eventno 
                                 JOIN reference_region r ON r.regionid = v.region  
-                                JOIN reference_city c ON c.cityid = v.city
-                                where events.startdate >=curdate()
-                                GROUP BY eventtitle, events.eventno  HAVING COUNT(*)>0
+				JOIN reference_city c ON c.cityid = v.city
+                                GROUP BY eventtitle,events.eventno  HAVING COUNT(*)>0
+                                ORDER BY startdate ASC
                                ");
             
         return $query->result_array();
@@ -177,23 +169,7 @@ class Model_main extends CI_Model {
         $db1->close();
     }
     
-       public function event_attendees($eno){
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("  
-        SELECT e.eventno, e.eventtitle, a.firstname, a.lastname,ep.appid
-        FROM etesda.events e
-        JOIN etesda.event_participants ep ON  ep.eventno= e.eventno
-        JOIN tesda_centraldb.applicants a ON a.appid = ep.appid
-        where e.eventno = $eno
-                               ");
-            
-        return $query->result_array();
-        
-        $db1->close();
-    }
-   
-    
-    public function get_eventdetails($eno){
+          public function get_eventdetails($eno){
     $db1 = $this->load->database('local', TRUE);
     $query = $db1->query("
        SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,hosts,sponsors,purpose,
@@ -213,26 +189,6 @@ class Model_main extends CI_Model {
 
     $db1->close();
     }
-    public function get_eventattendees($eno){
-    $db1 = $this->load->database('local', TRUE);
-    $db2 = $this->load->database('default', TRUE);
-    $query = $db1->query("SELECT e.eventno, a.firstname, a.lastname
-                                FROM events e
-                                JOIN etesda.event_participants ep on ep.eventno = e.eventno 
-                                JOIN etesda.event_venue v on v.eventno = e.eventno 
-                                JOIN etesda.reference_region r ON r.regionid = v.region  
-                                JOIN etesda.reference_city c ON c.cityid = v.city
-                                JOIN tesda_centraldb.applicants a ON a.appid = ep.appid
-                                WHERE events.eventno = $eno
-
-            ");
-     
-    return $query->result_array();
-
-    $db1->close();
-    $db2->close();
-    }
-    
 //employer
 
     

@@ -15,19 +15,16 @@ class Main extends CI_Controller {
         
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['companies'] = $this->model_pub->get_companyVacancies();
-        $data['vacancies'] = $this->model_pub->get_allVacancies();
+         $data['vacancies'] = $this->model_pub->get_allVacancies();
         $data['event'] = $this->model_main->all_events();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $data['leagues'] = $this->model_pub->get_leagues();
-        $eno = $this->model_main->get_eventno();
-        $data['attendees'] = $this->model_main->event_attendees($eno);
         
         $this->load->view('public/header');
         $this->load->view('public/Public',$data);
         //ADD FOOTER
     }
-   
 //register
     public function  registerpage()
     {
