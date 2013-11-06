@@ -1,5 +1,32 @@
 <!--start ModEventAttend-->
-    <div class="modal hide fade" id="myModal">
+    <div class="modal hide fade" id="eventModal">
+  	<div class="modal-header">
+    <a class="close" data-dismiss="modal">x</a>
+    <h3><img src="assets/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
+  	</div><!--end modal-header-->
+
+  	<div class="modal-footer"> <!--Modal members-->
+  		<div style="margin-left: 5%; margin-top: 1%">
+  		 			<div class="nav" style="width:460px;height:420px;margin-bottom:-5px;margin-left:-10px;overflow:auto;">
+                       <?php foreach ($attendees as $a)
+                     {
+                      echo'  <a href="#" class="btn btn-group PInd2">
+                        <h5 class="media-heading">
+                            <img src="assets/img/user.png"class="PProfE"> 
+                            <br>Angelica Guerrero
+                        </h5>
+                        </a>';
+                     }?>
+                         
+                </div><!--end scrollable-->
+            
+
+    	</div><!--end modal members-->
+ 	</div><!--end modal-footer-->
+</div>
+<!--end ModEventAttend-->
+<!--start ModEventAttend-->
+<div class="modal hide fade" id="memberModal">
   	<div class="modal-header">
   			<a class="close" data-dismiss="modal">x</a>
 			<h3><img src="assets/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
@@ -7,46 +34,59 @@
 
   	<div class="modal-footer"> <!--Modal members-->
   		<div style="margin-left: 5%; margin-top: 1%">
-  			<div style="width:500px;height:300px;overflow:auto;margin-top:-20px;"><!--start scrollable table-->
-            	<table class="table-condensed table-hover">
-                	<thead>
-                	<tr>
-                    	<th class="span2"></th>
-                        <th class="span3"></th>
-                        <th class="span1"></th>
-                        <th class="span2"></th>
-                        <th class="span3"></th>
-                    </tr>
-                    </thead>
-                    
-                    <tbody>
-                    	<tr>
-                        	<td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
-                            </td>
-                            
-                            <td class="membersLabel2">
-                            	Angelica Guerrero
-                            </td>
-                            
-                            <td>
-                            </td>
-                            
-                            <td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
-                            </td>
-                            
-                            <td class="membersLabel2">
-                            	Angelica Guerrero
-                            </td>
-                         </tr> <!--one row-->
-                    </tbody>
-                </table><!--end table-->
-            </div><!--end scrollable table-->
+  			<div class="nav" style="width:460px;height:420px;margin-bottom:-5px;margin-left:-10px;overflow:auto;">
+                        <a href="#" class="btn btn-group PInd2">
+                        <h5 class="media-heading">
+                            <img src="assets/img/user.png"class="PProfE"> 
+                            <br>Angelica Guerrero
+                        </h5>
+                        </a>
+                        
+                        <a href="#" class="btn btn-group PInd2">
+                        <h5 class="media-heading">
+                            <img src="assets/img/user2.jpg"class="PProfE"> 
+                            <br>Dyanne Ocampo
+                        </h5>
+                        </a>
+                        
+                        <a href="#" class="btn btn-group PInd2">
+                        <h5 class="media-heading">
+                            <img src="assets/img/user3.jpg"class="PProfE"> 
+                            <br>Robert Miller
+                        </h5>
+                        </a>
+                       
+                       
+                </div><!--end scrollable-->
+            
     	</div><!--end modal members-->
  	</div><!--end modal-footer-->
 </div>
 <!--end ModEventAttend-->
+
+<!--modal join Modal content-->       
+<div class="modal hide fade" id="joinModal">
+  		<div class="modal-header">
+    		<a class="close" data-dismiss="modal">x</a>
+    		<h3>Sign In Required</h3>
+  		</div>
+        
+  		<div class="modal-body">
+           <form method="post" action="<?php echo base_url()?>main/login_validation"  name="login_form">
+            <p><input type="text" class="span3" name="email" id="email" placeholder="Email" style="margin-left:155px;"></p>
+            <p><input type="password" class="span3" name="userpassword" id="userpassword" placeholder="Password" style="margin-left:155px;"></p>
+            <p><button type="submit" class="btn btn-primary" style="margin-left:162px;">Sign in</button>
+            </p>
+   	 	</form>
+        </div>
+        
+        <div class="modal-footer">
+    		Not a member?
+    		<a href="#">Register</a>
+ 		</div>
+	</div>
+	<!--end join Modal content-->
+
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -178,7 +218,7 @@
                                 <strong>Venue:</strong>';
                                 echo $row['venue'];
                                echo'<br>
-                            	<span class="btn btn-info btn-mini"><a data-toggle ="modal" href="#myModal" class="attendBtn">';
+                            	<span class="btn btn-info btn-mini"><a data-toggle ="modal" href="#eventModal" class="attendBtn">';
                                  echo $row['participantscount'];
                                 echo' Attendees
                                 </a></span>
@@ -304,11 +344,11 @@
                                         <?php echo $a['leaguedescription']?> <br>
                                     
                                         <span class="btn btn-primary btn-mini">
-                                            <a data-toggle="modal" href="#myModal" class="attendBtn">
+                                            <a data-toggle="modal" href="#joinModal" class="attendBtn">
                                                 &nbsp; Join &nbsp;
                                             </a>
                                         </span>
-                                        <span class="btn btn-info btn-mini"><a data-toggle="modal" href="#myModal" class="attendBtn"><?php echo $a['members']?> members</a></span>
+                                        <span class="btn btn-info btn-mini"><a data-toggle="modal" href="#memberModal" class="attendBtn"><?php echo $a['members']?> members</a></span>
                                     </p>
                                 </div> <!--end span7-->
                             </div> <!--end row-fluid-->
