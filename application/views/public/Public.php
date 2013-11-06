@@ -326,7 +326,7 @@
                                             ?>
                                         </a>
                                         <br>
-                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
+                                        
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                         by <a href="#" class="Name2">
                                             

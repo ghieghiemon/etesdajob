@@ -200,32 +200,7 @@ class Model_main extends CI_Model {
     $db1->close();
     }
    
-    public function event_attendees($eno){
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT e.eventno, e.eventtitle, a.firstname, a.lastname,ep.userid
-        FROM etesda.events e
-        JOIN etesda.event_participants ep ON  ep.eventno= e.eventno
-        JOIN tesda_centraldb.applicants a ON a.appid = ep.userid
-        where e.eventno = $eno
-                                ");
-             
-         return $query->result_array();
-         
-         $db1->close();
-     }
-     
-      public function event_attendees($lno){
-        $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT l.leagueno, a.firstname,a.lastname
-        FROM league l
-        JOIN league_members m ON l.leagueno = m.leagueno 
-        JOIN tesda_centraldb.applicants a ON a.appid = m.userid
-        where l.leagueno = $lno;
-                                ");
-         return $query->result_array();
-         
-         $db1->close();
-     }
+  
      
      
 
