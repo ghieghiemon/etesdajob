@@ -43,7 +43,7 @@
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:250px;margin-top:-2px;">
-                                <a href="#" class="btn btn-group transBtn" style="margin-left:5px;">
+                                  <a href="<?php echo base_url()?>eventcal" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 
                                     <br>Calendar

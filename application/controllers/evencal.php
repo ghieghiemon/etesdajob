@@ -32,7 +32,7 @@ class Evencal extends CI_Controller {
 						'day'   => $day,
 						'events'=> $cur_event
 					);
-		$this->load->view('index', $data);
+		$this->load->view('calendar/index', $data);
 	}
 	
 	// for convert (int) month to (string) month in Indonesian
@@ -81,7 +81,7 @@ class Evencal extends CI_Controller {
 					'month' => $this->_month($this->input->post('mon')),
 					'year'  => $this->input->post('year'),
 				);
-		$this->load->view('add_event', $data);
+		$this->load->view('calendar/add_event', $data);
 	}
 	
 	// do adding event for selected date
@@ -97,10 +97,10 @@ class Evencal extends CI_Controller {
 			echo json_encode(array('status' => false, 'title_msg' => 'Error', 'msg' => 'Please insert valid value'));
 		}else{
 			$this->evencal->addEvent($this->input->post('year'), 
-											 $this->input->post('mon'), 
-											 $this->input->post('day'), 
-											 $this->input->post('hour').":".$this->input->post('minute').":00",
-											 $this->input->post('event'));
+                         $this->input->post('mon'), 
+                         $this->input->post('day'), 
+                         $this->input->post('hour').":".$this->input->post('minute').":00",
+                         $this->input->post('event'));
 			echo json_encode(array('status' => true, 'time' => $this->input->post('time'), 'event' => $this->input->post('event')));
 		}
 	}
@@ -140,7 +140,7 @@ class Evencal extends CI_Controller {
 						'day'   => $day,
 						'events'=> $cur_event
 					);
-		$this->load->view('index', $data);
+		$this->load->view('calendar/index', $data);
 	}
 	
 	// setting for calendar
