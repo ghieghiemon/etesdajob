@@ -86,6 +86,7 @@ class Evencal extends CI_Controller {
 	
 	// do adding event for selected date
 	function do_add(){
+           /*
 		$this->form_validation->set_rules('year', 'Year', 'trim|required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('mon', 'Month', 'trim|required|is_natural_no_zero|less_than[13]|xss_clean');
 		$this->form_validation->set_rules('day', 'Day', 'trim|required|is_natural_no_zero|less_than[32]|xss_clean');
@@ -95,14 +96,19 @@ class Evencal extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE){
 			echo json_encode(array('status' => false, 'title_msg' => 'Error', 'msg' => 'Please insert valid value'));
-		}else{
+		} else {
+                */    
 			$this->evencal->addEvent($this->input->post('year'), 
                          $this->input->post('mon'), 
                          $this->input->post('day'), 
                          $this->input->post('hour').":".$this->input->post('minute').":00",
                          $this->input->post('event'));
 			echo json_encode(array('status' => true, 'time' => $this->input->post('time'), 'event' => $this->input->post('event')));
-		}
+		
+                    // echo json_encode(array('status' => true, 'time' => $this->input->post('time'), 'event' => $this->input->post('event')));
+                    
+                  //   }
+                     
 	}
 	
 	// delete event
