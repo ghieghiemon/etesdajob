@@ -13,6 +13,7 @@
   				<ul class="nav nav-tabs">
     				<li class="active"><a href="#tab12" data-toggle="tab">Active</a></li>
     				<li><a href="#tab11" data-toggle="tab">Expired</a></li>
+                                <li><a href="#closed" data-toggle="tab">Closed</a></li>
   				</ul>
   
   				<div class="tab-content"> <!--start tab content-->
@@ -171,7 +172,65 @@
                         
                         
                     </div> <!--end tab expired-->
-            
+                    <div class="tab-pane" id="closed">
+                        <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
+                        	<table class="tableJM2 table-hover table-condensed table-striped">
+                              <thead>
+                                  <tr>
+                                      <th class="span3" style="text-align:center">Job Title</th>
+                                      <th class="span2" style="text-align:center">Location</th>
+                                      <th class="span2" style="text-align:center">Applicants Hired</th>
+                                      <th class="span3" style="text-align:center">Duration</th>
+                                  </tr>
+                              </thead>
+                              
+                              <tbody class="recName">
+                                  <?php
+                                  foreach ($closed as $a)
+                                  {
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <font class="vColor">	
+                                                <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
+                                                 <?php echo $a['jobtitle']?></a>
+                                                </font>
+                                            </td>
+
+                                            <td>
+                                                <?php 
+                                                echo $a['region'];
+                                                echo ' |  ';
+                                                echo $a['city'];
+                                                ?>
+                                            </td>
+
+                                            <td>
+                                              <a href="#" class="numofApps">
+                                              <?php
+                                              $count = $this->model_employer->count_jobApplications($a['jobno']);
+                                              echo $count;
+                                              ?>
+                                              </a>
+                                            </td>
+
+                                            <td>
+                                                <?php
+                                                echo $a['dateposted']. " to ". $a['expirationdate'];
+                                                ?>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                  }
+                                  ?>
+                                                      
+                                  
+                              </tbody>
+                          </table>	
+                        </div><!--end scrollable table-->
+                        
+                       
+                    </div>  <!--end Active-->
                 </div> <!--end tab content-->
               </div> <!--end tabbable-->
                  
