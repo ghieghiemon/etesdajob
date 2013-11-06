@@ -181,17 +181,18 @@ class Model_main extends CI_Model {
     
     public function get_eventdetails($eno){
     $db1 = $this->load->database('local', TRUE);
-     $query = $db1->query("SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount,
+     $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
         r.region ,c.city,hosts,sponsors,purpose,
         DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
         DATE_FORMAT(starttime, '%h:%i %p') as starttime,
         DATE_FORMAT(endtime, '%h:%i %p') as endtime
-                                FROM events
-                                JOIN event_participants on event_participants.eventno = events.eventno 
-                                JOIN event_venue v on v.eventno = events.eventno 
+                                FROM events e
+                                JOIN event_participants on event_participants.eventno = e.eventno 
+                                JOIN tesda_centraldb.employer_profile ep on ep.userID = e.createdby
+                                JOIN event_venue v on v.eventno = e.eventno 
                                 JOIN reference_region r ON r.regionid = v.region  
-				JOIN reference_city c ON c.cityid = v.city
-                                WHERE events.eventno = $eno
+							    JOIN reference_city c ON c.cityid = v.city
+                                WHERE e.eventno = $eno
 
             ");
      

@@ -328,16 +328,23 @@
                                         <br>
                                         
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                        by <a href="#" class="Name2">
+<!--                                        by <a href="#" class="Name2">
                                             
                                             <?php
-                                            $type = $this->model_pub->get_userType($a['createdby']);
-                                            if($type == 'EMPLOYER')
-                                                $by = $this->model_pub->get_companyName($a['createdby']);
-                                            
-                                            else if ($type == 'JOBADMIN')
-                                                $by = 'TESDA';
-                                            echo $by;
+//                                            $type = $this->model_pub->get_userType($a['createdby']);
+//                                            if($type == 'EMPLOYER')
+//                                                $by = $this->model_pub->get_companyName($a['createdby']);
+//                                            
+//                                            else if ($type == 'JOBADMIN')
+//                                                $by = 'TESDA';
+//                                            echo $by;
+                                            ?>
+                                        </a>-->
+                                        
+                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['createdby']?>" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $companyName;
                                             ?>
                                         </a>
                                         | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?> <br>

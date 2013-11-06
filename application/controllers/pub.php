@@ -82,6 +82,7 @@ class Pub extends CI_Controller {
     public function pevent_details($eno)
     {
         $this->load->model('model_main');
+        $this->load->model('model_pub');
         $data['details'] = $this->model_main->get_eventdetails($eno);    
         $this->load->view('public/header');
         $this->load->view('public/PEventDetails', $data);
