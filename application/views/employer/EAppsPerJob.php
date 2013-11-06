@@ -470,7 +470,9 @@
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo " ";
                                                       echo $b['middlename'];
+                                                      echo " ";
                                                       echo $b['lastname'];
                                                   }
                                                   ?>
@@ -556,7 +558,9 @@
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo " ";
                                                       echo $b['middlename'];
+                                                      echo " ";
                                                       echo $b['lastname'];
                                                   }
                                                   ?>
@@ -645,7 +649,9 @@
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo " ";
                                                       echo $b['middlename'];
+                                                      echo " ";
                                                       echo $b['lastname'];
                                                   }
                                                   ?>
@@ -737,7 +743,9 @@
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo " ";
                                                       echo $b['middlename'];
+                                                      echo " ";
                                                       echo $b['lastname'];
                                                   }
                                                   ?>
@@ -824,7 +832,9 @@
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo " ";
                                                       echo $b['middlename'];
+                                                      echo " ";
                                                       echo $b['lastname'];
                                                   }
                                                   ?>

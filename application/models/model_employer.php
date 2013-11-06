@@ -19,8 +19,24 @@ class Model_employer extends CI_Model {
         $db2->close();
     }  
     
-    
-
+    public function get_appcomp($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * FROM applicant_competency j
+                             join nccoc c on c.ncoid = j.ncoid where where j.appid= $appid 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_appcert($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * FROM applicant_certificates j
+                             join nc_reference c on c.ncid = j.ncid where j.appid= $appid 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
      function get_comps($cert = null)
      {
         $db2 = $this->load->database('default', TRUE);
@@ -206,6 +222,37 @@ class Model_employer extends CI_Model {
             return true;
         }
         $db1->close();
+    }
+    public function get_appid($applicationid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT appid FROM applications WHERE applicationid = $applicationid");
+        foreach ($query->result() as $row)
+        {
+            return $row->appid;
+        }
+        $db1->close();
+    }
+    public function get_appage($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT birthday from applicants where appid = $appid");
+        foreach ($query->result() as $row)
+        {
+            return $row->birthday;
+        }
+        $db2->close();
+    }
+    
+    public function get_appsex($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT ismale from applicants where appid = $appid");
+        foreach ($query->result() as $row)
+        {
+            return $row->ismale;
+        }
+        $db2->close();
     }
     public function count_jobApplications($jobno)
     {
