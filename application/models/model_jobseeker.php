@@ -163,8 +163,10 @@ class Model_jobseeker extends CI_Model {
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
+        $query = $db1->query("SELECT *, c.city, r.region, e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
+JOIN etesda.reference_region r ON r.regionid = j.region
+            JOIN etesda.reference_city c ON c.cityid = j.city
                             WHERE j.status = 1 AND j.expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC 
                             ");
@@ -184,7 +186,11 @@ class Model_jobseeker extends CI_Model {
         $age = $this->age_from_dob($dob);
 
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * from job_vacancies j join job_certifications c on j.jobno = c.jobno 
+        $query = $db1->query("SELECT *, r.region, ci.city 
+            from job_vacancies j 
+            join job_certifications c on j.jobno = c.jobno 
+            JOIN etesda.reference_region r ON r.regionid = j.region
+            JOIN etesda.reference_city ci ON ci.cityid = j.city
                                     where (j.sex = '$sex' or j.sex = 'Both') 
                                     AND ($age BETWEEN j.agestart AND j.ageend) 
                                     AND j.expirationdate >= curdate()    
@@ -318,5 +324,27 @@ class Model_jobseeker extends CI_Model {
 
         $db1->close();
   }
+  
+   public function all_events(){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("  
+        SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,hosts,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events
+                                JOIN event_participants on event_participants.eventno = events.eventno 
+                                JOIN event_venue v on v.eventno = events.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+				JOIN reference_city c ON c.cityid = v.city
+                                where startdate >= curdate()
+                                GROUP BY eventtitle,events.eventno  HAVING COUNT(*)>0
+                                ORDER BY startdate ASC 
+                               ");
+            
+        return $query->result_array();
+        
+        $db1->close();
+    }
 }?>
 

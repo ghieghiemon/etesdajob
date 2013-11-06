@@ -118,9 +118,11 @@
                                 echo '</a>
                                     </td>
                                     
-                                    <td>
-                                        NCR | Pasig City
-                                    </td>
+                                    <td> ';
+                                    echo $a['region'];
+                                     echo'   |  ';
+                                   echo $a['city'];
+                                  echo' </td>
                                     
                                     <td>';
                                 $date2 = $a['expirationdate'];
@@ -196,9 +198,11 @@
                                 echo '</a>
                                     </td>
                                     
-                                    <td>
-                                        NCR | Pasig City
-                                    </td>
+                                     <td> ';
+                                    echo $a['region'];
+                                     echo'   |  ';
+                                   echo $a['city'];
+                                  echo' </td>
                                     
                                     <td>';
                                 $date2 = $a['expirationdate'];
