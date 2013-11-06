@@ -11,8 +11,7 @@
                 
                 <div class="tabbable"> <!-- start tabs-->
   				<ul class="nav nav-tabs">
-    				<li class="active"><a href="#tab12" data-toggle="tab">Active</a></li>
-    				<li><a href="#tab11" data-toggle="tab">Expired</a></li>
+    				<li class="active"><a href="#tab12" data-toggle="tab">Open</a></li>
                                 <li><a href="#closed" data-toggle="tab">Closed</a></li>
   				</ul>
   
@@ -27,7 +26,9 @@
                                       <th class="span1" style="text-align:center">Effectivity</th>
                                       <th class="span2" style="text-align:center">Vacancies Left</th>
                                       <th class="span2" style="text-align:center">Number of Applications</th>
-                                      <th class="span3" style="text-align:center"></th>
+                                      <th class="span1" style="text-align:center">Status</th>
+                                      <th class="span1" style="text-align:center"></th>
+                                      <th class="span2" style="text-align:center"></th>
                                   </tr>
                               </thead>
                               
@@ -60,8 +61,15 @@
                                                   $diff = abs(strtotime($date2) - strtotime($date));
 
                                                   $days = round((($diff/24)/60)/60);
+                                                  if ($a['exp'] > $a['currentdate'])
+                                                  {
                                                   echo $days;
                                                   echo " days left";
+                                                  }
+                                                  else
+                                                  {
+                                                    echo "EXPIRED";
+                                                  }
                                                 ?>
                                             </td>
 
@@ -78,11 +86,46 @@
                                               ?>
                                               </a>
                                             </td>
-
                                             <td>
+                                                <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                {
+                                                    echo "Active";
+                                                }
+                                                else
+                                                {
+                                                    echo "Expired";
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                  {
+                                                    ?>
+                                                
                                                 <a href="EUpdateVacancy.html" class="invJS btn btn-primary btn-mini">Extend</a>
-
+                                                <?php
+                                                  }
+                                                  else 
+                                                  {
+                                                ?>
+                                                <a href="EUpdateVacancy.html" class="invJS btn btn-primary btn-mini">Renew</a>
+                                                <?php
+                                                  }
+                                                ?>
+                                                
+                                            </td>
+                                            <td>
+                                                 <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                  {
+                                                    ?>
+                                                
                                                 <a href="EInviteJS.html" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
+                                                <?php
+                                                  }
+                                                  ?>
                                             </td>
                                         </tr>
                                         <?php
