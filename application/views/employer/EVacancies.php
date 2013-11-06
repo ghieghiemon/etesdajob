@@ -158,7 +158,7 @@
                                             </td>
 
                                             <td>
-                                                <button type ="submit" class="invJS btn btn-primary btn-mini">Repost</button>
+                                                <button type ="submit" class="invJS btn btn-primary btn-mini">Renew</button>
 
                                             </td>
                                         </tr>
