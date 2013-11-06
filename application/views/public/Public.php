@@ -326,12 +326,15 @@
                                             ?>
                                         </a>
                                         <br>
+                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                         by <a href="#" class="Name2">
+                                            
                                             <?php
                                             $type = $this->model_pub->get_userType($a['createdby']);
                                             if($type == 'EMPLOYER')
                                                 $by = $this->model_pub->get_companyName($a['createdby']);
+                                            
                                             else if ($type == 'JOBADMIN')
                                                 $by = 'TESDA';
                                             echo $by;

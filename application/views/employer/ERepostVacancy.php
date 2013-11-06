@@ -300,14 +300,14 @@
                                                             <label class="control-label lLabel2">Job Title: &nbsp;</label>
                                                             <div class="controls">
                                                              
-                                                                <input type="text" id="JN" name="JN" placeholder="" >
+                                                                <input type="text" id="JN" name="JN" placeholder="" readonly >
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
                                                             <div class="controls">
-                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ></textarea>
+                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder=""readonly ></textarea>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         
@@ -316,7 +316,7 @@
                                                             <div class="controls">
                                                                    <?php    
                                                                 $industry['#'] = 'Please Select';
-                                                                $params = 'id="industries"'; 
+                                                                $params = 'readonly id="industries"'; 
                                                                echo form_dropdown('industry', $industry,'#',$params);     
                                                                ?> 
                                                             </div>
@@ -331,7 +331,7 @@
                                                                 <?php $regions['#'] = 'Please Select'; ?>
                                                                 <?php $cities['#'] = 'Please Select'; ?>
                                                                 <?php 
-                                                                  $params = 'id="regionselect"'; 
+                                                                  $params = 'readonlyid="regionselect"'; 
                                                                  echo form_dropdown('regionid', $regions, '#',$params);
                                                                 ?> 
                                                             </div>
@@ -350,7 +350,7 @@
                                                 		<div class="control-group">
                                                             <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
                                                             <div class="controls">
-                                                                    <input type="text" id="NOV" name="NOV" placeholder="" >
+                                                                    <input type="text" id="NOV" name="NOV" placeholder="" readonly>
                                                             </div>
                                                         </div> <!--end NOV field-->
                                                         
@@ -366,7 +366,7 @@
                                                         '4'   => '4 weeks',
 
                                                         );
-                                                        $js = 'id="effectivity"';
+                                                        $js = 'readonly id="effectivity"';
 
                                                         echo form_dropdown('effectivity', $options, '2', $js);
 
@@ -407,7 +407,7 @@
                                                         'Both'   => 'Both',
 
                                                         );
-                                                        $js = 'id="sex"';
+                                                        $js = 'readonly id="sex"';
 
                                                         echo form_dropdown('sex', $options, 'Male', $js);
 
@@ -421,8 +421,8 @@
                                                     <label class="control-label lLabel2" style="margin-left:-84px;">Age Range: &nbsp;</label>
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                       <input type="text" id="ageto" name="ageto"><strong> to </strong>
-                                                       <input type="text" id="agefrom" name="agefrom">
+                                                       <input type="text" id="ageto" name="ageto" readonly><strong> to </strong>
+                                                       <input type="text" id="agefrom" name="agefrom" readonly>
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
@@ -440,22 +440,19 @@
                                         <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
                                                        <?php    
                                                                 $industry['#'] = 'Choose Industry';
-                                                                $params = 'id="industrycert" style="width:40%" '; 
+                                                                $params = 'readonly id="industrycert" style="width:40%" '; 
                                                                echo form_dropdown('industry', $industry,'#',$params);    
                                                                
                                                                ?> 
                                             
                                                     
-                                                    <select name="NC Level">
-                                                        <option>NCI</option>
-                                                        <option>NCII</option>
-                                                    </select>
+                                                  
                                                 </div>
 
                                            <div class="row-fluid marg17 margCCS">
                                          <?php 
              
-                                        $params = 'multiple="multiple" style="width:25%" name= "cert[]" id="lstcert1"'; 
+                                        $params = 'multiple="multiple" style="width:25%" name= "cert[]" id="lstcert1"readonly'; 
                                         echo form_multiselect('certs', $cert, '#', $params ); ?> 
                                      <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddCert">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
@@ -466,7 +463,7 @@
                                         <!--<input id="btnAddCert" type="button" class ="btn btn-mini btn-info" style="margin-top:-30px;margin-left:7px;"value="  Add  " />-->
                                         <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
                                     
-                                         <select id="lstcert2" name= "certselect[]"multiple="multiple">
+                                         <select id="lstcert2" name= "certselect[] "multiple="multiple" readonly>
 
                                          </select>
                                   </div> <!--end row-fluid-->
@@ -495,20 +492,20 @@
                                         | COMPETENCIES
                                     </h4>
                                      <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
-                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies">
+                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies"readonly>
                                                
                                                 </div>
                                           <div class="row-fluid marg17 margCCS">
                                             
                                          <?php 
                                          
-                                         $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"'; 
+                                         $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"readonly'; 
                                          echo form_multiselect('competencies', $comp, '#', $params); ?>                                   
                                          <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddComp">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                        <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelComp">
                                      <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
-                                        <select id="lstcomp2" name= "compselect[]" multiple="multiple">
+                                        <select id="lstcomp2" name= "compselect[] readonly" multiple="multiple"readonly>
 
                                         </select>
                                   </div> <!--end row-fluid-->
