@@ -114,7 +114,10 @@ class Model_jobseeker extends CI_Model {
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
                                 JOIN etesda.reference_city c ON c.cityid = v.city
 				JOIN etesda.reference_region r ON r.regionid = v.region
-                                WHERE a.appid = $userid GROUP BY v.jobno
+                                WHERE a.appid = $userid 
+                                AND v.expirationdate >= curdate()    
+                                GROUP BY v.jobno
+
                                 ORDER BY a.datereceived DESC
                             ");
         return $query->result_array();
@@ -162,7 +165,7 @@ class Model_jobseeker extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *,e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-                            WHERE j.status = 1 AND j.expirationdate > curdate()
+                            WHERE j.status = 1 AND j.expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC 
                             ");
         return $query->result_array();
@@ -183,7 +186,9 @@ class Model_jobseeker extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT * from job_vacancies j join job_certifications c on j.jobno = c.jobno 
                                     where (j.sex = '$sex' or j.sex = 'Both') 
-                                    AND ($age BETWEEN j.agestart AND j.ageend) GROUP BY j.jobno");
+                                    AND ($age BETWEEN j.agestart AND j.ageend) 
+                                    AND j.expirationdate >= curdate()    
+                                    GROUP BY j.jobno");
         return $query->result_array();
         $db1->close();
     }
