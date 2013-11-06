@@ -66,62 +66,8 @@
     </div> <!--end row-->
     
     <div class="row-fluid">
-    	<div class="span3">
-        	<div class="well wellUpMarg wellMarg2b">
-                <h5 class="media-heading">
-                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
-                </h5>
-                    
-                    <div style="width:310px;height:320px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
-                        <div class="control-group"><!-- start div job title -->
-                            <div class="myStyleQS3P">
-                                <input type="text" id="JT" name="JT" placeholder="Job Title">
-                            </div>
-                        </div><!-- end div job title -->
-    
-                        <div class="control-group"  style="margin-top:-5px;"><!-- start div company-->
-                            <div class="myStyleQS3P">
-                                <input type="text" id="COMP" name="COMP" placeholder="Company">
-                            </div>
-                        </div><!-- end div company -->
-    
-                        <div class="myStyle3QS">
-                            <select>
-                                <option>Agriculture & Fishery</option>
-                                <option>Automotive & Land Transportation</option>
-                                <option>Construction</option>
-                                <option>Decorative Arts</option>
-                            </select>
-                        </div>
-                        
-                        <div class="myStyle3QS2">
-                            <select name="Region">
-                                <option>NCR</option>
-                                <option>Region I</option>
-                            </select>
-                        </div>
-                        
-                        <div class="myStyle3QS2">                        
-                            <select name="City">
-                            <option>Pasig</option>
-                            <option>Makati</option>
-                        </select>
-                        </div>
-                        
-                        <div align="right" class="qsBtn">
-                            <a href="#" class="btn btn-info">
-                                Search
-                            </a>
-                        </div>
-                        
-                    </div><!--end scrollable-->
-                    
-                        
-                </div><!--end well-->
-        	</div><!--end span left column-->
-        
-            <div class="span9">
-            	<div class="well wellMarg wellUpMarg">
+            <div class="span12">
+            	<div class="well wellUpMarg">
                     <h4 class="media-heading">
                          <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Job Market 
                          <font class="media-heading vName2">
@@ -129,7 +75,7 @@
                         </font>
                     </h4>
                     
-                    <div style="width:920px;height:313px;overflow:auto;"><!--start scrollable table-->
+                    <div style="width:1240px;height:313px;overflow:auto;"><!--start scrollable table-->
                        <div id="container">
                        <table id ="newtable" >
                         	<!--<table class="tableJMP table-hover table-condensed table-striped">-->

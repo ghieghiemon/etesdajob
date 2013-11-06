@@ -136,7 +136,9 @@
                                 <td>
                                     <a href="#">' ?>
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="attendeesPic"></a>
-                                   <?php echo'  <p class="attendeeName">Angelica Guerrero</p>
+                                   <?php echo'  <p class="attendeeName">
+                                       Angelica Guerrero
+                                       </p>
                                 </td>
                             
                            

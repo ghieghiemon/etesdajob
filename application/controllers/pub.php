@@ -5,25 +5,25 @@ class Pub extends CI_Controller {
    {
        $this->load->model('model_pub');
         
-       $data['industries'] = $this->model_pub->get_industryVacancies();
-       
+       $data['industries'] = $this->model_pub->get_industryVacancies();      
        $this->load->view("public/header");
        $this->load->view("public/PIndustries",$data);
        $this->load->view("footer");
    }
+
    
    public function search_industries($sectorid)
    {	
         $this->load->model('model_pub');
         
         $data['industries'] = $this->model_pub->get_industryVacancies();
-        $data['vacancies'] = $this->model_pub->get_perIndustryVacancies($sectorid);
+        $data['vacancies'] =  $this->model_pub->get_perIndustryVacancies($sectorid);
         $data['sectorName'] = $this->model_pub->get_industryName($sectorid);
         
         
         $this->load->view("public/header");
         $this->load->view("public/PIndustryResult",$data);
-        $this->load->view("footer");
+       // $this->load->view("footer");
    }
    
    public function pub_jobmarketpage()
@@ -33,6 +33,7 @@ class Pub extends CI_Controller {
         $data['regions'] = $this->model_main->get_regions();
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket');
+        $this->load->view("footer");
     }
     
         public function pub_searchjob()
@@ -45,6 +46,7 @@ class Pub extends CI_Controller {
         
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket',$data);
+        $this->load->view("footer");
     }
     
         public function pub_alljob()
@@ -56,6 +58,7 @@ class Pub extends CI_Controller {
    
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket',$data);
+        $this->load->view("footer");
     }
     
     public function search_job()
@@ -83,8 +86,8 @@ class Pub extends CI_Controller {
         $this->load->view('public/header');
         $this->load->view('public/PEventDetails', $data);
     }
-
-    public function employer_profilepage($id)
+ 
+   public function employer_profilepage($id)
    {
         $this->load->model('model_pub');
         
