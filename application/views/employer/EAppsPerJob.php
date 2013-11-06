@@ -261,10 +261,6 @@
                                                echo $a['dateposted'];
                                            }
                                            ?>
-<!--                                          <br>
-                                          <font class="vEditDate2">
-                                              Last edited: 09/23/2013
-                                          </font>-->
                                       </td>
                                       
                                     </tr>
@@ -278,7 +274,16 @@
                                       
                                       <td>
                                           
-                                          3 DAYS LEFT
+                                          <?php
+                                                  $date2 = $a['expirationdate'];
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  echo $days;
+                                                  echo " DAYS LEFT";
+                                                ?>
                                           <br>
                                           <button class="btn btn-mini btn-info">Extend</button>
                                       </td>
@@ -291,7 +296,11 @@
                                       </td>
                                       
                                       <td>
-                                          NCR | Makati City
+                                          <?php 
+                                        echo $a['region'];
+                                        echo ' |  ';
+                                        echo $a['city'];
+                                        ?>
                                       </td>
                                       
                                     </tr>
@@ -346,7 +355,11 @@
                                       </td>
                                       
                                       <td>
-                                          25-40
+                                          <?php
+                                            echo $a['agestart'];
+                                            echo'  -';
+                                            echo $a['ageend'];
+                                            ?>
                                       </td>
                                       
                                     </tr>
@@ -357,7 +370,18 @@
                                       </td>
                                       
                                       <td>
-                                          Electrical Istallation & Maintenance NCII
+                                          <?php
+                                                         $count = count($cert);
+                                                         foreach ($cert as $a)
+                                                         {
+                                                             echo $a['ncname'];
+                                                             echo " ". $a['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                                       </td>
                                      
                                     </tr>
@@ -368,7 +392,17 @@
                                       </td>
                                       
                                       <td>
-                                          Wiring, Hello, Hi
+                                           <?php
+                                                         $count = count($cert);
+                                                         foreach ($comp as $a)
+                                                         {
+                                                             echo $a['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                                       </td>
                                       
                                     </tr>
@@ -428,12 +462,12 @@
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
                                   
@@ -459,9 +493,7 @@
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
                                               <?php } ?>
                                           </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
+                                          
                                           
                                           <td>
                                               <a href="EAppsProf.html" class="recAppName">
@@ -481,24 +513,59 @@
                                           
                                           
                                           <td>
-                                              29
+                                              <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              M
+                                              <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              Electrical Installation & Maintenance NCII
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
-                                              Wiring, Hello, HI, 
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
                                               <font class="more">
                                                   more...
                                               </font>
                                           </td>
-                                          
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
+                                          </td>
                                       </tr>
                                   <?php
                                         
@@ -517,13 +584,13 @@
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
                                   
@@ -547,9 +614,6 @@
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
                                               <?php } ?>
                                           </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
                                           
                                           <td>
                                               <a href="EAppsProf.html" class="recAppName">
@@ -569,19 +633,52 @@
                                           
                                           
                                           <td>
-                                              29
+                                              <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              M
+                                              <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              Electrical Installation & Maintenance NCII
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
-                                              Wiring, Hello, HI, 
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
                                               <font class="more">
                                                   more...
                                               </font>
@@ -590,6 +687,10 @@
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
                                           </td>
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
+                                          </td>
+                                          
                                       </tr>
                                   <?php
                                   }
@@ -608,13 +709,13 @@
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
                                   
@@ -638,9 +739,6 @@
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
                                               <?php } ?>
                                           </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
                                           
                                           <td>
                                               <a href="EAppsProf.html" class="recAppName">
@@ -660,25 +758,61 @@
                                           
                                           
                                           <td>
-                                              29
+                                               <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              M
+                                              <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              Electrical Installation & Maintenance NCII
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
-                                              Wiring, Hello, HI, 
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
                                               <font class="more">
                                                   more...
                                               </font>
                                           </td>
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
+                                          </td>
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
                                           </td>
 <!--                                          <td>
                                                <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
@@ -702,13 +836,13 @@
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
                                   
@@ -732,9 +866,6 @@
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
                                               <?php } ?>
                                           </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
                                           
                                           <td>
                                               <a href="EAppsProf.html" class="recAppName">
@@ -754,25 +885,61 @@
                                           
                                           
                                           <td>
-                                              29
+                                               <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              M
+                                              <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              Electrical Installation & Maintenance NCII
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
-                                              Wiring, Hello, HI, 
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
                                               <font class="more">
                                                   more...
                                               </font>
                                           </td>
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
+                                          </td>
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
                                           </td>
                                       </tr>
                                   <?php
@@ -791,13 +958,13 @@
                                   <thead>
                                       <tr>
                                           <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span3" style="text-align:center">Date</th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
+                                          <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
                                   
@@ -821,9 +988,6 @@
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
                                               <?php } ?>
                                           </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
                                           
                                           <td>
                                               <a href="EAppsProf.html" class="recAppName">
@@ -843,25 +1007,61 @@
                                           
                                           
                                           <td>
-                                              29
+                                               <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              M
+                                              <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                           </td>
                                           
                                           <td>
-                                              Electrical Installation & Maintenance NCII
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
-                                              Wiring, Hello, HI, 
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
                                               <font class="more">
                                                   more...
                                               </font>
                                           </td>
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
+                                          </td>
+                                          <td>
+                                              <?php echo $a['datereceived']?> 
                                           </td>
                                       </tr>
                                   <?php

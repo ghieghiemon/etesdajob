@@ -46,34 +46,54 @@ class Employer extends CI_Controller {
                                 </td>
                                
                                 <td>';
-                          $age = $this->model_employer->get_appage($id);
+                          $birthday = $this->model_employer->get_appage($id);
+                          $birthDate = explode("/", $birthday);
+                            $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                          echo $age;
                           echo '</td>
                                 
                                 <td>';
                           $ismale = $this->model_employer->get_appsex($id);
                           if ($ismale == 1)
-                              echo 'F';
-                          else 
                               echo 'M';
+                          else 
+                              echo 'F';
                           echo '</td>
                                 
                                 <td>';
-//                          $nc = $this->model_employer->get_appcert($id);
-//                          foreach($nc as $c)
-//                          {
-//                              echo $c['ncname']. " ". $c['level'];     
-//                          }
+                          $nc = $this->model_employer->get_appcert($id);
+                          $count = count($nc);
+                          foreach($nc as $c)
+                          {
+                              echo $c['ncname']. " ". $c['level']; 
+                              if ($count >1)
+                                echo ", ";
+
+                             $count--;
+                          }
                           echo '</td>
                                 
-                                <td>
-                                    Wiring, Hello, HI, 
-                                    <font class="more">
+                                <td>';
+                          $coc = $this->model_employer->get_appcomp($id);
+                          $count = count($coc);
+                          foreach($coc as $d)
+                          {
+                              echo $d['cocname']; 
+                              if ($count >1)
+                                echo ", ";
+
+                             $count--;
+                          }
+                          echo '<font class="more">
                                         more...
                                     </font>
                                 </td>
                                 
                                 <td>
-                                    <p class="statusB">Pending</p>
+                                    <p class="statusB">';
+                          $status = $this->model_employer->get_appstatus($a);
+                          echo $status;
+                          echo '</p>
                                 </td>
                             </tr>';
                     } 
@@ -89,7 +109,6 @@ class Employer extends CI_Controller {
         
         
     }
-    
     public function employer_dashboard()
     {
         $this->employer_header();
@@ -98,12 +117,18 @@ class Employer extends CI_Controller {
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
-        $data['newapplicant'] = $this->model_employer->get_newApplicant($id);
+        $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
 //        $data['all'] = $this->model_employer->get_allApplications($id);
 //        $data['invites'] = $this->model_employer->get_jobInvites($id);
         
         $this->load->view('employer/EDash',$data);
        // $this->load->view('footer');
+    }
+    public function get_age($birthdate)
+    {
+         $birthDate = explode("/", $birthDate);
+         $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+         return $age;
     }
     public function employer_header()
     {
@@ -247,8 +272,9 @@ class Employer extends CI_Controller {
         $data['interview'] = $this->model_employer->get_interview($jobno);
         $data['all'] = $this->model_employer->get_allapps($jobno);
         $data['hired'] = $this->model_employer->get_hired($jobno);
-        
         $data['invites'] = $this->model_employer->get_jobInvites($jobno);
+        $data['cert'] = $this->model_employer->get_jobCerts($jobno);
+        $data['comp'] = $this->model_employer->get_jobComps($jobno);
         
         $this->employer_header();
         $this->load->view('employer/EAppsPerJob',$data);
@@ -261,7 +287,7 @@ class Employer extends CI_Controller {
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
-        
+        $data['expired'] = $this->model_employer->get_myvacanciesExpired($id);
         $this->employer_header();
         $this->load->view('employer/EVacancies',$data);
         $this->load->view('footer');

@@ -34,13 +34,6 @@
                                   <?php
                                   foreach ($myvacancies as $a)
                                   {
-                                      $date2 = $a['expirationdate'];
-                                      $date = date('Y-m-d');
-                                      $diff = abs(strtotime($date2) - strtotime($date));
-
-                                      $days = round((($diff/24)/60)/60);
-                                        if($days>0)
-                                        {
                                         ?>
                                         <tr>
                                             <td>
@@ -55,15 +48,16 @@
                                             </td>
 
                                             <td>
-                                                NCR | Makati City
+                                                <?php 
+                                                echo $a['region'];
+                                                echo ' |  ';
+                                                echo $a['city'];
+                                                ?>
                                             </td>
 
                                             <td>
                                                 <?php
                                                   $date2 = $a['expirationdate'];
-//                                                  $date3 = new Date($date2);
-//                                                  $date = date_default_timezone_get();
-//                                                  $days = $date->diff($date2);
 //                                                  
                                                   $date = date('Y-m-d');
                                                   $diff = abs(strtotime($date2) - strtotime($date));
@@ -95,7 +89,6 @@
                                             </td>
                                         </tr>
                                         <?php
-                                        }
                                   }
                                   ?>
                                                       
@@ -115,7 +108,7 @@
                                   <tr>
                                       <th class="span3" style="text-align:center">Job Title</th>
                                       <th class="span2" style="text-align:center">Location</th>
-                                      <th class="span1" style="text-align:center">Date Expired</th>
+                                      <th class="span2" style="text-align:center">Date Expired</th>
                                       <th class="span2" style="text-align:center">Vacancies Left</th>
                                       <th class="span2" style="text-align:center">Number of Applications</th>
                                       <th class="span3" style="text-align:center"></th>
@@ -124,19 +117,12 @@
                               
                               <tbody class="recName">
                                   <?php
-                                  foreach ($myvacancies as $a)
+                                  foreach ($expired as $a)
                                   {
-                                      $date2 = $a['expirationdate'];
-                                      $date = date('Y-m-d');
-                                      $diff = abs(strtotime($date2) - strtotime($date));
-
-                                      $days = round((($diff/24)/60)/60);
+                                      
                                       ?>
                                       <input type="hidden" name="jobvacancy" value="<?php echo $a['jobno']?>">
-                                      <?php
-                                        if($days<=0)
-                                        {
-                                        ?>
+                                      
                                         
                                         <tr>
                                             <td>
@@ -151,12 +137,16 @@
                                             </td>
 
                                             <td>
-                                                NCR | Makati City
+                                                <?php 
+                                                echo $a['region'];
+                                                echo ' |  ';
+                                                echo $a['city'];
+                                                ?>
                                             </td>
 
                                             <td>
                                                 <?php
-                                                  $format = $a['expirationdate']; 
+                                                 echo $a['expirationdate']; 
                                                 ?>
                                             </td>
 
@@ -180,7 +170,6 @@
                                             </td>
                                         </tr>
                                         <?php
-                                        }
                                   }
                                   ?>
                                   

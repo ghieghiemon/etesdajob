@@ -22,8 +22,8 @@ class Model_employer extends CI_Model {
     public function get_appcomp($appid)
     {
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT * FROM applicant_competency j
-                             join nccoc c on c.ncoid = j.ncoid where where j.appid= $appid 
+        $query = $db2->query("SELECT * FROM applicants_competency j
+                             join nccoc c on c.ncoid = j.compid where j.appid= $appid 
                             ");
         return $query->result_array();
         $db1->close();
@@ -31,8 +31,8 @@ class Model_employer extends CI_Model {
     public function get_appcert($appid)
     {
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT * FROM applicant_certificates j
-                             join nc_reference c on c.ncid = j.ncid where j.appid= $appid 
+        $query = $db2->query("SELECT * FROM applicants_certificates j
+                             join nc_reference c on c.ncid = j.certificateid where j.appid= $appid 
                             ");
         return $query->result_array();
         $db1->close();
@@ -198,10 +198,28 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         
-       $sql = $db1->query("SELECT jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
+       $sql = $db1->query("SELECT *,jobno, jobtitle, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate, 
                            DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, CURDATE() as currentdate, vacanciesleft
-                           from job_vacancies 
-                           WHERE companyID = $id
+                           from job_vacancies v
+                           JOIN etesda.reference_city c ON c.cityid = v.city
+                           JOIN etesda.reference_region r ON r.regionid = v.region
+                           WHERE companyID = $id AND expirationdate > curdate()
+                           ORDER BY jobtitle ASC
+                           
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
+    public function get_myvacanciesExpired($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT *,jobno, jobtitle, DATE_FORMAT(expirationdate, '%M %d %Y') as expirationdate, 
+                           DATE_FORMAT(dateposted, '%m/%d/%Y') as dateposted, CURDATE() as currentdate, vacanciesleft
+                           from job_vacancies v
+                           JOIN etesda.reference_city c ON c.cityid = v.city
+                           JOIN etesda.reference_region r ON r.regionid = v.region
+                           WHERE companyID = $id AND expirationdate < curdate()
                            ORDER BY jobtitle ASC
                            
                            ");
@@ -233,10 +251,20 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function get_appstatus($applicationid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT status FROM applications WHERE applicationid = $applicationid");
+        foreach ($query->result() as $row)
+        {
+            return $row->status;
+        }
+        $db1->close();
+    }
     public function get_appage($appid)
     {
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT birthday from applicants where appid = $appid");
+        $query = $db2->query("SELECT DATE_FORMAT(birthday, '%m/%d/%Y') as  birthday from applicants where appid = $appid");
         foreach ($query->result() as $row)
         {
             return $row->birthday;
@@ -254,6 +282,7 @@ class Model_employer extends CI_Model {
         }
         $db2->close();
     }
+    
     public function count_jobApplications($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -264,11 +293,33 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+     public function get_jobCerts($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_certifications j
+                             join tesda_centraldb.nc_reference c on c.ncid = j.ncid where j.jobno = $jobno 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_jobComps($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.job_competencies j
+                             join tesda_centraldb.nccoc c on c.ncoid = j.ncoid where j.jobno = $jobno 
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
     public function get_allnewApplicant($id)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications a 
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived FROM applications a 
                             JOIN job_vacancies j ON a.jobno = j.jobno
+                            JOIN etesda.reference_city c ON c.cityid = j.city
+                        JOIN etesda.reference_region r ON r.regionid = j.region
                             WHERE j.companyID = $id AND a.status = 'New Applicant' 
                             ORDER BY a.datereceived DESC");
         return $query->result_array();
@@ -277,49 +328,63 @@ class Model_employer extends CI_Model {
     public function get_newApplicant($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'New Applicant'");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                        FROM applications WHERE jobno = $jobno AND status = 'New Applicant'
+                        ORDER BY datereceived DESC ");
         return $query->result_array();
         $db1->close();
     }
     public function get_exam($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Exam'");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                        FROM applications WHERE jobno = $jobno AND status = 'Exam'
+                        ORDER BY datereceived DESC");
         return $query->result_array();
         $db1->close();
     }
     public function get_interview($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Interview1'");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                            FROM applications WHERE jobno = $jobno AND status = 'Interview1'
+                            ORDER BY datereceived DESC");
         return $query->result_array();
         $db1->close();
     }
     public function get_allapps($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno ");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                            FROM applications WHERE jobno = $jobno 
+                            ORDER BY datereceived ASC ");
         return $query->result_array();
         $db1->close();
     }
     public function get_allApplications($id)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE companyID = $id ");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                            FROM applications WHERE companyID = $id 
+                            ORDER BY datereceived ASC");
         return $query->result_array();
         $db1->close();
     }
     public function get_hired($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno AND status = 'Hired'");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                            FROM applications WHERE jobno = $jobno AND status = 'Hired'
+                            ORDER BY datereceived DESC");
         return $query->result_array();
         $db1->close();
     }
     public function get_jobApplications($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno ");
+        $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
+                        FROM applications WHERE jobno = $jobno 
+                        ORDER BY datereceived DESC");
         return $query->result_array();
         $db1->close();
     }
@@ -333,7 +398,10 @@ class Model_employer extends CI_Model {
     public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT * from job_vacancies where jobno = $jobno");
+       $query = $db1->query("SELECT * from job_vacancies v
+                        JOIN etesda.reference_city c ON c.cityid = v.city
+                        JOIN etesda.reference_region r ON r.regionid = v.region
+                        where jobno = $jobno");
        return $query->result_array();
        $db1->close();
     }

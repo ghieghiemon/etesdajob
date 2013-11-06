@@ -150,12 +150,11 @@
                     <ul class="nav nav-tabs">
                     	<li class="active"><a href="#UR" data-toggle="tab">New Applicants</a></li>
                         <li><a href="#Inv" data-toggle="tab">Invited</a></li>
-                        <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="UR">
-                        	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
+                        	<div style="width:830px;height:172px;overflow:auto;"><!--start scrollable table-->
                             	
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
@@ -165,9 +164,9 @@
                                             <th class="span1" style="text-align:center">Location</th>
                                             <th class="span1" style="text-align:center">Age</th>
                                             <th class="span1" style="text-align:center">Sex</th>
-                                            <th class="span2" style="text-align:center">Certification</th>
+                                            <th class="span3" style="text-align:center">Certification</th>
                                             <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span2" style="text-align:center">Date Applied</th>
+                                            <th class="span1" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
                                     
@@ -179,7 +178,7 @@
                                         <tr>
                                         	
                                             <td>
-                                            	Welder Assistant
+                                            	<?php echo $a['jobtitle'];?>
                                             </td>
                                             <td>
                                             	<a href="#" class="recAppName">
@@ -198,27 +197,64 @@
                                             
                                             
                                             <td>
-                                            	NCR | Makati City
+                                            	<?php 
+                                        echo $a['region'];
+                                        echo ' |  ';
+                                        echo $a['city'];
+                                        ?>
                                             </td>
                                             
                                             <td>
-                                            	29
+                                            	 <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                             </td>
                                             
                                             <td>
-                                            	F
+                                            	<?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                             </td>
                                             
                                             <td>
-                                            	Electrical Installation & Maintenance NCII
-                                            </td>
-                                            
-                                            <td>
-                                            	Wiring, Hello, HI, 
-                                                <font class="more">
-                                                	more...
-                                                </font>
-                                            </td>
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
+                                          </td>
+                                          
+                                          <td>
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
+                                              <font class="more">
+                                                  more...
+                                              </font>
+                                          </td>
                                             <td>
                                             	   <?php echo $a['datereceived']?> 
                                             </td>
@@ -241,7 +277,7 @@
                         </div> <!--end tab pane unscreened--> 
             
                     <div class="tab-pane" id="Inv">
-                    	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="width:830px;height:172px;overflow:auto;"><!--start scrollable table-->
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
                                     	<tr>
@@ -258,12 +294,12 @@
                                     
                                     <tbody class="recName">
                                     <?php 
-                                        foreach ($all as $a)
+                                        foreach ($invited as $a)
                                         {
                                         ?>	
                                         <tr>
                                             <td>
-                                            	Welder Assistant
+                                            	<?php echo $a['jobtitle'];?>
                                             </td>
                                             
                                             <td>
@@ -281,27 +317,64 @@
                                             </td>
                                             
                                             <td>
-                                            	NCR | Makati City
+                                            	<?php 
+                                        echo $a['region'];
+                                        echo ' |  ';
+                                        echo $a['city'];
+                                        ?>
                                             </td>
                                             
                                             <td>
-                                            	29
+                                            	 <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                                             </td>
                                             
                                             <td>
-                                            	F
+                                            	<?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                                             </td>
                                             
-                                            <td>
-                                            	Electrical Installation & Maintenance NCII
-                                            </td>
-                                            
-                                            <td>
-                                            	Wiring, Hello, HI, 
-                                                <font class="more">
-                                                	more...
-                                                </font>
-                                            </td>
+                                           <td>
+                                              <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
+                                          </td>
+                                          
+                                          <td>
+                                              <?php
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?> 
+                                              <font class="more">
+                                                  more...
+                                              </font>
+                                          </td>
                                             <td>
                                             	<?php echo $a['datereceived']?> 
                                             </td>
@@ -323,79 +396,6 @@
                             </div> end row fluid-->
                     </div> <!--end tab pane invited-->
                     
-                    <div class="tab-pane" id="All">
-                    	<div style="width:830px;height:152px;overflow:auto;"><!--start scrollable table-->
-                            	<table class="tableUA table-hover table-condensed table-striped">
-                                	<thead>
-                                    	<tr>
-                                            <th class="span2" style="text-align:center">Job Title</th>
-                                            <th class="span2" style="text-align:center">Name</th>
-                                            <th class="span1" style="text-align:center">Location</th>
-                                            <th class="span1" style="text-align:center">Age</th>
-                                            <th class="span1" style="text-align:center">Sex</th>
-                                            <th class="span2" style="text-align:center">Certification</th>
-                                            <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span2" style="text-align:center">Date & Time Applied</th>
-                                            <th class="span1" style="text-align:center">Status</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <tbody class="recName">
-                                    	
-                                        
-                                        <tr>
-                                            <td>
-                                            	<a href="#" class="recAppName">
-                                                    Chelsea Oray
-                                                </a>
-                                            </td>
-                                            
-                                            <td>
-                                            	Welder Assistant
-                                            </td>
-                                            
-                                            <td>
-                                            	NCR | Makati City
-                                            </td>
-                                            
-                                            <td>
-                                            	29
-                                            </td>
-                                            
-                                            <td>
-                                            	F
-                                            </td>
-                                            
-                                            <td>
-                                            	Electrical Installation & Maintenance NCI
-                                            </td>
-                                            
-                                            <td>
-                                            	Wiring, Hello, HI, 
-                                                <font class="more">
-                                                	more...
-                                                </font>
-                                            </td>
-                                            <td>
-                                            	09/09/2013  0930pm
-                                            </td>
-                                            <td>
-                                            	<p class="statusB">Pending</p>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                
-                            </div><!--end scrollable table-->
-            
-            			<div class="row-fluid">
-                            <div align="right">
-                                <a href="">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
-                                </a>
-                            </div>
-                        </div> <!--end row fluid-->
-                    </div> <!--end tab pane invited-->
                     
                    
                 </div> <!--end tab content-->
