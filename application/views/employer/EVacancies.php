@@ -6,7 +6,7 @@
         <div class="span12">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Posted Vacancies
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Manage Vacancies
                 </h3>
                 
                 <div class="tabbable"> <!-- start tabs-->

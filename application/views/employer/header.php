@@ -121,28 +121,15 @@ function checkall(el){
                                     <br>Profile
                                 </h5>
                                 </a>
+                       
                                 
                                 <a href="<?php echo base_url()?>employer/employer_vacancypage" class="btn btn-group transBtn">
-                                    <h5 class="media-heading">
-                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="17"> 
-                                        <br>Vacancies
-                                    </h5>
-                                </a>
-                                
-                                <a href="<?php echo base_url()?>employer/employer_dashboard" class="btn btn-group transBtn">
-                                  <h5 class="media-heading">
-                                      <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_351_book_open.png" width="20"> 
-                                      <br>Dashboard
-                                  </h5>
-                                </a>
-                        <a href="#" class="btn btn-group transBtn">
                                     <h5 class="media-heading">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="17"> 
                                         <br>Manage Vacancies
                                     </h5>
                                 </a>
-                                
-                                <a href="employer_postvacancypage #postV" class="btn btn-group transBtn" data-toggle="modal"  >
+                           <a href="employer_postvacancypage #postV" class="btn btn-group transBtn" data-toggle="modal"  >
                                     <h5 class="media-heading">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="17"> 
                                         <br>Post Vacancy
@@ -152,6 +139,16 @@ function checkall(el){
                                   
                     		
                                 </a>
+                                
+                                <a href="<?php echo base_url()?>employer/employer_dashboard" class="btn btn-group transBtn">
+                                  <h5 class="media-heading">
+                                      <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_351_book_open.png" width="20"> 
+                                      <br>Dashboard
+                                  </h5>
+                                </a>
+                      
+                                
+                              
                         
                         	
                         </div><!--end parallel navs-->
