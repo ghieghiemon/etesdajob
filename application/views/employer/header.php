@@ -93,7 +93,7 @@ function checkall(el){
                     <a class="brand" href="<?php echo base_url()?>employer/employer_dashboard">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
-                    <div class="nav" style="margin-left:200px;margin-top:-2px;">
+                    <div class="nav" style="margin-left:170px; margin-top:-2px;">
                                 <a href="<?php echo base_url()?>employer/employer_cal" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 
@@ -135,33 +135,31 @@ function checkall(el){
                                       <br>Dashboard
                                   </h5>
                                 </a>
+                        <a href="#" class="btn btn-group transBtn">
+                                    <h5 class="media-heading">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="17"> 
+                                        <br>Manage Vacancies
+                                    </h5>
+                                </a>
+                                
+                                <a href="employer_postvacancypage #postV" class="btn btn-group transBtn" data-toggle="modal"  >
+                                    <h5 class="media-heading">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="17"> 
+                                        <br>Post Vacancy
+                                        
+                                    </h5>
+                               
+                                  
+                    		
+                                </a>
+                        
+                        	
                         </div><!--end parallel navs-->
                     <div class="nav-collapse collapse">
                     	
                         <ul class="nav pull-right">
                         	
-                        	<li>
-                                    <?php
-                                    if(count($myvacancies) != 0)
-                                    {
-                                    ?>
-                                        <a data-toggle="modal" href="#postV" class="">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
-                                        Post Vacancy
-                                        </a>
-                                    <?php
-                                    }
-                                    else
-                                    {
-                                    ?>
-                                    <a href="employer_postvacancypage" class="">
-                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons-halflings-white_addbtn.png" width="15">
-                                        Post Vacancy
-                                    </a>
-                                    <?php
-                                    }
-                                    ?>
-                    		</li>
+                        
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 	<img src="<?php echo base_url()?>profilepics/<?php echo $pic;?>" width="25" height="15" style="margin-left:-11px;"> 
