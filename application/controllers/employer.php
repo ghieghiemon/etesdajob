@@ -4,6 +4,9 @@ class Employer extends CI_Controller {
     
     function employer_view()
     { 
+        @session_start();
+        $_SESSION['ids'] = array();
+        
         $this->load->model('model_employer');
         $ids = $this->input->post('info');
         echo '
@@ -32,6 +35,7 @@ class Employer extends CI_Controller {
                                 <td>
                                     <a href="EAppsProf.html" class="recAppName">';
                           $id = $this->model_employer->get_appid($a);
+                          $_SESSION['ids'][] = $id;
                           $name = $this->model_employer->get_jsName($id);
                               foreach($name as $b)
                               {
@@ -105,10 +109,6 @@ class Employer extends CI_Controller {
                         <a id="confirm" href="#changeStatus" class="btn btn-info" data-toggle="modal">Confirm</a>
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
                     </div>';
-                         
-                        
-           //CHANGE STATUS
-        
         
     }
     public function employer_dashboard()
@@ -377,6 +377,15 @@ class Employer extends CI_Controller {
     }
     public function employer_changeStatus()
     {
+        
+        // 
+        
+        @session_start();
+        echo 'Ito na ids mo :)';
+        print_r($_SESSION['ids']);
+        return;
+        
+        //////////////
         $this->load->model('model_employer'); 
         $status = $this->input->post('group1');
         $day =  $this->input->post('day');

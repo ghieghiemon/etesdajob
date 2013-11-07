@@ -16,8 +16,8 @@
 {
     ?>
 
-<div class="modal hide fade" id="changeStatus<?php echo $a['applicationid']?>">
-    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $a['applicationid']?>">
+<div class="modal hide fade" id="changeStatus">
+    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Change Status</h3>
