@@ -282,6 +282,16 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function get_jobno($applicationid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT jobno FROM applications WHERE applicationid = $applicationid");
+        foreach ($query->result() as $row)
+        {
+            return $row->jobno;
+        }
+        $db1->close();
+    }
     public function get_appstatus($applicationid)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -378,7 +388,7 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
-                            FROM applications WHERE jobno = $jobno AND status = 'Interview1'
+                            FROM applications WHERE jobno = $jobno AND status = 'Interview'
                             ORDER BY datereceived DESC");
         return $query->result_array();
         $db1->close();
@@ -460,16 +470,22 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
-     public function change_status($appno,$status,$date,$time)
+     public function change_status($appno,$status,$date,$time,$location)
     {
         $db1 = $this->load->database('local', TRUE);
         $db1->query("UPDATE applications SET status = '$status' WHERE applicationid = $appno");
         $db1->query("UPDATE applications SET requirementtime ='$time' WHERE applicationid = $appno");
-        $db1->query("UPDATE applications SET requirementdate =(STR_TO_DATE('$date','%m,%d,%Y'))
+        $db1->query("UPDATE applications SET requirementdate =(STR_TO_DATE('$date','%m,%d,%Y')),    
+                                             location = $location
                      WHERE applicationid = $appno");
         $db1->close();
     }
-    
+     public function fill_vacancy($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db1->query("UPDATE job_vacancies SET vacanciesleft = vacanciesleft-1 WHERE jobno=$jobno");
+        $db1->close();
+    }
         public function employer_briefcase($id)
     {
         $db1 = $this->load->database('local', TRUE);
