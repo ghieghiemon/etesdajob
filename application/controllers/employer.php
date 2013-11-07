@@ -4,6 +4,9 @@ class Employer extends CI_Controller {
     
     function employer_view()
     { 
+        @session_start();
+        $_SESSION['ids'] = array();
+        
         $this->load->model('model_employer');
         $ids = $this->input->post('info');
         echo '
@@ -11,7 +14,6 @@ class Employer extends CI_Controller {
         <a class="close" data-dismiss="modal">x</a>
         <h3>Change Status</h3>
         </div>
-
         <div class="modal-body">
             <div class="well">
                 <table class="tableUR2b table-hover table-condensed table-stripedB">
@@ -33,6 +35,7 @@ class Employer extends CI_Controller {
                                 <td>
                                     <a href="EAppsProf.html" class="recAppName">';
                           $id = $this->model_employer->get_appid($a);
+                          $_SESSION['ids'][] = $id;
                           $name = $this->model_employer->get_jsName($id);
                               foreach($name as $b)
                               {
@@ -96,17 +99,16 @@ class Employer extends CI_Controller {
                           echo '</p>
                                 </td>
                             </tr>';
+                    
                     } 
-                            
                         echo '</tbody>
                                         </table>
                             </div><!--end well-->
                             </div>
                     <div class="modal-footer">
-                        <a href="#" class="btn btn-info" data-dismiss="modal">Confirm</a>
+                        <a id="confirm" href="#changeStatus" class="btn btn-info" data-toggle="modal">Confirm</a>
                         <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
                     </div>';
-        
         
     }
     public function employer_dashboard()
@@ -373,8 +375,17 @@ class Employer extends CI_Controller {
         }
         
     }
-    public function employer_changeStatus($appno)
+    public function employer_changeStatus()
     {
+        
+        // 
+        
+        @session_start();
+//        echo 'Ito na ids mo :)';
+//        print_r($_SESSION['ids']);
+//        return;
+        
+        //////////////
         $this->load->model('model_employer'); 
         $status = $this->input->post('group1');
         $day =  $this->input->post('day');
@@ -382,7 +393,24 @@ class Employer extends CI_Controller {
         $year = $this->input->post('year');
         $time = $this->input->post('time');
         $date = $month.",".$day.",".$year; 
-        $this->model_employer->change_status($appno,$status,$date,$time);
+        $location = "Manila";
+        
+        $ids = $_SESSION['ids'];
+        if ($status == "Hired")
+        {
+            foreach ($ids as $a)
+            {
+                $id = $this->model_employer->get_applicationid($a);
+                $jobno = $this->model_employer->get_jobno($id);
+                $this->model_employer->fill_vacancy($jobno);
+            }
+        }
+        foreach ($ids as $a)
+        {
+            $this->model_employer->change_status($a,$status,$date,$time,$location);
+        }
+        
+        //redirect('employer_appsperjob')
     }
     public function employer_viewchecked()
     {
