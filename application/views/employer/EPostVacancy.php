@@ -5,7 +5,6 @@
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Vacancy Preview</h3>
   	</div>
-
 	<div class="modal-body">
                 <span id="label1"></span>
 		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
