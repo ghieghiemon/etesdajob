@@ -381,9 +381,9 @@ class Employer extends CI_Controller {
         // 
         
         @session_start();
-        echo 'Ito na ids mo :)';
-        print_r($_SESSION['ids']);
-        return;
+//        echo 'Ito na ids mo :)';
+//        print_r($_SESSION['ids']);
+//        return;
         
         //////////////
         $this->load->model('model_employer'); 
@@ -395,19 +395,19 @@ class Employer extends CI_Controller {
         $date = $month.",".$day.",".$year; 
         $location = "Manila";
         
-        $ids = $this->input->post('info');
+        $ids = $_SESSION['ids'];
         if ($status == "Hired")
         {
             foreach ($ids as $a)
             {
-                $id = $this->model_employer->get_jobno($a);
+                $id = $this->model_employer->get_applicationid($a);
+                $jobno = $this->model_employer->get_jobno($id);
                 $this->model_employer->fill_vacancy($jobno);
             }
         }
         foreach ($ids as $a)
         {
-            $id = $this->model_employer->get_appid($a);
-            $this->model_employer->change_status($id,$status,$date,$time,$location);
+            $this->model_employer->change_status($a,$status,$date,$time,$location);
         }
         
         //redirect('employer_appsperjob')

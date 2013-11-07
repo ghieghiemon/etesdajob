@@ -282,6 +282,16 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function get_applicationid($appid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT applicationid FROM applications WHERE appid = $applicationid");
+        foreach ($query->result() as $row)
+        {
+            return $row->applicationid;
+        }
+        $db1->close();
+    }
     public function get_jobno($applicationid)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -476,7 +486,7 @@ class Model_employer extends CI_Model {
         $db1->query("UPDATE applications SET status = '$status' WHERE applicationid = $appno");
         $db1->query("UPDATE applications SET requirementtime ='$time' WHERE applicationid = $appno");
         $db1->query("UPDATE applications SET requirementdate =(STR_TO_DATE('$date','%m,%d,%Y')),    
-                                             location = $location
+                                             location = '$location'
                      WHERE applicationid = $appno");
         $db1->close();
     }
