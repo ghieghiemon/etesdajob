@@ -630,9 +630,22 @@
                 <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> 
                 <div align="right" class="changeBtnMarg">
                 	<!--<button type="submit" >-->
-                        <a id="change" data-toggle="modal" class="btn btn-info">
-                            CHANGE STATUS
-                        </a>
+                        
+                        <?php
+                          foreach ($details as $a)
+                          {
+                              $left =  $a['vacanciesleft'];
+                              if ($left >=1)
+                              {
+                              ?> 
+                            <a id="change" data-toggle="modal" class="btn btn-info">
+                                CHANGE STATUS
+                            </a>
+                        <?php
+                              }
+                          }
+                        ?>
+                        
                 </div>
                 <br>
                 <hr class="hrDicussBigA">
@@ -643,7 +656,7 @@
                           <li><a href="#tab2" data-toggle="tab">Exam</a></li>
                           <li><a href="#tab3" data-toggle="tab">Interview</a></li>
                           <li><a href="#tab4" data-toggle="tab">Hired</a></li>
-                          <li><a href="#tab5" data-toggle="tab">All</a></li>
+                          <!--<li><a href="#tab5" data-toggle="tab">All</a></li>-->
                       </ul>
             
                       <div class="tab-content"> <!--start tab content-->
@@ -1144,8 +1157,8 @@
                           </div><!--end scrollable-->
                       </div> <!--end tab pane 2ns int-->
                       
-                      <div class="tab-pane" id="tab5">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+<!--                      <div class="tab-pane" id="tab5">
+                          <div style="width:920px;height:420px;overflow:auto;">start scrollable table
                                <div id="container">
                         	<table  id="all" >
                                   <thead>
@@ -1263,8 +1276,8 @@
                                   </tbody>
                               </table>
                                </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane hire-->
+                          </div>end scrollable
+                      </div> end tab pane hire-->
                       
                       
                      

@@ -9,6 +9,7 @@ class Employer extends CI_Controller {
         
         $this->load->model('model_employer');
         $ids = $this->input->post('info');
+        $_SESSION['ids'] = $ids;
         echo '
         <div class="modal-header">
         <a class="close" data-dismiss="modal">x</a>
@@ -35,7 +36,7 @@ class Employer extends CI_Controller {
                                 <td>
                                     <a href="EAppsProf.html" class="recAppName">';
                           $id = $this->model_employer->get_appid($a);
-                          $_SESSION['ids'][] = $id;
+                          
                           $name = $this->model_employer->get_jsName($id);
                               foreach($name as $b)
                               {
@@ -377,15 +378,7 @@ class Employer extends CI_Controller {
     }
     public function employer_changeStatus()
     {
-        
-        // 
-        
         @session_start();
-//        echo 'Ito na ids mo :)';
-//        print_r($_SESSION['ids']);
-//        return;
-        
-        //////////////
         $this->load->model('model_employer'); 
         $status = $this->input->post('group1');
         $day =  $this->input->post('day');
@@ -396,21 +389,18 @@ class Employer extends CI_Controller {
         $location = "Manila";
         
         $ids = $_SESSION['ids'];
-        if ($status == "Hired")
-        {
-            foreach ($ids as $a)
-            {
-                $id = $this->model_employer->get_applicationid($a);
-                $jobno = $this->model_employer->get_jobno($id);
-                $this->model_employer->fill_vacancy($jobno);
-            }
-        }
+        
         foreach ($ids as $a)
         {
+            $jobno = $this->model_employer->get_jobno($a);
+            if ($status == "Hired")
+            {
+                $this->model_employer->fill_vacancy($jobno);
+            }
             $this->model_employer->change_status($a,$status,$date,$time,$location);
         }
         
-        //redirect('employer_appsperjob')
+        $this->employer_appsperjob($jobno);
     }
     public function employer_viewchecked()
     {
