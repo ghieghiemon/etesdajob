@@ -26,6 +26,7 @@
     <div class="row-fluid">
     	<div class="span7">
             <div class="well">
+                <form method="post" action ="<?php echo base_url()?>tesda/send_invite"
             	<h4 class="media-heading">
                 	| Invite companies to join TESDA Job Portal
                 </h4>
@@ -53,7 +54,7 @@
                                 </td>
                                 
                                 <td>
-                                	<textarea class="span9" placeholder="" rows="3"></textarea>
+                                	<textarea type="input" id="email" name="email "class="span9" placeholder="" rows="3"></textarea>
                                 </td>
                             </tr>
                             
@@ -63,7 +64,7 @@
                                 </td>
                                 
                                 <td>
-                                	<textarea class="span9" placeholder="" rows="3">Join TESDA Job Portal and look for potential applicants that could help your organization.
+                                	<textarea type="input" id="msg" name="msg" class="span9" placeholder="" rows="3">Join TESDA Job Portal and look for potential applicants that could help your organization.
                                     </textarea>
                                 </td>
                             </tr>
@@ -72,9 +73,10 @@
                     
                     <div class="row-fluid">
                     	<div align="right">
-                    	<button class="btn btn-primary" style="margin-right:135px;">Invite</button>
+                    	<button type="submit" class="btn btn-primary" style="margin-right:135px;">Invite</button>
                         </div>
                     </div><!--end invite button-->
+            </form>
             </div><!--end well-->
             
             <div class="well wellUpMarg">
