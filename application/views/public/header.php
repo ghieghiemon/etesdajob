@@ -42,7 +42,36 @@
                     <a class="brand" href="<?php echo base_url()?>">
                      <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
-                    
+                      <div class="nav" style="margin-left:270px;margin-top:-2px;">
+                               
+                                <a href="#" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <h5 class="media-heading">
+                                    <img src="assets/img/icons/glyphicons_043_group.png" width="25"> 
+                                    <br>Leagues
+                                </h5>
+                                </a>
+                                
+                                <a href="#" class="btn btn-group transBtn">
+                                <h5 class="media-heading">
+                                    <img src="assets/img/icons/glyphicons_266_flag.png" width="15"> 
+                                    <br>&nbsp; Events &nbsp;
+                                </h5>
+                                </a>
+                                
+                                <a href="#" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <h5 class="media-heading">
+                                    <img src="assets/img/icons/glyphicons_144_folder_open.png" width="25"> 
+                                    <br>My Activity 
+                                </h5>
+                                </a>
+                                
+                                <a href="#" class="btn btn-group transBtn">
+                                  <h5 class="media-heading">
+                                      <img src="assets/img/icons/glyphicons_020_home.png" width="21"> 
+                                      <br>&nbsp; Home &nbsp;
+                                  </h5>
+                                </a>
+                        </div><!--end parallel navs-->
                     <div class="nav-collapse collapse">
                     	
                         <ul class="nav pull-right">

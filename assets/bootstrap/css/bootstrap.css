@@ -9165,6 +9165,24 @@ margin-bottom:3px;
   border-top: 3px solid #FFF;
 }
 
+.tableV {
+	width: 680px;
+	height:1px;
+  	margin-bottom: 20px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
+	font-size:12px;
+}
+
+.tableV td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
+
 .tableJM {
 	width: 900px;
 	height:1px;
@@ -9630,6 +9648,15 @@ body {
    margin-top:-5px;
 }
 
+.myStyle3QST select {
+   height: 30px;
+   font-size: 12px;
+   line-height: 14px;
+   width:255px;
+   margin-left:20px;
+   margin-top:-5px;
+}
+
 .myStyle3QS2 select {
    height: 30px;
    font-size: 12px;
@@ -9704,6 +9731,15 @@ body {
    line-height: 14px;
    width:177px;
    margin-top:-87px;
+}
+
+.myStyle2TE select {
+   height: 35px;
+   font-size: 12px;
+   font-weight:bold;
+   line-height: 14px;
+   width:185px;
+   margin-bottom:-20px;
 }
 
 .myStyle3EventDet textarea[rows] {
@@ -10089,6 +10125,16 @@ body {
 	margin-top:-10px;
 }
 
+.eDnBtn2 {
+	margin-top:10px;
+	margin-right:10px;
+}
+
+.eDnBtn3 {
+	margin-top:10px;
+	margin-right:-5px;
+}
+
 .lDetMarg {
 	margin-left:30px;
 	margin-top:10px;
@@ -10227,6 +10273,33 @@ img.photo{
 	margin-left:5px;
 }
 
+.PInd3 {
+	height:120px;
+  	margin-left:10px;
+	margin-top:12px;
+	background: #FFF;
+	border:none;
+	color:#903;
+	text-shadow:none;
+	margin-left:5px;
+	background: white;
+}
+
+.PIndPic{
+	height:105px;
+	width:115px;
+	margin-left:-5px;
+	margin-right:-10px;
+}
+
+.tJYear {
+	font-size: 13px;
+	font-weight:bold;
+	color:#333;
+	margin-left:45px;
+	margin-bottom:20px;
+}
+
 .vNameJA {
 	font-style:oblique;
 	font-size:21px;
@@ -10239,13 +10312,6 @@ img.photo{
 	color:#93C;
 }
 
-.tableUR2 td {
-  padding: 2px;
-  line-height: 20px;
-  text-align: center;
-  vertical-align: top;
-  border-top: 3px solid #FFF;
-}
 .tableUR2b {
 	width: 510px;
 	height:1px;
@@ -10270,3 +10336,45 @@ img.photo{
   background-color:#99F;
   text-color:#000;
 }
+
+.wellShadow {
+	border-style: dashed;
+	box-shadow: 2px 2px 4px 1px #888888;
+}
+
+.numSrch {
+	font-size:10px;
+	font-weight:bold;
+	color:#93C;
+}
+
+.myStyle3Not textarea[rows] {
+   height: 65px;
+   width:555px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+}
+
+.qjsBG {
+	background-color:#969;
+}
+
+.locLink {
+	font-size:15px;
+	color:#936;
+	font-weight:bold;
+}
+
+.locLink2 {
+	font-size:15px;
+	color:black;
+	font-weight:bold;
+}
+
+.PDescMarg {
+	margin-left:20px;
+	font-size:15px;
+	font-weight:bold;
+}
+

@@ -1,5 +1,5 @@
-
-
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/datepicker.css"> 
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%; margin-bottom:-7%">
 	<div class="row-fluid">
@@ -348,3 +348,45 @@
     
 </body>
 
+<script>
+$("#WSY1").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
+<script>
+$("#WEY1").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
+<script>
+$("#WSY2").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
+<script>
+$("#WEY2").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
+<script>
+$("#SY1").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
+<script>
+$("#EY1").datepicker( {
+    format: " yyyy",
+    viewMode: "years", 
+    minViewMode: "years"
+});
+</script>
