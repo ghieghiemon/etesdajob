@@ -306,30 +306,31 @@ foreach($invites as $a)
                 
                 <div style="width:280px;height:140px;overflow:auto;"><!--start scrollable table-->
       				<ul class="nav nav-list">
+                        <?php
+                        foreach ($notif as $a)
+                        {
+                        ?>
                         <li>
-                            <a href="#" class="Comm">
+                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="Comm">
                                 <p class="notifAgenda3">
-                                    Meralco scheduled you an interview 
+                                   <?php
+                                    if($a['seen'] == 0)
+                                    {
+                                        echo '<strong>'. $a['notification'].'</strong>';
+                                    }
+                                    else
+                                    {
+                                        echo $a['notification'];
+                                    }
+                                        
+                                    ?>
                                 </p>
                             </a>
                         </li>
-                        
-                        <li>
-                            <a href="#" class="Comm">
-                                <p class="notifAgenda3">
-                                    Your application for welder assistant is now screened by XYZ company
-                                </p>	
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#" class="Comm">
-                                <p class="notifAgenda3">
-                                    SM Corp invited you to apply as Lead Welder
-                                </p>	
-                            </a>
-                        </li>
-                        
+                        <?php 
+                            
+                        } 
+                        ?>
                     </ul>
                 </div><!--end scrollable table-->
             </div><!--end notifs-->
