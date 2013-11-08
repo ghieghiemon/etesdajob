@@ -56,6 +56,8 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.1.js"></script>
+    
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
     

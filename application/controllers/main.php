@@ -20,7 +20,7 @@ class Main extends CI_Controller {
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $data['leagues'] = $this->model_pub->get_leagues();
-        $eno = $this->model_main->get_eventno();
+       // $eno = $this->model_main->get_eventno();
        // $data['attendees'] = $this->model_main->event_attendees($eno);
   
         $this->load->view('public/header');
@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 //register
     public function  registerpage()
     {
-    $this->load->view('public/Pheader');  
+    $this->load->view('public/header');  
     $this->load->view('register/SUp');     
     $this->load->view('footer');
       
@@ -66,7 +66,6 @@ class Main extends CI_Controller {
                  
                 $this->load->library('email', $config);
                 $this->email->set_newline("\r\n");
-       
                 $this->load->library('email', array('mailtype'=>'html'));
                 $this->email->from('tesda.jobportal@gmail.com','eTesda-Work');
                 $this->email->to($this->input->post('email'));
@@ -85,14 +84,26 @@ class Main extends CI_Controller {
                        // $userid = $this->model_main->add_user($key);
                        // $this->registerJS($userid);
                       //  echo 'Check email to proceed to the registration process';
-                        switch ($this->input->post('btnAction'))
+                        $type=(isset($_POST['type']))?$_POST['type']:'';
+                        switch ($type)
                         {
-                                case 'Jobseeker':
-                                    $this->registerJSpage(11);
+                                case 'JS':
+                                   
+                                    $userid= $this->model_main->add_jsuser();
+                                    $appid = $this->model_main->add_jsdetails($userid);
+                                    $this->model_main->add_jswork($appid);
+                                    $this->model_main->add_jsed($appid);
+                                    $this->model_main->add_jsadd($appid);
+                                    
+                                     $this->registerJSpage($userid);
+                                     
                                   // redirect('registerJSpage/11');
                                         break;
-                                case 'Employer':
-                                        $this->registerEpage(11);
+                                case 'EM':
+                                       
+                                    $userid= $this->model_main->add_empuser();
+                                    $this->model_main->add_edetails($userid);
+                                    $this->registerEpage($userid);
                                         //redirect('registerEpage');
                                      break;
                                 default:
@@ -110,9 +121,7 @@ class Main extends CI_Controller {
             } 
             
             else {
-                $this->load->view('public/Pheader');
-         $this->load->view('register/SUp');
-         $this->load->view('footer');
+             $this->publicpage();
             }
         
     }
@@ -132,16 +141,21 @@ class Main extends CI_Controller {
     public function register_user($key)
     {
         $this->load->model('model_main');
-
-        if($this->model_main->is_key_valid($key))
+        $type=(isset($_POST['type']))?$_POST['type']:'';
+        if($this->model_main->is_key_valid($key) && $type='JS' )
         {
             $userid = $this->model_main->add_user($key);
             $this->registerJSpage($userid);
 
         }
-        else 
+        else  if ($this->model_main->is_key_valid($key) && $type='EM' )
         {
+             $userid = $this->model_main->add_user($key);
+             $this->registerEpage($userid);
+        }
+        else{
             echo 'invalid key';
+            
         }
     }
     public function confirm_password()
@@ -161,18 +175,15 @@ class Main extends CI_Controller {
         
     public function registerJSpage($userid)
     {
-        $userid =11;
         $this->load->model('model_main');
         $data = array(
-                'comp'=> $this->model_main->getAllComp(),  
-                'cert'=> $this->model_main->getAllCerts(),
-                'industry'=> $this->model_main->get_drpindustries(),  
-                'regions'=> $this->model_main->get_regions(),  
-                'userid' =>$userid);
+              'regions'=> $this->model_main->get_regions(),      
+              'userid' =>$userid);
    
-        $this->load->view('public/Pheader');  
+        $this->load->view('public/header');  
         $this->load->view('register/SUpJS', $data);     
-       // $this->load->view('footer');
+    //   $this->load->view('register/SUpJS');     
+        $this->load->view('footer');
       
     }
 
@@ -183,8 +194,8 @@ class Main extends CI_Controller {
               'industry'=> $this->model_main->get_drpindustries(),  
               'regions'=> $this->model_main->get_regions(),      
               'userid' =>$userid);
-             
-        $this->load->view('public/Pheader'); 
+       //$userid = $this->model_main->add_empuser();
+        $this->load->view('public/header'); 
         $this->load->view('register/SUpE',$data);     
         $this->load->view('footer');
       
@@ -192,10 +203,134 @@ class Main extends CI_Controller {
   
    public function register_edetails($userid)       
     {
-             
-       $this->load->model('model_main');
-       $infoid=  $this->model_main->add_edetails($userid);
-       $this->model_main->add_eaddress($infoid);
+       
+                // $userid =$this->model_main->add_empuser();
+//              $config['upload_path'] = './leaguepics/';
+//		$config['allowed_types'] = 'gif|jpg|png|docx|zip';
+//		$config['max_size']	= '10000000';
+//		$config['max_width']  = '1024';
+//		$config['max_height']  = '768';
+//                
+//                $this->load->library('upload', $config);
+//                $this->upload->do_upload();
+//                $data = $this->upload->data();
+//                $u = $this->upload->data();
+       
+                $in = $this->input->post('industry');
+                $cname = $this->input->post('CName');
+                $yr = $this->input->post('Yr');
+                $cb = $this->input->post('CB');
+                $lin = $this->input->post('LIN');
+                $cp = $this->input->post('CP');
+                $pos = $this->input->post('Pos');
+                $ce = $this->input->post('CE');
+                $cn = $this->input->post('CN');
+        $this->load->model('model_main');      
+        $this->model_main->update_edetails($userid,$in,$cname,$yr,$cb,$lin,$cp,$pos,$ce,$cn);
+        
+        
+          redirect('main/publicpage');
+        
+//        if ( ! $this->upload->do_upload())
+//		{
+//                    echo $this->upload->display_errors();
+//		}
+//		else
+//		{
+//                    redirect('eleague');
+//		}
+//                redirect('eleague');
+      // $this->model_main->add_eaddress($infoid);
+
+    }
+    function do_upload()
+{
+    $config['upload_path'] = './assets/uploads/';
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size'] = '1000';
+    $config['max_width']  = '';
+    $config['max_height']  = '';
+    $config['overwrite'] = TRUE;
+    $config['remove_spaces'] = TRUE;
+
+    $this->load->library('upload', $config);
+
+    if ( ! $this->upload->do_upload())
+    {
+        $error = array('error' => $this->upload->display_errors());
+
+        $this->load->view('members/header');
+        $this->load->view('members/upload_form', $error);
+        $this->load->view('members/footer');
+    }
+    else
+    {
+        $data = array('upload_data' => $this->upload->data());
+        $this->load->view('members/header');
+        $this->load->view('members/upload_success', $data);
+        $this->load->view('members/footer');
+    }
+}
+       public function register_jsdetails($userid)       
+    {
+       
+               $config['upload_path'] = './employerpics/';
+		$config['allowed_types'] = 'gif|jpg|png|docx|zip';
+		$config['max_size']	= '10000000';
+		$config['max_width']  = '1024';
+		$config['max_height']  = '768';
+                
+                $this->load->library('upload', $config);
+                $this->upload->do_upload();
+                $data = $this->upload->data();
+                $u = $this->upload->data();
+       
+                $fn = $this->input->post('FN');
+                $ln = $this->input->post('LN');
+                $bday = $this->input->post('bday');
+                $gender = $this->input->post('gender');
+                $tn = $this->input->post('TN');
+                $cn = $this->input->post('CN');
+                $civ = $this->input->post('civstatus');
+                
+                $companyname = $this->input->post('COMP');
+                $position = $this->input->post('POS');
+                $start = $this->input->post('WSY1');
+                $end = $this->input->post('WEY1');
+                
+                $schoolname = $this->input->post('IN1');
+                $level = $this->input->post('LVL1');
+                $description = $this->input->post('CO1');
+                $estart = $this->input->post('SY1');
+                $eend = $this->input->post('EY1');
+                
+                $streetno = $this->input->post('SN');
+                $brgy = $this->input->post('brgy');
+                $district = $this->input->post('dis');
+                $cityprov = $this->input->post('cityid');
+                $zipcode = $this->input->post('zip');
+                $regionid = $this->input->post('regionid');
+                
+             //   $employerpic = $u['file_name'];
+                
+                $this->load->model('model_main');      
+                $this->model_main->update_jsdetails($userid,$fn,$ln,$bday,$gender,$tn,$cn,$civ);
+                $appid = $this->model_main->get_jsappid($userid);
+                $this->model_main->update_jswork($appid,$companyname,$position,$start,$end);
+                $this->model_main->update_jsed($appid,$schoolname,$level,$description,$estart,$eend);
+                $this->model_main->update_jsadd($appid,$streetno,$brgy,$district,$cityprov,$zipcode,$regionid);
+               
+        
+                if ( ! $this->upload->do_upload())
+		{
+                    echo $this->upload->display_errors();
+		}
+		else
+		{
+                   redirect('main/publicpage');
+		}
+                  redirect('main/publicpage');
+
 
     }
     public function login_validation()

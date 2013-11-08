@@ -393,7 +393,7 @@
    
     <div id="collapseThree" class="accordion-body collapse">
       <div class="accordion-inner">
-            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
+            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>main/register_validation'/>
                 
                       <table>
                 	<thead>
@@ -410,7 +410,12 @@
                             
                             <td  class="myStyleSUp">
                             	<label class="SUpFont">Email</label>
-                            	<input type="text" id="email" name="email">
+                            	 <?php
+                                    
+                                    echo "<input style = ' width:85%'  class='input-prepend'";
+                                    echo form_input('email');
+                                    
+                                    ?>
                             </td>
                         </tr>
                         
@@ -420,7 +425,11 @@
                             
                             <td  class="myStyleSUp">
                             	<label class="SUpFont2">Password</label>
-                            	<input type="text" id="userpassword" name="userpassowrd">
+                            	  <?php
+                                    echo "<input class='input-prepend'";
+                                    echo    form_password('userpassword');
+                                    
+                                    ?>
                             </td>
                         </tr>
                         
@@ -430,7 +439,11 @@
                             
                             <td  class="myStyleSUp">
                             	<label class="SUpFont2">Confirm Password</label>
-                            	<input type="text" id="CPW">
+                             <?php
+                                    echo "<input class='input-prepend'";
+                                    echo    form_password('cpassword');
+                                    
+                                    ?>
                             </td>
                         </tr>
                         
@@ -441,19 +454,14 @@
                             <td align="center">
                                 <div class="help-inline" style="margin-left:-20px;">
                                     <p>
-                                        <label class="radio SUpFont3">
-                                            <input type="radio" name="JS"> Job Seeker
-                                        </label>
-                                    </p>
-                                </div> <!--end js button-->
-                        
-                                <div class="help-inline">
-                                  <p>
-                                      <label class="radio SUpFont3">
-                                          <input type="radio" name="EM"> Employer
-                                      </label>
+                             
+                                       <input type="radio" name="type" value="JS">Jobseeker</input>&nbsp;&nbsp;
+                                      <input type="radio" name="type" value="EM">Employer</input>
+                                     
+                                      
                                   </p>
                                 </div> <!--end employer-->
+                                
                             </td>
                         </tr>
                     </tbody>
