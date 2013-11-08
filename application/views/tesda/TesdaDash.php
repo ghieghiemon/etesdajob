@@ -26,7 +26,7 @@
     <div class="row-fluid">
     	<div class="span7">
             <div class="well">
-                <form method="post" action ="<?php echo base_url()?>tesda/send_invite"
+                <form method="post" action ="<?php echo base_url()?>tesda/send_invite">
             	<h4 class="media-heading">
                 	| Invite companies to join TESDA Job Portal
                 </h4>
