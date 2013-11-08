@@ -474,6 +474,25 @@ class Model_employer extends CI_Model {
 //        }
 //        $db1->close();
 //    }
+//    public function match($jobpost_id, $seeker_id)
+//    {
+//        $total_skill = $this->getMatchedSkills($jobpost_id, $seeker_id);
+////        $total_cert = $this->getMatchedCertifications($jobpost_id, $seeker_id);;
+////        $total_comp = $this->getMatchedCompetencies($jobpost_id, $seeker_id);;
+//        $total_cert = 0;
+//        $total_comp = $this->getMatchedSkills($jobpost_id, $seeker_id);
+//        if($total_skill >0 || $total_cert > 0 || $total_comp > 0)
+//            return true;
+//        else
+//            return false;
+//    }
+    public function get_jobseekers()
+    {
+        $db2 = $this->load->database('default', TRUE);
+            $sql = $db2->query("SELECT userid from applicants");
+            return $sql->result_array();
+        $db2->close();
+    }
     public function get_jsName($id){
         $db2 = $this->load->database('default', TRUE);
         $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE appid = $id");

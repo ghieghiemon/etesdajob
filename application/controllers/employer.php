@@ -159,7 +159,32 @@ class Employer extends CI_Controller {
         $this->load->view('employer/EPostVacancy', $jobpost);
         $this->load->view('footer');
     }
-    
+    public function match($jobno, $id)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $matchedCert = $this-> model_jobseeker->get_matchedCert($jobno, $id);
+        $requiredCert = $this-> model_jobseeker->get_jobcert($jobno);
+        $matchedComp = $this-> model_jobseeker->get_matchedComp($jobno, $id);
+        $requiredComp = $this-> model_jobseeker->get_jobcomp($jobno);
+        
+        if(!($matchedCert < $requiredCert))
+        {
+//              return true;
+            if(!($matchedComp < $requiredComp))
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        } 
+    }
 
     public function employer_postvacancy()
     {
@@ -211,8 +236,42 @@ class Employer extends CI_Controller {
              $this->model_employer->add_certifications($jobpost_id, $a);
           }
       }
-
-     redirect('employer_dashboard');
+      
+      //invite
+      
+        $jobseeker_list = $this->model_employer->get_jobseekers();
+        $stack = array(); 
+        foreach($jobseeker_list as $seeker)
+        {
+            if($this->match($jobpost_id, $seeker['userid']))
+            {
+                array_push($stack, $seeker['userid']);
+            }
+        }
+        
+        $data  = array();
+       foreach ($stack as $a)
+       {
+           $name =$this->model_main->get_jsname($a);
+           
+           $row['name'] = $name;
+           $row['appid'] = $a;
+           $row['skills'] = $this->model_main->get_jsskills($a);
+           $row['competencies'] = $this->model_main->get_jscomp($a);
+           $row['details'] = $this->model_main->get_jsdetails($a);
+           //$row['certifications'] = 
+           if($this->model_main->check_if_invite($a, $jobpost_id))
+           {
+                array_push($data, $row);
+           }
+       }
+       
+       
+       $invite['invites'] = $data;
+       $invite['jobno'] = $jobpost_id;
+       
+      $this->employer_header();
+     $this->load->view("employer/EInviteJS",$invite);
 
     }
     
