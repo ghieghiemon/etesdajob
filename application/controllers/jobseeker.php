@@ -72,9 +72,7 @@ class Jobseeker extends CI_Controller {
         else
         {
             return false;
-        }
-        
-        
+        } 
     }
     public function jobseeker_jobmarketpage()
     {
