@@ -153,6 +153,14 @@ class Model_employer extends CI_Model {
         return $jobpostid;
         $db1->close();
      }
+     public function add_notification($userid,$notif,$jobno)
+     {
+        $db1 = $this->load->database('local', TRUE);
+
+        $sql = "INSERT INTO notifications(userid, notification, date, seen, jobno)VALUES(?,?,CURDATE(),0,?)";
+        $db1->query($sql,array($userid, $notif, $jobno));
+        $db1->close();
+     }
      public function add_jobvacancy3w($jobtitle,$desc,$companyid, $nov, $region, $city,$industry,$gender, $ageto, $agefrom)
      {
         $db1 = $this->load->database('local', TRUE);

@@ -408,10 +408,7 @@ class Main extends CI_Controller {
  
     
 //tesda
-    public function tesda_dashboard()
-    {
-        $this->load->view('tesda/TesdaDash');
-    }
+    
     
 }
 /* End of file welcome.php */

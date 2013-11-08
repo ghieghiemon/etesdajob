@@ -28,6 +28,7 @@ class Jobseeker extends CI_Controller {
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $data['briefcase'] = $this->model_jobseeker->js_briefcase($id);
+        $data['notif'] = $this->model_jobseeker->get_notifications($id);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);
@@ -43,6 +44,8 @@ class Jobseeker extends CI_Controller {
         $data['myapps'] =$this->model_jobseeker->get_mysideapplications($id,$jobno);
         $data['cert'] = $this->model_jobseeker->get_jobCerts($jobno);
         $data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
+        
+        $this->model_jobseeker->seen_notif($jobno);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyAppDetail',$data);

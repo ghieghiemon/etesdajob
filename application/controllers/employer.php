@@ -455,8 +455,19 @@ class Employer extends CI_Controller {
             if ($status == "Hired")
             {
                 $this->model_employer->fill_vacancy($jobno);
+                $notif = "Hired";
+            } else if ($status == "Exam")
+            {
+                $notif = "Exam";
+            } else if ($status == "Interview")
+            {
+                $notif = "Interview";
+            } else if ($status == "Denied")
+            {
+                $notif = "Denied";
             }
             $this->model_employer->change_status($a,$status,$date,$time,$location);
+            $this->model_employer->add_notification($a,$notif,$jobno);
         }
         
         $this->employer_appsperjob($jobno);

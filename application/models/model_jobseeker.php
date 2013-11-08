@@ -17,6 +17,21 @@ class Model_jobseeker extends CI_Model {
          return $row->profile_pic;}
         $db2->close();
     } 
+    public function get_notifications($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+            $sql = $db1->query("SELECT * from notifications where userid = $id ORDER BY date DESC");
+            return $sql->result_array();
+        $db1->close();
+    }
+    public function seen_notif($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db1->query("UPDATE notifications
+                                    SET seen = 1
+                                    WHERE jobno = $jobno");
+        $db1->close();
+    }
     public function get_jscert()
     {
         $db2 = $this->load->database('default', TRUE);
