@@ -62,23 +62,7 @@
                             <img src="assets/img/user.png"class="PProfE"> 
                             <br>Angelica Guerrero
                         </h5>
-                        </a>
-                        
-                        <a href="#" class="btn btn-group PInd2">
-                        <h5 class="media-heading">
-                            <img src="assets/img/user2.jpg"class="PProfE"> 
-                            <br>Dyanne Ocampo
-                        </h5>
-                        </a>
-                        
-                        <a href="#" class="btn btn-group PInd2">
-                        <h5 class="media-heading">
-                            <img src="assets/img/user3.jpg"class="PProfE"> 
-                            <br>Robert Miller
-                        </h5>
-                        </a>
-                       
-                       
+                        </a> 
                 </div><!--end scrollable-->
             
     	</div><!--end modal members-->
@@ -116,7 +100,7 @@
     	<div class="span3">
         	<div class="well wellUpMarg wellShadow qjsBG">
             	<h5 class="media-heading">
-                	<img src="assets/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
                 </h5>
             	<br>
             
@@ -177,7 +161,7 @@
             
             <div class="well wellUpMarg wellShadow">
             	 <h5 class="media-heading">
-                      <img src="assets/img/icons/glyphicons_144_folder_open.png" width="25"> My Activity 
+                      <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="25"> My Activity 
                   </h5>
                 
                 <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
@@ -207,7 +191,7 @@
         <div class="span6">
         	<div class="well wellMarg wellUpMarg wellShadow">
             	<div style="width:625px;height:190px;overflow:auto;"><!--start scrollable table-->
-                    <h5 class="media-heading"><img src="assets/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
+                    <h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                     <p class="whatsNFont" ><a href='pub/pub_alljob'>
                             <?php 
                     foreach ($vacancies as $a)
@@ -221,7 +205,7 @@
             
           
             <div class="well wellMarg wellUpMarg wellShadow">
-            	<h5 class="media header"><img src="assets/img/icons/glyphicons_264_vcard.png" width="18"> Vacancies</h5>
+            	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="18"> Vacancies</h5>
                 <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                     Legend:  (#) - no. of vacancies
                 </div>
@@ -238,138 +222,22 @@
                             	<p style="margin-top:-20px;">
                                 </p>
                                 
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/it.png"class="PIndPic"> 
-                                    <br>50
-                                </h5>
-                                </a>
+                              
+                                 <?php 
+                    foreach ($industries as $a)
+                    {
+                        ?>
+                        <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd3">
+                        <h5 class="media-heading">
+                            <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndPic"> 
+                            <br>(<?php echo $a['totalvacancies']?>)
+                        </h5>
+                        </a>
+                    <?php
+                    }
+                    ?>  
                                 
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/auto.png"class="PIndPic"> 
-                                    <br> 45
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/const.png"class="PIndPic"> 
-                                    <br>30
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/deco.png"class="PIndPic"> 
-                                    <br>20
-                                </h5>
-                                </a>
-                                
-                                <a href="#" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/elec.png"class="PIndPic"> 
-                                    <br>10
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/foot.png"class="PIndPic"> 
-                                    <br>10
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/furni.png"class="PIndPic"> 
-                                    <br>9
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/garments.png"class="PIndPic"> 
-                                    <br>9
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/health.png"class="PIndPic"> 
-                                    <br>9
-                                </h5>
-                                </a>
-                                
-                                <a href="#" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/heat.png"class="PIndPic"> 
-                                    <br>7
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/agri.png"class="PIndPic"> 
-                                    <br>6
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/maritime.png"class="PIndPic"> 
-                                    <br>6
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/metals.png"class="PIndPic"> 
-                                    <br>5
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/processed.png"class="PIndPic"> 
-                                    <br>5
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/pyro.png"class="PIndPic"> 
-                                    <br>5
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/tourism.png"class="PIndPic"> 
-                                    <br>4
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/tvet.png"class="PIndPic"> 
-                                    <br>4
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/util.png"class="PIndPic"> 
-                                    <br>3
-                                </h5>
-                                </a>
-                                
-                                <a href="PIndustryResult.html" class="btn btn-group PInd3">
-                                <h5 class="media-heading">
-                                    <img src="assets/img/whole.png"class="PIndPic"> 
-                                    <br>2
-                                </h5>
-                                </a>
+                
                         </div><!--end scrollable-->
                         
                         
@@ -384,177 +252,24 @@
                         
                         <div class="tab-pane" id="tab11">
                             <div style="width:615px;height:307px;overflow:auto;"><!--start scrollable table-->
-                                <table style="width:600px;text-align:center;margin-top:50px;">
-                                	<thead>
-                                    	<tr>
-                                        	<th class="span4"></th>
-                                            <th class="span4"></th>
-                                        </tr>
-                                    </thead>
-                                    
-                                	<tbody>
-                                    	<tr>
+                               
+                                             <?php 
+                    foreach ($regionvacancies as $a)
+                    {
+                        ?>
                                         	<td>
                                             	<p class="locLink2">
-                                                	NCR 
-                                                    <a href="#" class="locLink">
-                                                    	(50)
+                                                	<?php echo $a['region']?>
+                                                   <a href="<?php echo base_url('pub/search_regions/' . $a['regionid']); ?>" class="locLink">
+                                                 
+                                                    (<?php echo $a['totalvacancies']?>)
                                                     </a>
                                                 </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                ARMM 
-                                                    <a href="#" class="locLink">
-                                                        (20)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region I
-                                                    <a href="#" class="locLink">
-                                                        (30)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region II
-                                                    <a href="#" class="locLink">
-                                                        (5)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region III
-                                                    <a href="#" class="locLink">
-                                                        (5)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region IV
-                                                    <a href="#" class="locLink">
-                                                        (17)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region V
-                                                    <a href="#" class="locLink">
-                                                        (17)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region VI
-                                                    <a href="#" class="locLink">
-                                                        (9)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region VII
-                                                    <a href="#" class="locLink">
-                                                        (1)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>    
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region VIII
-                                                    <a href="#" class="locLink">
-                                                        (0)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region IX
-                                                    <a href="#" class="locLink">
-                                                        (11)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region X
-                                                    <a href="#" class="locLink">
-                                                        (0)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region XI
-                                                    <a href="#" class="locLink">
-                                                        (0)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            	<p class="locLink2">
-                                                Region XII
-                                                    <a href="#" class="locLink">
-                                                        (1)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        
-                                        	<td>
-                                            	<p class="locLink2">
-                                                Region XIII
-                                                    <a href="#" class="locLink">
-                                                        (2)
-                                                    </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                        
-                                        <tr>  
-                                            <td>
-                                            	<p class="locLink2">
-                                                    <a href="#" class="locLink">
-                                                       
-                                                    </a>
-                                                </p>
-                                            </td>
-                                            
-                                            <td>
-                                            </td>
-                                            
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </td>     
+                                              <?php
+                    }
+                    ?>  
+                                   
                             </div><!--end scrollable table-->
                             
                         </div> <!--end tab pane-->
@@ -668,11 +383,11 @@
             
             <div class="well wellMarg wellUpMarg wellShadow">
             	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/icons/glyphicons_037_coins.png" width="20"> Top Employers
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_037_coins.png" width="20"> Top Employers
                 </h5>
                 <br>
                 <div align="left" class="legendIn" style="margin-bottom:15px;margin-top:-20px;">
-                    Legend:  <img src="<?php echo base_url()?>assets/bootstrap/assets/img/tesda.jpg" width="15"> - TESDA Partner Companies
+                    Legend:  <img src="<?php echo base_url()?>assets/bootstrap/img/tesda.jpg" width="15"> - TESDA Partner Companies
                 </div>
                 
                 <div style="width:295px;height:255px;overflow:auto;"><!--start scrollable table-->

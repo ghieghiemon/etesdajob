@@ -12,6 +12,17 @@ class Model_pub extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    public function get_regionVacancies()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT SUM(v.vacanciesleft) as totalvacancies,r.* from etesda.job_vacancies v 
+			      JOIN etesda.reference_region r ON r.regionid = v.region
+                              GROUP BY regionid ORDER BY regionid ASC");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
     
     public function get_industryVacancies()
     {
@@ -33,6 +44,20 @@ class Model_pub extends CI_Model {
 		     	    JOIN etesda.reference_city c ON c.cityid = j.city
                             JOIN etesda.reference_region r ON r.regionid = j.region
                             WHERE sectorid = $sectorid
+                            GROUP BY j.jobno ORDER BY j.dateposted DESC ");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
+      public function get_perRegionVacancies($region)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT *,e.companyName,r.region, c.city FROM etesda.job_vacancies j 
+                            JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
+			    JOIN etesda.reference_city c ON c.cityid = j.city
+                            JOIN etesda.reference_region r ON r.regionid = j.region
+                            WHERE j.region = $region
                             GROUP BY j.jobno ORDER BY j.dateposted DESC ");
         return $query->result_array();
         $db1->close();

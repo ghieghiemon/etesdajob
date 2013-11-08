@@ -13,7 +13,8 @@ class Main extends CI_Controller {
         $this->load->model('model_pub');
         $this->load->model('model_main');
         
-//        $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['regionvacancies'] = $this->model_pub->get_regionVacancies();
         $data['companies'] = $this->model_pub->get_companyVacancies();
         $data['vacancies'] = $this->model_pub->get_allVacancies();
 //        $data['event'] = $this->model_main->all_events();
