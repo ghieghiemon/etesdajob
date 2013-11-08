@@ -25,6 +25,18 @@ class Pub extends CI_Controller {
         $this->load->view("public/PIndustryResult",$data);
         $this->load->view("footer2");
    }
+    public function search_regions($region)
+   {	
+        $this->load->model('model_pub');
+        
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['vacancies'] = $this->model_pub->get_perRegionVacancies($region);
+      //  $data['sectorName'] = $this->model_pub->get_industryName($sectorid);
+    
+        $this->load->view("public/header");
+        $this->load->view("public/PJobMarketRegion",$data);
+        $this->load->view("footer2");
+   }
    
    public function pub_jobmarketpage()
     {
