@@ -54,7 +54,7 @@
                                 </td>
                                 
                                 <td>
-                                	<textarea type="input" id="email" name="email "class="span9" placeholder="" rows="3"></textarea>
+                                	<textarea type="input" id="invites" name="invites"class="span9" placeholder="" rows="3"></textarea>
                                 </td>
                             </tr>
                             

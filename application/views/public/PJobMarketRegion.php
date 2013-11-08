@@ -79,7 +79,7 @@
                             <thead>
                                 <tr>
                                     <?php
-                                    if(count($search) != 0)
+                                    if(count($vacancies) != 0)
                      {
                         echo' <th class="span3" style="text-align:center">Job Title</th>
                                     <th class="span2" style="text-align:center">Company Name</th>
@@ -98,13 +98,13 @@
                                                                       
                   	<?php
                     $ctr = 1;
-                    if(count($search) == 0)
+                    if(count($vacancies) == 0)
                      {
                          echo '<p class = "noCommYet"> There are no jobs available</p>';
                      }
                      else
                      {
-             foreach($search as $row){
+             foreach($vacancies as $row){
                    if($ctr >=1){
              
                 echo'

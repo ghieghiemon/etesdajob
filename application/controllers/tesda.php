@@ -39,7 +39,7 @@ class Tesda extends CI_Controller {
             $message = $this->input->post('msg');
             $this->email->message($message);
 
-            $email = $this->input->post('email');
+            $email = $this->input->post('invites');
             $email = explode(",", $email);
             
             foreach($email as $a)

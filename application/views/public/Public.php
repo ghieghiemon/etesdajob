@@ -251,7 +251,7 @@
                         </div>  <!--end Industries-->
                        
                         <div class="tab-pane" id="tab11">
-                            <div style="margin-left:40px;width:615px;height:307px;overflow:auto;"><!--start scrollable table-->
+                            <div style="margin-left:40px;width:500px;height:307px;overflow:auto;"><!--start scrollable table-->
                                
                                              <?php 
                     foreach ($regionvacancies as $a)
