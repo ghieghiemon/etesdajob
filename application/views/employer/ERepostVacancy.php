@@ -273,7 +273,7 @@
                     <div align="right">
                         
                         <a id="pub" style="margin-top:-50px;" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg">
-                            Publish Vacancy
+                            Repost Vacancy
                         </a>
                     </div>
                 </div><!--browserend publish button-->
@@ -331,7 +331,7 @@
                                                                 <?php $regions['#'] = 'Please Select'; ?>
                                                                 <?php $cities['#'] = 'Please Select'; ?>
                                                                 <?php 
-                                                                  $params = 'readonlyid="regionselect"'; 
+                                                                  $params = 'id="regionselect"'; 
                                                                  echo form_dropdown('regionid', $regions, '#',$params);
                                                                 ?> 
                                                             </div>

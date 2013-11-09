@@ -121,7 +121,7 @@
                                                 </div><!--end span-->
                                                 </div><!--end row-fluid-->
                                                 
-                                                 <div class="row-fluid">
+                         <div class="row-fluid">
                 	<div class="pull-right">
                             
                     	<button type="submit" class="btn btn-primary">Done</button>

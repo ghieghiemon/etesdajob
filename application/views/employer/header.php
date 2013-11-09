@@ -215,9 +215,9 @@ function checkall(el){
                                        echo $a['jobtitle'];
                                        echo '</td>';
                                        echo '<td>';
-                                       echo 'City';
+                                       echo $a['city'];
                                        echo ', ';
-                                       echo 'Region';
+                                       echo $a['region'];
                                        echo '</td><tr>';
                                    }
                                    ?>
