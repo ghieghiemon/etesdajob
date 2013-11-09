@@ -10,6 +10,205 @@
 <div class="modal hide fade" id="changemodal">
   	
 </div>
+
+
+<!--publish vacancy modal start-->
+<div class="modal hide fade" id="extend">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Vacancy Preview</h3>
+  	</div>
+	<div class="modal-body">
+                <span id="label1"></span>
+		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span1"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Job Title:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<?php 
+                                        foreach ($details as $a)
+                                        {
+                                            echo $a['jobtitle'];
+                                        }
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Description:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="description" name="description"></span>
+                                      </font>
+                                  </td>
+                              </tr>
+                               <tr>
+                                  <td class="previewDet">
+                                      Industry:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="industry" name="industry"></span>
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<table class="previewMarg2">
+                          <thead>
+                              <tr>
+                                  <th class="span3"></th>
+                                  <th class="span2"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                          	  <tr>
+                                  <td class="previewDet">
+                                      Region: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="region" name="region"></span>
+                                      </font>	
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      City/Province: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="city" name="city"></span>	
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Number of Vacancies: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="vacant" name="vacant"></span>
+                                      </font>	
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                                  <td class="previewDet">
+                                      Effectivity: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="effect" name="effect"></span>	Weeks
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                </div>
+            </div><!--end row-fluid-->
+        <hr class="hrLeagTab">
+            
+        <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span2"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Sex:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<span id="msex" name="msex"></span>	
+                                        
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Age Range:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="sAge" name="sAge"></span> - <span id="eAge" name="eAge"></span>	
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<p class="previewCCS">
+                		<strong>CERTIFICATION/S:</strong> 
+                        <font class="previewCCS2">
+                        <span id="cert" name= "cert"></span>
+                        	
+                        </font>
+                    </p>
+                   
+                   <p class="previewCCS">
+                		<strong>COMPETENCIES:</strong> 
+                        <font class="previewCCS2">
+                        	<span id="comp" name= "comp"></span>
+                        </font>
+                    </p>
+                    
+                
+                </div><!--end span-->
+                
+               
+            </div><!--end row-fluid-->
+	</div>
+  
+  	<div class="modal-footer">
+  		<a id="trigger" href="#" class="btn btn-info" data-dismiss="modal">Publish</a>
+    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
+</div>
+<!--publish vacancy modal end-->
+  
 <!--change status modal end-->
 <!--change status modal start-->
 <?php foreach ($apps as $a)
@@ -478,7 +677,7 @@
                                                   echo " DAYS LEFT";
                                                 ?>
                                           <br>
-                                          <button class="btn btn-mini btn-info">Extend</button>
+                                          <a href="#extend" data-toggle="modal" class="btn btn-mini btn-info">Extend</a>
                                       </td>
                                      
                                     </tr>
