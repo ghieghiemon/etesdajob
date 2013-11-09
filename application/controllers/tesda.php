@@ -4,8 +4,11 @@ class Tesda extends CI_Controller {
 
     public function tesda_dashboard()
     {
+        $this->load->model('model_tesda');
+        $data['employerverify'] = $this->model_tesda->get_employertoverify();
+        //$data['jsverify'] = $this->model_tesda->get_jstoverify();
         $this->tesda_header();
-        $this->load->view('tesda/TesdaDash');
+        $this->load->view('tesda/TesdaDash',$data);
     }
     public function tesda_header()
     {
@@ -14,6 +17,18 @@ class Tesda extends CI_Controller {
 //        $data['name'] = $this->model_jobseeker->get_jsname();
 //        $data['pic'] = $this->model_jobseeker->get_jspic();
         $this->load->view('tesda/header');
+    }
+    public function approve_everify($userid)
+    {
+        $this->load->model('model_tesda');
+         $this->model_tesda->approve_everify($userid);
+         redirect('tesda/tesda_dashboard');
+    }
+    public function deny_everify($userid)
+    {
+        $this->load->model('model_tesda');
+         $this->model_tesda->deny_everify($userid);
+         redirect('tesda/tesda_dashboard');
     }
     public function send_invite()
     {

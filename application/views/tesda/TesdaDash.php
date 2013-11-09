@@ -30,7 +30,60 @@
     </div>
 </div>
 <!--invite modal end-->
-               
+<!--are you sure modal-->
+<?php
+foreach($employerverify as $a)
+{
+?>
+   <div class="modal hide fade" id="approve<?php echo $a['userID']?>">
+<?php
+    echo '<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<br>
+  	</div>
+    
+	<div class="modal-body">
+    	<p class="delete">
+           <strong> Are you sure you want to approve the profile?</strong>
+        </p>
+    </div>
+  	<div class="modal-footer">';
+        ?>
+  	<a  href="<?php echo base_url()?>tesda/approve_everify/<?php echo $a['userID']?>" class="btn btn-info">Approve</a>
+    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	
+     </div>
+    </div>
+<?php
+}
+?>    
+    
+    <?php
+foreach($employerverify as $a)
+{
+?>
+   <div class="modal hide fade" id="deny<?php echo $a['userID']?>">
+<?php
+    echo '<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<br>
+  	</div>
+    
+	<div class="modal-body">
+    	<p class="delete">
+           <strong> Are you sure you want to deny the profile?</strong>
+        </p>
+    </div>
+  	<div class="modal-footer">';
+        ?>
+  	<a  href="<?php echo base_url()?>tesda/approve_edeny/<?php echo $a['userID']?>" class="btn btn-danger">Approve</a>
+    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	
+     </div>
+    </div>
+<?php
+}
+?> 
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -109,38 +162,40 @@
                             	<thead>
                                 	<tr>
                                         <th class="span3">Company Name</th>
-                                        <th class="span3">Location</th>
                                         <th class="span3">License Number</th>
                                         <th class="span2"></th>
                                     </tr>
                                 </thead>
                                 
-                                <tbody>
+                                <tbody  class="recName">
+                                <?php
+                                foreach ($employerverify as $a)
+                                {
+                                ?>
                                 	<tr>
                                         <td>
                                         	<a href="#" class="recAppName">
-                                                7th Media Design Studio
+                                                <?php echo $a['companyName']?>
                                             </a>
                                         </td>
                                         
                                         <td>
-                                        	NCR | Makati City
-                                        </td>
-                                                                                
-                                        <td>
-                                        	129364018
+                                        	<?php echo $a['license']?>
                                         </td>
                                         
                                         <td>
-                                        	<button class="btn btn-mini">
+                                        	<a href="#approve<?php echo $a['userID']?>" class="btn btn-mini" data-toggle="modal" >
                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_198_ok.png" width="20">
-                                            </button>
+                                            </a>
                                             
-                                            <button class="btn btn-mini">
+                                            <a href="#deny<?php echo $a['userID']?>" class="btn btn-mini" data-toggle="modal">
                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_197_remove.png" width="20">
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
+                                <?php
+                                }
+                                ?>
                                 </tbody>
                             </table>
                                  </div>
@@ -155,14 +210,12 @@
                                 	<tr>
                                         <th class="span3">Name</th>
                                         <th class="span2">Location</th>
-                                        <th class="span1">Age</th>
-                                        <th class="span1">Sex</th>
                                         <th class="span4">Certification</th>
                                         <th class="span2"></th>
                                     </tr>
                                 </thead>
                                 
-                                <tbody>
+                                <tbody class="recName">
                                 	<tr>
                                         <td>
                                         	<a href="#" class="recAppName">
@@ -174,13 +227,6 @@
                                         	NCR | Makati City
                                         </td>
                                         
-                                        <td>
-                                        	29
-                                        </td>
-                                        
-                                        <td>
-                                        	F
-                                        </td>
                                         
                                         <td>
                                         	Electrical Installation & Maintenance NCII
