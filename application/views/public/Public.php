@@ -40,7 +40,6 @@
             </p>
    	 	</form>
         </div>
-        
         <div class="modal-footer">
     		Not a member?
     		<a href="#">Register</a>
