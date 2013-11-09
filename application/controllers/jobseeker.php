@@ -146,7 +146,7 @@ class Jobseeker extends CI_Controller {
         $this->jobseeker_myappspage();
     }
     
-           public function js_searchjob()
+    public function js_searchjob()
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
@@ -159,6 +159,9 @@ class Jobseeker extends CI_Controller {
         $qualified = $this->model_jobseeker->get_qualifiedjobs($dob, $sex);
         
         $data['search'] = $this->search_job();
+        $data['myapps'] = $this->model_jobseeker->get_myapplications($id);
+        
+        
         $suggested = array();
         foreach($jobs as $a)
         {

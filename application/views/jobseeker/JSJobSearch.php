@@ -185,10 +185,15 @@
                      }
                      else
                      {
-             foreach($search as $row){
-                   if($ctr >=1){
-             
-                echo'
+                            foreach ($myapps as $a)
+                            {
+                                $myjobno[] = $a['jobno'];
+                            }
+                                
+                            foreach($search as $row){
+                                  if($ctr >=1){
+
+                               echo'
                                 <tr>
                                     
                                     <td>';
@@ -242,9 +247,19 @@
                                     
                                     
                                     <td>'?>
+                                     <?php
+                                     if(in_array($row['jobno'],$myjobno))
+                                     {
+                                         echo 'Applied';
+                                     }
+                                     else
+                                     {
+                                     ?>
 <!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
                                          <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
-                                    <?php echo'</td>
+                                     <?php
+                                     }
+                                     echo'</td>
                                 </tr>
                                 
                               ' ;                       
