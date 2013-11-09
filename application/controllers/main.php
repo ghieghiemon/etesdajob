@@ -228,8 +228,9 @@ class Main extends CI_Controller {
                 $pos = $this->input->post('Pos');
                 $ce = $this->input->post('CE');
                 $cn = $this->input->post('CN');
+                $br = $this->input->post('Br');
         $this->load->model('model_main');      
-        $this->model_main->update_edetails($userid,$in,$cname,$yr,$cb,$lin,$cp,$pos,$ce,$cn);
+        $this->model_main->update_edetails($userid,$in,$cname,$yr,$cb,$lin,$cp,$pos,$ce,$cn,$br);
         
         
           redirect('main/publicpage');

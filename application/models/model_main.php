@@ -163,8 +163,8 @@ class Model_main extends CI_Model {
         $db2 = $this->load->database('default', TRUE);
         
         $query="INSERT into employer_profile(userID,companyName,position,companyBG,companyIndustry,companyExistence,
-            companyEmail,companyContact,companyContactPerson,license,companypic,verified) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-        $db2->query($query,array($userid,'1','1','1','1','2013','1','1','1','1','nopic.jpg','0'));
+            companyEmail,companyContact,companyContactPerson,license,companypic,verified,companyLocations) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        $db2->query($query,array($userid,'1','1','1','1','2013','1','1','1','1','nopic.jpg','0',''));
         $db2->close();
         
     }
@@ -216,7 +216,7 @@ class Model_main extends CI_Model {
         $db2->close();     
     }
     
-   public function update_edetails($userid,$in,$cname,$yr,$cb,$lin,$cp,$pos,$ce,$cn)
+   public function update_edetails($userid,$in,$cname,$yr,$cb,$lin,$cp,$pos,$ce,$cn,$br)
    {
         $db2 = $this->load->database('default', TRUE);
         $db2->query("UPDATE employer_profile SET companyIndustry = '$in' WHERE userid = $userid");
@@ -228,9 +228,10 @@ class Model_main extends CI_Model {
         $db2->query("UPDATE employer_profile SET position = '$pos' WHERE userid = $userid");
         $db2->query("UPDATE employer_profile SET companyEmail = '$ce' WHERE userid = $userid");
         $db2->query("UPDATE employer_profile SET companyContact = '$cn' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET  companyLocations = '$br' WHERE userid = $userid");
       //  $db2->query("UPDATE employer_profile SET companypic = '$employerpic' WHERE userid = $userid");
      
-    
+   
         
          $db2->close();
 

@@ -73,6 +73,14 @@
                                                             </div>
                                                         </div> <!--end LIN field-->
                                                         
+                                                           <div class="control-group">
+                                                            <label class="control-label lLabel2">Company Picture: &nbsp;</label>
+                                                            <div class="controls" style="margin-left:30px;">
+                                                                <!--<form method="post" action="upload-page.php" enctype="multipart/form-data" />-->
+                                                                   <input value ="upload" name="userfile" id="pic" type="file" />
+                                                                <!--</form>-->  
+                                                            </div>
+                                                        </div>
                                                     
                                                     </div><!--end span-->
                                                     
@@ -104,16 +112,14 @@
                                                                 <input type="number" id="CN" name="CN" placeholder="" >
                                                             </div>
                                                         </div> <!--end CN field-->
-                                                        
-                                                           <!--  
--->                                                      <div class="control-group">
-                                                            <label class="control-label lLabel2">Upload Picture: &nbsp;</label>
-                                                            <div class="controls" style="margin-left:30px;">
-                                                                <!--<form method="post" action="upload-page.php" enctype="multipart/form-data" />-->
-                                                                   <input value ="upload" name="userfile" id="pic" type="file" />
-                                                                <!--</form>-->  
+                                                          <div class="control-group">
+                                                            <label class="control-label lLabel2">Branches: &nbsp;</label>
+                                                            <div class="controls">
+                                                                 <textarea type="text" rows="9" id="Br" name="Br" placeholder="Separate by comma(,)" ></textarea>                      
                                                             </div>
-                                                        </div>
+                                                        </div> <!--end Pos field-->
+                                                           <!--  
+-->                                                   
                                                        
                                                            <br>
                                                       
