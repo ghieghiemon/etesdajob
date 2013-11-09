@@ -1,5 +1,16 @@
 
-
+ <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+    
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+ <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+    
 <!--invite modal start-->
 <div class="modal hide fade" id="invE">
   	<div class="modal-header">
@@ -93,7 +104,8 @@
   				<div class="tab-content"> <!--start tab content-->
                     <div class="tab-pane active" id="tab12">
                         <div style="width:705px;height:250px;overflow:auto;"><!--start scrollable table-->
-                        	<table class="tableV table-condensed table-hover">
+                        	 <div id="container">
+                        	<table id ="newtable" >
                             	<thead>
                                 	<tr>
                                         <th class="span3">Company Name</th>
@@ -131,12 +143,14 @@
                                     </tr>
                                 </tbody>
                             </table>
+                                 </div>
                         </div><!--end scrollable table-->
                     </div>  <!--end Companies-->
                     
                     <div class="tab-pane" id="tab11">
                         <div style="width:705px;height:250px;overflow:auto;"><!--start scrollable table-->
-                            <table class="tableV table-condensed table-hover">
+                             <div id="container">
+                        	<table id ="second" >
                             	<thead>
                                 	<tr>
                                         <th class="span3">Name</th>
@@ -184,6 +198,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                             </div>
                         </div><!--end scrollable table-->
                     </div> <!--end tab pane-->
             
@@ -303,122 +318,30 @@
 
       <hr>
 
-      <div id="footer">
- 
-<div class="footer">
- 
-<div class="col1" style="margin-left:16%;">
- 
-<h5><img src="assets/img/footer-tesda.png" width="50px">&nbsp;&nbsp;&nbsp;<img src="assets/img/certify-logo.png"></h5>
-
-&#169; 2012, e-TESDA
- <br>
- <a href=#>About Us</a> | <a href=#>Contact Us</a>
-<!--- The First Column of The Four Column Blog Footer --></div>
 
 
- 
-<div class="col2">
- 
-<h4 class="footer">Other Programs</h4>
-<br>
-<a href=#><img src="assets/img/learn-logo.png"></a>
-<br><br>
-<a href=#><img src="assets/img/work-logo.png"></a>
-<!--- The Second Column of The Four Column Blog Footer --></div>
- 
-
- 
-<div class="col3">
- 
-<h4 class="footer">Connect with us</h4>
- <br>
- <img src="assets/img/footer-twitter.png">&nbsp;&nbsp;&nbsp;<a href="http://www.facebook.com">Follow us on Twitter</a>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/img/footer-fb.png">&nbsp;&nbsp;&nbsp;<a href="http://twitter.com">Like us on Facebook</a>
-
-  <br><br>
- <img src="assets/img/footer-site.png">&nbsp;&nbsp;&nbsp;<a href="http://www.tesda.gov.ph">Visit TESDA site</a>
-<!--- The Fourth Column of The Four Column Blog Footer --></div>
-</div>
-
-    </div><!--/.fluid-container-->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap-transition.js"></script>
-    <script src="js/bootstrap-alert.js"></script>
-    <script src="js/bootstrap-modal.js"></script>
-    <script src="bootstrap-dropdown.js"></script>
-    <script src="js/bootstrap-scrollspy.js"></script>
-    <script src="js/bootstrap-tab.js"></script>
-    <script src="js/bootstrap-tooltip.js"></script>
-    <script src="js/bootstrap-popover.js"></script>
-    <script src="js/bootstrap-button.js"></script>
-    <script src="js/bootstrap-collapse.js"></script>
-    <script src="js/bootstrap-carousel.js"></script>
-    <script src="js/bootstrap-typeahead.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-
-<script type="text/javascript" src="js/jquery.fancybox-1.3.4.pack.js"></script>
-
-<!-- Add jQuery library -->
-<script type="text/javascript" src="js/jquery-latest.min.js"></script>
-
-<!-- Add mousewheel plugin (this is optional) -->
-<script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="js/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
-<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.4"></script>
-
-<!--add carousel-->
-<script>
-  jQuery(document).ready(function($) {
- 
-        $('#myCarousel').carousel({
-                interval: 5000
-        });
- 
-        $('#carousel-text').html($('#slide-content-0').html());
- 
-        //Handles the carousel thumbnails
-        $('[id^=carousel-selector-]').click( function(){
-                var id_selector = $(this).attr("id");
-                var id = id_selector.substr(id_selector.length -1);
-                var id = parseInt(id);
-                $('#myCarousel').carousel(id);
-        });
- 
- 
-        // When the carousel slides, auto update the text
-        $('#myCarousel').on('slid', function (e) {
-                var id = $('.item.active').data('slide-number');
-                $('#carousel-text').html($('#slide-content-'+id).html());
-        });
- 
- 
-});
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#newtable').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
 </script>
 
 <script type="text/javascript">
        
-   $(document).ready(function(){
-	  
-	   $('#test').dataTable({
-			"sPaginationType": "full_numbers"
-		});
-	   
-   });
-	
+       $(document).ready(function(){
+          
+           $('#second').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
 </script>
-
     
 </body>
-
-</html>
