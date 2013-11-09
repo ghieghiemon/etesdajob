@@ -141,7 +141,16 @@ class Model_employer extends CI_Model {
         }
             return ($data);        
      }
-     
+     public function get_companyName($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companyName FROM employer_profile WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+            return $row->companyName;
+        }
+        $db2->close();
+    }
      public function add_jobvacancy($jobtitle,$desc,$companyid, $nov, $region, $city,$industry,$gender, $ageto, $agefrom)
      {
         $db1 = $this->load->database('local', TRUE);
