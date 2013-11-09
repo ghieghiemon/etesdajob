@@ -361,6 +361,46 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+    public function count_jobApplicationsNew($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno AND status = 'New Applicant'");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
+        }
+        $db1->close();
+    }
+    public function count_jobApplicationsExam($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno AND status = 'Exam'");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
+        }
+        $db1->close();
+    }
+    public function count_jobApplicationsInterview($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno AND status = 'Interview'");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
+        }
+        $db1->close();
+    }
+    public function count_jobApplicationsHired($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT COUNT(*) as appcount FROM applications WHERE jobno = $jobno AND status = 'Hired'");
+        foreach ($query->result() as $row)
+        {
+            return $row->appcount;
+        }
+        $db1->close();
+    }
      public function get_jobCerts($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -456,6 +496,7 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
+   
     public function get_jobInvites($jobno)
     {
         $db1 = $this->load->database('local', TRUE);

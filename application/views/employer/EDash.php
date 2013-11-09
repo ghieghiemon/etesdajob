@@ -420,17 +420,52 @@
                 
                  <div class="tabbable tabs-left"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Welder Assistant</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Junior Welder</a></li>
-                        <li><a href="#tab3" data-toggle="tab">Lead Welder</a></li>
+                        
+                        <?php 
+                        $ctr1 = 1;
+                        foreach($myvacancies as $a)
+                        {
+                            if($ctr1 == 1)
+                            {
+                            ?>
+                            <li class="active"><a href="#tab<?php echo $a['jobno']?>" data-toggle="tab"><?php echo $a['jobtitle']?></a></li>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                            <li><a href="#tab<?php echo $a['jobno']?>" data-toggle="tab"><?php echo $a['jobtitle']?></a></li>
+                            <?php
+                            }
+                            $ctr1 +=1;
+                        }
+                        ?>
+                        
                     </ul>
-          
-                    <div class="tab-content"> <!--start tab content-->
-                        <div class="tab-pane active" id="tab1">
+                     <div class="tab-content">
+                    <?php 
+                    $ctr = 1;
+                    foreach ($myvacancies as $a)
+                    {
+                        if($ctr == 1)
+                        {
+                    ?>
+                     <!--start tab content-->
+                            <div class="tab-pane active" id="tab<?php echo $a['jobno']?>">
+                        <?php
+                        }
+                        else
+                        {
+                        ?>
+                            <div class="tab-pane" id="tab<?php echo $a['jobno']?>">
+                        <?php
+                        }
+                        ?>
                         	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
+                                    
                             	<div class="chart_container_centered">
 
-                            <canvas id="chartCanvas13" width="500" height="240">
+                            <canvas id="chartCanvas<?php echo $a['jobno']?>" width="500" height="240">
                                 Your web-browser does not support the HTML 5 canvas element.
                             </canvas>
 
@@ -438,23 +473,14 @@
                             </div><!--end scrollable table-->
                             
                         </div> <!--end tab pane tab1-->
-                        
-                        <div class="tab-pane" id="tab2">
-                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
-                            	hiiee
-                            </div><!--end scrollable table-->
-                            
-                        </div> <!--end tab pane tab2-->
-                        
-                        <div class="tab-pane" id="tab3">
-                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
-                            	hiiss
-                            </div><!--end scrollable table-->
-                            
-                        </div> <!--end tab pane tab3--> 
-            
+                       
+                    <?php
+                        $ctr += 1;
+                    }
+                    ?>    
+                       </div> <!--end tab content-->  
                    
-                </div> <!--end tab content-->
+                
                 </div> <!--end tabbable-->
             </div><!--end well-->
             
@@ -478,16 +504,42 @@
        });
         
     </script>
+    
     <script type="application/javascript">
+    <?php
+    foreach($myvacancies as $a)
+    {
+        $new = $this->model_employer->count_jobApplicationsNew($a['jobno']);
+        $exam = $this->model_employer->count_jobApplicationsExam($a['jobno']);
+        $interview = $this->model_employer->count_jobApplicationsInterview($a['jobno']);
+        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
         
-            var chart1 = new AwesomeChart('chartCanvas13');
-            chart1.title = "Welder";
-            chart1.data = [30,10,5,2];
-            chart1.labels = ['Unscreened','Exam','Interview','Hired'];
+        
+            
+    ?>    
+            var chart1 = new AwesomeChart('chartCanvas<?php echo $a['jobno']?>');
+            <?php
+                if($new == 0 && $exam == 0 && $interview == 0 && $hired == 0)
+                {
+            ?>
+                    chart1.title = "<?php echo $a['jobtitle']?> - No Applications Yet";
+            <?php
+                }
+                else 
+                {
+            ?>
+                    chart1.title = "<?php echo $a['jobtitle']?>";
+            <?php
+                }
+            ?>
+            chart1.data = [<?php echo $new?>,<?php echo $exam?>,<?php echo $interview?>,<?php echo $hired?>];
+            chart1.labels = ['New Applicant','Exam','Interview','Hired<?php echo $a['jobno']?>'];
             chart1.colors = ['#99C', '#609', '#6CC', '#33F'];
             chart1.randomColors = true;
             chart1.draw();
-            
+   <?php
+   }
+   ?>     
    </script>
    
 </body>

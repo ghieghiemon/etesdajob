@@ -114,16 +114,16 @@ class Employer extends CI_Controller {
     }
     public function employer_dashboard()
     {
-        $this->employer_header();
         $this->load->model('model_main');
         $this->load->model('model_employer');
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
         $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
-//        $data['all'] = $this->model_employer->get_allApplications($id);
+        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
         $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
         
+        $this->employer_header();
         $this->load->view('employer/EDash',$data);
        // $this->load->view('footer');
     }
@@ -349,7 +349,6 @@ class Employer extends CI_Controller {
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
-        $data['expired'] = $this->model_employer->get_myvacanciesExpired($id);
         $data['closed'] = $this->model_employer->get_myClosedvacancies($id);
         $this->employer_header();
         $this->load->view('employer/EVacancies',$data);
