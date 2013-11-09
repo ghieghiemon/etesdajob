@@ -452,19 +452,27 @@ class Employer extends CI_Controller {
         foreach ($ids as $a)
         {
             $jobno = $this->model_employer->get_jobno($a);
+            $details = $this->model_employer->get_jobdetails($jobno);
+            foreach ($details as $b)
+            {
+                $jobtitle = $b['jobtitle'];
+                $company = $b['companyID'];
+            }
+            $name = $this->model_employer->get_companyName($company);
             if ($status == "Hired")
             {
                 $this->model_employer->fill_vacancy($jobno);
-                $notif = "Hired";
+                $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
             } else if ($status == "Exam")
             {
-                $notif = "Exam";
+                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
             } else if ($status == "Interview")
             {
-                $notif = "Interview";
+                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
             } else if ($status == "Denied")
             {
-                $notif = "Denied";
+                $notif = "We have reviewed your qualifications and, unfortunately, 
+                    are not able to pursue your application for $jobtitle further.";
             }
             $this->model_employer->change_status($a,$status,$date,$time,$location);
             $this->model_employer->add_notification($a,$notif,$jobno);
