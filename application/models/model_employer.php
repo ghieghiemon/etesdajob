@@ -221,7 +221,7 @@ class Model_employer extends CI_Model {
                            JOIN etesda.reference_city c ON c.cityid = v.city
                            JOIN etesda.reference_region r ON r.regionid = v.region
                            WHERE companyID = $id AND vacanciesleft >0
-                           ORDER BY jobtitle ASC
+                           ORDER BY lastedited DESC
                            
                            ");
         return $sql->result_array();
