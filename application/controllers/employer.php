@@ -328,6 +328,7 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         
         $data['details'] = $this->model_employer->get_jobdetails($jobno);
+        $data['alldetails'] = $this->model_employer->get_alljobdetails($jobno);
         $data['apps'] = $this->model_employer->get_jobApplications($jobno);
         $data['newapplicant'] = $this->model_employer->get_newApplicant($jobno);
         $data['exam'] = $this->model_employer->get_exam($jobno);
@@ -359,6 +360,52 @@ class Employer extends CI_Controller {
         $this->employer_header();
         $this->load->view('employer/ERepostVacancy',$data);
         $this->load->view('footer');
+    }
+    
+    public function employer_extend($jobno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $effect = $this->input->post('effectivity');
+        if($effect == 2)
+       {    
+         $this->model_employer->update_jobvacancy($jobno);
+       }
+
+       if($effect == 3)
+       {    
+           $this->model_employer->update_jobvacancy3w($jobno);
+       }
+
+       if($effect == 4)
+       {    
+           $this->model_employer->update_jobvacancy4w($jobno);
+       }
+
+        $this-> employer_appsperjob($jobno);
+    }
+    
+     public function employer_renew($jobno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $effect = $this->input->post('effectivity');
+        if($effect == 2)
+       {    
+         $this->model_employer->renew_jobvacancy($jobno);
+       }
+
+       if($effect == 3)
+       {    
+           $this->model_employer->renew_jobvacancy3w($jobno);
+       }
+
+       if($effect == 4)
+       {    
+           $this->model_employer->renew_jobvacancy4w($jobno);
+       }
+       
+        $this-> employer_appsperjob($jobno);
     }
     public function employer_appsprof()
     {
