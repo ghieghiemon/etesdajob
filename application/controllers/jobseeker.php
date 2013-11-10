@@ -247,18 +247,52 @@ class Jobseeker extends CI_Controller {
        $this->jobseeker_header();
        $this->load->view('jobseeker/JSLeagView',$data); 
    }
-   public function jobseeker_leaguedisc($dno)
+   public function view_topic($id = -1, $page = -1)
    {
-       $this->load->model('model_main');
-       $this->load->model('model_jobseeker');
-       
-       $id = $this->model_main->get_appid($this->session->userdata('email'));
-       $data['discs'] = $this->model_jobseeker->get_leagueDiscussions($lno);
-       $data['leaguedetails'] = $this->model_jobseeker->get_leagueDetails($lno);
-      
-       
-       $this->jobseeker_header();
-       $this->load->view('jobseeker/JSLeagDisc',$data); 
-   }
+        if(isset($_GET['id']) && isset($_GET['page'])):
+
+            $this->load->model('model_pub');
+            $data['discussion'] = $this->model_pub->get_discDetails($_GET['id']);
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($_GET['id']));
+            $data['display'] = $items[$_GET['page']];
+            $data['pages'] = count($items);
+            $data['current_page'] = $_GET['page'];
+            $data['id'] = $_GET['id'];
+
+            $this->jobseeker_header();
+            $this->load->view('jobseeker/JSLeagDisc', $data);
+            return;
+
+        endif;
+
+        if($page < 0):
+
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $pages = count($items);
+            if($pages == 0):
+                echo 'no posts available <a href="'.base_url('macandcheese').'">go back to topic list</a>';
+                return;
+            endif;
+            $this->view_topic($id, $pages);
+
+        endif;
+
+        if($page > 0):
+            $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->jobseeker_header();
+            $this->load->view('jobseeker/JSLeagDisc', $data);
+        endif;
+
+    }
 }
 ?>

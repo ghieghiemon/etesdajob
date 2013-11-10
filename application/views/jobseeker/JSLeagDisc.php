@@ -267,11 +267,63 @@
                                 <hr class="hrDiscuss">
                                 
                                 <div style="width:923px;height:416px;overflow:auto;"><!--start scrollable table-->
-                                <table> <!--start reply details-->
+                               <input type="hidden" id="current_page" value="<?php echo $current_page ?>" />
+                        <?php
+                        $ctr = 1;
+//                         echo "Current page: " . $current_page;
+//                         echo 'Page Number: ';
+                         ?> 
+                                  <form id="toblerone" method="get" action="<?php echo base_url('pub/view_topic/'); ?>" align="right">
+                        <input type="hidden" name="id" id="id" value="<?php echo $id ?>" />
+                        Page Number: <select name="page" id="page">
+
+                            <?php 
+
+                                while($ctr <= $pages):
+
+                                    echo '<option value="' . $ctr . '">' . $ctr . '</option>';
+                                    $ctr++;
+
+                                endwhile;
+
+                            ?>
+
+
+                        </select>
+                        </form>  
+                                    <table> <!--start reply details-->
+                                    <?php
+                                    foreach($display as $a)
+                                    {
+                                    ?>
                                     <tr>
                                         <td>
                                         	<a href="#" class="Name">
-                                             	<img src="assets/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;"> William Willard   
+                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_245_chat.png" width="18" style="margin-left:50px;"> 
+                                                 <?php
+                                            $type = $this->model_pub->get_userType($a->postedby);
+                                            if($type == 'EMPLOYER')
+                                            {
+                                                $by = $this->model_pub->get_companyName($a->postedby);
+                                                echo $by;
+                                            }
+                                            else if ($type == 'JOBADMIN')
+                                            {
+                                                $by = 'TESDA';
+                                                echo $by;
+                                            }
+                                            else if ($type == 'APPLICANT')
+                                            {
+                                                $by = $this->model_pub->get_jsName($a->postedby);
+                                                foreach($by as $b)
+                                                {
+                                                    echo $b['firstname'];
+                                                    echo " ";
+                                                    echo $b['lastname'];
+                                                }
+                                            }
+                                            
+                                            ?>
                                             </a>
                                             <font class="tnd">09/28/2013 at 4:26pm</font>
                                         </td>
@@ -280,17 +332,19 @@
                                     <tr>
                                         <td width="900px">
                                         <p style="margin-left:75px">
-                                            In 213 Meringin St. Quezon City, there's a recruting agency that you can visit. They're looking for welders for their future project.
+                                             <?php echo $a->discussion?>
                                              <div class="pull-right">
                                                 <font class="NumLikes">
-                                                	2 likes 
+                                                	<?php echo $a->likes?> likes 
                                                 </font>&nbsp;
-                                                <a href="#" class="btn btn-mini"><img src="assets/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
+                                                <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
                                             </div>
                                         </p>
                                         </td>
                                     </tr>
-                                    
+                                     <?php
+                                    }
+                                    ?>
                                     <tr>
                                         <td>
                                             <hr class="hrLeagTab">
@@ -386,5 +440,20 @@
 
 
       <hr>
-
+ <script type="text/javascript">
+    
+    
+    $(document).ready(function(){
+       
+       $('#page').val($('#current_page').val());
+       
+       $('#page').change(function(){
+           
+        $('#toblerone').submit();
+           
+       });
+        
+    });
+    
+</script>
   </body>
