@@ -589,7 +589,29 @@ echo'<div class="modal hide fade" id="renew">';?>
               </table>
 
         </div><!--end well-->
-        
+        	<div class="well">
+        	<table>
+                  <thead>
+                      <tr>
+                          <th class="span8"></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>                                           
+                          <td>
+                            
+                              <label class="">
+                                   <strong>Location</strong>
+                              </label>
+                              <textarea  style = " width:95%" rows="3"  name="location"></textarea>
+                          </td>
+                      </tr>
+   
+                  
+                    
+              </table>
+
+        </div><!--end well-->
         <div class="well">
         	<table>
                   <thead>
@@ -711,7 +733,7 @@ echo'<div class="modal hide fade" id="renew">';?>
 	</div>
   
   	<div class="modal-footer">
-  		<button type="submit" class="btn btn-info" >Save</button>
+  		<button type="submit" class="btn btn-info" >Select Date</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
      </form>
