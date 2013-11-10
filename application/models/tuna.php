@@ -17,16 +17,43 @@ class Tuna extends CI_Model {
 		
 	}
 	
-	function get_events($year, $month, $day = -1){
+//	function get_events($id,$year, $month, $day = -1){
+//	
+//		$dbconn = $this->load->database('local', TRUE);
+//		if($day == -1):
+//			$query = "select monthname(requirementdate),appid,applicationid,location,a.status,requirementtime, day(requirementdate) as eday 
+//                           
+//                            from applications a
+//                            JOIN job_vacancies v ON a.jobno = v.jobno
+//                            JOIN tesda_centraldb.users u ON v.companyID = u.userid
+//                            where month(requirementdate) = ? AND year(requirementdate) = ? and v.companyID = '$id'" ;
+//			$results = $dbconn->query($query, array($month, $year));
+//		else:
+//			$query = "select monthname(requirementdate), appid,applicationid,location,requirementtime, a.status, requirementdate 
+//                            from applications a
+//                            JOIN job_vacancies v ON a.jobno = v.jobno
+//                            JOIN tesda_centraldb.users u ON v.companyID = u.userid
+//                            where month(requirementdate) = ? AND year(requirementdate) = ? and day(requirementdate) = ?
+//                            and v.companyID = '$id'";
+//			$results = $dbconn->query($query, array($month, $year, $day));
+//		endif;
+//		$dbconn->close();
+//		return $results->result();
+//		
+//	}
+        
+        function get_events($id,$year, $month, $day = -1){
 	
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
-			$query = 'select monthname(requirementdate),appid,applicationid,location,status,requirementtime, day(requirementdate) as eday 
-                            from applications where month(requirementdate) = ? AND year(requirementdate) = ?';
+			$query = "select *,day(requirementdate) as eday  from applications where jobno in 
+                         (select jobno from job_vacancies  where month(requirementdate) = ? AND year(requirementdate) = ? and 
+                         companyid = '$id')" ;
 			$results = $dbconn->query($query, array($month, $year));
 		else:
-			$query = 'select monthname(requirementdate), appid,applicationid,location,requirementtime, status, requirementdate from applications 
-                         where month(requirementdate) = ? AND year(requirementdate) = ? and day(requirementdate) = ?';
+			$query = "select *,day(requirementdate) as eday  from applications where jobno in 
+                         (select jobno from job_vacancies where month(requirementdate) = ? AND year(requirementdate) = ? and 
+                         companyid = '$id')";
 			$results = $dbconn->query($query, array($month, $year, $day));
 		endif;
 		$dbconn->close();

@@ -492,7 +492,7 @@ class Employer extends CI_Controller {
         $year = $this->input->post('year');
         $time = $this->input->post('time');
         $date = $month.",".$day.",".$year; 
-        $location = "Manila";
+        $location = $this->input->post('location');
         
         $ids = $_SESSION['ids'];
         
@@ -540,7 +540,8 @@ class Employer extends CI_Controller {
 			$mo = $month == -1 ? date("m") : $month;
 			
 			// Load the javascript
-                        
+                          $this->load->model('model_main');
+                           $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
                            $this->load->view('js');
                            
@@ -581,9 +582,10 @@ class Employer extends CI_Controller {
 			
 			$this->load->library('calendar', $config);
 			$this->load->model('tuna');
+                
 
 			// 2. Get the events
-			$events = $this->tuna->get_events($yr, $mo);
+			$events = $this->tuna->get_events($id,$yr, $mo);
 			$events_arr = array();
 				
 			foreach($events as $event):
@@ -600,7 +602,9 @@ class Employer extends CI_Controller {
 		function view_event($year, $month, $day){
 			
 			$this->load->model('tuna');
-			$events = $this->tuna->get_events($year, $month, $day);
+                        $this->load->model('model_main');
+                        $id = $this->model_main->get_userid($this->session->userdata('email'));
+			$events = $this->tuna->get_events($id,$year, $month, $day);
 			
 			echo "<b>Schedule for $month-$day-$year</b><br><hr>";
 			
@@ -624,6 +628,7 @@ class Employer extends CI_Controller {
 		function add_event_handler(){
 			
 			$this->load->model('tuna');
+                        $this->load->model('model_main');
 			$this->tuna->add_event($this->input->post('datetime'), 
                         $this->input->post('event'));
 			redirect('employer/view_calendar');

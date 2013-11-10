@@ -1,59 +1,7 @@
-<div class="modal hide fade" id="changeStatus">
+<br>
+<div class="" id="changeStatus">
     <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Change Status</h3>
-  	</div>
-
-	<div class="modal-body">
-		<div class="well">
-        	<table>
-                  <thead>
-                      <tr>
-                          <th class="span8"></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Exam" style="margin-left:40px;">
-                              <label class="checkbox jCrNC2">
-                                   Exam
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Interview" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  Interview
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  Hired
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  Denied
-                              </label>
-                              
-                          </td>
-                      </tr>
-              </table>
-
-        </div><!--end well-->
+  	
         
         <div class="well">
         	<table>
@@ -173,8 +121,7 @@
               </table>
 <br>
         </div><!--end well-->
-	</div>
-  
+	
   	<div class="modal-footer">
   		<button type="submit" class="btn btn-info" >Save</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
@@ -189,8 +136,5 @@
 
 	}
 </script>
-<!--   <a id="changeStatus" data-toggle="modal" class="btn btn-info">
-                                Add Schedule
-   </a>-->
 <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.8.3.min.js'); ?>"></script>
 <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
