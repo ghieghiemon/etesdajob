@@ -212,6 +212,27 @@ class Jobseeker extends CI_Controller {
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEvents',$data);     
    }
-
+   public function jobseeker_leaguespage()
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_jobseeker');
+       
+       $id = $this->model_main->get_appid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
+       
+       $this->jobseeker_header();
+       $this->load->view('jobseeker/JSLeagues',$data); 
+   }
+   public function jobseeker_leagueview($lno)
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_jobseeker');
+       
+       $id = $this->model_main->get_appid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
+       
+       $this->jobseeker_header();
+       $this->load->view('jobseeker/JSLeagues',$data); 
+   }
 }
 ?>

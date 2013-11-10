@@ -361,5 +361,35 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         
         $db1->close();
     }
+    public function get_companyName($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companyName FROM employer_profile WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+            return $row->companyName;
+        }
+        $db2->close();
+    }
+    public function get_myleagues($appid)
+    {//JOIN etesda.league_members m ON l.leagueno = m.leagueno 
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since  FROM etesda.league_members l   
+                                JOIN etesda.league v on l.leagueno = v.leagueno 
+                                JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
+                                WHERE l.userid = $appid
+                                ORDER BY v.leaguename ASC  ");
+        return $query->result_array();
+        $db1->close();
+    }
+    public function get_leaguemembers($leagueno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query(" SELECT userid FROM league_members
+                            WHERE leagueno = $leagueno ");
+        return $query->result_array();
+        $db1->close();
+    }
 }?>
 
