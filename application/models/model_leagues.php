@@ -37,7 +37,7 @@ class Model_leagues extends CI_Model {
             $page = 1;
             $paginated = array();
             $temp = array();
-            
+			
             foreach($topic as $item):
                 
                 $temp[] = $item;
@@ -54,6 +54,9 @@ class Model_leagues extends CI_Model {
                 endif;
                 
             endforeach;
+			
+			if(count($temp) > 0)
+				$paginated[$page] = $temp;
             
             return $paginated;
             
