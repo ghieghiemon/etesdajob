@@ -52,8 +52,8 @@ class Tuna extends CI_Model {
                          companyid = ?)" ;
 			$results = $dbconn->query($query, array($month, $year, $id));
 		else:
-			$query = "select *, day(requirementdate) as eday  from applications where month(requirementdate) = ? and year(requirementdate) = ? day(requirementdate) = ? and jobno in 
-                         (select jobno from job_vacancies where companyid = ?)";
+			$query = "select *, day(requirementdate) as eday  from applications where month(requirementdate) = ? and year(requirementdate) = ? and day(requirementdate) = ? 
+			and jobno in (select jobno from job_vacancies where companyid = ?)";
 			$results = $dbconn->query($query, array($month, $year, $day, $id));
 		endif;
 		$dbconn->close();

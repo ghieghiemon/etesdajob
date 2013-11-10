@@ -566,7 +566,7 @@ class Employer extends CI_Controller {
 					{cal_row_start}<tr>{/cal_row_start}
 					{cal_cell_start}<td>{/cal_cell_start}
 
-					{cal_cell_content}<a href="javascript:void(0)" onclick="openWindow({day},' . $yr . ',' . $mo . ');">{day}</a>{/cal_cell_content}
+					{cal_cell_content}<a href="javascript:void(0)" onclick="openWindow({day},' . $yr . ',' . $mo . ',' . $id . ');">{day}</a>{/cal_cell_content}
 					{cal_cell_content_today}<div class="highlight"><a href="{content}" target="_blank">{day}</a></div>{/cal_cell_content_today}
 
 					{cal_cell_no_content}{day}{/cal_cell_no_content}
