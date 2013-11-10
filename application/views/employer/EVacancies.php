@@ -579,7 +579,7 @@ foreach ($myvacancies as $a)
                                                   }
                                                   else
                                                   {
-                                                    echo "EXPIRED";
+                                                    echo "<font color ='red'>EXPIRED </font>";
                                                   }
                                                 ?>
                                             </td>
@@ -605,7 +605,7 @@ foreach ($myvacancies as $a)
                                                 }
                                                 else
                                                 {
-                                                    echo "Expired";
+                                                  echo "<font color ='red'>EXPIRED </font>";
                                                 }
                                                 ?>
                                             </td>
