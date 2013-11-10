@@ -22,13 +22,28 @@
                           	  
                                <div class="well">
                                   <h5 class="media-heading previewColor">| YOUR STATUS</h5>
-                                      <p class="vdDesc2">';
+                                      <p class="vdDesc2"><font color ="blue"><strong>';
                                       foreach ($appdetails as $b)
                                       {
-                                          echo $b['status'];
+                                       ?>   <font color="black">&nbsp; Status:&nbsp;</font>
+                                          
+                                              <?php
+                                         echo $b['status']; ?>
+                                
+                                         <br>
+                                       <font color="black">&nbsp; Date and Time: &nbsp;</font>
+                                         <?php echo $b['requirementdate']; ?>
+                                       
+                                        <font color="black"> &nbsp;- &nbsp;</font>
+                                        <?php  echo $b['requirementtime']; ?>
+                                        <br>
+                                         <font color="black">&nbsp; Location: &nbsp;</font>
+                                          <?php
+                                          echo $b['location']; 
                                       }
+                                      
                                           //For Exam on 09/28/2012
-                                      echo '</p>
+                                      echo '</strong></font> </p>
                               </div><!--end well-->
                               	
                               <div class="well">
@@ -153,7 +168,7 @@
                                                   <td>
                                                       <p class="vdDesc2" align="left">';
                                                            echo $a['agestart'];
-                                                             echo'  -';
+                                                             echo'  -  ';
                                                                 echo $a['ageend'];
                                                      echo' </p>
                                                   </td>

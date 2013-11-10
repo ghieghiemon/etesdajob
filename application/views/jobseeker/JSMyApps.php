@@ -260,9 +260,9 @@ foreach($invites as $a)
                         foreach($briefcase as $a){
                             if($ctr >=1)
                         { 
-                  echo'  <li>
-                        <a href="#" class="Comm">
-                            <div class="notifAgenda">
+                  echo'  <li>';?>
+                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="Comm">
+                         <?php echo'   <div class="notifAgenda">
                                 <font class="boldSched">';
                                 	  echo $a['requirementdate'];
                                        echo' |';
@@ -292,9 +292,9 @@ foreach($invites as $a)
                
                <div class="row-fluid">
                     <div align="right" style="margin-top:-15px">
-                        <a href="#">
-                            <img src="<?php echo base_url()?>assets/img/icons/glyphicons_187_more.png">
-                        </a>
+                             <a href="<?php echo base_url()?>jobseeker/jobseeker_briefcase">
+                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                    </a>
                     </div>
                 </div> <!--end row fluid-->
             </div><!--end well-->
@@ -416,7 +416,8 @@ foreach($invites as $a)
                                 
                                 
                                 <td>';
-                            ?><a href='<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>'>
+                            ?>
+                        <a href='<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>'>
                             <?php
                             echo $a['jobtitle'];
                             echo '</a></td>

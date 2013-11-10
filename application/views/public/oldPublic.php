@@ -262,7 +262,7 @@
                     
     				<div class="row-fluid">
                             <div align="right" style="margin-top:-15px">
-                            <a href='pub/pub_allevents'>
+                            <a href='<?php echo base_url()?>pub/pub_allevents'>
                                 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
@@ -275,7 +275,7 @@
         	  	<div class="well wellMarg wellUpMarg">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
-                	<a href='pub/pub_alljob'>
+                	<a href='pub/pub_alljob'><font color ="AD3288">
                                      <?php 
                     foreach ($vacancies as $a)
                     {
@@ -283,8 +283,8 @@
                     }
                     ?>
                    
-                            job vacancies nationwide!</a>
-                
+                            JOB VACANCIES WORLDWIDE!</a>
+                </font>
                         </p>
             </div><!--end whats new-->
             
@@ -555,7 +555,7 @@
                                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                             </a>
                         </div>
-    				</div> <!--end row fluid upcoming events-->
+    		</div> <!--end row fluid upcoming events-->
             </div><!--end well companies-->
         </div><!--end span right column-->
     </div><!--end row-->

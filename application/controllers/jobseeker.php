@@ -189,6 +189,17 @@ class Jobseeker extends CI_Controller {
         $this->load->view('jobseeker/JSJobSearch',$data);
       //  $this->load->view('footer');
     }
+     public function jobseeker_briefcase()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $data['myapp'] = $this->model_jobseeker->js_briefcase($id);
+        
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSBriefcase', $data);
+        $this->load->view('footer');
+    }
     
       public function search_job()
     {

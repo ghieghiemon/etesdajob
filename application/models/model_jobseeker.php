@@ -111,10 +111,12 @@ class Model_jobseeker extends CI_Model {
                                     WHERE invitationno = $invno");
         $db1->close();
     }
-     public function get_appdetails($jobno,$appid){
+    public function get_appdetails($jobno,$appid){
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * FROM applications WHERE jobno = $jobno and appid = $appid
-                            ");
+        $query = $db1->query("SELECT *, DATE_FORMAT(requirementdate, '%b. %d, %Y') as requirementdate, 
+                              DATE_FORMAT(requirementtime, '%h:%i %p') as requirementtime FROM applications
+                             WHERE jobno = $jobno and appid = $appid  ");
+                          
         return $query->result_array();
         $db1->close();
     }
@@ -324,7 +326,7 @@ JOIN etesda.reference_region r ON r.regionid = j.region
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT  v.jobtitle, a.jobno, a.status,  p.companyName,
+        $query = $db1->query("SELECT  v.jobtitle, a.jobno, a.status,  p.companyName,a.location,
                             DATE_FORMAT(a.requirementdate, '%M %d %Y') as requirementdate,
                             DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
                             FROM etesda.applications a
@@ -332,7 +334,7 @@ JOIN etesda.reference_region r ON r.regionid = j.region
                             JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
                             where a.appid =$id
                             AND (a.status ='Exam' or a.status ='Interview' )
-                            AND requirementdate >= curdate() 
+                            AND requirementdate >= curdate() ORDER BY requirementdate ASC
                             ");
         return $query->result_array();
 

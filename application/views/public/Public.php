@@ -217,7 +217,7 @@
             </div><!--end whats new-->
           
             <div class="well wellMarg wellUpMarg wellShadow">
-            	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="18"> Vacancies</h5>
+            	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="18"> Browse Job Vacancies</h5>
                 <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                     Legend:  (#) - no. of vacancies
                 </div>
