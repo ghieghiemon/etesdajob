@@ -1,27 +1,24 @@
-<!--modal myModal content-->       
-    <div class="modal hide fade" id="signIn">
+        <!--modal join Modal content-->       
+<div class="modal hide fade" id="signModal">
   		<div class="modal-header">
     		<a class="close" data-dismiss="modal">x</a>
-    		<h3>Sign In</h3>
+    		<h3>Sign In Required</h3>
   		</div>
         
   		<div class="modal-body">
-        <form method="post" action='' name="login_form">
-            <p><input type="text" class="span3" name="eid" id="email" placeholder="Email" style="margin-left:155px;"></p>
-            <p><input type="password" class="span3" name="passwd" placeholder="Password" style="margin-left:155px;"></p>
+           <form method="post" action="<?php echo base_url()?>main/login_validation"  name="login_form">
+            <p><input type="text" class="span3" name="email" id="email" placeholder="Email" style="margin-left:155px;"></p>
+            <p><input type="password" class="span3" name="userpassword" id="userpassword" placeholder="Password" style="margin-left:155px;"></p>
             <p><button type="submit" class="btn btn-primary" style="margin-left:162px;">Sign in</button>
-              <a href="#">Forgot Password?</a>
             </p>
    	 	</form>
         </div>
-        
         <div class="modal-footer">
     		Not a member?
-    		<a href="#">Register</a>
+    		<a href="<?php echo base_url()?>pub/pub_signup">Register</a>
  		</div>
 	</div>
-<!--end myModal content-->
-
+	<!--end join Modal content-->
 <!--start ModLeagMembers-->
 <div class="modal hide fade" id="ModLeagMembers">
   	<div class="modal-header">
@@ -74,7 +71,7 @@
 
                
 <div class="container">
-<div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
+<div style="margin-left: 0%; margin-top: 1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
             <div class="span12">
@@ -83,7 +80,7 @@
                          <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="35"> Leagues
                     </h3>
                     
-                    <div style="width:1210px;height:500px;overflow:auto;margin-left:30px;"><!--start scrollable table-->
+                    <div style="width:1230px;height:500px;overflow:auto;margin-left:30px;"><!--start scrollable table-->
                     
                     <?php
                     foreach($leagues as $a)
@@ -133,7 +130,7 @@
                                         
                                         <div align="right" style="margin-top:7px;margin-right:-300px;">
                                          	<span>
-                                            	<a href="#signIn" data-toggle="modal" role="button" class="btn btn-primary">
+                                            	<a href="#signModal" data-toggle="modal" role="button" class="btn btn-primary">
                                                     Join
                                                 </a>
                                             </span>

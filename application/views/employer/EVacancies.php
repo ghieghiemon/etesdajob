@@ -1,9 +1,10 @@
-<!--publish vacancy modal start-->
 <?php
 foreach ($myvacancies as $a)
 {
 ?>
-<div class="modal hide fade" id="renew<?php echo $a['jobno']?>">
+  <form method="post" action='<?php echo base_url()?>employer/employer_extend/<?php echo $a['jobno']?>'>
+<div class="modal hide fade" id="extend<?php echo $a['jobno']?>">
+    
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Vacancy Preview</h3>
@@ -43,7 +44,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="description" name="description"></span>
+                                      		<?php 
+                                            echo $a['description'];
+                                        ?>
                                       </font>
                                   </td>
                               </tr>
@@ -54,7 +57,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="industry" name="industry"></span>
+                                      		<?php 
+                                            echo $a['sectorName'];
+                                        ?>
                                       </font>
                                   </td>
                               </tr>
@@ -79,7 +84,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="region" name="region"></span>
+                                      	<?php 
+                                            echo $a['region'];
+                                        ?>
                                       </font>	
                                   </td>
                               </tr>
@@ -91,7 +98,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="city" name="city"></span>	
+                                      		<?php 
+                                            echo $a['city'];
+                                        ?>
                                       </font>
                                   </td>
                               </tr>
@@ -103,7 +112,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="vacant" name="vacant"></span>
+                                      		<?php 
+                                            echo $a['vacanciesleft'];
+                                        ?>
                                       </font>	
                                   </td>
                               </tr>
@@ -115,7 +126,24 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="effect" name="effect"></span>	Weeks
+                                      	 <?php
+                                                  $date2 = $a['expirationdate'];
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  if ($a['expirationdate'] > $a['currentdate'])
+                                                  {
+                                                  echo $days;
+                                                  echo " days left";
+                                                  }
+                                                  else
+                                                  {
+                                                    echo '<font color="red"><strong>EXPIRED</strong></font>';
+                                                  }
+                                                ?>
+                                      
                                       </font>
                                   </td>
                               </tr>
@@ -145,7 +173,9 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="msex" name="msex"></span>	
+                                      		<?php 
+                                            echo $a['sex'];
+                                        ?>
                                         
                                       </font>
                                   </td>
@@ -158,7 +188,17 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="sAge" name="sAge"></span> - <span id="eAge" name="eAge"></span>	
+                                      	<span id="sAge" name="sAge">
+                                            	<?php 
+                                            echo $a['agestart'];
+                                        ?>
+                                        </span>
+                                        - 
+                                        <span id="eAge" name="eAge">
+                                            	<?php 
+                                            echo $a['ageend'];
+                                        ?>
+                                        </span>	
                                       </font>
                                   </td>
                               </tr>
@@ -170,29 +210,299 @@ foreach ($myvacancies as $a)
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert"></span>
+                        <span id="cert" name= "cert">
+                        </span>
                         	
                         </font>
                     </p>
                    
-                   <p class="previewCCS">
+                    <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-                        	<span id="comp" name= "comp"></span>
+                        <span id="cert" name= "cert">
+                        </span>
+                        	
                         </font>
                     </p>
-                    
-                
                 </div><!--end span-->
                 
                
             </div><!--end row-fluid-->
 	</div>
-  
+   <hr class="hrLeagTab">
+         <h4 class="media-heading previewColor"> &nbsp;&nbsp; | SELECT EFFECTIVITY </h4>
+                    <?php 
+                    $options = array(
+                    '2'  => '2 weeks',
+                    '3'    => '3 weeks',
+                    '4'   => '4 weeks',
+
+                    );
+                    $js = 'style="margin-left:40px;"id="effectivity"';
+
+                    echo form_dropdown('effectivity', $options, '2', $js);
+
+                    ?>
   	<div class="modal-footer">
-  		<a id="trigger" href="#" class="btn btn-info" data-dismiss="modal">Publish</a>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+        <button type="submit" class="btn btn-info" >Extend</button>
+        <a href="" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
+       </form>
+</div>
+<?php 
+}
+?>
+<!--publish vacancy modal end-->
+<!--publish vacancy modal start-->
+<?php
+foreach ($myvacancies as $a)
+{
+?>
+  <form method="post" action='<?php echo base_url()?>employer/employer_renew/<?php echo $a['jobno']?>'>
+<div class="modal hide fade" id="renew<?php echo $a['jobno']?>">
+    
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Vacancy Preview</h3>
+  	</div>
+	<div class="modal-body">
+                <span id="label1"></span>
+		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span1"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Job Title:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<?php 
+                                            echo $a['jobtitle'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Description:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['description'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                               <tr>
+                                  <td class="previewDet">
+                                      Industry:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['sectorName'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<table class="previewMarg2">
+                          <thead>
+                              <tr>
+                                  <th class="span3"></th>
+                                  <th class="span2"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                          	  <tr>
+                                  <td class="previewDet">
+                                      Region: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<?php 
+                                            echo $a['region'];
+                                        ?>
+                                      </font>	
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      City/Province: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['city'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Number of Vacancies: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['vacanciesleft'];
+                                        ?>
+                                      </font>	
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                                  <td class="previewDet">
+                                      Effectivity: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	 <?php
+                                                  $date2 = $a['expirationdate'];
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  if ($a['expirationdate'] > $a['currentdate'])
+                                                  {
+                                                  echo $days;
+                                                  echo " days left";
+                                                  }
+                                                  else
+                                                  {
+                                                    echo '<font color="red"><strong>EXPIRED</strong></font>';
+                                                  }
+                                                ?>
+                                      
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                </div>
+            </div><!--end row-fluid-->
+        <hr class="hrLeagTab">
+            
+        <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span2"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Sex:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['sex'];
+                                        ?>
+                                        
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Age Range:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="sAge" name="sAge">
+                                            	<?php 
+                                            echo $a['agestart'];
+                                        ?>
+                                        </span>
+                                        - 
+                                        <span id="eAge" name="eAge">
+                                            	<?php 
+                                            echo $a['ageend'];
+                                        ?>
+                                        </span>	
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<p class="previewCCS">
+                		<strong>CERTIFICATION/S:</strong> 
+                        <font class="previewCCS2">
+                        <span id="cert" name= "cert">
+                        </span>
+                        	
+                        </font>
+                    </p>
+                   <p class="previewCCS">
+                		<strong>COMPETENCIES:</strong> 
+                        <font class="previewCCS2">
+                        <span id="cert" name= "cert">
+                        </span>
+                        	
+                        </font>
+                    </p>
+                </div><!--end span-->
+                
+               
+            </div><!--end row-fluid-->
+	</div>
+   <hr class="hrLeagTab">
+         <h4 class="media-heading previewColor"> &nbsp;&nbsp; | SELECT EFFECTIVITY </h4>
+                    <?php 
+                    $options = array(
+                    '2'  => '2 weeks',
+                    '3'    => '3 weeks',
+                    '4'   => '4 weeks',
+
+                    );
+                    $js = 'style="margin-left:40px;"id="effectivity"';
+
+                    echo form_dropdown('effectivity', $options, '2', $js);
+
+                    ?>
+  	<div class="modal-footer">
+        <button type="submit" class="btn btn-info" >Renew</button>
+        <a href="" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+  	</div>
+       </form>
 </div>
 <?php 
 }
@@ -269,7 +579,7 @@ foreach ($myvacancies as $a)
                                                   }
                                                   else
                                                   {
-                                                    echo "EXPIRED";
+                                                    echo "<font color ='red'>EXPIRED </font>";
                                                   }
                                                 ?>
                                             </td>
@@ -295,7 +605,7 @@ foreach ($myvacancies as $a)
                                                 }
                                                 else
                                                 {
-                                                    echo "Expired";
+                                                  echo "<font color ='red'>EXPIRED </font>";
                                                 }
                                                 ?>
                                             </td>
@@ -305,7 +615,7 @@ foreach ($myvacancies as $a)
                                                   {
                                                     ?>
                                                 
-                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <a href="#extend<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
                                                 <?php
                                                   }
                                                   else 
@@ -340,9 +650,9 @@ foreach ($myvacancies as $a)
                         
                        
                     </div>  <!--end Active-->
-                    
-                    
-                        
+                    <br>
+                    <br>
+                    <br>
                     </div> <!--end tab expired-->
                     <div class="tab-pane" id="closed">
                         <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->

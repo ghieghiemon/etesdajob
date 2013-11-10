@@ -44,28 +44,28 @@
                     
                       <div class="nav" style="margin-left:310px;margin-top:-2px;">
                                
-                                <a href="#" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <a href="<?php echo base_url()?>pub/leaguepage" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> 
                                     <br>Leagues
                                 </h5>
                                 </a>
                                 
-                                <a href="#" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>pub/pub_allevents" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> 
                                     <br>&nbsp; Events &nbsp;
                                 </h5>
                                 </a>
                                 
-                                <a href="#" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <a href="<?php echo base_url()?>pub/pub_signup" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="25"> 
                                     <br>My Activity 
                                 </h5>
                                 </a>
                                 
-                                <a href="#" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>main/index" class="btn btn-group transBtn">
                                   <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_020_home.png" width="21"> 
                                       <br>&nbsp; Home &nbsp;

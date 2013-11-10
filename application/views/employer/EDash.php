@@ -79,55 +79,73 @@
                 </h5>
                 
                 <div style="width:380px;height:290px;overflow:auto;"><!--start scrollable table-->
-      				<div class="row-fluid"> <!--start row fluid upcoming events-->
+      		  <!--start row fluid upcoming events-->		
+                   
+                  	<?php
+                    $ctr = 1;
+                    if(count($event) == 0)
+                     {
+                         echo '<p class = "noCommYet"> There are no upcoming events</p>';
+                     }
+                     else
+                     {
+                    foreach ($event as $row)
+                     {
+                        if($ctr <3){
+                echo'
+                  <div class="row-fluid"> 
+                                  
 						
-                        <div class="span3">
-                        	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="<?php echo base_url()?>assets/bootstrap/img/ld5.jpg" class="thumbnail" alt="">
-                            </a>
+                        <div class="span2">
+                        	<a data-toggle="modal" href="#ModEventDes">'?>
+                            	<img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>"  class="thumbnail" alt="">
+                                
+                           <?php echo' </a>
                         </div>
         				
-        				<div class="span8">
-							<p class="marg2">
-                        		<a href="#" class="Name4">Happy to serve you!</a>
+        				<div class="span9">
+							<p class="marg2">'?>
+              
+                        		<a href='<?php echo base_url()?>pub/pevent_details/<?php echo $row['eventno']?>' class="Name4">
+                                            
+                                            
+                                       <?php echo $row['eventtitle'];
+                                      echo'  </a>
                             </p>
           		
                 			<p class="evDetails3">
-                            	<em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> 02/07/2013 
-                                	| <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
-                                </em><br>
-                                <strong>Location</strong>: NCR | Pasay City <br>
-                                <strong>Venue:</strong> SMX Convention Hall <br>
-                            	<span class="btn btn-info btn-mini"><a href="#ModEventAttend" data-toggle="modal" class="attendBtn">10 Attendees</a></span>
+                            	<em>
+                                '?><img src="<?php echo base_url()?>assets/img/icons/glyphicons_045_calendar.png" width="11">
+                                <?php echo $row['startdate'];
+                                	echo ' | '?>
+                                        <img src="<?php echo base_url()?>assets/img/icons/glyphicons_054_clock.png" width="11">
+                                           <?php echo $row['starttime'];
+                               echo' </em><br>
+                                <strong>Location</strong>: ';
+                                echo $row['region'];
+                               echo' | ';
+                               echo $row['city'];
+                               echo' <br>
+                                <strong>Venue:</strong>';
+                                echo $row['venue'];
+                               echo'<br>
+                            	<span class="btn btn-info btn-mini"><a data-toggle ="modal" href="#eventModal" class="attendBtn">';
+                                 echo $row['participantscount'];
+                                echo' Attendees
+                                </a></span>
                             </p>
 					
 						</div>
-					</div> <!--end row-fluid-->
+					</div>';
+                                         }
+                     $ctr += 1;
+                     }
+                     }
+                    ?>
+                  
+                    <!--end row-fluid-->
     				
-     				<div class="row-fluid">
-						<div class="span3">
-                        	<a data-toggle="modal" href="#ModEventDes">
-                            	<img src="<?php echo base_url()?>assets/bootstrap/img/ld6.jpg" class="thumbnail" height="12">
-                            </a>
-                            
-                        </div>
-        				
-                       
-        				<div class="span8">
-                        	<p class="marg2">
-                        		<a href="#" class="Name4">Employment Expo</a>
-                            </p>
-                            
-                            <p class="evDetails3">
-                            	<em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> 02/12/2013 
-                                	| <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> 10:00am
-                                </em><br>
-                                <strong>Location</strong>: NCR | Mandaluyong City <br>
-                                <strong>Venue:</strong> Mega Trade Hall, SM Mega Mall<br>
-                                <span class="btn btn-info btn-mini "><a href="#ModEventAttend" data-toggle="modal" class="attendBtn">800 Attendees </a></span>
-                            </p>
-						</div>
-					</div> <!--end row-fluid-->
+     			
                     </div><!--end scrollable table-->
                     
     				<div class="row-fluid">

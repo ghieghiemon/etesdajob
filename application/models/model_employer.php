@@ -220,6 +220,7 @@ class Model_employer extends CI_Model {
                            from job_vacancies v
                            JOIN etesda.reference_city c ON c.cityid = v.city
                            JOIN etesda.reference_region r ON r.regionid = v.region
+                           JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                            WHERE companyID = $id AND vacanciesleft >0
                            ORDER BY lastedited DESC
                            
@@ -515,9 +516,11 @@ class Model_employer extends CI_Model {
     public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT * from job_vacancies v
+       $query = $db1->query("SELECT *,CURDATE() as currentdate
+                        from job_vacancies v
                         JOIN etesda.reference_city c ON c.cityid = v.city
                         JOIN etesda.reference_region r ON r.regionid = v.region
+                        JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                         where jobno = $jobno");
        return $query->result_array();
        $db1->close();
@@ -592,6 +595,68 @@ class Model_employer extends CI_Model {
 
         $db1->close();
   }
+  public function get_alljobdetails($jobno)
+    {
+       $db1 = $this->load->database('local', TRUE);
+
+       $query = $db1->query("SELECT *, r.region,v.description,c.city,CURDATE() as currentdate,
+                        DATE_FORMAT(dateposted, '%M %d %Y') as dateposted,
+                        DATE_FORMAT(expirationdate, '%M %d %Y') as expirationdate from job_vacancies v
+                        join etesda.job_certifications jc on jc.jobno = v.jobno 
+                        join etesda.job_competencies jco on jco.jobno = v.jobno 
+                        JOIN etesda.reference_city c ON c.cityid = v.city
+                        JOIN etesda.reference_region r ON r.regionid = v.region
+                        JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                        
+                        JOIN tesda_centraldb.nc_reference nc ON nc.ncid = jc.ncid
+                        
+                        where v.jobno = $jobno");
+       return $query->result_array();
+       $db1->close();
+ 
+    }
+     public function update_jobvacancy($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(expirationdate, INTERVAL 2 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
+        public function update_jobvacancy3w($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(expirationdate , INTERVAL 3 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
+        public function update_jobvacancy4w($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(expirationdate, INTERVAL 4 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
+         public function renew_jobvacancy($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(curdate(), INTERVAL 2 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
+         public function renew_jobvacancy3w($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(curdate(), INTERVAL 3 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
+         public function renew_jobvacancy4w($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+ 
+        $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(curdate(), INTERVAL 4 WEEK) WHERE jobno = $jobno");
+        $db1->close();
+    }
 
 
 }

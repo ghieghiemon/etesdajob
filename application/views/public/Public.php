@@ -163,7 +163,7 @@
                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="25"> My Activity 
                   </h5>
                 
-                <div style="width:280px;height:290px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:280px;height:390px;overflow:auto;"><!--start scrollable table-->
                 	<br>
                     <a href="">
                         <p class="PDescMarg">
@@ -190,18 +190,31 @@
         <div class="span6">
         	<div class="well wellMarg wellUpMarg wellShadow">
             	<div style="width:625px;height:190px;overflow:auto;"><!--start scrollable table-->
-                    <h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
-                    <p class="whatsNFont" ><a href='pub/pub_alljob'>
-                            <?php 
+                    <h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="25" height="15">&nbsp;e-Tesda WORK</h5>
+                    
+                   <object width="620" height="150">
+                 
+                    <embed src="<?php echo base_url()?>assets/bootstrap/flash/theflash1.swf" width="620" height="150">
+                    </embed>
+                </object>
+              
+                </div><!--end scrollable-->
+            </div><!--end whats new-->
+            	<div class="well wellMarg wellUpMarg wellShadow">
+            	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
+               		<p class="whatsNFont" >
+                	<a href='pub/pub_alljob'><font color ="AD3288">
+                                     <?php 
                     foreach ($vacancies as $a)
                     {
                              echo $a['totalvacancies'];
                     }
-                    ?> job vacancies nationwide!
-                    </p></a>
-                </div><!--end scrollable-->
+                    ?>
+                   
+                            JOB VACANCIES WORLDWIDE!</a><br><br>
+                </font>
+                        </p>
             </div><!--end whats new-->
-            
           
             <div class="well wellMarg wellUpMarg wellShadow">
             	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="18"> Vacancies</h5>
@@ -281,12 +294,20 @@
         </div><!--end span middle column-->
         
         <div class="span3">
-        	<div class="well wellMarg wellUpMarg wellShadow">
-            	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK
-                </h5>
-                      <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>main/register_validation'/>
-                 <table>
+        	  <div class="accordion well wellShadow wellMarg wellUpMarg" id="accordion3"><!--well signup-->
+  
+    <div class="accordion-heading">
+      <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">-->
+       <h5 class="media-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
+           <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK &#9660;
+         </h5>
+      <!--</a>-->
+   
+    <div id="collapseThree" class="accordion-body collapse">
+      <div class="accordion-inner">
+            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>main/register_validation'/>
+                
+                      <table>
                 	<thead>
                     	<tr>
                         	<th class="span1"></th>
@@ -303,7 +324,7 @@
                             	<label class="SUpFont">Email</label>
                             	 <?php
                                     
-                                    echo "<input style = ' width:80%'  class='input-prepend'";
+                                    echo "<input style = ' width:85%'  class='input-prepend'";
                                     echo form_input('email');
                                     
                                     ?>
@@ -358,7 +379,9 @@
                     </tbody>
                 </table>
                 
-                  <div style="margin-left:200px;">
+                
+                    
+                    <div style="margin-left:185px;">
                     	 <?php 
                       
                 echo" <input class='btn btn-primary'";
@@ -369,14 +392,17 @@
                         </form>
            
                     </div>
-                
-            </div><!--end well signup-->
+                    
+                </div><!--end scrollable-->
+      </div>
+    </div>
+ 
+</div>
             
             <div class="well wellMarg wellUpMarg wellShadow">
             	<a  data-toggle="modal" href="#signModal">
                     
                 	<img src="<?php echo base_url()?>assets/bootstrap/img/PV.jpg">
-                        
                 </a>
             </div><!--end post vacancy-->
             
@@ -389,7 +415,7 @@
                     Legend:  <img src="<?php echo base_url()?>assets/bootstrap/img/tesda.jpg" width="15"> - TESDA Partner Companies
                 </div>
                 
-                <div style="width:295px;height:255px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:295px;height:235px;overflow:auto;"><!--start scrollable table-->
                 	<?php
                 foreach($companies as $a)
                 {
@@ -418,11 +444,19 @@
                                 </font>
                                         </p>
                                         </div>
+                        
                     </div> <!--end row-fluid-->
                     <?php
                 }
     		?>
                     </div><!--end scrollable table-->
+                      <div class="row-fluid">
+    					<div align="right" style="margin-top:-15px">
+                            <a href="#">
+                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                            </a>
+                        </div>
+    		</div> <!--end row fluid upcoming events-->
             </div><!--end well companies-->
         </div><!--end span right column-->
     </div><!--end row-->
