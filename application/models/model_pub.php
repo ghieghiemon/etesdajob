@@ -221,7 +221,7 @@ class Model_pub extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *, DATE_FORMAT(datereplied, '%b. %d, %y') as dateposted,
                             DATE_FORMAT(datereplied, '%h:%i %p') as timeposted 
-                            FROM league_discussions d WHERE d.leagueno = 18 AND d.repliedno = 0");
+                            FROM league_discussions d WHERE d.leagueno = $id AND d.repliedno = 0");
         return $query->result_array();
         $db1->close();
     }
