@@ -604,7 +604,7 @@ class Employer extends CI_Controller {
 			$this->load->model('tuna');
                         $this->load->model('model_main');
                         $id = $this->model_main->get_userid($this->session->userdata('email'));
-			$events = $this->tuna->get_events($id,$year, $month, $day);
+			$events = $this->tuna->get_events($id, $year, $month, $day);
 			
 			echo "<b>Schedule for $month-$day-$year</b><br><hr>";
 			

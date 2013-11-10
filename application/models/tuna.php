@@ -42,19 +42,19 @@ class Tuna extends CI_Model {
 //		
 //	}
         
-        function get_events($id,$year, $month, $day = -1){
+        function get_events($id, $year, $month, $day = -1){
 	
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
 			$query = "select *,day(requirementdate) as eday  from applications where jobno in 
                          (select jobno from job_vacancies  where month(requirementdate) = ? AND year(requirementdate) = ? and 
-                         companyid = '$id')" ;
-			$results = $dbconn->query($query, array($month, $year));
+                         companyid = ?)" ;
+			$results = $dbconn->query($query, array($month, $year, $id));
 		else:
-			$query = "select *,day(requirementdate) as eday  from applications where jobno in 
-                         (select jobno from job_vacancies where month(requirementdate) = ? AND year(requirementdate) = ? and 
-                         companyid = '$id')";
-			$results = $dbconn->query($query, array($month, $year, $day));
+			$query = "select *, day(requirementdate) as eday  from applications where jobno in 
+                         (select jobno from job_vacancies where month(requirementdate) = ? AND year(requirementdate) = ? and day(requirementdate) == ?
+                         and companyid = ?)";
+			$results = $dbconn->query($query, array($month, $year, $day, $id));
 		endif;
 		$dbconn->close();
 		return $results->result();
