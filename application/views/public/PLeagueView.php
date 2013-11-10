@@ -219,6 +219,7 @@
                                     | <font class="tnd"><?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
                                     | <a href="#" class="Name3">
                                     <?php 
+                                    $replies = $this->model_pub->get_discReplies($a['discussionno']);
                                     echo count($replies);
                                      if(count($replies) <=1 )
                                          echo " reply";

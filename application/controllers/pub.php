@@ -147,7 +147,6 @@ class Pub extends CI_Controller {
        
        $data['details'] = $this->model_pub->get_leagueDetails($id); 
        $data['discs'] = $this->model_pub->get_leagueDiscussions($id); 
-       $data['replies'] = $this->model_pub->get_leagueReplies($id);
        
        $this->load->view("public/header");
        $this->load->view("public/PLeagueView",$data);

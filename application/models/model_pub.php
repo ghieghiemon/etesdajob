@@ -235,7 +235,7 @@ class Model_pub extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-    public function get_leagueReplies($discno)
+     public function get_discReplies($discno)
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *, DATE_FORMAT(d.datereplied, '%b. %d, %y') as dateposted,
