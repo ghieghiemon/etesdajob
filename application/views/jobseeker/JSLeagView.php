@@ -3,7 +3,7 @@
 <div class="modal hide fade" id="ModLeagMembers">
   	<div class="modal-header">
             <a class="close" data-dismiss="modal">x</a>
-            <h3><img src="assets/img/icons/glyphicons_088_adress_book.png"> Members</h3>
+            <h3><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png"> Members</h3>
   	</div><!--end modal-header-->
 
   	<div class="modal-footer"> <!--Modal members-->
@@ -23,7 +23,7 @@
                     <tbody>
                     	<tr>
                         	<td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -34,7 +34,7 @@
                             </td>
                             
                             <td>
-                            	<a href="#"><img src="assets/img/user.png" alt="" class="members2"></a>
+                            	<a href="#"><img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="members2"></a>
                             </td>
                             
                             <td class="membersLabel2">
@@ -119,7 +119,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="assets/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
 										</div>
                                     </a>
                                     
@@ -131,10 +131,10 @@
                                         <a href="#" class="label label-info">Welding Industry</a>
                                         
                                         <br>
-                                        <font class="LeaDetails3"><img src="assets/img/icons/glyphicons_003_user.png" width="11">
+                                        <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                             by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
                                         
                                             <br>
                                             Share the same experience with the welders all over the world.</p>
@@ -151,7 +151,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="assets/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
 										</div>
                                     </a>
                                     
@@ -163,10 +163,10 @@
                                         <a href="#" class="label label-info">Welding Industry</a>
                                         
                                         <br>
-                                         <font class="LeaDetails3"><img src="assets/img/icons/glyphicons_003_user.png" width="11">
+                                         <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                             by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
                                         
                                             <br>
                                              Community of welders who help each other look for jobs locally and internationally.</p>
@@ -188,7 +188,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="assets/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
 										</div>
                                     </a>
                                     
@@ -200,10 +200,10 @@
                                         <a href="#" class="label label-info">Welding Industry</a>
                                         
                                         <br>
-                                        <font class="LeaDetails3"><img src="assets/img/icons/glyphicons_003_user.png" width="11">
+                                        <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                             by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
                                         
                                             <br>
                                             Share the same experience with the welders all over the world.</p>
@@ -225,7 +225,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="assets/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
 										</div>
                                     </a>
                                     
@@ -237,10 +237,10 @@
                                         <a href="#" class="label label-info">Welding Industry</a>
                                         
                                         <br>
-                                         <font class="LeaDetails3"><img src="assets/img/icons/glyphicons_003_user.png" width="11">
+                                         <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap//img/icons/glyphicons_003_user.png" width="11">
                                             by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
                                         
                                             <br>
                                              Community of welders who help each other look for jobs locally and internationally.</p>
@@ -281,27 +281,37 @@
                             </thead>
                             
                             <tbody>
+                                <?php
+                                foreach($leaguedetails as $a)
+                                {
+                                ?>
                             	<tr>
                                 	<td>
-                                    	<img src="assets/img/welder1.jpg" class="thumbnail4" alt="">
+                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" class="thumbnail4" alt="">
                                     </td>
                                    
                                     <td>
                                     	<p class="lDetMarg">
-                                        <img src="assets/img/auto.png" class="LeagueInIcon pull-right" alt="Auto Industry"><img src="assets/img/icons/glyphicons_043_group.png"><a href="JSLeagues.html" class="LeaName">We Love Welders</a>
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="LeagueInIcon pull-right" alt="Auto Industry"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png"><a href="JSLeagues.html" class="LeaName">We Love Welders</a>
                                         </p>
                                         <p class="LeaDetails lDetMarg2">
-                                        	<strong><img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name3">John</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11" heaight="10"> since September 2013
-                                            | <a data-toggle="modal" href="#ModLeagMembers" class="Name3"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
-                                            	114 Members
+                                        	<strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                            by <a href="#" class="Name3"><?php 
+                                                $name = $this->model_jobseeker->get_companyName($a['createdby']);
+                                                echo $name;
+                                                ?> </a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11" heaight="10"> since <?php echo $a['since']?>
+                                            | <a data-toggle="modal" href="#ModLeagMembers" class="Name3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
+                                            	<?php 
+                                                $members = $this->model_jobseeker->get_leaguemembers($a['leagueno']);
+                                                echo count($members);
+                                                ?> Members
                                               </a>
                                             </strong>
                                             <hr class="hrRApp2">
                                         </p>
                                         <p class="LeaDetails2">
-                                        	<em><strong>League Description:</strong></em> Community of welders who help each other look for jobs locally and internationally.
+                                        	<em><strong>League Description: </strong></em><?php echo $a['leaguedescription']?>
                                         </p>
                                         
                                         <br>
@@ -309,7 +319,7 @@
                                             <span class="LeagueLeave btn-group">
                                             <li class="dropdown">
                                                 <a class="btn btn-mini btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <img src="assets/img/icons/glyphicons_136_cogwheel.png" width="13"> Settings</a>
+                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_136_cogwheel.png" width="13"> Settings</a>
                                                 <ul class="dropdown-menu">
                                                 <font class="lOptions">
                                                      
@@ -327,8 +337,11 @@
                                             </span>
                                            </div>
                                     </td>
+                                    
                                 </tr>
-                                
+                                <?php
+                                }
+                                ?>
                                 <tr>
                                 	<td>
                                     	<p>
@@ -348,7 +361,7 @@
                         <form accept-charset="UTF-8" action="" method="POST" class="form-horizontal" style="margin-left:10px; margin-bottom:5px;">
                                 <textarea class="span9" id="new_message" name="new_message"
                                 placeholder="Start a topic." rows="1"></textarea>&nbsp;&nbsp;
-                                <a href="#" class="btn"><img src="assets/img/icons/glyphicons_011_camera.png" width="13"><strong>&nbsp;Photo</strong></a>
+                                <a href="#" class="btn"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_011_camera.png" width="13"><strong>&nbsp;Photo</strong></a>
                                 <button class="btn" type="submit"><strong>Post</strong></button>
                         </form> <!--End post-->
 
@@ -358,69 +371,67 @@
                 
                 <div class="row-fluid">
                 	<div class="span12">
-            			<h4 class="media header dMarg"><img src="assets/img/icons/glyphicons_319_sort.png">
+            			<h4 class="media header dMarg"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_319_sort.png">
                         	<a href="#"  class="media header DiscHead"> DISCUSSIONS </a>
                         </h4>
                         
                         <div style="width:910px;height:250px;overflow:auto;"><!--start scrollable table-->
                         <ul class="nav nav-list">
+                            <?php
+                            foreach ($discs as $a)
+                            {
+                            ?>
                             <li style="margin-left:30px;">
-                                <a href="JSLeagDisc.html" class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Where can I find a job here in Manila?
+                                <a href="<?php echo base_url()?>jobseeker/jobseeker_leaguedisc/<?php echo $a['discussionno']?>" class="DisTitle2">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
+                                    <?php echo $a['discussion']?>
                                 </a>
                                 
                                 <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">John</a> 
-                                    | <font class="tnd"> 09/23/2013</font>
-                                    | <a href="#" class="Name3"> 5 replies </a>
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                    Last post by <a href="#" class="Name3">
+                                          <?php
+                                            $type = $this->model_jobseeker->get_userType($a['postedby']);
+                                            if($type == 'EMPLOYER')
+                                            {
+                                                $by = $this->model_jobseeker->get_companyName($a['postedby']);
+                                                echo $by;
+                                            }
+                                            else if ($type == 'JOBADMIN')
+                                            {
+                                                $by = 'TESDA';
+                                                echo $by;
+                                            }
+                                            else if ($type == 'APPLICANT')
+                                            {
+                                                $by = $this->model_jobseeker->get_jsname($a['postedby']);
+                                                foreach($by as $b)
+                                                {
+                                                    echo $b['firstname'];
+                                                    echo " ";
+                                                    echo $b['lastname'];
+                                                }
+                                            }
+                                            
+                                            ?>
+                                    </a> 
+                                    | <font class="tnd"> <?php echo $a['dateposted']?> at <?php echo $a['timeposted']?></font>
+                                    | <a href="#" class="Name3">
+                                    <?php 
+                                     $replies = $this->model_jobseeker->get_discReplies($a['discussionno']);
+                                    echo count($replies);
+                                     if(count($replies) <=1 )
+                                         echo " reply";
+                                     else echo " replies";
+                                    ?> 
+                                    </a>
                                 </font>
                             </li> 
                             <br>
-                            <li style="margin-left:30px;">
-                                <a href="JSLeagDisc.html" class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Welders in Dubai have great salary, is this true? </font>
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Ming</a>
-                                    | <font class="tnd"> 09/22/2013</font>
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
+                            <?php
+                            }
+                            ?>
                             
-                            <br>
-                            <li style="margin-left:30px;">
-                                <a href="JSLeagDisc.html"  class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Company Y is recruiting welders. Is there any requirements?
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#"  class="Name3">James</a>
-                                    | <font class="tnd"> 09/21/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
-                            
-                            <br>
-                            <li style="margin-left:30px;">
-                                <a href="JSLeagDisc.html"  class="DisTitle2">
-                                    <img src="assets/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Tips on being an expert welder.
-                                </a>
-                                
-                                <font style="margin-left:50px;">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Bong</a>
-                                    | <font class="tnd"> 09/20/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
                         </ul>
                         </div><!--end scrollable table-->
                     
