@@ -531,205 +531,104 @@ class Employer extends CI_Controller {
     {
         print_r($this->input->post('check'));
     }
-     public function employer_cal($jobno,$appno) {
-		$year = null;
-                $month = null;
-		if (!$year) {
-			$year = date('Y');
-		}
-		if (!$month) {
-			$month = date('m');
-		}
-		
-		$this->load->model('Mycal_model');
-		
-		if ($day = $this->input->post('day')) {
-			$this->Mycal_model->add_calendar_data(
-				"$year-$month-$day",
-				$this->input->post('data')
-			);
-		}
-
-		$data['calendar'] = $this->Mycal_model->generate($year, $month);
-		$this->employer_header();
-		$this->load->view('employer/EAppsPerJobChangeStat', $data);
-		
-	}
     
-    // EVENT CALENDAR
-    function employer_calendar($year = null, $month = null, $day = null){
-                $this->load->model('model_calendar', 'evencal');
-		$this->load->library('calendar', $this->_setting());
-                
-		$year  = (empty($year) || !is_numeric($year))?  date('Y') :  $year;
-		$month = (is_numeric($month) &&  $month > 0 && $month < 13)? $month : date('m');
-		$day   = (is_numeric($day) &&  $day > 0 && $day < 31)?  $day : date('d');
-		
-		$date      = $this->evencal->getDateEvent($year, $month);
-		$cur_event = $this->evencal->getEvent($year, $month, $day);
-		$data      = array(
-						'notes' => $this->calendar->generate($year, $month, $date),
-						'year'  => $year, 
-						'mon'   => $month,
-						'month' => $this->_month($month),
-						'day'   => $day,
-						'events'=> $cur_event
-					);
-		$this->load->view('employer/ECalendar', $data);
-	}
-	
-	// for convert (int) month to (string) month in Indonesian
-	function _month($month){
-                $this->load->model('model_calendar', 'evencal');
-		$this->load->library('calendar', $this->_setting());
-		$month = (int) $month;
-		switch($month){
-			case 1 : $month = 'Januari'; Break;
-			case 2 : $month = 'Februari'; Break;
-			case 3 : $month = 'Maret'; Break;
-			case 4 : $month = 'April'; Break;
-			case 5 : $month = 'Mei'; Break;
-			case 6 : $month = 'Juni'; Break;
-			case 7 : $month = 'Juli'; Break;
-			case 8 : $month = 'Agustus'; Break;
-			case 9 : $month = 'September'; Break;
-			case 10 : $month = 'Oktober'; Break;
-			case 11 : $month = 'November'; Break;
-			case 12 : $month = 'Desember'; Break;
+    // EMPLOYER CALENDAR
+ function view_calendar($year = -1, $month = -1){
+			
+			// 1. Get current year and month
+			$yr = $year == -1 ? date("Y") : $year;
+			$mo = $month == -1 ? date("m") : $month;
+			
+			// Load the javascript
+                        
+                           $this->employer_header();
+                           $this->load->view('js');
+                           
+			  // $this->load->view('footer');
+			// Initialize the template 
+			$config['template'] = '
+
+					{table_open}<table border="0" cellpadding="1" cellspacing="10">{/table_open}
+
+					{heading_row_start}<tr>{/heading_row_start}
+
+					{heading_previous_cell}<th><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}
+					{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}
+					{heading_next_cell}<th><a href="{next_url}">&gt;&gt;</a></th>{/heading_next_cell}
+
+					{heading_row_end}</tr>{/heading_row_end}
+
+					{week_row_start}<tr>{/week_row_start}
+					{week_day_cell}<td>{week_day}</td>{/week_day_cell}
+					{week_row_end}</tr>{/week_row_end}
+
+					{cal_row_start}<tr>{/cal_row_start}
+					{cal_cell_start}<td>{/cal_cell_start}
+
+					{cal_cell_content}<a href="javascript:void(0)" onclick="openWindow({day},' . $yr . ',' . $mo . ');">{day}</a>{/cal_cell_content}
+					{cal_cell_content_today}<div class="highlight"><a href="{content}" target="_blank">{day}</a></div>{/cal_cell_content_today}
+
+					{cal_cell_no_content}{day}{/cal_cell_no_content}
+					{cal_cell_no_content_today}<b>{day}</b>{/cal_cell_no_content_today}
+
+					{cal_cell_blank}&nbsp;{/cal_cell_blank}
+
+					{cal_cell_end}</td>{/cal_cell_end}
+					{cal_row_end}</tr>{/cal_row_end}
+
+					{table_close}</table>{/table_close}
+			';
+			
+			$this->load->library('calendar', $config);
+			$this->load->model('tuna');
+
+			// 2. Get the events
+			$events = $this->tuna->get_events($yr, $mo);
+			$events_arr = array();
+				
+			foreach($events as $event):
+					
+				$events_arr[$event->eday] = base_url('welcome/view_event/'.$yr.'/'.$mo.'/'.$event->eday);
+				
+			endforeach;
+				
+			// 3. Pass the events and generate the calendar
+			echo $this->calendar->generate($yr, $mo, $events_arr);
+ 
 		}
-		return $month;
-	}
-	
-	// get detail event for selected date
-	function detail_event(){
-                $this->load->model('model_calendar');
-		$this->load->library('calendar', $this->_setting());
-                
-		$this->form_validation->set_rules('year', 'Year', 'trim|required|is_natural_no_zero|xss_clean');
-		$this->form_validation->set_rules('mon', 'Month', 'trim|required|is_natural_no_zero|less_than[13]|xss_clean');
-		$this->form_validation->set_rules('day', 'Day', 'trim|required|is_natural_no_zero|less_than[32]|xss_clean');
 		
-		if ($this->form_validation->run() == FALSE){
-			echo json_encode(array('status' => false, 'title_msg' => 'Error', 'msg' => 'Please insert valid value'));
-		}else{
-			$data = $this->evencal->getEvent($this->input->post('year'), $this->input->post('mon'), $this->input->post('day'));
-			if($data == null){
-				echo json_encode(array('status' => false, 'title_msg' => 'No Event', 'msg' => 'There\'s no event in this date'));
-			}else{			
-				echo json_encode(array('status' => true, 'data' => $data));
-			}
+		function view_event($year, $month, $day){
+			
+			$this->load->model('tuna');
+			$events = $this->tuna->get_events($year, $month, $day);
+			
+			echo "<b>Schedule for $month-$day-$year</b><br><hr>";
+			
+			foreach($events as $event):
+			
+				echo $event->appid . ' ' . $event->requirementdate. ' ' 
+                                        . $event->requirementtime. ' '. $event->status
+                                        . ' ' . $event->applicationid. ' ' . $event->location;
+				echo '<br>';
+			
+			endforeach;
+
 		}
-	}
-	
-	// popup for adding event
-	function add_event(){
-                $this->load->model('model_calendar');
-		$this->load->library('calendar', $this->_setting());
-		$data = array(
-					'day'   => $this->input->post('day'),
-					'mon'   => $this->input->post('mon'),
-					'month' => $this->_month($this->input->post('mon')),
-					'year'  => $this->input->post('year'),
-				);
-		$this->load->view('employer/ECalendarAdd', $data);
-	}
-	
-	// do adding event for selected date
-	function do_add(){
-                $this->load->model('model_calendar', 'evencal');
-		$this->load->library('calendar', $this->_setting());
-                
-		$this->form_validation->set_rules('year', 'Year', 'trim|required|is_natural_no_zero|xss_clean');
-		$this->form_validation->set_rules('mon', 'Month', 'trim|required|is_natural_no_zero|less_than[13]|xss_clean');
-		$this->form_validation->set_rules('day', 'Day', 'trim|required|is_natural_no_zero|less_than[32]|xss_clean');
-		$this->form_validation->set_rules('hour', 'Hour', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('minute', 'Minute', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('event', 'Event', 'trim|required|xss_clean');
 		
-		if ($this->form_validation->run() == FALSE){
-			echo json_encode(array('status' => false, 'title_msg' => 'Error', 'msg' => 'Please insert valid value'));
-		}else{
-			$this->evencal->addEvent($this->input->post('year'), 
-											 $this->input->post('mon'), 
-											 $this->input->post('day'), 
-											 $this->input->post('hour').":".$this->input->post('minute').":00",
-											 $this->input->post('event'));
-			echo json_encode(array('status' => true, 'time' => $this->input->post('time'), 'event' => $this->input->post('event')));
+		function add_event(){
+			
+			$this->load->view('add_form');
+			
 		}
-	}
-	
-	// delete event
-	function delete_event(){
-                $this->load->model('model_calendar', 'evencal');
-		$this->load->library('calendar', $this->_setting());
-                
-		$this->form_validation->set_rules('year', 'Year', 'trim|required|is_natural_no_zero|xss_clean');
-		$this->form_validation->set_rules('mon', 'Month', 'trim|required|is_natural_no_zero|less_than[13]|xss_clean');
-		$this->form_validation->set_rules('day', 'Day', 'trim|required|is_natural_no_zero|less_than[32]|xss_clean');
-		$this->form_validation->set_rules('del', 'ID', 'trim|required|is_natural_no_zero|xss_clean');
 		
-		if ($this->form_validation->run() == FALSE){
-			echo json_encode(array('status' => false));
-		}else{
-			$rows = $this->evencal->deleteEvent($this->input->post('year'),$this->input->post('mon'),$this->input->post('day'), $this->input->post('del'));
-			if($rows > 0){
-				echo json_encode(array('status' => true, 'row' => $rows));
-			}else{
-				echo json_encode(array('status' => true, 'row' => $rows, 'title_msg' => 'No Event', 'msg' => 'There\'s no event in this date'));
-			}
+		function add_event_handler(){
+			
+			$this->load->model('tuna');
+			$this->tuna->add_event($this->input->post('datetime'), 
+                        $this->input->post('event'));
+			redirect('employer/view_calendar');
+			
 		}
-	}
-	
-	// same as index() function
-	function detail($year = null, $month = null, $day = null){
-                $this->load->model('model_calendar', 'eventcal');
-		$this->load->library('calendar', $this->_setting());
-                
-		$year  = (empty($year) || !is_numeric($year))?  date('Y') :  $year;
-		$month = (is_numeric($month) &&  $month > 0 && $month < 13)? $month : date('m');
-		$day   = (is_numeric($day) &&  $day > 0 && $day < 31)?  $day : date('d');
-		
-		$date      = $this->evencal->getDateEvent($year, $month);
-		$cur_event = $this->evencal->getEvent($year, $month, $day);
-		$data 	   = array(
-						'notes' => $this->calendar->generate($year, $month, $date),
-						'year'  => $year,
-						'mon'   => $month,
-						'month' => $this->_month($month),
-						'day'   => $day,
-						'events'=> $cur_event
-					);
-		$this->load->view('employer/ECalendar', $data);
-	}
-	
-	// setting for calendar
-	function _setting(){
-		return array(
-			'start_day' 		=> 'monday',
-			'show_next_prev' 	=> true,
-			'next_prev_url' 	=> site_url('employer/employer_calendar'),
-			'month_type'   		=> 'long',
-            'day_type'     		=> 'short',
-			'template' 			=> '{table_open}<table class="date">{/table_open}
-								   {heading_row_start}&nbsp;{/heading_row_start}
-								   {heading_previous_cell}<caption><a href="{previous_url}" class="prev_date" title="Previous Month">&lt;&lt;Prev</a>{/heading_previous_cell}
-								   {heading_title_cell}{heading}{/heading_title_cell}
-								   {heading_next_cell}<a href="{next_url}" class="next_date"  title="Next Month">Next&gt;&gt;</a></caption>{/heading_next_cell}
-								   {heading_row_end}<col class="weekday" span="5"><col class="weekend_sat"><col class="weekend_sun">{/heading_row_end}
-								   {week_row_start}<thead><tr>{/week_row_start}
-								   {week_day_cell}<th>{week_day}</th>{/week_day_cell}
-								   {week_row_end}</tr></thead><tbody>{/week_row_end}
-								   {cal_row_start}<tr>{/cal_row_start}
-								   {cal_cell_start}<td>{/cal_cell_start}
-								   {cal_cell_content}<div class="date_event detail" val="{day}"><span class="date">{day}</span><span class="event d{day}">{content}</span></div>{/cal_cell_content}
-								   {cal_cell_content_today}<div class="active_date_event detail" val="{day}"><span class="date">{day}</span><span class="event d{day}">{content}</span></div>{/cal_cell_content_today}
-								   {cal_cell_no_content}<div class="no_event detail" val="{day}"><span class="date">{day}</span><span class="event d{day}">&nbsp;</span></div>{/cal_cell_no_content}
-								   {cal_cell_no_content_today}<div class="active_no_event detail" val="{day}"><span class="date">{day}</span><span class="event d{day}">&nbsp;</span></div>{/cal_cell_no_content_today}
-								   {cal_cell_blank}&nbsp;{/cal_cell_blank}
-								   {cal_cell_end}</td>{/cal_cell_end}
-								   {cal_row_end}</tr>{/cal_row_end}
-								   {table_close}</tbody></table>{/table_close}');
-	}
 }
     
 ?>

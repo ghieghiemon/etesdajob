@@ -21,17 +21,18 @@ class Tuna extends CI_Model {
 	
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
-			$query = 'select appid, status, day(requirementdate) as eday from applications where month(requirementdate) = ? AND year(requirementdate) = ?';
+			$query = 'select monthname(requirementdate),appid,applicationid,location,status,requirementtime, day(requirementdate) as eday 
+                            from applications where month(requirementdate) = ? AND year(requirementdate) = ?';
 			$results = $dbconn->query($query, array($month, $year));
 		else:
-			$query = 'select appid, status, requirementdate from applications where month(requirementdate) = ? AND year(requirementdate) = ? and day(requirementdate) = ?';
+			$query = 'select monthname(requirementdate), appid,applicationid,location,requirementtime, status, requirementdate from applications 
+                         where month(requirementdate) = ? AND year(requirementdate) = ? and day(requirementdate) = ?';
 			$results = $dbconn->query($query, array($month, $year, $day));
 		endif;
 		$dbconn->close();
 		return $results->result();
 		
 	}
-   
 }
 
 /* End of file user.php */

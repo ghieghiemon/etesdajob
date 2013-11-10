@@ -94,7 +94,7 @@ function checkall(el){
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:170px; margin-top:-2px;">
-                                <a href="<?php echo base_url()?>employer/employer_cal" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <a href="<?php echo base_url()?>employer/view_calendar" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 
                                     <br>Calendar

@@ -17,8 +17,10 @@ class Welcome extends CI_Controller {
 			$mo = $month == -1 ? date("m") : $month;
 			
 			// Load the javascript
-			$this->load->view('js');
-			
+                           redirect('employer/employer_header');
+                           $this->load->view('js');
+                           $this->employer_header();
+			  // $this->load->view('footer');
 			// Initialize the template 
 			$config['template'] = '
 
@@ -68,7 +70,7 @@ class Welcome extends CI_Controller {
 				
 			// 3. Pass the events and generate the calendar
 			echo $this->calendar->generate($yr, $mo, $events_arr);
-
+ 
 		}
 		
 		function view_event($year, $month, $day){
@@ -76,11 +78,13 @@ class Welcome extends CI_Controller {
 			$this->load->model('tuna');
 			$events = $this->tuna->get_events($year, $month, $day);
 			
-			echo "<b>Events for $month-$day-$year</b><br><hr>";
+			echo "<b>Schedule for $month-$day-$year</b><br><hr>";
 			
 			foreach($events as $event):
 			
-				echo $event->status . ' ' . $event->requirementdate;
+				echo $event->appid . ' ' . $event->requirementdate. ' ' 
+                                        . $event->requirementtime. ' '. $event->status
+                                        . ' ' . $event->applicationid. ' ' . $event->location;
 				echo '<br>';
 			
 			endforeach;
