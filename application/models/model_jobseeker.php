@@ -446,5 +446,17 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         return $query->result_array();
         $db1->close();
     }
+    public function post_comment($repliedno, $disc, $postedby, $leagueno, $likes){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO league_discussions(repliedno, discussion, postedby, leagueno, likes, datereplied) VALUES(?,?,?,?,?,NOW()) ";
+        $db1->query($query,array($repliedno, $disc, $postedby, $leagueno, $likes ));
+        $db1->close();
+    }
+    public function add_topics($disc, $postedby, $leagueno){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO league_discussions(repliedno, discussion, postedby, leagueno, likes, datereplied) VALUES(0,?,?,?,0,NOW()) ";
+        $db1->query($query,array( $disc, $postedby, $leagueno));
+        $db1->close();
+    }
 }?>
 
