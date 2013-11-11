@@ -1,98 +1,9 @@
-<!DOCTYPE HTML>
-<html lang="en-US">
-<head>
-	<title> Schedule</title>
-	<meta charset="UTF-8">
-	<style type="text/css">
-		.calendar {
-			font-family: Arial; font-size: 12px;
-		}
-		table.calendar {
-			margin: auto; border-collapse: collapse;
-		}
-		.calendar .days td {
-			width: 80px; height: 80px; padding: 4px;
-			border: 1px solid #999;
-			vertical-align: top;
-			background-color: #DEF;
-		}
-		.calendar .days td:hover {
-			background-color: #FFF;
-		}
-		.calendar .highlight {
-			font-weight: bold; color: #00F;
-		}
-	</style>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-</head>
-<body>
-	<?php echo $calendar; ?>
-
-    <div class="modal hide fade" id="changeStat<?php echo $a['applicationid']?>">
-    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $a['applicationid']?>">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Change Status</h3>
-  	</div>
-
-	<div class="modal-body">
-		<div class="well">
-        	<table>
-                  <thead>
-                      <tr>
-                          <th class="span8"></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Exam" style="margin-left:40px;">
-                              <label class="checkbox jCrNC2">
-                                   Exam
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Interview1" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  1st Interview
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Interview2" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  2nd Interview
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Requirements" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                 Requirements
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
-                                  Hired
-                              </label>
-                              
-                          </td>
-                      </tr>
-              </table>
-
-        </div><!--end well-->
+<br>
+<?php foreach ($appno as $a)
+{
+    ?>
+<div class="" id="changeStatus">
+  	<form method="post" action="<?php echo base_url()?>employer/employer_changeStatusdate/<?php echo $a['applicationid']?>">
         
         <div class="well">
         	<table>
@@ -212,13 +123,21 @@
               </table>
 <br>
         </div><!--end well-->
-	</div>
-  
+	
   	<div class="modal-footer">
   		<button type="submit" class="btn btn-info" >Save</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
      </form>
+    <?php } ?>
 </div>
-</body>
-</html>
+<script type="text/javascript">
+					
+	function openWindow(day,year,month,company){
+		
+		window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
+
+	}
+</script>
+<script src="<?php echo base_url('assets/bootstrap/js/jquery-1.8.3.min.js'); ?>"></script>
+<input type="hidden" value="<?php echo base_url(); ?>" id="base" />

@@ -534,7 +534,12 @@ class Employer extends CI_Controller {
     
     // EMPLOYER CALENDAR
  function view_calendar($year = -1, $month = -1){
-			
+                       
+   
+     $config = array (
+               'show_next_prev'  => TRUE,
+               'next_prev_url'   =>  base_url() . 'employer/view_calendar'
+             );
 			// 1. Get current year and month
 			$yr = $year == -1 ? date("Y") : $year;
 			$mo = $month == -1 ? date("m") : $month;
@@ -543,7 +548,7 @@ class Employer extends CI_Controller {
                           $this->load->model('model_main');
                            $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
-                           $this->load->view('js');
+                           $this->load->view('employer/ECal');
                            
 			  // $this->load->view('footer');
 			// Initialize the template 
@@ -590,7 +595,7 @@ class Employer extends CI_Controller {
 				
 			foreach($events as $event):
 					
-				$events_arr[$event->eday] = base_url('welcome/view_event/'.$yr.'/'.$mo.'/'.$event->eday);
+				$events_arr[$event->eday] = base_url('employer/view_event/'.$yr.'/'.$mo.'/'.$event->eday);
 				
 			endforeach;
 				
@@ -606,22 +611,72 @@ class Employer extends CI_Controller {
 			
 			$this->load->model('tuna');
                         $this->load->model('model_main');
+                         $this->load->model('model_employer');
                         $id = $this->model_main->get_userid($this->session->userdata('email'));
 			$events = $this->tuna->get_events($id, $year, $month, $day);
 			
-			echo "<b>Schedule for $month-$day-$year</b><br><hr>";
-			
+                        echo '<div class="well">';
+			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
+			echo"  <table class=''>
+                      <thead>
+                          <tr>
+                          	
+                              <th class='span3' style='text-align:center'>Name</th>
+                              <th class='span2' style='text-align:center'>Status</th>
+                              <th class='span2' style='text-align:center'>Date</th>
+                              <th class='span2' style='text-align:center'>Time</th>
+                              <th class='span2' style='text-align:center'>Location</th>
+                          </tr>
+                      </thead>";
 			foreach($events as $event):
-			
-				echo $event->appid . ' ' . $event->requirementdate. ' ' 
-                                        . $event->requirementtime. ' '. $event->status
-                                        . ' ' . $event->applicationid. ' ' . $event->location;
-				echo '<br>';
+			echo"    <tbody class='recName'>
+                          <tr>
+                              
+                              <td>
+                              	 <a href='#' class='recAppName'>
+                                 
+                              ";
+                         $name = $this->model_employer->get_jsName($event->appid);
+                         foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                 echo"</a>
+                              </td>
+                              
+                              <td>
+                                  $event->status
+                              </td>
+                              
+                              <td>
+                              	 $event->requirementdate
+                              </td>
+                              
+                              <td>
+                                 $event->requirementtime
+                              </td>
+                              
+                              <td>
+                              	$event->location
+                              </td>
+
+                          </tr>
+                          
+                      </tbody>";
+//				echo $event->appid . '<strong>Date:</strong>' .' '. 
+//                                $event->requirementdate. '<strong>Time:</strong>' 
+//                                        . $event->requirementtime. ' '. $event->status
+//                                        . ' ' . $event->applicationid. ' ' . $event->location;
+//				echo '<br>';
 			
 			endforeach;
-
+                echo '<table></div>';
 		}
-		
+       
 		function add_event(){
 			
 			$this->load->view('add_form');

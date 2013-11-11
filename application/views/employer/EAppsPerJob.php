@@ -603,7 +603,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                               <label class="">
                                    <strong>Location</strong>
                               </label>
-                              <textarea  style = " width:95%" rows="3"  name="location"></textarea>
+                              <textarea  style = " width:95%" rows="2" id ="location" name="location"></textarea>
                           </td>
                       </tr>
    
@@ -612,7 +612,9 @@ echo'<div class="modal hide fade" id="renew">';?>
               </table>
 
         </div><!--end well-->
-        <div class="well">
+
+        
+  <div class="well">
         	<table>
                   <thead>
                       <tr>
@@ -623,7 +625,8 @@ echo'<div class="modal hide fade" id="renew">';?>
                       <tr>                                           
                           <td>
                               <label style="margin-left:1px;">
-                                   <strong>Select Date:</strong>
+                            <strong>Select Date and Time: </strong>
+                            <div align ="right"><a href="#" class="btn btn-primary btn-mini" data-dismiss="modal">View Calendar</a> </div>
                               </label>
                                              <select name="month" style = " width:30%" >
 	<option value="1">January
@@ -680,25 +683,9 @@ echo'<div class="modal hide fade" id="renew">';?>
 </select>
                           </td>
                       </tr>
-
-              </table>
-
-        </div><!--end well-->
-        
-                <div class="well">
-        	<table>
-                  <thead>
                       <tr>
-                          <th class="span8"></th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr>                                           
                           <td>
-                              <label style="margin-left:1px;">
-                                   <strong>Select Time:</strong>
-                              </label>
-<select nAMe="time">
+                              <select nAMe="time">
   <option value="00:00">12:00 AM</option>
   <option value="1:00">1:00 AM</option>
   <option value="2:00">2:00 AM</option>
@@ -725,15 +712,14 @@ echo'<div class="modal hide fade" id="renew">';?>
   <option value="23:00">11:00 PM</option>
 </select>
                           </td>
-                      </tr>
-
+</tr>
               </table>
-<br>
+
         </div><!--end well-->
 	</div>
   
   	<div class="modal-footer">
-  		<button type="submit" class="btn btn-info" >Select Date</button>
+  		<button type="submit" class="btn btn-info" >Save</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
      </form>

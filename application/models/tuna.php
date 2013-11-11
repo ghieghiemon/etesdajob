@@ -46,13 +46,17 @@ class Tuna extends CI_Model {
 	
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
-			$query = "select *, day(requirementdate) as eday  from applications where month(requirementdate) = ? and year(requirementdate) = ?
+			$query = "select *, day(requirementdate) as eday  from applications 
+                            where month(requirementdate) = ? and year(requirementdate) = ? 
+                              AND (status ='Exam' or status ='Interview' )
 					and jobno in 
                          (select jobno from job_vacancies where
                          companyid = ?)" ;
 			$results = $dbconn->query($query, array($month, $year, $id));
 		else:
-			$query = "select *, day(requirementdate) as eday  from applications where month(requirementdate) = ? and year(requirementdate) = ? and day(requirementdate) = ? 
+			$query = "select *, day(requirementdate) as eday 
+                            from applications where month(requirementdate) = ? and year(requirementdate) = ? 
+                            and day(requirementdate) = ?  AND (status ='Exam' or status ='Interview' )
 			and jobno in (select jobno from job_vacancies where companyid = ?)";
 			$results = $dbconn->query($query, array($month, $year, $day, $id));
 		endif;
