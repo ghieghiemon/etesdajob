@@ -626,8 +626,13 @@ echo'<div class="modal hide fade" id="renew">';?>
                           <td>
                               <label style="margin-left:1px;">
                             <strong>Select Date and Time: </strong>
-                            <div align ="right"><a href="#" class="btn btn-primary btn-mini" data-dismiss="modal">View Calendar</a> </div>
+                            <div align ="right">
+                                <!--<a id="cal" class="btn btn-primary btn-mini">View Calendar</a>-->
+                                
+                                <a id="cal" href="javascript:void(0)" onclick="openWindow();">View Calendar</a>
+                            </div>
                               </label>
+                              
                                              <select name="month" style = " width:30%" >
 	<option value="1">January
 	<option value="2">February
@@ -1827,4 +1832,13 @@ function year_install(f)
         
     });
     
+</script>
+
+<script type="text/javascript">
+					
+	function openWindow(){
+		
+		window.open($('#cal')+ 'employer/view_calendar/');
+
+	}
 </script>
