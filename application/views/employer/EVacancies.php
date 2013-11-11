@@ -650,12 +650,9 @@ foreach ($myvacancies as $a)
                         
                        
                     </div>  <!--end Active-->
-                    <br>
-                    <br>
-                    <br>
-                    </div> <!--end tab expired-->
+                   
                     <div class="tab-pane" id="closed">
-                        <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
+                          <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
                         	<table class="tableJM2 table-hover table-condensed table-striped">
                               <thead>
                                   <tr>
@@ -713,6 +710,7 @@ foreach ($myvacancies as $a)
                         
                        
                     </div>  <!--end Active-->
+                    
                 </div> <!--end tab content-->
               </div> <!--end tabbable-->
                  
@@ -722,7 +720,7 @@ foreach ($myvacancies as $a)
     </div><!--end row-->
 
 </div><!--End div-->
-</div><!--End Container fluid-->
+</div>
  
             
              

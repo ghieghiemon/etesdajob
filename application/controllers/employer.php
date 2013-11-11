@@ -229,7 +229,6 @@ class Employer extends CI_Controller {
             }
        }
 
-
          if(count($ce)>=0)
       {
           foreach ($ce as $a)

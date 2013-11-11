@@ -629,7 +629,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                             <div align ="right">
                                 <!--<a id="cal" class="btn btn-primary btn-mini">View Calendar</a>-->
                                 
-                                <a id="cal" href="javascript:void(0)" onclick="openWindow();">View Calendar</a>
+                                <a id="cal" class="btn btn-primary btn-mini" href="javascript:void(0)" onclick="openWindow();">View Calendar</a>
                             </div>
                               </label>
                               
@@ -1840,7 +1840,7 @@ function year_install(f)
 		
 		// alert('Clicked');
 		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1200,height=400');
+		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1400,height=400');
 
 	}
 	
