@@ -292,7 +292,7 @@
                                    
                                     <td>
                                     	<p class="lDetMarg">
-                                        <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="LeagueInIcon pull-right" alt="Auto Industry"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png"><a href="JSLeagues.html" class="LeaName">We Love Welders</a>
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="LeagueInIcon pull-right" alt="Auto Industry"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png"><a href="JSLeagues.html" class="LeaName"> <?php echo $a['leaguename']?></a>
                                         </p>
                                         <p class="LeaDetails lDetMarg2">
                                         	<strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
@@ -357,9 +357,15 @@
                                 </tr>
                             </tbody>
                     	</table>
-                        
-                        <form accept-charset="UTF-8" action="" method="POST" class="form-horizontal" style="margin-left:10px; margin-bottom:5px;">
-                                <textarea class="span9" id="new_message" name="new_message"
+                        <?php
+                        foreach($leaguedetails as $a)
+                        {
+                        ?>
+                        <form accept-charset="UTF-8" action="<?php echo base_url()?>jobseeker/posttopic/<?php echo $a['leagueno']?>" method="POST" class="form-horizontal" style="margin-left:10px; margin-bottom:5px;">
+                        <?php
+                        }
+                        ?>
+                            <textarea class="span9" id="topic" name="topic"
                                 placeholder="Start a topic." rows="1"></textarea>&nbsp;&nbsp;
                                 <a href="#" class="btn"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_011_camera.png" width="13"><strong>&nbsp;Photo</strong></a>
                                 <button class="btn" type="submit"><strong>Post</strong></button>

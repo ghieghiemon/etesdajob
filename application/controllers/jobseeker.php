@@ -272,8 +272,19 @@ class Jobseeker extends CI_Controller {
             $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
             $pages = count($items);
             if($pages == 0):
-                echo 'no posts available <a href="'.base_url('macandcheese').'">go back to topic list</a>';
-                return;
+//                echo 'no posts available <a href="'.base_url('macandcheese').'">go back to topic list</a>';
+//                return;
+                $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->jobseeker_header();
+            $this->load->view('jobseeker/JSLeagDisc', $data);
             endif;
             $this->view_topic($id, $pages);
 
@@ -293,6 +304,31 @@ class Jobseeker extends CI_Controller {
             $this->load->view('jobseeker/JSLeagDisc', $data);
         endif;
 
+    }
+    public function postcomment($dno, $lno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $repliedno = $dno;
+        $disc = $this->input->post('comment');
+        $postedby = $id;
+        $leagueno = $lno;
+        $likes = 0;
+        $this->model_jobseeker->post_comment($repliedno, $disc, $postedby, $leagueno, $likes);
+        redirect(base_url()."jobseeker/view_topic/". $repliedno);
+    }
+    public function posttopic($lno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $disc = $this->input->post('topic');
+        $postedby = $id;
+        $this->model_jobseeker->add_topics($disc, $postedby, $lno);
+        redirect(base_url()."jobseeker/jobseeker_leagueview/".$lno);
     }
 }
 ?>
