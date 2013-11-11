@@ -1833,12 +1833,15 @@ function year_install(f)
     });
     
 </script>
-
+<input type="hidden" value="<?php echo base_url(); ?>" id="base" />
 <script type="text/javascript">
 					
 	function openWindow(){
 		
-		window.open($('#cal')+ 'employer/view_calendar/');
+		// alert('Clicked');
+		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
+		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1200,height=400');
 
 	}
+	
 </script>
