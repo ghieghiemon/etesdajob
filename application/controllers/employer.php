@@ -596,6 +596,9 @@ class Employer extends CI_Controller {
 				
 			// 3. Pass the events and generate the calendar
 			echo $this->calendar->generate($yr, $mo, $events_arr);
+			
+			// Content DIV
+			echo '<div id="contentdiv"></div>';
  
 		}
 		
