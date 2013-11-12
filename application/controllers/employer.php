@@ -214,9 +214,8 @@ class Employer extends CI_Controller {
       
       //invite
       $this->invite_jobseekers($jobpost_id);
-        
-
     }
+    
      public function match($jobno, $id)
     {
         $this->load->model('model_main');
@@ -248,6 +247,7 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         
         $jobseekers = $this->model_employer->get_jobseekers();
+        $applied = $this->model_employer->get_jobApplications($jobpost_id);
         $stack = array(); 
         foreach($jobseekers as $a)
         {
@@ -274,12 +274,37 @@ class Employer extends CI_Controller {
            }
        }
        
+       foreach ($applied as $a)
+       {
+           $appid[] = $a['appid'];
+       }
        
-       $invite['invites'] = $data;
+       $final = array();
+       foreach($data as $a)
+       {
+           if(!(in_array($a['appid'],$appid)))
+                    array_push($final, $a);
+       }
+       $invite['invites'] = $final;
+       
        $invite['jobno'] = $jobpost_id;
        
       $this->employer_header();
       $this->load->view("employer/EInviteJS",$invite);
+    }
+    public function invite_jobseeker($jobpost_id)
+    {
+        $this->load->model('model_employer');
+//        if($this->input->post('check'))
+//       {
+           $data = $this->input->post('check');//$_POST['check1'];
+           foreach($data as $a)
+            {
+                $this->model_employer->invite_jobseeker($a, $jobpost_id);
+            }
+//       }
+       
+       redirect(base_url().'employer/invite_jobseekers/'.$jobpost_id);
     }
      public function get_industrycerts($industry)
     {

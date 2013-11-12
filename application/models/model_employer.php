@@ -295,7 +295,7 @@ class Model_employer extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
        $query = $db1->query("SELECT * 
              FROM job_invitation 
-             WHERE appid = $appid AND jobno = $jobno");
+             WHERE appid = $appid AND jobno = $jobno and applied=0");
         if ($query->num_rows()>0)
             return false;
         else return true;
@@ -668,7 +668,16 @@ class Model_employer extends CI_Model {
         $db1->query("UPDATE job_vacancies SET expirationdate =DATE_ADD(curdate(), INTERVAL 4 WEEK) WHERE jobno = $jobno");
         $db1->close();
     }
-
+    public function invite_jobseeker($appid,$jobno)
+    {
+       
+      $db1 = $this->load->database('local', TRUE);
+           
+      $sql = "INSERT INTO job_invitation(appid,jobno,applied) VALUES(?,?,0)";
+            
+      $db1->query($sql,array($appid,$jobno));
+      
+    }
 
 }
 ?>
