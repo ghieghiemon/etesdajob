@@ -19,18 +19,22 @@
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
                 </h3>
+                    
+                <!--end invite button-->
                 
-                <div align="right">
-                	<button class="btn btn-primary" style="margin-top:-65px;">Invite</button>
-                </div><!--end invite button-->
-                
-                <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->      
-                      <div id="container">
-                        	<table id ="newtable" >
+                <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->  
+                   
+                     
+                        <div id="container">
+                             <form method="post" action="<?php echo base_url()?>employer/invite_jobseeker/<?php echo $jobno?>">
+                    <div align="right">
+                	<button type ="submit" class="btn btn-primary" >Invite</button>
+                    </div>
+                                 <table id ="newtable" >
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">
-                              	<input type="checkbox">
+                              	<input type="checkbox" onclick="checkall(this);">
                               </th>
                               <th class="span3" style="text-align:center">Name</th>
                               <th class="span2" style="text-align:center">Age</th>
@@ -48,7 +52,7 @@
                           
                           <tr>
                           	  <td>
-                              	<input type="checkbox">
+                              	<input type="checkbox" name="check[]" value="<?php echo $a['appid']?>">
                               </td>
                               
                               <td>
@@ -118,10 +122,13 @@
                               
                               
                           </tr>
+                          
                           <?php } ?>                  
                           
                       </tbody>
                   </table>
+                   
+                    </form>
                       </div>
                   </div><!--end scrollable-->   
             </div><!--end well-->
