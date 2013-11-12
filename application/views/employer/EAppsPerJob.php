@@ -1074,16 +1074,21 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           <td>
                                               <input id="check1" type="checkbox" class="chk" name="check1" value="<?php echo $a['applicationid']?>">
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
-                                                  
+                                                    foreach ($invites as $c)
+                                                    {
+                                                        $appid[] = $c['appid'];
+                                                    }
+                                                    if(in_array($a['appid'],$appid))
+                                                    {
+
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php
+                                                    } 
+                                              }
+                                              ?>
                                           </td>
                                           
                                           

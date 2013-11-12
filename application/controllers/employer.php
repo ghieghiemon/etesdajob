@@ -160,37 +160,12 @@ class Employer extends CI_Controller {
         $this->load->view('employer/EPostVacancy', $jobpost);
         $this->load->view('footer');
     }
-    public function match($jobno, $id)
-    {
-        $this->load->model('model_main');
-        $this->load->model('model_jobseeker');
-        $matchedCert = $this-> model_jobseeker->get_matchedCert($jobno, $id);
-        $requiredCert = $this-> model_jobseeker->get_jobcert($jobno);
-        $matchedComp = $this-> model_jobseeker->get_matchedComp($jobno, $id);
-        $requiredComp = $this-> model_jobseeker->get_jobcomp($jobno);
-        
-        if(!($matchedCert < $requiredCert))
-        {
-//              return true;
-            if(!($matchedComp < $requiredComp))
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return false;
-        } 
-    }
-
+   
     public function employer_postvacancy()
     {
        $this->load->model('model_main');
        $this->load->model('model_employer');
+       
        $companyid = $this->model_main->get_userid($this->session->userdata('email'));
        $jobname = $this->input->post('JN');
        $effect = $this->input->post('effectivity');
@@ -238,29 +213,62 @@ class Employer extends CI_Controller {
       }
       
       //invite
-      
-        $jobseeker_list = $this->model_employer->get_jobseekers();
-        $stack = array(); 
-        foreach($jobseeker_list as $seeker)
+      $this->invite_jobseekers($jobpost_id);
+        
+
+    }
+     public function match($jobno, $id)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $matchedCert = $this-> model_jobseeker->get_matchedCert($jobno, $id);
+        $requiredCert = $this-> model_jobseeker->get_jobcert($jobno);
+        $matchedComp = $this-> model_jobseeker->get_matchedComp($jobno, $id);
+        $requiredComp = $this-> model_jobseeker->get_jobcomp($jobno);
+        
+       if($matchedCert >= $requiredCert)
         {
-            if($this->match($jobpost_id, $seeker['userid']))
+            if($matchedComp >= $requiredComp)
             {
-                array_push($stack, $seeker['userid']);
+                return "True";
+            }
+            else 
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        } 
+    }
+
+    public function invite_jobseekers($jobpost_id)
+    {
+        $this->load->model('model_employer');
+        
+        $jobseekers = $this->model_employer->get_jobseekers();
+        $stack = array(); 
+        foreach($jobseekers as $a)
+        {
+            if($this->match($jobpost_id, $a['appid'])== "True")
+            {
+                array_push($stack, $a['appid']);
             }
         }
         
         $data  = array();
+        
        foreach ($stack as $a)
        {
-           $name =$this->model_main->get_jsname($a);
+           $name =$this->model_employer->get_jsName($a);
            
            $row['name'] = $name;
            $row['appid'] = $a;
-           $row['skills'] = $this->model_main->get_jsskills($a);
-           $row['competencies'] = $this->model_main->get_jscomp($a);
-           $row['details'] = $this->model_main->get_jsdetails($a);
+//           $row['competencies'] = $this->model_main->get_jscomp($a);
+//           $row['details'] = $this->model_main->get_jsdetails($a);
            //$row['certifications'] = 
-           if($this->model_main->check_if_invite($a, $jobpost_id))
+           if($this->model_employer->check_if_invite($a, $jobpost_id))
            {
                 array_push($data, $row);
            }
@@ -271,10 +279,8 @@ class Employer extends CI_Controller {
        $invite['jobno'] = $jobpost_id;
        
       $this->employer_header();
-     $this->load->view("employer/EInviteJS",$invite);
-
+      $this->load->view("employer/EInviteJS",$invite);
     }
-    
      public function get_industrycerts($industry)
     {
         $this->load->model('model_main');
@@ -335,7 +341,9 @@ class Employer extends CI_Controller {
         $data['interview'] = $this->model_employer->get_interview($jobno);
         $data['all'] = $this->model_employer->get_allapps($jobno);
         $data['hired'] = $this->model_employer->get_hired($jobno);
+        
         $data['invites'] = $this->model_employer->get_jobInvites($jobno);
+        
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
         
