@@ -290,6 +290,17 @@ class Model_employer extends CI_Model {
         }
         $db1->close();
     }
+     public function check_if_invite($appid, $jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT * 
+             FROM job_invitation 
+             WHERE appid = $appid AND jobno = $jobno");
+        if ($query->num_rows()>0)
+            return false;
+        else return true;
+       $db1->close();
+    }
     public function get_appid($applicationid)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -550,7 +561,7 @@ class Model_employer extends CI_Model {
     public function get_jobseekers()
     {
         $db2 = $this->load->database('default', TRUE);
-            $sql = $db2->query("SELECT userid from applicants");
+            $sql = $db2->query("SELECT appid from applicants");
             return $sql->result_array();
         $db2->close();
     }
