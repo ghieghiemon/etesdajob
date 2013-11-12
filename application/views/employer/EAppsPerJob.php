@@ -918,8 +918,9 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           Sex:
                                       </td>
                                       
-                                      <td>	
-                                          Male
+                                      <td><?php	
+                                          echo $a['sex'];
+                                          ?>
                                       </td>
                                       
                                     </tr>
@@ -1156,9 +1157,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                                  $count--;
                                               }
                                               ?> 
-                                              <font class="more">
-                                                  more...
-                                              </font>
+                                            
                                           </td>
                                           <td>
                                               <?php echo $a['datereceived']?> 
