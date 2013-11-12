@@ -194,7 +194,7 @@ JOIN etesda.reference_region r ON r.regionid = j.region
     function age_from_dob($dob) {
         return floor((time() - strtotime($dob)) / 31556926);
     }
-    public function get_qualifiedjobs($sex, $dob)
+    public function get_qualifiedjobs($dob,$sex)
     {
         if ($sex==1)
                 $sex='Male';

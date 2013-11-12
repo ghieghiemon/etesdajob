@@ -60,12 +60,14 @@ class Jobseeker extends CI_Controller {
         $matchedComp = $this-> model_jobseeker->get_matchedComp($jobno, $id);
         $requiredComp = $this-> model_jobseeker->get_jobcomp($jobno);
         
-        if(!($matchedCert < $requiredCert))
+        //print_r($matchedCert." - ".$requiredCert);
+        if($matchedCert >= $requiredCert)
         {
-//              return true;
-            if(!($matchedComp < $requiredComp))
+
+            if($matchedComp >= $requiredComp)
             {
-                return true;
+                return "True";
+                
             }
             else 
             {
@@ -77,10 +79,12 @@ class Jobseeker extends CI_Controller {
             return false;
         } 
     }
+    
     public function jobseeker_jobmarketpage()
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
+        
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
         $data['drpindustries'] = $this->model_main->get_drpindustries();
@@ -90,26 +94,29 @@ class Jobseeker extends CI_Controller {
         $sex = $this->model_jobseeker->get_sex($id);
         $qualified = $this->model_jobseeker->get_qualifiedjobs($dob, $sex);
         
+        
+        
         $suggested = array();
         foreach($jobs as $a)
         {
-            if($this->match($a['jobno'],$id))
+            if($this->match($a['jobno'],$id) == "True")
             {
                 array_push($suggested, $a);
             }
         }
+        
         foreach($qualified as $a)
         {
-            $jobno[]=$a['jobno'];
+            $jobno[]= $a['jobno'];
         }
-        
+         
         $final = array();
         foreach ($suggested as $a)
         {
             if(in_array($a['jobno'],$jobno))
                     array_push($final, $a);
         }
-        
+        //print_r($final);
         
         $data['suggested'] = $final;
         
