@@ -203,7 +203,7 @@
             	<div class="well wellMarg wellUpMarg wellShadow">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
-                	<a href='pub/pub_alljob'><font color ="AD3288">
+                	<a href='<?php echo base_url()?>pub/pub_alljob'><font color ="AD3288">
                                      <?php 
                     foreach ($vacancies as $a)
                     {
