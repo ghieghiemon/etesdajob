@@ -299,18 +299,24 @@
                                                     	<div class="control-group">
                                                             <label class="control-label lLabel2">Job Title: &nbsp;</label>
                                                             <div class="controls">
+                                                             <?php 
+                                                             foreach ($jobdetails as $a)
+                                                             {
+                                                             ?>
                                                              
-                                                                <input type="text" id="JN" name="JN" placeholder="" readonly >
+                                                                <input type="text" id="JN" name="JN" placeholder="" value="<?php echo $a['jobtitle']?>" readonly >
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
                                                             <div class="controls">
-                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder=""readonly ></textarea>
+                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" value="<?php echo $a['description']?>"readonly ></textarea>
                                                             </div>
                                                         </div> <!--end Desc field-->
-                                                        
+                                                            <?php
+                                                             }
+                                                             ?>
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
