@@ -1,3 +1,15 @@
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+    
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+ <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+
 <?php
 foreach ($myvacancies as $a)
 {
@@ -520,16 +532,19 @@ foreach ($myvacancies as $a)
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25"> Manage Vacancies
                 </h3>
                 
-                <div class="tabbable"> <!-- start tabs-->
+<!--                <div class="tabbable">  start tabs
   				<ul class="nav nav-tabs">
     				<li class="active"><a href="#tab12" data-toggle="tab">Open</a></li>
-                                <li><a href="#closed" data-toggle="tab">Closed</a></li>
   				</ul>
   
-  				<div class="tab-content"> <!--start tab content-->
-                    <div class="tab-pane active" id="tab12">
+  				<div class="tab-content"> start tab content
+                    <div class="tab-pane active" id="tab12">-->
+                    <br>
                         <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
-                        	<table class="tableJM2 table-hover table-condensed table-striped">
+                        	<!--<table class="tableJM2 table-hover table-condensed table-striped">-->
+                            <div id="container">
+                        	<table id ="newtable" >
+                                    
                               <thead>
                                   <tr>
                                       <th class="span3" style="text-align:center">Job Title</th>
@@ -646,6 +661,7 @@ foreach ($myvacancies as $a)
                                   
                               </tbody>
                           </table>	
+                            </div>
                         </div><!--end scrollable table-->
                         
                        
@@ -727,4 +743,16 @@ foreach ($myvacancies as $a)
 
 
       <hr>
+      <script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#newtable').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+
 </body>
