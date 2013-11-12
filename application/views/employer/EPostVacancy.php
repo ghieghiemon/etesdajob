@@ -443,12 +443,7 @@
                                                                echo form_dropdown('industry', $industry,'#',$params);    
                                                                
                                                                ?> 
-                                            
-                                                    
-                                                    <select name="NC Level">
-                                                        <option>NCI</option>
-                                                        <option>NCII</option>
-                                                    </select>
+                                                
                                                 </div>
 
                                            <div class="row-fluid marg17 margCCS">
@@ -481,7 +476,7 @@
                          &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;
         
                          <span style="font-weight:bold">Level:</span>
-                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:6%" name= "certlevel[]"multiple="multiple"> </select>
+                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:8%" name= "certlevel[]"multiple="multiple"> </select>
                          <br>
                           <span style="font-weight:bold">Description:</span>
                          <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "certdesc[]"multiple="multiple"> </select>
