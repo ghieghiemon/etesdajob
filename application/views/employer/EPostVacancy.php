@@ -287,7 +287,7 @@
           
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="tab1">
-                        	<div style="width:1010px;height:360px;overflow:auto;"><!--start scrollable table-->
+                        	<!--<div style="width:1010px;height:360px;overflow:auto;">start scrollable table-->
                             	<div class="row-fluid">
                                 	<div class="span12">
                                 		<div class="well">
@@ -384,7 +384,7 @@
                                 		</div><!--end well-->
                                     </div><!--end span-->
                                 </div><!--end row-fluid-->
-                            </div><!--end scrollable table-->
+                            <!--</div>end scrollable table-->
                             
                         </div> <!--end tab pane general info-->
                         
@@ -461,7 +461,6 @@
                                         <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
                                     
                                          <select id="lstcert2" name= "certselect[]"multiple="multiple">
-
                                          </select>
                                   </div> <!--end row-fluid-->
                                   

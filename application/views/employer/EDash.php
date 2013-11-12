@@ -655,9 +655,7 @@ foreach ($myvacancies as $a)
                                                      $count--;
                                                   }
                                                   ?> 
-                                                  <font class="more">
-                                                  
-                                                  </font>
+                                              
                                               </td>
                                                 <td>
                                                     <?php echo $a['datereceived']?> 

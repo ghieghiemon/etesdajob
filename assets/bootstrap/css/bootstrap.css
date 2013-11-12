@@ -10378,3 +10378,9 @@ img.photo{
 	font-weight:bold;
 }
 
+.myStyleDesc input[type="text"] {
+   height: 55px;
+   font-size: 12px;
+   line-height: 14px;
+ 
+}

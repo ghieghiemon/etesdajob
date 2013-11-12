@@ -304,30 +304,31 @@
                                                              {
                                                              ?>
                                                              
-                                                                <input type="text" id="JN" name="JN" placeholder="" value="<?php echo $a['jobtitle']?>" readonly >
+                                                                <input type="text" style="width:50%" id="JN" name="JN" placeholder="" value="<?php echo $a['jobtitle']?>" readonly >
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
-                                                            <div class="controls">
-                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" value="<?php echo $a['description']?>"readonly ></textarea>
+                                                            <div class="myStyleDesc">                                                              
+                                                            <input type="text" id="desc" style="width:50%" name="desc" placeholder="" value="<?php echo $a['description']?>"readonly >
                                                             </div>
                                                         </div> <!--end Desc field-->
-                                                            <?php
-                                                             }
-                                                             ?>
+                                                           
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
-                                                                   <?php    
-                                                                $industry['#'] = 'Please Select';
-                                                                $params = 'readonly id="industries"'; 
-                                                               echo form_dropdown('industry', $industry,'#',$params);     
-                                                               ?> 
-                                                            </div>
+                                                               
+                                                             <input type="text" rows="7" style="width:50%" id="industriesname" name="industriesname" value="<?php echo $a['sectorName']?>"readonly >
+                                                             <input type="hidden" name="industries" id="industries" value="<?php echo $a['sectorID']?>">
+                                                          </div>
                                                         </div> <!--end Desc field-->
-                                                        
+                                                        <div class="control-group">
+                                                            <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
+                                                            <div class="controls">
+                                                       <input type="text" style="width:50%" value="<?php echo $a['vacanciesleft']?>" id="NOV" name="NOV" readonly>
+                                                            </div>
+                                                        </div> <!--end NOV field-->
                                                     </div><!--end span-->
                                                     
                                                     <div class="span6">
@@ -353,12 +354,7 @@
                                                             </div>
                                                         </div> <!--end CoP field-->
                                                         
-                                                		<div class="control-group">
-                                                            <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
-                                                            <div class="controls">
-                                                                    <input type="text" id="NOV" name="NOV" placeholder="" readonly>
-                                                            </div>
-                                                        </div> <!--end NOV field-->
+                                                		
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Effectivity: &nbsp;</label>
@@ -372,7 +368,7 @@
                                                         '4'   => '4 weeks',
 
                                                         );
-                                                        $js = 'readonly id="effectivity"';
+                                                        $js = 'id="effectivity"';
 
                                                         echo form_dropdown('effectivity', $options, '2', $js);
 
@@ -406,18 +402,8 @@
                                                 <div class="control-group">
                                                     <label class="control-label lLabel2" style="margin-left:126px;">Sex: &nbsp;</label>
                                                     <div class="controls">
-                                                         <?php 
-                                                        $options = array(
-                                                        'Female'  => 'Female',
-                                                        'Male'    => 'Male',
-                                                        'Both'   => 'Both',
-
-                                                        );
-                                                        $js = 'readonly id="sex"';
-
-                                                        echo form_dropdown('sex', $options, 'Male', $js);
-
-                                                        ?>
+                                                      
+                                                 <input type="text" value="<?php echo $a['sex']?>" id="sex" name="sex" readonly>
                                                     </div>
                                                 </div> <!--end sex field-->
                                             </div><!--end span-->
@@ -427,8 +413,8 @@
                                                     <label class="control-label lLabel2" style="margin-left:-84px;">Age Range: &nbsp;</label>
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                       <input type="text" id="ageto" name="ageto" readonly><strong> to </strong>
-                                                       <input type="text" id="agefrom" name="agefrom" readonly>
+                                                       <input type="text" id="ageto" value="<?php echo $a['agestart']?>" name="ageto" readonly><strong> to </strong>
+                                                       <input type="text" id="agefrom" value="<?php echo $a['ageend']?>"name="agefrom" readonly>
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
@@ -443,100 +429,57 @@
                                     
                                     
                                     
-                                        <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
-                                                       <?php    
-                                                                $industry['#'] = 'Choose Industry';
-                                                                $params = 'readonly id="industrycert" style="width:40%" '; 
-                                                               echo form_dropdown('industry', $industry,'#',$params);    
-                                                               
-                                                               ?> 
-                                            
-                                                    
-                                                  
-                                                </div>
+                                      
 
                                            <div class="row-fluid marg17 margCCS">
-                                         <?php 
-             
-                                        $params = 'multiple="multiple" style="width:25%" name= "cert[]" id="lstcert1"readonly'; 
-                                        echo form_multiselect('certs', $cert, '#', $params ); ?> 
-                                     <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddCert">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
-                                   
-                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelCert">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                
                                      
                                         <!--<input id="btnAddCert" type="button" class ="btn btn-mini btn-info" style="margin-top:-30px;margin-left:7px;"value="  Add  " />-->
                                         <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
                                     
-                                         <select id="lstcert2" name= "certselect[] "multiple="multiple" readonly>
-
-                                         </select>
+                                    <?php
+                                                         $count = count($cert);
+                                                         foreach ($cert as $a)
+                                                         {
+                                                             echo $a['ncname'];
+                                                             echo " ". $a['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                                   </div> <!--end row-fluid-->
-                                  
-                                    <h5 class="media-heading previewColor">
-                                        | CERTIFICATION DETAILS
-                                    </h5>
+                                
                                   
                                  
-                          <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                          <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
-                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;
-        
-                         <span style="font-weight:bold">Level:</span>
-                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:6%" name= "certlevel[]"multiple="multiple"> </select>
-                         <br>
-                          <span style="font-weight:bold">Description:</span>
-                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "certdesc[]"multiple="multiple"> </select>
-                                 
-                          
-                                  </div> <!--end row-fluid-->
+            
 
                                  <hr class="hrDicussBig">  
                                     <h4 class="media-heading previewColor">
                                         | COMPETENCIES
                                     </h4>
-                                     <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
-                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies"readonly>
-                                               
-                                                </div>
+                                   
                                           <div class="row-fluid marg17 margCCS">
                                             
-                                         <?php 
-                                         
-                                         $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"readonly'; 
-                                         echo form_multiselect('competencies', $comp, '#', $params); ?>                                   
-                                         <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddComp">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
-                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelComp">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
-                                        <select id="lstcomp2" name= "compselect[] readonly" multiple="multiple"readonly>
+                                        
+                                         <?php
+                                                         $count = count($cert);
+                                                         foreach ($comp as $a)
+                                                         {
+                                                             echo $a['cocname'];
+                                                             if ($count >1)
+                                                                echo " , ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
+                                  </div> <!--end row-fluid-->
+                                  
 
-                                        </select>
-                                  </div> <!--end row-fluid-->
-                                  
-                                  
-                                    
-                                   
-         <h5 class="media-heading previewColor">
-                                        | COMPETENCY DETAILS
-                                    </h5>
-                                  
-                                  
-                          <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-                          <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
-                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
-        
-                      
-                          <span style="font-weight:bold">Description:</span>
-                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "compdesc[]"multiple="multiple"> </select>
-                                 
-                          
-                                  </div> <!--end row-fluid-->
-                           
-                            
+                             <?php
+                                                             }
+                                                             ?>
                             
 
                             	</div><!--end well-->

@@ -462,7 +462,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">';?>
-                          <?php
+                                                         <?php
                                                          $count = count($cert);
                                                          foreach ($cert as $a)
                                                          {

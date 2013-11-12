@@ -527,7 +527,7 @@ class Model_employer extends CI_Model {
     public function get_jobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT *,CURDATE() as currentdate
+       $query = $db1->query("SELECT *,v.description,CURDATE() as currentdate
                         from job_vacancies v
                         JOIN etesda.reference_city c ON c.cityid = v.city
                         JOIN etesda.reference_region r ON r.regionid = v.region

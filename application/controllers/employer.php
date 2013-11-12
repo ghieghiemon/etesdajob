@@ -426,13 +426,15 @@ class Employer extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_employer');
         $this->load->model('model_jobseeker'); 
-        $data['cert'] = $this->model_employer->getAllComp();  
-        $data['comp'] = $this->model_employer->getAllCerts();
+//      $data['cert'] = $this->model_employer->getAllComp();  
+//      $data['comp'] = $this->model_employer->getAllCerts();
+         
+      
         $jobno = $this->input->post('jobvacancy');   
-        $data['jobdetails'] = $this->model_jobseeker->get_jobdetails($jobno);   
-        $data['cert'] = $this->model_employer->getAllComp();  
-        $data['comp'] = $this->model_employer->getAllCerts();
-        $job = $this->model_jobseeker->get_jobdetails($jobno);
+        $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
+        $data['cert'] = $this->model_employer->get_jobCerts($jobno);
+        $data['comp'] = $this->model_employer->get_jobComps($jobno);
+        $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
         $data['industry'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
