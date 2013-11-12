@@ -1025,6 +1025,10 @@ echo'<div class="modal hide fade" id="renew">';?>
                             </a>
                         <?php
                               }
+                              else
+                              {
+                                  echo "<br><br>";
+                              }
                           }
                         ?>
                         
@@ -1043,7 +1047,7 @@ echo'<div class="modal hide fade" id="renew">';?>
             
                       <div class="tab-content"> <!--start tab content-->
                       <div class="tab-pane active" id="tab1">
-                          <div style="width:920px;height:440px;overflow:auto;"><!--start scrollable table-->
+                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                               <!--<table class="tableUR2 table-hover table-condensed table-striped">-->
                                <div id="container">
                         	<table id ="newapplicant">
@@ -1840,7 +1844,7 @@ function year_install(f)
 		
 		// alert('Clicked');
 		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1400,height=400');
+		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1400,height=500');
 
 	}
 	

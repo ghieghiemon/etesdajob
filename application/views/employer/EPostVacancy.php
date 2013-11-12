@@ -389,7 +389,7 @@
                         </div> <!--end tab pane general info-->
                         
                         <div class="tab-pane" id="tab2">
-                        	<div style="width:1010px;height:650px;overflow:auto;"><!--start scrollable table-->
+                        	<!--<div style="width:1010px;height:650px;overflow:auto;">start scrollable table-->
                             <div class="row-fluid">
                             	<div class="span12">
                                 <div class="well">
@@ -533,7 +533,7 @@
                             	</div><!--end well-->
                             	</div><!--end span-->
                             </div><!--end row-fluid-->
-                       	</div><!--end scrollable table-->
+                       	<!--</div>end scrollable table-->
                             
                         </div> <!--end tab pane qualifications-->
                         
