@@ -439,12 +439,15 @@ class Employer extends CI_Controller {
        
         $this-> employer_appsperjob($jobno);
     }
-    public function employer_appsprof($appid)
+    public function employer_appsprof($appid,$jobno)
     {
         $this->load->model('model_employer');
         
+        $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
+        $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);   
+        
         $this->employer_header();
-        $this->load->view('employer/EAppsProf');
+        $this->load->view('employer/EAppsProf',$data);
     }
     public function employer_repost()
     {

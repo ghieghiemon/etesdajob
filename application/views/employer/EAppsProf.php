@@ -31,7 +31,13 @@
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
                     Applications
                         <a href="EAppsPerJob.html" class="media-heading vName2">
-                        	| Welder Assistant
+                        	|
+                                <?php 
+                                foreach($jobdetails as $a)
+                                {
+                                    echo $a['jobtitle'];
+                                }
+                                ?>
                         </a>
                     </font>
                 </h3>
@@ -56,15 +62,26 @@
                                 </thead>
                                 
                                 <tbody>
+                                    <?php
+                                    foreach($appdetails as $a)
+                                    {
+                                    ?>
+                                    
                                     <tr>
                                         <td>
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" class="thumbnailProf">
+                                            <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['profile_pic'];?>" class="thumbnailProf">
                                         </td>
                                         
                                         <td>
                                             <p class="proNameA">
                                                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> 
-                                                Angelica Sotto Guerrero
+                                                <?php
+                                                  echo $a['firstname'];
+                                                  echo " ";
+                                                  echo $a['middlename'];
+                                                  echo " ";
+                                                  echo $a['lastname'];
+                                                ?>
                                             </p>
                                             
                                             <div class="row-fluid">
@@ -85,7 +102,12 @@
                                                                 
                                                                 <td>
                                                                     <font class="proPIMarg2">
-                                                                        Female
+                                                                        <?php
+                                                                        if ($a['ismale'] == 1)
+                                                                            echo 'Male';
+                                                                        else 
+                                                                            echo 'Female';
+                                                                        ?>
                                                                     </font>
                                                                 </td>
                                                             </tr>
@@ -97,7 +119,9 @@
                                                                 
                                                                 <td>
                                                                     <font class="proPIMarg2">
-                                                                        01/01/1995
+                                                                        <?php
+                                                                        echo $a['birthday'];
+                                                                        ?>
                                                                     </font>
                                                                 </td>
                                                             </tr>
@@ -109,7 +133,9 @@
                                                                 
                                                                 <td>
                                                                     <font class="proPIMarg2">
-                                                                        Single	
+                                                                        <?php
+                                                                        echo $a['civilstatus'];
+                                                                        ?>	
                                                                     </font>
                                                                 </td>
                                                             </tr>
@@ -146,7 +172,9 @@
                                                                 
                                                                 <td>
                                                                     <font class="proPIMarg2">
-                                                                        09179231212
+                                                                        <?php
+                                                                        echo $a['cellno'];
+                                                                        ?>	
                                                                     </font>
                                                                 </td>
                                                             </tr>
@@ -158,10 +186,18 @@
                                                                 
                                                                 <td>
                                                                     <font class="proPIMarg2">
-                                                                        ghieguerrer0@gmail.com
+                                                                        <?php
+                                                                        $userid = $this->model_employer->get_userid($a['appid']);
+                                                                        $email = $this->model_employer->get_email($userid);
+                                                                        
+                                                                        echo $email;
+                                                                        ?>
                                                                     </font>
                                                                 </td>
                                                             </tr>
+                                    <?php
+                                    }
+                                    ?>
                                                         </tbody>
                                                     </table>
                                                 </div><!--end span-->

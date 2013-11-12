@@ -606,6 +606,35 @@ class Model_employer extends CI_Model {
 
         $db1->close();
   }
+  public function get_applicantDetails($appid)
+  {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT  *,DATE_FORMAT(birthday,'%M %d, %Y') as birthday from applicants where appid = $appid
+                            ");
+        $db2->close();
+        return $query->result_array();
+
+  }
+  public function get_email($userid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT email from users where userid = $userid");
+        foreach ($query->result() as $row)
+        {
+            return $row->email;
+        }
+        $db2->close();
+    }
+     public function get_userid($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT userid from applicants where appid = $appid");
+        foreach ($query->result() as $row)
+        {
+            return $row->userid;
+        }
+        $db2->close();
+    }
   public function get_alljobdetails($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
