@@ -552,8 +552,8 @@ class Employer extends CI_Controller {
 			  // $this->load->view('footer');
 			// Initialize the template 
 			$config['template'] = '
-
-					{table_open}<table border="0" cellpadding="1" cellspacing="10">{/table_open}
+                                        
+					{table_open}<table class="table-condensed table-bordered table-striped"border="0" style ="margin-top:10px" align="center" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 
@@ -602,7 +602,7 @@ class Employer extends CI_Controller {
 			echo $this->calendar->generate($yr, $mo, $events_arr);
 			
 			// Content DIV
-			echo '<div id="contentdiv"></div>';
+			echo '<div id="contentdiv"></div><br>';
  
 		}
 		
@@ -610,11 +610,13 @@ class Employer extends CI_Controller {
 			
 			$this->load->model('tuna');
                         $this->load->model('model_main');
-                         $this->load->model('model_employer');
+                        $this->load->model('model_employer');
                         $id = $this->model_main->get_userid($this->session->userdata('email'));
 			$events = $this->tuna->get_events($id, $year, $month, $day);
-			
-                        echo '<div class="well">';
+                        
+			 echo '<div class="row-fluid">';
+                          echo '<div class="span11">';
+                        echo '<div class="well" style="margin-top:10px;margin-left:100px">';
 			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
 			echo"  <table class=''>
                       <thead>
@@ -624,7 +626,6 @@ class Employer extends CI_Controller {
                               <th class='span2' style='text-align:center'>Status</th>
                               <th class='span2' style='text-align:center'>Date</th>
                               <th class='span2' style='text-align:center'>Time</th>
-                              <th class='span2' style='text-align:center'>Location</th>
                           </tr>
                       </thead>";
 			foreach($events as $event):
@@ -659,9 +660,7 @@ class Employer extends CI_Controller {
                                  $event->requirementtime
                               </td>
                               
-                              <td>
-                              	$event->location
-                              </td>
+                             
 
                           </tr>
                           
@@ -673,7 +672,7 @@ class Employer extends CI_Controller {
 //				echo '<br>';
 			
 			endforeach;
-                echo '<table></div>';
+                echo '<table></div></div></div>';
 		}
        
 		function add_event(){

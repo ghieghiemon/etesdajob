@@ -278,7 +278,7 @@ foreach ($myvacancies as $a)
                       $ctr = 1;
                     if(count($briefcase) == 0)
                      {
-                         echo '<p class = "noCommYet"> There are no upcoming Exams or Interviews</p>';
+                         echo '<p class = "noCommYet"> There are no upcoming Interviews</p>';
                      }
                      else
                      {
@@ -461,7 +461,9 @@ foreach ($myvacancies as $a)
                                                   foreach($name as $b)
                                                   {
                                                       echo $b['firstname'];
+                                                      echo ' ';
                                                       echo $b['middlename'];
+                                                       echo ' ';
                                                       echo $b['lastname'];
                                                   }
                                                   ?>
@@ -589,7 +591,9 @@ foreach ($myvacancies as $a)
                                                       foreach($name as $b)
                                                       {
                                                           echo $b['firstname'];
+                                                          echo ' ';
                                                           echo $b['middlename'];
+                                                          echo ' ';
                                                           echo $b['lastname'];
                                                       }
                                                       ?>
@@ -688,7 +692,7 @@ foreach ($myvacancies as $a)
             	<h4 class="media-heading">
                 	| Posted Vacancies
                 </h4>
-                
+                <div style="width:780px;height:295px;overflow:auto;"><!--start scrollable table-->
                  <div class="tabbable tabs-left"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         
@@ -732,7 +736,7 @@ foreach ($myvacancies as $a)
                         <?php
                         }
                         ?>
-                        	<div style="width:670px;height:296px;overflow:auto;"><!--start scrollable table-->
+                        	
                                     
                             	<div class="chart_container_centered">
 
@@ -741,7 +745,6 @@ foreach ($myvacancies as $a)
                             </canvas>
 
                         </div>
-                            </div><!--end scrollable table-->
                             
                         </div> <!--end tab pane tab1-->
                        
@@ -757,7 +760,7 @@ foreach ($myvacancies as $a)
             
         </div><!--end span right column-->
     </div><!--end row-->
-
+</div>
 </div><!--End div-->
 </div><!--End Container fluid-->
  
