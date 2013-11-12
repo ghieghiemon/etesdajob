@@ -1275,9 +1275,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                                  $count--;
                                               }
                                               ?> 
-                                              <font class="more">
-                                                  more...
-                                              </font>
+                                              
                                           </td>
                                           
                                           <td>
@@ -1400,9 +1398,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                                  $count--;
                                               }
                                               ?> 
-                                              <font class="more">
-                                                  more...
-                                              </font>
+                                             
                                           </td>
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>
@@ -1527,9 +1523,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                                  $count--;
                                               }
                                               ?> 
-                                              <font class="more">
-                                                  more...
-                                              </font>
+                                             
                                           </td>
                                           <td>
                                               <p class="statusB"><?php echo $a['status']?></p>

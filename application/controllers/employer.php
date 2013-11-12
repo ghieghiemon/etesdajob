@@ -88,9 +88,7 @@ class Employer extends CI_Controller {
 
                              $count--;
                           }
-                          echo '<font class="more">
-                                        more...
-                                    </font>
+                          echo '
                                 </td>
                                 
                                 <td>

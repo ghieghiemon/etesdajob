@@ -449,6 +449,9 @@
                                                              $count--;
                                                          }
                                                          ?>
+                                               
+                                                 <select id="lstcert2" name= "certselect[]"multiple="multiple">
+                                         </select>
                                   </div> <!--end row-fluid-->
                                 
                                   
