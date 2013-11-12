@@ -165,7 +165,7 @@
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert"></span>
+                        <span id="cert1" name= "cert1"></span>
                         	
                         </font>
                     </p>
@@ -581,7 +581,7 @@
            $("#sAge").html($("#ageto").val())
            $("#eAge").html($("#agefrom").val())
            
-           $("#cert").html($("#lstcert2").val())
+           $("#cert1").html($("#lstcert2").val())
            $("#comp").html($("#lstcomp2").val())
            
             

@@ -528,7 +528,7 @@ foreach ($myvacancies as $a)
                                               }
                                               ?> 
                                               <font class="more">
-                                                  more...
+                                                 
                                               </font>
                                           </td>
                                             <td>
@@ -656,7 +656,7 @@ foreach ($myvacancies as $a)
                                                   }
                                                   ?> 
                                                   <font class="more">
-                                                      more...
+                                                  
                                                   </font>
                                               </td>
                                                 <td>
