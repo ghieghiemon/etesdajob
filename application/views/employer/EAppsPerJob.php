@@ -1094,7 +1094,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           
                                           
                                           <td>
-                                              <a href="EAppsProf.html" class="recAppName">
+                                              <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>" class="recAppName">
                                                   <?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
@@ -1199,16 +1199,21 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           <td>
                                               <input id='check2' type="checkbox" class="chk" name="check2" value="<?php echo $a['applicationid']?>">
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
+                                                  foreach ($invites as $c)
+                                                  {
+                                                      $appid[] = $c['appid'];
+                                                  }
+                                                  if(in_array($a['appid'],$appid))
+                                                  {
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php 
+                                                  }
+                                              } 
+                                              ?>
                                           </td>
                                           
                                           <td>
@@ -1322,16 +1327,21 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           <td>
                                               <input id='check3' type="checkbox" class="chk" name="check3" value="<?php echo $a['applicationid']?>">
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
+                                                  foreach ($invites as $c)
+                                                  {
+                                                      $appid[] = $c['appid'];
+                                                  }
+                                                  if(in_array($a['appid'],$appid))
+                                                  {
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php 
+                                                  } 
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>
@@ -1447,16 +1457,21 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           <td>
                                               <input id='check4' type="checkbox" class="chk" name="check4" value="<?php echo $a['applicationid']?>">
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
+                                                    foreach ($invites as $c)
+                                                    {
+                                                        $appid[] = $c['appid'];
+                                                    }
+                                                    if(in_array($a['appid'],$appid))
+                                                    {
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php 
+                                                    }
+                                              } 
+                                              ?>
                                           </td>
                                           
                                           <td>
@@ -1567,16 +1582,20 @@ echo'<div class="modal hide fade" id="renew">';?>
                                           <td>
                                               <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
+                                                  foreach ($invites as $c)
+                                                  {
+                                                      $appid[] = $c['appid'];
+                                                  }
+                                                  if(in_array($a['appid'],$appid))
+                                                  {
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php } 
+                                              }
+                                              ?>
                                           </td>
                                           
                                           <td>

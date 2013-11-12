@@ -374,6 +374,7 @@ class Employer extends CI_Controller {
         $this->load->view('employer/EAppsPerJob',$data);
      //   $this->load->view('footer');
     }
+    
     public function employer_vacancypage()
     {
         $this->load->model('model_employer');
@@ -438,11 +439,12 @@ class Employer extends CI_Controller {
        
         $this-> employer_appsperjob($jobno);
     }
-    public function employer_appsprof()
+    public function employer_appsprof($appid)
     {
+        $this->load->model('model_employer');
+        
         $this->employer_header();
         $this->load->view('employer/EAppsProf');
-        $this->load->view('footer');
     }
     public function employer_repost()
     {
