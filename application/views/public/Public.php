@@ -211,7 +211,7 @@
                     }
                     ?>
                    
-                            JOB VACANCIES WORLDWIDE!</a><br><br>
+                            JOB VACANCIES NATIONWIDE!</a><br><br>
                 </font>
                         </p>
             </div><!--end whats new-->
