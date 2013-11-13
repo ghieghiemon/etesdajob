@@ -53,68 +53,8 @@
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
      <div class="row-fluid">
-    	<div class="span3">
-        	<div class="well wellMarg3b">
-            	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_319_sort.png">&nbsp;Discussions</h5>
-                
-                	<div style="width:313px;height:496px;overflow:auto;"><!--start scrollable table-->
-                        <ul class="nav nav-list">
-                            
-                            <li>
-                                <a href="ELeagDisc.html" class="DisTitleLeft" style="margin-left:-26px;">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Welders in Dubai have great salary, is this true? </font>
-                                </a>
-                                
-                                <font class="DisDetLeft">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Ming</a>
-                                    | <font class="tnd"> 09/22/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
-                            <hr class="hrLeagTabNew">
-                            
-                            <li>
-                                <a href="ELeagDisc.html"  class="DisTitleLeft" style="margin-left:-26px;">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Company Y is recruiting welders. Is there any requirements?
-                                </a>
-                                
-                                <font class="DisDetLeft">
-                                    <img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#"  class="Name3">James</a> 
-                                    | <font class="tnd"> 09/21/2013</font>
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
-                            <hr class="hrLeagTabNew">
-                            
-                            <li>
-                                <a href="ELeagDisc.html"  class="DisTitleLeft" style="margin-left:-26px;">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    Tips on being an expert welder.
-                                </a>
-                                
-                                <font class="DisDetLeft">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                    Last post by <a href="#" class="Name3">Bing</a>
-                                    | <font class="tnd"> 09/20/2013</font> 
-                                    | <a href="#" class="Name3"> 5 replies </a>
-                                </font>
-                            </li>
-                            <hr class="hrLeagTabNew">
-                            
-                        </ul>
-                        </div><!--end scrollable table-->
-                        <br>
-                        
-                        
-                
-            </div><!--end well-->
-        </div><!--end span left folumn-->
-        
-        <div class="span9">
+    	
+        <div class="span12">
         	<div class="well">
             	
                 <div class="row-fluid">
@@ -171,7 +111,7 @@
                                 
                                 <hr class="hrDiscuss">
                                 
-                                <div style="width:923px;height:416px;overflow:auto;"><!--start scrollable table-->
+                                <div style="width:1183px;height:416px;overflow:auto;"><!--start scrollable table-->
                                     <input type="hidden" id="current_page" value="<?php echo $current_page ?>" />
                         <?php
                         $ctr = 1;
@@ -196,7 +136,7 @@
 
                         </select>
                         </form>  
-                                <table> <!--start reply details-->
+                                <table width="1180px"> <!--start reply details-->
                                     <hr class="hrLeagTab">
                                     <?php
                                     foreach($display as $a)
