@@ -139,7 +139,7 @@
                             
                             <tbody>
                             	<tr>
-                                	 <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                                	 <a href='<?php echo base_url()?>jobseeker/event_details/<?php echo $a['eventno']?>' class="LeaName3">
                                 	<?php   echo $a['eventtitle'];?></a>
                                 	<td>
                                     	<img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
@@ -200,8 +200,8 @@
                             </thead>
                             
                             <tbody>
-                            	<tr>
-                                	 <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                            		<tr>
+                                	 <a href='<?php echo base_url()?>jobseeker/event_details/<?php echo $a['eventno']?>' class="LeaName3">
                                 	<?php   echo $a['eventtitle'];?></a>
                                 	<td>
                                     	<img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
@@ -209,18 +209,18 @@
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                        	<strong><img src="assets/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
-                                            | <em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 10/08/2013 
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
                                           
                                             <br>
-                                            <strong>Location</strong>: NCR | Pasay City <br>
-                                            <strong>Venue:</strong> SMX Convention Hall <br>
+                                            <strong>Location</strong>: <?php   echo $a['region'];?> | <?php   echo $a['city'];?> <br>
+                                            <strong>Venue:</strong> <?php   echo $a['venue'];?> <br>
                                          </p>
                                          
                                          <p class="LeaDetails4">
-                                         	<strong>Details:</strong> Chef Philippines would like to introduce the biggest cooking training in the country. Come and join this event for more tips in being a chef. Find out more recipes that you could share to others. Job openings will also be announced so dont forget to grab this opportunity.
+                                         	<strong>Details:</strong> <?php   echo $a['purpose'];?>
                                          </p>
                                       
                                         
@@ -271,29 +271,27 @@
                             </thead>
                             
                             <tbody>
-                            	<tr>
-                                      <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                            		<tr>
+                                	 <a href='<?php echo base_url()?>jobseeker/event_details/<?php echo $a['eventno']?>' class="LeaName3">
                                 	<?php   echo $a['eventtitle'];?></a>
-                                       
                                 	<td>
-                                            <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
-                                    	
+                                    	<img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
                                     </td>
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                        	<strong><img src="assets/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
-                                            | <em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 10/08/2013 
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
                                           
                                             <br>
-                                            <strong>Location</strong>: NCR | Pasay City <br>
-                                            <strong>Venue:</strong> SMX Convention Hall <br>
+                                            <strong>Location</strong>: <?php   echo $a['region'];?> | <?php   echo $a['city'];?> <br>
+                                            <strong>Venue:</strong> <?php   echo $a['venue'];?> <br>
                                          </p>
                                          
                                          <p class="LeaDetails4">
-                                         	<strong>Details:</strong> Chef Philippines would like to introduce the biggest cooking training in the country. Come and join this event for more tips in being a chef. Find out more recipes that you could share to others. Job openings will also be announced so dont forget to grab this opportunity.
+                                         	<strong>Details:</strong> <?php   echo $a['purpose'];?>
                                          </p>
                                       
                                         

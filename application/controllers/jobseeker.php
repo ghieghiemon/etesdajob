@@ -231,14 +231,24 @@ class Jobseeker extends CI_Controller {
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEvents',$data);     
    }
+      public function event_details($eno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_pub');
+        $data['details'] = $this->model_main->get_eventdetails($eno);    
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSEventDetails', $data);
+    }
+    
     public function attend_event($eno)
     {
         $this->load->model('model_jobseeker');
         $this->load->model('model_main');
-        
+              
         $appid = $this->model_main->get_appid($this->session->userdata('email'));
-        $id = $this->model_jobseeker->get_userid($appid);
-        $this->model_jobseeker->attend_event($eno,$id);
+       // $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->attend_event($eno,$appid);
         
         redirect(base_url()."jobseeker/jobseeker_eventspage");
     }

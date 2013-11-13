@@ -440,6 +440,13 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         $db1->close();
     }
     
+     public function attend_event($eno,$id){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO event_participants(eventno,userid) VALUES(?,?)";
+        $db1->query($query,array($eno,$id));
+        $db1->close();
+    }
+    
     public function get_allleagues()
     {
         $db1 = $this->load->database('local', TRUE);
