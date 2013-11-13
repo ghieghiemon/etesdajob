@@ -821,5 +821,44 @@ class Model_employer extends CI_Model {
          return $row->usertype;}
         $db2->close();
     }
+     public function get_createdevents($userid){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT *,COUNT(*) AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+                                FROM events e 
+                                JOIN event_venue ev on ev.eventno = e.eventno  
+				JOIN event_participants ep on ep.eventno = e.eventno       
+                                JOIN reference_region r ON r.regionid = ev.region  
+                                JOIN reference_city c ON c.cityid = ev.city        
+                                WHERE e.createdby = '$userid' and startdate >= curdate()
+				GROUP BY eventtitle,e.eventno  HAVING COUNT(*)>=0
+                                ORDER BY startdate DESC ");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+    
+      public function get_eventdetails($eno){
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
+        r.region ,c.city,hosts,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events e
+                                JOIN event_participants on event_participants.eventno = e.eventno 
+                                JOIN tesda_centraldb.employer_profile ep on ep.userID = e.createdby
+                                JOIN event_venue v on v.eventno = e.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+							    JOIN reference_city c ON c.cityid = v.city
+                                WHERE e.eventno = $eno
+
+            ");
+     
+    return $query->result_array();
+
+    $db1->close();
+    }
 }
 ?>
