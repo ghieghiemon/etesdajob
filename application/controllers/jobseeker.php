@@ -235,9 +235,11 @@ class Jobseeker extends CI_Controller {
        $this->load->model('model_main');
        $this->load->model('model_jobseeker');
        
-       $id = $this->model_main->get_appid($this->session->userdata('email'));
+       $appid = $this->model_main->get_appid($this->session->userdata('email'));
+       $id = $this->model_jobseeker->get_userid($appid);
        $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
-       
+       $data['all'] = $this->model_jobseeker->get_allleagues();
+               
        $this->jobseeker_header();
        $this->load->view('jobseeker/JSLeagues',$data); 
    }
@@ -246,7 +248,8 @@ class Jobseeker extends CI_Controller {
        $this->load->model('model_main');
        $this->load->model('model_jobseeker');
        
-       $id = $this->model_main->get_appid($this->session->userdata('email'));
+       $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
        $data['discs'] = $this->model_jobseeker->get_leagueDiscussions($lno);
        $data['leaguedetails'] = $this->model_jobseeker->get_leagueDetails($lno);
        $data['replies'] = $this->model_jobseeker->get_leagueDetails($lno);
@@ -317,7 +320,8 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_jobseeker');
         $this->load->model('model_main');
        
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
         $repliedno = $dno;
         $disc = $this->input->post('comment');
         $postedby = $id;
@@ -331,7 +335,8 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_jobseeker');
         $this->load->model('model_main');
        
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
         $disc = $this->input->post('topic');
         $postedby = $id;
         $this->model_jobseeker->add_topics($disc, $postedby, $lno);

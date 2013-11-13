@@ -114,12 +114,18 @@
   				<div class="tab-content"> <!--start tab content-->
                     <div class="tab-pane active" id="tab12">
                         <div style="width:308px;height:492px;overflow:auto;"><!--start scrollable table-->
+                            <?php
+                                foreach($myleagues as $a)
+                                {
+                                ?>
                         	<div class="well wellMargLeag">
                         	<table> <!--start 1st league-->
+                                    
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
+                                                <?php echo $a['leaguename']?>
 										</div>
                                     </a>
                                     
@@ -128,16 +134,22 @@
                                     </td>
                                     
                                     <td style="width:260px">
-                                        <a href="#" class="label label-info">Welding Industry</a>
+                                        <a href="#" class="label label-info"><?php echo $a['sectorName']?> Industry</a>
                                         
                                         <br>
                                         <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
+                                            by <a href="#" class="Name2"><?php 
+                                                $name = $this->model_employer->get_companyName($a['createdby']);
+                                                echo $name;
+                                                ?></a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> <?php 
+                                                $members = $this->model_employer->get_leaguemembers($a['leagueno']);
+                                                echo count($members);
+                                                ?>  Members</a>
                                         
                                             <br>
-                                            Share the same experience with the welders all over the world.</p>
+                                            <?php echo $a['leaguedescription']?></p>
                                         </font>
                         
                                     </td>
@@ -145,50 +157,27 @@
                             </table> <!--end 1st league-->
                             </div><!--end well-->
                             <hr class="hrLeagTabNew">
+                            <?php
+                            }
+                            ?>
                             
-                            <div class="well wellMargLeag">
-                        	<table> <!--start 1st league-->
-                                <tr>
-                                    <a href="#">
-                                        <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
-										</div>
-                                    </a>
-                                    
-                                    
-                                    <td style="width:25px">
-                                    </td>
-                                    
-                                    <td style="width:260px">
-                                        <a href="#" class="label label-info">Welding Industry</a>
-                                        
-                                        <br>
-                                         <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
-                                        
-                                            <br>
-                                             Community of welders who help each other look for jobs locally and internationally.</p>
-                                        </font>
-                        
-                                    </td>
-                                </tr>
-                            </table> <!--end 1st league-->
-                            </div><!--end well-->
-                            <hr class="hrLeagTabNew">
                         </div><!--end scrollable table-->
                         
                     </div>  <!--end tab-pane-->
                     
                     <div class="tab-pane" id="tab11">
                         <div style="width:308px;height:492px;overflow:auto;"><!--start scrollable table-->
+                            <?php
+                                foreach($createdleagues as $a)
+                                {
+                                ?>
                             <div class="well wellMargLeag">
                         	<table> <!--start 1st league-->
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/worldwide.jpg" width ="25" class="img-rounded "> Worldclass Welders
+                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
+                                                <?php echo $a['leaguename']?>
 										</div>
                                     </a>
                                     
@@ -197,16 +186,22 @@
                                     </td>
                                     
                                     <td style="width:260px">
-                                        <a href="#" class="label label-info">Welding Industry</a>
+                                        <a href="#" class="label label-info"><?php echo $a['sectorName']?> Industry</a>
                                         
                                         <br>
                                         <font class="LeaDetails3"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since Jan 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 114 Members</a>
+                                            by <a href="#" class="Name2"><?php 
+                                                $name = $this->model_employer->get_companyName($a['createdby']);
+                                                echo $name;
+                                                ?></a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> <?php 
+                                                $members = $this->model_employer->get_leaguemembers($a['leagueno']);
+                                                echo count($members);
+                                                ?>  Members</a>
                                         
                                             <br>
-                                            Share the same experience with the welders all over the world.</p>
+                                            <?php echo $a['leaguedescription']?></p>
                                         </font>
                         				
                                         <div align="right" class="editMargLeag">
@@ -219,43 +214,10 @@
                             </table> <!--end 1st league-->
                             </div><!--end well-->
                             <hr class="hrLeagTabNew">
+                            <?php
+                            }
+                            ?>
                             
-                            <div class="well wellMargLeag">
-                        	<table> <!--start 1st league-->
-                                <tr>
-                                    <a href="#">
-                                        <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/ld4.jpg" width ="25" class="img-rounded "> Welders Everywhere
-										</div>
-                                    </a>
-                                    
-                                    
-                                    <td style="width:25px">
-                                    </td>
-                                    
-                                    <td style="width:260px">
-                                        <a href="#" class="label label-info">Welding Industry</a>
-                                        
-                                        <br>
-                                         <font class="LeaDetails3"><img src="assets/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name2">Miguel</a>
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
-                                        
-                                            <br>
-                                             Community of welders who help each other look for jobs locally and internationally.</p>
-                                        </font>
-                        				
-                                        <div align="right" class="editMargLeag">
-                                            <a href="#editLD" data-toggle="modal" role="button" class="btn btn-mini btn-info">
-                                                &nbsp; Edit League Details
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table> <!--end 1st league-->
-                            </div><!--end well-->
-                            <hr class="hrLeagTabNew">
                         </div><!--end scrollable table-->
                         
                         

@@ -725,6 +725,16 @@ class Model_employer extends CI_Model {
         $db2->close();
         return $query->result_array();
     }
+    public function get_allleagues()
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since from etesda.league v 
+                                JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
+                                ORDER BY v.leaguename ASC  ");
+        return $query->result_array();
+        $db1->close();
+    }
     public function get_myleagues($userid)
     {
         $db1 = $this->load->database('local', TRUE);
