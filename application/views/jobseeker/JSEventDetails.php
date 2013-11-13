@@ -96,7 +96,7 @@
                                             echo'<br>
                                             
                                              <div class="row marg3">
-                                            	<span class="btn btn-primary btn-mini pull-right"><a data-toggle="modal" href="#ModAttend" class="attendBtn">Attend</a></span>
+                                            	<br>
                                             </div>
 
                                             <hr class="hrRApp2">

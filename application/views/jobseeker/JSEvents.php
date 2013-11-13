@@ -308,7 +308,7 @@
                                         if(in_array($a['eventno'],$eno))
                                         {
                                             echo '<span class="label label-info">
-                                            	JOINED
+                                            	ATTENDING
                                             </span>';
                                         }
                                         else {

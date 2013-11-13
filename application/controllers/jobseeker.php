@@ -250,7 +250,8 @@ class Jobseeker extends CI_Controller {
        // $id = $this->model_jobseeker->get_userid($appid);
         $this->model_jobseeker->attend_event($eno,$appid);
         
-        redirect(base_url()."jobseeker/jobseeker_eventspage");
+        redirect(base_url()."jobseeker/event_details/".$eno);
+        
     }
    
    public function jobseeker_leaguespage()
