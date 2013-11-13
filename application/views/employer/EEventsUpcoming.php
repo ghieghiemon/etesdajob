@@ -74,13 +74,10 @@
                             </div>
                         </div><!-- end div EN -->
                         <div class="myStyle3QS" style="margin-top:-10px;">
-                            <select>
-                                <option>Choose Industry</option>
-                                <option>Agriculture & Fishery</option>
-                                <option>Automotive & Land Transportation</option>
-                                <option>Construction</option>
-                                <option>Decorative Arts</option>
-                            </select>
+                                      <?php    
+             $drpindustries['0'] = 'Choose Industry';
+            echo form_dropdown('industry', $drpindustries,'0');     
+            ?> 
                         </div><!--end industry-->
                         
                         <div class="control-group"  style="margin-top:-5px;"><!-- start div HOSTS-->
