@@ -677,7 +677,7 @@ class Employer extends CI_Controller {
         $this->model_employer->add_topics($disc, $postedby, $lno);
         redirect(base_url()."employer/employer_leagueview/".$lno);
     }
-    // EMPLOYER CALENDAR
+   // EMPLOYER CALENDAR
  function view_calendar($year = -1, $month = -1){
                        
    
@@ -690,16 +690,16 @@ class Employer extends CI_Controller {
 			$mo = $month == -1 ? date("m") : $month;
 			
 			// Load the javascript
-                          $this->load->model('model_main');
+                           $this->load->model('model_main');
                            $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
                            $this->load->view('employer/ECal');
                            
-			  // $this->load->view('footer');
+			 //  $this->load->view('footer2');
 			// Initialize the template 
 			$config['template'] = '
                                         
-					{table_open}<table class="table-condensed table-bordered table-striped"border="0" style ="margin-top:10px" align="center" cellpadding="1" cellspacing="10">{/table_open}
+					{table_open}<table style="width:600px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="center" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 
@@ -764,13 +764,13 @@ class Employer extends CI_Controller {
                           echo '<div class="span11">';
                         echo '<div class="well" style="margin-top:10px;margin-left:100px">';
 			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
-			echo"  <table class=''>
+			echo"  <table style='width:1000px'class=''>
                       <thead>
                           <tr>
                           	
-                              <th class='span3' style='text-align:center'>Name</th>
-                              <th class='span2' style='text-align:center'>Status</th>
-                              <th class='span2' style='text-align:center'>Date</th>
+                              <th class='span4' style='text-align:center'>Name</th>
+                              <th class='span3' style='text-align:center'>Status</th>
+                              <th class='span3' style='text-align:center'>Date</th>
                               <th class='span2' style='text-align:center'>Time</th>
                           </tr>
                       </thead>";
@@ -836,6 +836,33 @@ class Employer extends CI_Controller {
 			redirect('employer/view_calendar');
 			
 		}
-}
+                
+     public function employer_eventall()
+    {
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+        $this->load->model('model_pub');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['createdevents'] = $this->model_employer->get_createdevents($id);
+        $data['regions'] = $this->model_main->get_regions();
+        $this->employer_header();
+        $this->load->view('employer/EEventsUpcoming',$data);
+        $this->load->view('footer');
+    }
     
+     public function employer_evcreated($eno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $this->load->model('model_pub');
+        $data['details'] = $this->model_employer->get_eventdetails($eno);    
+        $this->employer_header();
+        $this->load->view('employer/EEventDetailsCreated', $data);
+        $this->load->view('footer2');
+    }
+    
+    
+    
+}
 ?>
