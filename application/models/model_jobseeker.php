@@ -483,5 +483,11 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         $db1->query($query,array( $disc, $postedby, $leagueno));
         $db1->close();
     }
+    public function join_league($lno,$id){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO league_members(leagueno,userid) VALUES(?,?) ";
+        $db1->query($query,array($lno,$id));
+        $db1->close();
+    }
 }?>
 

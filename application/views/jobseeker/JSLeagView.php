@@ -121,7 +121,7 @@
                         	<table> <!--start 1st league-->
                                     
                                 <tr>
-                                    <a href="#">
+                                    <a href="<?php echo base_url()?>jobseeker/jobseeker_leagueview/<?php echo $a['leagueno']?>">
                                         <div class="LeaName2">
                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
                                                 <?php echo $a['leaguename']?>
@@ -185,6 +185,10 @@
                             
                             <tbody>
                                 <?php
+                                foreach($myleagues as $a)
+                                {
+                                    $lno[] = $a['leagueno'];
+                                }
                                 foreach($leaguedetails as $a)
                                 {
                                 ?>
@@ -219,10 +223,23 @@
                                         
                                         <br>
                                         <div class="pull-right" style="margin-left:-60px; margin-top:-55px;">
-                                            <span class="LeagueLeave btn-group">
-                                            <li class="dropdown">
-                                                <a class="btn btn-mini btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_136_cogwheel.png" width="13"> Settings</a>
+                                           
+                                                <?php 
+                                        
+                                                if(in_array($a['leagueno'],$lno))
+                                                {
+                                                    echo '<span class="label label-info">
+                                                        JOINED
+                                                    </span>';
+                                                }
+                                                else {
+                                                ?>
+                                                <a href="<?php echo base_url()?>jobseeker/join_league/<?php echo $a['leagueno']?>" class="btn btn-primary btn-mini">
+                                                    &nbsp; Join &nbsp;
+                                                </a>
+                                                <?php
+                                                }
+                                                ?>
                                                 <ul class="dropdown-menu">
                                                 <font class="lOptions">
                                                      
@@ -235,9 +252,7 @@
                                                      </li>
                                                 </font>
                                                 </ul>         	
-                                            </li> 
                                             
-                                            </span>
                                            </div>
                                     </td>
                                     

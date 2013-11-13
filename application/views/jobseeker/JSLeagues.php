@@ -245,6 +245,10 @@
                             
                             <tbody>
                                 <?php
+                                foreach($myleagues as $a)
+                                {
+                                    $lno[] = $a['leagueno'];
+                                }
                                 foreach($all as $a)
                                 {
                                 ?>
@@ -276,7 +280,28 @@
                                             <?php echo $a['leaguedescription']?></p>
                                         </font>
                                         </p>
+                                        <div class="pull-right">
+                                         	
+                                        <?php 
                                         
+                                        if(in_array($a['leagueno'],$lno))
+                                        {
+                                            echo '<span class="label label-info">
+                                            	JOINED
+                                            </span>';
+                                        }
+                                        else {
+                                        ?>
+                                        <span>
+                                            	<a href="<?php echo base_url()?>jobseeker/join_league/<?php echo $a['leagueno']?>" class="btn btn-primary btn-mini">
+                                                    &nbsp; Join &nbsp;
+                                                </a>
+                                            </span>
+                                        <?php
+                                        }
+                                        ?>
+                                                    
+                                        </div>
                                     </td>
                                 </tr>
                                 <?php
