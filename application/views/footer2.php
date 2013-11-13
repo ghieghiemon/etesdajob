@@ -1,7 +1,5 @@
 <footer background="black">
-    
-<div id="footer" >
- 
+<div style="background-color:#000000;" id="footer" >
 <div class="footer">
  
 <div class="col1" style="margin-left:16%;">

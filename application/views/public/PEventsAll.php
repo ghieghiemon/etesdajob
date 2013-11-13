@@ -83,7 +83,7 @@
                 </a>
             </h3>
             
-            <div style="width:1220px;height:490px;overflow:auto;"><!--start scrollable table-->
+            <div style="width:1250px;height:490px;overflow:auto;"><!--start scrollable table-->
                             
                         	
                                                	<?php
@@ -117,8 +117,15 @@
                                     <td>
                                     	<p class="LeaDetails4">'; ?>
                                         	<strong><img src="<?php echo base_url()?>assets/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> 
-                                              <?php
-                                              echo $row['hosts'];
+                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $row['createdby']?>" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($row['createdby']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>                                            
+  <?php
+                                             
+                                              
                                            echo' | ';
                                            echo'<em>'; ?>
                                                
@@ -148,7 +155,7 @@
                                               echo $row['purpose'];
                                          echo'</p>
                                              
-                                      <div align="right" style="margin-top:7px;margin-right:-300px;">
+                                      <div align="right" style="margin-top:7px;margin-right:-250px;">
                                          	<span>
                                             	<a href="#signModal" data-toggle="modal" role="button" class="btn btn-primary">
                                                     Attend
