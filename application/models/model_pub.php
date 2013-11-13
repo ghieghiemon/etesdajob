@@ -253,6 +253,12 @@ class Model_pub extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
+    public function get_jsName2($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE userid = $id");
+        return $query->result_array();
+        $db2->close();
+    }
 }
 
 

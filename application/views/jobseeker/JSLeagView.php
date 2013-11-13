@@ -410,7 +410,7 @@
                                             }
                                             else if ($type == 'APPLICANT')
                                             {
-                                                $by = $this->model_jobseeker->get_jsname($a['postedby']);
+                                                $by = $this->model_jobseeker->get_jsName2($a['postedby']);
                                                 foreach($by as $b)
                                                 {
                                                     echo $b['firstname'];

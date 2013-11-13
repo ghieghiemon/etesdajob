@@ -13,7 +13,8 @@ class Model_leagues extends CI_Model {
             
             if($id < 0):
 
-                $query = "select * from league_discussions where repliedno = 0";
+                $query = "select *, DATE_FORMAT(datereplied, '%b. %d, %y') as dateposted,
+                            DATE_FORMAT(datereplied, '%h:%i %p') as timeposted from league_discussions where repliedno = 0";
                 $results = $dbconn->query($query);
                 $dbconn->close();
                 return $results->result();
@@ -22,7 +23,8 @@ class Model_leagues extends CI_Model {
             
             if($id > 0):
                 
-                $query = "select * from league_discussions where repliedno = ? order by datereplied asc";
+                $query = "select *, DATE_FORMAT(datereplied, '%b. %d, %y') as dateposted,
+                            DATE_FORMAT(datereplied, '%h:%i %p') as timeposted from league_discussions where repliedno = ? order by datereplied asc";
                 $results = $dbconn->query($query, array($id));
                 $dbconn->close();
                 return $results->result();
