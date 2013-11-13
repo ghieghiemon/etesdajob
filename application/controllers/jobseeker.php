@@ -220,16 +220,29 @@ class Jobseeker extends CI_Controller {
        public function jobseeker_eventspage()
     {
         $this->load->model('model_main');
-        
         $this->load->model('model_jobseeker');
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
         
-        $data['eventall'] = $this->model_jobseeker->all_events();
-      //  $data['eventup'] = $this->model_main->all_events();
-        //$data['eventinv'] = $this->model_main->all_events();
+        $data['eventall'] = $this->model_jobseeker->get_allevents();
+        $data['myevents'] = $this->model_jobseeker->get_myevents($appid);
+        $data['invevents'] = $this->model_jobseeker->get_invevents($appid);
+      //$data['eventup'] = $this->model_main->all_events();
+      //$data['eventinv'] = $this->model_main->all_events();
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEvents',$data);     
    }
+    public function attend_event($eno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+        
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->attend_event($eno,$id);
+        
+        redirect(base_url()."jobseeker/jobseeker_eventspage");
+    }
+   
    public function jobseeker_leaguespage()
    {
        $this->load->model('model_main');

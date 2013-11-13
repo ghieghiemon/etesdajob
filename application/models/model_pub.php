@@ -277,6 +277,21 @@ where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC
         return $query->result_array();
         $db2->close();
     }
+    
+      public function get_eventattendes($eno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT e.eventno, e.eventtitle, a.firstname, a.lastname,ep.userid
+        FROM etesda.events e
+        JOIN etesda.event_participants ep ON  ep.eventno= e.eventno
+        JOIN tesda_centraldb.applicants a ON a.appid = ep.userid
+        where e.eventno = $eno
+                                ");
+             
+         return $query->result_array();
+         
+         $db1->close();
+     }
 }
 
 

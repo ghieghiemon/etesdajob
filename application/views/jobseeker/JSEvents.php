@@ -71,11 +71,6 @@
                         </div>
                     </div><!-- end div EN -->
 
-          			<div class="control-group"  style="margin-top:-5px;"><!-- start div HST-->
-                        <div class="myStyleQS3">
-                            <input type="text" id="HST" name="HST" placeholder="Hosts/Company">
-                        </div>
-                    </div><!-- end div HST -->
 
 					<div class="myStyle3QS">
                         <select>
@@ -128,9 +123,13 @@
                     <div class="tab-content"> <!--start tab content-->
                     <div class="tab-pane active" id="UP">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                           <table> <!--start one event-->
+                            <?php
+               
+                    foreach ($myevents as $a)
+                     {?>
+                          <table> <!--start one event-->
                             <tr>
-                                <table style="margin-left:10px;">
+                               
                         	<thead>
                             	<tr>
                                 	<th class="span2"></th>
@@ -140,26 +139,26 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href="JSEventDetails.html" class="LeaName3"> Happy to serve you!</a>
+                                	 <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                                	<?php   echo $a['eventtitle'];?></a>
                                 	<td>
-                                    	<img src="assets/img/ld5.jpg" class="thumbnail7 ePicMarg">
+                                    	<img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
                                     </td>
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                        	<strong><img src="assets/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
-                                            | <em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 10/08/2013 
-                                            | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
-                                            | <a data-toggle="modal" href="#ModEventAttend" class="Name3">
-                                            	<img src="assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10"> 110 Attendees
-                                              </a><br>
-                                            <strong>Location</strong>: NCR | Pasay City <br>
-                                            <strong>Venue:</strong> SMX Convention Hall <br>
+                                          
+                                            <br>
+                                            <strong>Location</strong>: <?php   echo $a['region'];?> | <?php   echo $a['city'];?> <br>
+                                            <strong>Venue:</strong> <?php   echo $a['venue'];?> <br>
                                          </p>
                                          
                                          <p class="LeaDetails4">
-                                         	<strong>Details:</strong> Chef Philippines would like to introduce the biggest cooking training in the country. Come and join this event for more tips in being a chef. Find out more recipes that you could share to others. Job openings will also be announced so dont forget to grab this opportunity.
+                                         	<strong>Details:</strong> <?php   echo $a['purpose'];?>
                                          </p>
                                       
                                         
@@ -178,25 +177,21 @@
                         <br>
                         <hr class="hrLeagTab">
                         
-                         <table> <!--start one event-->
-                            <tr>
-                                <table style="margin-left:10px;">
-                        	<thead>
-                            	<tr>
-                                	<th class="span2"></th>
-                                    <th class="span7"></th>
-                                </tr>
-                            </thead>
-                    	</table><!--end one event-->
-                        </div><!--end scrollable-->  
                         
-                    </div> <!--end tab pane upcoming-->
+                               <?php    }
+                            ?>
+                        </div><!--end scrollable-->   	
+                    </div> <!--end tab pane invitation-->
                     
                     <div class="tab-pane" id="INV">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                           <table> <!--start one event-->
+                            <?php
+               
+                    foreach ($invevents as $a)
+                     {?>
+                         <table> <!--start one event-->
                             <tr>
-                                <table style="margin-left:10px;">
+                               
                         	<thead>
                             	<tr>
                                 	<th class="span2"></th>
@@ -206,9 +201,10 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href="JSEventDetails.html" class="LeaName3"> Happy to serve you!</a>
+                                	 <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                                	<?php   echo $a['eventtitle'];?></a>
                                 	<td>
-                                    	<img src="assets/img/ld5.jpg" class="thumbnail7 ePicMarg">
+                                    	<img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
                                     </td>
                                    
                                     <td>
@@ -217,9 +213,8 @@
                                             | <em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 10/08/2013 
                                             | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
                                             </em>
-                                            | <a data-toggle="modal" href="#ModEventAttend" class="Name3">
-                                            	<img src="assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10"> 110 Attendees
-                                              </a><br>
+                                          
+                                            <br>
                                             <strong>Location</strong>: NCR | Pasay City <br>
                                             <strong>Venue:</strong> SMX Convention Hall <br>
                                          </p>
@@ -228,25 +223,46 @@
                                          	<strong>Details:</strong> Chef Philippines would like to introduce the biggest cooking training in the country. Come and join this event for more tips in being a chef. Find out more recipes that you could share to others. Job openings will also be announced so dont forget to grab this opportunity.
                                          </p>
                                       
-                                      	<div class="pull-right" style="margin-top:7px">
+                                        
+                                    </td>
+                                 
+                                </tr>
+                                
+                            </tbody>
+                              
+                    	</table><!--end one event-->
+                        <div class="pull-right" style="margin-top:7px">
                                          	<span class="btn btn-info btn-mini"><a data-toggle="modal" href="#ModAttend" class="attendBtn">Confirm</a></span>
             								<span class="btn btn-danger btn-mini"><a data-toggle="modal" href="#decline" class="attendBtn">Decline</a></span>
                                         </div>
-
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                    	</table><!--end one event-->
+                        <br>
+                        <br>
                         <hr class="hrLeagTab">
+                        
+                     
+                                 
+                         <?php
+                         
+                     }
+                            ?>
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invitation-->
                     
                     <div class="tab-pane" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                        	<table> <!--start one event-->
+                        	  <?php
+               
+                    foreach ($myevents as $a)
+                     {
+                        $eno[] = $a['eventno'];
+                     }
+                       foreach($eventall as $a)
+                     {
+                           
+                       ?>
+                          <table> <!--start one event-->
                             <tr>
-                                <table style="margin-left:10px;">
+                               
                         	<thead>
                             	<tr>
                                 	<th class="span2"></th>
@@ -256,9 +272,12 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href="JSEventDetails.html" class="LeaName3"> Happy to serve you!</a>
+                                      <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>' class="LeaName3">
+                                	<?php   echo $a['eventtitle'];?></a>
+                                       
                                 	<td>
-                                    	<img src="assets/img/ld5.jpg" class="thumbnail7 ePicMarg">
+                                            <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail7 ePicMarg"/>
+                                    	
                                     </td>
                                    
                                     <td>
@@ -267,9 +286,8 @@
                                             | <em><img src="assets/img/icons/glyphicons_045_calendar.png" width="11"> 10/08/2013 
                                             | <img src="assets/img/icons/glyphicons_054_clock.png" width="11"> 09:00am
                                             </em>
-                                            | <a data-toggle="modal" href="#ModEventAttend" class="Name3">
-                                            	<img src="assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10"> 110 Attendees
-                                              </a><br>
+                                          
+                                            <br>
                                             <strong>Location</strong>: NCR | Pasay City <br>
                                             <strong>Venue:</strong> SMX Convention Hall <br>
                                          </p>
@@ -278,16 +296,40 @@
                                          	<strong>Details:</strong> Chef Philippines would like to introduce the biggest cooking training in the country. Come and join this event for more tips in being a chef. Find out more recipes that you could share to others. Job openings will also be announced so dont forget to grab this opportunity.
                                          </p>
                                       
-                                      	<div class="pull-right" style="margin-top:7px">
-                                         	<span class="btn btn-primary btn-mini"><a data-toggle="modal" href="#attendE" class="attendBtn">Attend</a></span>
-                                        </div>
-
                                         
                                     </td>
+                                 
                                 </tr>
+                                
                             </tbody>
+                              
                     	</table><!--end one event-->
+                         <div class="pull-right">
+                                         	  <?php 
+                                        
+                                        if(in_array($a['eventno'],$eno))
+                                        {
+                                            echo '<span class="label label-info">
+                                            	JOINED
+                                            </span>';
+                                        }
+                                        else {
+                                        ?>
+                                        <span>
+                                            	<a href="<?php echo base_url()?>jobseeker/attend_event/<?php echo $a['eventno']?>" class="btn btn-primary btn-mini">
+                                                    &nbsp; Attend &nbsp;
+                                                </a>
+                                            </span>
+                                        <?php
+                                        }
+                                        ?>
+                                        </div>
+                        <br>
                         <hr class="hrLeagTab">
+                        
+                         <?php
+                                }
+                                ?>
                         </div><!--end scrollable-->
                     </div> <!--end tab pane invited-->
                     
