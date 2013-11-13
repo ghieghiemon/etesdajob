@@ -65,5 +65,117 @@ class Tesda extends CI_Controller {
             }
              
     }
+    public function tesda_leaguespage()
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_tesda');
+       
+       $id = $this->model_main->get_userid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_tesda->get_myleagues($id);
+       $data['createdleagues'] = $this->model_tesda->get_createdleagues($id);
+       $data['all'] = $this->model_tesda->get_allleagues();
+        
+       $this->tesda_header();
+       $this->load->view('tesda/TLeagues',$data); 
+   }
+     public function tesda_leagueview($lno)
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_tesda');
+       
+       $id = $this->model_main->get_userid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_tesda->get_myleagues($id);
+       $data['createdleagues'] = $this->model_tesda->get_createdleagues($id);
+       $data['discs'] = $this->model_tesda->get_leagueDiscussions($lno);
+       $data['leaguedetails'] = $this->model_tesda->get_leagueDetails($lno);
+       $data['replies'] = $this->model_tesda->get_leagueDetails($lno);
+       
+       $this->tesda_header();
+       $this->load->view('employer/TLeagView',$data); 
+   }
+   public function view_topic($id = -1, $page = -1)
+   {
+        if(isset($_GET['id']) && isset($_GET['page'])):
+
+            $this->load->model('model_pub');
+            $data['discussion'] = $this->model_pub->get_discDetails($_GET['id']);
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($_GET['id']));
+            $data['display'] = $items[$_GET['page']];
+            $data['pages'] = count($items);
+            $data['current_page'] = $_GET['page'];
+            $data['id'] = $_GET['id'];
+
+            $this->tesda_header();
+            $this->load->view('tesda/TLeagDisc', $data);
+            return;
+
+        endif;
+
+        if($page < 0):
+
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $pages = count($items);
+            if($pages == 0):
+//                echo 'no posts available <a href="'.base_url('macandcheese').'">go back to topic list</a>';
+//                return;
+                $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->tesda_header();
+            $this->load->view('tesda/TLeagDisc', $data);
+            endif;
+            $this->view_topic($id, $pages);
+
+        endif;
+
+        if($page > 0):
+            $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->tesda_header();
+            $this->load->view('tesda/TLeagDisc', $data);
+        endif;
+
+    }
+    public function postcomment($dno, $lno)
+    {
+        $this->load->model('model_tesda');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $repliedno = $dno;
+        $disc = $this->input->post('comment');
+        $postedby = $id;
+        $leagueno = $lno;
+        $likes = 0;
+        $this->model_tesda->post_comment($repliedno, $disc, $postedby, $leagueno, $likes);
+        redirect(base_url()."tesda/view_topic/". $repliedno);
+    }
+    public function posttopic($lno)
+    {
+        $this->load->model('model_tesda');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $disc = $this->input->post('topic');
+        $postedby = $id;
+        
+        $this->model_tesda->add_topics($disc, $postedby, $lno);
+        redirect(base_url()."tesda/tesda_leagueview/".$lno);
+    }
 }
 ?>

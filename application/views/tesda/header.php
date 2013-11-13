@@ -43,7 +43,7 @@
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:260px;margin-top:-2px;">
-                                <a href="TLeagues.html" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <a href="<?php echo base_url()?>tesda/tesda_leaguespage" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> 
                                     <br>Leagues
@@ -91,7 +91,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#">FAQ</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="<?php echo base_url()?>main/logout">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>

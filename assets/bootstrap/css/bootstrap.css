@@ -10384,3 +10384,9 @@ img.photo{
    line-height: 14px;
  
 }
+.joinSt {
+	font-size:14px;
+	font-weight:bold;
+	font-style:oblique;
+	color:#939;
+}

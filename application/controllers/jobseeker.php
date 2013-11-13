@@ -343,5 +343,16 @@ class Jobseeker extends CI_Controller {
         $this->model_jobseeker->add_topics($disc, $postedby, $lno);
         redirect(base_url()."jobseeker/jobseeker_leagueview/".$lno);
     }
+    public function join_league($lno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+        
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->join_league($lno,$id);
+        
+        redirect(base_url()."jobseeker/jobseeker_leagueview/".$lno);
+    }
 }
 ?>
