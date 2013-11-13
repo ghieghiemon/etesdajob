@@ -57,7 +57,7 @@
         	<div class="well wellMarg3b">
             	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_319_sort.png">&nbsp;Discussions</h5>
                 
-                	<div style="width:313px;height:205px;overflow:auto;"><!--start scrollable table-->
+                	<div style="width:313px;height:496px;overflow:auto;"><!--start scrollable table-->
                         <ul class="nav nav-list">
                             
                             <li>
@@ -109,132 +109,7 @@
                         </div><!--end scrollable table-->
                         <br>
                         
-                        <div class="well" style="margin-top:-15px;margin-bottom:5px;">
-                        	
-                        	<h5 class="media header beInv">Be involved with other discussions!</h5>
-                            
-                            <div style="width:300px;height:252px;overflow:auto;"><!--start scrollable table-->
-                                <a href="JSLeagues.html">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="30px;">
-                                    <font class="LeagueHead2"> We Love Welders</font>
-                                </a><br>
-                                
-                                <p style="margin-left:28px;">
-                                 <a href="JSLeagDisc.html" style="color:#000;">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    <b> What are the best companies for welders?</b><br>
-                                </a>
-                                </p>
-                                
-                                <hr class="hrDicussBig">
-                                <div class="row-fluid">
-                                    <div class="span12">
-                                    	<a href="#" class="Name4">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" width="30px" class="img-rounded"> Shenne Layug
-                                        </a>
-                                        <font class="commDate Name4">
-                                            09/09/2013 at 0930pm
-                                        </font>
-                                        <p class="smComm">Welders Inc. is the best!! I have high compensation and many benefits! </p>
-                                        
-                                        <div class="pull-right" style="margin-top:-20px">
-                                            <font class="NumLikes">
-                                                2 likes 
-                                            </font>&nbsp;
-                                            <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                        </div>
-                                    </div> <!--end span3-->
-                                </div> <!--end row-->
-                                
-                                <hr class="hrDicussBig">
-                                <div class="row-fluid">
-                                    <div class="span12">
-                                    	<a href="#" class="Name4">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" width="30px" class="img-rounded"> Dyanne Ocampo
-                                        </a>
-                                        <font class="commDate Name4">
-                                            09/09/2013 at 0930pm
-                                        </font>
-                                        <p class="smComm">I am sad that Machine Inc. doesnt have their 13th month pay!! :(  </p>
-                                        
-                                        <div class="pull-right" style="margin-top:-20px">
-                                            <font class="NumLikes">
-                                                2 likes 
-                                            </font>&nbsp;
-                                            <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                        </div>
-                                    </div> <!--end span3-->
-                                </div> <!--end row-->
-                                
-                                <div class="row-fluid">
-                                    <a href="JSLeagDisc.html" class="seeComm pull-right">
-                                        See more comments
-                                    </a>
-                                </div>
-                                
-                                
-                                
-                                <hr class="hrDicussBig2">
-                                <a href="JSLeagues.html">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="30px;">
-                                    <font class="LeagueHead2"> We Love Welders</font>
-                                </a><br>
-                                
-                                <p style="margin-left:28px;">
-                                 <a href="JSLeagDisc.html" style="color:#000;">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="14">
-                                    <b> What are the best companies for welders?</b><br>
-                                </a>
-                                </p>
-                                
-                                <hr class="hrDicussBig">
-                                <div class="row-fluid">
-                                    <div class="span12">
-                                    	<a href="#" class="Name4">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" width="30px" class="img-rounded"> Shenne Layug
-                                        </a>
-                                        <font class="commDate Name4">
-                                            09/09/2013 at 0930pm
-                                        </font>
-                                        <p class="smComm">Welders Inc. is the best!! I have high compensation and many benefits! </p>
-                                        
-                                        <div class="pull-right" style="margin-top:-20px">
-                                            <font class="NumLikes">
-                                                2 likes 
-                                            </font>&nbsp;
-                                            <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                        </div>
-                                    </div> <!--end span3-->
-                                </div> <!--end row-->
-                                
-                                <hr class="hrDicussBig">
-                                <div class="row-fluid">
-                                    <div class="span12">
-                                    	<a href="#" class="Name4">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" width="30px" class="img-rounded"> Dyanne Ocampo
-                                        </a>
-                                        <font class="commDate Name4">
-                                            09/09/2013 at 0930pm
-                                        </font>
-                                        <p class="smComm">I am sad that Machine Inc. doesnt have their 13th month pay!! :(  </p>
-                                        
-                                        <div class="pull-right" style="margin-top:-20px">
-                                            <font class="NumLikes">
-                                                2 likes 
-                                            </font>&nbsp;
-                                            <a href="#" class="btn btn-mini"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_343_thumbs_up.png" width="12">&nbsp;Like</a>
-                                        </div>
-                                    </div> <!--end span3-->
-                                </div> <!--end row-->
-                                
-                                <div class="row-fluid">
-                                    <a href="JSLeagDisc.html" class="seeComm pull-right">
-                                        See more comments
-                                    </a>
-                                </div>
-                      </div><!--end scrollable-->
-                      </div><!--end well-->
-                
+                        
             </div><!--end well-->
         </div><!--end span left folumn-->
         
@@ -255,7 +130,7 @@
                             <ul class="nav nav-list">
                                 <div style="margin-left:30px;">
                                     
-                                    <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="DisTitleHuge">
+                                    <a href="<?php echo base_url()?>jobseeker/jobseeker_leagueview/<?php echo $a['leagueno']?>" class="DisTitleHuge">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_194_circle_question_mark.png" width="18">
                                         <?php echo $a['discussion']?> </font>
                                     </a>
@@ -278,7 +153,7 @@
                                             }
                                             else if ($type == 'APPLICANT')
                                             {
-                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                $by = $this->model_pub->get_jsName2($a['postedby']);
                                                 foreach($by as $b)
                                                 {
                                                     echo $b['firstname'];
@@ -347,7 +222,7 @@
                                             }
                                             else if ($type == 'APPLICANT')
                                             {
-                                                $by = $this->model_pub->get_jsName($a->postedby);
+                                                $by = $this->model_pub->get_jsName2($a->postedby);
                                                 foreach($by as $b)
                                                 {
                                                     echo $b['firstname'];
@@ -358,7 +233,7 @@
                                             
                                             ?>
                                             </a>
-                                            <font class="tnd">09/28/2013 at 4:26pm</font>
+                                            <font class="tnd"><?php echo $a->dateposted?> at <?php echo $a->timeposted?></font>
                                         </td>
                                     </tr>
                                     

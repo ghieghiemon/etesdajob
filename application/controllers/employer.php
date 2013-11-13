@@ -385,7 +385,7 @@ class Employer extends CI_Controller {
         $data['closed'] = $this->model_employer->get_myClosedvacancies($id);
         $this->employer_header();
         $this->load->view('employer/EVacancies',$data);
-        $this->load->view('footer');
+        //$this->load->view('footer');
     }
     public function employer_updatevacancy($data)
     {
@@ -439,12 +439,15 @@ class Employer extends CI_Controller {
        
         $this-> employer_appsperjob($jobno);
     }
-    public function employer_appsprof($appid)
+    public function employer_appsprof($appid,$jobno)
     {
         $this->load->model('model_employer');
         
+        $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
+        $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);   
+        
         $this->employer_header();
-        $this->load->view('employer/EAppsProf');
+        $this->load->view('employer/EAppsProf',$data);
     }
     public function employer_repost()
     {
@@ -565,7 +568,115 @@ class Employer extends CI_Controller {
     {
         print_r($this->input->post('check'));
     }
-    
+    public function employer_leaguespage()
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_employer');
+       
+       $id = $this->model_main->get_userid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_employer->get_myleagues($id);
+       $data['createdleagues'] = $this->model_employer->get_createdleagues($id);
+        
+       $this->employer_header();
+       $this->load->view('employer/ELeagues',$data); 
+   }
+     public function employer_leagueview($lno)
+   {
+       $this->load->model('model_main');
+       $this->load->model('model_employer');
+       
+       $id = $this->model_main->get_userid($this->session->userdata('email'));
+       $data['discs'] = $this->model_employer->get_leagueDiscussions($lno);
+       $data['leaguedetails'] = $this->model_employer->get_leagueDetails($lno);
+       $data['replies'] = $this->model_employer->get_leagueDetails($lno);
+       
+       $this->employer_header();
+       $this->load->view('employer/ELeagView',$data); 
+   }
+   public function view_topic($id = -1, $page = -1)
+   {
+        if(isset($_GET['id']) && isset($_GET['page'])):
+
+            $this->load->model('model_pub');
+            $data['discussion'] = $this->model_pub->get_discDetails($_GET['id']);
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($_GET['id']));
+            $data['display'] = $items[$_GET['page']];
+            $data['pages'] = count($items);
+            $data['current_page'] = $_GET['page'];
+            $data['id'] = $_GET['id'];
+
+            $this->employer_header();
+            $this->load->view('employer/ELeagDisc', $data);
+            return;
+
+        endif;
+
+        if($page < 0):
+
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $pages = count($items);
+            if($pages == 0):
+//                echo 'no posts available <a href="'.base_url('macandcheese').'">go back to topic list</a>';
+//                return;
+                $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->employer_header();
+            $this->load->view('employer/ELeagDisc', $data);
+            endif;
+            $this->view_topic($id, $pages);
+
+        endif;
+
+        if($page > 0):
+            $this->load->model('model_pub');
+            $this->load->model("model_leagues");
+            $items = $this->model_leagues->paginate($this->model_leagues->get_topics($id));
+            $data['discussion'] = $this->model_pub->get_discDetails($id);
+            $data['display'] = $items[$page];
+            $data['pages'] = count($items);
+            $data['current_page'] = $page;
+            $data['id'] = $id;
+            
+            $this->employer_header();
+            $this->load->view('employer/ELeagDisc', $data);
+        endif;
+
+    }
+    public function postcomment($dno, $lno)
+    {
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $repliedno = $dno;
+        $disc = $this->input->post('comment');
+        $postedby = $id;
+        $leagueno = $lno;
+        $likes = 0;
+        $this->model_employer->post_comment($repliedno, $disc, $postedby, $leagueno, $likes);
+        redirect(base_url()."employer/view_topic/". $repliedno);
+    }
+    public function posttopic($lno)
+    {
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $disc = $this->input->post('topic');
+        $postedby = $id;
+        
+        $this->model_employer->add_topics($disc, $postedby, $lno);
+        redirect(base_url()."employer/employer_leagueview/".$lno);
+    }
     // EMPLOYER CALENDAR
  function view_calendar($year = -1, $month = -1){
                        

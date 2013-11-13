@@ -403,7 +403,12 @@ JOIN etesda.reference_region r ON r.regionid = j.region
          return $row->usertype;}
         $db2->close();
     }
-    
+    public function get_jsName2($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT firstname, middlename, lastname from applicants WHERE userid = $id");
+        return $query->result_array();
+        $db2->close();
+    }
     public function get_leagueDetails($id)
     {
         $db1 = $this->load->database('local', TRUE);

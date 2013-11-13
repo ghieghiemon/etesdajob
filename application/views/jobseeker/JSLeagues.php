@@ -169,7 +169,6 @@
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#JND" data-toggle="tab">Joined</a></li>
-                        <li><a href="#CTD" data-toggle="tab">Created</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
