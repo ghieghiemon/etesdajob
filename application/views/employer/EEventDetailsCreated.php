@@ -63,15 +63,7 @@
                                        echo' </p>
                                         <p class="evDetails">
                                         	<strong>';?>
-                                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> 
-                                       <?php echo' Hosted By:';?>
-                                   
-                                         <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $row['createdby']?>" class="Name4">
-                                            <?php
-                                            $companyName = $this->model_pub->get_companyName($row['createdby']);
-                                            echo $companyName;
-                                            ?>
-                                        </a>
+                                     
                                       <?php //echo $row['companyName'];
                                            echo' | ';?>
                                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> 

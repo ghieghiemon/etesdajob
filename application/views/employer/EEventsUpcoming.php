@@ -114,6 +114,7 @@
                                 </form>  
                             </div>
                         </div> end Picture field-->
+
                     </div><!--end well-->
                     
                     <div class="well wellUpMarg">
@@ -266,6 +267,7 @@
 
     <script>
 $("#date").datepicker( {
+    format: 'yyyy-mm-dd'
 });
 </script>
 </body>

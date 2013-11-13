@@ -164,9 +164,18 @@
                                       
                                         
                                     </td>
+                                 
                                 </tr>
+                                
                             </tbody>
+                              
                     	</table><!--end one event-->
+                         <div class="pull-right">
+                                         	<span class="label label-info">
+                                            	ATTENDING
+                                            </span>
+                                        </div>
+                        <br>
                         <hr class="hrLeagTab">
                         
                          <table> <!--start one event-->
@@ -179,7 +188,8 @@
                                 </tr>
                             </thead>
                     	</table><!--end one event-->
-                        </div><!--end scrollable-->   	
+                        </div><!--end scrollable-->  
+                        
                     </div> <!--end tab pane upcoming-->
                     
                     <div class="tab-pane" id="INV">

@@ -873,31 +873,29 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         $this->load->model('model_pub');
         $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $data['details'] = $this->model_employer->get_eventdetails($eno);    
-        $data['createdevents'] = $this->model_employer->get_createdevents($id);
+        //$data['details'] = $this->model_employer->get_eventdetails($eno);    
+       // $data['createdevents'] = $this->model_employer->get_createdevents($id);
         //$data['regions'] = $this->model_main->get_regions();
         
-         $eventname = $this->input->post('eventname');  
-         $startdate = $this->input->post('startdate');
-         $timestart = $this->input->post('timestart');
-         $details = $this->input->post('details');
+         $eventname = $this->input->post('EN');  
+         $startdate = $this->input->post('date');
+         $timestart = $this->input->post('time');
+         $details = $this->input->post('Det');
          $industry = $this->input->post('industry'); 
         
-        $eventvenue = $this->input->post('eventvenue');
+        $eventvenue = $this->input->post('VEN');
         $region = $this->input->post('regionid');
         $city = $this->input->post('cityid');
         
-        $sponsor = $this->input->post('sponsorname');
+        $sponsor = $this->input->post('SP');
         
-        $eventno = $this->model_main->add_event($eventname,$startdate,$timestart,id, $details, $industry,$host,$sponsor);   
-        $this->model_main->add_eventvenue($eventno,$eventvenue,$region,$city);
-        $this->model_main->add_eventpart($eventno,$id);
+        $eventno = $this->model_employer->add_event($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor);   
+        $this->model_employer->add_eventvenue($eventno,$eventvenue,$region,$city);
+        $this->model_employer->attend_event($id,$eventno);
            
-        
-       // $this->model_employer->add_eventdetails($eno);    
-        $this->employer_header();
-        $this->load->view('employer/EEventDetailsCreated', $data);
-        $this->load->view('footer2');
+        $this->employer_evcreated($eventno);
+       // $this->load->view('employer/EEventDetailsCreated', $data);
+      //  $this->load->view('footer2');
     }
     
      public function eevent_create2(){ //ADD TO DB
