@@ -849,7 +849,7 @@ class Employer extends CI_Controller {
        
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['createdevents'] = $this->model_employer->get_createdevents($id);
-        $data['industry'] = $this->model_main->get_drpindustries();
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $this->employer_header();
         $this->load->view('employer/EEventsUpcoming',$data);
