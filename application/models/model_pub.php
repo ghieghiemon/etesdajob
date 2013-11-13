@@ -12,12 +12,22 @@ class Model_pub extends CI_Model {
         $db1->close();
         $db2->close();
     }
+     public function get_allOpenings()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT count(v.jobno) as totalopenings from etesda.job_vacancies v where expirationdate>=curdate()");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
     public function get_regionVacancies()
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT SUM(v.vacanciesleft) as totalvacancies,r.* from etesda.job_vacancies v 
+        $query = $db1->query("SELECT count(v.jobno) as totalvacancies,r.* from etesda.job_vacancies v 
 			      JOIN etesda.reference_region r ON r.regionid = v.region
+                              where expirationdate >= curdate()
                               GROUP BY regionid ORDER BY regionid ASC");
         return $query->result_array();
         $db1->close();
@@ -91,6 +101,14 @@ class Model_pub extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
+     public function get_companyOpenings()
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT count(jobno) as totalopenings, companyID from job_vacancies
+where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC");
+        return $query->result_array();
+        $db1->close();
+    }
     public function get_companyName($id)
     {
         $db2 = $this->load->database('default', TRUE);
@@ -146,7 +164,7 @@ class Model_pub extends CI_Model {
                                 JOIN etesda.reference_city c ON c.cityid = v.city
                                 JOIN etesda.reference_region r ON r.regionid = v.region
                                 JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID     
-                                 WHERE v.status = 1
+                                 WHERE v.status = 1 and expirationdate >= curdate()
                                 ORDER BY dateposted DESC");
         return $query->result_array();
         

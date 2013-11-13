@@ -16,7 +16,8 @@ class Main extends CI_Controller {
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['regionvacancies'] = $this->model_pub->get_regionVacancies();
         $data['companies'] = $this->model_pub->get_companyVacancies();
-        $data['vacancies'] = $this->model_pub->get_allVacancies();
+        $data['compopenings'] = $this->model_pub->get_companyOpenings();
+        $data['openings'] = $this->model_pub->get_allOpenings();
 //        $data['event'] = $this->model_main->all_events();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();

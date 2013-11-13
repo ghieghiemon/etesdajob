@@ -42,7 +42,7 @@
         </div>
         <div class="modal-footer">
     		Not a member?
-    		<a href="#">Register</a>
+    		<a href="<?php echo base_url()?>pub/pub_signup">Register</a>
  		</div>
 	</div>
 	<!--end join Modal content-->
@@ -205,9 +205,9 @@
                		<p class="whatsNFont" >
                 	<a href='<?php echo base_url()?>pub/pub_alljob'><font color ="AD3288">
                                      <?php 
-                    foreach ($vacancies as $a)
+                    foreach ($openings as $a)
                     {
-                             echo $a['totalvacancies'];
+                             echo $a['totalopenings'];
                     }
                     ?>
                    
@@ -415,9 +415,9 @@
                     Legend:  <img src="<?php echo base_url()?>assets/bootstrap/img/tesda.jpg" width="15"> - TESDA Partner Companies
                 </div>
                 
-                <div style="width:295px;height:235px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:295px;height:485px;overflow:auto;"><!--start scrollable table-->
                 	<?php
-                foreach($companies as $a)
+                foreach($compopenings as $a)
                 {
                     ?>
                     <div class="row-fluid"> <!--start row fluid companies-->
@@ -439,7 +439,7 @@
                                 <font class="pVac">
                                     No. of Vacancies: 
                                     	<a href="#" class="industLabel2">
-                                        	<?php echo $a['totalvacancies']?>
+                                        	<?php echo $a['totalopenings']?>
                                         </a>
                                 </font>
                                         </p>
@@ -452,9 +452,7 @@
                     </div><!--end scrollable table-->
                       <div class="row-fluid">
     					<div align="right" style="margin-top:-15px">
-                            <a href="#">
-                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
-                            </a>
+                          
                         </div>
     		</div> <!--end row fluid upcoming events-->
             </div><!--end well companies-->

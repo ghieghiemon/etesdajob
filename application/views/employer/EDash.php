@@ -690,7 +690,7 @@ foreach ($myvacancies as $a)
             	<h4 class="media-heading">
                 	| Posted Vacancies
                 </h4>
-                <div style="width:780px;height:295px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:780px;height:305px;overflow:auto;"><!--start scrollable table-->
                  <div class="tabbable tabs-left"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         
@@ -738,7 +738,7 @@ foreach ($myvacancies as $a)
                                     
                             	<div class="chart_container_centered">
 
-                            <canvas id="chartCanvas<?php echo $a['jobno']?>" width="500" height="240">
+                            <canvas id="chartCanvas<?php echo $a['jobno']?>" width="550" height="300">
                                 Your web-browser does not support the HTML 5 canvas element.
                             </canvas>
 
@@ -784,14 +784,14 @@ foreach ($myvacancies as $a)
         $new = $this->model_employer->count_jobApplicationsNew($a['jobno']);
         $exam = $this->model_employer->count_jobApplicationsExam($a['jobno']);
         $interview = $this->model_employer->count_jobApplicationsInterview($a['jobno']);
-        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
+//        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
         
         
             
     ?>    
             var chart1 = new AwesomeChart('chartCanvas<?php echo $a['jobno']?>');
             <?php
-                if($new == 0 && $exam == 0 && $interview == 0 && $hired == 0)
+                if($new == 0 && $exam == 0 && $interview == 0)
                 {
             ?>
                     chart1.title = "<?php echo $a['jobtitle']?> - No Applications Yet";
@@ -804,9 +804,9 @@ foreach ($myvacancies as $a)
             <?php
                 }
             ?>
-            chart1.data = [<?php echo $new?>,<?php echo $exam?>,<?php echo $interview?>,<?php echo $hired?>];
-            chart1.labels = ['New Applicant','Exam','Interview','Hired<?php echo $a['jobno']?>'];
-            chart1.colors = ['#99C', '#609', '#6CC', '#33F'];
+            chart1.data = [<?php echo $new?>,<?php echo $exam?>,<?php echo $interview?>];
+            chart1.labels = ['New Applicant','Exam','Interview'];
+            chart1.colors = ['#99C', '#609', '#6CC'];
             chart1.randomColors = true;
             chart1.draw();
    <?php
