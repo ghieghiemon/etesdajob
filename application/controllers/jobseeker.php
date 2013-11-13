@@ -249,7 +249,8 @@ class Jobseeker extends CI_Controller {
        $this->load->model('model_jobseeker');
        
        $appid = $this->model_main->get_appid($this->session->userdata('email'));
-        $id = $this->model_jobseeker->get_userid($appid);
+       $id = $this->model_jobseeker->get_userid($appid);
+       $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
        $data['discs'] = $this->model_jobseeker->get_leagueDiscussions($lno);
        $data['leaguedetails'] = $this->model_jobseeker->get_leagueDetails($lno);
        $data['replies'] = $this->model_jobseeker->get_leagueDetails($lno);
