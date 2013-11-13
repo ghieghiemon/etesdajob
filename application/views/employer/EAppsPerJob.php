@@ -572,15 +572,6 @@ echo'<div class="modal hide fade" id="renew">';?>
                           <td>
                               <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
                               <label class="checkbox jCrNC3">
-                                  Hired
-                              </label>
-                              
-                          </td>
-                      </tr>
-                      <tr>                                           
-                          <td>
-                              <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
-                              <label class="checkbox jCrNC3">
                                   Denied
                               </label>
                               
@@ -1042,7 +1033,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                           <li class="active"><a href="#tab1" data-toggle="tab">New Applicants</a></li>
                           <li><a href="#tab2" data-toggle="tab">Exam</a></li>
                           <li><a href="#tab3" data-toggle="tab">Interview</a></li>
-                          <li><a href="#tab4" data-toggle="tab">Hired</a></li>
+                     
                           <!--<li><a href="#tab5" data-toggle="tab">All</a></li>-->
                       </ul>
             
@@ -1431,130 +1422,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane 1st int-->
                       
-                      <div class="tab-pane" id="tab4">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                              <div id="container">
-                        	<table  id="hired" >
-                                  <thead>
-                                      <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
-                                          <th class="span2" style="text-align:center">Name</th>
-                                          <th class="span1" style="text-align:center">Age</th>
-                                          <th class="span1" style="text-align:center">Sex</th>
-                                          <th class="span2" style="text-align:center">Certification</th>
-                                          <th class="span2" style="text-align:center">Competencies</th>
-                                          <th class="span1" style="text-align:center">Status</th>
-                                          <th class="span3" style="text-align:center">Date</th>
-                                      </tr>
-                                  </thead>
-                                  
-                                  <tbody class="recName">
-                                  <?php
-                                  foreach ($hired as $a)
-                                  {
-                                  ?>   
-                                      <tr>
-                                          <td>
-                                              <input id='check4' type="checkbox" class="chk" name="check4" value="<?php echo $a['applicationid']?>">
-                                              <?php
-                                              if (count($invites)>0)
-                                              {
-                                                    foreach ($invites as $c)
-                                                    {
-                                                        $appid[] = $c['appid'];
-                                                    }
-                                                    if(in_array($a['appid'],$appid))
-                                                    {
-                                                  
-                                              ?>
-                                              <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php 
-                                                    }
-                                              } 
-                                              ?>
-                                          </td>
-                                          
-                                          <td>
-                                              <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>/<?php echo $a['jobno'] ?>" class="recAppName">
-                                                  <?php
-                                                  $name = $this->model_employer->get_jsName($a['appid']);
-                                                  foreach($name as $b)
-                                                  {
-                                                      echo $b['firstname'];
-                                                      echo " ";
-                                                      echo $b['middlename'];
-                                                      echo " ";
-                                                      echo $b['lastname'];
-                                                  }
-                                                  ?>
-                                              </a>
-                                          </td>
-                                          
-                                          
-                                          <td>
-                                               <?php
-                                              $birthday = $this->model_employer->get_appage($a['appid']);
-                                              $birthDate = explode("/", $birthday);
-                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
-                                              echo $age;
-                                                ?>
-                                          </td>
-                                          
-                                          <td>
-                                              <?php
-                                                $ismale = $this->model_employer->get_appsex($a['appid']);
-                                                if ($ismale == 1)
-                                                    echo 'M';
-                                                else 
-                                                    echo 'F';
-                                                ?>
-                                          </td>
-                                          
-                                          <td>
-                                              <?php
-                                              $nc = $this->model_employer->get_appcert($a['appid']);
-                                              $count = count($nc);
-                                              foreach($nc as $c)
-                                              {
-                                                  echo $c['ncname']. " ". $c['level'];  
-                                                  if ($count >1)
-                                                    echo ", ";
-
-                                                 $count--;
-                                              }
-                                              ?>
-                                          </td>
-                                          
-                                          <td>
-                                              <?php
-                                              $coc = $this->model_employer->get_appcomp($a['appid']);
-                                              $count = count($coc);
-                                              foreach($coc as $d)
-                                              {
-                                                  echo $d['cocname']; 
-                                                  if ($count >1)
-                                                    echo ", ";
-
-                                                 $count--;
-                                              }
-                                              ?> 
-                                             
-                                          </td>
-                                          <td>
-                                              <p class="statusB"><?php echo $a['status']?></p>
-                                          </td>
-                                          <td>
-                                              <?php echo $a['datereceived']?> 
-                                          </td>
-                                      </tr>
-                                  <?php
-                                  }
-                                  ?>
-                                  </tbody>
-                              </table>
-                              </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane 2ns int-->
+                    
                       
 <!--                      <div class="tab-pane" id="tab5">
                           <div style="width:920px;height:420px;overflow:auto;">start scrollable table
