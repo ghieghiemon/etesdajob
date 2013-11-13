@@ -576,6 +576,7 @@ class Employer extends CI_Controller {
        $id = $this->model_main->get_userid($this->session->userdata('email'));
        $data['myleagues'] = $this->model_employer->get_myleagues($id);
        $data['createdleagues'] = $this->model_employer->get_createdleagues($id);
+       $data['all'] = $this->model_employer->get_allleagues();
         
        $this->employer_header();
        $this->load->view('employer/ELeagues',$data); 
@@ -586,6 +587,8 @@ class Employer extends CI_Controller {
        $this->load->model('model_employer');
        
        $id = $this->model_main->get_userid($this->session->userdata('email'));
+       $data['myleagues'] = $this->model_employer->get_myleagues($id);
+       $data['createdleagues'] = $this->model_employer->get_createdleagues($id);
        $data['discs'] = $this->model_employer->get_leagueDiscussions($lno);
        $data['leaguedetails'] = $this->model_employer->get_leagueDetails($lno);
        $data['replies'] = $this->model_employer->get_leagueDetails($lno);

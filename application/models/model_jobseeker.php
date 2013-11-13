@@ -8,6 +8,16 @@ class Model_jobseeker extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
+    public function get_userid($appid)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT userid from applicants where appid = $appid");
+        foreach ($query->result() as $row)
+        {
+            return $row->userid;
+        }
+        $db2->close();
+    }
     public function get_jspic(){
         $db2 = $this->load->database('default', TRUE);
         $id = $this->model_main->get_userid($this->session->userdata('email'));
@@ -372,6 +382,16 @@ JOIN etesda.reference_region r ON r.regionid = j.region
             return $row->companyName;
         }
         $db2->close();
+    }
+    public function get_allleagues()
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since from etesda.league v 
+                                JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
+                                ORDER BY v.leaguename ASC  ");
+        return $query->result_array();
+        $db1->close();
     }
     public function get_myleagues($appid)
     {//JOIN etesda.league_members m ON l.leagueno = m.leagueno 

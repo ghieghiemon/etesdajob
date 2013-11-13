@@ -169,6 +169,7 @@
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#JND" data-toggle="tab">Joined</a></li>
+                        <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
@@ -230,7 +231,7 @@
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invited-->
                     
-                    <div class="tab-pane" id="CTD">
+                    <div class="tab-pane" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                         	 <table> <!--start one league-->
                             <tr>
@@ -243,35 +244,44 @@
                             </thead>
                             
                             <tbody>
+                                <?php
+                                foreach($all as $a)
+                                {
+                                ?>
                             	<tr>
-                                	<a href="JSLeagView.html" class="LeaName3"> We Love Welders</a>
-                                	<td>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/welder1.jpg" class="thumbnail5 ePicMarg">
+                                    <td>
+                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" class="thumbnail5 ePicMarg">
                                     </td>
                                    
                                     <td>
                                         
                                         <p class="LeaDetails4">
-                                        	<a href="#" class="label label-info">Welding Industry</a><br>
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-                                            by <a href="#" class="Name2">John</a>
-                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since May 2012
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="assets/img/icons/glyphicons_088_adress_book.png" width="10"> 100 Members</a>
+                                            <a href="<?php echo base_url()?>jobseeker/jobseeker_leagueview/<?php echo $a['leagueno']?>" class="LeaName3"><?php echo $a['leaguename']?></a>
+                                            <br>
+                                        	<a href="#" class="label label-info"><?php echo $a['sectorName']?> Industry</a><br>
+                                        	<img src=<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                            by <a href="#" class="Name2"><?php 
+                                                $name = $this->model_jobseeker->get_companyName($a['createdby']);
+                                                echo $name;
+                                                ?> </a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10">
+                                                <?php 
+                                                $members = $this->model_jobseeker->get_leaguemembers($a['leagueno']);
+                                                echo count($members);
+                                                ?>  
+                                                Members</a>
                                         
                                             <br>
-                                            Community of welders who help each other look for jobs locally and internationally.</p>
+                                            <?php echo $a['leaguedescription']?></p>
                                         </font>
                                         </p>
                                         
-                                        <div class="pull-right" style="margin-top:7px">
-                                         	<span>
-                                            	<a href="#editLD" data-toggle="modal" role="button" class="btn btn-mini btn-info">
-                                                    &nbsp; Edit League Details
-                                                </a>
-                                            </span>
-                                        </div>
                                     </td>
                                 </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                     	</table><!--end one league-->
                         <hr class="hrLeagTab">

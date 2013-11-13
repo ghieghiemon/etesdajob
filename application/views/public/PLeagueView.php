@@ -205,7 +205,7 @@
                                             }
                                             else if ($type == 'APPLICANT')
                                             {
-                                                $by = $this->model_pub->get_jsName($a['postedby']);
+                                                $by = $this->model_pub->get_jsName2($a['postedby']);
                                                 foreach($by as $b)
                                                 {
                                                     echo $b['firstname'];
