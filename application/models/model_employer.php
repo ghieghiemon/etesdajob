@@ -860,5 +860,38 @@ class Model_employer extends CI_Model {
 
     $db1->close();
     }
+    
+    public function add_event($eventname,$startdate,$timestart,$id, $details,$industry,$sponsor)
+     {
+        
+    $db1 = $this->load->database('local', TRUE);
+    $sql = "INSERT INTO events(eventtitle,startdate,starttime,createdby,purpose,
+        eventindustry,sponsors) VALUES(?,?,?,?,?,?,?)";
+    $db1->query($sql,array($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor));
+    $eventno = $db1->insert_id();  
+    return $eventno;
+    $db1->close();
+
+   
+            }
+            
+public function add_eventvenue($eventno,$eventvenue,$region,$city)
+    {
+      $db1 = $this->load->database('local', TRUE);    
+      $sql = "INSERT INTO event_venue(eventno,venue,region,city) VALUES(?,?,?,?)";           
+      $db1->query($sql,array($eventno,$eventvenue,$region,$city));
+           
+
+    }
+        
+    // attend event
+
+public function attend_event($userid, $eventno){ 
+         
+       $db1 = $this->load->database('local', TRUE);
+        $sql = "INSERT INTO event_participants(userid, eventno) VALUES(?,?)";
+        $db1->query($sql,array($userid, $eventno));
+        $db1->close();
+    }
 }
 ?>

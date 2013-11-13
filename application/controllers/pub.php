@@ -45,7 +45,7 @@ class Pub extends CI_Controller {
         $data['regions'] = $this->model_main->get_regions();
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket');
-         $this->load->view("footer");
+        $this->load->view("footer");
     }
      public function pub_signup()
     {

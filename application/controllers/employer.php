@@ -465,6 +465,7 @@ class Employer extends CI_Controller {
         $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
         $data['industry'] = $this->model_main->get_drpindustries();
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         foreach ($job as $a)
         {
@@ -848,6 +849,7 @@ class Employer extends CI_Controller {
        
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['createdevents'] = $this->model_employer->get_createdevents($id);
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $this->employer_header();
         $this->load->view('employer/EEventsUpcoming',$data);
@@ -865,6 +867,68 @@ class Employer extends CI_Controller {
         $this->load->view('footer2');
     }
     
+    public function employer_evcreate()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $this->load->model('model_pub');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        //$data['details'] = $this->model_employer->get_eventdetails($eno);    
+       // $data['createdevents'] = $this->model_employer->get_createdevents($id);
+        //$data['regions'] = $this->model_main->get_regions();
+        
+         $eventname = $this->input->post('EN');  
+         $startdate = $this->input->post('date');
+         $timestart = $this->input->post('time');
+         $details = $this->input->post('Det');
+         $industry = $this->input->post('industry'); 
+        
+        $eventvenue = $this->input->post('VEN');
+        $region = $this->input->post('regionid');
+        $city = $this->input->post('cityid');
+        
+        $sponsor = $this->input->post('SP');
+        
+        $eventno = $this->model_employer->add_event($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor);   
+        $this->model_employer->add_eventvenue($eventno,$eventvenue,$region,$city);
+        $this->model_employer->attend_event($id,$eventno);
+           
+        $this->employer_evcreated($eventno);
+       // $this->load->view('employer/EEventDetailsCreated', $data);
+      //  $this->load->view('footer2');
+    }
+    
+     public function eevent_create2(){ //ADD TO DB
+    $this->load->model('model_main');
+    $userid = $this->model_main->get_userid($this->session->userdata('email'));
+
+   
+        $eventname = $this->input->post('eventname');  
+        $startdate = $this->input->post('startdate');
+        $enddate = $this->input->post('enddate');
+        
+         
+        $timestart = $this->input->post('timestart');
+        $timeend = $this->input->post('timeend'); 
+        
+        $details = $this->input->post('details');
+        $industry = $this->input->post('industry'); 
+        
+       
+        $eventvenue = $this->input->post('eventvenue');
+        $region = $this->input->post('regionid');
+        $city = $this->input->post('cityid');
+        
+        $host = $this->input->post('hostname');
+        $sponsor = $this->input->post('sponsorname');
+        
+        $eventno = $this->model_main->add_event($eventname,$startdate,$enddate, $timestart,$timeend,$userid, $details, $industry,$host,$sponsor);   
+        $this->model_main->add_eventvenue($eventno,$eventvenue,$region,$city);
+           
+        
+       redirect('employerpage');
+    
+    }
     
     
 }
