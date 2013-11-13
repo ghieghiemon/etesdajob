@@ -1,6 +1,6 @@
 <footer background="black">
     
-<div style="background-color:#000000;" id="footer" >
+<div id="footer" >
  
 <div class="footer">
  

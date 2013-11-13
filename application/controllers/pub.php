@@ -124,7 +124,6 @@ class Pub extends CI_Controller {
    public function pub_allevents()
    {
         $this->load->model('model_main');
-         $this->load->model('model_pub');
         $data['event'] = $this->model_main->all_events();
         $this->load->view("public/header");
         $this->load->view("public/PEventsAll",$data);
