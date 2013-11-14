@@ -229,7 +229,8 @@ class Jobseeker extends CI_Controller {
       //$data['eventup'] = $this->model_main->all_events();
       //$data['eventinv'] = $this->model_main->all_events();
         $this->jobseeker_header();
-        $this->load->view('jobseeker/JSEvents',$data);     
+        $this->load->view('jobseeker/JSEvents',$data);  
+        $this->load->view('footer2');
    }
       public function event_details($eno)
     {
@@ -239,6 +240,7 @@ class Jobseeker extends CI_Controller {
         $data['details'] = $this->model_main->get_eventdetails($eno);    
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEventDetails', $data);
+        $this->load->view('footer2');
     }
     
     public function attend_event($eno)
@@ -251,6 +253,30 @@ class Jobseeker extends CI_Controller {
         $this->model_jobseeker->attend_event($eno,$appid);
         
         redirect(base_url()."jobseeker/event_details/".$eno);
+        
+    }
+     
+    public function attend_invite($eno,$invno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+              
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+      // $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->attend_event($eno,$appid);
+        $this->model_jobseeker->accept_invite($invno);
+        
+        redirect(base_url()."jobseeker/event_details/".$eno);
+        
+    }
+    
+    public function decline_invite($invno)
+    {
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+       // $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $this->model_jobseeker->decline_invite($invno);
+        redirect(base_url()."jobseeker/jobseeker_eventspage");
         
     }
    

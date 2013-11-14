@@ -232,8 +232,8 @@
                               
                     	</table><!--end one event-->
                         <div class="pull-right" style="margin-top:7px">
-                                         	<span class="btn btn-info btn-mini"><a data-toggle="modal" href="#ModAttend" class="attendBtn">Confirm</a></span>
-            								<span class="btn btn-danger btn-mini"><a data-toggle="modal" href="#decline" class="attendBtn">Decline</a></span>
+                          	<span class="btn btn-info btn-mini"><a href="<?php echo base_url()?>jobseeker/attend_invite/<?php echo $a['eventno']?>/<?php echo $a['invno']?>" class="attendBtn">Confirm</a></span>
+            			<span class="btn btn-danger btn-mini"><a href="<?php echo base_url()?>jobseeker/decline_invite/<?php echo $a['invno']?>" class="attendBtn">Decline</a></span>
                                         </div>
                         <br>
                         <br>
