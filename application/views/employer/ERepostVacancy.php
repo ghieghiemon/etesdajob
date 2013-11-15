@@ -437,7 +437,9 @@
                                         <!--<input id="btnAddCert" type="button" class ="btn btn-mini btn-info" style="margin-top:-30px;margin-left:7px;"value="  Add  " />-->
                                         <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
                                     
-                                    <?php
+                                    
+                                                <div class="myStyleDesc">                                                              
+                                                            <input type="text" id="certifications" style="width:50%" name="certifications" placeholder="" value="<?php
                                                          $count = count($cert);
                                                          foreach ($cert as $a)
                                                          {
@@ -448,10 +450,13 @@
                                                              
                                                              $count--;
                                                          }
-                                                         ?>
+                                                         ?>"readonly >
+                                                 <input type="hidden" name="certselect[]" id="lstcert2" value="1">
+                                                 
+                                                            </div>
                                                
-                                                 <select id="lstcert2" name= "certselect[]"multiple="multiple">
-                                         </select>
+<!--                                                 <select id="lstcert2" name= "certselect[]"multiple="multiple">
+                                         </select>-->
                                   </div> <!--end row-fluid-->
                                 
                                   
@@ -465,25 +470,31 @@
                                    
                                           <div class="row-fluid marg17 margCCS">
                                             
-                                        
-                                         <?php
+                                        <div class="myStyleDesc">                                                              
+                                                            <input type="text" id="competencies" style="width:50%" name="competencies" placeholder="" 
+                                                                   value="<?php
                                                          $count = count($cert);
                                                          foreach ($comp as $a)
                                                          {
                                                              echo $a['cocname'];
+                                                           
                                                              if ($count >1)
                                                                 echo " , ";
                                                              
                                                              $count--;
                                                          }
-                                                         ?>
+                                                         ?>"readonly >
+                                              <input type="hidden" name="compselect[]" id="lstcomp2" value="1">
+                                                            </div> 
+                                         
                                   </div> <!--end row-fluid-->
                                   
 
+                            
+                                  
                              <?php
                                                              }
                                                              ?>
-                            
 
                             	</div><!--end well-->
                             	</div><!--end span-->
@@ -562,7 +573,7 @@
                 type: "POST",
           // url: "<a href="http://localhost/pro/index.php/drop_contr/get_cities/"+country_id" onclick="javascript:_gaq.push(['_trackEvent','outbound-comment','http://localhost']);" rel="nofollow">http://localhost/pro/index.php/drop_contr/get_cities/"+country_id</a>, //here we are calling our user controller and get_cities method with the country_id
                // url: "main/get_cities/"+regionid, //here we are calling our user controller and get_cities method with the country_id
-            url: $('#base').val() +"main/get_citiesRepost/"+regionid,    
+            url: $('#base').val() +"main/get_cities/"+regionid,    
             dataType: "json",
                 
                 success: function(cities) //we're calling the response json array 'cities'

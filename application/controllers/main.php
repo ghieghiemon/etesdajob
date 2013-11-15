@@ -73,10 +73,10 @@ class Main extends CI_Controller {
                 $this->load->library('email', array('mailtype'=>'html'));
                 $this->email->from('tesda.jobportal@gmail.com','eTesda-Work');
                 $this->email->to($this->input->post('email'));
-                $this->email->subject('Welcome to e-Tesda Work! Please confirm your account');
+                $this->email->subject('Welcome to e-Tesda Work!');
                 
                 $message = "<p>Thank you for signing up!</p>";
-                $message .= "<p><a href = '".base_url()."main/register_user/$key'>Click here</a> to confirm account</p>";
+                $message .= "<p><a href = '".base_url()."main/index'>Click here</a> to go verify your account</p>";
                 $this->email->message($message);
                  
                

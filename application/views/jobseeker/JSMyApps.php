@@ -387,6 +387,7 @@ foreach($invites as $a)
                     
                 </div><!--end scrollable-->
             </div><!--end quick job search-->
+            
         </div><!--end span left folumn-->
         
         <div class="span9">

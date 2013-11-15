@@ -117,6 +117,16 @@ class Model_employer extends CI_Model {
         }
             return ($data);   
      }
+         public function get_certName($cert)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT ncname FROM nc_reference where ncid =$cert");
+        foreach ($query->result() as $row)
+        {
+            return $row->ncname;
+        }
+        $db2->close();
+    }
      function get_certificationdesc($cert = null) 
      {  
         $db2 = $this->load->database('default', TRUE);

@@ -96,6 +96,7 @@ class Jobseeker extends CI_Controller {
         
         
         
+        
         $suggested = array();
         foreach($jobs as $a)
         {
@@ -121,6 +122,7 @@ class Jobseeker extends CI_Controller {
         $data['suggested'] = $final;
         
         $data['jobs'] = $jobs;
+        $data['job'] = $this->model_jobseeker->get_alljobs();
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobMarket',$data);
       //  $this->load->view('footer');
