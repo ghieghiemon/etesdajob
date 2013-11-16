@@ -905,6 +905,18 @@ class Employer extends CI_Controller {
        // $data['createdevents'] = $this->model_employer->get_createdevents($id);
         //$data['regions'] = $this->model_main->get_regions();
         
+                       //  $userid =$this->model_main->add_empuser();
+        $config['upload_path'] = './eventpics/';
+        $config['allowed_types'] = 'gif|jpg|png|docx|zip';
+        $config['max_size']	= '10000000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload();
+        $data = $this->upload->data();
+        $u = $this->upload->data();
+                
          $eventname = $this->input->post('EN');  
          $startdate = $this->input->post('date');
          $timestart = $this->input->post('time');

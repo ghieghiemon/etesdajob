@@ -106,14 +106,12 @@
                             </div>
                         </div><!-- end div HOSTS -->
                         
-<!--                        <div class="control-group eWellMarg">
+                        <div class="control-group eWellMarg">
                             <label class="ePicUpload">Event Picture: &nbsp;</label>
                             <div class="controls" style="margin-left:100px; margin-top:-30px;">
-                                <form method="post" action="upload-page.php" enctype="multipart/form-data">
-                                    <input name="pic" id="pic" type="file" style="font-size:10px" />
-                                </form>  
+                                   <input value ="upload" name="userfile" id="pic" type="file" />
                             </div>
-                        </div> end Picture field-->
+                        </div>
 
                     </div><!--end well-->
                     
