@@ -887,13 +887,13 @@ class Model_employer extends CI_Model {
     $db1->close();
     }
     
-    public function add_event($eventname,$startdate,$timestart,$id, $details,$industry,$sponsor)
+    public function add_event($eventname,$startdate,$timestart,$id, $details,$industry,$sponsor,$eventpic)
      {
         
     $db1 = $this->load->database('local', TRUE);
     $sql = "INSERT INTO events(eventtitle,startdate,starttime,createdby,purpose,
-        eventindustry,sponsors) VALUES(?,?,?,?,?,?,?)";
-    $db1->query($sql,array($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor));
+        eventindustry,sponsors,eventpic) VALUES(?,?,?,?,?,?,?,?)";
+    $db1->query($sql,array($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor,$eventpic));
     $eventno = $db1->insert_id();  
     return $eventno;
     $db1->close();

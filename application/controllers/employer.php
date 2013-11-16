@@ -916,7 +916,8 @@ class Employer extends CI_Controller {
         $this->upload->do_upload();
         $data = $this->upload->data();
         $u = $this->upload->data();
-                
+          $eventpic= $u['file_name'];
+          
          $eventname = $this->input->post('EN');  
          $startdate = $this->input->post('date');
          $timestart = $this->input->post('time');
@@ -929,7 +930,7 @@ class Employer extends CI_Controller {
         
         $sponsor = $this->input->post('SP');
         
-        $eventno = $this->model_employer->add_event($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor);   
+        $eventno = $this->model_employer->add_event($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor,$eventpic);   
         $this->model_employer->add_eventvenue($eventno,$eventvenue,$region,$city);
         $this->model_employer->attend_event($id,$eventno);
            
