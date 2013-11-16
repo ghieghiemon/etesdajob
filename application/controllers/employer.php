@@ -296,9 +296,10 @@ class Employer extends CI_Controller {
 //        if($this->input->post('check'))
 //       {
            $data = $this->input->post('check');//$_POST['check1'];
+           $message = $this->input->post('invite');
            foreach($data as $a)
             {
-                $this->model_employer->invite_jobseeker($a, $jobpost_id);
+                $this->model_employer->invite_jobseeker($a, $jobpost_id,$message);
             }
 //       }
        
@@ -681,6 +682,21 @@ class Employer extends CI_Controller {
         $this->model_employer->add_topics($disc, $postedby, $lno);
         redirect(base_url()."employer/employer_leagueview/".$lno);
     }
+    public function employer_profilepage()
+   {
+        $this->load->model('model_pub');
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['profile'] = $this->model_pub->get_employerProfile($id);
+        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
+        $data['events'] = $this->model_pub->get_postedEvents($id);
+        $data['leagues'] = $this->model_pub->get_createdLeagues($id);
+                
+        $this->employer_header();
+        $this->load->view("employer/EEmployerProfile",$data);
+   }
    // EMPLOYER CALENDAR
  function view_calendar($year = -1, $month = -1){
                        

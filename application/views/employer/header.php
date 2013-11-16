@@ -115,7 +115,7 @@ function checkall(el){
                                     <br>Events
                                 </h5>
                                 </a>
-                                <a href="#" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>employer/employer_profilepage" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> 
                                     <br>Profile
