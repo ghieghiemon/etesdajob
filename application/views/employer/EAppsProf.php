@@ -161,7 +161,15 @@
                                                                 
                                                                 <td>
                                                                     <p class="proPIMarg2">
-                                                                        12 BC Marconi St. Makati City 1890	
+                                                                        <?php 
+                                                                        echo $a['streetno'];
+                                                                        echo ' ';
+                                                                        echo $a['brgy'];
+                                                                        echo ' ';
+                                                                        echo $a['district'];
+                                                                        echo ' ';
+                                                                        echo $a['cityprov'];
+                                                                        ?>
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -218,11 +226,19 @@
                             </h4>
                             
                             <div style="width:400px;height:150px;overflow:auto;"><!--start scrollable table-->
-                            	<textarea class="span12" rows="5" id="notes"></textarea>
-                                
-                                <a href="#" data-toggle="modal" class="btn pull-right">
+                            <?php
+                            foreach ($application as $a)
+                            {
+                            ?>
+                                <form method='post' action='<?php echo base_url()?>employer/save_applicantnotes/<?php echo $a['applicationid']?>/<?php echo $a['appid']?>/<?php echo $a['jobno']?>'>
+                            	<textarea id='notes' name='notes' class="span12" rows="5" ><?php echo $a['notes']?></textarea>
+                            <?php
+                            }
+                            ?>
+                                <button type='submit' class="btn pull-right">
                                     <strong>SAVE</strong>
-                                </a>
+                                </button>
+                            </form>
                             </div><!--end scrollable-->
                             
                         </div><!--end well-->
@@ -237,7 +253,66 @@
                                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_332_certificate.png" width="15">
                                       Educational Background
                                   </h4>
-                                  
+                                  <?php
+                                        foreach($educ as $a)
+                                        {
+                                            if($a['schoolname'] == 'TESDA')
+                                            {
+                                        echo '<font class="resEdHead2">';
+                                        echo $a['schoolname'];
+                                        echo '</font>
+                                        
+                                        <br>
+                                        <div class="resEdDet2"><!--start course details-->
+                                            <font class="resEdCrs">
+                                                Course: ';
+                                        echo $a['course'];
+                                            echo '</font>
+                                            
+                                            <font class="resEdYear">
+                                                &nbsp;';
+                                            echo $a['startyear'];
+                                        echo '-';
+                                        echo $a['endyear'];
+                                            echo '<br>
+                                            </font>
+                                            
+                                            <div class="resEdSCC"> <!--start div SCC-->
+                                                Certificates: NCI 
+                                                
+                                                <br>
+                                                Skills: <br>
+                                                Competencies: <br>
+                                            </div> <!--end div SCC-->
+                                        </div><!--end course details-->
+                                        
+                                        <br>';
+                                            }
+                                            else
+                                            {
+                                                echo '<font class="resEdHead2">';
+                                        echo $a['schoolname'];
+                                        echo '</font>
+                                        
+                                        <br>
+                                        <div class="resEdDet2"><!--start course details-->
+                                            <font class="resEdCrs">
+                                                Course: Hotel & Restaurant Management
+                                            </font>
+                                            
+                                            <font class="resEdYear">
+                                                &nbsp;';
+                                        echo $a['startyear'];
+                                        echo '-';
+                                        echo $a['endyear'];
+                                            echo '<br></font>
+                                            
+                                        </div><!--end course details-->
+                                        
+                                        <br>';
+                                            }
+                                         }
+                                                    ?>
                                   <font class="resEdHead2">
                                       TESDA
                                   </font>
@@ -261,41 +336,7 @@
                                   </div><!--end course details-->
                                   
                                   <br>
-                                  <div class="resEdDet2"><!--start course details-->
-                                      <font class="resEdCrs">
-                                          Course: Hotel & Restaurant Management
-                                      </font>
-                                      
-                                      <font class="resEdYear">
-                                          &nbsp;2009 - 2010 <br>
-                                      </font>
-                                      
-                                      <div class="resEdSCC"> <!--start div SCC-->
-                                          Certificates: NCII 
-                                         
-                                          <br>
-                                          Competencies: <br>
-                                      </div> <!--end div SCC-->
-                                  </div><!--end course details-->
-                                  
-                                  <br>
-                                  <font class="resEdHead2">
-                                      De La Salle University
-                                  </font>
-                                  
-                                  <div class="resEdDet2"><!--start course details-->
-                                      <font class="resEdCrs">
-                                          Course: Hotel & Restaurant Management
-                                      </font>
-                                      
-                                      <font class="resEdYear">
-                                          &nbsp;2009 - 2010 <br>
-                                      </font>
-                                      
-                                      <div class="resEdSCC"> <!--start div SCC-->
-                                         Achievements: <br>
-                                      </div> <!--end div SCC-->
-                                  </div><!--end course details-->
+                                 
                           
                             </div><!--end scrollable-->
                         </div><!--end well-->
@@ -308,54 +349,34 @@
                                  <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_324_tie.png" width="10"> Work Experience
                             </h4>
                             
-                            <font class="resWrkHead2">
-                                Century Corp
-                            </font>
-                            
-                            <br>
-                            <div class="resWrkDet"><!--start course details-->
-                                <font class="resEdCrs">
-                                    Position: Welder Assistant
-                                </font>
+                              <?php
+                                        foreach($work as $a)
+                                        { 
+                                            echo '<font class="resWrkHead2">';
+                                            echo $a['companyname'];
+                                        echo '</font>
+                                        
+                                        <br>
+                                        <div class="resWrkDet"><!--start course details-->
+                                            <font class="resEdCrs">
+                                                Position: ';
+                                        echo $a['position'];
+                                         echo '</font>
+                                            
+                                            <font class="resEdYear">
+                                                &nbsp;';
+                                        echo $a['start'];
+                                        echo '-';
+                                        if ($a['present'] == 0)
+                                            echo $a['end'];
+                                        else echo 'Present';
+                                        
+                                        echo '<br></font></div>'
+                                            ;
+                                                }
+                                                ?>
                                 
-                                <font class="resEdYear">
-                                    &nbsp;2009 - 2010 <br>
-                                </font>
-                                
-                            </div><!--end course details-->
                             
-                            <br>
-                            <font class="resWrkHead">
-                                Century Corp
-                            </font>
-                            
-                            <br>
-                            <div class="resWrkDet"><!--start course details-->
-                                <font class="resEdCrs">
-                                    Position: Welder Assistant
-                                </font>
-                                
-                                <font class="resEdYear">
-                                    &nbsp;2009 - 2010 <br>
-                                </font>
-                                
-                            </div><!--end course details-->
-                            
-                            <br>
-                            <font class="resWrkHead">
-                                Century Corp
-                            </font>
-                            
-                            <br>
-                            <div class="resWrkDet"><!--start course details-->
-                                <font class="resEdCrs">
-                                    Position: Welder Assistant
-                                </font>
-                                
-                                <font class="resEdYear">
-                                    &nbsp;2009 - 2010 <br>
-                                </font>
-                            </div><!--end course details-->
                             </div><!--end scrollable-->
                         </div><!--end well-->
                     </div><!--end span-->
