@@ -502,7 +502,9 @@
         // browser
         
         $("#pub").click(function(){
-            
+           
+			var competencies = '';
+		   
            $("#jobname").html($("#JN").val());
            $("#description").html($("#desc").val());
            $("#vacant").html($("#NOV").val());
@@ -515,8 +517,11 @@
            $("#eAge").html($("#agefrom").val());
            
            $("#cert1").html($("#lstcert2").val());
-           $("#comp").html($("#lstcomp2").val());
-           
+		   $('#lstcomp2').each(function(index){
+				competencies += $(this).text() + ', ';
+		   });
+		   
+           $("#comp").html(competencies);
             
         });
             // wait search lng
