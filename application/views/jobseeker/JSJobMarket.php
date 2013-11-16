@@ -228,10 +228,14 @@
                                     
                                     
                                     <td>';
+                                 if(count($suggested) >0)
+                                 {
                                     if(in_array($a['jobno'],$jobno))
                                     	echo '<button class="btn btn-mini btn-info">Apply</button>';
+                                 }
                                     echo '</td>
                                 </tr>';
+                                
                                 }
                                 ?>
                             </tbody>
