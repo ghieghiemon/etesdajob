@@ -39,10 +39,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="#p">
+                    <a class="brand" href="<?php echo base_url()?>tesda/tesda_dashboard">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
                     
                     <div class="nav" style="margin-left:260px;margin-top:-2px;">
+                        
+                         <a href="<?php echo base_url()?>tesda/tesda_smspage" class="btn btn-group transBtn" style="margin-left:5px;">
+                                <h5 class="media-heading">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_163_iphone.png" width="10"> 
+                                    <br>SMS
+                                </h5>
+                                </a>
                                 <a href="<?php echo base_url()?>tesda/tesda_leaguespage" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> 
@@ -71,7 +78,7 @@
                                     </h5>
                                 </a>
                                 
-                                <a href="TESDADash.html" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>tesda/tesda_dashboard" class="btn btn-group transBtn">
                                   <h5 class="media-heading">
                                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_351_book_open.png" width="20"> 
                                       <br>Dashboard

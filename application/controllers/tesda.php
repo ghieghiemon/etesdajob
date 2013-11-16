@@ -177,5 +177,18 @@ class Tesda extends CI_Controller {
         $this->model_tesda->add_topics($disc, $postedby, $lno);
         redirect(base_url()."tesda/tesda_leagueview/".$lno);
     }
+    
+     public function tesda_smspage()
+    {
+        $this->load->model('model_tesda');
+        $this->load->model('model_main');
+       
+        //$id = $this->model_main->get_userid($this->session->userdata('email'));
+
+        // $this->load->view('tesda/TInvite', $data);
+        $this->tesda_header();
+         $this->load->view('tesda/TInvite');
+         $this->load->view('footer2');
+    }
 }
 ?>

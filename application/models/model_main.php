@@ -111,9 +111,9 @@ class Model_main extends CI_Model {
         $db2 = $this->load->database('default', TRUE);
         
         $query="INSERT into applicants(userid, firstname, lastname, 
-           civilstatus, birthday, ismale,telno, cellno, profile_pic) 
-           VALUES (?,?,?,?,?,?,?,?,?)";
-           $db2->query($query,array($userid,'1','1','1','1','1','1','1','JSnopic.jpg'));
+           civilstatus, birthday, ismale,telno, cellno) 
+           VALUES (?,?,?,?,?,?,?,?)";
+           $db2->query($query,array($userid,'1','1','1','1','1','1','1'));
         
          $appid = $db2->insert_id();
          return $appid;
@@ -169,10 +169,11 @@ class Model_main extends CI_Model {
         
     }
     
-        public function update_jsdetails($userid,$fn,$ln,$bday,$gender,$tn,$cn,$civ){
+        public function update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$tn,$cn,$civ){
      
         $db2 = $this->load->database('default', TRUE);
         $db2->query("UPDATE applicants SET firstname = '$fn' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET middlename = '$mn' WHERE userID = $userid");
         $db2->query("UPDATE applicants SET lastname = '$ln' WHERE userID = $userid");
         $db2->query("UPDATE applicants SET birthday = '$bday' WHERE userID = $userid");
         $db2->query("UPDATE applicants SET ismale = '$gender' WHERE userID = $userid");

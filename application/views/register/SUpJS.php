@@ -52,6 +52,13 @@
                                                     <input type="text" id="FN" name="FN" placeholder="" >
                                                 </div>
                                             </div> <!--end FN field-->
+                                            
+                                             <div class="control-group">
+                                                <label class="control-label">Middle Name: &nbsp;</label>
+                                                <div class="controls">
+                                                    <input type="text" id="MN" name="MN" placeholder="" >
+                                                </div>
+                                            </div> <!--end LN field-->
                                                                
                                             <div class="control-group">
                                                 <label class="control-label">Last Name: &nbsp;</label>

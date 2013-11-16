@@ -291,6 +291,7 @@ class Main extends CI_Controller {
                 $u = $this->upload->data();
        
                 $fn = $this->input->post('FN');
+                $mn = $this->input->post('MN');
                 $ln = $this->input->post('LN');
                 $bday = $this->input->post('bday');
                 $gender = $this->input->post('gender');
@@ -319,7 +320,7 @@ class Main extends CI_Controller {
              //   $employerpic = $u['file_name'];
                 
                 $this->load->model('model_main');      
-                $this->model_main->update_jsdetails($userid,$fn,$ln,$bday,$gender,$tn,$cn,$civ);
+                $this->model_main->update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$tn,$cn,$civ);
                 $appid = $this->model_main->get_jsappid($userid);
                 $this->model_main->update_jswork($appid,$companyname,$position,$start,$end);
                 $this->model_main->update_jsed($appid,$schoolname,$level,$description,$estart,$eend);
