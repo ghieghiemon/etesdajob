@@ -57,7 +57,7 @@
                                 </h5>
                                 </a>
                                 
-                                <a href="TEventsAll.html" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>tesda/tesda_eventspage" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> 
                                     <br>Events

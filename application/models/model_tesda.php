@@ -147,5 +147,98 @@ class Model_tesda extends CI_Controller{
          return $row->usertype;}
         $db2->close();
     }
+           public function get_eventno(){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT eventno FROM etesda.events");
+        foreach ($query->result() as $row)
+        {
+         return $row->eventno;}
+        $db1->close();
+    }
+
+     public function all_events(){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("  
+        SELECT *,events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events
+                                JOIN event_participants on event_participants.eventno = events.eventno 
+                                JOIN event_venue v on v.eventno = events.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+				JOIN reference_city c ON c.cityid = v.city
+                                where startdate >= curdate()
+                                GROUP BY eventtitle,events.eventno  HAVING COUNT(*)>0
+                                ORDER BY startdate ASC 
+                               ");
+            
+        return $query->result_array();
+        
+        $db1->close();
+    }
+    
+     public function get_createdevents($userid){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT *,COUNT(*) AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+                                FROM events e 
+                                JOIN event_venue ev on ev.eventno = e.eventno  
+				JOIN event_participants ep on ep.eventno = e.eventno       
+                                JOIN reference_region r ON r.regionid = ev.region  
+                                JOIN reference_city c ON c.cityid = ev.city        
+                                WHERE e.createdby = '$userid' and startdate >= curdate()
+				GROUP BY eventtitle,e.eventno  HAVING COUNT(*)>=0
+                                ORDER BY startdate DESC ");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+    
+      public function get_eventdetails($eno){
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
+        r.region ,c.city,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events e
+                                JOIN event_participants on event_participants.eventno = e.eventno 
+                                JOIN tesda_centraldb.employer_profile ep on ep.userID = e.createdby
+                                JOIN event_venue v on v.eventno = e.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+							    JOIN reference_city c ON c.cityid = v.city
+                                WHERE e.eventno = $eno
+
+            ");
+     
+    return $query->result_array();
+
+    $db1->close();
+    }
+    
+    public function add_event($eventname,$startdate,$timestart,$id, $details,$industry,$sponsor)
+     {
+        
+    $db1 = $this->load->database('local', TRUE);
+    $sql = "INSERT INTO events(eventtitle,startdate,starttime,createdby,purpose,
+        eventindustry,sponsors) VALUES(?,?,?,?,?,?,?)";
+    $db1->query($sql,array($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor));
+    $eventno = $db1->insert_id();  
+    return $eventno;
+    $db1->close();
+
+   
+            }
+            
+public function add_eventvenue($eventno,$eventvenue,$region,$city)
+    {
+      $db1 = $this->load->database('local', TRUE);    
+      $sql = "INSERT INTO event_venue(eventno,venue,region,city) VALUES(?,?,?,?)";           
+      $db1->query($sql,array($eventno,$eventvenue,$region,$city));
+           
+
+    }
 }
 ?>

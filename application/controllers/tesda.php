@@ -190,5 +190,21 @@ class Tesda extends CI_Controller {
          $this->load->view('tesda/TInvite');
          $this->load->view('footer2');
     }
+    
+        public function tesda_eventspage()
+    {
+        
+         $this->load->model('model_main');
+         $this->load->model('model_tesda');
+         $this->load->model('model_pub');
+         $id = $this->model_main->get_userid($this->session->userdata('email'));
+         $data['createdevents'] = $this->model_tesda->get_createdevents($id);
+         $data['all'] = $this->model_main->all_events();
+       
+
+         $this->tesda_header();
+         $this->load->view('tesda/TEventsAll',$data);
+         $this->load->view('footer2');
+    }
 }
 ?>
