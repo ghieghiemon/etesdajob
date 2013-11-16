@@ -852,7 +852,7 @@ class Model_employer extends CI_Model {
       public function get_eventdetails($eno){
         $db1 = $this->load->database('local', TRUE);
        $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
-        r.region ,c.city,hosts,sponsors,purpose,
+        r.region ,c.city,sponsors,purpose,
         DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
         DATE_FORMAT(starttime, '%h:%i %p') as starttime,
         DATE_FORMAT(endtime, '%h:%i %p') as endtime
