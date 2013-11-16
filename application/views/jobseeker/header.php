@@ -65,13 +65,19 @@
                                 </h5>
                                 </a>
                                 
+                        
                                 <a href="<?php echo base_url()?>jobseeker/jobseeker_jobmarketpage" class="btn btn-group transBtn">
                                     <h5 class="media-heading">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="17"> 
                                         <br>Job Market
                                     </h5>
                                 </a>
-                                
+                                <a href="<?php echo base_url()?>jobseeker/jobseeker_profilepage" class="btn btn-group transBtn">
+                                <h5 class="media-heading">
+                                    <img src="<?php echo base_url()?>assets/bootstrap//img/icons/glyphicons_352_nameplate.png" width="25"> 
+                                    <br>Profile 
+                                </h5>
+                                </a>
                                 <a href="<?php echo base_url()?>jobseeker/jobseeker_myappspage" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap//img/icons/glyphicons_144_folder_open.png" width="25"> 

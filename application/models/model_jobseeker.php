@@ -122,6 +122,29 @@ class Model_jobseeker extends CI_Model {
                                     WHERE invitationno = $invno");
         $db1->close();
     }
+    public function get_jsdetails($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * FROM applicants a
+                            JOIN address d ON d.appid = a.appid
+                             WHERE a.appid = $id  ");
+                          
+        return $query->result_array();
+        $db2->close();
+    }
+    public function get_educ($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * from applicants_education
+                            WHERE appid = '$id'");
+        return $query->result_array();
+        $db2->close();
+    }
+    public function get_work($id){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT * from applicants_workexperience
+                            WHERE appid = '$id'");
+        return $query->result_array();
+        $db2->close();
+    }
     public function get_appdetails($jobno,$appid){
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *, DATE_FORMAT(requirementdate, '%b. %d, %Y') as requirementdate, 

@@ -127,6 +127,23 @@ class Jobseeker extends CI_Controller {
         $this->load->view('jobseeker/JSJobMarket',$data);
       //  $this->load->view('footer');
     }  
+    public function jobseeker_profilepage()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_employer');
+        
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        
+        $data['educ'] = $this->model_jobseeker->get_educ($id);
+        $data['work'] =$this->model_jobseeker->get_work($id);
+        $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
+        $userid = $this->model_employer->get_userid($id);
+        $data['email'] = $this->model_employer->get_email($userid);
+        
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSProfile',$data);
+    }
     public function apply_jobinvite($jobno,$invno)
     {
         $this->load->model('model_main');

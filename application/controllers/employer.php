@@ -296,9 +296,10 @@ class Employer extends CI_Controller {
 //        if($this->input->post('check'))
 //       {
            $data = $this->input->post('check');//$_POST['check1'];
+           $message = $this->input->post('invite');
            foreach($data as $a)
             {
-                $this->model_employer->invite_jobseeker($a, $jobpost_id);
+                $this->model_employer->invite_jobseeker($a, $jobpost_id,$message);
             }
 //       }
        
@@ -442,12 +443,24 @@ class Employer extends CI_Controller {
     public function employer_appsprof($appid,$jobno)
     {
         $this->load->model('model_employer');
+        $this->load->model('model_jobseeker');
         
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
-        $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);   
+        $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);  
+        $data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
+        $data['educ'] = $this->model_jobseeker->get_educ($appid);
+        $data['work'] =$this->model_jobseeker->get_work($appid);
         
         $this->employer_header();
         $this->load->view('employer/EAppsProf',$data);
+    }
+    public function save_applicantnotes($applicationid,$appid,$jobno)
+    {
+        $this->load->model('model_employer');
+        
+        $note = $this->input->post('notes');
+        $this->model_employer->save_applicantnotes($applicationid,$note);
+        redirect(base_url().'employer/employer_appsprof/'.$appid."/".$jobno);
     }
     public function employer_repost()
     {
@@ -681,6 +694,21 @@ class Employer extends CI_Controller {
         $this->model_employer->add_topics($disc, $postedby, $lno);
         redirect(base_url()."employer/employer_leagueview/".$lno);
     }
+    public function employer_profilepage()
+   {
+        $this->load->model('model_pub');
+        $this->load->model('model_employer');
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['profile'] = $this->model_pub->get_employerProfile($id);
+        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
+        $data['events'] = $this->model_pub->get_postedEvents($id);
+        $data['leagues'] = $this->model_pub->get_createdLeagues($id);
+                
+        $this->employer_header();
+        $this->load->view("employer/EEmployerProfile",$data);
+   }
    // EMPLOYER CALENDAR
  function view_calendar($year = -1, $month = -1){
                        

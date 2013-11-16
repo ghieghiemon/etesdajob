@@ -28,15 +28,7 @@
                         </thead>
                         
                         <tbody>
-                        	<tr>
-                            	<td class="lLabel">
-                                	Subject:
-                                </td>
-                                
-                                <td>
-                                	<textarea class="span12" placeholder="" rows="1"></textarea>
-                                </td>
-                            </tr>
+                        	
                             
                             <tr>
                             	<td class="lLabel">
@@ -44,7 +36,7 @@
                                 </td>
                                 
                                 <td>
-                                	<textarea class="span12" placeholder="" rows="3">We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
+                                	<textarea id='invite' name='invite' class="span12" placeholder="" rows="5">We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
                                     
                                     </textarea>
                                 </td>
