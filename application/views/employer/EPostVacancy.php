@@ -50,6 +50,7 @@
                                   <td>
                                 	  <font class="previewDet2">
                                       	<span id="industry" name="industry"></span>
+                                      <span id="industryname" name="industryname"></span>
                                       </font>
                                   </td>
                               </tr>
@@ -166,6 +167,8 @@
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
                         <span id="cert1" name= "cert1"></span>
+                           <span><?php   $certname1 = $this->model_employer->get_certName(1);
+                            echo $certname1;?></span>
                         	
                         </font>
                     </p>
@@ -190,75 +193,6 @@
   	</div>
 </div>
 <!--publish vacancy modal end-->
-  
-<!--add phase modal start-->
-<div class="modal hide fade" id="addPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Add Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<table>
-        	<thead>
-            	<th class="span3">Choose a phase name</th>
-                <th class="span3">
-                	<input type="text" placeholder="" id="phaseName">
-                </th>
-            </thead>
-        </table>
-	</div>
-  
-  	<div class="modal-footer">
-  		<button type="button" onclick="addphase()" class="btn btn-info" data-dismiss="modal">Save</button>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--add phase modal end-->
-
-<!--edit phase modal start-->
-<div class="modal hide fade" id="editPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Edit Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<table>
-        	<thead>
-            	<th class="span3">Choose a phase name</th>
-                <th class="span3">
-                	<input type="text" placeholder="" id="phaseName">
-                </th>
-            </thead>
-        </table>
-	</div>
-  
-  	<div class="modal-footer">
-  		<a href="#" class="btn btn-info" data-dismiss="modal">Save</a>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--edit phase modal end-->
-  
-<!--delete phase modal start-->
-<div class="modal hide fade" id="delPhase">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Delete Phase</h3>
-  	</div>
-
-	<div class="modal-body">
-		<p class="delete">Are you sure you want to delete this phase?</p>
-	</div>
-  
-  	<div class="modal-footer">
-  		<a href="#" class="btn btn-danger" data-dismiss="modal">Okay</a>
-    	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	</div>
-</div>
-<!--delete phase modal end-->
-
                
 <form class="container" method="post" action="employer_postvacancy" id="publish">
 <div style="margin-left: 1%; margin-top: 1%; margin-bottom:-7%">
@@ -314,9 +248,9 @@
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
                                                                    <?php    
-                                                                $industry['#'] = 'Please Select';
+                                                                $industry['0'] = 'Please Select';
                                                                 $params = 'id="industries"'; 
-                                                               echo form_dropdown('industry', $industry,'#',$params);     
+                                                               echo form_dropdown('industry', $industry,'0',$params);     
                                                                ?> 
                                                             </div>
                                                         </div> <!--end Desc field-->
@@ -327,11 +261,11 @@
                                                     	<div class="control-group">
                                                             <label class="control-label lLabel2">Region: &nbsp;</label>
                                                             <div class="controls">
-                                                                <?php $regions['#'] = 'Please Select'; ?>
-                                                                <?php $cities['#'] = 'Please Select'; ?>
+                                                                <?php $regions['0'] = 'Please Select'; ?>
+                                                                <?php $cities['0'] = 'Please Select'; ?>
                                                                 <?php 
                                                                   $params = 'id="regions"'; 
-                                                                 echo form_dropdown('regionid', $regions, '#',$params);
+                                                                 echo form_dropdown('regionid', $regions, '0',$params);
                                                                 ?> 
                                                             </div>
                                                         </div> <!--end RGN field-->
@@ -341,7 +275,7 @@
                                                             <div class="controls">
                                                                 <?php 
                                                                 $params = 'id="cities"'; 
-                                                                echo form_dropdown('cityid', $cities, '#', $params);
+                                                                echo form_dropdown('cityid', $cities, '0', $params);
                                                                 ?> 
                                                             </div>
                                                         </div> <!--end CoP field-->
@@ -574,14 +508,14 @@
            $("#vacant").html($("#NOV").val());
            $("#effect").html($("#effectivity").val());
            $("#region").html($("#regions").val());
-           $("#industry").html($("#industries").val());
-           $("#city").html($("#cities").val())
-           $("#msex").html($("#sex").val())
-           $("#sAge").html($("#ageto").val())
-           $("#eAge").html($("#agefrom").val())
+            $("#industry").html($("#industries").val());
+           $("#city").html($("#cities").val());
+           $("#msex").html($("#sex").val());
+           $("#sAge").html($("#ageto").val());
+           $("#eAge").html($("#agefrom").val());
            
-           $("#cert1").html($("#lstcert2").val())
-           $("#comp").html($("#lstcomp2").val())
+           $("#cert1").html($("#lstcert2").val());
+           $("#comp").html($("#lstcomp2").val());
            
             
         });

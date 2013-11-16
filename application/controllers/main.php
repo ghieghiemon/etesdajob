@@ -16,7 +16,8 @@ class Main extends CI_Controller {
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['regionvacancies'] = $this->model_pub->get_regionVacancies();
         $data['companies'] = $this->model_pub->get_companyVacancies();
-        $data['vacancies'] = $this->model_pub->get_allVacancies();
+        $data['compopenings'] = $this->model_pub->get_companyOpenings();
+        $data['openings'] = $this->model_pub->get_allOpenings();
 //        $data['event'] = $this->model_main->all_events();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
@@ -72,10 +73,10 @@ class Main extends CI_Controller {
                 $this->load->library('email', array('mailtype'=>'html'));
                 $this->email->from('tesda.jobportal@gmail.com','eTesda-Work');
                 $this->email->to($this->input->post('email'));
-                $this->email->subject('Welcome to e-Tesda Work! Please confirm your account');
+                $this->email->subject('Welcome to e-Tesda Work!');
                 
                 $message = "<p>Thank you for signing up!</p>";
-                $message .= "<p><a href = '".base_url()."main/register_user/$key'>Click here</a> to confirm account</p>";
+                $message .= "<p><a href = '".base_url()."main/index'>Click here</a> to go verify your account</p>";
                 $this->email->message($message);
                  
                

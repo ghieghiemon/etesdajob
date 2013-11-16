@@ -80,12 +80,12 @@
             
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li><a href="#SGS" data-toggle="tab">Suggested</a></li>
-                        <li class="active"><a href="#All" data-toggle="tab">All</a></li>
+                        <li class="active"><a href="#SGS" data-toggle="tab">Suggested</a></li>
+                        <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
-                    <div class="tab-pane" id="SGS">
+                    <div class="tab-pane active" id="SGS">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             <div id="container">
                         	<table id ="newtable" >
@@ -103,58 +103,97 @@
                             </thead>
                             
                             <tbody class="recName">
-                                <?php
-                            foreach($suggested as $a)
+                             <?php
+                    $ctr = 1;
+                    if(count($suggested) == 0)
+                     {
+                         echo '<p class = "noCommYet"> There are no jobs available</p>';
+                     }
+                     else
+                     {
+                            foreach ($myapp as $a)
                             {
-                                 echo '<tr>
+                                $myjobno[] = $a['jobno'];
+                            }
+                                
+                            foreach($suggested as $row){
+                                  if($ctr >=1){
+
+                               echo'
+                                <tr>
                                     
                                     <td>';
-                                       echo $a['jobtitle'];
-                                echo '</td>
+                                      echo $row['jobtitle'];
+                                   
+
+                                    echo'</td>
                                    
                                     <td>
                                         <a href="#" class="recAppName">';
-                                echo $a['companyName'];
-                                echo '</a>
+                                    echo $row['companyName'];
+                                       
+                                       echo' </a>
                                     </td>
                                     
-                                    <td> ';
-                                    echo $a['region'];
-                                     echo'   |  ';
-                                   echo $a['city'];
-                                  echo' </td>
-                                    
                                     <td>';
-                                $date2 = $a['expirationdate'];
-                                $date = date('Y-m-d');
-                                $diff = abs(strtotime($date2) - strtotime($date));
+                                       echo $row['region'];
+                                        echo ' |  ';
+                                        echo $row['city'];
+                                     
+                                        echo' </td>
+                                    
+                                              <td>' ?>
+                                                            <?php
+                                                            $date2 = $row['expirationdate'];
+                                                            $date = date('Y-m-d');
+                                                            $diff = abs(strtotime($date2) - strtotime($date));
 
-                                $days = round((($diff/24)/60)/60);
-                                echo $days. " days left";
-                                echo '</td>
+                                                            $days = round((($diff/24)/60)/60);
+                                                            echo $days. " days left";
+                                                            ?>
+                                
+                                                       <?php echo' </td>
                                     
                                     <td>
-                                        <span class="label label-info">';
-                                $count = $this->model_jobseeker->count_jobApplications($a['jobno']);
-                                echo $count;
-                                echo ' Applied</span>
+                                        <span class="label label-info">'?>
+                                         <?php
+                                                $appcount = $this->model_jobseeker->count_jobApplications($row['jobno']);
+                                                echo $appcount;
+                                            ?>
+                                            Applied
+                                        
+                                    <?php echo'</span>
                                     </td>
-                                    
-                                    <td>
-                                        <span class="label">';
-                                echo $a['vacanciesleft'];
-                                echo ' Left </span>
-                                    </td>
-                                    
                                     
                                     <td>';
-                                    ?>
-                             <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $a['jobno']?>">Apply</a>
-                             <?php    
-                             echo '</td>
-                                </tr>';
-                            }
-                            ?>    
+                                        echo'<span class="label">';
+                                       echo $row['vacanciesleft'];
+                                       echo' Left </span>
+                                    </td>
+                                    
+                                    
+                                    <td>'?>
+                                     <?php
+                                     if(in_array($row['jobno'],$myjobno))
+                                     {
+                                         echo 'Applied';
+                                     }
+                                     else
+                                     {
+                                     ?>
+<!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
+                                         <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
+                                     <?php
+                                     }
+                                     echo'</td>
+                                </tr>
+                                
+                              ' ;                       
+                           }
+                     $ctr += 1;
+                     }
+                     }
+                    ?>
                                
                             </tbody>
                         </table>
@@ -162,7 +201,7 @@
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invited-->
                     
-                    <div class="tab-pane active" id="All">
+                    <div class="tab-pane" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             
                             <div id="container">

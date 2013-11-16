@@ -192,8 +192,8 @@ class Model_jobseeker extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *, c.city, r.region, e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
-JOIN etesda.reference_region r ON r.regionid = j.region
-            JOIN etesda.reference_city c ON c.cityid = j.city
+                            JOIN etesda.reference_region r ON r.regionid = j.region
+                            JOIN etesda.reference_city c ON c.cityid = j.city
                             WHERE j.status = 1 AND j.expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC 
                             ");
@@ -383,6 +383,87 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         }
         $db2->close();
     }
+      public function get_allevents()
+    {
+        $db1 = $this->load->database('local', TRUE);
+      
+        $query = $db1->query("SELECT *,COUNT(*) AS participantscount, e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+                                FROM events e 
+				JOIN event_venue ev on ev.eventno = e.eventno  
+				JOIN event_participants ep on ep.eventno = e.eventno       
+                                JOIN reference_region r ON r.regionid = ev.region  
+                                JOIN reference_city c ON c.cityid = ev.city        
+                                where startdate >= curdate()
+                                GROUP BY eventtitle,e.eventno  HAVING COUNT(*)>=0
+                                ORDER BY startdate DESC");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+       public function get_myevents($appid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+    
+        $query = $db1->query("SELECT *,COUNT(*) AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+                                FROM event_participants ep 
+        JOIN events e on ep.eventno = e.eventno  
+        JOIN event_venue ev on ev.eventno = e.eventno       
+        JOIN reference_region r ON r.regionid = ev.region  
+        JOIN reference_city c ON c.cityid = ev.city        
+        where startdate >= curdate() AND ep.userid = '$appid'
+        GROUP BY eventtitle,e.eventno  HAVING COUNT(*)>=0
+                                ORDER BY startdate DESC ");
+        return $query->result_array();
+        $db1->close();
+    }
+       public function get_invevents($appid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+    
+        $query = $db1->query("SELECT *,COUNT(*) AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+        FROM event_invitation i 
+        JOIN events e on e.eventno = i.eventno 
+        JOIN event_participants ep on ep.eventno = e.eventno 
+        JOIN event_venue ev on ev.eventno = e.eventno       
+        JOIN reference_region r ON r.regionid = ev.region  
+        JOIN reference_city c ON c.cityid = ev.city        
+        where startdate >= curdate() AND i.userid = '$appid' and accepted= 0 
+        GROUP BY eventtitle,e.eventno  HAVING COUNT(*)>=0
+                                ORDER BY startdate DESC ");
+        return $query->result_array();
+        $db1->close();
+    }
+    
+     public function attend_event($eno,$id){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO event_participants(eventno,userid) VALUES(?,?)";
+        $db1->query($query,array($eno,$id));
+        $db1->close();
+    }
+    
+       public function accept_invite($invno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("UPDATE event_invitation
+                                    SET accepted = 1
+                                    WHERE invno = $invno");
+        $db1->close();
+    }
+       public function decline_invite($invno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("UPDATE event_invitation
+                                    SET accepted = 2
+                                    WHERE invno = $invno");
+        $db1->close();
+    }
+    
     public function get_allleagues()
     {
         $db1 = $this->load->database('local', TRUE);
@@ -393,15 +474,18 @@ JOIN etesda.reference_region r ON r.regionid = j.region
         return $query->result_array();
         $db1->close();
     }
+    
+    
     public function get_myleagues($appid)
     {//JOIN etesda.league_members m ON l.leagueno = m.leagueno 
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since  FROM etesda.league_members l   
+        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since 
+                                FROM etesda.league_members l   
                                 JOIN etesda.league v on l.leagueno = v.leagueno 
                                 JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
                                 WHERE l.userid = $appid
-                                ORDER BY v.leaguename ASC  ");
+                                ORDER BY v.leaguename ASC ");
         return $query->result_array();
         $db1->close();
     }
