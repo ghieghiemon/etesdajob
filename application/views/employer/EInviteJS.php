@@ -19,7 +19,38 @@
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
                 </h3>
-                    
+                 <table class="table-condensed" style="margin-left:370px;margin-top:10px">
+                    	<thead>
+                        	<tr>
+                            	<th class="span2"></th>
+                                <th class="span10"></th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                        	<tr>
+                            	<td class="lLabel">
+                                	Subject:
+                                </td>
+                                
+                                <td>
+                                	<textarea class="span12" placeholder="" rows="1"></textarea>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                            	<td class="lLabel">
+                                	Message:
+                                </td>
+                                
+                                <td>
+                                	<textarea class="span12" placeholder="" rows="3">We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
+                                    
+                                    </textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>   
                 <!--end invite button-->
                 
                 <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->  

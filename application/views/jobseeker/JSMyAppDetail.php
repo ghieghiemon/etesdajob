@@ -28,8 +28,10 @@
                                        ?>   <font color="black">&nbsp; Status:&nbsp;</font>
                                           
                                               <?php
-                                         echo $b['status']; ?>
-                                
+                                         echo $b['status']; 
+                                       if ($b['status'] != "New Applicant")
+                                       {
+                                           ?>
                                          <br>
                                        <font color="black">&nbsp; Date and Time: &nbsp;</font>
                                          <?php echo $b['requirementdate']; ?>
@@ -40,6 +42,7 @@
                                          <font color="black">&nbsp; Location: &nbsp;</font>
                                           <?php
                                           echo $b['location']; 
+                                       }
                                       }
                                       
                                           //For Exam on 09/28/2012

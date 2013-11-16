@@ -1,16 +1,55 @@
 <!--jobdetails modal-->
+<!--modal job invite content-->    
 <?php
+foreach ($invites as $a)
+{
+    
+?>
+    <div class="modal hide fade" id="view<?php echo $a['invitationno']?>">
+  		<div class="modal-header">
+    		<a class="close" data-dismiss="modal">x</a>
+    		<h3>Job Invite </h3>
+  		</div>
+        
+  		<div class="modal-body">
+        	<p>
+                We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
+                
+                <br><br>
+            </p>
+        </div>
+        
+        <div class="modal-footer">
+    		<a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
+                                    </a>
+            <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
+                                    </button>
+            <a href="" data-dismiss="modal"> Cancel </a>
+        </div>
+	</div>
+<?php
+}
+?>
+<!--end job invite content-->
+    
+    <?php
 foreach($invites as $a)
 {
 ?>
-   <div class="modal hide fade" id="view<?php echo $a['jobno']?>">
+   <div class="modal hide fade" id="jInv<?php echo $a['invitationno']?>">
 <?php
     echo '<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Vacancy Summary</h3>
+    	<h3>Job Invite </h3>
   	</div>
 
 	<div class="modal-body">
+        <p>
+                We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
+                
+                <br><br>
                 <span id="label1"></span>
 		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
         	<div class="row-fluid">
@@ -191,16 +230,19 @@ foreach($invites as $a)
             </div><!--end row-fluid-->
         <hr class="hrLeagTab">
         
-        <h4 class="media-heading previewColor">| PHASES</h4>
-        	<p class="previewPhase">
-            	Unscreened, Screened, Exam, Interview, Hire, Reject
-            </p>
+        
 	</div>
   
   	<div class="modal-footer">';
         ?>
   	
-    	<a class="btn btn-primary" data-dismiss="modal">Close</a> 
+    	<a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
+                                    </a>
+            <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
+                                    </button>
+            <a href="" data-dismiss="modal"> Cancel </a>
   	
      </div>
     </div>
@@ -306,7 +348,12 @@ foreach($invites as $a)
                 
                 <div style="width:280px;height:140px;overflow:auto;"><!--start scrollable table-->
       				<ul class="nav nav-list">
+                         
                         <?php
+                        if (count($notif) == 0)
+                        {
+                            echo "<br><p class = 'noCommYet'>You don't have any notifications yet.</p>";
+                        }
                         foreach ($notif as $a)
                         {
                         ?>
@@ -400,13 +447,23 @@ foreach($invites as $a)
                 	<table class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
-                                
+                             <?php
+                        if (count($myapp) == 0)
+                        {
+                            echo "<br><p class = 'noCommYet'> You do not have any applications yet.</p>";
+                        }
+                        else
+                        {
+                        ?>
                                 <th class="span2" style="text-align:center">Job Title</th>
                                 <th class="span3" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
                                 <th class="span2" style="text-align:center">Location</th>
                                 <th class="span2" style="text-align:center">Date Applied</th>
                                 <th class="span4" style="text-align:center">Status</th>
+                        <?php
+                        }
+                        ?>
                             </tr>
                         </thead>
                         <tbody class="recName">
@@ -526,13 +583,14 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                                 ?>
-                                    <a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+<!--                                    <a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
                                     </a>
                                     <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
                                     <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
-                                    </button>
+                                    </button>-->
+                        <a href="#jInv<?php echo $a['invitationno']?>" data-toggle="modal">View Invitation</a>
                                 </td>
                             </tr>
                             <?php
