@@ -159,7 +159,7 @@ function checkall(el){
                         
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                	<img src="<?php echo base_url()?>profilepics/<?php echo $pic;?>" width="25" height="15" style="margin-left:-11px;"> 
+                                	<img src="<?php echo base_url()?>employerpics/<?php echo $pic;?>" width="25" height="15" style="margin-left:-11px;"> 
                                      <?php foreach($name as $a)
                                             {
                                                 echo $a['companyName'];

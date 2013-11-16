@@ -68,8 +68,9 @@
                                     ?>
                                     
                                     <tr>
+                                        
                                         <td>
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['profile_pic'];?>" class="thumbnailProf">
+                                            <img src="<?php echo base_url()?>profilepics/<?php echo $a['profile_pic'];?>" class="thumbnailProf">
                                         </td>
                                         
                                         <td>

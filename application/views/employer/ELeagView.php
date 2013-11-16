@@ -124,7 +124,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
+                                        	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
                                                 <?php echo $a['leaguename']?>
 										</div>
                                     </a>
@@ -176,7 +176,7 @@
                                 <tr>
                                     <a href="#">
                                         <div class="LeaName2">
-                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
+                                        	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" width ="25" class="img-rounded "> 
                                                 <?php echo $a['leaguename']?>
 										</div>
                                     </a>
@@ -249,7 +249,7 @@
                                 ?>
                             	<tr>
                                 	<td>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" class="thumbnail4" alt="">
+                                    	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="thumbnail4" alt="">
                                     </td>
                                    
                                     <td>

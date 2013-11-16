@@ -20,11 +20,12 @@ class Model_jobseeker extends CI_Model {
     }
     public function get_jspic(){
         $db2 = $this->load->database('default', TRUE);
-        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
         $query = $db2->query("SELECT profile_pic from applicants WHERE appid = $id");
         foreach ($query->result() as $row)
         {
-         return $row->profile_pic;}
+         return $row->profile_pic;
+        }
         $db2->close();
     } 
     public function get_notifications($id)
