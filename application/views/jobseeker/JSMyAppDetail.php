@@ -261,8 +261,10 @@
                         <?php
                         foreach($myapps as $a)
                         {
-                            echo '<a href="jobseeker" class="otherApps">';
-                            echo $a['jobtitle'];
+                             ?>
+                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="otherApps">
+                           
+                            <?php echo $a['jobtitle'];
                             echo ' at ';
                             echo $a['companyName'];
                             echo '</a>
