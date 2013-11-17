@@ -248,11 +248,13 @@ class Jobseeker extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
+        $this->load->model('model_pub');
         $appid = $this->model_main->get_appid($this->session->userdata('email'));
+         $id = $this->model_jobseeker->get_userid($appid);
         
         $data['eventall'] = $this->model_jobseeker->get_allevents();
-        $data['myevents'] = $this->model_jobseeker->get_myevents($appid);
-        $data['invevents'] = $this->model_jobseeker->get_invevents($appid);
+        $data['myevents'] = $this->model_jobseeker->get_myevents($id);
+        $data['invevents'] = $this->model_jobseeker->get_invevents($id);
       //$data['eventup'] = $this->model_main->all_events();
       //$data['eventinv'] = $this->model_main->all_events();
         $this->jobseeker_header();
@@ -274,10 +276,10 @@ class Jobseeker extends CI_Controller {
     {
         $this->load->model('model_jobseeker');
         $this->load->model('model_main');
-              
+        
         $appid = $this->model_main->get_appid($this->session->userdata('email'));
-       // $id = $this->model_jobseeker->get_userid($appid);
-        $this->model_jobseeker->attend_event($eno,$appid);
+        $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->attend_event($eno,$id);
         
         redirect(base_url()."jobseeker/event_details/".$eno);
         
@@ -289,8 +291,8 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_main');
               
         $appid = $this->model_main->get_appid($this->session->userdata('email'));
-      // $id = $this->model_jobseeker->get_userid($appid);
-        $this->model_jobseeker->attend_event($eno,$appid);
+       $id = $this->model_jobseeker->get_userid($appid);
+        $this->model_jobseeker->attend_event($eno,$id);
         $this->model_jobseeker->accept_invite($invno);
         
         redirect(base_url()."jobseeker/event_details/".$eno);
@@ -314,11 +316,14 @@ class Jobseeker extends CI_Controller {
        
        $appid = $this->model_main->get_appid($this->session->userdata('email'));
        $id = $this->model_jobseeker->get_userid($appid);
+       $data['drpindustries'] = $this->model_main->get_drpindustries();
+       $data['regions'] = $this->model_main->get_regions();
        $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
        $data['all'] = $this->model_jobseeker->get_allleagues();
                
        $this->jobseeker_header();
        $this->load->view('jobseeker/JSLeagues',$data); 
+          $this->load->view('footer');
    }
    public function jobseeker_leagueview($lno)
    {

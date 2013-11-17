@@ -147,7 +147,14 @@
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                                Hosted By:</strong> 
+                                            <a href="" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
@@ -209,7 +216,13 @@
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> 
+                                                 <a href="" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
@@ -280,7 +293,13 @@
                                    
                                     <td>
                                     	<p class="LeaDetails4">
-                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> Chef Philippines
+                                            <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> 
+                                                <a href="" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
                                             </em>
