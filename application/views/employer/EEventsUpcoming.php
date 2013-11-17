@@ -148,11 +148,9 @@
                     
                     <div align="right" class="eDnBtn">
                       <button type="submit" class="btn btn-info">Create</button>
-<!--                    	<a href="#" class="btn btn-info">
-                        	Done
-                        </a>-->
                     </div>
                     </form>
+                            
                 </div><!--end scrollable-->
                 
                 	

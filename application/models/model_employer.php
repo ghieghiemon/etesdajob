@@ -796,6 +796,26 @@ class Model_employer extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    public function join_league($lno,$id){
+        $db1 = $this->load->database('local', TRUE);
+        $query = "INSERT INTO league_members(leagueno,userid) VALUES(?,?) ";
+        $db1->query($query,array($lno,$id));
+        $db1->close();
+    }
+    
+   public function add_league($lname,$id,$det,$industry,$leaguepic)
+     {
+        
+    $db1 = $this->load->database('local', TRUE);
+    $sql = "INSERT INTO league(leaguename,createdby,leaguedescription,leagueindustry,leaguepic,
+        datecreated) VALUES(?,?,?,?,?,curdate())";
+    $db1->query($sql,array($lname,$id,$det,$industry,$leaguepic));
+    $leagueno = $db1->insert_id();  
+    return $leagueno;
+    $db1->close();
+
+   
+            }
     public function get_leagueDiscussions($id)
     {
         $db1 = $this->load->database('local', TRUE);

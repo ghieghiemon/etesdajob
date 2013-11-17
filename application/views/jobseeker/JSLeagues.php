@@ -82,14 +82,12 @@
                     </div>
                 </div><!-- end div Desc -->
                 
-                <div class="control-group eWellMarg">
-                    <label class="ePicUpload" style="margin-left:-200px">Picture: &nbsp;</label>
-                    <div class="controls" style="margin-left:60px; margin-top:-30px;">
-                        <form method="post" action="upload-page.php" enctype="multipart/form-data">
-                            <input name="pic" id="pic" type="file" style="font-size:10px" />
-                        </form>  
-                    </div>
-                </div> <!--end Picture field-->
+                  <div class="control-group eWellMarg">
+                            <label class="ePicUpload">Event Picture: &nbsp;</label>
+                            <div class="controls" style="margin-left:100px; margin-top:-30px;">
+                                   <input value ="upload" name="userfile" id="pic" type="file" />
+                            </div>
+                        </div>
              </div><!--end align center-->
     	</div><!--end modal-->
   	</div><!--end modal-body-->
@@ -115,6 +113,7 @@
                     	<h5 class="media-heading previewColor">
                             | Details
                         </h5>
+                                 <form method ="post" enctype="multipart/form-data" action ="<?php echo base_url()?>jobseeker/jobseeker_lcreate/">
                         
                         <div class="control-group"><!-- start div LN-->
                             <div class="myStyleQS3">
@@ -123,13 +122,10 @@
                         </div><!-- end div LN -->
                         
                         <div class="myStyle3QS" style="margin-top:-10px;">
-                            <select>
-                                <option>Choose Industry</option>
-                                <option>Agriculture & Fishery</option>
-                                <option>Automotive & Land Transportation</option>
-                                <option>Construction</option>
-                                <option>Decorative Arts</option>
-                            </select>
+                               <?php    
+             $drpindustries['0'] = 'Choose Industry';
+            echo form_dropdown('industry', $drpindustries,'0');     
+            ?> 
                         </div><!--end industry-->
                         
                         <div class="control-group" style="margin-top:-5px;"><!-- start div Desc-->
@@ -138,21 +134,19 @@
                             </div>
                         </div><!-- end div Desc -->
                         
-                        <div class="control-group eWellMarg">
-                            <label class="ePicUpload">Picture: &nbsp;</label>
-                            <div class="controls" style="margin-left:70px; margin-top:-30px;">
-                                <form method="post" action="upload-page.php" enctype="multipart/form-data">
-                                    <input name="pic" id="pic" type="file" style="font-size:10px" />
-                                </form>  
+                             <div class="control-group eWellMarg">
+                            <label class="ePicUpload">League Picture: &nbsp;</label>
+                            <div class="controls" style="margin-left:100px; margin-top:-30px;">
+                                   <input value ="upload" name="userfile" id="pic" type="file" />
                             </div>
-                        </div> <!--end Picture field-->
+                        </div>
                     </div><!--end well-->
                     
-                    <div align="right" class="eDnBtn">
-                    	<a href="#" class="btn btn-info">
-                        	Done
-                        </a>
+                       <div align="right" class="eDnBtn">
+                      <button type="submit" class="btn btn-info">Create</button>
                     </div>
+                    </form>
+                    
                     
                 </div><!--end scrollable-->
                 

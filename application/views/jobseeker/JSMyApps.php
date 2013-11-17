@@ -91,9 +91,9 @@ foreach($invites as $a)
                                   </td>
                                   
                                   <td>
-                                	  <font class="previewDet2">
-                                      	<span id="industry" name="industry"></span>
-                                      </font>
+                                	  <font class="previewDet2">';
+                                      	 echo $a['sectorName'];
+                                     echo' </font>
                                   </td>
                               </tr>
                           </tbody>
@@ -116,8 +116,9 @@ foreach($invites as $a)
                                   </td>
                                   
                                   <td>
-                                      <font class="previewDet2">
-                                      	<span id="region" name="region"></span>
+                                      <font class="previewDet2">';
+                                      	  echo $a['region'];
+                                     echo'
                                       </font>	
                                   </td>
                               </tr>
@@ -128,8 +129,9 @@ foreach($invites as $a)
                                   </td>
                                   
                                   <td>
-                                      <font class="previewDet2">
-                                      	<span id="city" name="city"></span>	
+                                      <font class="previewDet2">';
+                                     echo $a['city'];
+                                     echo'
                                       </font>
                                   </td>
                               </tr>
@@ -140,9 +142,9 @@ foreach($invites as $a)
                                   </td>
                                   
                                   <td>
-                                      <font class="previewDet2">
-                                      	<span id="vacant" name="vacant"></span>
-                                      </font>	
+                                      <font class="previewDet2">';
+                                      	echo $a['vacanciesleft'];
+                                     echo' </font>	
                                   </td>
                               </tr>
                              
@@ -153,9 +155,18 @@ foreach($invites as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="effect" name="effect"></span>	
+                                      	<span id="effect" name="effect">';
+                                          $date2 = $a['expirationdate'];
+                                $date = date('Y-m-d');
+                                $diff = abs(strtotime($date2) - strtotime($date));
+
+                                $days = round((($diff/24)/60)/60);
+                                echo $days. " days left";
+                            echo '</td>
+                           
+                            </span>	
                                       </font>
-                                  </td>
+                                  
                               </tr>
                               
                           </tbody>
@@ -182,8 +193,9 @@ foreach($invites as $a)
                                   </td>
                                   
                                   <td>
-                                      <font class="previewDet2">
-                                      	<span id="msex" name="msex"></span>	
+                                      <font class="previewDet2">';
+                                      		  echo $a['sex'];
+                                     echo'	
                                       </font>
                                   </td>
                               </tr>
@@ -195,7 +207,10 @@ foreach($invites as $a)
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="sAge" name="sAge"></span> - <span id="eAge" name="eAge"></span>	
+                                      	<span id="sAge" name="sAge">'; echo $a['agestart'];
+                                     echo'	</span> 
+                                        - <span id="eAge" name="eAge">'; echo $a['ageend'];
+                                     echo'	</span>	
                                       </font>
                                   </td>
                               </tr>
@@ -218,12 +233,7 @@ foreach($invites as $a)
                         </font>
                     </p>
                     
-                   <p class="previewCCS">
-                		<strong>SKILLS:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
-                    </p>
+                  
                 </div><!--end span-->
                 
                
