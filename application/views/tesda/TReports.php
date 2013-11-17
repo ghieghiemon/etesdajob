@@ -14,6 +14,7 @@
                 	<div style="width:950px;height:400px;overflow:auto;"><!--start scrollable table-->
                 	<div class="well" style="margin-left:320px;">
                     	<div class="myStyle2PQS" align="center" style="margin-top:40px;margin-bottom:30px;">
+                            <form method ="post" action="<?php echo base_url()?>tesda/generate_report">
                         <h4>
                         	GENERATE REPORT
                         </h4>
@@ -27,13 +28,13 @@
                             </select>
                             
                             <br>
-                            <select name="tor">
+                            <select name="reporttype">
                                 <option>Choose type of report</option>
-                                <option>Job Vacancies</option>
-                                <option>Employment per Industry</option>
-                                <option>Employment per Region</option>
-                                <option>In Demand Jobs</option>
-                                <option>In Demand Industries</option>
+                                <option value = "1">Job Vacancies</option>
+                                <option value = "4">Employment per Industry</option>
+                                <option value = "5">Employment per Region</option>
+                                <option value = "2">In Demand Jobs</option>
+                                <option value = "3">In Demand Industries</option>
                             </select>
                             
                             <br>
@@ -47,7 +48,7 @@
                             </select>
                             
                             <br>
-                            <select name="yr">
+                            <select name="year">
                                 <option>Choose year</option>
                                 <option>2013</option>
                                 <option>2012</option>
@@ -57,9 +58,10 @@
                             </select>
                             
                             <br><br><br>
-                            <button class="btn btn-info">
+                            <button type="submit" class="btn btn-info">
                             	GENERATE
                             </button>
+                            </form>
                     	</div>
                     </div><!--end well-->
                     </div><!--end scrollable-->
