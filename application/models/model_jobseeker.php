@@ -618,7 +618,27 @@ class Model_jobseeker extends CI_Model {
 
     $db1->close();
     }
-    
-     
+     public function check_if_invite($appid, $jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT * 
+             FROM job_invitation 
+             WHERE appid = $appid AND jobno = $jobno");
+        if ($query->num_rows()>0)
+            return true;
+        else return false;
+       $db1->close();
+    }
+     public function get_invno($appid,$jobno){
+        $db1 = $this->load->database('local', TRUE);
+        
+        $query = $db1->query("SELECT invitationno FROM job_invitation 
+             WHERE appid = $appid AND jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+         return $row->invitationno;
+        }
+        $db1->close();
+    } 
 }?>
 

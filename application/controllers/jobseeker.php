@@ -161,6 +161,14 @@ class Jobseeker extends CI_Controller {
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $this->model_jobseeker->apply_job($id,$jobno);
         
+        $invites = $this->model_jobseeker->get_myinvites($id);
+        
+        $ifinvite = $this->model_jobseeker->check_if_invite($id,$jobno);
+        if($ifinvite)
+        {
+            $invno = $this->model_jobseeker->accept_job($id,$jobno);
+            $this->model_jobseeker->accept_job($invno);
+        }
         $this->jobseeker_myappsdetail($jobno);
     }
     public function decline_job($invno)

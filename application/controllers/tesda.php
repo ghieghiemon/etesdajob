@@ -256,5 +256,10 @@ class Tesda extends CI_Controller {
            
         $this->tesda_evcreated($eventno);
     }
+    public function tesda_reports()
+    {
+        $this->tesda_header();
+        $this->load->view('tesda/TReports');
+    }
 }
 ?>

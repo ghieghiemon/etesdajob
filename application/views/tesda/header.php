@@ -64,7 +64,7 @@
                                 </h5>
                                 </a>
                                 
-                                <a href="#" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>tesda/tesda_reports" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="20"> 
                                     <br>Reports
