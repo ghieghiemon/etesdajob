@@ -180,14 +180,23 @@
                                          {
                                              echo 'Applied';
                                          }
+                                         else
+                                     {
+                                     ?>
+<!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
+                                         <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
+                                     <?php
                                      
+                                     }
+                                             
+                                     }
                                      else
                                      {
                                      ?>
 <!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
                                          <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
                                      <?php
-                                     }
+                                     
                                      }
                                      echo'</td>
                                 </tr>
