@@ -155,14 +155,14 @@ foreach($invites as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="effect" name="effect">';
-                                          $date2 = $a['expirationdate'];
+                                      	<span id="effect" name="effect">'?>
+                                     <?php     $date2 = $a['expirationdate'];
                                 $date = date('Y-m-d');
                                 $diff = abs(strtotime($date2) - strtotime($date));
 
                                 $days = round((($diff/24)/60)/60);
-                                echo $days. " days left";
-                            echo '</td>
+                                echo $days. " days left";?>
+                          <?php  echo '</td>
                            
                             </span>	
                                       </font>
@@ -221,16 +221,40 @@ foreach($invites as $a)
                 <div class="span6">
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
+                        <font class="previewCCS2">';?>
+                        	<?php
+                                  $cert = $this->model_jobseeker->get_jobCerts($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($cert as $b)
+                                                         {
+                                                             echo $b['ncname'];
+                                                             echo " ". $b['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
+                                                        
+                     <?php echo' </font>
                     </p>
                    
                    <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
-                        <font class="previewCCS2">
-                        	hii, je sdjfs NCII, jdfjdfj a, jkdnfjs d, ajdsjkdnfsnf ajn
-                        </font>
+                        <font class="previewCCS2">'?>
+                        	 <?php
+                                  $comp = $this->model_jobseeker->get_jobComps($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($comp as $c)
+                                                         {
+                                                             echo $c['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
+                       <?php echo' </font>
                     </p>
                     
                   
@@ -241,10 +265,10 @@ foreach($invites as $a)
         <hr class="hrLeagTab">
         
         
-	</div>
+	</div>'?>
   
-  	<div class="modal-footer">';
-        ?>
+  	<div class="modal-footer">
+        
   	
     	<a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
@@ -593,13 +617,7 @@ foreach($invites as $a)
                                 </td>
                                 <td>';
                                 ?>
-<!--                                    <a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
-                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
-                                    </a>
-                                    <input type="hidden" value="<?php echo base_url(); ?>" id="base" />
-                                    <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">
-                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_191_circle_minus.png" width="12"> Decline 
-                                    </button>-->
+
                         <a href="#jInv<?php echo $a['invitationno']?>" data-toggle="modal">View Invitation</a>
                                 </td>
                             </tr>
