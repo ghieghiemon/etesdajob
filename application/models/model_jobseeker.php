@@ -597,5 +597,26 @@ class Model_jobseeker extends CI_Model {
         $db1->query($query,array($lno,$id));
         $db1->close();
     }
+    
+          public function get_eventdetails($eno){
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
+        r.region ,c.city,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime
+                                FROM events e
+                                JOIN event_participants on event_participants.eventno = e.eventno 
+                                JOIN tesda_centraldb.employer_profile ep on ep.userID = e.createdby
+                                JOIN event_venue v on v.eventno = e.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+                                 JOIN reference_city c ON c.cityid = v.city
+                                WHERE e.eventno = $eno
+
+            ");
+     
+    return $query->result_array();
+
+    $db1->close();
+    }
 }?>
 

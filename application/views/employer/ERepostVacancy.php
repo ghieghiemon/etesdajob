@@ -50,7 +50,9 @@
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="industry" name="industry"></span>
+                                	<input type="hidden" id="industry1" name="industry1">
+                                      <span id="industryname" name="industryname"></span>
+                                   
                                       </font>
                                   </td>
                               </tr>
@@ -75,7 +77,8 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="region" name="region"></span>
+                                      	  <input type="hidden" id="region" name="region">
+                                      	<span id="regionname" name="regionname"></span>
                                       </font>	
                                   </td>
                               </tr>
@@ -87,7 +90,8 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="city" name="city"></span>	
+                                      <input type="hidden" id="city" name="city">
+                                     <span id="cityname" name="cityname"></span>	
                                       </font>
                                   </td>
                               </tr>
@@ -315,14 +319,19 @@
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                            
-                                                        <div class="control-group">
+                                                     
+                                                        
+                                                  <div class="control-group">
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
                                                                
-                                                             <input type="text" rows="7" style="width:50%" id="industriesname" name="industriesname" value="<?php echo $a['sectorName']?>"readonly >
-                                                             <input type="hidden" name="industries" id="industries" value="<?php echo $a['sectorID']?>">
+                                                             <input type="text" rows="7" style="width:50%" id="indname" name="indname" value="<?php echo $a['sectorName']?>"readonly >
+                                                             <input type="hidden" rows="7" style="width:50%" id="industry" name="industry" value="<?php echo $a['sectorID']?>"readonly >
+                           
                                                           </div>
                                                         </div> <!--end Desc field-->
+                                                        
+                                                        
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
                                                             <div class="controls">
@@ -536,19 +545,29 @@
         
         $("#pub").click(function(){
             
+           //  var ind = $('#industries').find(":selected").text();
+             var reg = $('#regionselect').find(":selected").text();
+             var cit = $('#cities').find(":selected").text();
+            
            $("#jobname").html($("#JN").val());
            $("#description").html($("#desc").val());
            $("#vacant").html($("#NOV").val());
            $("#effect").html($("#effectivity").val());
-           $("#region").html($("#regionselect").val());
-           $("#industry").html($("#industries").val());
-           $("#city").html($("#cities").val())
-           $("#msex").html($("#sex").val())
-           $("#sAge").html($("#ageto").val())
-           $("#eAge").html($("#agefrom").val())
            
-           $("#cert").html($("#lstcert2").val())
-           $("#comp").html($("#lstcomp2").val())
+           $("#region").html($("#regionselect").val());
+           $("#city").html($("#cities").val());
+           $("#industry1").html($("#industry").val());
+            		   
+            $("#industryname").html($("#indname").val());
+            $("#regionname").html(reg);
+            $("#cityname").html(cit);
+           
+           $("#msex").html($("#sex").val());
+           $("#sAge").html($("#ageto").val());
+           $("#eAge").html($("#agefrom").val());
+           
+           $("#cert").html($("#lstcert2").val());
+           $("#comp").html($("#lstcomp2").val());
            
             
         });

@@ -1,5 +1,6 @@
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/datepicker.css"> 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
 <!--start ModEventAttend-->
 <div class="modal hide fade" id="ModEventAttend">
   	<div class="modal-header">
@@ -61,12 +62,12 @@
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_355_bullhorn.png" width="18"> Create New Event
                 </h5>
                 
-                <div style="width:315px;height:500px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
+                <div style="width:315px;height:520px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
                 	<div class="well">
                     	<h5 class="media-heading previewColor">
                             | Summary
                         </h5>
-                          <form method ="post" enctype="multipart/form-data" action ="<?php echo base_url()?>employer/employer_evcreate/">
+                          <form method ="post" enctype="multipart/form-data" action ="<?php echo base_url()?>tesda/tesda_evcreate/">
                   
                         <div class="control-group"><!-- start div EN-->
                             <div class="myStyleQS3">
@@ -106,14 +107,12 @@
                             </div>
                         </div><!-- end div HOSTS -->
                         
-<!--                        <div class="control-group eWellMarg">
+                        <div class="control-group eWellMarg">
                             <label class="ePicUpload">Event Picture: &nbsp;</label>
                             <div class="controls" style="margin-left:100px; margin-top:-30px;">
-                                <form method="post" action="upload-page.php" enctype="multipart/form-data">
-                                    <input name="pic" id="pic" type="file" style="font-size:10px" />
-                                </form>  
+                                   <input value ="upload" name="userfile" id="pic" type="file" />
                             </div>
-                        </div> end Picture field-->
+                        </div>
 
                     </div><!--end well-->
                     
@@ -193,7 +192,7 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href='<?php echo base_url()?>employer/employer_evcreated/<?php echo $a['eventno']?>' class="LeaName3"><?php echo $a['eventtitle']?></a>
+                                	<a href='<?php echo base_url()?>tesda/employer_evall/<?php echo $a['eventno']?>' class="LeaName3"><?php echo $a['eventtitle']?></a>
                                 	<td>
                                   <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail5 ePicMarg"/>
                                     	
@@ -254,7 +253,7 @@
                             
                             <tbody>
                             	<tr>
-                                	<a href='<?php echo base_url()?>employer/employer_evcreated/<?php echo $a['eventno']?>' class="LeaName3"><?php echo $a['eventtitle']?></a>
+                                	<a href='<?php echo base_url()?>tesda/tesda_evcreated/<?php echo $a['eventno']?>' class="LeaName3"><?php echo $a['eventtitle']?></a>
                                 	<td>
                                   <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="thumbnail5 ePicMarg"/>
                                     	

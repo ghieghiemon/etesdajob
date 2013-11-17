@@ -256,7 +256,7 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $this->load->model('model_pub');
-        $data['details'] = $this->model_main->get_eventdetails($eno);    
+        $data['details'] = $this->model_jobseeker->get_eventdetails($eno);    
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEventDetails', $data);
         $this->load->view('footer2');

@@ -198,13 +198,63 @@ class Tesda extends CI_Controller {
          $this->load->model('model_tesda');
          $this->load->model('model_pub');
          $id = $this->model_main->get_userid($this->session->userdata('email'));
-         $data['createdevents'] = $this->model_tesda->get_createdevents($id);
-         $data['all'] = $this->model_main->all_events();
+        $data['createdevents'] = $this->model_tesda->get_createdevents($id);
+        $data['all'] = $this->model_main->all_events();
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
        
 
          $this->tesda_header();
          $this->load->view('tesda/TEventsAll',$data);
          $this->load->view('footer2');
+    }
+         public function tesda_evcreated($eno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_tesda');
+        $this->load->model('model_pub');
+        $data['details'] = $this->model_tesda->get_eventdetails($eno);    
+        $this->tesda_header();
+        $this->load->view('tesda/TEventDetailsCreated', $data);
+        $this->load->view('footer2');
+    }
+    
+    public function tesda_evcreate()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_tesda');
+        $this->load->model('model_pub');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+
+        $config['upload_path'] = './eventpics/';
+        $config['allowed_types'] = 'gif|jpg|png|docx|zip';
+        $config['max_size']	= '10000000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload();
+        $data = $this->upload->data();
+        $u = $this->upload->data();
+        $eventpic= $u['file_name'];
+          
+         $eventname = $this->input->post('EN');  
+         $startdate = $this->input->post('date');
+         $timestart = $this->input->post('time');
+         $details = $this->input->post('Det');
+         $industry = $this->input->post('industry'); 
+        
+        $eventvenue = $this->input->post('VEN');
+        $region = $this->input->post('regionid');
+        $city = $this->input->post('cityid');
+        
+        $sponsor = $this->input->post('SP');
+        
+        $eventno = $this->model_tesda->add_event($eventname,$startdate,$timestart,$id,$details,$industry,$sponsor,$eventpic);   
+        $this->model_tesda->add_eventvenue($eventno,$eventvenue,$region,$city);
+        $this->model_tesda->attend_event($id,$eventno);
+           
+        $this->tesda_evcreated($eventno);
     }
 }
 ?>

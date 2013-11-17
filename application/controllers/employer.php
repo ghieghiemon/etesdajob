@@ -201,6 +201,7 @@ class Employer extends CI_Controller {
                 $this->model_employer->add_competencies($jobpost_id, $a);
             }
        }
+       
 
          if(count($ce)>=0)
       {
@@ -916,7 +917,7 @@ class Employer extends CI_Controller {
         $this->upload->do_upload();
         $data = $this->upload->data();
         $u = $this->upload->data();
-          $eventpic= $u['file_name'];
+        $eventpic= $u['file_name'];
           
          $eventname = $this->input->post('EN');  
          $startdate = $this->input->post('date');
@@ -935,42 +936,8 @@ class Employer extends CI_Controller {
         $this->model_employer->attend_event($id,$eventno);
            
         $this->employer_evcreated($eventno);
-       // $this->load->view('employer/EEventDetailsCreated', $data);
-      //  $this->load->view('footer2');
     }
     
-     public function eevent_create2(){ //ADD TO DB
-    $this->load->model('model_main');
-    $userid = $this->model_main->get_userid($this->session->userdata('email'));
-
-   
-        $eventname = $this->input->post('eventname');  
-        $startdate = $this->input->post('startdate');
-        $enddate = $this->input->post('enddate');
-        
-         
-        $timestart = $this->input->post('timestart');
-        $timeend = $this->input->post('timeend'); 
-        
-        $details = $this->input->post('details');
-        $industry = $this->input->post('industry'); 
-        
-       
-        $eventvenue = $this->input->post('eventvenue');
-        $region = $this->input->post('regionid');
-        $city = $this->input->post('cityid');
-        
-        $host = $this->input->post('hostname');
-        $sponsor = $this->input->post('sponsorname');
-        
-        $eventno = $this->model_main->add_event($eventname,$startdate,$enddate, $timestart,$timeend,$userid, $details, $industry,$host,$sponsor);   
-        $this->model_main->add_eventvenue($eventno,$eventvenue,$region,$city);
-           
-        
-       redirect('employerpage');
-    
-    }
-    
-    
+ 
 }
 ?>

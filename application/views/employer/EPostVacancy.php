@@ -49,7 +49,7 @@
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<span id="industry" name="industry"></span>
+                                      	<input type="hidden" id="industry" name="industry">
                                       <span id="industryname" name="industryname"></span>
                                       </font>
                                   </td>
@@ -75,7 +75,9 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="region" name="region"></span>
+                                      <input type="hidden" id="region" name="region">
+                                      	<span id="regionname" name="regionname"></span>
+                                        	
                                       </font>	
                                   </td>
                               </tr>
@@ -87,7 +89,8 @@
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	<span id="city" name="city"></span>	
+                                      <input type="hidden" id="city" name="city">
+                                      	<span id="cityname" name="cityname"></span>	
                                       </font>
                                   </td>
                               </tr>
@@ -167,8 +170,7 @@
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
                         <span id="cert1" name= "cert1"></span>
-                           <span><?php   $certname1 = $this->model_employer->get_certName(1);
-                            echo $certname1;?></span>
+                          
                         	
                         </font>
                     </p>
@@ -372,11 +374,11 @@
                                     
                                         <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
                                                        <?php    
-                                                                $industry['#'] = 'Choose Industry';
+                                                                $industry['0'] = 'Choose Industry';
                                                                 $params = 'id="industrycert" style="width:40%" '; 
-                                                               echo form_dropdown('industry', $industry,'#',$params);    
+                                                               echo form_dropdown('industrycert', $industry,'0',$params);    
                                                                
-                                                               ?> 
+                                                          ?> 
                                                 
                                                 </div>
 
@@ -503,26 +505,47 @@
         
         $("#pub").click(function(){
            
+                        var certs = '';
 			var competencies = '';
-		   
+                       // var ind = '';
+             var ind = $('#industries').find(":selected").text();
+             var reg = $('#regions').find(":selected").text();
+             var cit = $('#cities').find(":selected").text();
+               //    var ind = $('#aioConceptName :selected').text();
+                   
            $("#jobname").html($("#JN").val());
            $("#description").html($("#desc").val());
            $("#vacant").html($("#NOV").val());
            $("#effect").html($("#effectivity").val());
            $("#region").html($("#regions").val());
-            $("#industry").html($("#industries").val());
            $("#city").html($("#cities").val());
+           $("#industry").html($("#industries").val());
+            		   
+            $("#industryname").html(ind);
+            $("#regionname").html(reg);
+            $("#cityname").html(cit);
+            
+            
+          
            $("#msex").html($("#sex").val());
            $("#sAge").html($("#ageto").val());
            $("#eAge").html($("#agefrom").val());
            
            $("#cert1").html($("#lstcert2").val());
+		   $('#lstcert2').each(function(index){
+				certs += $(this).text() + ' , ';
+		   });
+		   
+           $("#cert1").html(certs);
+           
+            
+             $("#comp").html($("#lstcomp2").val());
 		   $('#lstcomp2').each(function(index){
-				competencies += $(this).text() + ', ';
+				competencies += $(this).text() + ' , ';
 		   });
 		   
            $("#comp").html(competencies);
-            
+           
         });
             // wait search lng
             
