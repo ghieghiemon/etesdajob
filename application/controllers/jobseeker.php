@@ -166,7 +166,7 @@ class Jobseeker extends CI_Controller {
         $ifinvite = $this->model_jobseeker->check_if_invite($id,$jobno);
         if($ifinvite)
         {
-            $invno = $this->model_jobseeker->accept_job($id,$jobno);
+            $invno = $this->model_jobseeker->get_invno($id,$jobno);
             $this->model_jobseeker->accept_job($invno);
         }
         $this->jobseeker_myappsdetail($jobno);
