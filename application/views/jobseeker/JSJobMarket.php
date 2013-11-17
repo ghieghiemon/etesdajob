@@ -174,10 +174,13 @@
                                     
                                     <td>'?>
                                      <?php
+                                     if(count($suggested) >0)
+                                 {
                                      if(in_array($row['jobno'],$myjobno))
                                      {
                                          echo 'Applied';
                                      }
+                                 }
                                      else
                                      {
                                      ?>
