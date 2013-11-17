@@ -589,6 +589,7 @@ class Employer extends CI_Controller {
        $this->load->model('model_employer');
        
        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
        $data['myleagues'] = $this->model_employer->get_myleagues($id);
        $data['createdleagues'] = $this->model_employer->get_createdleagues($id);
        $data['all'] = $this->model_employer->get_allleagues();
@@ -940,11 +941,7 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         $this->load->model('model_pub');
         $id = $this->model_main->get_userid($this->session->userdata('email'));
-        //$data['details'] = $this->model_employer->get_eventdetails($eno);    
-       // $data['createdevents'] = $this->model_employer->get_createdevents($id);
-        //$data['regions'] = $this->model_main->get_regions();
-        
-                       //  $userid =$this->model_main->add_empuser();
+
         $config['upload_path'] = './eventpics/';
         $config['allowed_types'] = 'gif|jpg|png|docx|zip';
         $config['max_size']	= '10000000';
@@ -976,7 +973,36 @@ class Employer extends CI_Controller {
         $this->employer_evcreated($eventno);
     }
     
-    
+     public function employer_lcreate()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $this->load->model('model_pub');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+
+        $config['upload_path'] = './leaguepics/';
+        $config['allowed_types'] = 'gif|jpg|png|docx|zip';
+        $config['max_size']	= '10000000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload();
+        $data = $this->upload->data();
+        $u = $this->upload->data();
+        $leaguepic= $u['file_name'];
+          
+         $lname = $this->input->post('LN');  
+         $det = $this->input->post('Det');
+         $industry = $this->input->post('industry'); 
+        
+
+        
+        $leagueno = $this->model_employer->add_league($lname,$id,$det,$industry,$leaguepic);   
+        $this->model_employer->join_league($leagueno,$id);
+           
+       redirect(base_url()."employer/employer_leagueview/".$leagueno);
+    }
     
  
 }

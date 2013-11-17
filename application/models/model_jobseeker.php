@@ -54,12 +54,15 @@ class Model_jobseeker extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-       $query = $db1->query("SELECT r.region, c.city,  j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
+       $query = $db1->query("SELECT distinct agestart,ageend, i.sectorName,sex,r.region, c.city,  j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
                                 as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
                                 FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                                 JOIN etesda.reference_city c ON c.cityid = v.city
-				JOIN etesda.reference_region r ON r.regionid = v.region                    
+				JOIN etesda.reference_region r ON r.regionid = v.region
+                                 join etesda.job_certifications jc on jc.jobno = v.jobno 
+                                join etesda.job_competencies jco on jco.jobno = v.jobno 
                                 WHERE j.appid = $userid AND j.applied = 0 AND expirationdate >= curdate() 
                ORDER BY dateposted DESC");
         return $query->result_array();
@@ -597,6 +600,20 @@ class Model_jobseeker extends CI_Model {
         $db1->query($query,array($lno,$id));
         $db1->close();
     }
+    
+        public function add_league($lname,$id,$det,$industry,$leaguepic)
+     {
+        
+    $db1 = $this->load->database('local', TRUE);
+    $sql = "INSERT INTO league(leaguename,createdby,leaguedescription,leagueindustry,leaguepic,
+        datecreated) VALUES(?,?,?,?,?,curdate())";
+    $db1->query($sql,array($lname,$id,$det,$industry,$leaguepic));
+    $leagueno = $db1->insert_id();  
+    return $leagueno;
+    $db1->close();
+
+   
+            }
     
           public function get_eventdetails($eno){
         $db1 = $this->load->database('local', TRUE);

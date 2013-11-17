@@ -436,5 +436,36 @@ class Jobseeker extends CI_Controller {
         
         redirect(base_url()."jobseeker/jobseeker_leagueview/".$lno);
     }
+    
+     public function jobseeker_lcreate()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_pub');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+
+        $config['upload_path'] = './leaguepics/';
+        $config['allowed_types'] = 'gif|jpg|png|docx|zip';
+        $config['max_size']	= '10000000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload();
+        $data = $this->upload->data();
+        $u = $this->upload->data();
+        $leaguepic= $u['file_name'];
+          
+         $lname = $this->input->post('LN');  
+         $det = $this->input->post('Det');
+         $industry = $this->input->post('industry'); 
+        
+
+        
+        $leagueno = $this->model_jobseeker->add_league($lname,$id,$det,$industry,$leaguepic);   
+        $this->model_jobseeker->join_league($leagueno,$id);
+           
+       redirect(base_url()."jobseeker/jobseeker_leagueview/".$leagueno);
+    }
 }
 ?>
