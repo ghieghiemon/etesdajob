@@ -26,6 +26,10 @@
                       </thead>
                       
                       <tbody class="recName">
+                          <?php
+                          foreach($invites as $a)
+                          {
+                          ?>
                           <tr>
                           	  <td>
                               	<input type="checkbox">
@@ -33,7 +37,17 @@
                               
                               <td>
                               	 <a href="#" class="recAppName">
-                                     Angelica Guerrero
+                                     <?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>
                                  </a>
                               </td>
                               
@@ -57,7 +71,9 @@
                                   8
                               </td>
                           </tr>
-                          
+                          <?php
+                          }
+                          ?>
                            
                           
                       </tbody>

@@ -203,7 +203,7 @@
                             <br>
                                     <div class="row marg3">
                                             	<span class="btn btn-primary btn-mini pull-right">'?>
-                                                <a href="<?php echo base_url()?>employer/employer_evinvite" class="attendBtn">Invite</a>
+                                                <a href="<?php echo base_url()?>employer/employer_evinvite/<?php echo $row['eventno']?>" class="attendBtn">Invite</a>
                                               <?php echo'  </span>
                                                
                                     </div>

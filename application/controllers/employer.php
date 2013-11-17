@@ -895,16 +895,42 @@ class Employer extends CI_Controller {
         $this->load->view('employer/EEventDetailsCreated', $data);
         $this->load->view('footer2');
     }
-    
-        public function employer_evinvite()
+    public function ematch($userid, $eventno)
+    {
+        $this->load->model('model_employer');
+        
+        $total_ind = $this->model_employer->getMatchedindustries($userid,$eventno);
+        if($total_ind >0)
+            return true;
+        else
+            return false;
+    }
+        public function employer_evinvite($eventno)
     {
         $this->load->model('model_main');
         $this->load->model('model_employer');
-       // $this->load->model('model_pub');
-      //  $data['details'] = $this->model_employer->get_eventdetails($eno);    
+       
+        $jobseekers = $this->model_employer->get_jobseekers();
+        $stack = array(); 
+        foreach($jobseekers as $a)
+        {
+            if($this->ematch($a['appid'], $eventno))
+            {
+                array_push($stack, $a);
+            }
+        }
+        $final = array();
+        foreach ($stack as $a)
+        {
+           if($this->model_employer->check_if_einvite($a['appid'], $eventno))
+           {
+                array_push($final, $a);
+           }
+        }
+       
+        $data['invites'] = $final;
         $this->employer_header();
-        //$this->load->view('employer/EEventInvite', $data);
-        $this->load->view('employer/EEventInvite');
+        $this->load->view('employer/EEventInvite',$data);
         $this->load->view('footer2');
     }
     
