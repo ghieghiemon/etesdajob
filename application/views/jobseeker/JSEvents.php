@@ -304,7 +304,8 @@
                     	</table><!--end one event-->
                          <div class="pull-right">
                                          	  <?php 
-                                        
+                                                     if(count($myevents) != 0)
+                                                     {
                                         if(in_array($a['eventno'],$eno))
                                         {
                                             echo '<span class="label label-info">
@@ -320,6 +321,18 @@
                                             </span>
                                         <?php
                                         }
+                                                     }
+                                                       else
+                                     {
+                                     ?>
+ <span>
+                                            	<a href="<?php echo base_url()?>jobseeker/attend_event/<?php echo $a['eventno']?>" class="btn btn-primary btn-mini">
+                                                    &nbsp; Attend &nbsp;
+                                                </a>
+                                            </span>
+                                     <?php
+                                     
+                                     }
                                         ?>
                                         </div>
                         <br>

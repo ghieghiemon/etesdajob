@@ -178,7 +178,9 @@
                                      {
                                          if(in_array($row['jobno'],$myjobno))
                                          {
+                                             echo' <span class="label label-info">';
                                              echo 'Applied';
+                                             echo'</span>';
                                          }
                                          else
                                      {
