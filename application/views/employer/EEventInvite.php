@@ -5,7 +5,7 @@
     	<div class="span12">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
                 </h3>
                 
                 <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->      
@@ -58,37 +58,7 @@
                               </td>
                           </tr>
                           
-                          <tr>
-                              <td>
-                              	<input type="checkbox">
-                              </td>
-                              
-                              <td>
-                                 <a href="#" class="recAppName">
-                                   Ruben Mendoza
-                                 </a>
-                              </td>
-                              
-                              <td>
-                                  29
-                              </td>
-                             
-                              <td>
-                              	  M
-                              </td>
-                              
-                              <td>
-                                  NCR | Makati City
-                              </td>
-                              
-                              <td>
-                                March 2007
-                              </td>
-                              
-                              <td>
-                                  2
-                              </td>
-                          </tr>                         
+                           
                           
                       </tbody>
                   </table>	

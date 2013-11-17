@@ -618,5 +618,7 @@ class Model_jobseeker extends CI_Model {
 
     $db1->close();
     }
+    
+     
 }?>
 

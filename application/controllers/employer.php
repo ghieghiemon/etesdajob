@@ -896,6 +896,18 @@ class Employer extends CI_Controller {
         $this->load->view('footer2');
     }
     
+        public function employer_evinvite()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+       // $this->load->model('model_pub');
+      //  $data['details'] = $this->model_employer->get_eventdetails($eno);    
+        $this->employer_header();
+        //$this->load->view('employer/EEventInvite', $data);
+        $this->load->view('employer/EEventInvite');
+        $this->load->view('footer2');
+    }
+    
     public function employer_evcreate()
     {
         $this->load->model('model_main');
@@ -937,6 +949,8 @@ class Employer extends CI_Controller {
            
         $this->employer_evcreated($eventno);
     }
+    
+    
     
  
 }

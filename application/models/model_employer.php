@@ -919,5 +919,26 @@ public function attend_event($userid, $eventno){
         $db1->query($sql,array($userid, $eventno));
         $db1->close();
     }
+    
+     public function getMatchedindustries ($userid, $evento)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.events e 
+          JOIN tesda_centraldb.nc_reference nc ON nc.sectorid = e.eventindustry
+          JOIN tesda_centraldb.applicants_certificates ac ON ac.certificateid = nc.ncid
+          WHERE b.userid = $userid AND eventno = $evento");
+        return $query->num_rows();
+        $db1->close(); 
+    }
+    
+        public function ematch($userid, $eventno)
+    {
+        $total_ind = $this->getMatchedindustries($userid,$eventno);
+        if($total_ind >0)
+            return true;
+        else
+            return false;
+    }
 }
 ?>
