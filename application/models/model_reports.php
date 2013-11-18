@@ -29,7 +29,8 @@ class Model_reports extends CI_Model {
         $query1 = "select j.jobno, j.companyID, j.jobtitle, j.vacanciesleft, j.description, j.expirationdate, e.companyName, c.city from etesda.job_vacancies j 
                     join tesda_centraldb.employer_profile e on j.companyID = e.userID
                     join etesda.reference_city c on c.cityid = j.city
-                   where month(dateposted) = ? and year(dateposted) = ? and sectorid =?";
+					join etesda.job_certifications jc on jc.jobno = j.jobno
+                   where month(dateposted) = ? and year(dateposted) = ? and jc.ncid = ?";
         $result = $dbconn->query($query1, array($month, $year,$sectorid))->result();
         $dbconn->close();
         return $result;

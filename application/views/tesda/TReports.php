@@ -121,7 +121,6 @@
                             </select>
                             
                             <br><br><br>
-                            <a href="#certmodal" data-toggle="modal">generate</a>
                             <button type="submit" class="btn btn-info" id="cert">
                             	GENERATE
                             </button>
