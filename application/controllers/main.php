@@ -363,6 +363,8 @@ class Main extends CI_Controller {
             {
                 $id = $this->model_main->get_userid($email);
                 $current = $this->model_main->get_survey($id);
+                
+                
                 $surveys = $this->model_main->check_survey($id);
                 if(count($surveys) == 0)
                 {

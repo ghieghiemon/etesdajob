@@ -6,7 +6,7 @@
 	<div class="span12">
     	<div class="well">
         	<h4 class="media-heading">
-            	 <img src="assets/img/icons/glyphicons_041_charts.png" width="25"> Reports
+            	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="25"> Reports
             </h4>
             
             <div class="row-fluid">
@@ -38,13 +38,20 @@
                             </select>
                             
                             <br>
-                            <select name="month">
-                                <option>Choose month</option>
-                                <option>January</option>
-                                <option>February</option>
-                                <option>March</option>
-                                <option>April</option>
-                                <option>May</option>
+                            <select name="month" id="month" class="formlist">
+                           
+                            <option value = "1">January</option>
+                            <option value = "2">February</option>
+                            <option value = "3">March</option>
+                            <option value = "4">April</option>
+                            <option value = "5">May</option>
+                            <option value = "6">June</option>
+                            <option value = "7">July</option>
+                            <option value = "8">August</option>
+                            <option value = "9">September</option>
+                            <option value = "10">October</option>
+                            <option value = "11">November</option>
+                            <option value = "12">December</option> 
                             </select>
                             
                             <br>
