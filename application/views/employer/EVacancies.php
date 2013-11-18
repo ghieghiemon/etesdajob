@@ -675,26 +675,13 @@ foreach ($myvacancies as $a)
             </div><!--end well-->
         	
         </div><!--end span right column-->
-    </div><!--end row-->
-
-</div><!--End div-->
-</div>
+  
  
             
              
 
 
       <hr>
-      <script type="text/javascript">
-       
-       $(document).ready(function(){
-          
-           $('#newtable').dataTable({
-                "sPaginationType": "full_numbers"
-            });
-		   
-       });
-        
-</script>
+
 
 </body>

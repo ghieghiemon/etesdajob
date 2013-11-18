@@ -455,7 +455,7 @@ foreach ($myvacancies as $a)
                                                 </font>
                                             </td>
                                             <td>
-                                            	<a href="#" class="recAppName">
+                                            	  <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>/<?php echo $a['jobno'] ?>" class="recAppName" id="profile">
                                                    <?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
@@ -585,7 +585,7 @@ foreach ($myvacancies as $a)
                                                 </td>
 
                                                 <td>
-                                                    <a href="#" class="recAppName">
+                                                      <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>/<?php echo $a['jobno'] ?>" class="recAppName" id="profile">
                                                       <?php
                                                       $name = $this->model_employer->get_jsName($a['appid']);
                                                       foreach($name as $b)

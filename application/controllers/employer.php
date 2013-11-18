@@ -592,7 +592,8 @@ class Employer extends CI_Controller {
                     are not able to pursue your application for $jobtitle further.";
             }
             $this->model_employer->change_status($a,$status,$date,$time,$location);
-            $this->model_employer->add_notification($a,$notif,$jobno);
+            $appid = $this->model_employer->get_appid($a);
+            $this->model_employer->add_notification($appid,$notif,$jobno);
         }
         
         $this->employer_appsperjob($jobno);
@@ -730,7 +731,7 @@ class Employer extends CI_Controller {
         $this->load->view("employer/EEmployerProfile",$data);
    }
    // EMPLOYER CALENDAR
- function view_calendar($year = -1, $month = -1){
+ function view_calendar($year = -1, $month = -1){ //CHANGE STAT
                        
    
      $config = array (
@@ -808,7 +809,7 @@ class Employer extends CI_Controller {
  
 		}
 		
-		function view_event($year, $month, $day){
+		function view_event($year, $month, $day){ //CHANGE STAT
 			
 			$this->load->model('tuna');
                         $this->load->model('model_main');
@@ -825,6 +826,157 @@ class Employer extends CI_Controller {
                         echo '<div class="well" style="margin-top:10px;margin-left:-100px">';
 			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
 			echo"  <table style='width:850px'class=''>
+                      <thead>
+                          <tr>
+                          	
+                              <th class='span4' style='text-align:center'>Name</th>
+                              <th class='span3' style='text-align:center'>Status</th>
+                              <th class='span3' style='text-align:center'>Date</th>
+                              <th class='span2' style='text-align:center'>Time</th>
+                          </tr>
+                      </thead>";
+			foreach($events as $event):
+			echo"    <tbody class='recName'>
+                          <tr>
+                              
+                              <td>
+                              	 <a href='#' class='recAppName'>
+                                 
+                              ";
+                         $name = $this->model_employer->get_jsName($event->appid);
+                         foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                 echo"</a>
+                              </td>
+                              
+                              <td>
+                                  $event->status
+                              </td>
+                              
+                              <td>
+                              	 $event->requirementdate
+                              </td>
+                              
+                              <td>
+                                 $event->requirementtime
+                              </td>
+                              
+                             
+
+                          </tr>
+                          
+                      </tbody>";
+//				echo $event->appid . '<strong>Date:</strong>' .' '. 
+//                                $event->requirementdate. '<strong>Time:</strong>' 
+//                                        . $event->requirementtime. ' '. $event->status
+//                                        . ' ' . $event->applicationid. ' ' . $event->location;
+//				echo '<br>';
+			
+			endforeach;
+                echo '<table></div></div></div>';
+		}
+                
+                 function view_ecalendar($year = -1, $month = -1){
+                       
+   
+     $config = array (
+               'show_next_prev'  => TRUE,
+               'next_prev_url'   =>  base_url() . 'employer/view_ecalendar'
+             );
+			// 1. Get current year and month
+			$yr = $year == -1 ? date("Y") : $year;
+			$mo = $month == -1 ? date("m") : $month;
+			
+			// Load the javascript
+                           $this->load->model('model_main');
+                           $this->load->model('model_employer');
+                         
+                          // $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+                           
+                           $id = $this->model_main->get_userid($this->session->userdata('email'));
+                           $this->employer_header();
+                           $this->load->view('employer/ECalendar');
+                           
+			 //  $this->load->view('footer2');
+			// Initialize the template 
+			$config['template'] = '
+                                        
+					{table_open}<table style="width:700px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="center" cellpadding="1" cellspacing="10">{/table_open}
+
+					{heading_row_start}<tr>{/heading_row_start}
+
+					{heading_previous_cell}<th><a href="{previous_url}">&lt;&lt;</a></th>{/heading_previous_cell}
+					{heading_title_cell}<th colspan="{colspan}">{heading}</th>{/heading_title_cell}
+					{heading_next_cell}<th><a href="{next_url}">&gt;&gt;</a></th>{/heading_next_cell}
+
+					{heading_row_end}</tr>{/heading_row_end}
+
+					{week_row_start}<tr>{/week_row_start}
+					{week_day_cell}<td>{week_day}</td>{/week_day_cell}
+					{week_row_end}</tr>{/week_row_end}
+
+					{cal_row_start}<tr>{/cal_row_start}
+					{cal_cell_start}<td>{/cal_cell_start}
+
+					{cal_cell_content}<a href="javascript:void(0)" onclick="openWindow({day},' . $yr . ',' . $mo . ',' . $id . ');">{day}</a>{/cal_cell_content}
+					{cal_cell_content_today}<div class="highlight"><a href="{content}" target="_blank">{day}</a></div>{/cal_cell_content_today}
+
+					{cal_cell_no_content}{day}{/cal_cell_no_content}
+					{cal_cell_no_content_today}<b>{day}</b>{/cal_cell_no_content_today}
+
+					{cal_cell_blank}&nbsp;{/cal_cell_blank}
+
+					{cal_cell_end}</td>{/cal_cell_end}
+					{cal_row_end}</tr>{/cal_row_end}
+
+					{table_close}</table>{/table_close}
+			';
+			
+			$this->load->library('calendar', $config);
+			$this->load->model('tuna');
+                
+
+			// 2. Get the events
+			$events = $this->tuna->get_events($id,$yr, $mo);
+			$events_arr = array();
+				
+			foreach($events as $event):
+					
+				$events_arr[$event->eday] = base_url('employer/view_event2/'.$yr.'/'.$mo.'/'.$event->eday);
+				
+			endforeach;
+				
+			// 3. Pass the events and generate the calendar
+			echo $this->calendar->generate($yr, $mo, $events_arr);
+			
+			// Content DIV
+			echo '<div id="contentdiv"></div><br>';
+ 
+		}
+		
+		function view_event2($year, $month, $day){
+			
+			$this->load->model('tuna');
+                        $this->load->model('model_main');
+                        $this->load->model('model_employer');
+                        $id = $this->model_main->get_userid($this->session->userdata('email'));
+			$events = $this->tuna->get_events($id, $year, $month, $day);
+			
+			// EJ EJ EJ EJ
+//			print_r($events);
+//			return;
+                        
+			 echo '<div class="row-fluid">';
+                          echo '<div class="span9">';
+                        echo '<div class="well" style="margin-top:10px;margin-left:350px">';
+			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
+			echo"  <table style='width:500px'class=''>
                       <thead>
                           <tr>
                           	
