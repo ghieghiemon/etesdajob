@@ -280,8 +280,8 @@
                                         <div class="pull-right" style="margin-left:-60px; margin-top:-55px;">
                                             <span class="LeagueLeave btn-group">
                                             <li class="dropdown">
-                                                <a class="btn btn-mini btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_136_cogwheel.png" width="13"> Settings</a>
+                                                <a class="btn btn-mini btn-info dropdown-toggle" href="<?php echo base_url()?>employer/employer_leagueinvite/<?php echo $a['leagueno']?>">
+                                            Invite </a>
                                                 <ul class="dropdown-menu">
                                                 <font class="lOptions">
                                                      

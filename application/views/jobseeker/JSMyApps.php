@@ -46,10 +46,10 @@ foreach($invites as $a)
   	</div>
 
 	<div class="modal-body">
-        <p>
-                We would like to invite you to apply for this job since you passed our qualifications. We look forward in seeing you so you could proceed to the next procedure (exam/interview).
-                
-                <br><br>
+        <p>';
+               
+                 echo $a['message'];
+                echo' <br><br>
                 <span id="label1"></span>
 		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
         	<div class="row-fluid">

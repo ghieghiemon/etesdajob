@@ -54,7 +54,7 @@ class Model_jobseeker extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-       $query = $db1->query("SELECT distinct agestart,ageend, i.sectorName,sex,r.region, c.city,  j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
+       $query = $db1->query("SELECT distinct agestart,ageend, i.sectorName,sex,r.region, c.city, message,  j.invitationno,v.jobno, v.vacanciesleft, v.jobtitle, v.description, e.companyName, DATE_FORMAT(dateposted, '%m/%d/%Y') 
                                 as dateposted, DATE_FORMAT(expirationdate, '%m/%d/%Y') as expirationdate
                                 FROM etesda.job_invitation j JOIN etesda.job_vacancies v ON j.jobno = v.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID

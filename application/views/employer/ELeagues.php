@@ -332,14 +332,7 @@
                                             <?php echo $a['leaguedescription']?></p>
                                         </font>
                                         </p>
-                                        
-                                        <div class="pull-right" style="margin-top:7px">
-                                         	<span>
-                                            	<a href="#editLD" data-toggle="modal" role="button" class="btn btn-mini btn-info">
-                                                    &nbsp; Edit League Details
-                                                </a>
-                                            </span>
-                                        </div>
+                                       
                                     </td>
                                 </tr>
                                 <?php

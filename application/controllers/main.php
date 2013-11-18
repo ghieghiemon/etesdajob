@@ -345,20 +345,37 @@ class Main extends CI_Controller {
         $this->form_validation->set_rules('email','Email','required|trim|xss_clean|callback_validate_credentials');
         $this->form_validation->set_rules('userpassword','Password','required|trim');
 
+        
         if($this->form_validation->run())
         {
+            $email = $this->input->post('email');
             $data = array(
                 'email' => $this->input->post('email'),
                 'is_logged_in' => 1
             );
             $this->session->set_userdata($data); 
             $this->load->model('model_main');
-                if($this->model_main->get_usertype()=='APPLICANT')
-            redirect('jobseeker/jobseeker_myappspage');
+            if($this->model_main->get_usertype()=='APPLICANT')
+            {
+                redirect(base_url.'jobseeker/jobseeker_myappspage');
+            }
             else if($this->model_main->get_usertype()=='EMPLOYER')
-                redirect('employer/employer_dashboard');
+            {
+                $id = $this->model_main->get_userid($email);
+                $surveys = $this->model_main->check_survey($id);
+                if(count($surveys) == 0)
+                {
+                    redirect(base_url.'employer/employer_dashboard');
+                }
+                else
+                {
+                    redirect(base_url.'employer/employer_survery');
+                }
+            }
             else if ($this->model_main->get_usertype()=='JOBADMIN')
+            {
                 redirect('tesda/tesda_dashboard');
+            }
 
         }          
         else {
