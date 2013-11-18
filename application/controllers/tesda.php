@@ -290,7 +290,7 @@ class Tesda extends CI_Controller {
             $type = $this->input->post('reporttype');
             $month = $this->input->post('month');
             $year = $this->input->post('year');
-            $cert = $this->input->post('cert');
+            $cert = $this->input->post('certs');
             
             
             //print_r($type);
@@ -303,7 +303,14 @@ class Tesda extends CI_Controller {
                 redirect('report/in_demand_industries/'.$month.'/'.$year);
             }else if ($type == 1)
             {
-                redirect('report/company_vacancies/'.$month.'/'.$year);
+                if($cert == 0)
+                {
+                    redirect('report/company_vacancies/'.$month.'/'.$year);
+                }
+                else
+                {
+                    redirect('report/companyindustry_vacancies/'.$month.'/'.$year.'/'.$cert);
+                }   
             }else if ($type == 4)
             {
                 redirect('report/employment_industry/'.$month.'/'.$year);

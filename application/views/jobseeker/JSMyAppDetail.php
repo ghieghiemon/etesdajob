@@ -28,12 +28,24 @@
                                        ?>   <font color="black">&nbsp; Status:&nbsp;</font>
                                           
                                               <?php
-                                         echo $b['status']; 
+                                        $status =  $b['status'];
+                                        if($status == "New Applicant")
+                                        {
+                                            echo "Processing";
+                                        }
+                                        else if ($status == "Exam")
+                                        {
+                                            echo "For Exam";
+                                        }
+                                        else if ($status == "Interview")
+                                        {
+                                            echo "For Interview";
+                                        }
                                        if ($b['status'] != "New Applicant")
                                        {
                                            ?>
                                          <br>
-                                       <font color="black">&nbsp; Date and Time: &nbsp;</font>
+                                       <font color="black">&nbsp; Date and Time: </font>
                                          <?php echo $b['requirementdate']; ?>
                                        
                                         <font color="black"> &nbsp;- &nbsp;</font>

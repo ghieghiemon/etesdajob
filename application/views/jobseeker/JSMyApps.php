@@ -296,6 +296,7 @@ foreach($invites as $a)
                     			<br> 
                                 
                                 <p class="notifAgenda2">';
+                               
                                 	echo $a['status'];
                                        echo' with ';
                                         echo $a['companyName'];
@@ -481,14 +482,32 @@ foreach($invites as $a)
                               echo  '</td>
                                 <td>
                                     <div class="statusB">';
-                            echo $a['status'];
-                            echo '<br>
+                            $status =  $a['status'];
+                            if($status == "New Applicant")
+                            {
+                                echo "Processing";
+                            }
+                            else if ($status == "Exam")
+                            {
+                                echo "For Exam on";
+                            }
+                            else if ($status == "Interview")
+                            {
+                                echo "For Interview on";
+                            }
+                            else if ($status == "Denied")
+                            {
+                                echo "Denied";
+                            }
+                            echo '
                                         <font class="more">';
                             if($a['status']!= "New Applicant")
                             {
                                 echo $a['requirementdate'];
                                 echo '<br>';
                                 echo $a['requirementtime'];
+                                echo " at ";
+                                echo $a['location'];
                             }
                             echo '</font>
                                     </div>
