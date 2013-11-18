@@ -8,17 +8,26 @@
             </h4>
             
             <div class="row-fluid">
-            	<div class="span10">
-                	<div class="well" style="margin-left:260px;">
+            	<div class="span12">
+                    <div class="row-fluid">
+                        <div class="span10">
+                	<div class="well" style="margin-left:150px;">
                     	<div class="myStyle2PQS" align="center" style="margin-top:40px;margin-bottom:30px;">
                         <h4>
                         	Message
                         </h4>
                     	</div>
                     </div><!--end well-->
+                        </div>
+                    </div>
                     
-                    <div style="width:1240px;height:350px;overflow:auto;"><!--start scrollable table-->
-                    <table class="table-condensed" style="text-align:center; width:900px; margin-left:180px;" >
+                    <div class="row-fluid">
+                        <div class="span10">
+                    <div class="well" style="margin-left:150px;">
+                        
+                    <div style="width:1040px;height:350px;overflow:auto;"><!--start scrollable table-->
+                        <h3>January</h3>
+                    <table class="table-condensed" style="text-align:center; width:800px; margin-left:40px;" >
                     	<thead>
                         	<tr>
                             	<th class="span2">Job Title</th>
@@ -66,6 +75,10 @@
                         </tbody>
                     </table>
                     </div><!--end scrollable-->
+                    </div>
+                        </div>
+                    </div>
+                    
                 </div><!--end span-->
             </div><!--end row-fluid-->
             

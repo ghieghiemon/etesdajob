@@ -501,7 +501,7 @@ class Model_main extends CI_Model {
     
     public function get_survey($id)
     {
-        $db1 = $this->load->database('local', TRUE);
+       $db1 = $this->load->database('local', TRUE);
         
        $sql = $db1->query("SELECT * FROM employer_survey e
                         WHERE e.companyID = $id AND e.isAnswered = 0
