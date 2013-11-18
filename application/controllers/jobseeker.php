@@ -325,6 +325,7 @@ class Jobseeker extends CI_Controller {
        $data['regions'] = $this->model_main->get_regions();
        $data['myleagues'] = $this->model_jobseeker->get_myleagues($id);
        $data['all'] = $this->model_jobseeker->get_allleagues();
+       $data['invleagues'] = $this->model_jobseeker->get_invleagues($id);
                
        $this->jobseeker_header();
        $this->load->view('jobseeker/JSLeagues',$data); 

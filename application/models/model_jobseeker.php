@@ -506,13 +506,14 @@ class Model_jobseeker extends CI_Model {
       public function get_invleagues($appid)
     {//JOIN etesda.league_members m ON l.leagueno = m.leagueno 
         $db1 = $this->load->database('local', TRUE);
-        $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since 
-                                FROM etesda.league_members l   
+
+        $query = $db1->query("SELECT distinct s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since 
+                                FROM league_invitation li
+				JOIN etesda.league_members l on l.leagueno = li.leagueno  
                                 JOIN etesda.league v on l.leagueno = v.leagueno 
                                 JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
-                                WHERE l.userid = $appid
-                                ORDER BY v.leaguename ASC ");
+                                WHERE li.userid = '$appid' and accepted= 0 
+                                ORDER BY v.leaguename ASC");
         return $query->result_array();
         $db1->close();
     }

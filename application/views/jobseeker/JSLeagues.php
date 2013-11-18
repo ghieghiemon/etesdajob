@@ -163,7 +163,7 @@
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#JND" data-toggle="tab">Joined</a></li>
-                         <li><a href="#INV" data-toggle="tab">Invited</a></li>
+                         <li><a href="#INV" data-toggle="tab">Invitations</a></li>
                         <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
@@ -244,7 +244,7 @@
                                 {
                                     $lno[] = $a['leagueno'];
                                 }
-                                foreach($all as $a)
+                                foreach($invleagues as $a)
                                 {
                                 ?>
                             	<tr>

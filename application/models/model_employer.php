@@ -1006,7 +1006,7 @@ public function check_if_linvite($id, $lno)
        
       $db1 = $this->load->database('local', TRUE);
            
-      $sql = "INSERT INTO league_invitation(userid,leagueno) VALUES(?,?)";
+      $sql = "INSERT INTO league_invitation(userid,leagueno,accepted) VALUES(?,?,0)";
             
       $db1->query($sql,array($userid,$leagueno));
       
