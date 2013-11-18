@@ -279,12 +279,20 @@ class Employer extends CI_Controller {
        }
        
        $final = array();
-       foreach($data as $a)
+       if (count($applied) != 0)
        {
-           if(!(in_array($a['appid'],$appid)))
-                    array_push($final, $a);
+            foreach($data as $a)
+            {
+                if(!(in_array($a['appid'],$appid)))
+                         array_push($final, $a);
+            }
+            $invite['invites'] = $final;
        }
-       $invite['invites'] = $final;
+       else
+       {
+           $invite['invites'] = $data;
+       }
+            
        
        $invite['jobno'] = $jobpost_id;
        
