@@ -1000,5 +1000,16 @@ public function check_if_linvite($id, $lno)
          return $query->result_array();
          $db1->close();
      }
+     
+       public function add_invleague($userid,$leagueno)
+    {
+       
+      $db1 = $this->load->database('local', TRUE);
+           
+      $sql = "INSERT INTO league_invitation(userid,leagueno) VALUES(?,?)";
+            
+      $db1->query($sql,array($userid,$leagueno));
+      
+    }
 }
 ?>

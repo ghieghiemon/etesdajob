@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -9,7 +15,7 @@
                 </h3>
                 
                 <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->      
-                      <table class="tableInv table-hover table-condensed table-striped">
+                      <table id ="ev" class="tableInv table-hover table-condensed table-striped">
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">
@@ -19,9 +25,7 @@
                               <th class="span3" style="text-align:center">Name</th>
                               <th class="span2" style="text-align:center">Age</th>
                               <th class="span2" style="text-align:center">Gender</th>
-                              <th class="span2" style="text-align:center">Location</th>
-                              <th class="span2" style="text-align:center">Date Graduated</th>
-                              <th class="span3" style="text-align:center">Years of Work</th>
+                              <th class="span2" style="text-align:center">Certifications</th>
                           </tr>
                       </thead>
                       
@@ -52,23 +56,37 @@
                               </td>
                               
                               <td>
-                                  29
+                                   <?php
+                                              $birthday = $this->model_employer->get_appage($a['appid']);
+                                              $birthDate = explode("/", $birthday);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[0], $birthDate[1], $birthDate[2]))) > date("md") ? ((date("Y")-$birthDate[2])-1):(date("Y")-$birthDate[2]));
+                                              echo $age;
+                                                ?>
                               </td>
                               
                               <td>
-                              	  M
+                              	   <?php
+                                                $ismale = $this->model_employer->get_appsex($a['appid']);
+                                                if ($ismale == 1)
+                                                    echo 'M';
+                                                else 
+                                                    echo 'F';
+                                                ?>
                               </td>
                               
                               <td>
-                                  NCR | Makati City
-                              </td>
-                              
-                              <td>
-                              	Feb 2004
-                              </td>
-                              
-                              <td>
-                                  8
+                                    <?php
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                              ?>
                               </td>
                           </tr>
                           <?php
@@ -98,7 +116,7 @@
        
    $(document).ready(function(){
 	  
-	   $('#test').dataTable({
+	   $('#ev').dataTable({
 			"sPaginationType": "full_numbers"
 		});
 	   

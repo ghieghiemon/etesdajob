@@ -24,10 +24,13 @@
                    
                      
                         <div id="container">
-                             <form method="post" action="<?php echo base_url()?>employer/invite_jobseeker/<?php echo $jobno?>">
+                            
+                            <form method="post" action="<?php echo base_url()?>employer/invite_jobseeker/<?php echo $jobno?>">
+                                
                     <div align="right">
                 	<button type ="submit" class="btn btn-primary" >Invite</button>
                     </div>
+                                 <br>
                                  <table id ="newtableinv" >
                       <thead>
                           <tr>

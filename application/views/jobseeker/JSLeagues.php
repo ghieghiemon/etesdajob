@@ -163,6 +163,7 @@
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#JND" data-toggle="tab">Joined</a></li>
+                         <li><a href="#INV" data-toggle="tab">Invited</a></li>
                         <li><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
@@ -225,6 +226,102 @@
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invited-->
                     
+                      <div class="tab-pane" id="INV">
+                    	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+                        	 <table> <!--start one league-->
+                            <tr>
+                                <table style="margin-left:10px;">
+                        	<thead>
+                            	<tr>
+                                	<th class="span2"></th>
+                                    <th class="span7"></th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <?php
+                                foreach($myleagues as $a)
+                                {
+                                    $lno[] = $a['leagueno'];
+                                }
+                                foreach($all as $a)
+                                {
+                                ?>
+                            	<tr>
+                                    <td>
+                                    	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="thumbnail5 ePicMarg">
+                                    </td>
+                                   
+                                    <td>
+                                        
+                                        <p class="LeaDetails4">
+                                            <a href="<?php echo base_url()?>jobseeker/jobseeker_leagueview/<?php echo $a['leagueno']?>" class="LeaName3"><?php echo $a['leaguename']?></a>
+                                            <br>
+                                        	<a href="#" class="label label-info"><?php echo $a['sectorName']?> Industry</a><br>
+                                        	<img src=<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+                                            by <a href="#" class="Name2"><?php 
+                                                $name = $this->model_jobseeker->get_companyName($a['createdby']);
+                                                echo $name;
+                                                ?> </a>
+                                            | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
+                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10">
+                                                <?php 
+                                                $members = $this->model_jobseeker->get_leaguemembers($a['leagueno']);
+                                                echo count($members);
+                                                ?>  
+                                                Members</a>
+                                        
+                                            <br>
+                                            <?php echo $a['leaguedescription']?></p>
+                                        </font>
+                                        </p>
+                                        <div class="pull-right">
+                                         	
+                                        <?php 
+                                        
+                                        if(count($myleagues) != 0)
+                                        {
+                                            if(in_array($a['leagueno'],$lno))
+                                            {
+                                                echo '<span class="label label-info">
+                                                    JOINED
+                                                </span>';
+
+                                            }
+                                            else {
+                                            ?>
+                                            <span>
+                                                    <a href="<?php echo base_url()?>jobseeker/join_league/<?php echo $a['leagueno']?>" class="btn btn-primary btn-mini">
+                                                        &nbsp; Join &nbsp;
+                                                    </a>
+                                                </span>
+                                            <?php
+                                            }
+                                          
+                                        }
+                                        else {
+                                        ?>
+                                        <span>
+                                            	<a href="<?php echo base_url()?>jobseeker/join_league/<?php echo $a['leagueno']?>" class="btn btn-primary btn-mini">
+                                                    &nbsp; Join &nbsp;
+                                                </a>
+                                            </span>
+                                        <?php
+                                        }
+                                        ?>
+                                                    
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                    	</table><!--end one league-->
+                        <hr class="hrLeagTab">
+                        </div><!--end scrollable-->
+                    </div> <!--end tab pane invited here-->
+                    
                     <div class="tab-pane" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                         	 <table> <!--start one league-->
@@ -278,11 +375,24 @@
                                          	
                                         <?php 
                                         
-                                        if(in_array($a['leagueno'],$lno))
+                                        if(count($myleagues) != 0)
                                         {
-                                            echo '<span class="label label-info">
-                                            	JOINED
-                                            </span>';
+                                            if(in_array($a['leagueno'],$lno))
+                                            {
+                                                echo '<span class="label label-info">
+                                                    JOINED
+                                                </span>';
+
+                                            }
+                                            else {
+                                            ?>
+                                            <span>
+                                                    <a href="<?php echo base_url()?>jobseeker/join_league/<?php echo $a['leagueno']?>" class="btn btn-primary btn-mini">
+                                                        &nbsp; Join &nbsp;
+                                                    </a>
+                                                </span>
+                                            <?php
+                                            }
                                         }
                                         else {
                                         ?>
@@ -305,7 +415,7 @@
                     	</table><!--end one league-->
                         <hr class="hrLeagTab">
                         </div><!--end scrollable-->
-                    </div> <!--end tab pane invited-->
+                    </div> <!--end tab pane invited here-->
                     
                    
                 </div> <!--end tab content-->

@@ -119,7 +119,8 @@ class Employer extends CI_Controller {
         $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
         $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
         $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
-        $data['event'] = $this->model_main->all_events();
+        $data['event'] = $this->model_employer->get_createdevents($id);
+
         
         $this->employer_header();
         $this->load->view('employer/EDash',$data);
@@ -1217,9 +1218,24 @@ class Employer extends CI_Controller {
         }
        
         $data['invites'] = $final;
+        $data['leagueno'] = $lno;
+        
         $this->employer_header();
         $this->load->view('employer/ELeagInvite',$data);
         $this->load->view('footer2');
+    }
+    
+    public function invite_league($leagueno)
+    {
+       $this->load->model('model_employer');
+       $userid = $this->input->post('check');
+       
+       foreach ($userid as $a)
+       {
+           $id = $this->model_employer->get_userid($a);
+           $this->model_employer->add_invleague($id,$leagueno);
+       }
+        redirect(base_url()."employer/employer_leagueview/".$leagueno);
     }
 
 }

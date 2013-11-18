@@ -183,52 +183,6 @@ foreach($invites as $a)
      </div>
     </div>
 
-<!--modal job invite content-->       
-    <div class="modal hide fade" id="jInv">
-  		<div class="modal-header">
-    		<a class="close" data-dismiss="modal">x</a>
-    		<h3 class="inModEm2">
-            	<img src="assets/img/a10.jpg" style="width:90px">Toon City
-                </h3>
-  		</div>
-        
-  		<div class="modal-body">
-        	<p style="margin-top:-10px;">
-            	<em><strong>Dear Angelica Guerrero,</strong></em>
-                <br><br>
-                <strong>Toon City</strong> is pleased to invite you to apply as a
-                <font class="inModEm"> 3D Game Art Developer</font> - <em><strong>creates storyboards</strong></em> - 
-                under the Industry of <em><strong>Information & Communication Technology</strong></em>
-                which is located in <strong>NCR | Makati</strong>.
-                
-                <br><br>
-                Here are the <strong>qualifications</strong> that matched your profile:
-                <ul>
-                <li>Sex:<em>&nbsp;Both</em></li>
-                <li>Age Range:<em>&nbsp;18-35</em></li>
-                <li>Certification/s:<em>&nbsp; 3D Game Art Development NC III</em></li>
-                <li>Competencies:<em>&nbsp; Develop art style, Create storyboard and asset list</em></li>
-                </ul>
-                
-                There are<strong>&nbsp;5 available vacancies</strong> and you were one of the few chosen to apply. We trust that your knowledge, skills, and experience will be among our most available assets. You only have <strong><em>9 days left</em></strong> to accept this invitation. 
-                
-                <br><br>
-                Thank you very much for your time and we look forward in working with you. If you have more clarifications, you can call us through this number: <strong>5515534</strong>.
-                <br><br>
-               	<strong> Best Regards,</strong>
-                <br>
-                <strong><em>Toon City</em></strong>
-                
-                 
-            </p>
-        </div>
-        
-        <div class="modal-footer">
-    		<button class="btn btn-info btn-mini">Apply</button>
-            <button class="btn btn-danger btn-mini">Decline</button>
-        </div>
-	</div>
-<!--end job invite content-->
 <?php
 }
 ?>  

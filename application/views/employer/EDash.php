@@ -359,7 +359,7 @@ foreach ($myvacancies as $a)
         				<div class="span9">
 							<p class="marg2">'?>
               
-                        		<a href='<?php echo base_url()?>pub/pevent_details/<?php echo $row['eventno']?>' class="Name4">
+                        		<a href='<?php echo base_url()?>employer/employer_evcreated/<?php echo $row['eventno']?>' class="Name4">
                                             
                                             
                                        <?php echo $row['eventtitle'];
@@ -382,10 +382,7 @@ foreach ($myvacancies as $a)
                                 <strong>Venue:</strong>';
                                 echo $row['venue'];
                                echo'<br>
-                            	<span class="btn btn-info btn-mini"><a data-toggle ="modal" href="#eventModal" class="attendBtn">';
-                                 echo $row['participantscount'];
-                                echo' Attendees
-                                </a></span>
+                            	 <hr class="hrLeagTab">
                             </p>
 					
 						</div>
