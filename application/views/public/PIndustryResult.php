@@ -44,7 +44,7 @@
                     <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd2">
                     <h5 class="media-heading">
                         <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"  class="PProfE"> 
-                        <br>(<?php echo $a['totalvacancies']?>)
+                        <br>(<?php echo $a['totalopenings']?>)
                     </h5>
                     </a>
                 <?php

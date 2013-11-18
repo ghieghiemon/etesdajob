@@ -9,9 +9,8 @@
             	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="25"> Industries
             </h4>
             
-            
                     <div class="myStyle2T" align="right" class="form-horizontal">
-                     <form method="post" action="<?php echo base_url()?>tesda/permonth_industries">
+                        <form method="post" action="<?php echo base_url()?>tesda/permonth_industries">
                         <select name="month" id="month" class="span2">
                            
                             <option value = "1">January</option>
@@ -42,7 +41,6 @@
                         </button>
                      </form>
                     </div>
-                
        	 	
             <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                 Legend:  (#) - no. of vacancies

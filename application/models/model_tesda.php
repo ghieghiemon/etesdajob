@@ -240,5 +240,28 @@ public function add_eventvenue($eventno,$eventvenue,$region,$city)
            
 
     }
+    public function get_industryVacancies()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT count(v.jobno) as totalopenings,s.* from etesda.job_vacancies v 
+                              JOIN tesda_centraldb.sectors s ON v.sectorid = s.sectorID
+                              GROUP BY v.sectorid ORDER BY totalopenings DESC");
+        return $query->result_array();
+        $db1->close();
+        $db2->close();
+    }
+    public function get_industryVacanciesPerMonth($month, $year)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $db1 = $this->load->database('local', TRUE);
+        $query = "SELECT count(v.jobno) as totalopenings,s.* from etesda.job_vacancies v 
+                              JOIN tesda_centraldb.sectors s ON v.sectorid = s.sectorID
+                              WHERE month(dateposted) = ? and year(dateposted) = ?
+                              GROUP BY v.sectorid ORDER BY totalopenings DESC";
+        return $db1->query($query, array($month, $year))->result_array();
+        $db1->close();
+        $db2->close();
+    }
 }
 ?>

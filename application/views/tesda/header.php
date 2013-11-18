@@ -71,7 +71,7 @@
                                 </h5>
                                 </a>
                                 
-                                <a href="TIndustriesAll.html" class="btn btn-group transBtn">
+                                <a href="<?php echo base_url()?>tesda/tesda_industries" class="btn btn-group transBtn">
                                     <h5 class="media-heading">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="17"> 
                                         <br>Industries

@@ -261,6 +261,27 @@ class Tesda extends CI_Controller {
         $this->tesda_header();
         $this->load->view('tesda/TReports');
     }
+    public function tesda_industries()
+    {
+        $this->load->model('model_tesda');
+        
+        $data['industries'] = $this->model_tesda->get_industryVacancies();
+       
+        $this->tesda_header();
+        $this->load->view('tesda/TIndustriesAll',$data);
+    }
+    public function permonth_industries()
+    {
+        $this->load->model('model_tesda');
+        
+        $month = $this->input->post('month');
+        $year = $this->input->post('year');
+         
+        $data['industries'] = $this->model_tesda->get_industryVacanciesPerMonth($month,$year);
+        
+        $this->tesda_header();
+        $this->load->view('tesda/TIndustriesAllMonth',$data);
+    }
     public function generate_report()
         {
             $type = $this->input->post('reporttype');

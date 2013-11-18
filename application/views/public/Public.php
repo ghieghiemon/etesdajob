@@ -242,7 +242,7 @@
                         <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd3">
                         <h5 class="media-heading">
                             <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>" class="PIndPic"> 
-                            <br>(<?php echo $a['totalvacancies']?>)
+                            <br>(<?php echo $a['totalopenings']?>)
                         </h5>
                         </a>
                     <?php
@@ -274,7 +274,7 @@
                                                 	<?php echo $a['region']?>
                                                    <a href="<?php echo base_url('pub/search_regions/' . $a['regionid']); ?>" class="locLink">
                                                  
-                                                    (<?php echo $a['totalvacancies']?>)
+                                                    (<?php echo $a['totalopenings']?>)
                                                     </a>
                                                 </p>
                                             </td>     
