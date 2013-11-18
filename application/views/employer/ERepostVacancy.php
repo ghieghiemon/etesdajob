@@ -1,3 +1,9 @@
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <body>
 <!--publish vacancy modal start-->
 <div class="modal hide fade" id="pubV">
@@ -170,15 +176,16 @@
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert"></span>
-                        	
+                        <span id="certname" name= "certname"></span>
+                        <input type="hidden" id="cert" name= "cert">
                         </font>
                     </p>
                    
                    <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-                        	<span id="comp" name= "comp"></span>
+                        <span id="compname" name= "compname"></span>
+                        <input type="hidden" id="comp" name= "comp">
                         </font>
                     </p>
                     
@@ -460,7 +467,7 @@
                                                              $count--;
                                                          }
                                                          ?>"readonly >
-                                                 <input type="hidden" name="certselect[]" id="lstcert2" value="1">
+                                                 <input type="hidden" name="certselect[]" id="lstcert2" value="14">
                                                  
                                                             </div>
                                                
@@ -479,7 +486,8 @@
                                    
                                           <div class="row-fluid marg17 margCCS">
                                             
-                                        <div class="myStyleDesc">                                                              
+                                        <div class="myStyleDesc">      
+                                            
                                                             <input type="text" id="competencies" style="width:50%" name="competencies" placeholder="" 
                                                                    value="<?php
                                                          $count = count($cert);
@@ -493,7 +501,7 @@
                                                              $count--;
                                                          }
                                                          ?>"readonly >
-                                              <input type="hidden" name="compselect[]" id="lstcomp2" value="1">
+                                              <input type="hidden" name="compselect[]" id="lstcomp2" value="12">
                                                             </div> 
                                          
                                   </div> <!--end row-fluid-->
@@ -561,6 +569,8 @@
             $("#industryname").html($("#indname").val());
             $("#regionname").html(reg);
             $("#cityname").html(cit);
+            $("#certname").html($("#certifications").val());
+           $("#compname").html($("#competencies").val());
            
            $("#msex").html($("#sex").val());
            $("#sAge").html($("#ageto").val());
@@ -569,6 +579,7 @@
            $("#cert").html($("#lstcert2").val());
            $("#comp").html($("#lstcomp2").val());
            
+          
             
         });
             // wait search lng

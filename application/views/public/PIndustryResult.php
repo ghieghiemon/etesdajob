@@ -78,7 +78,7 @@
                     
                     <div style="width:1220px;height:313px;overflow:auto;"><!--start scrollable table-->
                        <div id="container">
-                       <table id ="newtable" >
+                       <table id ="newtablep" >
                         	<!--<table class="tableJMP table-hover table-condensed table-striped">-->
                             <thead>
                                     <th class="span3" style="text-align:center">Job Title</th>
@@ -162,7 +162,7 @@
        
        $(document).ready(function(){
           
-           $('#newtable').dataTable({
+           $('#newtablep').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   

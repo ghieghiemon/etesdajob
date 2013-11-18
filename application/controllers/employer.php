@@ -123,7 +123,7 @@ class Employer extends CI_Controller {
         
         $this->employer_header();
         $this->load->view('employer/EDash',$data);
-       // $this->load->view('footer');
+        $this->load->view('footer');
     }
     public function get_age($birthdate)
     {

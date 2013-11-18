@@ -9,6 +9,7 @@ class Tesda extends CI_Controller {
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
         $this->tesda_header();
         $this->load->view('tesda/TesdaDash',$data);
+           $this->load->view('footer');
     }
     public function tesda_header()
     {
@@ -178,16 +179,16 @@ class Tesda extends CI_Controller {
         redirect(base_url()."tesda/tesda_leagueview/".$lno);
     }
     
-     public function tesda_smspage()
+   	  public function tesda_smspage()
     {
         $this->load->model('model_tesda');
         $this->load->model('model_main');
        
-        //$id = $this->model_main->get_userid($this->session->userdata('email'));
-
-        // $this->load->view('tesda/TInvite', $data);
+        $data['smsemp'] = $this->model_tesda->get_companySMS();
+        $data['smsjs'] = $this->model_tesda->get_applicantSMS();
+        
         $this->tesda_header();
-         $this->load->view('tesda/TInvite');
+         $this->load->view('tesda/TSMSInvite',$data);
          $this->load->view('footer2');
     }
     

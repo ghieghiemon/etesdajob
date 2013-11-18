@@ -263,5 +263,21 @@ public function add_eventvenue($eventno,$eventvenue,$region,$city)
         $db1->close();
         $db2->close();
     }
+    
+     public function get_companySMS()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companyName,companyContact FROM employer_profile WHERE sms = 0");
+        return $query->result_array();
+        $db2->close();
+    }
+    
+       public function get_applicantSMS()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT firstname,middlename,lastname,cellno FROM applicants WHERE sms = 0");
+        return $query->result_array();
+        $db2->close();
+    }
 }
 ?>

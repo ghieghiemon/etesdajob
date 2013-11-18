@@ -158,7 +158,7 @@ foreach($employerverify as $a)
                     <div class="tab-pane active" id="tab12">
                         <div style="width:705px;height:250px;overflow:auto;"><!--start scrollable table-->
                         	 <div id="container">
-                        	<table id ="newtable" >
+                        	<table id ="newtabletd" >
                             	<thead>
                                 	<tr>
                                         <th class="span3">Company Name</th>
@@ -370,7 +370,7 @@ foreach($employerverify as $a)
        
        $(document).ready(function(){
           
-           $('#newtable').dataTable({
+           $('#newtabletd').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   

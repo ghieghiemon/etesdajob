@@ -88,7 +88,7 @@
                     <div class="tab-pane" id="SGS">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             <div id="container">
-                        	<table id ="newtable" >
+                        	<table id ="newtablejs" >
                                     
                             <thead>
                                 <tr>
@@ -347,7 +347,7 @@
        
        $(document).ready(function(){
           
-           $('#newtable').dataTable({
+           $('#newtablejs').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   

@@ -531,8 +531,7 @@
             $("#regionname").html(reg);
             $("#cityname").html(cit);
             
-            
-          
+           
            $("#msex").html($("#sex").val());
            $("#sAge").html($("#ageto").val());
            $("#eAge").html($("#agefrom").val());

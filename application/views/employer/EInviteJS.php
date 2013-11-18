@@ -28,7 +28,7 @@
                     <div align="right">
                 	<button type ="submit" class="btn btn-primary" >Invite</button>
                     </div>
-                                 <table id ="newtable" >
+                                 <table id ="newtableinv" >
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">
@@ -143,7 +143,7 @@
        
        $(document).ready(function(){
           
-           $('#newtable').dataTable({
+           $('#newtableinv').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   
