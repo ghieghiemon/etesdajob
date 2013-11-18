@@ -3,7 +3,7 @@
 foreach ($event as $a)
 {
 ?>
-<div class="modal hide fade" id="event<?php echo $a['leagueno']?>">
+<div class="modal hide fade" id="event">
   	<div class="modal-header">
   			<a class="close" data-dismiss="modal">x</a>
 			<h3><img src="assets/img/icons/glyphicons_148_folder_flag.png"> Attendees</h3>
@@ -144,7 +144,7 @@ foreach ($event as $a)
                                            echo' </em>
                                             |';
                                            ?>
-                                           <a data-toggle="modal" href="#event<?php echo $a['leagueno']?>" class="Name3">';?>
+                                           <a data-toggle="modal" href="#event" class="Name3">';?>
                                             	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
                                                  <?php echo $row['participantscount'];
                                                 
