@@ -720,7 +720,7 @@ class Employer extends CI_Controller {
         $this->load->view("employer/EEmployerProfile",$data);
    }
    // EMPLOYER CALENDAR
- function view_calendar($jobno,$year = -1, $month = -1){
+ function view_calendar($jobno, $year = -1, $month = -1){
                        
    
      $config = array (
@@ -786,7 +786,7 @@ class Employer extends CI_Controller {
 				
 			foreach($events as $event):
 					
-				$events_arr[$event->eday] = base_url('employer/view_event/'.$jobno.'/'.$yr.'/'.$mo.'/'.$event->eday);
+				$events_arr[$event->eday] = base_url('employer/view_event/'.$yr.'/'.$mo.'/'.$event->eday);
 				
 			endforeach;
 				
@@ -805,6 +805,10 @@ class Employer extends CI_Controller {
                         $this->load->model('model_employer');
                         $id = $this->model_main->get_userid($this->session->userdata('email'));
 			$events = $this->tuna->get_events($id, $year, $month, $day);
+			
+			// EJ EJ EJ EJ
+			print_r($events);
+			return;
                         
 			 echo '<div class="row-fluid">';
                           echo '<div class="span7">';
