@@ -142,7 +142,18 @@ class Employer extends CI_Controller {
         $data['pic'] = $this->model_employer->get_epic();
         $this->load->view('employer/header',$data);
     }
-    
+    public function employer_survey()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        
+        $data['surveys'] = $this->model_main->check_survey($id);
+        
+        $this->employer_header();
+        $this->load->view('employer/ESurvey',$data);
+    }
     public function employer_postvacancypage()
     {
         $this->load->model('model_main');
@@ -241,7 +252,7 @@ class Employer extends CI_Controller {
         } 
     }
 
-    public function invite_jobseekers($jobpost_id)
+   public function invite_jobseekers($jobpost_id)
     {
         $this->load->model('model_employer');
         
@@ -1020,6 +1031,44 @@ class Employer extends CI_Controller {
        redirect(base_url()."employer/employer_leagueview/".$leagueno);
     }
     
- 
+ public function lmatch($userid, $leagueno)
+    {
+        $this->load->model('model_employer');
+        
+        $total_ind = $this->model_employer->getMatchedindustriesL($userid,$leagueno);
+        if($total_ind >0)
+            return true;
+        else
+            return false;
+    }
+     public function employer_leagueinvite($lno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+       
+        $jobseekers = $this->model_employer->get_jobseekers();
+        $stack = array(); 
+        foreach($jobseekers as $a)
+        {
+            if($this->lmatch($a['appid'], $lno))
+            {
+                array_push($stack, $a);
+            }
+        }
+        $final = array();
+        foreach ($stack as $a)
+        {
+           if($this->model_employer->check_if_linvite($a['appid'], $lno))
+           {
+                array_push($final, $a);
+           }
+        }
+       
+        $data['invites'] = $final;
+        $this->employer_header();
+        $this->load->view('employer/ELeagInvite',$data);
+        $this->load->view('footer2');
+    }
+
 }
 ?>

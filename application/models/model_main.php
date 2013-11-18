@@ -485,6 +485,19 @@ class Model_main extends CI_Model {
         }
         $db1->close();
     }
+    
+public function check_survey($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT * FROM employer_survey e
+                        JOIN survey_details s ON s.surveyno = e.surveyno
+                        JOIN job_vacancies j ON s.jobno = j.jobno
+                        WHERE e.companyID = $id AND e.isAnswered = 0
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
 //jobseeker
  
 }

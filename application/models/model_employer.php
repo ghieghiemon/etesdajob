@@ -963,5 +963,28 @@ public function attend_event($userid, $eventno){
         else return true;
        $db1->close();
     }
+    public function getMatchedindustriesL ($id, $lno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT * FROM etesda.league l 
+          JOIN tesda_centraldb.nc_reference nc ON nc.sectorid = l.leagueindustry
+          JOIN tesda_centraldb.applicants_certificates ac ON ac.certificateid = nc.ncid
+          WHERE ac.appid = $id AND l.leagueno = $lno group by leagueno");
+        return $query->num_rows();
+        $db1->close(); 
+    }
+
+public function check_if_linvite($id, $lno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT * 
+             FROM league_invitation 
+             WHERE userid = $id AND leagueno = $lno");
+        if ($query->num_rows()>0)
+            return false;
+        else return true;
+       $db1->close();
+    }
 }
 ?>
