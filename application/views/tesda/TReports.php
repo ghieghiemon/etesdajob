@@ -6,7 +6,7 @@
 	<div class="span12">
     	<div class="well">
         	<h4 class="media-heading">
-            	 <img src="assets/img/icons/glyphicons_041_charts.png" width="25"> Reports
+            	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="25"> Reports
             </h4>
             
             <div class="row-fluid">
