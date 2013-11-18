@@ -76,7 +76,7 @@ class Report extends CI_Controller {
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->jobtitle . '</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->expirationdate . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->vacanciesleft . '</td>
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->vacanciesleft . '</td>
 
                                 </tr>
                                 ');
@@ -150,7 +150,7 @@ class Report extends CI_Controller {
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->jobtitle . '</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->expirationdate . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->vacanciesleft . '</td>
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->vacanciesleft . '</td>
 
                                 </tr>
                                 ');
@@ -204,9 +204,8 @@ class Report extends CI_Controller {
                                       <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
                               <tr>
                         
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Job Title</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Industry</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">No. of Applicants</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Certification</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Total Openings</th>
                               
                                 
                               
@@ -218,9 +217,8 @@ class Report extends CI_Controller {
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->jobtitle . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->sectorName . '</td> 
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->ncname ." ".$job->level. '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->totalopenings . '</td> 
                                         
                                    
 
@@ -277,7 +275,7 @@ class Report extends CI_Controller {
                               <tr>
                         
                                 <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Industry</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">No. of Applicants</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Total Openings</th>
                               
                                 
                               
@@ -290,7 +288,7 @@ class Report extends CI_Controller {
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->sectorName . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->totalopenings . '</td> 
                                     
                                         
                                    
