@@ -281,6 +281,7 @@ class Tesda extends CI_Controller {
         
         $this->tesda_header();
         $this->load->view('tesda/TIndustriesAllMonth',$data);
+        $this->load->view('footer2');
     }
     public function generate_report()
         {
