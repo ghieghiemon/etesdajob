@@ -5,7 +5,7 @@
 	function openWindow(day,year,month,company){
 		
 		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
+		$('#contentdiv').load($('#base').val() + 'employer/view_event2/'+year+'/'+month+"/"+day+"/"+company);
 		
 	}
 </script>
