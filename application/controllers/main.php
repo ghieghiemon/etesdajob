@@ -357,24 +357,25 @@ class Main extends CI_Controller {
             $this->load->model('model_main');
             if($this->model_main->get_usertype()=='APPLICANT')
             {
-                redirect(base_url.'jobseeker/jobseeker_myappspage');
+                redirect(base_url().'jobseeker/jobseeker_myappspage');
             }
             else if($this->model_main->get_usertype()=='EMPLOYER')
             {
                 $id = $this->model_main->get_userid($email);
+                $current = $this->model_main->get_survey($id);
                 $surveys = $this->model_main->check_survey($id);
                 if(count($surveys) == 0)
                 {
-                    redirect(base_url.'employer/employer_dashboard');
+                    redirect(base_url().'employer/employer_dashboard');
                 }
                 else
                 {
-                    redirect(base_url.'employer/employer_survery');
+                    redirect(base_url().'employer/employer_survey');
                 }
             }
             else if ($this->model_main->get_usertype()=='JOBADMIN')
             {
-                redirect('tesda/tesda_dashboard');
+                redirect(base_url().'tesda/tesda_dashboard');
             }
 
         }          

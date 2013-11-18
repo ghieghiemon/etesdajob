@@ -486,7 +486,7 @@ class Model_main extends CI_Model {
         $db1->close();
     }
     
-public function check_survey($id)
+    public function check_survey($id)
     {
         $db1 = $this->load->database('local', TRUE);
         
@@ -498,8 +498,18 @@ public function check_survey($id)
         return $sql->result_array();
         $db1->close();
     }
-//jobseeker
- 
+    
+    public function get_survey($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+       $sql = $db1->query("SELECT * FROM employer_survey e
+                        WHERE e.companyID = $id AND e.isAnswered = 0
+                           ");
+        return $sql->result_array();
+        $db1->close();
+    }
+
 }
 
 
