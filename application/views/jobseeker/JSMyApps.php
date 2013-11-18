@@ -41,188 +41,68 @@ foreach($invites as $a)
    <div class="modal hide fade" id="jInv<?php echo $a['invitationno']?>">
 <?php
     echo '<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Job Invite </h3>
-  	</div>
-
-	<div class="modal-body">
-        <p>';
-               
-                 echo $a['message'];
-                echo' <br><br>
-                <span id="label1"></span>
-		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
-        	<div class="row-fluid">
-            	<div class="span6">
-                	<table class="previewMarg">
-                          <thead>
-                              <tr>
-                                  <th class="span1"></th>
-                                  <th class="span4"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                              <tr>
-                                  <td class="previewDet">
-                                      Job Title:
-                                  </td>
-                                  <td>
-                                      <font class="previewDet2">';
-     echo $a['jobtitle'];
-     echo '</font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Description:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">';
-    echo $a['description'];                                  
-    echo '</font>
-                                  </td>
-                              </tr>
-                               <tr>
-                                  <td class="previewDet">
-                                      Industry:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">';
-                                      	 echo $a['sectorName'];
-                                     echo' </font>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                </div><!--end span-->
+    		<a class="close" data-dismiss="modal">x</a>
+    		<h3 class="inModEm2">'?>
+             <?php    $pic = $this->model_jobseeker->get_companyPic($a['companyid']); ?>
+            	<img src="<?php echo base_url()?>employerpics/<?php echo $pic?>" style="width:90px">
+                <?php
+                                            $companyName = $this->model_jobseeker->get_companyName($a['companyid']);
+                                            echo $companyName;
+                                            ?>
+               <?php echo' </h3>
+  		</div>
+<div class="modal-body">
+        	<p style="margin-top:-10px;">
+            	<em><strong> Dear';?>
                 
-                <div class="span6">
-                	<table class="previewMarg2">
-                          <thead>
-                              <tr>
-                                  <th class="span3"></th>
-                                  <th class="span2"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                          	  <tr>
-                                  <td class="previewDet">
-                                      Region: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">';
-                                      	  echo $a['region'];
+                    <?php
+                                                      $name = $this->model_jobseeker->get_jsName($a['appid']);
+                                                      foreach($name as $b)
+                                                      {
+                                                          echo $b['firstname'];
+                                                          echo ' ';
+                                                          echo $b['middlename'];
+                                                          echo ' ';
+                                                          echo $b['lastname'];
+                                                      }
+                                                      ?>
+               <?php echo',</strong></em>
+                <br><br>
+                <strong>'?>
+                     <?php
+                                            $companyName = $this->model_jobseeker->get_companyName($a['companyid']);
+                                            echo $companyName;
+                                            ?><?php echo'
+                </strong> is pleased to invite you to apply as a
+                <font class="inModEm">';
+                echo $a['jobtitle'];
+                echo' </font> - <em><strong>';
+                    echo $a['description'];
+                echo'
+                 </strong></em> - 
+                under the Industry of <em><strong>';
+                	 echo $a['sectorName'];
                                      echo'
-                                      </font>	
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      City/Province: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">';
-                                     echo $a['city'];
-                                     echo'
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Number of Vacancies: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">';
-                                      	echo $a['vacanciesleft'];
-                                     echo' </font>	
-                                  </td>
-                              </tr>
-                             
-                              <tr>
-                                  <td class="previewDet">
-                                      Effectivity: 
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">
-                                      	<span id="effect" name="effect">'?>
-                                     <?php     $date2 = $a['expirationdate'];
-                                $date = date('Y-m-d');
-                                $diff = abs(strtotime($date2) - strtotime($date));
-
-                                $days = round((($diff/24)/60)/60);
-                                echo $days. " days left";?>
-                          <?php  echo '</td>
-                           
-                            </span>	
-                                      </font>
-                                  
-                              </tr>
-                              
-                          </tbody>
-                      </table>
-                </div>
-            </div><!--end row-fluid-->
-        <hr class="hrLeagTab">
-            
-        <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
-        	<div class="row-fluid">
-            	<div class="span6">
-                	<table class="previewMarg">
-                          <thead>
-                              <tr>
-                                  <th class="span2"></th>
-                                  <th class="span4"></th>
-                              </tr>
-                          </thead>
-                          
-                          <tbody class="proPI">
-                              <tr>
-                                  <td class="previewDet">
-                                      Sex:
-                                  </td>
-                                  
-                                  <td>
-                                      <font class="previewDet2">';
-                                      		  echo $a['sex'];
-                                     echo'	
-                                      </font>
-                                  </td>
-                              </tr>
-                              
-                              <tr>
-                                  <td class="previewDet">
-                                      Age Range:
-                                  </td>
-                                  
-                                  <td>
-                                	  <font class="previewDet2">
-                                      	<span id="sAge" name="sAge">'; echo $a['agestart'];
-                                     echo'	</span> 
-                                        - <span id="eAge" name="eAge">'; echo $a['ageend'];
-                                     echo'	</span>	
-                                      </font>
-                                  </td>
-                              </tr>
-                          </tbody>
-                      </table>
-                </div><!--end span-->
+                </strong></em>
+                which is located in <strong>'; echo $a['region'];
+                                     echo' | ';  echo $a['city'];
+                                     echo'</strong>.
                 
-                <div class="span6">
-                	<p class="previewCCS">
-                		<strong>CERTIFICATION/S:</strong> 
-                        <font class="previewCCS2">';?>
-                        	<?php
+                <br><br>
+                Here are the <strong>qualifications</strong> that matched your profile:
+                <ul>
+                <li>Sex:<em>&nbsp;';
+                 echo $a['sex'];
+                                     echo'
+                </em></li>
+                <li>Age Range:<em>&nbsp;'; echo $a['agestart'];
+                                     echo'
+                -';
+                 echo $a['ageend'];
+                                     echo'</em></li>
+                <li>Certification/s:<em>&nbsp; 
+                ';?>
+                 <?php
                                   $cert = $this->model_jobseeker->get_jobCerts($a['jobno']);
                                                          $count = count($cert);
                                                          foreach ($cert as $b)
@@ -235,14 +115,10 @@ foreach($invites as $a)
                                                              $count--;
                                                          }
                                                          ?>
-                                                        
-                     <?php echo' </font>
-                    </p>
-                   
-                   <p class="previewCCS">
-                		<strong>COMPETENCIES:</strong> 
-                        <font class="previewCCS2">'?>
-                        	 <?php
+                                    <?php echo'
+                </em></li>
+                <li>Competencies:<em>&nbsp; ';?>
+                 <?php
                                   $comp = $this->model_jobseeker->get_jobComps($a['jobno']);
                                                          $count = count($cert);
                                                          foreach ($comp as $c)
@@ -254,18 +130,44 @@ foreach($invites as $a)
                                                              $count--;
                                                          }
                                                          ?>
-                       <?php echo' </font>
-                    </p>
-                    
-                  
-                </div><!--end span-->
+               <?php echo' </em></li>
+                </ul>
                 
-               
-            </div><!--end row-fluid-->
-        <hr class="hrLeagTab">
+                There are<strong>&nbsp;';echo $a['vacanciesleft'];
+                                     echo' 
+                available vacancies</strong> and you were one of the few chosen to apply. We trust that your knowledge, skills, and experience will be among our most available assets. You only have 
+                <strong><em>'?>
+                 <?php     $date2 = $a['expirationdate'];
+                                $date = date('Y-m-d');
+                                $diff = abs(strtotime($date2) - strtotime($date));
+
+                                $days = round((($diff/24)/60)/60);
+                                echo $days. " days left";?>
+                <?php  echo'</em></strong> to accept this invitation. 
+                
+                <br><br>
+                Thank you very much for your time and we look forward in working with you. If you have more clarifications, 
+                you can call us through this number: <strong>';?>
+                   <?php
+                                            $companyNum = $this->model_jobseeker->get_companyNum($a['companyid']);
+                                            echo $companyNum;
+                                            ?>
+               <?php echo' </strong>.
+                <br><br>
+               	<strong> Best Regards,</strong>
+                <br>
+                <strong><em>';?>
+                  <?php
+                                            $companyName = $this->model_jobseeker->get_companyName($a['companyid']);
+                                            echo $companyName;
+                                            ?>
+               <?php echo' </em></strong>
+                
+                 
+            </p>
+        </div>
         
-        
-	</div>'?>
+       '?>
   
   	<div class="modal-footer">
         
@@ -280,6 +182,53 @@ foreach($invites as $a)
   	
      </div>
     </div>
+
+<!--modal job invite content-->       
+    <div class="modal hide fade" id="jInv">
+  		<div class="modal-header">
+    		<a class="close" data-dismiss="modal">x</a>
+    		<h3 class="inModEm2">
+            	<img src="assets/img/a10.jpg" style="width:90px">Toon City
+                </h3>
+  		</div>
+        
+  		<div class="modal-body">
+        	<p style="margin-top:-10px;">
+            	<em><strong>Dear Angelica Guerrero,</strong></em>
+                <br><br>
+                <strong>Toon City</strong> is pleased to invite you to apply as a
+                <font class="inModEm"> 3D Game Art Developer</font> - <em><strong>creates storyboards</strong></em> - 
+                under the Industry of <em><strong>Information & Communication Technology</strong></em>
+                which is located in <strong>NCR | Makati</strong>.
+                
+                <br><br>
+                Here are the <strong>qualifications</strong> that matched your profile:
+                <ul>
+                <li>Sex:<em>&nbsp;Both</em></li>
+                <li>Age Range:<em>&nbsp;18-35</em></li>
+                <li>Certification/s:<em>&nbsp; 3D Game Art Development NC III</em></li>
+                <li>Competencies:<em>&nbsp; Develop art style, Create storyboard and asset list</em></li>
+                </ul>
+                
+                There are<strong>&nbsp;5 available vacancies</strong> and you were one of the few chosen to apply. We trust that your knowledge, skills, and experience will be among our most available assets. You only have <strong><em>9 days left</em></strong> to accept this invitation. 
+                
+                <br><br>
+                Thank you very much for your time and we look forward in working with you. If you have more clarifications, you can call us through this number: <strong>5515534</strong>.
+                <br><br>
+               	<strong> Best Regards,</strong>
+                <br>
+                <strong><em>Toon City</em></strong>
+                
+                 
+            </p>
+        </div>
+        
+        <div class="modal-footer">
+    		<button class="btn btn-info btn-mini">Apply</button>
+            <button class="btn btn-danger btn-mini">Decline</button>
+        </div>
+	</div>
+<!--end job invite content-->
 <?php
 }
 ?>  
