@@ -104,10 +104,9 @@ class Employer extends CI_Controller {
                                         </table>
                             </div><!--end well-->
                             </div>
-                    <div class="modal-footer">
-                        <a id="confirm" href="#changeStatus" class="btn btn-info" data-toggle="modal">Confirm</a>
-                        <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-                    </div>';
+                                       <div class="modal-footer">'?>
+                        <a id="confirm" href="<?php echo base_url(); ?>employer/view_calendar/" class="btn btn-info" data-toggle="modal">Confirm</a>
+                      <?php echo'  <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>';
         
     }
     public function employer_dashboard()
@@ -756,7 +755,7 @@ class Employer extends CI_Controller {
 			// Initialize the template 
 			$config['template'] = '
                                         
-					{table_open}<table style="width:800px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
+					{table_open}<table style="width:775px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 

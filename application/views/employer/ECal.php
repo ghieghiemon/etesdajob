@@ -1,23 +1,8 @@
-<br>
-<br>
-
-<script type="text/javascript">
-					
-	function openWindow(day,year,month,company){
-		
-		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
-		
-	}
-</script>
-
-<div class="" id="changemodal">
-  	
-</div> 
-<div class="" id="changeStatus">
+<div id="changeStatus">
     <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus">
-  	
-    	<div class ="well" style="margin-top: -60px">
+        <div class="row-fluid">
+            <div class="span4 offset8">   
+    	<div class ="well" style="margin-top: -193px; margin-left:-110px;">
     	<h3>Change Status</h3>
   	
 
@@ -98,11 +83,6 @@
                           <td>
                               <label style="margin-left:1px;">
                             <strong>Select Date and Time: </strong>
-                            <div align ="right">
-                                <!--<a id="cal" class="btn btn-primary btn-mini">View Calendar</a>-->
-                                
-                                <a id="cal" class="btn btn-primary btn-mini" href="javascript:void(0)" onclick="openWindow();">View Calendar</a>
-                            </div>
                               </label>
                               
                                              <select name="month" style = " width:30%" >
@@ -202,8 +182,19 @@
      </form>
 </div>
 </div>
+        </div>
+</div>
 
 <!--change status modal end-->
+<script type="text/javascript" >
+					
+	function openWindow(day,year,month,company){
+		
+		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
+		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
+		
+	}
+</script>
 <br>
 <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.8.3.min.js'); ?>"></script>
 <input type="hidden" value="<?php echo base_url(); ?>" id="base" />

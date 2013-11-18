@@ -216,9 +216,8 @@
                                     <th class="span1" style="text-align:center">Action</th>
                             </thead>
                             
-<!--                            <tbody class="recName">-->
-                            <tbody class="recName">
-                            <?php
+        <tbody class="recName">
+                             <?php
                     $ctr = 1;
                     if(count($search) == 0)
                      {
@@ -289,9 +288,23 @@
                                     
                                     <td>'?>
                                      <?php
-                                     if(in_array($row['jobno'],$myjobno))
+                                     if(count($myapps) != 0)
                                      {
-                                         echo 'Applied';
+                                         if(in_array($row['jobno'],$myjobno))
+                                         {
+                                             echo' <span class="label label-info">';
+                                             echo 'Applied';
+                                             echo'</span>';
+                                         }
+                                         else
+                                     {
+                                     ?>
+<!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
+                                         <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
+                                     <?php
+                                     
+                                     }
+                                             
                                      }
                                      else
                                      {
@@ -299,6 +312,7 @@
 <!--                                    	<button class="btn btn-mini btn-info">Apply</button>-->
                                          <a class="btn btn-mini btn-info" href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $row['jobno']?>">Apply</a>
                                      <?php
+                                     
                                      }
                                      echo'</td>
                                 </tr>
@@ -309,6 +323,7 @@
                      }
                      }
                     ?>
+                               
                             </tbody>
                         </table>
                             </div>
