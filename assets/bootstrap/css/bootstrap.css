@@ -10390,3 +10390,14 @@ img.photo{
 	font-style:oblique;
 	color:#939;
 }
+.inModEm {
+	color:#90C;
+	font-weight:bold;
+	font-style:oblique;
+	font-size:14px;
+}
+
+.inModEm2 {
+	color:#90C;
+	font-weight:bold;
+}
