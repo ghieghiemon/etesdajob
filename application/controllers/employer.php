@@ -104,10 +104,9 @@ class Employer extends CI_Controller {
                                         </table>
                             </div><!--end well-->
                             </div>
-                    <div class="modal-footer">
-                        <a id="confirm" href="#changeStatus" class="btn btn-info" data-toggle="modal">Confirm</a>
-                        <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-                    </div>';
+                                       <div class="modal-footer">'?>
+                        <a id="confirm" href="<?php echo base_url(); ?>employer/view_calendar/" class="btn btn-info" data-toggle="modal">Confirm</a>
+                      <?php echo'  <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>';
         
     }
     public function employer_dashboard()
@@ -731,7 +730,7 @@ class Employer extends CI_Controller {
         $this->load->view("employer/EEmployerProfile",$data);
    }
    // EMPLOYER CALENDAR
- function view_calendar($jobno, $year = -1, $month = -1){
+ function view_calendar($year = -1, $month = -1){
                        
    
      $config = array (
@@ -746,17 +745,17 @@ class Employer extends CI_Controller {
                            $this->load->model('model_main');
                            $this->load->model('model_employer');
                          
-                           $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+                          // $data['apps'] = $this->model_employer->get_jobApplications($jobno);
                            
                            $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
-                           $this->load->view('employer/ECal',$data);
+                           $this->load->view('employer/ECal');
                            
 			 //  $this->load->view('footer2');
 			// Initialize the template 
 			$config['template'] = '
                                         
-					{table_open}<table style="width:780px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
+					{table_open}<table style="width:775px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 
@@ -818,8 +817,8 @@ class Employer extends CI_Controller {
 			$events = $this->tuna->get_events($id, $year, $month, $day);
 			
 			// EJ EJ EJ EJ
-			print_r($events);
-			return;
+//			print_r($events);
+//			return;
                         
 			 echo '<div class="row-fluid">';
                           echo '<div class="span7">';
