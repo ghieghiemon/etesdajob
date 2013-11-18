@@ -3,16 +3,14 @@
 
 <script type="text/javascript">
 					
-	function openWindow(jobno,day,year,month,company){
+	function openWindow(day,year,month,company){
 		
 		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+jobno+'/'+year+'/'+month+"/"+day+"/"+company);
+		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
 		
 	}
 </script>
 
-<?php foreach ($apps as $a)
-{ ?>
 <div class="" id="changemodal">
   	
 </div> 
@@ -204,7 +202,7 @@
      </form>
 </div>
 </div>
-<?php } ?>
+
 <!--change status modal end-->
 <br>
 <script src="<?php echo base_url('assets/bootstrap/js/jquery-1.8.3.min.js'); ?>"></script>
