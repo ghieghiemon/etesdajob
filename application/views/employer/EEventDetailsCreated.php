@@ -220,18 +220,27 @@
                         </tr>
                         </thead>
                         
-                        <tbody>
-                            <tr>
+                        <tbody>';?>
+                              <?php foreach ($attendees as $r)
+                     {
+
+                           echo' <tr>
                                 <td>
-                                    <a href="#">' ?>
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/user.png" alt="" class="attendeesPic"></a>
-                                   <?php echo'  <p class="attendeeName">Angelica Guerrero</p>
+                                    <a href="#">'?>
+                                                
+                               <img src="<?php echo base_url()?>profilepics/<?php echo $r['profile_pic'];?>" alt="" class="attendeesPic"></a>
+                                    
+                                 <?php echo'  <p class="attendeeName">';
+                                      echo $r['firstname'];
+                                                  echo " ";
+                                                  echo $r['middlename'];
+                                                  echo " ";
+                                                  echo $r['lastname'];
+                                    echo' </p>
                                 </td>
-                            
-                           
-                                
-                            
-                             </tr> <!--one row-->
+                           </tr>';
+                     }?>
+                          <?php echo '   
                         </tbody>
                      ';}  ?>
                     </table><!--end table-->

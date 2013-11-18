@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
     
@@ -25,15 +29,11 @@
                             
                      <div id="container">
                              <form method="post" action="<?php echo base_url()?>tesda/call_jobseeker/">
-                    <div align="right">
-                	<button type ="submit" class="btn btn-primary" >Done</button>
-                    </div>
-                                 <table id ="js" >
+                 
+                                 <table id ="js" style="width:1240px">
                       <thead>
                           <tr>
-                          	  <th class="span1" style="text-align:center">
-                              	<input type="checkbox" onclick="checkall(this);">
-                              </th>
+                          	
                               <th class="span5" style="text-align:center">Name</th>
                               <th class="span5" style="text-align:center">Cell No.</th>
                           </tr>
@@ -42,25 +42,30 @@
                       <tbody class="recName">
                           
                           
-                          <tr>
-                          	  <td>
-                              	<input type="checkbox" name="check[]" value="">
-                              </td>
-                              
-                              <td>
-                              	 <a href="#" class="recAppName">
-                             
-                                 </a>
-                              </td>
-                              
-                              <td>
-                             091212
-                              </td>
-                              
+                          <?php 
+                                        foreach ($smsjs as $b)
+                                        {
                           
+                         echo' <tr>
+                          	 
                               
+                              <td>
+                              	 <a href="#" class="recAppName">';
+                               echo $b['firstname'];
+                                                          echo ' ';
+                                                          echo $b['middlename'];
+                                                          echo ' ';
+                                                          echo $b['lastname'];
+                               echo'  </a>
+                              </td>
                               
-                          </tr>
+                              <td>';
+                              echo $b['cellno'];
+                              echo'</td>
+                              
+                          </tr>';
+                                        }
+                                        ?>           
                                         
                           
                       </tbody>
@@ -78,40 +83,37 @@
                             
                         	      <div id="container">
                              <form method="post" action="<?php echo base_url()?>tesda/call_employer/">
-                    <div align="right">
-                	<button type ="submit" class="btn btn-primary" >Invite</button>
-                    </div>
-                     <table id ="e" >
+                   
+                     <table id ="e" style="width:1240px" >
                       <thead>
                           <tr>
-                          	  <th class="span1" style="text-align:center">
-                              	<input type="checkbox" onclick="checkall(this);">
-                              </th>
+                          	 
                               <th class="span5" style="text-align:center">Name</th>
                               <th class="span5" style="text-align:center">Cell No.</th>
                           </tr>
                       </thead>
                       
                       <tbody class="recName">
+                          <?php 
+                                        foreach ($smsemp as $a)
+                                        {
                           
-                          
-                          <tr>
-                          	  <td>
-                              	<input type="checkbox" name="check[]" value="">
-                              </td>
+                         echo' <tr>
+                          	 
                               
                               <td>
-                              	 <a href="#" class="recAppName">
-                             
-                                 </a>
+                              	 <a href="#" class="recAppName">';
+                              echo $a['companyName'];
+                               echo'  </a>
                               </td>
                               
-                              <td>
-                             092312987
-                              </td>
+                              <td>';
+                              echo $a['companyContact'];
+                              echo'</td>
                               
-                          </tr>
-                                        
+                          </tr>';
+                                        }
+                                        ?>         
                           
                       </tbody>
                   </table>
@@ -139,7 +141,6 @@
 
 
       <hr>
-
 
 
 <script type="text/javascript">

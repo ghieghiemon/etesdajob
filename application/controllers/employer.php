@@ -918,6 +918,7 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         $this->load->model('model_pub');
         $data['details'] = $this->model_employer->get_eventdetails($eno);    
+        $data['attendees'] = $this->model_employer->event_attendees($eno);    
         $this->employer_header();
         $this->load->view('employer/EEventDetailsCreated', $data);
         $this->load->view('footer2');

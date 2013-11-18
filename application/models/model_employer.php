@@ -614,7 +614,7 @@ class Model_employer extends CI_Model {
                     JOIN etesda.job_vacancies v ON a.jobno = v.jobno
 
                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
-                    where v.companyID =1 AND a.status ='Interview'
+                    where v.companyID =$id AND a.status ='Interview'
                     AND requirementdate >= curdate() 
                             ");
         return $query->result_array();
@@ -869,7 +869,7 @@ class Model_employer extends CI_Model {
     }
      public function get_createdevents($userid){
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT *,COUNT(*) AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
+        $query = $db1->query("SELECT *,COUNT(*)-1 AS participantscount,  e.eventno,eventpic, e.eventtitle, venue, r.region ,c.city, 
         DATE_FORMAT(startdate, '%M %d, %Y') as startdate, 
         DATE_FORMAT(starttime, '%h:%i %p') as starttime
                                 FROM events e 
@@ -887,7 +887,7 @@ class Model_employer extends CI_Model {
     
       public function get_eventdetails($eno){
         $db1 = $this->load->database('local', TRUE);
-       $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*) AS participantscount,
+       $query = $db1->query("SELECT ep.companyName, e.createdby, e.eventno,e.eventpic, e.eventtitle, venue,  COUNT(*)-1 AS participantscount,
         r.region ,c.city,sponsors,purpose,
         DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
         DATE_FORMAT(starttime, '%h:%i %p') as starttime,
@@ -986,5 +986,19 @@ public function check_if_linvite($id, $lno)
         else return true;
        $db1->close();
     }
+    
+      public function event_attendees($eno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("SELECT *,e.eventno, e.eventtitle,ep.userid
+        FROM etesda.events e
+        JOIN etesda.event_participants ep ON  ep.eventno= e.eventno
+        JOIN tesda_centraldb.applicants a ON a.userid = ep.userid
+        where e.eventno = $eno");
+             
+         return $query->result_array();
+         $db1->close();
+     }
 }
 ?>
