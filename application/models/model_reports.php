@@ -21,8 +21,31 @@ class Model_reports extends CI_Model {
         return $result;
         
     }//end report JV
-    
-    
+    public function get_companyindustry_vacancies($month, $year, $sectorid){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        $query1 = "select j.jobno, j.companyID, j.jobtitle, j.vacanciesleft, j.description, j.expirationdate, e.companyName, c.city from etesda.job_vacancies j 
+                    join tesda_centraldb.employer_profile e on j.companyID = e.userID
+                    join etesda.reference_city c on c.cityid = j.city
+                   where month(dateposted) = ? and year(dateposted) = ? and sectorid =?";
+        $result = $dbconn->query($query1, array($month, $year,$sectorid))->result();
+        $dbconn->close();
+        return $result;
+        
+    }
+    function getAllCerts() 
+    {
+      $db2 = $this->load->database('default', TRUE);
+      $query = $db2->query("SELECT  ncid, ncname,description, level FROM nc_reference");
+      $data=array();
+      foreach ($query->result() as $row)
+      {
+        $data[$row->ncid] = $row->ncname." ".$row->level;
+      }
+      return ($data);
+    }
     
     public function get_indemand_jobs($month, $year){
   

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+ <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+  
+ 
+ <!-- Add jQuery library -->
+	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+
+         
+
+ <!-- end c/o chels-->
 
 <title>Home | e-TESDA: Work</title>
-
+ 
 
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -16,16 +28,15 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="../assets/ico/favicon.png">
-  <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
- 	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
-    
-        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+ 
+ 
+ 
+ 
+ 
+ 
  
   </head>
 
@@ -107,10 +118,9 @@
                </div> <!--/.navbar-inner -->
                </div> <!--/.navbar -->
                
-               <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
+  <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
@@ -121,5 +131,7 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="j<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="j<?php echo base_url()?>assets/bootstrap/js/datatable.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/datatable.js"></script>
+    
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
