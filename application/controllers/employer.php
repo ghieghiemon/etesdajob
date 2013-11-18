@@ -720,7 +720,7 @@ class Employer extends CI_Controller {
         $this->load->view("employer/EEmployerProfile",$data);
    }
    // EMPLOYER CALENDAR
- function view_calendar($year = -1, $month = -1){
+ function view_calendar($jobno,$year = -1, $month = -1){
                        
    
      $config = array (
@@ -733,15 +733,19 @@ class Employer extends CI_Controller {
 			
 			// Load the javascript
                            $this->load->model('model_main');
+                           $this->load->model('model_employer');
+                         
+                           $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+                           
                            $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
-                           $this->load->view('employer/ECal');
+                           $this->load->view('employer/ECal',$data);
                            
 			 //  $this->load->view('footer2');
 			// Initialize the template 
 			$config['template'] = '
                                         
-					{table_open}<table style="width:600px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="center" cellpadding="1" cellspacing="10">{/table_open}
+					{table_open}<table style="width:780px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 
@@ -782,7 +786,7 @@ class Employer extends CI_Controller {
 				
 			foreach($events as $event):
 					
-				$events_arr[$event->eday] = base_url('employer/view_event/'.$yr.'/'.$mo.'/'.$event->eday);
+				$events_arr[$event->eday] = base_url('employer/view_event/'.$jobno.'/'.$yr.'/'.$mo.'/'.$event->eday);
 				
 			endforeach;
 				
@@ -803,10 +807,10 @@ class Employer extends CI_Controller {
 			$events = $this->tuna->get_events($id, $year, $month, $day);
                         
 			 echo '<div class="row-fluid">';
-                          echo '<div class="span11">';
-                        echo '<div class="well" style="margin-top:10px;margin-left:100px">';
+                          echo '<div class="span7">';
+                        echo '<div class="well" style="margin-top:10px;margin-left:-100px">';
 			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
-			echo"  <table style='width:1000px'class=''>
+			echo"  <table style='width:850px'class=''>
                       <thead>
                           <tr>
                           	

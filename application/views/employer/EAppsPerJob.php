@@ -720,6 +720,7 @@ echo'<div class="modal hide fade" id="renew">';?>
   	</div>
      </form>
 </div>
+
 <?php } ?>
 <!--change status modal end-->
  
@@ -1729,7 +1730,7 @@ function year_install(f)
 		
 		// alert('Clicked');
 		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		window.open($('#base').val() + 'employer/view_calendar/','Calendar','width=1400,height=500');
+		window.open($('#base').val() + 'employer/view_calendar/<?php echo $a['jobno']?>','Calendar','width=1400,height=500');
 
 	}
 	
