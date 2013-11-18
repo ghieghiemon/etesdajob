@@ -25,7 +25,7 @@ class Model_pub extends CI_Model {
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT count(v.jobno) as totalvacancies,r.* from etesda.job_vacancies v 
+        $query = $db1->query("SELECT count(v.jobno) as totalopenings,r.* from etesda.job_vacancies v 
 			      JOIN etesda.reference_region r ON r.regionid = v.region
                               where expirationdate >= curdate()
                               GROUP BY regionid ORDER BY regionid ASC");
@@ -38,9 +38,9 @@ class Model_pub extends CI_Model {
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT SUM(v.vacanciesleft) as totalvacancies,s.* from etesda.job_vacancies v 
+        $query = $db1->query("SELECT count(v.jobno) as totalopenings,s.* from etesda.job_vacancies v 
                               JOIN tesda_centraldb.sectors s ON v.sectorid = s.sectorID
-                              GROUP BY sectorid ORDER BY totalvacancies DESC");
+                              GROUP BY sectorid ORDER BY totalopenings DESC");
         return $query->result_array();
         $db1->close();
         $db2->close();
