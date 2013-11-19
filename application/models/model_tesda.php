@@ -159,7 +159,7 @@ class Model_tesda extends CI_Controller{
      public function all_events(){
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("  
-        SELECT *,events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,sponsors,purpose,
+        SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,sponsors,purpose,
         DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
         DATE_FORMAT(starttime, '%h:%i %p') as starttime,
         DATE_FORMAT(endtime, '%h:%i %p') as endtime

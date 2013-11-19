@@ -757,8 +757,8 @@ class Employer extends CI_Controller {
 			 //  $this->load->view('footer2');
 			// Initialize the template 
 			$config['template'] = '
-                                        
-					{table_open}<table style="width:775px"class="table-condensed table-bordered table-striped"border="0" style ="margin-top:40px" align="left" cellpadding="1" cellspacing="10">{/table_open}
+                                       
+					{table_open}<table style="width:735px; margin-left:40px; margin-top:40px;"class="table-condensed table-bordered table-striped"border="0" cellpadding="1" cellspacing="10">{/table_open}
 
 					{heading_row_start}<tr>{/heading_row_start}
 
@@ -807,7 +807,7 @@ class Employer extends CI_Controller {
 			echo $this->calendar->generate($yr, $mo, $events_arr);
 			
 			// Content DIV
-			echo '<div id="contentdiv"></div><br>';
+			echo '<div id="contentdiv"></div>';
  
 		}
 		

@@ -1,3 +1,13 @@
+ <!--change status modal end-->
+<script type="text/javascript" >
+					
+	function openWindow(day,year,month,company){
+		
+		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
+		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
+		
+	}
+</script>
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/datepicker.css"> 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
 <div id="changeStatus">
@@ -145,16 +155,7 @@
         </div>
 </div>
 
-<!--change status modal end-->
-<script type="text/javascript" >
-					
-	function openWindow(day,year,month,company){
-		
-		// window.open($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company,'List of Events','width=400,height=600');
-		$('#contentdiv').load($('#base').val() + 'employer/view_event/'+year+'/'+month+"/"+day+"/"+company);
-		
-	}
-</script>
+
 
     <script>
 $("#date").datepicker( {

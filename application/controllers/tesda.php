@@ -6,6 +6,7 @@ class Tesda extends CI_Controller {
     {
         $this->load->model('model_tesda');
         $data['employerverify'] = $this->model_tesda->get_employertoverify();
+          $data['event'] = $this->model_tesda->all_events();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
         $this->tesda_header();
         $this->load->view('tesda/TesdaDash',$data);

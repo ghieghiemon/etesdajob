@@ -10375,7 +10375,6 @@ img.photo{
 .PDescMarg {
 	margin-left:20px;
 	font-size:15px;
-	font-weight:bold;
 }
 
 .myStyleDesc input[type="text"] {
@@ -10400,4 +10399,26 @@ img.photo{
 .inModEm2 {
 	color:#90C;
 	font-weight:bold;
+}
+
+pTag {
+	font-size:12px;
+	margin-left:25px;
+	text-align:justify;
+}
+
+.pTagPic {
+	margin-left:-10px;
+	margin-top:-10px;
+}
+
+.pTagLink {
+	color:#609;
+}
+
+.modal-wide {
+      /* new custom width */
+    width: 750px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    margin-left: -375px;
 }

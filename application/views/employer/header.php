@@ -181,7 +181,7 @@ function checkall(el){
                </div> <!--/.navbar -->
                
    <!--postV modal start-->
-<div class="modal hide fade" id="postV">
+<div class="modal hide fade modal-wide" id="postV">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Post Vacancy</h3>
@@ -194,7 +194,7 @@ function checkall(el){
                     <form method="post" action="<?php echo base_url()?>employer/employer_repost">
             	<div class="well">
                 	<h5 class="media-heading previewColor">| Repost Existing Vacancy</h5>
-                    <div style="width:248px;height:150px;overflow:auto;"><!--start scrollable table-->
+                    <div style="width:298px;height:150px;overflow:auto;"><!--start scrollable table-->
                     	
                         	<div class="control-group2"><!-- start div Keyword -->
                                 <div class="controls">
@@ -210,11 +210,16 @@ function checkall(el){
                                        ?>
                                        <tr>
                                        <td><input type="radio" id="recipient" name="jobvacancy" value="<?php echo $a['jobno']?>"></td>
-                                       <?php
+                                      
+                                      <font class="vColor">
+                                           <?php
                                        echo '<td>';
                                        echo $a['jobtitle'];
-                                       echo '</td>';
-                                       echo '<td>';
+                                       echo '</td>';?>
+                                       </font>
+                                       
+                                       
+                                       <?php echo '<td>';
                                        echo $a['city'];
                                        echo ', ';
                                        echo $a['region'];
@@ -245,7 +250,7 @@ function checkall(el){
             	<div class="well">
                 	<h5 class="media-heading previewColor">| Create a New Vacancy</h5>
                     <div style="width:190px;height:159px;overflow:auto;"><!--start scrollable table-->
-                        <div align="center" style="margin-top:15px; margin-left:-38px; " >
+                        <div align="center" style="margin-top:15px; margin-left:17px; " >
                             <br><br>
                             <a href="employer_postvacancypage" class="btn btn-info btn-mini">Post New Vacancy</a>
                         </div>

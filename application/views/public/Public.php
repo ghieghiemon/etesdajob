@@ -159,29 +159,41 @@
             </div><!--end well-->
             
             <div class="well wellUpMarg wellShadow">
-            	 <h5 class="media-heading">
-                      <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="25"> My Activity 
+            	<h5 class="media-heading">
+                      <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_029_notes_2.png" width="15"> Features
                   </h5>
                 
-                <div style="width:280px;height:390px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:280px;height:380px;overflow:auto;"><!--start scrollable table-->
                 	<br>
-                    <a href="">
-                        <p class="PDescMarg">
                     
-                        JOIN LEAGUES
-                         </p>
-                    </a>
-                   
-                   <a href="">
-                    <p class="PDescMarg">
-                    	JOIN EVENTS
-                    </p>
-                    </a>
-                     <a href="">
                    	<p class="PDescMarg">
-                    	ACCOMPLISH PROFILE
+                    	<img src="<?php echo base_url()?>assets/bootstrap/img/browser.png" width="40px" class="pTagPic"> 
+                        <a  data-toggle="modal" href="#signModal" class="pTagLink"><strong>PROFILE</strong></a>
+                        <br>
+                        <font class="pTag" style="margin-left:40px;">
+                        	Build your profile, monitor your applications and get hired!
+                        </font>
                     </p>
-                    </a>
+                    <br>
+                    
+      				<p class="PDescMarg">
+                    	<img src="<?php echo base_url()?>assets/bootstrap/img/globe.png" width="40px" class="pTagPic"> 
+                        <a href="<?php echo base_url()?>pub/leaguepage" class="pTagLink"><strong>LEAGUES</strong></a>
+                        <br>
+                        <font class="pTag" style="margin-left:40px;">
+                        	Connect with people who share the same interests and insights through discussions to help you to be great in your career.
+                        </font>
+                    </p>
+                    <br>
+                    <p class="PDescMarg">
+                    	<img src="<?php echo base_url()?>assets/bootstrap/img/calendar.png" width="40px" class="pTagPic"> 
+                        <a href="<?php echo base_url()?>pub/pub_allevents" class="pTagLink"><strong>EVENTS</strong></a>
+                        <br>
+                        <font class="pTag" style="margin-left:40px;">
+                        	Be updated with current job fairs, trainings and other events that suits your profile.
+                        </font>
+                    </p>
+                    
                 </div><!--end scrollable table-->
                     
             </div><!--end features-->

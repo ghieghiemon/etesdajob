@@ -687,7 +687,7 @@ foreach ($myvacancies as $a)
             	<h4 class="media-heading">
                 	| Posted Vacancies
                 </h4>
-                <div style="width:780px;height:305px;overflow:auto;"><!--start scrollable table-->
+                <div style="height:305px;overflow:auto;"><!--start scrollable table-->
                  <div class="tabbable tabs-left"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         
