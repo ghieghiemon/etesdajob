@@ -613,7 +613,7 @@ class Model_employer extends CI_Model {
                     JOIN etesda.job_vacancies v ON a.jobno = v.jobno
 
                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
-                    where v.companyID =$id AND a.status ='Interview'
+                    where v.companyID =$id  AND (a.status ='Exam' or a.status ='Interview')
                     AND requirementdate >= curdate() 
                             ");
         return $query->result_array();

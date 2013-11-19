@@ -278,7 +278,7 @@ foreach ($myvacancies as $a)
                       $ctr = 1;
                     if(count($briefcase) == 0)
                      {
-                         echo '<p class = "noCommYet"> There are no upcoming Interviews</p>';
+                         echo '<p class = "noCommYet"> There are no upcoming Interviews and Exams</p>';
                      }
                      else
                      {

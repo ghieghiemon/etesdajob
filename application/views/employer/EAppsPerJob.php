@@ -1460,7 +1460,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           </td>
                                           
                                           <td>
-                                              <a href="EAppsProf.html" class="recAppName">
+                                                <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>/<?php echo $a['jobno'] ?>" class="recAppName">
                                                   <?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)

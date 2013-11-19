@@ -833,6 +833,7 @@ class Employer extends CI_Controller {
                           <tr>
                           	
                               <th class='span4' style='text-align:center'>Name</th>
+                           
                               <th class='span3' style='text-align:center'>Status</th>
                               <th class='span3' style='text-align:center'>Date</th>
                               <th class='span2' style='text-align:center'>Time</th>
@@ -857,7 +858,7 @@ class Employer extends CI_Controller {
                                                   }
                                  echo"</a>
                               </td>
-                              
+                            
                               <td>
                                   $event->status
                               </td>
