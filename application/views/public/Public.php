@@ -99,7 +99,8 @@
     	<div class="span3">
         	<div class="well wellUpMarg wellShadow qjsBG">
             	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> 
+                        <font color ="white">Quick Job Search</font>
                 </h5>
             	<br>
             

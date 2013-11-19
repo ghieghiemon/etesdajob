@@ -898,13 +898,18 @@ class Employer extends CI_Controller {
 			// Load the javascript
                            $this->load->model('model_main');
                            $this->load->model('model_employer');
+                           
                          
                           // $data['apps'] = $this->model_employer->get_jobApplications($jobno);
                            
                            $id = $this->model_main->get_userid($this->session->userdata('email'));
                            $this->employer_header();
                            $this->load->view('employer/ECalendar');
-                           
+                           echo '<br><font size="6"><div align="center">
+                               <strong>Calendar</strong><br><br></font>
+                                <font size="4"> <strong>Select Date to view schedule</strong></div><br></font></div>';
+                                        //edit here
+                               //
 			 //  $this->load->view('footer2');
 			// Initialize the template 
 			$config['template'] = '
@@ -938,7 +943,7 @@ class Employer extends CI_Controller {
 					{cal_row_end}</tr>{/cal_row_end}
 
 					{table_close}</table>{/table_close}
-			';
+                                        ';
 			
 			$this->load->library('calendar', $config);
 			$this->load->model('tuna');

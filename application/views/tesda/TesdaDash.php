@@ -58,32 +58,31 @@ foreach($employerverify as $a)
 }
 ?>    
     
-    <?php
+        <?php
 foreach($employerverify as $a)
 {
 ?>
-   <div class="modal hide fade" id="deny<?php echo $a['userID']?>">
-<?php
-    echo '<div class="modal-header">
+     <div class="modal hide" id="deny<?php echo $a['userID']?>">
+     <div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<br>
   	</div>
-    
-	<div class="modal-body">
+     <div class="modal-body">
     	<p class="delete">
            <strong> Are you sure you want to deny the profile?</strong>
         </p>
     </div>
-  	<div class="modal-footer">';
-        ?>
-  	<a  href="<?php echo base_url()?>tesda/approve_edeny/<?php echo $a['userID']?>" class="btn btn-danger">Approve</a>
+        <div class="modal-footer">
+            	<a  href="<?php echo base_url()?>tesda/approve_edeny/<?php echo $a['userID']?>" class="btn btn-danger">Approve</a>
     	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	
-     </div>
+        </div>
     </div>
-<?php
+     <?php
 }
 ?> 
+             
+ 
+   
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	

@@ -57,14 +57,7 @@
                                     <br>&nbsp; Events &nbsp;
                                 </h5>
                                 </a>
-                                
-                                <a href="<?php echo base_url()?>pub/pub_signup" class="btn btn-group transBtn" style="margin-left:5px;">
-                                <h5 class="media-heading">
-                                   <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="25"> 
-                                    <br>My Activity 
-                                </h5>
-                                </a>
-                                
+                               
                                 <a href="<?php echo base_url()?>main/index" class="btn btn-group transBtn">
                                   <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_020_home.png" width="21"> 
