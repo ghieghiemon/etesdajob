@@ -540,8 +540,16 @@ foreach ($myvacancies as $a)
   				<div class="tab-content"> start tab content
                     <div class="tab-pane active" id="tab12">-->
                     <br>
+                    <div class="tabbable"> <!-- start tabs-->
+  				<ul class="nav nav-tabs">
+    				<li class="active"><a href="#tab12" data-toggle="tab">Processing</a></li>
+    				<li><a href="#tab11" data-toggle="tab">Closed</a></li>
+  				</ul>
+                        <div class="tab-content"> <!--start tab content-->
+                    <div class="tab-pane active" id="tab12">
                         <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
                         	<!--<table class="tableJM2 table-hover table-condensed table-striped">-->
+                            
                             <div id="container">
                         	<table id ="newtable" >
                                     
@@ -660,11 +668,137 @@ foreach ($myvacancies as $a)
                                                       
                                   
                               </tbody>
+                          </table>
+                        </div>
+                            </div>
+                        </div><!--end scrollable table--> <!--start tab content-->
+                    <div class="tab-pane" id="tab11">
+                        <div style="width:1240px;height:430px;overflow:auto;"><!--start scrollable table-->
+                        	<!--<table class="tableJM2 table-hover table-condensed table-striped">-->
+                            
+                            <div id="container">
+                        	<table id ="second" >
+                                    
+                              <thead>
+                                  <tr>
+                                      <th class="span3" style="text-align:center">Job Title</th>
+                                      <th class="span2" style="text-align:center">Location</th>
+                                      <th class="span1" style="text-align:center">Effectivity</th>
+                                      <th class="span2" style="text-align:center">Vacancies Left</th>
+                                      <th class="span2" style="text-align:center">Number of Applications</th>
+                                      <th class="span1" style="text-align:center">Status</th>
+                                      <th class="span1" style="text-align:center"></th>
+                                      <th class="span2" style="text-align:center"></th>
+                                  </tr>
+                              </thead>
+                              
+                              <tbody class="recName">
+                                  <?php
+                                  foreach ($closed as $a)
+                                  {
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <font class="vColor">	
+                                                <a href='<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>'>
+                                                 <?php echo $a['jobtitle']?></a>
+                                                </font>
+                                            </td>
+
+                                            <td>
+                                                <?php 
+                                                echo $a['region'];
+                                                echo ' |  ';
+                                                echo $a['city'];
+                                                ?>
+                                            </td>
+
+                                            <td>
+                                                <?php
+                                                  $date2 = $a['expirationdate'];
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  if ($a['exp'] > $a['currentdate'])
+                                                  {
+                                                  echo $days;
+                                                  echo " days left";
+                                                  }
+                                                  else
+                                                  {
+                                                    echo "<font color ='red'>EXPIRED </font>";
+                                                  }
+                                                ?>
+                                            </td>
+
+                                            <td>
+                                                <badge class="badge badge-important">
+                                                <?php echo $a['vacanciesleft']?>
+                                            </td>
+
+                                            <td>
+                                              <a href="#" class="numofApps">
+                                              <?php
+                                              $count = $this->model_employer->count_jobApplications($a['jobno']);
+                                              echo $count;
+                                              ?>
+                                              </a>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                {
+                                                    echo "Active";
+                                                }
+                                                else
+                                                {
+                                                  echo "<font color ='red'>EXPIRED </font>";
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                  {
+                                                    ?>
+                                                
+                                                <a href="#extend<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <?php
+                                                  }
+                                                  else 
+                                                  {
+                                                ?>
+                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Renew</a>
+                                                <?php
+                                                  }
+                                                ?>
+                                                
+                                            </td>
+                                            <td>
+                                                 <?php
+                                                if ($a['exp'] > $a['currentdate'])
+                                                  {
+                                                    ?>
+                                                
+                                                <a href="<?php echo base_url()?>employer/invite_jobseekers/<?php echo $a['jobno']?>" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
+                                                <?php
+                                                  }
+                                                  ?>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                  }
+                                  ?>
+                                                      
+                                  
+                              </tbody>
                           </table>	
                             </div>
-                        </div><!--end scrollable table-->
-                        
-                       
+                        </div>
+                    </div>
+                    </div>
                     </div>  <!--end Active-->
                    
                   
@@ -678,7 +812,17 @@ foreach ($myvacancies as $a)
   
  
             
-             
+ <script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#second').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>            
 
 
       <hr>

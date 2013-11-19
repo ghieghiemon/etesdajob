@@ -361,19 +361,7 @@ class Main extends CI_Controller {
             }
             else if($this->model_main->get_usertype()=='EMPLOYER')
             {
-                $id = $this->model_main->get_userid($email);
-                $current = $this->model_main->get_survey($id);
-                
-                
-                $surveys = $this->model_main->check_survey($id);
-                if(count($surveys) == 0)
-                {
-                    redirect(base_url().'employer/employer_dashboard');
-                }
-                else
-                {
-                    redirect(base_url().'employer/employer_survey');
-                }
+                redirect(base_url().'employer/employer_dashboard');
             }
             else if ($this->model_main->get_usertype()=='JOBADMIN')
             {
