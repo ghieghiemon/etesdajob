@@ -148,7 +148,7 @@ foreach($employerverify as $a)
             	<div class="tabbable"> <!-- start tabs-->
   				<ul class="nav nav-tabs">
     				<li class="active"><a href="#tab12" data-toggle="tab">Companies' License</a></li>
-    				<li><a href="#tab11" data-toggle="tab">Job Seekers' Certification</a></li>
+    			
   				</ul>
   
   				<div class="tab-content"> <!--start tab content-->
@@ -199,51 +199,7 @@ foreach($employerverify as $a)
                         </div><!--end scrollable table-->
                     </div>  <!--end Companies-->
                     
-                    <div class="tab-pane" id="tab11">
-                        <div style="width:705px;height:250px;overflow:auto;"><!--start scrollable table-->
-                             <div id="container">
-                        	<table id ="second" >
-                            	<thead>
-                                	<tr>
-                                        <th class="span3">Name</th>
-                                        <th class="span2">Location</th>
-                                        <th class="span4">Certification</th>
-                                        <th class="span2"></th>
-                                    </tr>
-                                </thead>
-                                
-                                <tbody class="recName">
-                                	<tr>
-                                        <td>
-                                        	<a href="#" class="recAppName">
-                                                Angelica Guerrero
-                                            </a>
-                                        </td>
-                                        
-                                        <td>
-                                        	NCR | Makati City
-                                        </td>
-                                        
-                                        
-                                        <td>
-                                        	Electrical Installation & Maintenance NCII
-                                        </td>
-                                        
-                                        <td>
-                                        	<button class="btn btn-mini">
-                                            	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_198_ok.png" width="20">
-                                            </button>
-                                            
-                                            <button class="btn btn-mini">
-                                            	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_197_remove.png" width="20">
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                             </div>
-                        </div><!--end scrollable table-->
-                    </div> <!--end tab pane-->
+                  
             
                 </div> <!--end tab content-->
               </div> <!--end tabbable-->

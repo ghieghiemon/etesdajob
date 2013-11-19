@@ -54,6 +54,7 @@ class Tesda extends CI_Controller {
             $this->email->subject('Invitation to join E-TESDA Job Portal');
 
             $message = $this->input->post('msg');
+            $message .= "<p><a href = '".base_url()."main/index'>Click here</a> visit the E-TESDA Job Portal</p>";
             $this->email->message($message);
 
             $email = $this->input->post('invites');
@@ -65,6 +66,7 @@ class Tesda extends CI_Controller {
                 $this->email->to($a);
                 $this->email->send();
             }
+             redirect('tesda/tesda_dashboard');
              
     }
     public function tesda_leaguespage()
