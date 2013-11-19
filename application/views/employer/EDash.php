@@ -297,7 +297,7 @@ foreach ($myvacancies as $a)
                                 
                                 <p class="notifAgenda2">';
                                 	echo $a['status'];
-                                       echo' with ';
+                                       echo' - ';
                                         echo $a['firstname'];
                                         echo' ';
                                         echo $a['lastname'];
