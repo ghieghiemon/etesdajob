@@ -164,7 +164,7 @@ class Model_main extends CI_Model {
         
         $query="INSERT into employer_profile(userID,companyName,position,companyBG,companyIndustry,companyExistence,
             companyEmail,companyContact,companyContactPerson,license,companypic,verified,companyLocations) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        $db2->query($query,array($userid,'1','1','1','1','2013','1','1','1','1','a10.jpg','0',''));
+        $db2->query($query,array($userid,'1','1','1','1','2013','1','1','1','1','boom.jpg','0',''));
         $db2->close();
         
     }

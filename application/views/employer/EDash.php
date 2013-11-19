@@ -263,7 +263,7 @@ foreach ($myvacancies as $a)
 ?>
 <!--publish vacancy modal end-->
 <div class="container">
-<div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
+<div style="margin-left: 1%; margin-top: -1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
     	<div class="span4">
@@ -285,9 +285,9 @@ foreach ($myvacancies as $a)
                         foreach($briefcase as $a){
                             if($ctr >=1)
                         { 
-                  echo'  <li>
-                        <a href="#" class="Comm">
-                            <div class="notifAgenda">
+                  echo'  <li>'?>
+                        <a href="<?php echo base_url()?>employer/view_ecalendar/" class="Comm">
+                            <?php echo'<div class="notifAgenda">
                                 <font class="boldSched">';
                                 	  echo $a['requirementdate'];
                                        echo' |';
@@ -319,7 +319,7 @@ foreach ($myvacancies as $a)
                
                <div class="row-fluid">
                     <div align="right" style="margin-top:-15px">
-                        <a href="<?php echo base_url()?>employer/view_calendar/">
+                        <a href="<?php echo base_url()?>employer/view_ecalendar/">
                             <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                         </a>
                     </div>
@@ -774,6 +774,7 @@ foreach ($myvacancies as $a)
         
     </script>
     
+    
     <script type="application/javascript">
     <?php
     foreach($myvacancies as $a)
@@ -781,14 +782,14 @@ foreach ($myvacancies as $a)
         $new = $this->model_employer->count_jobApplicationsNew($a['jobno']);
         $exam = $this->model_employer->count_jobApplicationsExam($a['jobno']);
         $interview = $this->model_employer->count_jobApplicationsInterview($a['jobno']);
-//        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
+        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
         
         
             
     ?>    
             var chart1 = new AwesomeChart('chartCanvas<?php echo $a['jobno']?>');
             <?php
-                if($new == 0 && $exam == 0 && $interview == 0)
+                if($new == 0 && $exam == 0 && $interview == 0 && $hired == 0)
                 {
             ?>
                     chart1.title = "<?php echo $a['jobtitle']?> - No Applications Yet";
@@ -801,9 +802,9 @@ foreach ($myvacancies as $a)
             <?php
                 }
             ?>
-            chart1.data = [<?php echo $new?>,<?php echo $exam?>,<?php echo $interview?>];
-            chart1.labels = ['New Applicant','Exam','Interview'];
-            chart1.colors = ['#99C', '#609', '#6CC'];
+            chart1.data = [<?php echo $new?>,<?php echo $exam?>,<?php echo $interview?>,<?php echo $hired?>];
+            chart1.labels = ['New Applicant','Exam','Interview','Hired',' <?php echo $a['jobno']?>'];
+            chart1.colors = ['#99C', '#609', '#6CC', '#33F'];
             chart1.randomColors = true;
             chart1.draw();
    <?php

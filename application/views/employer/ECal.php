@@ -36,9 +36,18 @@
                               
                           </td>
                       </tr>
-                      <tr>                                           
+                        <tr>                                           
                           <td>
                               <input type="radio" name="group1" value="Hired" style="margin-left:40px;">
+                              <label class="checkbox jCrNC3">
+                                  Hired
+                              </label>
+                              
+                          </td>
+                      </tr>
+                      <tr>                                           
+                          <td>
+                              <input type="radio" name="group1" value="Denied" style="margin-left:40px;">
                               <label class="checkbox jCrNC3">
                                   Denied
                               </label>
@@ -86,14 +95,14 @@
                               <label style="margin-left:1px;">
                             <strong>Select Date and Time: </strong>
                               </label>
-                              
+                                <!--<input type="text" id="date" name="date" placeholder="Date">-->
                    <input style ="height:2em;" type="text" id="date" name="date" placeholder="Select Date">
                           
                           </td>
                       </tr>
                       <tr>
                           <td>
-                              <select nAMe="time">
+                              <select name="time">
   <option value="00:00">12:00 AM</option>
   <option value="1:00">1:00 AM</option>
   <option value="2:00">2:00 AM</option>

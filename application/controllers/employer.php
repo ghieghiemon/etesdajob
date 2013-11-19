@@ -323,7 +323,7 @@ class Employer extends CI_Controller {
             }
 //       }
        
-       redirect(base_url().'employer/invite_jobseekers/'.$jobpost_id);
+       redirect(base_url().'employer/employer_appsperjob/'.$jobpost_id);
     }
      public function get_industrycerts($industry)
     {
@@ -393,7 +393,7 @@ class Employer extends CI_Controller {
         
         $this->employer_header();
         $this->load->view('employer/EAppsPerJob',$data);
-     //   $this->load->view('footer');
+        $this->load->view('footer2');
     }
     
     public function employer_vacancypage()
@@ -487,14 +487,14 @@ class Employer extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_employer');
         $this->load->model('model_jobseeker'); 
-//      $data['cert'] = $this->model_employer->getAllComp();  
-//      $data['comp'] = $this->model_employer->getAllCerts();
+      $data['cert'] = $this->model_employer->getAllComp();  
+      $data['comp'] = $this->model_employer->getAllCerts();
          
       
         $jobno = $this->input->post('jobvacancy');   
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
-        $data['cert'] = $this->model_employer->get_jobCerts($jobno);
-        $data['comp'] = $this->model_employer->get_jobComps($jobno);
+       // $data['cert'] = $this->model_employer->get_jobCerts($jobno);
+      //  $data['comp'] = $this->model_employer->get_jobComps($jobno);
         $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
         $data['industry'] = $this->model_main->get_drpindustries();
@@ -558,11 +558,12 @@ class Employer extends CI_Controller {
         @session_start();
         $this->load->model('model_employer'); 
         $status = $this->input->post('group1');
-        $day =  $this->input->post('day');
-        $month =  $this->input->post('month');
-        $year = $this->input->post('year');
+        //$day =  $this->input->post('day');
+        //$month =  $this->input->post('month');
+        //$year = $this->input->post('year');
         $time = $this->input->post('time');
-        $date = $month.",".$day.",".$year; 
+        $date = $this->input->post('date');
+        //$date = $month.",".$day.",".$year; 
         $location = $this->input->post('location');
         
         $ids = $_SESSION['ids'];
@@ -824,9 +825,9 @@ class Employer extends CI_Controller {
                         
 			 echo '<div class="row-fluid">';
                           echo '<div class="span7">';
-                        echo '<div class="well" style="margin-top:10px;margin-left:-100px">';
+                        echo '<div class="well" style="margin-top:10px;margin-left:-1px">';
 			echo "<br><b>Schedule for $month-$day-$year</b> <hr class='hrLeagTab'>";
-			echo"  <table style='width:850px'class=''>
+			echo"  <table style='width:650px'class=''>
                       <thead>
                           <tr>
                           	
@@ -1110,6 +1111,7 @@ class Employer extends CI_Controller {
         }
        
         $data['invites'] = $final;
+        $data['eventno'] = $eventno;
         $this->employer_header();
         $this->load->view('employer/EEventInvite',$data);
         $this->load->view('footer2');
@@ -1236,6 +1238,19 @@ class Employer extends CI_Controller {
            $this->model_employer->add_invleague($id,$leagueno);
        }
         redirect(base_url()."employer/employer_leagueview/".$leagueno);
+    }
+    
+       public function invite_event($eventno)
+    {
+       $this->load->model('model_employer');
+       $userid = $this->input->post('check');
+       
+       foreach ($userid as $a)
+       {
+           $id = $this->model_employer->get_userid($a);
+           $this->model_employer->add_invevent($id,$eventno);
+       }
+        redirect(base_url()."employer/employer_evcreated/".$eventno);
     }
 
 }

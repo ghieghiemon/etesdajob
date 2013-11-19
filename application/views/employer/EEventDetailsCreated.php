@@ -164,9 +164,8 @@
                                             
                                  <div class="row marg3">
                                             
-                                                <span class="btn btn-info btn-mini pull-right">
-                                                <a data-toggle="modal" href="#ModAttend" class="attendBtn">Edit</a>
-                                                </span>
+                                            
+                                                <br>
                                     </div>
                                        <hr class="hrRApp2">
                                         </p>

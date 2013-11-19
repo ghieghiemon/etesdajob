@@ -228,7 +228,7 @@ function checkall(el){
                     </div><!--end scrollable-->
                     
                     <div align="center" style="margin-top:5px;">
-                        <button type="submit" class="btn btn-info btn-mini">Continue</button>
+                        <button type="submit" class="btn btn-info btn-mini">Repost</button>
                     </div>
                     
                 </div><!--end well-->

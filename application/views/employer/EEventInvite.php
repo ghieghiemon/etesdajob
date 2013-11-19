@@ -14,13 +14,18 @@
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
                 </h3>
                 
-                <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->      
+                <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->     
+                       <form method="post" action="<?php echo base_url()?>employer/invite_event/<?php echo $eventno?>">
+                      <div align="right">
+                	<button type ="submit" class="btn btn-primary" >Invite</button>
+                    </div>
+                    <br>
                       <table id ="ev" class="tableInv table-hover table-condensed table-striped">
                       <thead>
                           <tr>
-                          	  <th class="span1" style="text-align:center">
-                              	<button class="btn btn-info btn-mini" style="margin-top:5px;">Invite</button><br>
-                              	<input type="checkbox">
+                          	
+                               <th class="span1" style="text-align:center">
+                              	<input type="checkbox" onclick="checkall(this);">
                               </th>
                               <th class="span3" style="text-align:center">Name</th>
                               <th class="span2" style="text-align:center">Age</th>
@@ -36,7 +41,8 @@
                           ?>
                           <tr>
                           	  <td>
-                              	<input type="checkbox">
+                               <input type="checkbox" name="check[]" value="<?php echo $a['appid']?>">
+                         
                               </td>
                               
                               <td>
@@ -96,6 +102,7 @@
                           
                       </tbody>
                   </table>	
+                      </form>
                   </div><!--end scrollable-->   
             </div><!--end well-->
         </div><!--end span left folumn-->

@@ -207,10 +207,10 @@ where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC
     public function get_leagues()
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since FROM etesda.league_members l   
+        $query = $db1->query("SELECT distinct s.sectorName, v.*, DATE_FORMAT(v.datecreated , '%M %Y') as since FROM etesda.league_members l   
                                 JOIN etesda.league v on l.leagueno = v.leagueno 
                                 JOIN tesda_centraldb.sectors s on s.sectorID = v.leagueindustry
-                                WHERE l.userid = 3
+                             
                                 ORDER BY v.leaguename ASC ");
         return $query->result_array();
         $db1->close();

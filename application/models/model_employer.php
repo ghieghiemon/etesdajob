@@ -592,9 +592,8 @@ class Model_employer extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $db1->query("UPDATE applications SET status = '$status' WHERE applicationid = $appno");
         $db1->query("UPDATE applications SET requirementtime ='$time' WHERE applicationid = $appno");
-        $db1->query("UPDATE applications SET requirementdate =(STR_TO_DATE('$date','%m,%d,%Y')),    
-                                             location = '$location'
-                     WHERE applicationid = $appno");
+        $db1->query("UPDATE applications SET requirementdate ='$date'   WHERE applicationid = $appno"); 
+        $db1->query("UPDATE applications SET  location = '$location' WHERE applicationid = $appno");
         $db1->close();
     }
      public function fill_vacancy($jobno)
@@ -1009,6 +1008,17 @@ public function check_if_linvite($id, $lno)
       $sql = "INSERT INTO league_invitation(userid,leagueno,accepted) VALUES(?,?,0)";
             
       $db1->query($sql,array($userid,$leagueno));
+      
+    }
+    
+         public function add_invevent($userid,$eventno)
+    {
+       
+      $db1 = $this->load->database('local', TRUE);
+           
+      $sql = "INSERT INTO event_invitation(userid,eventno,accepted) VALUES(?,?,0)";
+            
+      $db1->query($sql,array($userid,$eventno));
       
     }
 }

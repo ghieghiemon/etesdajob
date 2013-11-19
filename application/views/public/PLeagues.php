@@ -121,7 +121,7 @@
                                             echo $by;
                                             ?></a>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?>
-                                            |  <a data-toggle="modal" href="#ModLeagMembers" class="Name2"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_088_adress_book.png" width="10"> <?php echo $a['members']?> Members</a>
+                                          
                                         	<br>
                                             <br>
                                             <?php echo $a['leaguedescription']?></p>
