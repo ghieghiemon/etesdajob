@@ -260,7 +260,6 @@
                                         <div class="resEdDet2"><!--start course details-->
                                             <font class="resEdCrs">
                                                 Course: ';
-                                        echo $a['course'];
                                             echo '</font>
                                             
                                             <font class="resEdYear">
@@ -272,11 +271,30 @@
                                             </font>
                                             
                                             <div class="resEdSCC"> <!--start div SCC-->
-                                                Certificates: NCI 
-                                                
-                                                <br>
-                                                Skills: <br>
-                                                Competencies: <br>
+                                                <strong> Certificates: </strong>'; 
+                                              $nc = $this->model_employer->get_appcert($a['appid']);
+                                              $count = count($nc);
+                                              foreach($nc as $c)
+                                              {
+                                                  echo $c['ncname']. " ". $c['level'];  
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                          echo '<br>
+                                                <strong>Competencies: </strong>';
+                                              $coc = $this->model_employer->get_appcomp($a['appid']);
+                                              $count = count($coc);
+                                              foreach($coc as $d)
+                                              {
+                                                  echo $d['cocname']; 
+                                                  if ($count >1)
+                                                    echo ", ";
+
+                                                 $count--;
+                                              }
+                                          echo '<br>
                                             </div> <!--end div SCC-->
                                         </div><!--end course details-->
                                         
@@ -291,8 +309,9 @@
                                         <br>
                                         <div class="resEdDet2"><!--start course details-->
                                             <font class="resEdCrs">
-                                                Course: Hotel & Restaurant Management
-                                            </font>
+                                                Course: ';
+                                        echo $a['course'];
+                                        echo '</font>
                                             
                                             <font class="resEdYear">
                                                 &nbsp;';
