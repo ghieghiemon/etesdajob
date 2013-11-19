@@ -274,6 +274,19 @@ class Tesda extends CI_Controller {
         $this->tesda_header();
         $this->load->view('tesda/TIndustriesAll',$data);
     }
+     public function search_industries($sectorid)
+   {	
+        $this->load->model('model_pub');
+        
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['vacancies'] = $this->model_pub->get_perIndustryVacancies($sectorid);
+        $data['sectorName'] = $this->model_pub->get_industryName($sectorid);
+        
+        
+        $this->tesda_header();
+        $this->load->view("tesda/TIndustryResult",$data);
+        $this->load->view("footer2");
+   }
     public function permonth_industries()
     {
         $this->load->model('model_tesda');

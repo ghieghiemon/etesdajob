@@ -338,7 +338,7 @@ foreach ($myvacancies as $a)
                     $ctr = 1;
                     if(count($event) == 0)
                      {
-                         echo '<p class = "noCommYet"> There are no upcoming events</p>';
+                         echo '<p class = "noCommYet"> You have no upcoming events</p>';
                      }
                      else
                      {

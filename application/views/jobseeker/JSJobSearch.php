@@ -128,9 +128,9 @@
 
                                     echo'</td>
                                    
-                                    <td>
-                                        <a href="#" class="recAppName">';
-                                    echo $row['companyName'];
+                                    <td>'?>
+                                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                                    <?php echo $row['companyName'];
                                        
                                        echo' </a>
                                     </td>
@@ -242,9 +242,9 @@
 
                                     echo'</td>
                                    
-                                    <td>
-                                        <a href="#" class="recAppName">';
-                                    echo $row['companyName'];
+                                    <td>'?>
+                                          <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                                    <?php echo $row['companyName'];
                                        
                                        echo' </a>
                                     </td>

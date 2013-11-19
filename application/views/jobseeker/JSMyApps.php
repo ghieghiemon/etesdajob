@@ -420,9 +420,9 @@ foreach($invites as $a)
                                 <td>';
                             echo $a['description'];
                             echo '</td>
-                                <td>
-                                    <a href="#" class="recAppName">';
-                            echo $a['companyName'];
+                                <td>'?>
+                            <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                            <?php echo $a['companyName'];
                             echo '</a>
                                 </td>
                                 <td>';
@@ -509,9 +509,9 @@ foreach($invites as $a)
                             $desc = $this->model_jobseeker->get_jobdescription($a['jobno']);
                             echo $desc;
                             echo '</td>
-                                <td>
-                                    <a href="#" class="recAppName">';
-                            echo $a['companyName'];
+                                <td>'?>
+                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                            <?php echo $a['companyName'];
                             echo '</a>
                                 </td>';
                              echo '</a>
