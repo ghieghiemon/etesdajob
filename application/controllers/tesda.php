@@ -83,6 +83,7 @@ class Tesda extends CI_Controller {
         
        $this->tesda_header();
        $this->load->view('tesda/TLeagues',$data); 
+       $this->load->view('footer');
    }
      public function tesda_leagueview($lno)
    {

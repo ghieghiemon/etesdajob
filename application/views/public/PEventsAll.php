@@ -97,8 +97,8 @@ foreach ($event as $a)
                
                     foreach ($event as $row)
                      {
-                       
-                echo'
+                       ?>
+                
                     <table>
                             <tr>
                                 <table style="margin-left:10px;">
@@ -111,7 +111,7 @@ foreach ($event as $a)
                             
                             <tbody>
                            
-                            	<tr>' ?>
+                            	<tr>
                                 <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $row['eventno']?>' class="LeaName3">
 
                                      <?php   echo $row['eventtitle'];
@@ -144,8 +144,8 @@ foreach ($event as $a)
                                            echo' </em>
                                             |';
                                            ?>
-                                           <a data-toggle="modal" href="#event" class="Name3">';?>
-                                            	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_088_adress_book.png" width="10" heaight="10">
+                                           <a data-toggle="modal" href="#event" class="Name3">
+                                            	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_088_adress_book.png" width="10" height="10">
                                                  <?php echo $row['participantscount'];
                                                 
                                               echo' Attendees </a><br>
@@ -164,7 +164,7 @@ foreach ($event as $a)
                                               echo $row['purpose'];
                                          echo'</p>
                                              
-                                      <div align="right" style="margin-top:7px;margin-right:-250px;">
+                                      <div style="margin-top:7px;margin-left:980px;">
                                          	<span>
                                             	<a href="#signModal" data-toggle="modal" role="button" class="btn btn-primary">
                                                     Attend
@@ -174,10 +174,11 @@ foreach ($event as $a)
                                         
                                     </td>
                                 </tr>
+                                 <hr class="hrLeagTab">'?>
                             </tbody>
                     	</table>
-                                               <hr class="hrLeagTab">';
-                                        
+                                              
+                        <?php                
                         }
                             ?>
                                 
