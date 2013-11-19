@@ -147,6 +147,7 @@ class Jobseeker extends CI_Controller {
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSProfile',$data);
+         $this->load->view("footer");
     }
         public function employer_profilepage($id)
    {
