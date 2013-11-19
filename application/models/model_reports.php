@@ -96,10 +96,12 @@ class Model_reports extends CI_Model {
         $dbconn = $this->load->database('local', TRUE);
         $dbconn2 = $this->load->database('default', TRUE);
         //insert query
+        
+        
         $query1 = "select COUNT(*) as noapplicants, s.sectorName from etesda.applications a 
         join etesda.job_vacancies j on j.jobno = a.jobno 
         join tesda_centraldb.sectors s on j.sectorid = s.sectorID
-        where month(j.dateposted) = ? and year(j.dateposted) = ?
+        where month(j.dateposted) = ? and year(j.dateposted) = ? and a.status = 'Hired'
         group by j.sectorid order by noapplicants DESC limit 15";
         $result = $dbconn->query($query1, array($month, $year))->result();
         return $result;
@@ -113,11 +115,12 @@ class Model_reports extends CI_Model {
         $dbconn = $this->load->database('local', TRUE);
         $dbconn2 = $this->load->database('default', TRUE);
         //insert query
-        $query1 = "select COUNT(*) as noapplicants, s.sectorName from etesda.applications a 
+        $query1 = "select COUNT(*) as noapplicants, s.sectorName, r.region  from etesda.applications a 
         join etesda.job_vacancies j on j.jobno = a.jobno 
         join tesda_centraldb.sectors s on j.sectorid = s.sectorID
-        where month(j.dateposted) = ? and year(j.dateposted) = ?
-        group by j.sectorid order by noapplicants DESC limit 15";
+		join etesda.reference_region r on r.regionid = j.region
+        where month(j.dateposted) = ? and year(j.dateposted) = ? and a.status = 'Hired'
+        group by r.region order by noapplicants DESC limit 15";
         $result = $dbconn->query($query1, array($month, $year))->result();
         return $result;
         $dbconn->close();

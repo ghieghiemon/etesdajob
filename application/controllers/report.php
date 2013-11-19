@@ -351,13 +351,13 @@ class Report extends CI_Controller {
                                 </tr>
                              ');
             
-            foreach($industry as $job):
+            foreach($employment as $job):
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->sectorName . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
                                     
                                         
                                    
@@ -420,13 +420,13 @@ class Report extends CI_Controller {
                                 </tr>
                              ');
             
-            foreach($region as $job):
+            foreach($employment as $job):
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->sectorName . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
                                     
                                         
                                    
