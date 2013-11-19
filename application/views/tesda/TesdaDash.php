@@ -73,7 +73,7 @@ foreach($employerverify as $a)
         </p>
     </div>
         <div class="modal-footer">
-            	<a  href="<?php echo base_url()?>tesda/approve_edeny/<?php echo $a['userID']?>" class="btn btn-danger">Approve</a>
+            	<a  href="<?php echo base_url()?>tesda/deny_everify/<?php echo $a['userID']?>" class="btn btn-danger">Deny</a>
     	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
         </div>
     </div>
