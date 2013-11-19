@@ -9,6 +9,265 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+    
+    <?php
+foreach ($jobs as $a)
+{
+?>
+<div class="modal hide fade modal-wide" id="view<?php echo $a['jobno']?>">
+    
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Vacancy Details</h3>
+  	</div>
+	<div class="modal-body">
+                <span id="label1"></span>
+		<h4 class="media-heading previewColor">| GENERAL INFORMATION </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span1"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Job Title:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<?php 
+                                            echo $a['jobtitle'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Description:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      		<?php $desc = $this->model_jobseeker->get_jobdescription($a['jobno']);
+                                            echo  $desc;
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                               <tr>
+                                  <td class="previewDet">
+                                      Industry:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['sectorName'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<table class="previewMarg2">
+                          <thead>
+                              <tr>
+                                  <th class="span3"></th>
+                                  <th class="span2"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                          	  <tr>
+                                  <td class="previewDet">
+                                      Region: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	<?php 
+                                            echo $a['region'];
+                                        ?>
+                                      </font>	
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      City/Province: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['city'];
+                                        ?>
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Number of Vacancies: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['vacanciesleft'];
+                                        ?>
+                                      </font>	
+                                  </td>
+                              </tr>
+                             
+                              <tr>
+                                  <td class="previewDet">
+                                      Effectivity: 
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      	 <?php
+                                                  $date2 = $a['expirationdate'];
+//                                                  
+                                                  $date = date('Y-m-d');
+                                                  $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                  $days = round((($diff/24)/60)/60);
+                                                  if ($a['expirationdate'] > $a['currentdate'])
+                                                  {
+                                                  echo $days;
+                                                  echo " days left";
+                                                  }
+                                                  else
+                                                  {
+                                                    echo '<font color="red"><strong>EXPIRED</strong></font>';
+                                                  }
+                                                ?>
+                                      
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                          </tbody>
+                      </table>
+                </div>
+            </div><!--end row-fluid-->
+        <hr class="hrLeagTab">
+            
+        <h4 class="media-heading previewColor">| QUALIFICATIONS </h4>
+        	<div class="row-fluid">
+            	<div class="span6">
+                	<table class="previewMarg">
+                          <thead>
+                              <tr>
+                                  <th class="span2"></th>
+                                  <th class="span4"></th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody class="proPI">
+                              <tr>
+                                  <td class="previewDet">
+                                      Sex:
+                                  </td>
+                                  
+                                  <td>
+                                      <font class="previewDet2">
+                                      		<?php 
+                                            echo $a['sex'];
+                                        ?>
+                                        
+                                      </font>
+                                  </td>
+                              </tr>
+                              
+                              <tr>
+                                  <td class="previewDet">
+                                      Age Range:
+                                  </td>
+                                  
+                                  <td>
+                                	  <font class="previewDet2">
+                                      	<span id="sAge" name="sAge">
+                                            	<?php 
+                                            echo $a['agestart'];
+                                        ?>
+                                        </span>
+                                        - 
+                                        <span id="eAge" name="eAge">
+                                            	<?php 
+                                            echo $a['ageend'];
+                                        ?>
+                                        </span>	
+                                      </font>
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                </div><!--end span-->
+                
+                <div class="span6">
+                	<p class="previewCCS">
+                		<strong>CERTIFICATION/S:</strong> 
+                        <font class="previewCCS2">
+                          <?php
+                                  $cert = $this->model_jobseeker->get_jobCerts($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($cert as $b)
+                                                         {
+                                                             echo $b['ncname'];
+                                                             echo " ". $b['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
+                        </font>
+                    </p>
+                   <p class="previewCCS">
+                		<strong>COMPETENCIES:</strong> 
+                        <font class="previewCCS2">
+                        <?php
+                                  $comp = $this->model_jobseeker->get_jobComps($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($comp as $c)
+                                                         {
+                                                             echo $c['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
+                        	
+                        </font>
+                    </p>
+                </div><!--end span-->
+                
+               
+            </div><!--end row-fluid-->
+	</div>
+ 
+  	<div class="modal-footer">
+      
+        <a href="" class="btn btn-primary" data-dismiss="modal">Close</a> 
+  	</div>
+</div>
+<?php 
+}
+?>
          
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
@@ -122,10 +381,11 @@
                                echo'
                                 <tr>
                                     
-                                    <td>';
-                                      echo $row['jobtitle'];
+                                    <td>';?>
+                                <a data-toggle="modal"href='#view<?php echo $a['jobno']?>'>
+                                   <?php echo $row['jobtitle'];?> </a>
                                    
-
+                                         <?php
                                     echo'</td>
                                    
                                     <td>'?>
@@ -243,8 +503,11 @@
                             {
                                 echo '<tr>
                                     
-                                    <td>';
-                                    echo $a['jobtitle'];
+                                    <td>';?>
+                                <a data-toggle="modal"href='#view<?php echo $a['jobno']?>'>
+                                   <?php echo $a['jobtitle'];?> </a>
+                                   
+                                         <?php
                                     echo '</td>
                                    
                                     <td>'?>

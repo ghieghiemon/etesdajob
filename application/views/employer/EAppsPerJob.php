@@ -10,7 +10,7 @@ foreach ($details as $a)
 {
  
 
-echo'<div class="modal hide fade" id="extend">';?>
+echo'<div class="modal hide fade modal-wide" id="extend">';?>
  
   <form method="post" action='<?php echo base_url()?>employer/employer_extend/<?php echo $a['jobno']?>'>
 <?php
@@ -270,7 +270,7 @@ foreach ($details as $a)
 {
  
 
-echo'<div class="modal hide fade" id="renew">';?>
+echo'<div class="modal hide fade modal-wide" id="renew">';?>
  
   <form method="post" action='<?php echo base_url()?>employer/employer_renew/<?php echo $a['jobno']?>'>
 <?php
@@ -530,10 +530,10 @@ echo'<div class="modal hide fade" id="renew">';?>
 <!--change status modal start-->
 <?php foreach ($apps as $a)
 { ?>
-<div class="modal hide fade" id="changemodal">
+<div class="modal hide fade modal-wide" id="changemodal">
   	
 </div> 
-<div class="modal hide fade" id="changeStatus">
+<div class="modal hide fade modal-wide" id="changeStatus">
     <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
@@ -1428,7 +1428,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                         	<table  id="hired" >
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"></th>
+                                          <th class="span1" style="text-align:center">     </th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>

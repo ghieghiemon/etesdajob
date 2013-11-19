@@ -81,6 +81,15 @@ class Model_employer extends CI_Model {
             return ($data); 
      }
      
+      public function get_jobdescription($jobno)
+    {
+       $db1 = $this->load->database('local', TRUE);
+       $query = $db1->query("SELECT description from job_vacancies where jobno = $jobno");
+       foreach ($query->result() as $row)
+       {return $row->description;}
+       $db1->close();
+    }
+     
      function getAllComp() 
      {
       $db2 = $this->load->database('default', TRUE);
@@ -546,16 +555,7 @@ class Model_employer extends CI_Model {
        return $query->result_array();
        $db1->close();
     }
-//    public function get_jobDescription($jobno)
-//    {
-//        $db1 = $this->load->database('local', TRUE);
-//        $query = $db1->query("SELECT description FROM job_vacancies WHERE jobno = $jobno");
-//        foreach ($query->result() as $row)
-//        {
-//            return $row->description;
-//        }
-//        $db1->close();
-//    }
+    
 //    public function match($jobpost_id, $seeker_id)
 //    {
 //        $total_skill = $this->getMatchedSkills($jobpost_id, $seeker_id);

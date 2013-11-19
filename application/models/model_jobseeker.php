@@ -239,9 +239,10 @@ class Model_jobseeker extends CI_Model {
     {
         $db2 = $this->load->database('default', TRUE);
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT *, c.city, r.region, e.companyName FROM etesda.job_vacancies j 
+        $query = $db1->query("SELECT *,curdate() as currentdate, c.city, r.region, e.companyName FROM etesda.job_vacancies j 
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
                             JOIN etesda.reference_region r ON r.regionid = j.region
+                            JOIN tesda_centraldb.sectors i ON i.sectorID = j.sectorid
                             JOIN etesda.reference_city c ON c.cityid = j.city
                             WHERE j.status = 1 AND j.expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC 
@@ -250,6 +251,7 @@ class Model_jobseeker extends CI_Model {
         $db1->close();
         $db2->close();
     }
+    
     function age_from_dob($dob) {
         return floor((time() - strtotime($dob)) / 31556926);
     }
@@ -362,7 +364,7 @@ class Model_jobseeker extends CI_Model {
          $db1 = $this->load->database('local', TRUE);
          $db2 = $this->load->database('default', TRUE);
        
-        $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+        $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
                                 DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
                                 p.companyName FROM 
                                 etesda.job_vacancies v

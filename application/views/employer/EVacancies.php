@@ -15,7 +15,7 @@ foreach ($myvacancies as $a)
 {
 ?>
   <form method="post" action='<?php echo base_url()?>employer/employer_extend/<?php echo $a['jobno']?>'>
-<div class="modal hide fade" id="extend<?php echo $a['jobno']?>">
+<div class="modal hide fade modal-wide" id="extend<?php echo $a['jobno']?>">
     
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
@@ -55,9 +55,9 @@ foreach ($myvacancies as $a)
                                   </td>
                                   
                                   <td>
-                                	  <font class="previewDet2">
-                                      		<?php 
-                                            echo $a['description'];
+                                	<font class="previewDet2">
+                                      		<?php $desc = $this->model_employer->get_jobdescription($a['jobno']);
+                                            echo  $desc;
                                         ?>
                                       </font>
                                   </td>
@@ -222,8 +222,19 @@ foreach ($myvacancies as $a)
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert">
-                        </span>
+                        <?php
+                                  $cert = $this->model_jobseeker->get_jobCerts($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($cert as $b)
+                                                         {
+                                                             echo $b['ncname'];
+                                                             echo " ". $b['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                         	
                         </font>
                     </p>
@@ -231,8 +242,18 @@ foreach ($myvacancies as $a)
                     <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert">
-                        </span>
+                         <?php
+                                  $comp = $this->model_jobseeker->get_jobComps($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($comp as $c)
+                                                         {
+                                                             echo $c['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                         	
                         </font>
                     </p>
@@ -271,7 +292,7 @@ foreach ($myvacancies as $a)
 {
 ?>
   <form method="post" action='<?php echo base_url()?>employer/employer_renew/<?php echo $a['jobno']?>'>
-<div class="modal hide fade" id="renew<?php echo $a['jobno']?>">
+<div class="modal hide fade modal-wide" id="renew<?php echo $a['jobno']?>">
     
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
@@ -311,9 +332,9 @@ foreach ($myvacancies as $a)
                                   </td>
                                   
                                   <td>
-                                	  <font class="previewDet2">
-                                      		<?php 
-                                            echo $a['description'];
+                                	 <font class="previewDet2">
+                                      		<?php $desc = $this->model_employer->get_jobdescription($a['jobno']);
+                                            echo  $desc;
                                         ?>
                                       </font>
                                   </td>
@@ -478,16 +499,37 @@ foreach ($myvacancies as $a)
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert">
-                        </span>
+                                       <?php
+                                  $cert = $this->model_jobseeker->get_jobCerts($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($cert as $b)
+                                                         {
+                                                             echo $b['ncname'];
+                                                             echo " ". $b['level'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                         	
                         </font>
                     </p>
                    <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-                        <span id="cert" name= "cert">
-                        </span>
+                        <?php
+                                  $comp = $this->model_jobseeker->get_jobComps($a['jobno']);
+                                                         $count = count($cert);
+                                                         foreach ($comp as $c)
+                                                         {
+                                                             echo $c['cocname'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>
                         	
                         </font>
                     </p>

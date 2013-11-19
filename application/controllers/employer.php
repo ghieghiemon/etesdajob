@@ -17,14 +17,14 @@ class Employer extends CI_Controller {
         </div>
         <div class="modal-body">
             <div class="well">
-                <table class="tableUR2b table-hover table-condensed table-stripedB">
+                <table style="width:700px;" class="tableUR2b table-hover table-condensed table-stripedB">
                     <thead>
                         <tr>
                             <th class="span2" style="text-align:center">Name</th>
                             <th class="span1" style="text-align:center">Age</th>
                             <th class="span1" style="text-align:center">Sex</th>
-                            <th class="span2" style="text-align:center">Certification</th>
-                            <th class="span1" style="text-align:center">Competencies</th>
+                            <th class="span3" style="text-align:center">Certification</th>
+                            <th class="span3" style="text-align:center">Competencies</th>
                             <th class="span2" style="text-align:center">Status</th>
                         </tr>
                     </thead>
@@ -400,6 +400,7 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_employer');
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
