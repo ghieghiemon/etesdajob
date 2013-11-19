@@ -58,7 +58,7 @@
         	<div class="well">
             	
                 <div class="row-fluid">
-                	<div class="span12" style="margin-left:-10px">
+                	<div class="span12" style="margin-left:-10px" >
                     	<?php
                         foreach($discussion as $a)
                         {
@@ -111,7 +111,7 @@
                                 
                                 <hr class="hrDiscuss">
                                 
-                                <div style="width:1183px;height:416px;overflow:auto;"><!--start scrollable table-->
+                                <div style="width:1243px;height:416px;overflow:auto;"><!--start scrollable table-->
                                     <input type="hidden" id="current_page" value="<?php echo $current_page ?>" />
                         <?php
                         $ctr = 1;
