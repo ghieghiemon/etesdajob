@@ -175,7 +175,7 @@
                     <div class="tab-content"> <!--start tab content-->
                     
                     <div class="tab-pane active" id="All">
-                    	<div style="height:420px;overflow:auto;"><!--start scrollable table-->
+                    	<div style="height:440px;overflow:auto;"><!--start scrollable table-->
                              <?php
                                   
                                   foreach ($all as $a)
