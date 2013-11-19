@@ -114,13 +114,13 @@
             
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#UP" data-toggle="tab">Upcoming</a></li>
+                        <li><a href="#UP" data-toggle="tab">Upcoming</a></li>
                         <li><a href="#INV" data-toggle="tab">Invitation</a></li>
-                        <li><a href="#All" data-toggle="tab">All</a></li>
+                        <li class="active"><a href="#All" data-toggle="tab">All</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
-                    <div class="tab-pane active" id="UP">
+                    <div class="tab-pane" id="UP">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             <?php
                
@@ -149,10 +149,7 @@
                                             <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
                                                 Hosted By:</strong> 
                                             <a href="" class="Name4">
-                                            <?php
-                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
-                                            echo $companyName;
-                                            ?>
+                                         
                                         </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
@@ -217,10 +214,7 @@
                                     	<p class="LeaDetails4">
                                             <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> 
                                                  <a href="" class="Name4">
-                                            <?php
-                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
-                                            echo $companyName;
-                                            ?>
+                                           
                                         </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>
@@ -260,7 +254,7 @@
                         </div><!--end scrollable-->   	
                     </div> <!--end tab pane invitation-->
                     
-                    <div class="tab-pane" id="All">
+                    <div class="tab-pane active" id="All">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                         	  <?php
                
@@ -268,7 +262,7 @@
                      {
                         $eno[] = $a['eventno'];
                      }
-                       foreach($eventall as $a)
+                       foreach($eventsearch as $a)
                      {
                            
                        ?>
@@ -294,10 +288,7 @@
                                     	<p class="LeaDetails4">
                                             <strong><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11"> Hosted By:</strong> 
                                                 <a href="" class="Name4">
-                                            <?php
-                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
-                                            echo $companyName;
-                                            ?>
+                                        
                                         </a>
                                             | <em><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="11"> <?php   echo $a['startdate'];?>
                                             | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> <?php   echo $a['starttime'];?>

@@ -423,6 +423,31 @@ class Model_jobseeker extends CI_Model {
         $db1->close();
     }
     
+       public function search_events($eventtitle, $industry ,$cityid){
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("  
+        SELECT events.eventno,eventpic, eventtitle, venue,  COUNT(*) AS participantscount, r.region ,c.city,sponsors,purpose,
+        DATE_FORMAT(startdate, '%M %d %Y') as startdate, 
+        DATE_FORMAT(starttime, '%h:%i %p') as starttime,
+        DATE_FORMAT(endtime, '%h:%i %p') as endtime
+                                FROM events
+                                JOIN event_participants on event_participants.eventno = events.eventno 
+                                JOIN event_venue v on v.eventno = events.eventno 
+                                JOIN reference_region r ON r.regionid = v.region  
+				JOIN reference_city c ON c.cityid = v.city
+                                where  events.eventtitle like '%$eventtitle%'
+				 AND events.eventindustry =  $industry  
+				 AND v.city= $cityid
+				 AND startdate >= curdate() 
+                                GROUP BY eventtitle,events.eventno  HAVING COUNT(*)>0
+                                ORDER BY startdate ASC 
+                               ");
+            
+        return $query->result_array();
+        
+        $db1->close();
+    }
+    
           public function event_attendees($eno)
     {
         $db1 = $this->load->database('local', TRUE);

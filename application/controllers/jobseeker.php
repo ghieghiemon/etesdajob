@@ -253,8 +253,10 @@ class Jobseeker extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $this->load->model('model_pub');
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
         $appid = $this->model_main->get_appid($this->session->userdata('email'));
-         $id = $this->model_jobseeker->get_userid($appid);
+        $id = $this->model_jobseeker->get_userid($appid);
         
         $data['eventall'] = $this->model_jobseeker->get_allevents();
         $data['myevents'] = $this->model_jobseeker->get_myevents($id);
@@ -263,7 +265,32 @@ class Jobseeker extends CI_Controller {
       //$data['eventinv'] = $this->model_main->all_events();
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSEvents',$data);  
-        $this->load->view('footer2');
+        $this->load->view('footer');
+   }
+   
+     public function js_searchevents()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
+        $appid = $this->model_main->get_appid($this->session->userdata('email'));
+        $id = $this->model_jobseeker->get_userid($appid);
+        $data['myevents'] = $this->model_jobseeker->get_myevents($id);
+        $data['invevents'] = $this->model_jobseeker->get_invevents($id);
+        $data['eventsearch'] = $this->search_events();
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/JSEventsSearch',$data);
+        $this->load->view('footer');
+    }
+   
+       public function search_events()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $search = $this->model_jobseeker->search_events($this->input->post('EN'),
+                 ($this->input->post('industry')),($this->input->post('cityid')));
+        return $search;        
    }
       public function event_details($eno)
     {
