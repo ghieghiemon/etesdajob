@@ -76,6 +76,26 @@ function checkall(el){
 	}
 }
 </script>
+ <script type="text/javascript">
+function checkall2(el){
+	var ip = document.getElementsByTagName('input'), i = ip.length - 1;
+	for (i; i > -1; --i){
+		if(ip[i].type && ip[i].type.toLowerCase() === 'checkbox'){
+			ip[i].checked = el.checked;
+		}
+	}
+}
+</script>
+ <script type="text/javascript">
+function checkall3(el){
+	var ip = document.getElementsByTagName('input'), i = ip.length - 1;
+	for (i; i > -1; --i){
+		if(ip[i].type && ip[i].type.toLowerCase() === 'checkbox'){
+			ip[i].checked = el.checked;
+		}
+	}
+}
+</script>
  
  
   </head>
