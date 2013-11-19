@@ -31,32 +31,30 @@
 </div>
 <!--invite modal end-->
 <!--are you sure modal-->
-<?php
+
+    
+            <?php
 foreach($employerverify as $a)
 {
 ?>
-   <div class="modal hide fade" id="approve<?php echo $a['userID']?>">
-<?php
-    echo '<div class="modal-header">
+     <div class="modal hide" id="approve<?php echo $a['userID']?>">
+     <div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<br>
   	</div>
-    
-	<div class="modal-body">
+     <div class="modal-body">
     	<p class="delete">
            <strong> Are you sure you want to approve the profile?</strong>
         </p>
     </div>
-  	<div class="modal-footer">';
-        ?>
-  	<a  href="<?php echo base_url()?>tesda/approve_everify/<?php echo $a['userID']?>" class="btn btn-info">Approve</a>
-    	<a class="btn btn-primary" data-dismiss="modal">Cancel</a> 
-  	
-     </div>
+        <div class="modal-footer">
+            	<a  href="<?php echo base_url()?>tesda/approve_everify/<?php echo $a['userID']?>" class="btn btn-primary">Approve</a>
+    	<a class="btn btn-danger" data-dismiss="modal">Cancel</a> 
+        </div>
     </div>
-<?php
+     <?php
 }
-?>    
+?> 
     
         <?php
 foreach($employerverify as $a)
@@ -187,7 +185,7 @@ foreach($employerverify as $a)
                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_198_ok.png" width="20">
                                             </a>
                                             
-                                            <a href="#deny<?php echo $a['userID']?>" class="btn btn-mini" data-toggle="modal">
+                                               <a href="#deny<?php echo $a['userID']?>" class="btn btn-mini" data-toggle="modal">
                                             	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_197_remove.png" width="20">
                                             </a>
                                         </td>
