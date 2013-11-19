@@ -36,7 +36,7 @@ class Jobseeker extends CI_Controller {
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);
-        $this->load->view('footer');
+        $this->load->view('footer2');
     }
     public function jobseeker_myappsdetail($jobno)
     {
@@ -249,7 +249,7 @@ class Jobseeker extends CI_Controller {
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSBriefcase', $data);
-        $this->load->view('footer');
+        $this->load->view('footer2');
     }
     
       public function search_job()

@@ -5,8 +5,10 @@ class Tesda extends CI_Controller {
     public function tesda_dashboard()
     {
         $this->load->model('model_tesda');
+         $this->load->model('model_pub');
         $data['employerverify'] = $this->model_tesda->get_employertoverify();
           $data['event'] = $this->model_tesda->all_events();
+           $data['leagues'] = $this->model_tesda->get_allleagues();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
         $this->tesda_header();
         $this->load->view('tesda/TesdaDash',$data);

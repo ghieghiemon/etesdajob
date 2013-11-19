@@ -208,35 +208,90 @@ foreach($employerverify as $a)
         </div><!--end span left column-->
         
         <div class="span5">
-            <div class="well wellMarg">
-            	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="20"> Employment Report
-                </h5>
+          
+            
                 
-                <form class="form-horizontal">
-                    <div class="myStyle2T" align="right">
-                        <select name="Industry">
-                            <option>Choose Industry</option>
-                            <option>Agriculture & Fishery</option>
-                        </select>
-                        
-                        <select name="Month" class="span2">
-                            <option>January</option>
-                            <option>February<option>
-                        </select>
-                        
-                        <select name="Year" class="span2">
-                            <option>2013</option>
-                            <option>2012<option>
-                        </select>
-                    </div>
-                </form>
+                   <div class="row-fluid">
+            	
+                	<div class="well wellMarg wellUpMarg">
+                    	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
+                    	<div style="width:508px;height:295px;overflow:auto;"><!--start scrollable table-->
+                            
+                            <?php
+                            $count = 1;
+                            foreach ($leagues as $a)
+                            {
+                                if($count<3)
+                                {
+                            ?>
+                            <div class="row-fluid"> <!--start row fluid universal leagues-->
+                                <div class="span3">
+                                    <a data-toggle="modal" href="#">
+                                        <img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="pubLpic" alt="">
+                                    </a>
+                                </div> <!--end span3-->
+                                
+                                <div class="span8">
+                                    <p class="marg2 evDetails3">
+                                        <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="Name4"><?php echo $a['leaguename']?></a><br>
+                                        <a href="<?php echo base_url('pub/search_industries/' . $a['leagueindustry']); ?>" class="label label-info">
+                                            <?php
+                                            $sector = $this->model_pub->get_industryName($a['leagueindustry']);
+                                            echo $sector;
+                                            ?>
+                                        </a>
+                                        <br>
+                                        
+                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
+<!--                                        by <a href="#" class="Name2">
+                                            
+                                            <?php
+//                                            $type = $this->model_pub->get_userType($a['createdby']);
+//                                            if($type == 'EMPLOYER')
+//                                                $by = $this->model_pub->get_companyName($a['createdby']);
+//                                            
+//                                            else if ($type == 'JOBADMIN')
+//                                                $by = 'TESDA';
+//                                            echo $by;
+                                            ?>
+                                        </a>-->
+                                        
+                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['createdby']?>" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
+                                        | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?> <br>
+                                    </p>
+                                    
+                                    <p class="evDetails3">
+                                        <?php echo $a['leaguedescription']?> <br>
+                                    
+                                      
+                                    </p>
+                                     <hr class="hrLeagTab">
+                                </div> <!--end span7-->
+                            </div> <!--end row-fluid-->
+                                <br>
+                            <?php
+                                    $count +=1;
+                                }
+                            }
+                            ?>
+                        <div align="right">
+                                <a href="<?php echo base_url()?>pub/leaguepage">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
+                                </a>
+                            </div>
+                        </div><!--end scrollable table-->
+                    </div><!--end well-->
+             
                 
-                <div style="width:505px;height:205px;overflow:auto;"><!--start scrollable table-->
-                	
-                    
-                </div><!--end scrollable table-->
-            </div><!--end well-->
+            </div><!--end row-fluid-->
+                
+              
+           
             
             
             <div class="well wellMarg wellUpMarg">

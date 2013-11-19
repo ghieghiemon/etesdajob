@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -9,7 +13,7 @@
                 </h3>
                 
                 <div style="width:1200px;height:470px;overflow:auto;"><!--start scrollable table-->      
-                      <table class="tableInv table-hover table-condensed table-striped">
+                      <table id="test"class="tableInv table-hover table-condensed table-striped">
                       <thead>
                           <tr>
                               <th class="span3" style="text-align:center">Job Title</th>
@@ -33,10 +37,9 @@
                             <?php
                             echo $a['jobtitle'];
                             echo '</a></td>
-                              
-                              <td>
-                              	  <a href="#" class="recAppName">';
-                            echo $a['companyName'];
+                              <td>'?>
+                              <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                            <?php echo $a['companyName'];
                             echo '</a>
                               </td>
                               

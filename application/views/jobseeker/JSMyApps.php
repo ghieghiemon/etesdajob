@@ -1,5 +1,9 @@
-<!--jobdetails modal-->
-<!--modal job invite content-->    
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
 <?php
 foreach ($invites as $a)
 {
@@ -271,7 +275,7 @@ foreach($invites as $a)
                </div><!--end scrollable-->
                
                <div class="row-fluid">
-                    <div align="right" style="margin-top:-15px">
+                    <div align="right" style="margin-top:10px">
                              <a href="<?php echo base_url()?>jobseeker/jobseeker_briefcase">
                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                     </a>
@@ -381,8 +385,8 @@ foreach($invites as $a)
                 	| MY APPLICATIONS
                 </h4>
                 
-                <div style="width:930px;height:250px;overflow:auto;"><!--start scrollable table-->
-                	<table class="tableMA table-hover table-condensed table-striped">
+                <div style="width:940px;height:250px;overflow:auto;"><!--start scrollable table-->
+                	<table id="app"class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
                              <?php
@@ -394,10 +398,10 @@ foreach($invites as $a)
                         {
                         ?>
                                 <th class="span2" style="text-align:center">Job Title</th>
-                                <th class="span3" style="text-align:center">Description</th>
+                                <th class="span2" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
-                                <th class="span2" style="text-align:center">Location</th>
-                                <th class="span2" style="text-align:center">Date Applied</th>
+                                <th class="span1" style="text-align:center">Location</th>
+                                <th class="span1" style="text-align:center">Date Applied</th>
                                 <th class="span4" style="text-align:center">Status</th>
                         <?php
                         }
@@ -481,8 +485,8 @@ foreach($invites as $a)
                 	| JOB INVITES
                 </h4>
                
-                <div style="width:930px;height:250px;overflow:auto;"><!--start scrollable table-->
-                	<table class="tableMA table-hover table-condensed table-striped">
+                <div style="width:940px;height:250px;overflow:auto;"><!--start scrollable table-->
+                	<table id="inv" class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
                                 
@@ -598,7 +602,19 @@ foreach($invites as $a)
        
    $(document).ready(function(){
 	  
-	   $('#test').dataTable({
+	   $('#app').dataTable({
+			"sPaginationType": "full_numbers"
+		});
+	   
+   });
+	
+</script>
+
+<script type="text/javascript">
+       
+   $(document).ready(function(){
+	  
+	   $('#inv').dataTable({
 			"sPaginationType": "full_numbers"
 		});
 	   

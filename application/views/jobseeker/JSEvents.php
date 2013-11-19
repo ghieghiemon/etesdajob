@@ -64,7 +64,7 @@
                 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_027_search.png" width="18"> Search Event
             </h5>
                      <form method ="post" enctype="multipart/form-data" action ="<?php echo base_url()?>jobseeker/js_searchevents/">
-                <div style="width:310px;height:500px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
+                <div style="width:310px;height:477px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div EN -->
                         <div class="myStyleQS3">
                             <input type="text" id="EN" name="EN" placeholder="Event Name">

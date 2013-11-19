@@ -387,7 +387,7 @@ class Model_jobseeker extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("SELECT  v.jobtitle, a.jobno, a.status,  p.companyName,a.location,
+        $query = $db1->query("SELECT v.companyID, v.jobtitle, a.jobno, a.status,  p.companyName,a.location,
                             DATE_FORMAT(a.requirementdate, '%M %d %Y') as requirementdate,
                             DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
                             FROM etesda.applications a
