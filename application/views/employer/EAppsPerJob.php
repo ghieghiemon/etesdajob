@@ -1045,7 +1045,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                         	<table id ="newapplicant">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" id="chkAll"></th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
@@ -1170,7 +1170,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                         	<table  id="exam">
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" id="chkAll2"></th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
@@ -1188,7 +1188,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id='check2' type="checkbox" class="chk" name="check2" value="<?php echo $a['applicationid']?>">
+                                              <input id='check2' type="checkbox" class="chk2" name="check2" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               if (count($invites)>0)
                                               {
@@ -1298,7 +1298,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                         	<table  id="interview1" >
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span1" style="text-align:center"><input type="checkbox" id="chkAll3""></th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
@@ -1316,7 +1316,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id='check3' type="checkbox" class="chk" name="check3" value="<?php echo $a['applicationid']?>">
+                                              <input id='check3' type="checkbox" class="chk3" name="check3" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               if (count($invites)>0)
                                               {
@@ -1428,7 +1428,7 @@ echo'<div class="modal hide fade" id="renew">';?>
                         	<table  id="hired" >
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span1" style="text-align:center"></th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
@@ -1446,7 +1446,6 @@ echo'<div class="modal hide fade" id="renew">';?>
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id='check4' type="checkbox" class="chk" name="check4" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               foreach ($invites as $c)
                                               {
@@ -1684,6 +1683,29 @@ echo'<div class="modal hide fade" id="renew">';?>
 
       <hr>
       </body>
+       <script type="text/javascript" >
+     
+     $(document).ready(function(){
+    $("#chkAll").click(function(){
+        $(".chk").prop("checked",$("#chkAll").prop("checked"))
+    }) 
+});
+ </script> <script type="text/javascript" >
+     
+     $(document).ready(function(){
+    $("#chkAll2").click(function(){
+        $(".chk2").prop("checked",$("#chkAll2").prop("checked"))
+    }) 
+});
+ </script>
+  <script type="text/javascript" >
+     
+     $(document).ready(function(){
+    $("#chkAll3").click(function(){
+        $(".chk3").prop("checked",$("#chkAll3").prop("checked"))
+    }) 
+});
+ </script>
       <SCRIPT LANGUAGE="JavaScript">
 
 <!-- 
