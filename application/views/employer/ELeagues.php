@@ -308,7 +308,7 @@
                                 ?>
                                 <tr>
                                 	<td>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['leaguepic']?>" class="thumbnail5 ePicMarg">
+                                    	<img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="thumbnail5 ePicMarg">
                                     </td>
                                    
                                     <td>
