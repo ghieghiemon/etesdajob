@@ -812,7 +812,17 @@ foreach ($myvacancies as $a)
   
  
             
-             
+ <script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#second').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>            
 
 
       <hr>
