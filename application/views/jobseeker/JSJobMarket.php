@@ -1,14 +1,14 @@
- <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
-	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
-    
-        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
-        <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
- <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+<link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
     
     <?php
 foreach ($jobs as $a)
@@ -279,7 +279,7 @@ foreach ($jobs as $a)
                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> Quick Job Search
             </h5>
                 <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>jobseeker/js_searchjob'/>
-                <div style="width:310px;height:500px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
+                <div style="width:310px;height:480px;overflow:auto;" class="wellMargCE"><!--start scrollable table-->
                 	<div class="control-group"><!-- start div job title -->
                         <div class="myStyleQS3">
                             <input type="text" id="JT" name="JT" placeholder="Job Title">

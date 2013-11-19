@@ -407,7 +407,7 @@ class Employer extends CI_Controller {
         $data['closed'] = $this->model_employer->get_myClosedvacancies($id);
         $this->employer_header();
         $this->load->view('employer/EVacancies',$data);
-        //$this->load->view('footer');
+        $this->load->view('footer2');
     }
     public function employer_updatevacancy($data)
     {

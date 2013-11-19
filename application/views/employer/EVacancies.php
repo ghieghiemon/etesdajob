@@ -564,7 +564,7 @@ foreach ($myvacancies as $a)
 <!--publish vacancy modal end-->
 
 <div class="container">
-<div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
+<div style="margin-left: 1%; margin-top: -1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
     	
@@ -851,7 +851,7 @@ foreach ($myvacancies as $a)
             </div><!--end well-->
         	
         </div><!--end span right column-->
-  
+  </div>
  
             
  <script type="text/javascript">

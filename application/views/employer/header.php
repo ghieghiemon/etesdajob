@@ -272,7 +272,7 @@ function checkall3(el){
                     <div style="width:190px;height:159px;overflow:auto;"><!--start scrollable table-->
                         <div align="center" style="margin-top:15px; margin-left:17px; " >
                             <br><br>
-                            <a href="employer_postvacancypage" class="btn btn-info btn-mini">Post New Vacancy</a>
+                            <a href="<?php echo base_url()?>employer/employer_postvacancypage" class="btn btn-info btn-mini">Post New Vacancy</a>
                         </div>
                     </div><!--end scrollable-->
                 </div><!--end well-->

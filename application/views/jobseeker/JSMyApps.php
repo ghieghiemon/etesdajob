@@ -1,9 +1,14 @@
 <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
-  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
 <?php
 foreach ($invites as $a)
 {
@@ -385,7 +390,7 @@ foreach($invites as $a)
                 	| MY APPLICATIONS
                 </h4>
                 
-                <div style="width:940px;height:250px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:940px;height:350px;overflow:auto;"><!--start scrollable table-->
                 	<table id="app"class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>
@@ -485,7 +490,7 @@ foreach($invites as $a)
                 	| JOB INVITES
                 </h4>
                
-                <div style="width:940px;height:250px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:940px;height:270px;overflow:auto;"><!--start scrollable table-->
                 	<table id="inv" class="tableMA table-hover table-condensed table-striped">
                         <thead>
                             <tr>

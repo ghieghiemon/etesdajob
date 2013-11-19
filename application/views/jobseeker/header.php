@@ -105,8 +105,7 @@
                                 </a>
                                 
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">FAQ</a></li>
-                                    <li class="divider"></li>
+                                   
                                     <li><a href="<?php echo base_url()?>main/logout">Logout</a></li>
                                 </ul>
                             </li>

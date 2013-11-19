@@ -335,6 +335,7 @@
                                        
                                     </td>
                                 </tr>
+                              
                                 <?php
                                 }
                                 ?>
@@ -343,7 +344,7 @@
                         <hr class="hrLeagTab">
                         </div><!--end scrollable-->
                     </div> <!--end tab pane invited-->
-                   
+                     <hr class="hrLeagTab">
                 </div> <!--end tab content-->
                 </div> <!--end tabbable-->
             
