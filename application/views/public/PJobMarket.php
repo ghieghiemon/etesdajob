@@ -102,11 +102,12 @@
                                     if(count($search) != 0)
                      {
                         echo' <th class="span3" style="text-align:center">Job Title</th>
+                             <th class="span4" style="text-align:center">Description</th>
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
-                                    <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                             
+                                  
+                                  
                                     <th class="span1" style="text-align:center">Action</th>';
                      }
                      ?>
@@ -137,6 +138,13 @@
                                     echo'</td>
                                    
                                     <td>
+                                       ';
+                                    echo $row['description'];
+                                       
+                                       echo' 
+                                    </td>
+                                    
+  <td>
                                         <a href="#" class="recAppName">';
                                     echo $row['companyName'];
                                        
@@ -150,34 +158,13 @@
                                      
                                         echo' </td>
                                     
-                                              <td>' ?>
-                                                            <?php
-                                                            $date2 = $row['expirationdate'];
-                                                            $date = date('Y-m-d');
-                                                            $diff = abs(strtotime($date2) - strtotime($date));
-
-                                                            $days = round((($diff/24)/60)/60);
-                                                            echo $days. " days left";
-                                                            ?>
+                                              ' ?>
+                                                          
                                 
-                                                       <?php echo' </td>
+                                                       <?php echo'                                     
+                                 
                                     
-                                    <td>
-                                        <span class="label label-info">'?>
-                                         <?php
-                                                $appcount = $this->model_pub->count_jobApplications($row['jobno']);
-                                                echo $appcount;
-                                            ?>
-                                            Applied
-                                        
-                                    <?php echo'</span>
-                                    </td>
-                                    
-                                    <td>';
-                                        echo'<span class="label">';
-                                       echo $row['vacanciesleft'];
-                                       echo' Left </span>
-                                    </td>
+                                 
                                     
                                     
                                     <td>

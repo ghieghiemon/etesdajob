@@ -214,7 +214,7 @@
                     <div align="right">
                         
                         <a id="pub" style="margin-top:-50px;" data-toggle="modal" href="#pubV" class="btn btn-primary pubVMarg">
-                            Publish Vacancy
+                            Preview Vacancy
                         </a>
                     </div>
                 </div><!--browserend publish button-->
@@ -245,25 +245,21 @@
                                                              {
                                                              ?>
                                                              
-                                                                <input type="text" id="JN" name="JN" value="<?php echo $a['jobtitle']?>" placeholder="" >
+                                                                <input type="text" id="JN" name="JN" value="<?php echo $a['jobtitle']?>" placeholder="" readonly>
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
                                                             <div class="controls">
-                                                                <textarea type="text" rows="5" id="desc" name="desc"><?php echo $a['description']?></textarea>
+                                                                <textarea readonly type="text" rows="5" id="desc" name="desc"><?php echo $a['description']?></textarea>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
-                                                                   <?php    
-                                                                $industry['0'] = 'Please Select';
-                                                                $params = 'id="industries"'; 
-                                                               echo form_dropdown('industry', $industry,'0',$params);     
-                                                               ?> 
+                                                             <input type="text" id="JN" name="JN" value="Information Technology" placeholder="" readonly>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         

@@ -85,8 +85,7 @@
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                    
                                     <th class="span1" style="text-align:center">Action</th>';
                      }
                      ?>
@@ -141,23 +140,7 @@
                                                             ?>
                                 
                                                        <?php echo' </td>
-                                    
-                                    <td>
-                                        <span class="label label-info">'?>
-                                         <?php
-                                                $appcount = $this->model_pub->count_jobApplications($row['jobno']);
-                                                echo $appcount;
-                                            ?>
-                                            Applied
-                                        
-                                    <?php echo'</span>
-                                    </td>
-                                    
-                                    <td>';
-                                        echo'<span class="label">';
-                                       echo $row['vacanciesleft'];
-                                       echo' Left </span>
-                                    </td>
+                                
                                     
                                     
                                     <td>

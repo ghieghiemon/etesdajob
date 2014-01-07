@@ -217,14 +217,9 @@
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
                 	<a href='<?php echo base_url()?>pub/pub_alljob'><font color ="AD3288">
-                                     <?php 
-                    foreach ($openings as $a)
-                    {
-                             echo $a['totalopenings'];
-                    }
-                    ?>
                    
-                            JOB VACANCIES NATIONWIDE!</a><br><br>
+                   
+                          34  JOBS NATIONWIDE!</a><br><br>
                 </font>
                         </p>
             </div><!--end whats new-->
@@ -424,10 +419,7 @@
                 	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_037_coins.png" width="20"> Top Employers
                 </h5>
                 <br>
-                <div align="left" class="legendIn" style="margin-bottom:15px;margin-top:-20px;">
-                    Legend:  <img src="<?php echo base_url()?>assets/bootstrap/img/tesda.jpg" width="15"> - TESDA Partner Companies
-                </div>
-                
+           
                 <div style="width:295px;height:485px;overflow:auto;"><!--start scrollable table-->
                 	<?php
                 foreach($compopenings as $a)

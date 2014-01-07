@@ -115,7 +115,7 @@
                                                     
                                                     ?>
                                             <div class="proName2">
-                                            	Welder Assistant at Century City
+                                            	
                                             </div>
                                        	</p>
                                         
@@ -235,6 +235,13 @@
                         </div><!--end row-fluid-->';
                                                     }
                                                 ?>
+                                                    <div class="row-fluid">
+<div align="pull-right">
+	<a href="#" class="btn btn-primary btn-mini">
+		Edit Profile
+	</a>
+</div>
+</div>
                         
                         <hr class="hrPro">
                         
@@ -245,88 +252,29 @@
                                             <img src="<?php echo base_url(); ?>assets/img/icons/glyphicons_332_certificate.png" width="15">
                                             Educational Background
                                         </h4>
-                                        
+                                       <strong> TESDA</strong>
                                         <div style="width:510px;height:280px;overflow:auto;"><!--start scrollable table-->
-                                        <?php
-                                        foreach($educ as $a)
-                                        {
-                                            if($a['schoolname'] == 'TESDA')
-                                            {
-                                        echo '<font class="resEdHead2">';
-                                        echo $a['schoolname'];
-                                        echo '</font>
+<table class="table-condensed table table-bordered">
+                                     	<thead>
+                                        	<tr>
+                                            	<th class="span3">CERTIFICATE/S</th>
+                                                <th class="span5">COMPETENCIES</th>
+                                            </tr>
+                                        </thead>
                                         
-                                        <br>
-                                        <div class="resEdDet2"><!--start course details-->
-                                            <font class="resEdCrs">
-                                                Course: ';
-                                            echo '</font>
-                                            
-                                            <font class="resEdYear">
-                                                &nbsp;';
-                                            echo $a['startyear'];
-                                        echo '-';
-                                        echo $a['endyear'];
-                                            echo '<br>
-                                            </font>
-                                            
-                                            <div class="resEdSCC"> <!--start div SCC-->
-                                                <strong> Certificates: </strong>'; 
-                                              $nc = $this->model_employer->get_appcert($a['appid']);
-                                              $count = count($nc);
-                                              foreach($nc as $c)
-                                              {
-                                                  echo $c['ncname']. " ". $c['level'];  
-                                                  if ($count >1)
-                                                    echo ", ";
+                                        <tbody>
+                                        	<tr>
+                                            	<td>
+                                                	2D Game Art Development
+                                                </td>
+                                                
+                                                <td>
+                                                	Develop GUI, Create Storyboard
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                     </table>                                       
 
-                                                 $count--;
-                                              }
-                                          echo '<br>
-                                                <strong>Competencies: </strong>';
-                                              $coc = $this->model_employer->get_appcomp($a['appid']);
-                                              $count = count($coc);
-                                              foreach($coc as $d)
-                                              {
-                                                  echo $d['cocname']; 
-                                                  if ($count >1)
-                                                    echo ", ";
-
-                                                 $count--;
-                                              }
-                                          echo '<br>
-                                            </div> <!--end div SCC-->
-                                        </div><!--end course details-->
-                                        
-                                        <br>';
-                                            }
-                                            else
-                                            {
-                                                echo '<font class="resEdHead2">';
-                                        echo $a['schoolname'];
-                                        echo '</font>
-                                        
-                                        <br>
-                                        <div class="resEdDet2"><!--start course details-->
-                                            <font class="resEdCrs">
-                                                Course: ';
-                                        echo $a['course'];
-                                        echo '</font>
-                                            
-                                            <font class="resEdYear">
-                                                &nbsp;';
-                                        echo $a['startyear'];
-                                        echo '-';
-                                        echo $a['endyear'];
-                                            echo '<br></font>
-                                            
-                                        </div><!--end course details-->
-                                        
-                                        <br>';
-                                            }
-                                         }
-                                                    ?>
-                                       
                                         
 <!--                                        <br>
                                         <font class="resEdHead2">

@@ -156,7 +156,7 @@ foreach($invites as $a)
                 
                 <br><br>
                 Thank you very much for your time and we look forward in working with you. If you have more clarifications, 
-                you can call us through this number: <strong>';?>
+                you can contact <strong>John Doe </strong> through this number: <strong>';?>
                    <?php
                                             $companyNum = $this->model_jobseeker->get_companyNum($a['companyid']);
                                             echo $companyNum;
