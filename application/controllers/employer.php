@@ -115,12 +115,28 @@ class Employer extends CI_Controller {
         $this->load->model('model_employer');
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $myvacancies = $this->model_employer->get_myvacancies($id);
+        
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
         $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
-        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
+        $data['myvacancies'] = $myvacancies;
         $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
         $data['event'] = $this->model_employer->get_createdevents($id);
 
+        foreach($myvacancies as $a)
+        {
+            $date2 = $a['expirationdate'];                                          
+            $date = date('Y-m-d');
+            $diff = abs(strtotime($date2) - strtotime($date));
+
+            $days = round((($diff/24)/60)/60);
+            $notif = $a['jobno']."is nearing its expiration. Would you like to extend?";
+            if ($days <= 5)
+            {
+                $this->model_employer->add_notification($id,$notif,$a['jobno']);
+            }
+        }
+        //
         
         $this->employer_header();
         $this->load->view('employer/EDash',$data);

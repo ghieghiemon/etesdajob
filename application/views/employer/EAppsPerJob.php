@@ -843,17 +843,25 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                                 ?>
                                           <br>
                                           <?php
-                                                if ($a['expirationdate'] > $a['currentdate'])
-                                                  {
+                                            $date2 = $a['expirationdate'];                                          
+                                            $date = date('Y-m-d');
+                                            $diff = abs(strtotime($date2) - strtotime($date));
+
+                                            $days = round((($diff/24)/60)/60);
+                                            $notif = $a['jobno']."is nearing its expiration. Would you like to extend?";
+                                            if ($days <= 5)
+                                            {
+                                               // $this->model_employer->add_notification($id,$notif,$a['jobno']);
+                                            
                                                     ?>
                                                 
-                                              <a href="#extend" data-toggle="modal" class="btn btn-mini btn-info">Extend</a>
+                                              <a href="#extend" data-toggle="modal" class="btn btn-mini btn-danger">Extend</a>
                                                 <?php
                                                   }
                                                   else 
                                                   {
                                                 ?>
-                                               <a href="#renew" data-toggle="modal" class="btn btn-mini btn-primary">Renew</a>
+                                               <a href="#renew" data-toggle="modal" class="btn btn-mini btn-info">Extend</a>
                                                 <?php
                                                   }
                                                 ?>
