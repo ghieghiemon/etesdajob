@@ -242,7 +242,6 @@
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
 </div>
-<!--delete phase modal end-->
 
                
 <div class="container">
