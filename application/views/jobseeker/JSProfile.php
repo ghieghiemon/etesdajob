@@ -229,8 +229,8 @@
                             	<font class="numRec"><br>';
                                                         
                                 //echo $a['recommendations'];
-                                echo ' Recommendations</font>
-                            	<a href="'.base_url().'recommend" class="btn btn-primary btn-mini">Recommend</a>
+                                echo '</font>
+                            
                             </div>
                         </div><!--end row-fluid-->';
                                                     }
