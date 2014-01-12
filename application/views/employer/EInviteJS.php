@@ -39,7 +39,7 @@
                               </th>
                               <th class="span3" style="text-align:center">Name</th>
                               <th class="span2" style="text-align:center">Age</th>
-                              <th class="span2" style="text-align:center">Gender</th>
+                              <th class="span2" style="text-align:center">Sex</th>
                               <th class="span2" style="text-align:center">Certifications</th>
                               <th class="span3" style="text-align:center">Competencies</th>
                           </tr>

@@ -9560,6 +9560,61 @@ body {
    line-height: 14px;
 }
 
+.myStyleEPr input[type="text"] {
+   height: 20px;
+   width:205px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPrN input[type="text"] {
+   height: 20px;
+   width:258px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPrB input[type="text"] {
+   height: 20px;
+   width:107px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPrC input[type="text"] {
+   height: 20px;
+   width:78px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPrCN input[type="text"] {
+   height: 20px;
+   width:305px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPrPos input[type="text"] {
+   height: 20px;
+   width:220px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPr2 select {
+   height: 30px;
+   width:120px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
+.myStyleEPr3 textarea[rows] {
+   height: 20px;
+   font-size: 13px;
+   line-height: 14px;
+}
+
 .myStylePQS input[type="text"] {
    height: 22px;
    width:265px;
@@ -10377,31 +10432,26 @@ img.photo{
 	font-size:15px;
 }
 
-.myStyleDesc input[type="text"] {
-   height: 55px;
-   font-size: 12px;
-   line-height: 14px;
- 
-}
-.joinSt {
-	font-size:14px;
-	font-weight:bold;
-	font-style:oblique;
-	color:#939;
-}
-.inModEm {
-	color:#90C;
-	font-weight:bold;
-	font-style:oblique;
-	font-size:14px;
+.tableCal {
+	width: 900px;
+	height:1px;
+  	margin-bottom: 20px;
+	margin-top:-7px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
 }
 
-.inModEm2 {
-	color:#90C;
-	font-weight:bold;
+.tableCal td {
+  padding: 30px;
+  line-height: 20px;
+  
+  text-align: center;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
 }
 
-pTag {
+.pTag {
 	font-size:12px;
 	margin-left:25px;
 	text-align:justify;
@@ -10416,9 +10466,47 @@ pTag {
 	color:#609;
 }
 
-.modal-wide {
-      /* new custom width */
-    width: 750px;
-    /* must be half of the width, minus scrollbar on the left (30px) */
-    margin-left: -375px;
+.qjsCol {
+	color:#FFF;
+}
+
+.myStyleDesc input[type="text"] {
+   height: 55px;
+   font-size: 12px;
+   line-height: 14px;
+ 
+}
+
+.joinSt {
+	font-size:14px;
+	font-weight:bold;
+	font-style:oblique;
+	color:#939;
+}
+
+.inModEm {
+	color:#90C;
+	font-weight:bold;
+	font-style:oblique;
+	font-size:14px;
+}
+
+.inModEm2 {
+	color:#90C;
+	font-weight:bold;
+}
+
+.certTb {
+	text-align:center;
+	width:470px;
+	margin-left:22px;
+}
+
+.certTb td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  border-top: 1px solid #CCC;
+  font-size:12px;
 }
