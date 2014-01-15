@@ -113,6 +113,7 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_employer');
+        $this->load->model('model_jobseeker');
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $myvacancies = $this->model_employer->get_myvacancies($id);
@@ -122,7 +123,8 @@ class Employer extends CI_Controller {
         $data['myvacancies'] = $myvacancies;
         $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
         $data['event'] = $this->model_employer->get_createdevents($id);
-
+        $data['notif'] = $this->model_jobseeker->get_notifications($id);
+        
         foreach($myvacancies as $a)
         {
             $date2 = $a['expirationdate'];                                          

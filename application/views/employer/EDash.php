@@ -269,6 +269,46 @@ foreach ($myvacancies as $a)
     	<div class="span4">
         	<div class="well">
             	<h5 class="media-heading">
+            		<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="20"> Notifications
+                </h5>
+                    
+                    <div style="width:380px;height:140px;overflow:auto;"><!--start scrollable table-->
+      				<ul class="nav nav-list">
+                         
+                        <?php
+                        if (count($notif) == 0)
+                        {
+                            echo "<br><p class = 'noCommYet'>You don't have any notifications yet.</p>";
+                        }
+                        foreach ($notif as $a)
+                        {
+                        ?>
+                        <li>
+                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="Comm">
+                                <p class="notifAgenda3">
+                                   <?php
+                                    if($a['seen'] == 0)
+                                    {
+                                        echo '<strong>'. $a['notification'].'</strong>';
+                                    }
+                                    else
+                                    {
+                                        echo $a['notification'];
+                                    }
+                                        
+                                    ?>
+                                </p>
+                            </a>
+                        </li>
+                        <?php 
+                            
+                        } 
+                        ?>
+                    </ul>
+                </div><!--end scrollable table-->
+            </div><!--end well-->
+            <div class="well wellUpMarg">
+            <h5 class="media-heading">
             		<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="20"> Briefcase
                 </h5>
               
@@ -323,9 +363,8 @@ foreach ($myvacancies as $a)
                             <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
                         </a>
                     </div>
-                </div> <!--end row fluid-->
-            </div><!--end well-->
-            
+                </div> <!--end row fluid-->   
+            </div>
             <div class="well wellUpMarg">
             	<h5 class="media-heading">
                 	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> Upcoming Events

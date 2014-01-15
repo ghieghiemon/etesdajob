@@ -237,7 +237,7 @@
                                                 ?>
                                                     <div class="row-fluid">
 <div align="pull-right">
-	<a href="#" class="btn btn-primary btn-mini">
+	<a href="<?php echo base_url()?>jobseeker/jobseeker_editprofile" class="btn btn-primary btn-mini">
 		Edit Profile
 	</a>
 </div>

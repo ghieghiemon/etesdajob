@@ -133,13 +133,13 @@
                             <tbody>
                             	<tr>
                                 	<td>
-                                    	<img src="assets/img/user.png" class="thumbnail11">
+                                    	<img src="<?php echo base_url()?>assets/img/user.png" class="thumbnail11">
                                     </td>
                                     
                                     <td>
                                         <div class="control-group"><!-- start div nm-->
                                             <div class="myStyleEPrN">
-                                                <img src="assets/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
+                                                <img src="<?php echo base_url()?>assets/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
                                                 <input type="text" id="nm" name="nm">
                                             </div>
                                         </div><!-- end div name -->
@@ -158,7 +158,7 @@
                                                 <tbody class="proPI">
                                                 	<tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_024_parents.png" width="18"> GENDER:
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_024_parents.png" width="18"> GENDER:
                                                         </td>
                                                         
                                                         <td>
@@ -176,7 +176,7 @@
                                                     
                                                     <tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_278_birthday_cake.png" width="15">  BIRTHDAY:
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_278_birthday_cake.png" width="15">  BIRTHDAY:
                                                         </td>
                                                         
                                                         <td>
@@ -190,7 +190,7 @@
                                                     
                                                     <tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_248_asterisk.png" width="15"> CIVIL STATUS: 
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="15"> CIVIL STATUS: 
                                                         </td>
                                                         
                                                         <td>
@@ -221,7 +221,7 @@
                                                 <tbody class="proPI">
                                                 	<tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_163_iphone.png" width="11"> CONTACT NUMBER: 
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_163_iphone.png" width="11"> CONTACT NUMBER: 
                                                         </td>
                                                         
                                                         <td>
@@ -235,7 +235,7 @@
                                                 	
                                                     <tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_419_e-mail.png" width="15"> EMAIL: 
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_419_e-mail.png" width="15"> EMAIL: 
                                                         </td>
                                                         
                                                         <td>
@@ -249,7 +249,7 @@
                                                     
                                                     <tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="assets/img/icons/glyphicons_087_log_book.png" width="15"> ADDRESS:
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_087_log_book.png" width="15"> ADDRESS:
                                                         </td>
                                                         
                                                         <td>
@@ -273,7 +273,7 @@
                             	<div class="span6">
                                 	<div class="well">
                                     	<h4 class="proDetCol media header">
-                                            <img src="assets/img/icons/glyphicons_332_certificate.png" width="15">
+                                            <img src="<?php echo base_url()?>assets/img/icons/glyphicons_332_certificate.png" width="15">
                                             Educational Background
                                         </h4>
                                         
@@ -333,7 +333,7 @@
                                 <div class="span6">
                                 	<div class="well">
                                     	<h4 class="proDetCol media header">
-                                        	 <img src="assets/img/icons/glyphicons_324_tie.png" width="10"> Work Experience
+                                        	 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_324_tie.png" width="10"> Work Experience
                                         </h4>
                                         
                                         <div class="row-fluid">
