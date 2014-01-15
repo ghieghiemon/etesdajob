@@ -37,6 +37,7 @@
                           	  <th class="span1" style="text-align:center">
                               	<input type="checkbox" onclick="checkall(this);">
                               </th>
+                              <th class="span1" style="text-align:center"></th>
                               <th class="span3" style="text-align:center">Name</th>
                               <th class="span2" style="text-align:center">Age</th>
                               <th class="span2" style="text-align:center">Sex</th>
@@ -56,6 +57,9 @@
                               	<input type="checkbox" name="check[]" value="<?php echo $a['appid']?>">
                               </td>
                               
+                              <td>
+                              	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="30px" class="img-rounded"> 
+                              </td>
                               <td>
                               	 <a href="#" class="recAppName">
                                      <?php
