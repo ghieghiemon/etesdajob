@@ -61,7 +61,7 @@ class Model_employer extends CI_Model {
         $query = $db1->query("SELECT jobno, userid, notification from notifications WHERE jobno = $jobno and
                             userid = $id");
         $comp = array();
-        if($query->num_rows() == 1)
+        if($query->num_rows() >= 1)
         {
             return false;
         }
