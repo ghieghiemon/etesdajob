@@ -55,11 +55,11 @@ class Model_employer extends CI_Model {
             return FALSE;
             }
      }
-     function in_notifs($jobno,$notif, $id)
+     function in_notifs($jobno, $id)
      {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db2->query("SELECT jobno, userid, notification from notitications WHERE jobno = $jobno,
-                            notification = $notif, userid = $id");
+        $query = $db1->query("SELECT jobno, userid, notification from notifications WHERE jobno = $jobno and
+                            userid = $id");
         $comp = array();
         if($query->num_rows() == 1)
         {

@@ -133,7 +133,7 @@ class Employer extends CI_Controller {
 
             $days = round((($diff/24)/60)/60);
             $notif = $a['jobtitle']." is nearing its expiration. Would you like to extend?";
-            if($this->model_employer->in_notifs($a['jobno'],$a['notification'],$a['userid']))
+            if($this->model_employer->in_notifs($a['jobno'],$id))
                 if ($days <= 5)
                 {
                     $this->model_employer->add_notification($id,$notif,$a['jobno']);
