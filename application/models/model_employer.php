@@ -55,7 +55,22 @@ class Model_employer extends CI_Model {
             return FALSE;
             }
      }
-          
+     function in_notifs($jobno,$notif, $id)
+     {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db2->query("SELECT jobno, userid, notification from notitications WHERE jobno = $jobno,
+                            notification = $notif, userid = $id");
+        $comp = array();
+        if($query->num_rows() == 1)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+      $db1->close();
+     }      
      function get_competencyname($comp = null) 
      {
         $db2 = $this->load->database('default', TRUE);
