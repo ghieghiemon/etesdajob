@@ -140,7 +140,18 @@
                                         <div class="control-group"><!-- start div nm-->
                                             <div class="myStyleEPrN">
                                                 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
-                                                <input type="text" id="nm" name="nm">
+                                                <?php 
+                                                foreach($jsdetails as $a)
+                                                {
+                                                ?>
+                                                <input type="text" id="nm" name="nm" value="<?php echo $a['firstname'];
+                                                    echo ' ';
+                                                    echo $a['middlename'];
+                                                    echo ' ';
+                                                    echo $a['lastname'];?>">
+                                                <?php 
+                                                }
+                                                ?>
                                             </div>
                                         </div><!-- end div name -->
 
@@ -227,7 +238,14 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div cn -->
                                                                 <div class="myStyleEPr">
-                                                                    <input type="text" id="Cn" name="cn">
+                                                                    <?php 
+                                                                    foreach($jsdetails as $a)
+                                                                    {
+                                                                    ?>
+                                                                    <input type="text" id="Cn" name="cn" value="<?php echo $a['cellno'];?>">
+                                                                    <?php
+                                                                    }
+                                                                    ?>
                                                                 </div>
                                                             </div><!-- end cn -->	
                                                         </td>
@@ -241,7 +259,9 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div em -->
                                                                 <div class="myStyleEPr">
-                                                                    <input type="text" id="em" name="em">
+                                                                  
+                                                                    <input type="text" id="em" name="em" value="<?php echo $email?>">
+                                                                
                                                                 </div>
                                                             </div><!-- end em -->	
                                                         </td>
@@ -253,7 +273,18 @@
                                                         </td>
                                                         
                                                         <td>
-                                                        	<textarea rows="3" class="myStyleEPr3"></textarea>
+                                                                <?php 
+                                                                foreach($jsdetails as $a)
+                                                                {
+                                                                ?>
+                                                        	<textarea rows="3" class="myStyleEPr3"><?php echo $a['brgy'];
+                                                                echo ' ';
+                                                                echo $a['district'];
+                                                                echo ' ';
+                                                                echo $a['cityprov'];?></textarea>
+                                                                <?php
+                                                                }
+                                                                ?>
                                                         </td>
                                                     </tr>
 
@@ -343,7 +374,32 @@
                                         </div><!--end row-fluid-->
                                         
                                         <div style="width:510px;height:280px;overflow:auto;"><!--start scrollable table-->
+                                         <?php
+                                        foreach($work as $a)
+                                        { 
+                                            echo '<font class="resWrkHead2">';
+                                            echo $a['companyname'];
+                                        echo '</font>
                                         
+                                        <br>
+                                        <div class="resWrkDet"><!--start course details-->
+                                            <font class="resEdCrs">
+                                                Position: ';
+                                        echo $a['position'];
+                                         echo '</font>
+                                            
+                                            <font class="resEdYear">
+                                                &nbsp;';
+                                        echo $a['start'];
+                                        echo '-';
+                                        if ($a['present'] == 0)
+                                            echo $a['end'];
+                                        else echo 'Present';
+                                        
+                                        echo '<br></font></div>'
+                                            ;
+                                                }
+                                                ?>
                                         <div class="control-group"><!-- start div CoN -->
                                             <div class="myStyleEPrCN">
                                                 <input type="text" id="CoN" name="CoN" placeholder="Company Name">

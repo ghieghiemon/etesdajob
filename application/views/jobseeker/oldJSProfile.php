@@ -184,9 +184,9 @@
                                                         	<img src="'.base_url().'assets/img/icons/glyphicons_163_iphone.png" width="11"> Contact Number: 
                                                         </td>
                                                         
-                                                        <td>
-                                                        	09179231212	
-                                                        </td>
+                                                        <td>';
+                                                        	echo $a['cellno'];	
+                                                        echo '</td>
                                                     </tr>
                                                 	
                                                     <tr>
@@ -254,28 +254,56 @@
                                         </h4>
                                        <strong> TESDA</strong>
                                         <div style="width:510px;height:280px;overflow:auto;"><!--start scrollable table-->
-<table class="table-condensed table table-bordered">
-                                     	<thead>
-                                        	<tr>
-                                            	<th class="span3">CERTIFICATE/S</th>
-                                                <th class="span5">COMPETENCIES</th>
-                                            </tr>
-                                        </thead>
-                                        
-                                        <tbody>
-                                        	<tr>
-                                            	<td>
-                                                	2D Game Art Development
-                                                </td>
-                                                
-                                                <td>
-                                                	Develop GUI, Create Storyboard
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                     </table>                                       
-
-                                        
+                                        <table class="table-condensed table-bordered certTb">
+                                            <thead>
+                                                <tr>
+                                                    <th class="span3">CERTIFICATE/S</th>
+                                                    <th class="span5">COMPETENCIES</th>
+                                                    <th class="span1">YEAR</th>
+                                                </tr>
+                                            </thead>
+                                            
+                                            <tbody>
+                                                <?php 
+                                                foreach ($cert as $a)
+                                                {
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php //echo $a['ncname']?>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        Develop GUI, Create Storyboard
+                                                    </td>
+                                                    
+                                                    <td>
+                                                    	2010
+                                                    </td>
+                                                </tr>
+                                                <?php 
+                                                }
+                                                ?>
+                                            </tbody>
+                                         </table>                                    
+                                            <br>
+                                        <strong>
+                                      De La Salle University
+                                  </strong>
+                                  
+                                  <div class="resEdDet2"><!--start course details-->
+                                      <font class="resEdCrs">
+                                          Course: Hotel & Restaurant Management
+                                      </font>
+                                      
+                                      <font class="resEdYear">
+                                          &nbsp;2009 - 2010 <br>
+                                      </font>
+                                      
+                                      <div class="resEdSCC"> <!--start div SCC-->
+                                         Achievements: <br>
+                                      </div> <!--end div SCC-->
+                                  </div><!--end course details-->
 <!--                                        <br>
                                         <font class="resEdHead2">
                                             De La Salle University

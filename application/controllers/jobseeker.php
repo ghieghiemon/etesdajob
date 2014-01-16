@@ -144,7 +144,7 @@ class Jobseeker extends CI_Controller {
         $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
         $userid = $this->model_employer->get_userid($id);
         $data['email'] = $this->model_employer->get_email($userid);
-        
+        $data['cert'] = $this->model_jobseeker->get_certifications($userid);
         $this->jobseeker_header();
         $this->load->view('jobseeker/oldJSProfile',$data);
          $this->load->view("footer");
