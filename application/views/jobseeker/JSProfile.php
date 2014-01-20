@@ -131,6 +131,7 @@
                             </thead>
                             
                             <tbody>
+                            <form method='post' action='<?php echo base_url()?>jobseeker_editprofile'>
                             	<tr>
                                 	<td>
                                     	<img src="<?php echo base_url()?>assets/img/user.png" class="thumbnail11">
@@ -169,16 +170,26 @@
                                                 <tbody class="proPI">
                                                 	<tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_024_parents.png" width="18"> GENDER:
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_024_parents.png" width="18"> SEX:
                                                         </td>
                                                         
                                                         <td>
                                                         	<div class="control-group"><!-- start div gender-->
                                                                 <div class="myStyleEPr2">
-                                                                    <select>
-                                                                        <option>Male</option>
-                                                                        <option>Female</option>
-                                                                    </select>
+                                                                <?php 
+                                                                $sex = array("male"=>"Male","female" => "Female");
+                                                                foreach($jsdetails as $a)
+                                                                {
+                                                                    if($a['ismale'] == 0)
+                                                                    {
+                                                                        echo form_dropdown('sex',$sex,'female');
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo form_dropdown('sex',$sex,'male');
+                                                                    }
+                                                                }
+                                                                ?>
                                                                 </div>
                                                             </div><!-- end div gender -->
                                                         	
@@ -193,7 +204,14 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div bday -->
                                                                 <div class="myStyleEPrB">
-                                                                    <input type="text" id="bd" name="bd">
+                                                                    <?php 
+                                                                    foreach($jsdetails as $a)
+                                                                    {
+                                                                    ?>
+                                                                    <input type="text" id="bd" name="bd" value ="<?php echo $a['birthday']?>">
+                                                                    <?php
+                                                                    }
+                                                                    ?>
                                                                 </div>
                                                             </div><!-- end bday-->
                                                         </td>
@@ -242,7 +260,7 @@
                                                                     foreach($jsdetails as $a)
                                                                     {
                                                                     ?>
-                                                                    <input type="text" id="Cn" name="cn" value="<?php echo $a['cellno'];?>">
+                                                                    <input type="text" id="cn" name="cn" value="<?php echo $a['cellno'];?>">
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -295,6 +313,7 @@
                                       
                                     </td>
                                 </tr>
+                                </form>
                             </tbody>
                         </table>
                         
@@ -327,36 +346,58 @@
                                                 </tr>
                                             </thead>
                                             
-                                            <tbody>
+                                             <tbody>
+                                                <?php 
+                                                foreach ($cert as $a)
+                                                {
+                                                ?>
                                                 <tr>
                                                     <td>
-                                                        2D Game Art Development
+                                                        <?php echo $a['ncname']?>
                                                     </td>
                                                     
                                                     <td>
-                                                        Develop GUI, Create Storyboard
+                                                        <?php echo $a['description']?>
                                                     </td>
                                                     
                                                     <td>
-                                                    	2010
+                                                    	<?php echo $a['dateacquired']?>
                                                     </td>
                                                 </tr>
-                                                
-                                                <tr>
-                                                    <td>
-                                                        3D Game Art Development
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        Develop GUI, Create Storyboard, Learn 3D animation
-                                                    </td>
-                                                    
-                                                    <td>
-                                                    	2011
-                                                    </td>
-                                                </tr>
+                                                <?php 
+                                                }
+                                                ?>
                                             </tbody>
                                          </table>
+                                          <br>
+                                          <?php 
+                                      foreach($educ as $a)
+                                      {
+                                          if($a['schoolname'] != "TESDA")
+                                          {
+                                      ?>
+                                          <strong>
+                                              <?php echo $a['schoolname']?>
+                                          </strong>
+
+                                          <div class="resEdDet2"><!--start course details-->
+                                              <strong>
+                                                  Course: <?php echo $a['course']?>
+                                              </strong>
+
+                                              <font class="resEdYear">
+                                                  &nbsp;<?php echo $a['startyear']?> - <?php echo $a['endyear']?> <br>
+                                              </font>
+
+                                              <div class="resEdSCC"> <!--start div SCC-->
+                                                 Level: <?php echo $a['level']?><br>
+                                              </div>
+                                              <!--end div SCC-->
+                                          </div>
+                                      <?php 
+                                          }
+                                      }
+                                      ?>    
                                         </div><!--end scrollable-->
                                     </div><!--end well-->
                                 </div><!--end span-->
@@ -377,9 +418,9 @@
                                          <?php
                                         foreach($work as $a)
                                         { 
-                                            echo '<font class="resWrkHead2">';
+                                            echo '<strong>';
                                             echo $a['companyname'];
-                                        echo '</font>
+                                        echo '</strong>
                                         
                                         <br>
                                         <div class="resWrkDet"><!--start course details-->

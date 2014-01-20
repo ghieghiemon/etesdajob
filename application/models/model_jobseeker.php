@@ -161,6 +161,7 @@ class Model_jobseeker extends CI_Model {
         $query = $db2->query("SELECT * from applicants_education
                             WHERE appid = '$id'");
         return $query->result_array();
+        
         $db2->close();
     }
     public function get_work($id){
@@ -341,8 +342,8 @@ class Model_jobseeker extends CI_Model {
     public function get_certifications($id)
     {
         $db2 = $this->load->database('default', TRUE);
-        $query = $db2->query("SELECT * from applicants_certificates ac JOIN nc_reference nc
-                                where ac.appid = $id
+        $query = $db2->query("SELECT *,DATE_FORMAT(dateacquired, '%M %d, %Y') as dateacquired from applicants_certificates ac JOIN nc_reference nc ON ac.certificateid = nc.ncid
+                                where ac.appid = $id order by ac.dateacquired desc
                             ");
         
         return $query->result_array();
@@ -744,5 +745,20 @@ class Model_jobseeker extends CI_Model {
         }
         $db1->close();
     } 
+    public function edit_profile()
+    {
+        $this->load->model('model_main');
+        
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $civilstatus = $this->input->post('');
+        $contactno = $this->input->post('cn');
+        
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("UPDATE applicants
+                                    SET civilstatus = $civilstatus,
+                                        cellno = $contactno
+                                    WHERE appid = $id");
+        $db2->close();
+    }
 }?>
 

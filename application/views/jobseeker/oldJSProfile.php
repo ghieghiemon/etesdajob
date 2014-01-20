@@ -181,7 +181,7 @@
                                                 <tbody class="proPI">
                                                 	<tr>
                                                     	<td class="lLabel4">
-                                                        	<img src="'.base_url().'assets/img/icons/glyphicons_163_iphone.png" width="11"> Contact Number: 
+                                                        	<img src="'.base_url().'assets/img/icons/glyphicons_163_iphone.png" width="11"> CONTACT NUMBER: 
                                                         </td>
                                                         
                                                         <td>';
@@ -237,7 +237,7 @@
                                                 ?>
                                                     <div class="row-fluid">
 <div align="pull-right">
-	<a href="<?php echo base_url()?>jobseeker/jobseeker_editprofile" class="btn btn-primary btn-mini">
+	<a href="<?php echo base_url()?>jobseeker/jobseeker_editprofilepage" class="btn btn-primary btn-mini">
 		Edit Profile
 	</a>
 </div>
@@ -270,15 +270,15 @@
                                                 ?>
                                                 <tr>
                                                     <td>
-                                                        <?php //echo $a['ncname']?>
+                                                        <?php echo $a['ncname']?>
                                                     </td>
                                                     
                                                     <td>
-                                                        Develop GUI, Create Storyboard
+                                                        <?php echo $a['description']?>
                                                     </td>
                                                     
                                                     <td>
-                                                    	2010
+                                                    	<?php echo $a['dateacquired']?>
                                                     </td>
                                                 </tr>
                                                 <?php 
@@ -287,23 +287,36 @@
                                             </tbody>
                                          </table>                                    
                                             <br>
-                                        <strong>
-                                      De La Salle University
-                                  </strong>
-                                  
-                                  <div class="resEdDet2"><!--start course details-->
-                                      <font class="resEdCrs">
-                                          Course: Hotel & Restaurant Management
-                                      </font>
-                                      
-                                      <font class="resEdYear">
-                                          &nbsp;2009 - 2010 <br>
-                                      </font>
-                                      
-                                      <div class="resEdSCC"> <!--start div SCC-->
-                                         Achievements: <br>
-                                      </div> <!--end div SCC-->
-                                  </div><!--end course details-->
+                                            
+                                      <?php 
+                                      foreach($educ as $a)
+                                      {
+                                          if($a['schoolname'] != "TESDA")
+                                          {
+                                      ?>
+                                          <strong>
+                                              <?php echo $a['schoolname']?>
+                                          </strong>
+
+                                          <div class="resEdDet2"><!--start course details-->
+                                              <strong>
+                                                  Course: <?php echo $a['course']?>
+                                              </strong>
+
+                                              <font class="resEdYear">
+                                                  &nbsp;<?php echo $a['startyear']?> - <?php echo $a['endyear']?> <br>
+                                              </font>
+
+                                              <div class="resEdSCC"> <!--start div SCC-->
+                                                 Level: <?php echo $a['level']?><br>
+                                              </div>
+                                              <!--end div SCC-->
+                                          </div>
+                                      <?php 
+                                          }
+                                      }
+                                      ?>      
+                                            <!--end course details-->
 <!--                                        <br>
                                         <font class="resEdHead2">
                                             De La Salle University
@@ -341,9 +354,9 @@
                                             <?php
                                         foreach($work as $a)
                                         { 
-                                            echo '<font class="resWrkHead2">';
+                                            echo '<strong>';
                                             echo $a['companyname'];
-                                        echo '</font>
+                                        echo '</strong>
                                         
                                         <br>
                                         <div class="resWrkDet"><!--start course details-->

@@ -144,14 +144,15 @@ class Jobseeker extends CI_Controller {
         $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
         $userid = $this->model_employer->get_userid($id);
         $data['email'] = $this->model_employer->get_email($userid);
-        $data['cert'] = $this->model_jobseeker->get_certifications($userid);
+        $data['cert'] = $this->model_jobseeker->get_certifications($id);
+        
         $this->jobseeker_header();
         $this->load->view('jobseeker/oldJSProfile',$data);
-         $this->load->view("footer");
+        $this->load->view("footer");
     }
-    public function jobseeker_editprofile()
+    public function jobseeker_editprofilepage()
     {
-         $this->load->model('model_main');
+        $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $this->load->model('model_employer');
         
@@ -162,10 +163,20 @@ class Jobseeker extends CI_Controller {
         $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
         $userid = $this->model_employer->get_userid($id);
         $data['email'] = $this->model_employer->get_email($userid);
+        $data['cert'] = $this->model_jobseeker->get_certifications($id);
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSProfile',$data);
          $this->load->view("footer");
+    }
+    public function jobseeker_editprofile()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        
+        $this->jobseeker_header();
+        $this->load->view('jobseeker/oldJSProfile',$data);
+        $this->load->view("footer");
     }
         public function employer_profilepage($id)
    {
