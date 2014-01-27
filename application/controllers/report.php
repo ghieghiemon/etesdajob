@@ -445,7 +445,191 @@ class Report extends CI_Controller {
   
         }
 
+        function generate_cv($appid){
+            
+            
+            $this->load->model('model_employer');
+            $this->load->model('model_jobseeker');
 
+            //$data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
+            $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);  
+            //$data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
+            $data['educ'] = $this->model_jobseeker->get_educ($appid);
+            $data['work'] =$this->model_jobseeker->get_work($appid);
+            
+            $mpdf = new mPDF();
+            $mpdf->setFooter('{PAGENO}');
+            
+            
+            
+              $mpdf->WriteHTML('<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+
+<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+ 
+ 	<link rel="stylesheet" href="css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+        <script src="js/jquery-2.0.2.min.js" type="text/javascript"></script>
+        <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+ 
+ 	<!-- Add jQuery library -->
+		<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+		<script type="text/javascript" src="css/jquery.fancybox.js?v=2.1.4"></script>
+        
+	<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css?v=2.1.4" media="screen" />
+
+ 	<!-- Add mousewheel plugin (this is optional) -->
+		<script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add Button helper (this is optional) -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-buttons.css?v=1.0.5" />
+		<script type="text/javascript" src="js/jquery.fancybox-buttons.js?v=1.0.5"></script>
+</head>
+
+<body>
+	<div class="row-fluid">
+    	<div class="span9" style="margin-left:160px;margin-top:-20px;">
+            <h1>
+                Angelica S. Guerrero
+            </h1>
+            
+            <p style="font-weight:bold">
+            	12 BC Marconi St. Makati City 1890
+                <br />
+                09179231212
+                <br />
+               	ghieguerrero@gmail.com
+            </p>
+            
+            <div class="row-fluid">
+            	<div align="right" style="margin-right:10px;margin-top:-150px;">
+                	<img src="assets/img/user.png" class="thumbnail11" />
+            	</div>
+            </div><!--end picture-->
+            
+            <hr class="hrCV">
+            <h3>
+            	| Educational Background
+            </h3>
+            	<font class="resEdHead2">
+                    TESDA
+                </font>
+                
+                <div class="resEdDet2"><!--start course details-->
+                    <font class="resEdCrs">
+                        Course: Hotel & Restaurant Management
+                    </font>
+                    
+                    
+                    <div class="resEdSCC"> <!--start div SCC-->
+                        <table class="table-condensed certTbCV">
+                          <thead>
+                              <tr>
+                              	  
+                                  <th class="span1">YEAR</th>
+                                  <th class="span5">CERTIFICATE/S</th>
+                                  <th class="span5">COMPETENCIES</th>
+                              </tr>
+                          </thead>
+                          
+                          <tbody>
+                              <tr>
+                                  <td>
+                                      2010
+                                  </td>
+                                  
+                                  <td>
+                                      2D Game Art Development
+                                  </td>
+                                  
+                                  <td>
+                                      Develop GUI, Create Storyboard
+                                  </td>
+                                  
+                              </tr>
+                              
+                              <tr>
+                                  <td>
+                                      2011
+                                  </td>
+                                  
+                                  <td>
+                                      3D Game Art Development
+                                  </td>
+                                  
+                                  <td>
+                                      Develop GUI, Create Storyboard, Learn 3D animation
+                                  </td>
+                              </tr>
+                          </tbody>
+                       </table>
+                    </div> <!--end div SCC-->
+                </div><!--end course details-->
+                
+                <br />
+                <font class="resEdHead2">
+                    MANILA UNIVERSITY
+                </font>
+                
+                <div class="resEdDet2"><!--start course details-->
+                    <font class="resEdCrs">
+                        Course: Hotel & Restaurant Management
+                    </font>
+                    
+                    <font class="resEdYear">
+                        &nbsp;2009 - 2010 <br>
+                    </font>
+                    
+                </div><!--end course details-->
+                
+         <br />
+         <hr class="hrCV">       
+         <h3>
+            | Work Experience
+        </h3>
+        
+        <font class="resWrkHead">
+            7TH MEDIA DESIGN STUDIO
+        </font>
+        
+        <br>
+        <div class="resWrkDet"><!--start course details-->
+            <font class="resEdCrs">
+                Position: 2D Game Art Developer
+            </font>
+            
+            <font class="resEdYear">
+                &nbsp;2011 - 2012 <br>
+            </font>
+            
+        </div><!--end course details-->
+        </div><!--end span-->
+    </div><!--end row-fluid-->
+</body>
+</html>
+');
+        
+    
+            $mpdf->Output();
+            exit;
+            
+        }
 
 
 
