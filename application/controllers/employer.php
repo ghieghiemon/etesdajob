@@ -490,6 +490,7 @@ class Employer extends CI_Controller {
         $data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
         $data['educ'] = $this->model_jobseeker->get_educ($appid);
         $data['work'] =$this->model_jobseeker->get_work($appid);
+        $data['appid'] = $appid;
         
         $this->employer_header();
         $this->load->view('employer/EAppsProf',$data);

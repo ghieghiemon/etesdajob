@@ -30,6 +30,7 @@
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
                     Applications
+                    <a href="<?php echo base_url()?>report/generate_cv/<?php echo $appid?>">GENERATE</a>
                         <a href="EAppsPerJob.html" class="media-heading vName2">
                         	|
                                 <?php 
