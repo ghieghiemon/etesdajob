@@ -491,6 +491,7 @@ class Employer extends CI_Controller {
         $data['educ'] = $this->model_jobseeker->get_educ($appid);
         $data['work'] =$this->model_jobseeker->get_work($appid);
         $data['appid'] = $appid;
+        $data['cert'] = $this->model_jobseeker->get_certifications($appid);
         
         $this->employer_header();
         $this->load->view('employer/EAppsProf',$data);

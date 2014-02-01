@@ -254,91 +254,74 @@
                                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_332_certificate.png" width="15">
                                       Educational Background
                                   </h4>
-                                  <?php
-                                        foreach($educ as $a)
-                                        {
-                                            if($a['schoolname'] == 'TESDA')
-                                            {
-                                        echo '<font class="resEdHead2">';
-                                        echo $a['schoolname'];
-                                        echo '</font>
-                                        
-                                        <br>
-                                        <div class="resEdDet2"><!--start course details-->
-                                            <font class="resEdCrs">
-                                                Course: ';
-                                            echo '</font>
+                                 <div style="width:510px;height:280px;overflow:auto;"><!--start scrollable table-->
+                                         <font class="resEdHead2">
+                                              TESDA
+                                          </font>
+                                        <table class="table-condensed table-bordered certTb">
+                                            <thead>
+                                                <tr>
+                                                    <th class="span3">CERTIFICATE/S</th>
+                                                    <th class="span5">COMPETENCIES</th>
+                                                    <th class="span1">YEAR</th>
+                                                </tr>
+                                            </thead>
                                             
-                                            <font class="resEdYear">
-                                                &nbsp;';
-                                            echo $a['startyear'];
-                                        echo '-';
-                                        echo $a['endyear'];
-                                            echo '<br>
-                                            </font>
-                                            
-                                            <div class="resEdSCC"> <!--start div SCC-->
-                                                <strong>Certificates: </strong> ';
-                                         $nc = $this->model_employer->get_appcert($a['appid']);
-                                              $count = count($nc);
-                                              foreach($nc as $c)
-                                              {
-                                                  echo $c['ncname']. " ". $c['level'];  
-                                                  if ($count >1)
-                                                    echo ", ";
+                                             <tbody>
+                                                <?php 
+                                                foreach ($cert as $a)
+                                                {
+                                                ?>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $a['ncname']?>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                        <?php echo $a['description']?>
+                                                    </td>
+                                                    
+                                                    <td>
+                                                    	<?php echo $a['dateacquired']?>
+                                                    </td>
+                                                </tr>
+                                                <?php 
+                                                }
+                                                ?>
+                                            </tbody>
+                                         </table>
+                                          <br>
+                                          <?php 
+                                      foreach($educ as $a)
+                                      {
+                                          if($a['schoolname'] != "TESDA")
+                                          {
+                                      ?>
+                                          <strong>
+                                              <?php echo $a['schoolname']?>
+                                          </strong>
 
-                                                 $count--;
-                                              }       
-                                         echo '<br>
-                                                <strong>Competencies: </strong>';
-                                          $coc = $this->model_employer->get_appcomp($a['appid']);
-                                              $count = count($coc);
-                                              foreach($coc as $d)
-                                              {
-                                                  echo $d['cocname']; 
-                                                  if ($count >1)
-                                                    echo ", ";
+                                          <div class="resEdDet2"><!--start course details-->
+                                              <strong>
+                                                  Course: <?php echo $a['course']?>
+                                              </strong>
 
-                                                 $count--;
-                                              }
-                                         echo '<br>
-                                            </div> <!--end div SCC-->
-                                        </div><!--end course details-->
-                                        
-                                        <br>';
-                                            }
-                                            else
-                                            {
-                                                echo '<font class="resEdHead2">';
-                                        echo $a['schoolname'];
-                                        echo '</font>
-                                        
-                                        <br>
-                                        <div class="resEdDet2"><!--start course details-->
-                                            <font class="resEdCrs">
-                                                Course: ';
-                                        echo $a['course'];
-                                        echo '</font>
-                                            
-                                            <font class="resEdYear">
-                                                &nbsp;';
-                                        echo $a['startyear'];
-                                        echo '-';
-                                        echo $a['endyear'];
-                                            echo '<br></font>
-                                            
-                                        </div><!--end course details-->
-                                        
-                                        <br>';
-                                            }
-                                         }
-                                                    ?>
-                                 
-                                 
-                          
-                            </div><!--end scrollable-->
-                        </div><!--end well-->
-                    </div><!--end span-->
+                                              <font class="resEdYear">
+                                                  &nbsp;<?php echo $a['startyear']?> - <?php echo $a['endyear']?> <br>
+                                              </font>
+
+                                              <div class="resEdSCC"> <!--start div SCC-->
+                                                 Level: <?php echo $a['level']?><br>
+                                              </div>
+                                              <!--end div SCC-->
+                                          </div>
+                                      <?php 
+                                          }
+                                      }
+                                      ?>    
+                                        </div><!--end scrollable-->
+                                    </div><!--end well-->
+                                </div><!--end span-->
                     
                     <div class="span6">
                     	<div class="well wellMarg wellUpMarg">
