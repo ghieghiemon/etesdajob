@@ -58,7 +58,7 @@
                               </td>
                               
                               <td>
-                              	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="30px" class="img-rounded"> 
+                              	<img src="<?php echo base_url()?>profilepics/user.png" width="50px" class="img-rounded"> 
                               </td>
                               <td>
                               	 <a href="#" class="recAppName">
