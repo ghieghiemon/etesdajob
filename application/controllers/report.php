@@ -505,9 +505,11 @@ class Report extends CI_Controller {
 <body>
 	<div class="row-fluid">
     	<div class="span9" style="margin-left:160px;margin-top:-20px;">
-            <h1>
-                Angelica S. Guerrero
-            </h1>
+            ');
+            foreach ($data['appdetails'] as $a):
+            $mpdf->WriteHTML('<h1>'.$a['firstname'].'</h1>');
+            endforeach;
+            $mpdf->WriteHTML('
             
             <p style="font-weight:bold">
             	12 BC Marconi St. Makati City 1890
