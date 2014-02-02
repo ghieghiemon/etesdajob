@@ -153,28 +153,46 @@ $(document).ready(function(){       //on change
 $(function(){
 $("#btnAddCert").click(function(){
 $("#lstcert1 > option:selected").each(function(){
-     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
-                 if (children[i].tagName === "OPTION") children[i].selected = true;
-}
 $(this).remove().appendTo("#lstcert2");
-$("#lstcomp1 > option:selected").each(function(){
-$(this).remove().appendTo("#lstcomp2");
-});
+
 });
 });
 
 $("#btnDelCert").click(function(){
-$("#lstcomp2 > option:selected").each(function(){
-     for (var i = 0, children = lstcomp2.childNodes, l = children.length; i < l; i++) {
-                 if (children[i].tagName === "OPTION") children[i].selected = true;
-}
-$(this).remove().appendTo("#lstcomp1");
-});
 $("#lstcert2 > option:selected").each(function(){
+
+$(this).remove().appendTo("#lstcert1");
+});
+$("#lstcomp2 > option:selected").each(function(){
 $(this).remove().appendTo("#lstcert1");
 });
 });
 });
+//$(function(){
+//$("#btnAddCert").click(function(){
+//$("#lstcert1 > option:selected").each(function(){
+//     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
+//                 if (children[i].tagName === "OPTION") children[i].selected = true;
+//}
+//$(this).remove().appendTo("#lstcert2");
+//$("#lstcomp1 > option:selected").each(function(){
+//$(this).remove().appendTo("#lstcomp2");
+//});
+//});
+//});
+//
+//$("#btnDelCert").click(function(){
+//$("#lstcomp2 > option:selected").each(function(){
+//     for (var i = 0, children = lstcomp2.childNodes, l = children.length; i < l; i++) {
+//                 if (children[i].tagName === "OPTION") children[i].selected = true;
+//}
+//$(this).remove().appendTo("#lstcomp1");
+//});
+//$("#lstcert2 > option:selected").each(function(){
+//$(this).remove().appendTo("#lstcert1");
+//});
+//});
+//});
 
 
 
@@ -189,7 +207,7 @@ $(this).remove().appendTo("#lstcomp2");
 });
 
 $("#btnDelComp").click(function(){
-$("#lstskill2 > option:selected").each(function(){
+$("#lstcomp2 > option:selected").each(function(){
 
 $(this).remove().appendTo("#lstcomp1");
 });

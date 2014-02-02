@@ -392,16 +392,13 @@
                                             
                                                 <?php 
              
-                                        $params = 'multiple="multiple" style="width:70%" name= "cert[]" id="lstcert1"'; 
+                                        $params = 'multiple="multiple" style="width:75%" size="10" name= "cert[]" id="lstcert1"'; 
                                         echo form_multiselect('certs', $cert, '#', $params ); ?> 
                                             
-                                             <div class="btn btn-mini btn-info" style="margin-left:40px;margin-top:-40px;">
-                                                <strong>&nbsp; Add &nbsp;</strong>
-                                             </div> <!--end button-->
-                                        
-                                             <div class="btn btn-mini btn-danger" style="margin-left:-53px;margin-top:20px">
-                                                <strong>Delete</strong>
-                                             </div> <!--end button-->
+                                            <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                   
+                                       
 
                                         </div><!--end span4-->	
                                         
@@ -412,16 +409,24 @@
                                             
                                               <?php 
                                          
-                                         $params = 'multiple="multiple"style="width:70%" name= "comp[]" id="lstcomp1"'; 
+                                         $params = 'multiple="multiple"style="width:70%" size="10" name= "comp[]" id="lstcomp1"'; 
                                          echo form_multiselect('competencies', $comp, '#', $params); ?>   
                                             
                                                <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
-                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-70px; margin-top:20px;"id="btnDelComp">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                  
                                         </div><!--end span4-->	
                                         
-                                         <div class="span4">
+                                           <div class="span4">
+                                            <h5 class="media-heading previewColor">
+                                                | YOUR CHOSEN CERTIFICATION/S
+                                            </h5>
+                                            
+                                           <select id="lstcert2" name= "certselect[]"multiple="multiple">
+                                         </select>
+                                               <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                      
                                             <h5 class="media-heading previewColor">
                                                 | YOUR CHOSEN COMPETENCIES
                                             </h5>
@@ -429,14 +434,17 @@
                                              <select id="lstcomp2" name= "compselect[]" multiple="multiple">
 
                                         </select>
+                                               
+                                                    <a class="btn btn-mini actionPHMarg"style ="margin-left:10px; margin-top:-10px;"id="btnDelComp">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                         </div><!--end span4-->	
                                         
                                     </div><!--end row-fluid-->
                                     
                                     <br>
-                                    <div class="row-fluid" align="center">
+<!--                                    <div class="row-fluid" align="center">
                                       	<textarea name="Desc" rows="10" class="span7" readonly style="margin-left:-120px;"></textarea>
-                                    </div><!--end row-fluid-->
+                                    </div>end row-fluid-->
                                     
                                    
                                     	

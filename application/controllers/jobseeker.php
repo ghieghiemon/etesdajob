@@ -88,6 +88,11 @@ class Jobseeker extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
+        $this->load->model('model_pub');
+        
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+      //  $data['vacancies'] = $this->model_pub->get_perIndustryVacancies($sectorid);
+        //$data['sectorName'] = $this->model_pub->get_industryName($sectorid);
         
         $id = $this->model_main->get_appid($this->session->userdata('email'));
         $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
