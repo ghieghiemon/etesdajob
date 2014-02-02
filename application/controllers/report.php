@@ -635,7 +635,7 @@ class Report extends CI_Controller {
             endforeach;
             $mpdf->WriteHTML('<div class="row-fluid">
             	<div align="right" style="margin-right:10px;margin-top:-150px;">
-                	<img src="assets/img/user.png" class="thumbnail11" />
+                	<img src="'.base_url().'profilepics/'.$a['profile_pic'].'" class="thumbnail11" />
             	</div>
             </div><!--end picture-->
             
