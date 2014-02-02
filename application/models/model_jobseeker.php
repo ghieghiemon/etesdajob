@@ -28,6 +28,17 @@ class Model_jobseeker extends CI_Model {
         }
         $db2->close();
     } 
+    
+        public function get_jspic2($appid){
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT profile_pic from applicants WHERE appid = $appid");
+        foreach ($query->result() as $row)
+        {
+         return $row->profile_pic;
+        }
+        $db2->close();
+    } 
+    
     public function get_notifications($id)
     {
         $db1 = $this->load->database('local', TRUE);

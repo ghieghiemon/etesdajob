@@ -356,8 +356,7 @@ foreach ($jobs as $a)
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                                    <th class="span1" style="text-align:center">Vacancies</th>
                                     <th class="span1" style="text-align:center">Action</th>
                                 </tr>
                             </thead>
@@ -413,18 +412,7 @@ foreach ($jobs as $a)
                                                             echo $days. " days left";
                                                             ?>
                                 
-                                                       <?php echo' </td>
-                                    
-                                    <td>
-                                        <span class="label label-info">'?>
-                                         <?php
-                                                $appcount = $this->model_jobseeker->count_jobApplications($row['jobno']);
-                                                echo $appcount;
-                                            ?>
-                                            Applied
-                                        
-                                    <?php echo'</span>
-                                    </td>
+                                                       <?php echo'
                                     
                                     <td>';
                                         echo'<span class="label">';
@@ -488,8 +476,7 @@ foreach ($jobs as $a)
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                                    <th class="span1" style="text-align:center">Vacancies</th>
                                     <th class="span1" style="text-align:center">Action</th>
                             </thead>
                             
@@ -532,12 +519,6 @@ foreach ($jobs as $a)
                                 echo $days. " days left";
                                  echo '</td>
                                     
-                                    <td>
-                                        <span class="label label-info">';
-                                 $count = $this->model_jobseeker->count_jobApplications($a['jobno']);
-                                echo $count;
-                                 echo ' Applied</span>
-                                    </td>
                                     
                                     <td>
                                         <span class="label">';
@@ -591,7 +572,77 @@ foreach ($jobs as $a)
                         </div><!--end row-->
                         
                     	<div class="well" style="width:900px;height:228px;overflow:auto;"><!--start scrollable table-->
-                        	
+                        	    <div id="container">
+                     
+                           <table  id="indtable">
+                        	<!--<table class="tableJMP table-hover table-condensed table-striped">-->
+                            <thead>
+                                    <th class="span3" style="text-align:center">Job Title</th>
+                                    <th class="span3" style="text-align:center">Company Name</th>
+                                    <th class="span3" style="text-align:center">Location</th>
+                                    <th class="span3" style="text-align:center">Effectivity</th>
+                               
+                                    <th class="span1" style="text-align:center">Action</th>
+                            </thead>
+                            
+                            <tbody class="recName">
+                            <?php
+                              foreach($suggested as $c)
+                            {
+                                $jobno[]=$c['jobno'];
+                            }
+                            foreach($vacancies as $a)
+                            {   
+                            ?>
+                                <tr>
+                                    <td>
+                                       <?php echo $a['jobtitle']?>
+                                    </td>
+                                   
+                                    <td>
+                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['companyID']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
+                                    </td>
+                                  <?php
+                                   echo' <td>';
+                                   echo $a['region'];
+                                   echo ' |  ';
+                                   echo $a['city'];
+                                   echo' </td>';
+                                   ?>
+                                    <td>
+                                        <?php
+                                        $date2 = $a['expirationdate'];
+                                        $date = date('Y-m-d');
+                                        $diff = abs(strtotime($date2) - strtotime($date));
+
+                                        $days = round((($diff/24)/60)/60);
+                                        echo $days. " days left";
+                                        ?>
+                                    </td>
+                                    
+                                
+                                    
+                                    <?php echo'
+                                    <td>';
+                                 if(count($suggested) >0)
+                                 {
+                                    if(in_array($a['jobno'],$jobno))
+                                    	echo '<button class="btn btn-mini btn-info">Apply</button>';
+                                 }
+                                    echo '</td>
+                                </tr>'
+                                 ?>
+                            <?php
+                            }
+                            ?> 
+                            </tbody>
+                        </table>	
+                        </div><!--end scrollable--> 
                         </div><!--end scrollable-->
                     </div> <!--end tab pane IND-->
                    
@@ -624,6 +675,18 @@ foreach ($jobs as $a)
        $(document).ready(function(){
           
            $('#second').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#indtable').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   

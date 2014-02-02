@@ -356,8 +356,7 @@ foreach ($jobs as $a)
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                                    <th class="span1" style="text-align:center">Vacancies</th>
                                     <th class="span1" style="text-align:center">Action</th>
                                 </tr>
                             </thead>
@@ -415,16 +414,7 @@ foreach ($jobs as $a)
                                 
                                                        <?php echo' </td>
                                     
-                                    <td>
-                                        <span class="label label-info">'?>
-                                         <?php
-                                                $appcount = $this->model_jobseeker->count_jobApplications($row['jobno']);
-                                                echo $appcount;
-                                            ?>
-                                            Applied
-                                        
-                                    <?php echo'</span>
-                                    </td>
+                               
                                     
                                     <td>';
                                         echo'<span class="label">';
@@ -488,8 +478,7 @@ foreach ($jobs as $a)
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                                    <th class="span1" style="text-align:center"></th>
-                                    <th class="span1" style="text-align:center"></th>
+                                    <th class="span1" style="text-align:center">Vacancies</th>
                                     <th class="span1" style="text-align:center">Action</th>
                             </thead>
                             
@@ -532,12 +521,7 @@ foreach ($jobs as $a)
                                 echo $days. " days left";
                                  echo '</td>
                                     
-                                    <td>
-                                        <span class="label label-info">';
-                                 $count = $this->model_jobseeker->count_jobApplications($a['jobno']);
-                                echo $count;
-                                 echo ' Applied</span>
-                                    </td>
+                             
                                     
                                     <td>
                                         <span class="label">';

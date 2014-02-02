@@ -58,7 +58,9 @@
                               </td>
                               
                               <td>
-                              	<img src="<?php echo base_url()?>profilepics/user.png" width="50px" class="img-rounded"> 
+                 
+                                  <img src='<?php echo base_url()?>profilepics/<?php echo $a['pic'];?>' class="attendeesPic">
+                                  
                               </td>
                               <td>
                               	 <a href="#" class="recAppName">

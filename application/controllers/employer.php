@@ -274,7 +274,7 @@ class Employer extends CI_Controller {
    public function invite_jobseekers($jobpost_id)
     {
         $this->load->model('model_employer');
-        
+        $this->load->model('model_jobseeker');
         $jobseekers = $this->model_employer->get_jobseekers();
         $applied = $this->model_employer->get_jobApplications($jobpost_id);
         $stack = array(); 
@@ -294,6 +294,7 @@ class Employer extends CI_Controller {
            
            $row['name'] = $name;
            $row['appid'] = $a;
+           $row['pic'] = $this->model_jobseeker->get_jspic2($a);
 //           $row['competencies'] = $this->model_main->get_jscomp($a);
 //           $row['details'] = $this->model_main->get_jsdetails($a);
            //$row['certifications'] = 
