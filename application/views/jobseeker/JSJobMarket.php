@@ -375,7 +375,7 @@ foreach ($jobs as $a)
                             {
                                 $myjobno[] = $a['jobno'];
                             }
-                                
+                           
                             foreach($suggested as $row){
                                   if($ctr >=1){
 
@@ -383,7 +383,7 @@ foreach ($jobs as $a)
                                 <tr>
                                     
                                     <td>';?>
-                                <a data-toggle="modal"href='#view<?php echo $a['jobno']?>'>
+                                <a data-toggle="modal"href='#view<?php echo $row['jobno']?>'>
                                    <?php echo $row['jobtitle'];?> </a>
                                    
                                          <?php
