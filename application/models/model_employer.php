@@ -55,6 +55,34 @@ class Model_employer extends CI_Model {
             return FALSE;
             }
      }
+     function age_from_dob($dob) {
+        return floor((time() - strtotime($dob)) / 31556926);
+    }
+     public function get_qualifiedjs($sex, $startage, $endage)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        if ($sex=='Male')
+        {
+            $query = $db1->query("SELECT * from applicants a where (a.ismale = '1' ) 
+                AND (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
+                                        ");
+        }
+        else if ($sex == "Female")
+        {
+            $query = $db1->query("SELECT * from applicants a where (a.ismale = '0' ) 
+                AND (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
+                                        ");
+        }
+        else if ($sex == "Both")
+        {
+            $query = $db1->query("SELECT * from applicants a where 
+                (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
+                                        ");
+        }
+        return $query->result_array();
+        $db1->close();
+    }
      function in_notifs($jobno, $id)
      {
         $db1 = $this->load->database('local', TRUE);
@@ -362,6 +390,36 @@ class Model_employer extends CI_Model {
         foreach ($query->result() as $row)
         {
             return $row->jobno;
+        }
+        $db1->close();
+    }
+    public function get_jobsex($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT sex FROM job_vacancies WHERE jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->sex;
+        }
+        $db1->close();
+    }
+    public function get_jobagestart($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT agestart FROM job_vacancies WHERE jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->agestart;
+        }
+        $db1->close();
+    }
+    public function get_jobageend($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT ageend FROM job_vacancies WHERE jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->ageend;
         }
         $db1->close();
     }

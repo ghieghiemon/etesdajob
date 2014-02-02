@@ -277,6 +277,12 @@ class Employer extends CI_Controller {
         $this->load->model('model_jobseeker');
         $jobseekers = $this->model_employer->get_jobseekers();
         $applied = $this->model_employer->get_jobApplications($jobpost_id);
+        $sex = $this->model_employer->get_jobsex($jobpost_id);
+        $startage = $this->model_employer->get_jobagestart($jobpost_id);
+        $endage = $this->model_employer->get_jobageend($jobpost_id);
+        
+        $qualified = $this->model_employer->get_jqualifiedjs($sex, $startage, $endage);
+        
         $stack = array(); 
         foreach($jobseekers as $a)
         {
@@ -285,10 +291,19 @@ class Employer extends CI_Controller {
                 array_push($stack, $a['appid']);
             }
         }
-        
+        foreach($qualified as $a)
+        {
+            $appid[]= $a['appid'];
+        }
+        $suggested = array();
+        foreach($stack as $a)
+        {
+            if(in_array($a['appid'],$appid))
+                    array_push($suggested, $a);
+        }
         $data  = array();
         
-       foreach ($stack as $a)
+       foreach ($suggested as $a)
        {
            $name =$this->model_employer->get_jsName($a);
            
