@@ -390,7 +390,7 @@ foreach ($jobs as $a)
                                     echo'</td>
                                    
                                     <td>'?>
-                                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $row['companyID']?>" class="recAppName">
                                     <?php echo $row['companyName'];
                                        
                                        echo' </a>
