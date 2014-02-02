@@ -339,13 +339,13 @@ foreach ($jobs as $a)
             
             <div class="tabbable"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
-                        <li><a href="#SGS" data-toggle="tab">Suggested</a></li>
+                        <li class="active"><a href="#SGS" data-toggle="tab">Suggested</a></li>
                         <li><a href="#All" data-toggle="tab">All</a></li>
-                        <li class="active"><a href="#Ind" data-toggle="tab">Industry</a></li>
+                        <li><a href="#Ind" data-toggle="tab">Industry</a></li>
                     </ul>
           
                     <div class="tab-content"> <!--start tab content-->
-                    <div class="tab-pane" id="SGS">
+                    <div class="tab-pane active" id="SGS">
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             <div id="container">
                         	<table id ="newtablejb" >
@@ -562,7 +562,7 @@ foreach ($jobs as $a)
                             </div>
                         </div><!--end scrollable-->
                     </div> <!--end tab pane invited-->
-                  <div class="tab-pane active" id="Ind">
+                  <div class="tab-pane" id="Ind">
                     	 <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                             Legend:  (#) - no. of vacancies
                         </div>
@@ -572,7 +572,7 @@ foreach ($jobs as $a)
                 foreach ($industries as $a)
                 {
                     ?>
-                    <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd2">
+                    <a href="<?php echo base_url('jobseeker/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd2">
                     <h5 class="media-heading">
                         <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"  class="PProfE"> 
                         <br>(<?php echo $a['totalopenings']?>)

@@ -10,7 +10,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
     
-    <?php
+ <?php
 foreach ($jobs as $a)
 {
 ?>
@@ -375,7 +375,7 @@ foreach ($jobs as $a)
                             {
                                 $myjobno[] = $a['jobno'];
                             }
-                                
+                           
                             foreach($suggested as $row){
                                   if($ctr >=1){
 
@@ -383,14 +383,14 @@ foreach ($jobs as $a)
                                 <tr>
                                     
                                     <td>';?>
-                                <a data-toggle="modal"href='#view<?php echo $a['jobno']?>'>
+                                <a data-toggle="modal"href='#view<?php echo $row['jobno']?>'>
                                    <?php echo $row['jobtitle'];?> </a>
                                    
                                          <?php
                                     echo'</td>
                                    
                                     <td>'?>
-                                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                                        <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $row['companyID']?>" class="recAppName">
                                     <?php echo $row['companyName'];
                                        
                                        echo' </a>
@@ -572,7 +572,7 @@ foreach ($jobs as $a)
                 foreach ($industries as $a)
                 {
                     ?>
-                    <a href="<?php echo base_url('pub/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd2">
+                    <a href="<?php echo base_url('jobseeker/search_industries/' . $a['sectorID']); ?>" class="btn btn-group PInd2">
                     <h5 class="media-heading">
                         <img src="<?php echo base_url()?>assets/bootstrap/img/<?php echo $a['sectorIcon']?>"  class="PProfE"> 
                         <br>(<?php echo $a['totalopenings']?>)

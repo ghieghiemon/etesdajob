@@ -341,7 +341,7 @@
                                                 <div class="control-group">
                                                     <!--<label class="control-label lLabel2" style="margin-right:-26px;">Sex: &nbsp;</label>-->
                                                     <div class="controls">
-                                                          <?php 
+                                                       <strong>  Sex:</strong>  <?php 
                                                         $options = array(
                                                         'Female'  => 'Female',
                                                         'Male'    => 'Male',
@@ -362,7 +362,7 @@
                                                     <!--<label class="control-label lLabel2" style="margin-left:-184px;">Age Range: &nbsp;</label>-->
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                        <input type="text" id="ageto" name="ageto"><strong> to </strong>
+                                                       <strong> Age: </strong><input type="text" id="ageto" name="ageto"><strong> to </strong>
                                                        <input type="text" id="agefrom" name="agefrom">
                                                         </div>
                                                     </div>
@@ -370,6 +370,7 @@
                                             </div><!--end span-->
                                         </div><!--end row-fluid-->
                                         <br>
+                                      
                                           <div class="myStyle2VD" style="margin-top:5px;" >
                                                        <?php    
                                                                 $industry['0'] = 'Choose Industry';
