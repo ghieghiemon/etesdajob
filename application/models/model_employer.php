@@ -60,7 +60,7 @@ class Model_employer extends CI_Model {
     }
      public function get_qualifiedjs($sex, $startage, $endage)
     {
-        $db1 = $this->load->database('local', TRUE);
+        $db1 = $this->load->database('default', TRUE);
         
         if ($sex=='Male')
         {

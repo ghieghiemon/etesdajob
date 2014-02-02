@@ -281,7 +281,7 @@ class Employer extends CI_Controller {
         $startage = $this->model_employer->get_jobagestart($jobpost_id);
         $endage = $this->model_employer->get_jobageend($jobpost_id);
         
-        $qualified = $this->model_employer->get_jqualifiedjs($sex, $startage, $endage);
+        $qualified = $this->model_employer->get_qualifiedjs($sex, $startage, $endage);
         
         $stack = array(); 
         foreach($jobseekers as $a)
@@ -298,7 +298,8 @@ class Employer extends CI_Controller {
         $suggested = array();
         foreach($stack as $a)
         {
-            if(in_array($a['appid'],$appid))
+           // if(in_array($a['appid'],$appid))
+            if(in_array($a,$appid))
                     array_push($suggested, $a);
         }
         $data  = array();
