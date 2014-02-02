@@ -333,6 +333,63 @@ class Jobseeker extends CI_Controller {
         $this->load->view('jobseeker/JSEventsSearch',$data);
         $this->load->view('footer');
     }
+       public function search_industries($sectorid)
+   {	
+         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_pub');
+        
+               
+        $data['industries'] = $this->model_pub->get_industryVacancies();
+        $data['vacancies'] = $this->model_pub->get_perIndustryVacancies($sectorid);
+        $data['sectorName'] = $this->model_pub->get_industryName($sectorid);
+        
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $data['myapp'] = $this->model_jobseeker->get_myapplications($id);
+        $data['drpindustries'] = $this->model_main->get_drpindustries();
+        $data['regions'] = $this->model_main->get_regions();
+        $jobs = $this->model_jobseeker->get_alljobs();
+        $dob = $this->model_jobseeker->get_dob($id);
+        $sex = $this->model_jobseeker->get_sex($id);
+        $qualified = $this->model_jobseeker->get_qualifiedjobs($dob, $sex);
+        
+        
+        
+        
+        $suggested = array();
+        foreach($jobs as $a)
+        {
+            if($this->match($a['jobno'],$id) == "True")
+            {
+                array_push($suggested, $a);
+            }
+        }
+        
+        foreach($qualified as $a)
+        {
+            $jobno[]= $a['jobno'];
+        }
+         
+        $final = array();
+        foreach ($suggested as $a)
+        {
+            if(in_array($a['jobno'],$jobno))
+                    array_push($final, $a);
+        }
+        //print_r($final);
+        
+        $data['suggested'] = $final;
+        
+        $data['jobs'] = $jobs;
+        $data['job'] = $this->model_jobseeker->get_alljobs();
+        
+    
+ 
+        
+        $this->jobseeker_header();
+        $this->load->view("jobseeker/JSJobMarketIndustries",$data);
+        $this->load->view("footer2");
+   }
    
        public function search_events()
     {
