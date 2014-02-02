@@ -59,7 +59,7 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.1.js"></script>
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="j<?php echo base_url()?>assets/bootstrap/s/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
     
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery.min.js"></script>
 
