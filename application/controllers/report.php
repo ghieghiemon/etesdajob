@@ -445,6 +445,7 @@ class Report extends CI_Controller {
   
         }
 
+        
         function generate_cv($appid){
             
             
@@ -456,6 +457,7 @@ class Report extends CI_Controller {
             //$data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
             $data['educ'] = $this->model_jobseeker->get_educ($appid);
             $data['work'] =$this->model_jobseeker->get_work($appid);
+            $data['cert'] = $this->model_jobseeker->get_certifications($appid);
             
             $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
@@ -464,6 +466,115 @@ class Report extends CI_Controller {
             
               $mpdf->WriteHTML('<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<style type="text/css">
+.thumbnail11 {
+  display: block;
+  width:150px;
+  padding: 4px;
+  margin-top:5px;
+  margin-left:20px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+     -moz-transition: all 0.2s ease-in-out;
+       -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+}
+
+.hrCV {
+	margin: 5px 0;
+	margin-top: 12px;
+  border: 0;
+  border-bottom: 5px solid #000;
+}
+
+.resEdHead2 {
+	font-size:15px;
+	font-weight: bolder;
+	margin-left:20px;
+}
+
+.resEdDet2 {
+	font-size:12px;
+	font-style:oblique;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:30px;
+}
+
+.resEdSCC {
+	margin-left:20px;
+}
+
+.resEdCrs {
+	font-size:13px;
+	font-weight:700;
+	color:#000;
+}
+
+.table-condensed th,
+.table-condensed td {
+  padding: 4px 5px;
+}
+
+.certTbCV {
+	text-align:center;
+	width:870px;
+	margin-left:22px;
+}
+
+.certTbCV td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: top;
+  font-size:12px;
+}
+
+
+.span1 {
+  width: 60px;
+}
+
+.table td.span5,
+.table th.span5 {
+  float: none;
+  width: 364px;
+  margin-left: 0;
+}
+
+.table td.span1,
+.table th.span1 {
+  float: none;
+  width: 44px;
+  margin-left: 0;
+}
+
+.resWrkHead {
+	font-size:15px;
+	font-weight: bolder;
+	margin-left: 20px;
+}
+
+.resWrkDet {
+	font-size:12px;
+	font-style:oblique;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-left:40px;
+}
+
+.resEdYear {
+	font-size: 11px;
+	color:#333;
+}
+
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title></title>
 <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
@@ -506,20 +617,23 @@ class Report extends CI_Controller {
 	<div class="row-fluid">
     	<div class="span9" style="margin-left:160px;margin-top:-20px;">
             ');
+                                       
             foreach ($data['appdetails'] as $a):
-            $mpdf->WriteHTML('<h1>'.$a['firstname'].'</h1>');
+                $userid = $this->model_employer->get_userid($a['appid']);
+              $email = $this->model_employer->get_email($userid);
+            $mpdf->WriteHTML('<h1>'.$a['firstname'].' '.$a['middlename'].' '.$a['lastname'].'</h1>');
+            
+            
+            $mpdf->WriteHTML('<p style="font-weight:bold">'.
+                    $a['birthday'].'<br>'.
+             $a['streetno'].' '.$a['brgy'].'<br>'.$a['district'].' '.$a['cityprov'].
+                '<br />'.
+                $a['cellno'].
+                '<br />'.
+                $email.
+            '</p');
             endforeach;
-            $mpdf->WriteHTML('
-            
-            <p style="font-weight:bold">
-            	12 BC Marconi St. Makati City 1890
-                <br />
-                09179231212
-                <br />
-               	ghieguerrero@gmail.com
-            </p>
-            
-            <div class="row-fluid">
+            $mpdf->WriteHTML('<div class="row-fluid">
             	<div align="right" style="margin-right:10px;margin-top:-150px;">
                 	<img src="assets/img/user.png" class="thumbnail11" />
             	</div>
@@ -534,10 +648,7 @@ class Report extends CI_Controller {
                 </font>
                 
                 <div class="resEdDet2"><!--start course details-->
-                    <font class="resEdCrs">
-                        Course: Hotel & Restaurant Management
-                    </font>
-                    
+      
                     
                     <div class="resEdSCC"> <!--start div SCC-->
                         <table class="table-condensed certTbCV">
@@ -550,86 +661,76 @@ class Report extends CI_Controller {
                               </tr>
                           </thead>
                           
-                          <tbody>
-                              <tr>
-                                  <td>
-                                      2010
-                                  </td>
-                                  
-                                  <td>
-                                      2D Game Art Development
-                                  </td>
-                                  
-                                  <td>
-                                      Develop GUI, Create Storyboard
-                                  </td>
-                                  
-                              </tr>
-                              
-                              <tr>
-                                  <td>
-                                      2011
-                                  </td>
-                                  
-                                  <td>
-                                      3D Game Art Development
-                                  </td>
-                                  
-                                  <td>
-                                      Develop GUI, Create Storyboard, Learn 3D animation
-                                  </td>
-                              </tr>
-                          </tbody>
+                          <tbody>');
+                          foreach ($data['cert'] as $a):  
+                          $mpdf->WriteHTML('<tr>
+                                  <td>'. 
+                                  $a['dateacquired'].
+                                  '</td><td>'.
+                                      $a['ncname'].
+                                  '</td><td>'.
+                                      $a['description'].
+                                  '</td>
+                              </tr>');
+                            endforeach;  
+                             
+                           $mpdf->WriteHTML('</tbody>
                        </table>
                     </div> <!--end div SCC-->
                 </div><!--end course details-->
                 
-                <br />
-                <font class="resEdHead2">
-                    MANILA UNIVERSITY
-                </font>
-                
-                <div class="resEdDet2"><!--start course details-->
-                    <font class="resEdCrs">
-                        Course: Hotel & Restaurant Management
-                    </font>
-                    
-                    <font class="resEdYear">
-                        &nbsp;2009 - 2010 <br>
-                    </font>
-                    
-                </div><!--end course details-->
-                
-         <br />
-         <hr class="hrCV">       
+                <br />');
+                foreach($data['educ'] as $a):
+                    if($a['schoolname'] != "TESDA"):
+                        $mpdf->WriteHTML('<font class="resEdHead2">'.
+                            $a['schoolname']
+                        .'</font>
+
+                        <div class="resEdDet2"><!--start course details-->
+                            <font class="resEdCrs">
+                                Course: '. $a['course']
+                            .'</font>
+
+                            <font class="resEdYear">
+                                &nbsp;'.$a['startyear'].' - '.$a['endyear'].'<br>
+                            </font>
+
+                        </div><!--end course details-->
+
+                        <br />');
+                    endif;
+                endforeach;
+         $mpdf->WriteHTML('<hr class="hrCV">       
          <h3>
             | Work Experience
-        </h3>
-        
-        <font class="resWrkHead">
-            7TH MEDIA DESIGN STUDIO
-        </font>
+        </h3>');
+        foreach($data['work'] as $a):
+            if ($a['present'] == 0)
+                $end = $a['end'];
+            else $end = 'Present';
+        $mpdf->WriteHTML('<font class="resWrkHead">'.
+            $a['companyname'].
+        '</font>
         
         <br>
         <div class="resWrkDet"><!--start course details-->
             <font class="resEdCrs">
-                Position: 2D Game Art Developer
-            </font>
+                Position: '.$a['position']
+            .'</font>
             
             <font class="resEdYear">
-                &nbsp;2011 - 2012 <br>
+                &nbsp;'.$a['start'].' - '.$end .'<br>
             </font>
-            
-        </div><!--end course details-->
+            <br>');
+        endforeach;
+        $mpdf->WriteHTML('</div><!--end course details-->
         </div><!--end span-->
     </div><!--end row-fluid-->
 </body>
 </html>
 ');
-        
-    
-            $mpdf->Output();
-            exit;
+     $mpdf->Output();
+     exit;
             
         }
 
