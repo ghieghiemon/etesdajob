@@ -12,7 +12,6 @@
         <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 
          
-
  <!-- end c/o chels-->
 
 <title>Home | e-TESDA: Work</title>
@@ -118,9 +117,10 @@
                </div> <!--/.navbar-inner -->
                </div> <!--/.navbar -->
                
-  <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
@@ -133,4 +133,3 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/datatable.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
