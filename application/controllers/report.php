@@ -530,6 +530,8 @@ $(function () {
     
 		</script>");
             $mpdf->writeHTML('</html>');
+            $mpdf->Output();
+            exit;
         }
         
         function generate_cv($appid){
