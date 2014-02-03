@@ -110,7 +110,8 @@ class Model_reports extends CI_Model {
         //print_r($result);
         
     }//end report Indemand jobs
-    public function get_employment_region($month, $year){
+    public function get_employment_region($month, $year)
+    {
   
         $dbconn = $this->load->database('local', TRUE);
         $dbconn2 = $this->load->database('default', TRUE);
@@ -123,11 +124,20 @@ class Model_reports extends CI_Model {
         group by r.region order by noapplicants DESC limit 15";
         $result = $dbconn->query($query1, array($month, $year))->result();
         return $result;
+        $dbconn->close();  
+    }
+    
+    public function get_applicants($year)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        $query1 = "SELECT COUNT(*) as applicationno, j.jobno from applications a 
+            join job_vacancies j ON j.jobno = a.jobno where j.dateposted. year = ? group by j.jobno";
+        $result = $dbconn->query($query1, array($year))->result_array();
+        return $result;
         $dbconn->close();
-        
-        
-        
-}
+    }
 }
 
 /* End of file nutella.php */
