@@ -19,7 +19,7 @@
                 </div>
                 
                 <hr class="hrCV" style="margin-top:-5px;">
-                
+                <input type="hidden" id="siteurl" value="<?php echo site_url() ?>" >
                 <div style="width:1200px;height:370px;overflow:auto;"><!--start scrollable table-->      
                       <table class="tableInv table-hover table-condensed table-striped">
                       <thead>
@@ -30,8 +30,8 @@
                           </tr>
                       </thead>
                       
-                      <tbody class="recName">
-                          <tr>
+                      <tbody class="recName" id="report">
+<!--                          <tr>
                               <td>
                               	 Animation
                               </td>
@@ -59,7 +59,7 @@
                               	  <a href="TSurveyQ.html" class="btn btn-primary btn-mini">Edit</a>
                               </td>
                               
-                          </tr>                         
+                          </tr>                         -->
                           
                       </tbody>
                   </table>	

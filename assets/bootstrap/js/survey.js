@@ -1,5 +1,18 @@
 $(document).ready(function(){
-    alert("hello");
+    
+    var siteurl = $('#siteurl').val();
+    $('#sectorsDrop').val(0);
+ $('#sectorsDrop').change(function(){
+//        alert($(this).val());
+//        alert($('#siteurl').val());
+        var sectorid = $(this).val();
+//        var year=$('#select_year').val();
+//        var report=$('#select_report').val();
+//        var month=$('#select_month').val();
+//        
+        $('div #report').load(siteurl+'adminsurvey/showCourses?id='+sectorid);
+//        n
+    })
    
 });
     

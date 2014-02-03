@@ -6,10 +6,19 @@
     	<h3>Add a Question</h3>
   	</div>
 
-	<div class="modal-body" align="center">
-        <textarea rows="4"></textarea>
-        &nbsp;<input name="ratings" class="checkbox" type="checkbox" value=""> Answer by Ratings
-        &nbsp;<input name="ratings" class="checkbox" type="checkbox" value=""> Answer by Open Form
+	<div class="modal-body">
+        <table>
+            <tr>
+                <td>Question: </td>
+                   <td> <?php echo form_input('question', '', 'placeholder="Question" style="width: 350px;"'); ?></td>
+            </tr>
+            <tr>
+                <td>Type: </td>
+                <td>  <?php echo form_dropdown('surveyType',array('rating' => 'Rating','open' => 'Open Form')); ?></td>
+            </tr>
+        </table>    
+       
+      
 	</div>
  	
     <div class="modal-footer">
@@ -28,10 +37,18 @@
     	<h3>Edit Question</h3>
   	</div>
 
-  <div class="modal-body" align="center">
-		<textarea rows="4">Will you recommend this course? Why or why not?</textarea>
-      &nbsp;<input name="ratings" class="checkbox" type="checkbox" value=""> Answer by Ratings
-      &nbsp;<input name="ratings" type="checkbox" class="checkbox" value="" checked> Answer by Open Form
+  <div class="modal-body" >
+	<table>
+            <tr>
+                <td>Question: </td>
+                <td> <?php echo form_input('question', '', 'placeholder="Question" style="width: 350px;"'); ?></td>
+            </tr>
+            <tr>
+                <td>Type: </td>
+                <td>  <?php echo form_dropdown('surveyType',array('rating' => 'Rating','open' => 'Open Form')); ?></td>
+            </tr>
+        </table>    
+       
 	</div>
  	
     <div class="modal-footer">
