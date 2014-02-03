@@ -1,12 +1,14 @@
 
 <!--add modal start-->
 <div class="modal hide fade" id="addQ">
+    <?php echo form_open('adminsurvey/AddQuestion/'.$courseid)?>
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Add a Question</h3>
   	</div>
 
 	<div class="modal-body">
+            
         <table>
             <tr>
                 <td>Question: </td>
@@ -17,7 +19,7 @@
                 <td>  <?php echo form_dropdown('surveyType',array('rating' => 'Rating','open' => 'Open Form')); ?></td>
             </tr>
         </table>    
-       
+     
       
 	</div>
  	
@@ -27,6 +29,7 @@
         <a href="#" class="btn btn-info" data-dismiss="modal">Cancel</a> 
         </div> 
     </div>
+      <?php echo form_close() ?>
 </div>
 <!-- add modal end-->
 

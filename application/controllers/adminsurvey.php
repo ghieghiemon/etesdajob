@@ -32,7 +32,7 @@ class Adminsurvey extends CI_Controller {
     public function courseSurvey($id){
 
         $this->load->view('tesda/header');
-        $this->load->view('survey/TSurveyQ');
+        $this->load->view('survey/TSurveyQ',array('courseid' => $id));
         $this->load->view('footer2');
     }
     
@@ -58,6 +58,16 @@ class Adminsurvey extends CI_Controller {
         $this->model_survey->addSurvey($courseid);
         
         redirect(site_url('adminsurvey/courseSurvey/'.$courseid));
+    }
+    
+    public function addQuestion($courseid){
+        $question = $this->input->post('question');
+        $type = $this->input->post('surveyType');
+        print_r($type);
+        $testbankID =  $this->model_survey->getTestbankID($courseid);
+         $this->model_survey->addQuestion($testbankID,$question,$type);
+         
+         redirect(site_url('adminsurvey/courseSurvey/'.$courseid));
     }
 
     

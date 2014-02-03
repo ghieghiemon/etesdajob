@@ -80,6 +80,29 @@ class Model_survey extends CI_Model {
 
         $db->insert('survey_testbank', $data); 
     }
+    
+    public function getTestbankID($courseid){
+          $db = $this->load->database('local', TRUE);
+            $testbankID = $db->select('testbankID')
+                ->where('courseID',$courseid)
+                ->get('survey_testbank')
+                ->row();
+            
+            return $testbankID->testbankID;
+    }
+    
+    public function addQuestion($testbankID,$question,$type){
+        $db = $this->load->database('local', TRUE);
+        
+        $data = array(
+           'testbankID' => $testbankID,
+            'question' => $question,
+            'type' => $type
+           
+        );
+
+        $db->insert('survey_itembank', $data); 
+    }
         
         
 }
