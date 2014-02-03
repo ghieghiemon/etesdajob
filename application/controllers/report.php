@@ -448,95 +448,10 @@ class Report extends CI_Controller {
         function generate_applicants()
         {
             $this->load->model('model_reports');
-            $this->load->helper('mpdf'); 
-            $mpdf = new mPDF();
-            $mpdf->setFooter('{PAGENO}');
-            $mpdf->WriteHTML('<html><div style="text-align:center;">
-                             
-                              
-                              <img src="' . base_url() . 'assets/img/tesda.jpg" width="30" height="30" style="margin-top:2%;">   
-                              
-                              <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
-                              <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
-                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EMPLOYMENT PER REGION REPORT</h3>
-                              </div>');
-           
-              //chart
-            $mpdf->writeHTML('<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>');
-            $mpdf->WriteHTML("<script>
-    
-$(function () {
-        $('#container').highcharts({
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Historic World Population by Region'
-            },
-            subtitle: {
-                text: 'Source: Wikipedia.org'
-            },
-            xAxis: {
-                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
-                title: {
-                    text: null
-                }
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Population (millions)',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' millions'
-            },
-            plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
-            },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                name: 'Year 1800',
-                data: [107, 31, 635, 203, 2]
-            }, {
-                name: 'Year 1900',
-                data: [133, 156, 947, 408, 6]
-            }, {
-                name: 'Year 2008',
-                data: [973, 914, 4054, 732, 34]
-            }]
-        });
-    });
-    
-		</script>");
-           
-
-             $mpdf->writeHTML('<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>');
-            $mpdf->writeHTML('</html>');
-            $mpdf->Output();
-            exit;
+            $this->load->view('tesda/header');
+        $this->load->view('employer/EReport1');
+        $this->load->view('footer2');
+            
         }
         
         function generate_cv($appid){
