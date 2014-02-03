@@ -1,4 +1,4 @@
-
+  <script src="<?php echo base_url()?>assets/bootstrap/js/survey.js"></script>
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -14,10 +14,8 @@
                 </h4>
 
                 <div align="right" style="margin-top:-40px;">
-                	<select>
-                    	<option>Choose Industry</option>
-                        <option>Automotive & Land Transportation</option>
-                    </select>
+                	<?php 
+                        echo form_dropdown('sectorDropdown', $sectors,'0','id = "sectorsDrop"') ?>
                 </div>
                 
                 <hr class="hrCV" style="margin-top:-5px;">
