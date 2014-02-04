@@ -152,8 +152,9 @@
        
        $(document).ready(function(){
           
-           $('#newtableinv').dataTable({
-                "sPaginationType": "full_numbers"
+          $('#newtableinv').dataTable({
+                "sPaginationType": "full_numbers",
+                  "aaSorting": []
             });
 		   
        });

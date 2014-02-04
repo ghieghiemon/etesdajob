@@ -596,11 +596,13 @@ foreach ($jobs as $a)
                             ?>
                                 <tr>
                                     <td>
-                                       <?php echo $a['jobtitle']?>
+                                          <a data-toggle="modal"href='#view<?php echo $a['jobno']?>'>
+                                       <?php echo $a['jobtitle']?></a>
                                     </td>
                                    
                                     <td>
-                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
+                                         <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                                      
                                             <?php
                                             $companyName = $this->model_pub->get_companyName($a['companyID']);
                                             echo $companyName;

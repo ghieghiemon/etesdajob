@@ -151,12 +151,12 @@ $(document).ready(function(){       //on change
 
 // cert
 $(function(){
-$("#btnAddCert").click(function(){
-$("#lstcert1 > option:selected").each(function(){
-$(this).remove().appendTo("#lstcert2");
-
-});
-});
+//$("#btnAddCert").click(function(){
+//$("#lstcert1 > option:selected").each(function(){
+//$(this).remove().appendTo("#lstcert2");
+//
+//});
+//});
 
 $("#btnDelCert").click(function(){
 $("#lstcert2 > option:selected").each(function(){
@@ -168,19 +168,20 @@ $(this).remove().appendTo("#lstcert1");
 });
 });
 });
-//$(function(){
-//$("#btnAddCert").click(function(){
-//$("#lstcert1 > option:selected").each(function(){
-//     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
-//                 if (children[i].tagName === "OPTION") children[i].selected = true;
-//}
-//$(this).remove().appendTo("#lstcert2");
-//$("#lstcomp1 > option:selected").each(function(){
-//$(this).remove().appendTo("#lstcomp2");
-//});
-//});
-//});
-//
+
+$(function(){
+$("#btnAddCert").click(function(){
+$("#lstcert1 > option:selected").each(function(){
+     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
+                 if (children[i].tagName === "OPTION") children[i].selected = true;
+}
+$(this).remove().appendTo("#lstcert2");
+$("#lstcomp1 > option:selected").each(function(){
+$(this).remove().appendTo("#lstcomp2");
+});
+});
+});
+
 //$("#btnDelCert").click(function(){
 //$("#lstcomp2 > option:selected").each(function(){
 //     for (var i = 0, children = lstcomp2.childNodes, l = children.length; i < l; i++) {
@@ -192,7 +193,7 @@ $(this).remove().appendTo("#lstcert1");
 //$(this).remove().appendTo("#lstcert1");
 //});
 //});
-//});
+});
 
 
 

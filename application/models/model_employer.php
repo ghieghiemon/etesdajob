@@ -66,19 +66,19 @@ class Model_employer extends CI_Model {
         {
             $query = $db1->query("SELECT * from applicants a where (a.ismale = '1' ) 
                 AND (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
-                                        ");
+                                      order by lastname asc  ");
         }
         else if ($sex == "Female")
         {
             $query = $db1->query("SELECT * from applicants a where (a.ismale = '0' ) 
                 AND (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
-                                        ");
+                                        order by lastname asc  ");
         }
         else if ($sex == "Both")
         {
             $query = $db1->query("SELECT * from applicants a where 
                 (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
-                                        ");
+                                        order by lastname asc  ");
         }
         return $query->result_array();
         $db1->close();
@@ -644,7 +644,7 @@ class Model_employer extends CI_Model {
     public function get_jobseekers()
     {
         $db2 = $this->load->database('default', TRUE);
-            $sql = $db2->query("SELECT appid from applicants");
+            $sql = $db2->query("SELECT appid from applicants order by lastname asc ");
             return $sql->result_array();
         $db2->close();
     }

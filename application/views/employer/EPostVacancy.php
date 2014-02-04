@@ -539,4 +539,10 @@
     });
 </script>
     
+<script>
+$('#trigger').click(function(){
+        alert("The Job Vacancy has been Posted");
 
+    });
+    
+    </script>

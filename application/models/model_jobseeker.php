@@ -102,6 +102,17 @@ class Model_jobseeker extends CI_Model {
         $db2->close();
     }
     
+          public function get_companyPerson($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT companyContactPerson FROM employer_profile WHERE userid = $id");
+        foreach ($query->result() as $row)
+        {
+            return $row->companyContactPerson;
+        }
+        $db2->close();
+    }
+    
     public function get_jobdescription($jobno)
     {
        $db1 = $this->load->database('local', TRUE);
