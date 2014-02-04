@@ -1,4 +1,4 @@
-
+  <script src="<?php echo base_url()?>assets/bootstrap/js/survey.js"></script>
 <!--add modal start-->
 <div class="modal hide fade" id="addQ">
     <?php echo form_open('adminsurvey/AddQuestion/'.$courseid)?>
@@ -35,6 +35,7 @@
 
 <!--edit modal start-->
 <div class="modal hide fade" id="edQ">
+    <?php echo form_open('adminsurvey/editQuestion/'.$courseid)?>
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Edit Question</h3>
@@ -43,12 +44,13 @@
   <div class="modal-body" >
 	<table>
             <tr>
+                <input type="hidden" name="itemIDe" id="itemidv">
                 <td>Question: </td>
-                <td> <?php echo form_input('question', '', 'placeholder="Question" style="width: 350px;"'); ?></td>
+                <td> <?php echo form_input('questionE', '', 'placeholder="Question" style="width: 350px;" id="questiontTxt"'); ?></td>
             </tr>
             <tr>
                 <td>Type: </td>
-                <td>  <?php echo form_dropdown('surveyType',array('rating' => 'Rating','open' => 'Open Form')); ?></td>
+                <td>  <?php echo form_dropdown('surveyTypeE',array('rating' => 'Rating','open' => 'Open Form'),'','id="typeDrp"'); ?></td>
             </tr>
         </table>    
        
@@ -60,16 +62,18 @@
         <a href="#" class="btn btn-info" data-dismiss="modal"> Cancel</a> 
         </div> 
     </div>
+    <?php echo form_close() ?>
 </div>
 <!--edit modal end-->
 
 <!--delete modal start-->
 <div class="modal hide fade" id="delQ">
+    <?php echo form_open('adminsurvey/deleteQuestion/'.$courseid)?>
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Delete Question</h3>
   	</div>
-
+    <input type="hidden" name="itemidd" value="" id="itemidd">
 	<div class="modal-body">
 		<p class="delete"><strong>Are you sure you want to delete?</strong></p>
         
@@ -77,10 +81,11 @@
  	
     <div class="modal-footer">
     	<div class="pull-right" style="text-align:center">
-    	<button class="btn  btn-primary"> Yes</button>
+    	<button href="" class="btn  btn-primary"> Yes</button>
         <a href="#" class="btn btn-info" data-dismiss="modal">&nbspNo&nbsp;</a> 
         </div> 
     </div>
+    <?php echo form_close() ?>
 </div>
 <!--delete modal end-->
  
@@ -96,9 +101,9 @@
                 </h3>
                 
                 <h4 class="proDetCol media header" style="margin-top:-10px;margin-left:30px;">
-                    Information & Communication Technology
+                    <?php echo $coursedetails->sectorName ?>
                      <font class="media-heading vName2">
-                          | Animation
+                          |  <?php echo $coursedetails->coursename ?>
                       </font>
                 </h4>
                 
@@ -161,29 +166,41 @@
                                   <thead>
                                       <tr>
                                           <th class="span5" style="text-align:left">Question</th>
-                                          <th class="span2"  style="text-align:left">Type of Answer</th>
-                                          <th class="span2" style="text-align:left">Action</th>
+                                          <th class="span2" >Type</th>
+                                          <th class="span2" >Actions</th>
                                       </tr>
                                   </thead>
                                   
                                   <tbody class="recName">
+                                      <?php foreach($questions as $a): ?>
                                       <tr>
                                           <td>
-                                             Will you recommend this course? Why or why not?
+                                             <?php echo $a['question'] ?>
                                           </td>
                                           
                                           <td>
-                                          	<p style="text-align:center">
-                                          	Open Form
-                                            </p>
+                                          	
+                                              <?php if($a['type'] == 'open'):?>
+                                                    Open Form
+                                                    
+                                              <?php else: ?>
+                                                    
+                                                    Rating
+                                                    
+                                              <?php endif; ?>
+                                            
                                           </td>
                                           
                                           <td>
-                                          <a href="#edQ" data-toggle="modal" class="btn btn-mini">&nbsp;Edit&nbsp;</a>
-                                          <a href="#delQ" data-toggle="modal" class="btn btn-mini">Delete</a>
+                                          <input type="hidden" id="itemid" value="<?php echo $a['itemID']?>" >
+                                          <input type="hidden" id="question" value="<?php echo $a['question']?>" >
+                                          <input type="hidden" id="type" value="<?php echo $a['type']?>" >
+                                          <a href="#edQ" data-toggle="modal"  class="btn btn-mini editQ">&nbsp;Edit&nbsp;</a>
+                                            <input type="hidden" id="itemid" value="<?php echo $a['itemID']?>" >
+                                          <a href="#delQ" data-toggle="modal" class="btn btn-mini deleteQ">Delete</a>
                                           </td>
                                       </tr>                      
-                                      
+                                      <?php endforeach; ?>
                                   </tbody>
                               </table>	
                               </div><!--end scrollable-->

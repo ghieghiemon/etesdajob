@@ -5,9 +5,6 @@ class Adminsurvey extends CI_Controller {
     
     public function __construct()
     {		
-            
-       
-        
 	parent::__construct();
          $this->load->model('model_survey');
 		
@@ -29,10 +26,13 @@ class Adminsurvey extends CI_Controller {
         $this->load->view('footer2');
     }
     
-    public function courseSurvey($id){
-
+    public function courseSurvey($courseid){
+        
+        $coursedetails = $this->model_survey->getCourseDetails($courseid);
+        $questions = $this->model_survey->getQuestions($courseid);
+      
         $this->load->view('tesda/header');
-        $this->load->view('survey/TSurveyQ',array('courseid' => $id));
+        $this->load->view('survey/TSurveyQ',array('courseid' => $courseid,'questions' => $questions,'coursedetails'=>$coursedetails));
         $this->load->view('footer2');
     }
     
@@ -63,11 +63,30 @@ class Adminsurvey extends CI_Controller {
     public function addQuestion($courseid){
         $question = $this->input->post('question');
         $type = $this->input->post('surveyType');
-        print_r($type);
+       
         $testbankID =  $this->model_survey->getTestbankID($courseid);
          $this->model_survey->addQuestion($testbankID,$question,$type);
          
          redirect(site_url('adminsurvey/courseSurvey/'.$courseid));
+    }
+    
+    public function editQuestion($courseid){
+        $question = $this->input->post('questionE');
+        $type = $this->input->post('surveyTypeE');
+        $itemid = $this->input->post('itemIDe');
+       
+        $this->model_survey->editQuestion($itemid,$question,$type);
+       
+         redirect(site_url('adminsurvey/courseSurvey/'.$courseid));
+        
+    }
+    
+    public function deleteQuestion($courseid){
+         $itemid = $this->input->post('itemidd');
+         $this->model_survey->deleteQuestion($itemid);
+       
+         redirect(site_url('adminsurvey/courseSurvey/'.$courseid));
+        
     }
 
     

@@ -1,18 +1,31 @@
 $(document).ready(function(){
     
     var siteurl = $('#siteurl').val();
-    $('#sectorsDrop').val(0);
- $('#sectorsDrop').change(function(){
-//        alert($(this).val());
-//        alert($('#siteurl').val());
+$('#sectorsDrop').val(0);
+    $('#sectorsDrop').change(function(){
+
         var sectorid = $(this).val();
-//        var year=$('#select_year').val();
-//        var report=$('#select_report').val();
-//        var month=$('#select_month').val();
-//        
+   
         $('div #report').load(siteurl+'adminsurvey/showCourses?id='+sectorid);
-//        n
+
     })
+    
+    $('.editQ').click(function(){
+//        alert($('#itemid',$(this).closest("td")).val());
+//         alert($('#question',$(this).closest("td")).val());
+//          alert($('#type',$(this).closest("td")).val());
+          
+          $('#questiontTxt').val($('#question',$(this).closest("td")).val());
+          $('#typeDrp').val($('#type',$(this).closest("td")).val());
+          $('#itemidv').val($('#itemid',$(this).closest("td")).val());
+
+    });
+    
+    $('.deleteQ').click(function(){
+                //alert($('#itemid',$(this).closest("td")).val());
+        $('#itemidd').val($('#itemid',$(this).closest("td")).val());
+    });
+    
    
 });
     
