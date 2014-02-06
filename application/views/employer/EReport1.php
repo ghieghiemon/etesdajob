@@ -14,7 +14,7 @@ $(function () {
                 text: 'Source: Wikipedia.org'
             },
             xAxis: {
-                categories: ['Africa', 'America', 'Asia', 'Europe', 'Oceania'],
+                categories: ['January', 'February', 'March', 'April', 'May'],
                 title: {
                     text: null
                 }
@@ -53,21 +53,40 @@ $(function () {
             credits: {
                 enabled: false
             },
-            series: [{
-                name: 'Year 1800',
-                data: [107, 31, 635, 203, 2]
-            }, {
-                name: 'Year 1900',
-                data: [133, 156, 947, 408, 6]
-            }, {
-                name: 'Year 2008',
-                data: [973, 914, 4054, 732, 34]
-            }]
+            series: [
+                    <?php foreach($report1 as $a):
+                    $ctr = sizeof($report1);
+                    ?>
+                name: '<?php echo $a['jobtitle']?>',
+                data: [
+                      <?php 
+                      $applicants = $this->model_reports->get_applicants($a['jobno']);
+                      $hi = $a['jobno'];
+                      foreach($applicants as $a):
+                          $ctr2 = sizeof($applicants);
+                          echo $a['count'];
+                          if($ctr2 > 1)
+                          {
+                            echo ", ";
+                          }
+                          $ctr2--;
+                      endforeach;?>
+                      ]
+                    }
+                    <?php 
+                    if($ctr > 1)
+                    {
+                        echo ", ";
+                    }
+                    $ctr--;
+                    endforeach;
+                    ?>
+                ]
         });
     });
     
 		</script>
            
-
+<?php ?>
             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 

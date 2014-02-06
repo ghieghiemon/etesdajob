@@ -127,14 +127,29 @@ class Model_reports extends CI_Model {
         $dbconn->close();  
     }
     
-    public function get_applicants($year)
+    public function get_vacancies($year,$id)
     {
         $dbconn = $this->load->database('local', TRUE);
-        $dbconn2 = $this->load->database('default', TRUE);
+        
         //insert query
-        $query1 = "SELECT COUNT(*) as applicationno, j.jobno from applications a 
-            join job_vacancies j ON j.jobno = a.jobno where j.dateposted. year = ? group by j.jobno";
-        $result = $dbconn->query($query1, array($year))->result_array();
+        $query1 = "SELECT j.jobtitle, a.jobno from applications a 
+                join job_vacancies j ON j.jobno = a.jobno where year(j.dateposted)
+                = ? AND companyID = ? group by j.jobno";
+        
+        $result = $dbconn->query($query1, array($year,$id))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+    public function get_applicants($jobno)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT Count(*) as count from applications a 
+                where jobno = ?
+                group by month(datereceived)";
+        
+        $result = $dbconn->query($query1, array($jobno))->result_array();
         return $result;
         $dbconn->close();
     }

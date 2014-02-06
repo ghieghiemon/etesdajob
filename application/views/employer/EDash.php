@@ -822,10 +822,7 @@ foreach ($myvacancies as $a)
         $new = $this->model_employer->count_jobApplicationsNew($a['jobno']);
         $exam = $this->model_employer->count_jobApplicationsExam($a['jobno']);
         $interview = $this->model_employer->count_jobApplicationsInterview($a['jobno']);
-        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);
-        
-        
-            
+        $hired = $this->model_employer->count_jobApplicationsHired($a['jobno']);    
     ?>    
             var chart1 = new AwesomeChart('chartCanvas<?php echo $a['jobno']?>');
             <?php
