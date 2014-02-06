@@ -782,5 +782,23 @@ class Model_jobseeker extends CI_Model {
                                     WHERE appid = $id");
         $db2->close();
     }
-}?>
+    
+          public function update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ){
+     
+        $db2 = $this->load->database('default', TRUE);
+        $db2->query("UPDATE applicants SET firstname = '$fn' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET middlename = '$mn' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET lastname = '$ln' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET birthday = '$bday' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET ismale = '$gender' WHERE userID = $userid");
+      //  $db2->query("UPDATE applicants SET telno = '$tn' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET cellno = '$cn' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET civilstatus = '$civ' WHERE userID = $userid");
+
+                  
+           $db2->close();
+    }
+}
+
+?>
 
