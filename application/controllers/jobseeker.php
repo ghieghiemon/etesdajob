@@ -136,6 +136,7 @@ class Jobseeker extends CI_Controller {
         $this->load->view('jobseeker/JSJobMarket',$data);
       //  $this->load->view('footer');
     }  
+    
     public function jobseeker_profilepage()
     {
         $this->load->model('model_main');
@@ -180,69 +181,94 @@ class Jobseeker extends CI_Controller {
     
     public function jobseeker_editprofile()
     {
-         $this->load->model('model_main');
+        $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $this->load->model('model_employer');
         
-         $id = $this->model_main->get_appid($this->session->userdata('email'));
-           $userid = $this->model_employer->get_userid($id);
-
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $userid = $this->model_employer->get_userid($id);
        
-//               $config['upload_path'] = './employerpics/';
+//              $config['upload_path'] = './employerpics/';
 //		$config['allowed_types'] = 'gif|jpg|png|docx|zip';
 //		$config['max_size']	= '10000000';
 //		$config['max_width']  = '1024';
 //		$config['max_height']  = '768';
 //                
-//                $this->load->library('upload', $config);
-//                $this->upload->do_upload();
-//                $data = $this->upload->data();
-//                $u = $this->upload->data();
-       
-                $fn = $this->input->post('FN');
-                $mn = $this->input->post('MN');
-                $ln = $this->input->post('LN');
-                $bday = $this->input->post('bday');
-                $gender = $this->input->post('gender');
-               // $tn = $this->input->post('TN');
-                $cn = $this->input->post('CN');
-                $civ = $this->input->post('civstatus');
-                
-//                $companyname = $this->input->post('COMP');
-//                $position = $this->input->post('POS');
-//                $start = $this->input->post('WSY1');
-//                $end = $this->input->post('WEY1');
-//                
-//                $schoolname = $this->input->post('IN1');
-//                $level = $this->input->post('LVL1');
-//                $description = $this->input->post('CO1');
-//                $estart = $this->input->post('SY1');
-//                $eend = $this->input->post('EY1');
-//                
-//                $streetno = $this->input->post('SN');
-//                $brgy = $this->input->post('brgy');
-//                $district = $this->input->post('dis');
-//                $cityprov = $this->input->post('cityid');
-//                $zipcode = $this->input->post('zip');
-//                $regionid = $this->input->post('regionid');
-                
-             //   $employerpic = $u['file_name'];
-                      
-                $this->model_jobseeker->update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ);
-              //  $appid = $this->model_main->get_jsappid($userid);
-//                $this->model_main->update_jswork($appid,$companyname,$position,$start,$end);
-//                $this->model_main->update_jsed($appid,$schoolname,$level,$description,$estart,$eend);
-//                $this->model_main->update_jsadd($appid,$streetno,$brgy,$district,$cityprov,$zipcode,$regionid);
-               
-        
-             
-                   $this->jobseeker_profilepage();
+//              $this->load->library('upload', $config);
+//              $this->upload->do_upload();
+//              $data = $this->upload->data();
+//              $u = $this->upload->data();
 
+            $fn = $this->input->post('FN');
+            $mn = $this->input->post('MN');
+            $ln = $this->input->post('LN');
+            $bday = $this->input->post('bday');
+            $gender = $this->input->post('gender');
+            $cn = $this->input->post('CN');
+            $civ = $this->input->post('civstatus');
 
+            $streetno = $this->input->post('SN');
+            $brgy = $this->input->post('brgy');
+            $district = $this->input->post('dis');
+            $cityprov = $this->input->post('cityid');
+         //   $employerpic = $u['file_name'];
+
+            $this->model_jobseeker->update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ);
+            $appid = $this->model_main->get_jsappid($userid);
+            $this->model_jobseeker->update_jsadd($appid,$streetno,$brgy,$district,$cityprov);
+
+            redirect(base_url()."jobseeker/jobseeker_profilepage/");
+
+    }
     
+    public function jobseeker_addwork()
+    {
+        
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_employer');
+
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $userid = $this->model_employer->get_userid($id);
+
+        $companyname = $this->input->post('COMP');
+        $position = $this->input->post('POS');
+        $start = $this->input->post('WSY1');
+        $end = $this->input->post('WEY1');
+
+        $appid = $this->model_main->get_jsappid($userid);
+        $this->model_jobseeker->add_jswork($appid,$companyname,$position,$start,$end);
+
+        redirect(base_url()."jobseeker/jobseeker_profilepage/");
+        
+        }
+
+    public function jobseeker_addeduc()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_employer');
+
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        $userid = $this->model_employer->get_userid($id);
+
+        $schoolname = $this->input->post('IN1');
+        $level = $this->input->post('LVL1');
+        $course = $this->input->post('CO1');
+        $estart = $this->input->post('SY1');
+        $eend = $this->input->post('EY1');
+
+        $appid = $this->model_main->get_jsappid($userid);
+        $this->model_jobseeker->add_jsed($appid,$schoolname,$level,$course,$estart,$eend);
+
+        redirect(base_url()."jobseeker/jobseeker_profilepage/");
+
      
     }
-        public function employer_profilepage($id)
+    
+    
+    
+   public function employer_profilepage($id)
    {
         $this->load->model('model_pub');
         

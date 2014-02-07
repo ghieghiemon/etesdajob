@@ -798,6 +798,50 @@ class Model_jobseeker extends CI_Model {
                   
            $db2->close();
     }
+    
+            public function update_jsadd($appid,$streetno,$brgy,$district,$cityprov){
+     
+        $db2 = $this->load->database('default', TRUE);
+        $db2->query("UPDATE address SET streetno = '$streetno' WHERE appid = $appid");
+        $db2->query("UPDATE address SET brgy = '$brgy' WHERE  appid= $appid");
+        $db2->query("UPDATE address SET district = '$district' WHERE  appid = $appid");
+        $db2->query("UPDATE address SET cityprov = '$cityprov' WHERE  appid = $appid");
+        $db2->close();     
+    }
+           public function update_jsed($appid,$schoolname,$level,$description,$estart,$eend){
+     
+        $db2 = $this->load->database('default', TRUE);
+        $db2->query("UPDATE applicants_education SET schoolname = '$schoolname' WHERE appid = $appid");
+        $db2->query("UPDATE applicants_education SET level = '$level' WHERE  appid= $appid");
+        $db2->query("UPDATE applicants_education SET description = '$description' WHERE  appid = $appid");
+        $db2->query("UPDATE applicants_education SET startyear = '$estart' WHERE  appid = $appid");
+        $db2->query("UPDATE applicants_education SET endyear = '$eend' WHERE  appid = $appid");
+        $db2->close();     
+    }
+    
+           public function add_jsed($appid,$schoolname,$level,$course,$estart,$eend)
+    {
+        
+        $db2 = $this->load->database('default', TRUE); 
+        $query="INSERT into applicants_education(appid, schoolname, level,course, 
+           startyear, endyear) 
+           VALUES (?,?,?,?,?,?)";
+           $db2->query($query,array($appid,$schoolname,$level,$course,$estart,$eend));
+           
+        $db2->close();
+    }
+    
+           public function add_jswork($appid,$companyname,$position,$start,$end)
+    {
+        
+        $db2 = $this->load->database('default', TRUE); 
+        $query="INSERT into applicants_workexperience(appid, companyname, position, 
+           start, end) 
+           VALUES (?,?,?,?,?)";
+           $db2->query($query,array($appid,$companyname,$position,$start,$end));
+           
+        $db2->close();
+    }
 }
 
 ?>

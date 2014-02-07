@@ -8,26 +8,30 @@
   	</div><!--end modal-header-->
 	
     <div class="modal-body" align="center">
-    	<div class="control-group"><!-- start div CoN -->
+    
+          <form method ="post" action ="<?php echo base_url()?>jobseeker/jobseeker_addwork/">
+        <div class="resWrkDet" style="margin-top:-10px;"><!--start course details-->
+            <br>
+          	<div class="control-group"><!-- start div CoN -->
             <div class="myStyleEPrCN">
-                <input type="text" id="CoN" name="CoN" placeholder="Company Name">
+                  <font class="resEdCrs">
+                Company:
+                   <input type="text" id="COMP" name="COMP" placeholder="" >
             </div>
         </div><!-- end CoN -->
         
-        <div class="resWrkDet" style="margin-top:-10px;"><!--start course details-->
-            <font class="resEdCrs">
                 <div class="control-group"><!-- start div pos -->
                     <div class="myStyleEPrPOS">
                         Position:
-                        <input type="text" id="pos" name="pos">
+                       <input type="text" id="POS" name="POS" placeholder="" >
                     </div>
                 </div><!-- end pos-->
                 
                 <div class="control-group"><!-- start div tp -->
                     <div class="myStyleEPrC">
                         Time Period:
-                        <input type="text" id="tpS" name="tpS"> -
-                        <input type="text" id="tpE" name="tpE">
+                        <input class="span2 help-inline" type="text" id="WSY1" name="WSY1" placeholder="YYYY" >  -
+                                                                <input class="span2 help-inline" type="text" id="WEY1" name="WEY1" placeholder="YYYY" >
                     </div>
                 </div><!-- end tp-->
                                                
@@ -37,7 +41,8 @@
     </div><!--end modal body-->
     
   	<div class="modal-footer"> 
-  		<button class="btn btn-info" data-dismiss="modal">Add</button>
+  		<button type="submit" class="btn btn-info">Add</button>
+                </form>
  	</div><!--end modal-footer-->
 </div>
 <!--end addWork-->
@@ -54,33 +59,33 @@
   	</div><!--end modal-header-->
 	
     <div class="modal-body" >
+          <form method ="post" action ="<?php echo base_url()?>jobseeker/jobseeker_addeduc/">
+              
     	<div class="form-horizontal2" style="margin-left:80px;margin-top:55px;margin-bottom:75px;">
         <div class="control-group">
             <label class="control-label lLabel2">Educational Level: &nbsp;</label>
             <div class="controls">
-                <select>
-                  <option value="null">Please choose</option>
-                  <option>None</option>
-                  <option>High School Graduate</option>
-                  <option>Technical Diploma</option>
-                  <option>College Graduate</option>
-                  <option>Master's Degree</option>
-                  <option>Doctorate Degree</option>
-              </select>
+                <?php $att = ' id="LVL1" id="LVL1" class="LVL1"'; 
+                                                 echo form_dropdown('LVL1',array('None' =>'None', 
+                                                'High School Graduate' => 'High School Graduate', 
+                                                 'Technical Diploma'=> 'Technical Diploma',
+                                                 'College Graduate'=>'College Graduate',
+                                                      'Masters Degree' =>'Masters Degree',
+                                                'Doctorate Degree'=>'Doctorate Degree'),'',$att) ?>
             </div>
         </div> <!--end EL field-->
         
         <div class="control-group">
             <label class="control-label lLabel2">Institution: &nbsp;</label>
             <div class="controls">
-                <input  class="input-medium" type="text" id="Inst" name="Inst" placeholder="" >
+               <input type="text" id="IN1" name="IN1" placeholder="" >
             </div>
         </div> <!--end Inst field-->
         
         <div class="control-group">
           <label class="control-label lLabel2">Course: &nbsp;</label>
           <div class="controls">
-              <input type="text" id="Crs" name="Crs" placeholder="" >
+                <input type="text" id="CO1" name="CO1" placeholder="" >
           </div>
       </div> <!--end Crs field-->
         
@@ -88,9 +93,8 @@
             <label class="control-label lLabel2">Time Period: &nbsp;</label>
             <div class="controls">
                 <div class="row-fluid">
-                    <input class="span2 help-inline" type="text" id="YrF" name="YrF" placeholder="YYYY" > to
-                    <input class="span2 help-inline" type="text" id="YrT" name="YrT" placeholder="YYYY" > &nbsp; 
-                    
+                    <input class="span2 help-inline" type="text" id="SY1" name="SY1" placeholder="YYYY" > to
+                     <input class="span2 help-inline" type="text" id="EY1" name="EY1" placeholder="YYYY" > &nbsp; 
                 </div>               
             </div> 
             
@@ -100,7 +104,9 @@
     </div><!--end modal body-->
     
   	<div class="modal-footer"> 
-  		<button class="btn btn-info" data-dismiss="modal">Add</button>
+            	<button type="submit" class="btn btn-info">Add</button>
+  		<!--<button class="btn btn-info" data-dismiss="modal">Add</button>-->
+                </form>
  	</div><!--end modal-footer-->
 </div>
 <!--end addEduc-->
@@ -134,7 +140,13 @@
                            
                             	<tr>
                                 	<td>
-                                    	<img src="<?php echo base_url()?>assets/img/user.png" class="thumbnail11">
+                                    	   <?php foreach ($jsdetails as $a)
+                                    {
+                                    ?>
+                                    	<img src="<?php echo base_url()?>profilepics/<?php echo $a['profile_pic']?>" class="thumbnail11">
+                                    <?php
+                                    }
+                                    ?>
                                     </td>
                                     
                                     <td>
@@ -298,21 +310,35 @@
                                                     	<td class="lLabel4">
                                                         	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_087_log_book.png" width="15"> ADDRESS:
                                                         </td>
-                                                        
+                                                 
                                                         <td>
                                                                 <?php 
                                                                 foreach($jsdetails as $a)
                                                                 {
                                                                 ?>
-                                                        	<textarea rows="3" class="myStyleEPr3"><?php echo $a['brgy'];
-                                                                echo ' ';
-                                                                echo $a['district'];
-                                                                echo ' ';
-                                                                echo $a['cityprov'];?></textarea>
+                                                                             <input style="width:170px;" type="text" id="SN" name="SN" value="<?php echo $a['streetno'];
+                                                    
+                                                  ?>"><strong> Unit/Street  </strong>
+                                                               <input style="width:170px;" type="text" id="brgy" name="brgy" value="<?php echo $a['brgy'];
+                                                    
+                                                  ?>">
+                                                        	<strong> Brgy.  </strong>
+                                                                 <input style="width:170px;" type="text" id="dis" name="dis" value="<?php echo $a['district'];
+                                                    
+                                                  ?>">
+                                                        	<strong> District  </strong>
+                                                                 <input style="width:170px;" type="text" id="cityid" name="cityid" value="<?php echo $a['cityprov'];
+                                                    
+                                                  ?>">
+                                                        	<strong> City/ Prov</strong>
+                                                                
+                                                            
                                                                 <?php
                                                                 }
                                                                 ?>
                                                         </td>
+                                                               <br>
+                                                               
                                                     </tr>
 
                                                 </tbody>
@@ -453,28 +479,29 @@
                                             ;
                                                 }
                                                 ?>
-                                        <div class="control-group"><!-- start div CoN -->
+<!--                                        <div class="control-group"> start div CoN 
                                             <div class="myStyleEPrCN">
+                                                
                                                 <input type="text" id="CoN" name="CoN" placeholder="Company Name">
                                             </div>
-                                        </div><!-- end CoN -->
+                                        </div> end CoN 
                                         
-                                        <div class="resWrkDet" style="margin-top:-10px;"><!--start course details-->
+                                        <div class="resWrkDet" style="margin-top:-10px;">start course details
                                             <font class="resEdCrs">
-                                                <div class="control-group"><!-- start div pos -->
+                                                <div class="control-group"> start div pos 
                                                     <div class="myStyleEPrPOS">
                                                     	Position:
                                                         <input type="text" id="pos" name="pos">
                                                     </div>
-                                                </div><!-- end pos-->
+                                                </div> end pos
                                                 
-                                                <div class="control-group"><!-- start div tp -->
+                                                <div class="control-group"> start div tp 
                                                     <div class="myStyleEPrC">
                                                     	Time Period:
                                                         <input type="text" id="tpS" name="tpS"> -
                                                         <input type="text" id="tpE" name="tpE">
                                                     </div>
-                                                </div><!-- end tp-->
+                                                </div> end tp-->
                                                
                                             </font>
                                         </div><!--end course details-->
