@@ -122,7 +122,9 @@ class Model_survey extends CI_Model {
         
         $query = $db->select('*')
                 ->where('testbankID',$testbankid)
+                ->group_by('type')
                 ->get('survey_itembank')
+                
                 ->result_array();
         
         return $query;
