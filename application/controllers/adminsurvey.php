@@ -30,9 +30,10 @@ class Adminsurvey extends CI_Controller {
         
         $coursedetails = $this->model_survey->getCourseDetails($courseid);
         $questions = $this->model_survey->getQuestions($courseid);
-      
+        $modules = $this->model_survey->getModules($courseid);
+        
         $this->load->view('tesda/header');
-        $this->load->view('survey/TSurveyQ',array('courseid' => $courseid,'questions' => $questions,'coursedetails'=>$coursedetails));
+        $this->load->view('survey/TSurveyQ',array('courseid' => $courseid,'questions' => $questions,'coursedetails'=>$coursedetails, 'modules' =>$modules));
         $this->load->view('footer2');
     }
     

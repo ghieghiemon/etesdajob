@@ -125,23 +125,16 @@
                                   </thead>
                                   
                                   <tbody class="recName">
+                                      
+                                      <?php foreach($modules as $m): ?>
+                                      
                                       <tr>
                                           <td>
-                                             Creation of Storyboard
+                                             <?php echo $m['modulename'] ?>
                                           </td>
                                       </tr>
-                                      
-                                      <tr>
-                                          <td>
-                                             Changing of Background
-                                          </td>
-                                      </tr>  
-                                      
-                                      <tr>
-                                          <td>
-                                             Combining two animations
-                                          </td>
-                                      </tr>                         
+                                      <?php endforeach; ?>
+                                                       
                                       
                                   </tbody>
                               </table>	

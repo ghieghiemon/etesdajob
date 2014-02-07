@@ -148,6 +148,44 @@ class Model_survey extends CI_Model {
         $db->delete('survey_itembank', array('itemID' => $itemid)); 
     }
     
+    public function getModules($courseid){
+        $db = $this->load->database('default', TRUE);
+       
+        $query = $db->select('*')
+                ->where('courseid',$courseid)
+               
+                ->get('modules')
+                
+                ->result_array();
+        
+        return $query;
+    }
+    
+    public function addModuleRating($moduleID,$rating){
+         $db = $this->load->database('local', TRUE);
+        
+        $data = array(
+           'moduleID' => $moduleID,
+            'rating' => $rating,
+          
+        );
+
+        $db->insert('survey_results_modules', $data); 
+    }
+    
+     public function addItemRating($itemID,$rating,$text){
+         $db = $this->load->database('local', TRUE);
+        
+        $data = array(
+           'itemID' => $itemID,
+            'rating' => $rating,
+            'text' => $text
+          
+        );
+
+        $db->insert('survey_results_questions', $data); 
+    }
+    
     
         
 }
