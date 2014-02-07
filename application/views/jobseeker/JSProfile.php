@@ -54,7 +54,7 @@
   	</div><!--end modal-header-->
 	
     <div class="modal-body" >
-    	<form class="form-horizontal2" style="margin-left:80px;margin-top:55px;margin-bottom:75px;">
+    	<div class="form-horizontal2" style="margin-left:80px;margin-top:55px;margin-bottom:75px;">
         <div class="control-group">
             <label class="control-label lLabel2">Educational Level: &nbsp;</label>
             <div class="controls">
@@ -96,7 +96,7 @@
             
         </div><!--end Time Period field-->
         
-        </form>
+        </div>
     </div><!--end modal body-->
     
   	<div class="modal-footer"> 
@@ -118,9 +118,7 @@
                     <hr class="hrPro">
                     	
                         <div class="row-fluid">
-                        	<div class="pull-right ">
-                            	<a href="#" class="btn btn-primary btn-mini">Done</a>
-                            </div>
+                        	
                         </div><!--end row-fluid-->
                     	<table class="tblMarg">
                         	<thead>
@@ -131,7 +129,9 @@
                             </thead>
                             
                             <tbody>
-                            <form method='post' action='<?php echo base_url()?>jobseeker_editprofile'>
+                                
+                                <form method ="post" action ="<?php echo base_url()?>jobseeker/jobseeker_editprofile/">
+                           
                             	<tr>
                                 	<td>
                                     	<img src="<?php echo base_url()?>assets/img/user.png" class="thumbnail11">
@@ -140,19 +140,29 @@
                                     <td>
                                         <div class="control-group"><!-- start div nm-->
                                             <div class="myStyleEPrN">
+                                                <div class="lLabel4">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <img src="<?php echo base_url()?>assets/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
+                                                NAME:
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <?php 
                                                 foreach($jsdetails as $a)
                                                 {
                                                 ?>
-                                                <input type="text" id="nm" name="nm" value="<?php echo $a['firstname'];
-                                                    echo ' ';
-                                                    echo $a['middlename'];
-                                                    echo ' ';
-                                                    echo $a['lastname'];?>">
+                                                <input style="width:170px;" type="text" id="FN" name="FN" value="<?php echo $a['firstname'];
+                                                    
+                                                  ?>">
+                                                
+                                                   <input style="width:180px;" type="text" id="MN" name="MN" value="<?php echo $a['middlename'];
+                                                   ?>">
+                                                   
+                                                    <input style="width:180px;" type="text" id="LN" name="LN" value="<?php echo $a['lastname'];
+                                              
+                                                   ?>">
                                                 <?php 
                                                 }
                                                 ?>
+                                                    </div>
                                             </div>
                                         </div><!-- end div name -->
 
@@ -208,7 +218,7 @@
                                                                     foreach($jsdetails as $a)
                                                                     {
                                                                     ?>
-                                                                    <input type="text" id="bd" name="bd" value ="<?php echo $a['birthday']?>">
+                                                                    <input type="text" id="bday" name="bday" value ="<?php echo $a['birthday']?>">
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -225,10 +235,9 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div cs-->
                                                                 <div class="myStyleEPr2">
-                                                                    <select>
-                                                                        <option>Single</option>
-                                                                        <option>Married</option>
-                                                                    </select>
+                                                                       <?php 
+                                                    echo form_dropdown('civstatus',array('Single' =>'Single', 'Married' =>'Married', 
+                                                    'Widowed' => 'Widowed')) ?>
                                                                 </div>
                                                             </div><!-- end div cs -->	
                                                         </td>
@@ -260,7 +269,7 @@
                                                                     foreach($jsdetails as $a)
                                                                     {
                                                                     ?>
-                                                                    <input type="text" id="cn" name="cn" value="<?php echo $a['cellno'];?>">
+                                                                    <input type="text" id="CN" name="CN" value="<?php echo $a['cellno'];?>">
                                                                     <?php
                                                                     }
                                                                     ?>
@@ -313,6 +322,9 @@
                                       
                                     </td>
                                 </tr>
+                                <div class="pull-right ">
+                            	<button type="submit" class="btn btn-primary btn-mini">Done</button>
+                            </div>
                                 </form>
                             </tbody>
                         </table>
@@ -498,4 +510,9 @@
  
    
    </body>
-   
+   <br>
+   <br>
+    <br>
+   <br>
+    <br>
+   <br>

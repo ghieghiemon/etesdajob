@@ -448,9 +448,13 @@ class Report extends CI_Controller {
         function generate_applicants()
         {
             $this->load->model('model_reports');
+            $this->load->model('model_main');
+        
+            $id = $this->model_main->get_userid($this->session->userdata('email'));
+            $data['report1'] = $this->model_reports->get_vacancies(2013,$id);
             $this->load->view('tesda/header');
-        $this->load->view('employer/EReport1');
-        $this->load->view('footer2');
+            $this->load->view('employer/EReport1',$data);
+            $this->load->view('footer2');
             
         }
         

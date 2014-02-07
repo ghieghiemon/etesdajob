@@ -4788,6 +4788,7 @@ input[type="submit"].btn.btn-mini {
 .navbar-inverse .brand,
 .navbar-inverse .nav > li > a {
   color: #ffffff;
+  
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: ##7a378b;
 }
@@ -6898,7 +6899,6 @@ margin-bottom:3px;
 .legendIn {
 	font-size:12px;
 	font-weight:bold;
-	font-style:oblique;
 	color:#906;
 	margin-top:-20px;
 }
@@ -9070,6 +9070,23 @@ margin-bottom:3px;
   border-top: 3px solid #FFF;
 }
 
+.tableRate {
+	width: 575px;
+	height:1px;
+  	margin-bottom: 20px;
+	border:thick;
+	border-bottom-color:#FFF;
+	overflow:auto;
+}
+
+.tableRate td {
+  padding: 2px;
+  line-height: 20px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 3px solid #FFF;
+}
+
 .tableMA {
 	width: 920px;
 	height:1px;
@@ -9622,6 +9639,22 @@ body {
    line-height: 14px;
 }
 
+.myStylePJS input[type="text"] {
+   height: 22px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+}
+
+.myStyle2PJS select {
+   height: 30px;
+   font-size: 12px;
+   line-height: 14px;
+   width:187px;
+   margin-top:-4px;
+}
+
+
 .myStylePQS input[type="text"] {
    height: 22px;
    width:265px;
@@ -9690,6 +9723,32 @@ body {
    font-size: 12px;
    line-height: 14px;
    margin-left:20px;
+ 
+}
+
+.myStyleSetS input[type="text"] {
+   height: 20px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+ 
+}
+
+.myStyleSetSIA input[type="text"] {
+   height: 20px;
+   width:225px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+ 
+}
+
+.myStyleSetSTR input[type="text"] {
+   height: 20px;
+   width:106px;
+   font-size: 12px;
+   line-height: 14px;
  
 }
 
@@ -9812,6 +9871,22 @@ body {
    margin-left:20px;
 }
 
+.myStyle3SetS textarea[rows] {
+   height: 45px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+}
+
+.myStyle3SetS2 textarea[rows] {
+   height: 85px;
+   width:265px;
+   font-size: 12px;
+   line-height: 14px;
+   margin-left:20px;
+}
+
 .myStyle3EventDate input[type="text"] {
    height: 20px;
    width:30px;
@@ -9884,6 +9959,10 @@ body {
 
 .vdDetMarg {
 	margin-left: 20px;
+}
+
+.vdSetSMarg {
+	margin-left:10px;
 }
 
 .vdAppMarg {
@@ -10253,9 +10332,12 @@ body {
 
 .pVac {
 	font-size:12px;
-	font-style:oblique;
 	margin-left:20px;
 	font-weight:bold;
+}
+
+.backgroundPV {
+	background-color:#6A287E;
 }
 
 .compPicMarg {
@@ -10422,6 +10504,11 @@ img.photo{
 	background-color:#969;
 }
 
+.qjsBG2 {
+	background-color:#99C;
+	margin-top:-20px;
+}
+
 .locLink {
 	font-size:15px;
 	color:#936;
@@ -10530,4 +10617,8 @@ img.photo{
   text-align: center;
   vertical-align: top;
   font-size:12px;
+}
+
+.whiteJS {
+	color:#FFF;
 }
