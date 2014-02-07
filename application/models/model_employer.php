@@ -228,7 +228,7 @@ class Model_employer extends CI_Model {
      {
         $db1 = $this->load->database('local', TRUE);
 
-        $sql = "INSERT INTO notifications(userid, notification, date, seen, jobno)VALUES(?,?,CURDATE(),0,?)";
+        $sql = "INSERT INTO notifications(userid, notification, date, seen, jobno)VALUES(?,?,NOW(),0,?)";
         $db1->query($sql,array($userid, $notif, $jobno));
         $db1->close();
      }

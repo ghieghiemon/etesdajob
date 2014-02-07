@@ -353,9 +353,21 @@ class Employer extends CI_Controller {
 //       {
            $data = $this->input->post('check');//$_POST['check1'];
            $message = $this->input->post('invite');
+           $details = $this->model_employer->get_jobdetails($jobpost_id);
+           
+            foreach ($details as $b)
+            {
+                $jobtitle = $b['jobtitle'];
+                $company = $b['companyID'];
+            }
+            $name = $this->model_employer->get_companyName($company);
+           
+             $notif = "We at $name are inviting you to apply as an $jobtitle";
+             
            foreach($data as $a)
             {
                 $this->model_employer->invite_jobseeker($a, $jobpost_id,$message);
+                $this->model_employer->add_notification($a,$notif,$jobpost_id);
             }
 //       }
        
