@@ -731,18 +731,46 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
  <!--change status modal end-->
 
 <!--set schedule modal start-->
-<div class="modal hide fade" id="setSched">
+<div class="modal hide fade" id="setSchedP">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Set Schedule</h3>
+    	<h3>Set Schedule For <?php echo $what?></h3>
   	</div>
 
-	<div class="modal-body" align="center" style="margin-left:40px">
-		<a href="#" class="btn btn-primary">For Exam</a>
-        <a href="#" class="btn btn-info">For Interview</a>
+	<div class="modal-body">
+    	<strong>To:</strong> Angelica Guerrero, Shenne Layug
+    	<hr class="hrDiscuss">
+		<p>
+        	<strong><em>Greetings,</em></strong>
+            <br><br>
+            Following consideration of your application for <font class="inModEm">Software Developer</font> 
+            - <em><strong>develops software</strong></em> -, 
+            we are pleased to inform that you have been short-listed for 
+            <b>EXAM.</b>
+            This will be held in <strong>(Address)</strong>. 
+            <br><br>
+            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
+            <br>
+            
+            <h5>
+            	February 8, 2014
+            </h5>
+            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
+            &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
+            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM
+            <br><br>
+            Should you need more assistance, please contact <strong>(Contact Info)</strong> at <strong>(Contact Details)</strong>. Thank you and we look forward in seeing you.
+            
+            <br><br>
+            <strong>Best Regards,</strong>
+            <br>
+            <em><strong>(Company Name)</strong></em>
+        </p>
 	</div>
   
   	<div class="modal-footer"> 
+    	<button class="btn btn-info btn-mini">Done</button>
+        <button class="btn btn-danger btn-mini">Cancel</button>
   	</div>
 </div>
 <!--set schedule modal end-->
@@ -1019,6 +1047,10 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
                     Applications
+                    
+                    <font>
+                    	| Set Schedule For <?php echo $what?>
+                    </font>
                     <font class="media-heading vName2">
                     </font>
                 </h3>
@@ -1043,10 +1075,136 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                               if ($left >=1)
                               {
                               ?> 
-                        <!--id="change"-->
-                        <a  href="#setSched" data-toggle="modal" class="btn btn-info">
-                            Set Schedule
-                            </a>
+                        <div align="right"  style="margin-top:-65px;margin-bottom:10px;">
+                	<a href="#setSchedP" data-toggle="modal" class="btn btn-info">
+                    	Preview
+                    </a>
+                </div><!--end div-->
+                <br>
+                
+                <div class="row-fluid">
+                	<div class="span6">
+                        	<table class="vdSetSMarg" style="margin-left:140px">
+                                <thead>
+                                    <tr>
+                                        <th class="span5" style="text-align:center"></th>
+                                        <th class="span4" style="text-align:center"></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody class="recName">
+                                    <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyleSetSIA input-append">
+                                            <input type="text" id="Date" name="Date" placeholder="Date">
+                                            <button class="btn"> <img src="assets/img/icons/glyphicons_045_calendar.png" width="15"></button>
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                      	<div class="myStyleSetSTR input-append input-prepend">
+                                            	<input type="text" id="TR" name="TR" placeholder="Time Range" style="margin-left:-10px;">
+                                            	<input type="text" id="TR" name="TR" placeholder="Time Range" class="input-prepend">
+                                                <button class="btn"> <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="15"></button>
+                                        </div>
+                                        
+                                      </td>
+                                      
+                                      <td>
+                                      </td>
+                                     
+                                    </tr>
+                                    
+                                     <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyleSetS">
+                                            <input type="text" id="DR" name="DR" placeholder="Duration">
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                         
+                                      </td>
+                                      
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyle3SetS" style="margin-top:-5px;">
+                                              <textarea id="VN" name="VN" rows="3" placeholder="Venue"></textarea>
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                          
+                                      </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                    </div><!--end details-->
+                    
+                    <div class="span6">
+                        	<table class="vdSetSMarg">
+                                <thead>
+                                    <tr>
+                                        <th class="span5" style="text-align:center"></th>
+                                        <th class="span5" style="text-align:center"></th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody class="recName">
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyleSetS">
+                                            <input type="text" id="CP" name="CP" placeholder="Contact Person">
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                          
+                                      </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyleSetS" style="margin-top:-5px;">
+                                            <input type="text" id="CD" name="CD" placeholder="Contact Details">
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                          
+                                      </td>
+                                    </tr>
+
+                                    <tr>
+                                      <td class="vdDesc">
+                                          <div class="myStyle3SetS2" style="margin-top:-5px;">
+                                              <textarea id="MSG" name="MSG" rows="1" placeholder="">Greetings,
+Following consideration of your application we are pleased to inform that you have been short-listed for (Exam/Interview). This will be held in (Address). We have provided the available dates. Please choose from the choices below. Should you need more assistance, please contact (Contact Info) at (Contact Details). Thank you and we look forward in seeing you.
+                                              </textarea>
+                                          </div>
+                                      </td>
+                                      
+                                      <td>
+                                          
+                                      </td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                    </div><!--end Message-->
+                </div><!--end row-fluid-->
                         <?php
                               }
                               else

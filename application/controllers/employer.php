@@ -425,6 +425,7 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_employer');
         
+        $data['jobno'] = $jobno;
         $data['details'] = $this->model_employer->get_jobdetails($jobno);
         $data['alldetails'] = $this->model_employer->get_alljobdetails($jobno);
         $data['apps'] = $this->model_employer->get_jobApplications($jobno);
@@ -1309,6 +1310,27 @@ class Employer extends CI_Controller {
        }
         redirect(base_url()."employer/employer_evcreated/".$eventno);
     }
-
+    public function setEI($what,$jobno)
+    {
+        $this->load->model('model_employer');
+        
+        $data['details'] = $this->model_employer->get_jobdetails($jobno);
+        $data['alldetails'] = $this->model_employer->get_alljobdetails($jobno);
+        $data['apps'] = $this->model_employer->get_jobApplications($jobno);
+        $data['newapplicant'] = $this->model_employer->get_newApplicant($jobno);
+        $data['exam'] = $this->model_employer->get_exam($jobno);
+        $data['interview'] = $this->model_employer->get_interview($jobno);
+        $data['all'] = $this->model_employer->get_allapps($jobno);
+        $data['hired'] = $this->model_employer->get_hired($jobno);
+        $data['what'] = $what;
+        $data['invites'] = $this->model_employer->get_jobInvites($jobno);
+        
+        $data['cert'] = $this->model_employer->get_jobCerts($jobno);
+        $data['comp'] = $this->model_employer->get_jobComps($jobno);
+        
+        $this->employer_header();
+        $this->load->view('employer/ESetSched',$data);
+        $this->load->view('footer2');
+    }
 }
 ?>
