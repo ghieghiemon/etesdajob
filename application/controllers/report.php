@@ -452,12 +452,21 @@ class Report extends CI_Controller {
         
             $id = $this->model_main->get_userid($this->session->userdata('email'));
             $data['report1'] = $this->model_reports->get_vacancies(2013,$id);
-            $this->load->view('tesda/header');
+            $this->employer_header();
             $this->load->view('employer/EReport1',$data);
             $this->load->view('footer2');
             
         }
-        
+        public function employer_header()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
+        $data['name'] = $this->model_employer->get_ename();
+        $data['pic'] = $this->model_employer->get_epic();
+        $this->load->view('employer/header',$data);
+    }
         function generate_cv($appid){
             
             

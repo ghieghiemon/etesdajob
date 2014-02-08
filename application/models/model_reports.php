@@ -145,7 +145,7 @@ class Model_reports extends CI_Model {
         $dbconn = $this->load->database('local', TRUE);
         
         //insert query
-        $query1 = "SELECT Count(*) as count from applications a 
+        $query1 = "SELECT Count(*) as count, month(datereceived) as month from applications a 
                 where jobno = ?
                 group by month(datereceived)";
         
