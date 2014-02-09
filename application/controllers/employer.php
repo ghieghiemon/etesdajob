@@ -1330,7 +1330,7 @@ class Employer extends CI_Controller {
         
         $this->employer_header();
         $this->load->view('employer/ESetSched',$data);
-        $this->load->view('footer2');
+        $this->load->view('footer');
     }
 }
 ?>

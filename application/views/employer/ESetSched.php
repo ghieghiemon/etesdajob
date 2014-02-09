@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/datepicker.css"> 
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
 
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -1096,8 +1099,8 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                     <tr>
                                       <td class="vdDesc">
                                           <div class="myStyleSetSIA input-append">
-                                            <input type="text" id="Date" name="Date" placeholder="Date">
-                                            <button class="btn"> <img src="assets/img/icons/glyphicons_045_calendar.png" width="15"></button>
+                                            <input type="text" id="date1" name="date1" placeholder="Date">
+                                          
                                           </div>
                                       </td>
                                       
@@ -1111,9 +1114,9 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                     <tr>
                                       <td class="vdDesc">
                                       	<div class="myStyleSetSTR input-append input-prepend">
-                                            	<input type="text" id="TR" name="TR" placeholder="Time Range" style="margin-left:-10px;">
-                                            	<input type="text" id="TR" name="TR" placeholder="Time Range" class="input-prepend">
-                                                <button class="btn"> <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="15"></button>
+                                            	<input type="text" id="TR1" name="TR1" placeholder="Time Range" style="margin-left:-10px;">
+                                            	<input type="text" id="TR2" name="TR2" placeholder="Time Range" class="input-prepend">  
+                                     
                                         </div>
                                         
                                       </td>
@@ -1946,3 +1949,20 @@ function year_install(f)
 	}
 	
 </script>
+
+<script>
+$("#TR1").datepicker( {
+});
+</script>
+
+<!--<script>
+$("#date").datepicker( {
+});
+</script>-->
+
+    <script>
+$("#date1").datepicker( {
+    format: 'yyyy-mm-dd'
+});
+</script>
+</body>
