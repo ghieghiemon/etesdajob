@@ -153,6 +153,29 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
+    public function get_graduates($year)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(distinct appid) FROM applicants_certificates where year(dateacquired) = ? group by month(dateacquired)";
+        
+        $result = $dbconn->query($query1, array($year))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+   
+    public function get_activeGraduates($year)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(appid), month(datereceived)  FROM applications  where year(datereceived) = ? group by month(datereceived)";
+        
+        $result = $dbconn->query($query1, array($year))->result_array();
+        return $result;
+        $dbconn->close();
+    }
 }
 
 /* End of file nutella.php */
