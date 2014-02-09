@@ -514,12 +514,12 @@ class Report extends CI_Controller {
                 $monthctr++;
             }
 
-            print_r($indexedReportData);
+           // print_r($indexedReportData);
+            $data['indexedReportData'] = $indexedReportData;
             
-            
-//            $this->load->view('tesda/header');
-//            $this->load->view('employer/EReport2',$data);
-//            $this->load->view('footer2');
+            $this->load->view('tesda/header');
+            $this->load->view('employer/EReport2',$data);
+            $this->load->view('footer2');
         }
         public function employer_header()
     {

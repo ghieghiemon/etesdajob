@@ -51,7 +51,16 @@ $(function () {
                 }
             },
             series: [{ name: 'Active Users',
-                      data: [ 
+                      data: [ <?php
+                      $ctr = count($indexedReportData);
+                      foreach ($indexedReportData as $a)
+                      {
+                          echo $a;
+                          if($ctr > 1)
+                              echo ", ";
+                          $ctr--;
+                      }
+                      ?>
                         ]}
                 ]
         });
