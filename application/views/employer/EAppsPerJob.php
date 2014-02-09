@@ -1083,6 +1083,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span3" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -1184,6 +1185,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
+                                          <td>Hire</td>
                                       </tr>
                                   <?php
                                         
@@ -1209,6 +1211,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
                                           <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span3" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -1311,7 +1314,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
-                                          
+                                          <td>Hire</td>
                                       </tr>
                                   <?php
                                   }
@@ -1337,6 +1340,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
                                           <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span3" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -1443,6 +1447,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                               	CHANGE STATUS
                                               </a>
                                           </td>-->
+                                          <td> Hire </td>
                                       </tr>
                                   <?php
                                   }
@@ -1467,6 +1472,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <th class="span2" style="text-align:center">Competencies</th>
                                           <th class="span1" style="text-align:center">Status</th>
                                           <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span3" style="text-align:center">Action</th>
                                       </tr>
                                   </thead>
                                   
@@ -1564,6 +1570,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
+                                          <td> Hire </td>
                                       </tr>
                                   <?php
                                   }
