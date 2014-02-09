@@ -490,7 +490,32 @@ class Report extends CI_Controller {
         {
             $this->load->model('model_reports');
             
-            $data['grads'] = $this->model_reports->get_activeGrads(2013);
+            $activegrads = $this->model_reports->get_activeGraduates(2013);
+           
+            $monthctr = 1;
+            
+            $reportdata = array();
+            
+            foreach($activegrads as $a){
+                $reportdata[$a['month(datereceived)']] = $a['COUNT(appid)'];
+            }
+            
+            //print_r($reportdata);
+            
+            $indexedReportData = array();
+            
+            
+            while($monthctr <=12){
+                if(isset($reportdata[$monthctr])){
+                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
+                }else{
+                    $indexedReportData[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+
+           // print_r($indexedReportData);
+            $data['indexedReportData'] = $indexedReportData;
             
             $this->load->view('tesda/header');
             $this->load->view('employer/EReport2',$data);
