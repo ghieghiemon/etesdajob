@@ -451,11 +451,40 @@ class Report extends CI_Controller {
             $this->load->model('model_main');
         
             $id = $this->model_main->get_userid($this->session->userdata('email'));
-            $data['report1'] = $this->model_reports->get_vacancies(2013,$id);
-            $this->employer_header();
-            $this->load->view('employer/EReport1',$data);
-            $this->load->view('footer2');
+            $report1 = $this->model_reports->get_vacancies(2013,$id);
             
+            $reportdata = array();
+            
+            foreach($report1 as $r){
+               $applicants = $this->model_reports->get_applicants($r['jobno']);
+//               print_r($applicants);
+               foreach($applicants as $a){
+                   $reportdata[$r['jobtitle']][$a['month']] = $a['count'];
+               }
+            }
+            
+            $indexedReportData = array();
+            
+            $monthCtr = 1;
+            
+            foreach($reportdata as $key=>$r){
+                while($monthCtr <=12){
+                    if(isset($r[$monthCtr])){
+                        $indexedReportData[$key][$monthCtr] = $r[$monthCtr];
+                    }else{
+                         $indexedReportData[$key][$monthCtr] = 0;
+                    }
+                    $monthCtr++;
+                }
+                $monthCtr = 1;
+            }
+             $this->load->model('model_employer');
+            $name = $this->model_employer->get_ename();
+         
+            $this->employer_header();
+            $this->load->view('employer/EReport1',array('reportData' => $indexedReportData,'name' => $name));
+            $this->load->view('footer2');
+//            
         }
         public function employer_header()
     {

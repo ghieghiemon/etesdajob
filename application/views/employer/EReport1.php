@@ -1,102 +1,75 @@
 
+
  <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script>
 $(function () {
         $('#container').highcharts({
             chart: {
-                type: 'bar'
+                type: 'column'
             },
             title: {
-                text: 'Historic World Population by Region'
+                text: 'No. of Applicants per Vacancy'
             },
             subtitle: {
-                text: 'Source: Wikipedia.org'
+                text: '<?php echo $name[0]['companyName'] ?>'
             },
             xAxis: {
-                categories: ['January', 'February', 'March', 'April', 'May','June','July','August','September','October','November','December'],
-                title: {
-                    text: null
-                }
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ]
             },
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Population (millions)',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
+                    text: 'Number of Applicants'
                 }
             },
             tooltip: {
-                valueSuffix: ' millions'
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} applicants</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
             },
             plotOptions: {
-                bar: {
-                    dataLabels: {
-                        enabled: true
-                    }
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
                 }
             },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 100,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor: '#FFFFFF',
-                shadow: true
-            },
-            credits: {
-                enabled: false
-            },
             series: [
-                    <?php foreach($report1 as $a):
-                    $ctr = sizeof($report1);
+                    <?php foreach($reportData as $key=>$r):
+                   
                     ?>
-                    { name: '<?php echo $a['jobtitle']?>',
+                    { name: '<?php echo $key?>',
                       data: [
-                      <?php 
-                      $applicants = $this->model_reports->get_applicants($a['jobno']);
-                      //$month = array(1,2,3,4,5,6,7,8,9,10,11,12);
-                      $month = 1;
-                      $ctr2 = 12;
-                      while($month <=12)
-                      {
-                          foreach($applicants as $b)
-                          {
-                            if($b['month'] == $month)
-                            {
-                              echo $b['count'];
+                      <?php $count = count($r);
+                      foreach($r as $index=>$data):?>
+                     <?php   
+                        if($index == $count){
+                            echo $data;
+                        }else{ 
+                            echo $data.',';
                             }
-                            else
-                            {
-                                echo 0;
-                            }
-                            if($ctr2 > 1)
-                            {
-                              echo ", ";
-                            }
-                          }
-                          $month++;
-                           $ctr2--;
-                      }?>
-                      ]
-                    }
-                    <?php 
-                    if($ctr > 1)
-                    {
-                        echo ", ";
-                    }
-                    $ctr--;
-                    ?>
-                    
-                    <?php
-                    endforeach; 
-                    ?>
+                         ?>
+                         <?php                     endforeach; ?>
+                        
+                         ]},
+                                  
+                      <?php endforeach; ?>
                 
                 ]
         });
@@ -104,6 +77,6 @@ $(function () {
     
 		</script>
            
-<?php ?>
+                
             <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 
