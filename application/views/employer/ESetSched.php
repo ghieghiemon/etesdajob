@@ -4,16 +4,24 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
 
-<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
+<!--<script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>-->
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
 
- <?php
+     <link type="text/css" href="<?php echo base_url()?>css/bootstrap-timepicker.css" />
+        <link type="text/css" href="<?php echo base_url()?>css/bootstrap-timepicker.min.css" />
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+        
+        <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-timepicker.min.js"></script>
+ <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-timepicker.js"></script>
+ 
+     <?php
 foreach ($details as $a)
 {
  
@@ -1114,9 +1122,16 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                     <tr>
                                       <td class="vdDesc">
                                       	<div class="myStyleSetSTR input-append input-prepend">
-                                            	<input type="text" id="TR1" name="TR1" placeholder="Time Range" style="margin-left:-10px;">
-                                            	<input type="text" id="TR2" name="TR2" placeholder="Time Range" class="input-prepend">  
+       
+        <div class="input-append bootstrap-timepicker">
+            <input id="TR1" type="text" class="input-small">
+            <span class="add-on"><i class="icon-time"></i></span>
+        </div>
+<!--                                            	<input type="text" id="TR11" name="TR11" placeholder="Time Range" style="margin-left:-10px;">
+                                            	     <span class="add-on"><i class="icon-time"></i></span>-->
+                                                <input type="text" id="TR2" name="TR2" placeholder="Time Range" class="input-prepend">  
                                      
+       
                                         </div>
                                         
                                       </td>
@@ -1950,15 +1965,11 @@ function year_install(f)
 	
 </script>
 
-<script>
-$("#TR1").datepicker( {
-});
-</script>
 
-<!--<script>
-$("#date").datepicker( {
-});
-</script>-->
+
+<script type="text/javascript">
+            $('#TR1').timepicker();
+        </script>
 
     <script>
 $("#date1").datepicker( {
