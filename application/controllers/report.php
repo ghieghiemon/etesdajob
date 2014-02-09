@@ -490,8 +490,7 @@ class Report extends CI_Controller {
         {
             $this->load->model('model_reports');
             
-            $this->model_reports->get_activeGrads(2013);
-            $this->model_reports->get_graduates(2013);
+            $data['grads'] = $this->model_reports->get_activeGrads(2013);
             
             $this->load->view('tesda/header');
             $this->load->view('employer/EReport2',$data);

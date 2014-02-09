@@ -50,27 +50,9 @@ $(function () {
                     borderWidth: 0
                 }
             },
-            series: [
-                    <?php foreach($reportData as $key=>$r):
-                   
-                    ?>
-                    { name: '<?php echo $key?>',
-                      data: [
-                      <?php $count = count($r);
-                      foreach($r as $index=>$data):?>
-                     <?php   
-                        if($index == $count){
-                            echo $data;
-                        }else{ 
-                            echo $data.',';
-                            }
-                         ?>
-                         <?php                     endforeach; ?>
-                        
-                         ]},
-                                  
-                      <?php endforeach; ?>
-                
+            series: [{ name: 'Active Users',
+                      data: [ 
+                        ]}
                 ]
         });
     });
