@@ -94,71 +94,77 @@
                
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
-    <div class="row-fluid">
-    	<div class="span12">
-        	<div class="well qjsBG2">
-            	<div class="row-fluid">
-                	<div class="span6">
-                    	<h3 class="whiteJS">
-                        	<img src="<?php echo base_url()?>assets/bootstrap/img/crossroads2.png" width="40px" >
-                        	Start Your Job Search
-                        </h3>
-                          <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
-                         <div class="myStylePJS">
-                            <input type="text" id="JT" name="JT" placeholder="Job Title">
-                            <input type="text" id="COMP" name="COMP" placeholder="Company">
-                            <div class="myStyle2PJS">
-                                        <?php    
-             $drpindustries['0'] = 'Industry';
-             $params = 'style = " width:30%"'; 
-            echo form_dropdown('industry', $drpindustries,'0',$params);     
-            ?> 
-                 
-                                
-                                  <?php $regions['0'] = 'Region'; ?>
-                    <?php $cities['0'] = 'City'; ?>
-                    <?php 
-                    $params = 'id="region" style = " width:25%" '; 
-                    echo form_dropdown('regionid', $regions, '0',$params);
-                    ?> 
-                                
-                                <?php 
-                    $params = 'id="cities" style = " width:23%"'; 
-                    echo form_dropdown('cityid', $cities, '0', $params);
-                    ?> 
-                                
-                                   	 <?php 
-                      
-                echo" <input style='margin-top: -2%;' class='btn btn-primary'";
-                echo form_submit('submit', 'Search');
-                echo form_close(); 
-                ?>
-                                </form>
-                            </div>
-                        </div>
-                    </div><!--end qjs-->
-                    
-                    <div class="span6">
-                    	<iframe src="http://files.bannersnack.com/iframe/embed.html?hash=bdzpqcpp&wmode=transparent&t=1391517219" width="668" height="95" seamless scrolling="no" frameborder="0" allowtransparency="true" style="margin-left:-60px;margin-top:30px;"></iframe>
-                    	
-                    	<!--embed src="assets/img/theflash1.swf" width="620" height="110" style="margin-left:-30px;margin-top:20px;">
-                    	</embed-->
-                    </div><!--end flash-->
-                </div><!--end row-fluid-->
-            </div><!--end well-->
-        </div><!--end span-->
-    </div><!--end QJS and flash-->
 	
     <div class="row-fluid">
     	<div class="span3">
-        
+        	<div class="well wellUpMarg wellShadow qjsBG">
+            	<h5 class="media-heading">
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_027_search.png" width="18"> 
+                        <font color ="white">Quick Job Search</font>
+                </h5>
+            	<br>
+            
+    
+            <form method='post' accept-charset='utf-8' action='<?php echo base_url()?>pub/pub_searchjob'/>
+                
+                <div style="width:300px;height:210px;overflow:auto;"><!--start scrollable table-->
+                	<div class="control-group"><!-- start div job title -->
+                        <div class="myStylePQS">
+                            <input style = " width:85%" type="text" id="JT" name="JT" placeholder="Job Title">
+                        </div>
+                    </div><!-- end div job title -->
+
+          			<div class="control-group"  style="margin-top:-5px;"><!-- start div company-->
+                        <div class="myStylePQS2">
+                            <input style = " width:85%" type="text" id="COMP" name="COMP" placeholder="Company">
+                        </div>
+                    </div><!-- end div company -->
+
+	
+                    <div class="myStyle2PQS" >
+                        <?php    
+             $drpindustries['0'] = 'Industry';
+             $params = 'style = " width:90%"'; 
+            echo form_dropdown('industry', $drpindustries,'0',$params);     
+            ?> 
+                    </div>
+                    
+                    <div class="myStyle2PQS2">
+                    <?php $regions['0'] = 'Region'; ?>
+                    <?php $cities['0'] = 'City'; ?>
+                    <?php 
+                    $params = 'id="region" style = " width:45%" '; 
+                    echo form_dropdown('regionid', $regions, '0',$params);
+                    ?> 
+
+                    <?php 
+                    $params = 'id="cities" style = " width:45%"'; 
+                    echo form_dropdown('cityid', $cities, '0', $params);
+                    ?> 
+                    </div>
+                    
+                    <div style="margin-left:200px;">
+                    	 <?php 
+                      
+                echo" <input class='btn btn-info'";
+                echo form_submit('submit', 'Search');
+                echo form_close(); 
+                ?>
+                        
+                        </form>
+          
+                    </div>
+                    
+                </div><!--end scrollable-->
+    
+            </div><!--end well-->
             
             <div class="well wellUpMarg wellShadow">
             	<h5 class="media-heading">
                       <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_029_notes_2.png" width="15"> Features
                   </h5>
                 
-             <div style="width:280px;height:340px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:280px;height:380px;overflow:auto;"><!--start scrollable table-->
                 	<br>
                     
                    	<p class="PDescMarg">
@@ -192,13 +198,21 @@
                 </div><!--end scrollable table-->
                     
             </div><!--end features-->
-            <div class="well wellUpMarg wellShadow">
-            	<img src="<?php echo base_url()?>assets/bootstrap/img/questions2.png" width="250" style="margin-left:25px;">
-            </div><!--end questions-->
         </div><!--end span left folumn-->
         
         <div class="span6">
-        	
+        	<div class="well wellMarg wellUpMarg wellShadow">
+            	<div style="width:625px;height:190px;overflow:auto;"><!--start scrollable table-->
+                    <h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="25" height="15">&nbsp;e-Tesda WORK</h5>
+                    
+                   <object width="620" height="150">
+                 
+                    <embed src="<?php echo base_url()?>assets/bootstrap/flash/theflash1.swf" width="620" height="150">
+                    </embed>
+                </object>
+              
+                </div><!--end scrollable-->
+            </div><!--end whats new-->
             	<div class="well wellMarg wellUpMarg wellShadow">
             	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_327_sampler.png" width="25" height="15">&nbsp;What's New?</h5>
                		<p class="whatsNFont" >
@@ -212,7 +226,7 @@
           
             <div class="well wellMarg wellUpMarg wellShadow">
             	<h5 class="media header"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="18"> Browse Job Vacancies</h5>
-                <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-20px;">
+                <div align="right" class="legendIn" style="margin-bottom:5px;margin-top:-30px;">
                     Legend:  (#) - no. of vacancies
                 </div>
                 
@@ -257,7 +271,7 @@
                         </div>  <!--end Industries-->
                        
                         <div class="tab-pane" id="tab11">
-                            <div style="margin-left:40px;width:500px;height:300px;overflow:auto;"><!--start scrollable table-->
+                            <div style="margin-left:40px;width:500px;height:307px;overflow:auto;"><!--start scrollable table-->
                                
                                              <?php 
                     foreach ($regionvacancies as $a)
@@ -396,7 +410,7 @@
             <div class="well wellMarg wellUpMarg wellShadow">
             	<a  data-toggle="modal" href="#signModal">
                     
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/PV3.png">
+                	<img src="<?php echo base_url()?>assets/bootstrap/img/PV.jpg">
                 </a>
             </div><!--end post vacancy-->
             
@@ -406,7 +420,7 @@
                 </h5>
                 <br>
            
-                <div style="width:295px;height:300px;overflow:auto;"><!--start scrollable table-->
+                <div style="width:295px;height:485px;overflow:auto;"><!--start scrollable table-->
                 	<?php
                 foreach($compopenings as $a)
                 {
