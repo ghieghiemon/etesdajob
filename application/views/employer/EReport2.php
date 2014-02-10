@@ -33,7 +33,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Number of Applicants'
+                    text: 'Number of Users'
                 }
             },
             tooltip: {
