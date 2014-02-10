@@ -521,6 +521,58 @@ class Report extends CI_Controller {
             $this->load->view('employer/EReport2',$data);
             $this->load->view('footer2');
         }
+        
+        public function annual_hired()
+        {
+            $this->load->model('model_reports');
+            
+            $annualgrads = $this->model_reports->get_annualGraduates(2011,2012);
+            $hiredgrads = $this->model_reports->get_hiredGraduates(2011,2012);
+            $monthctr = 1;
+            
+            $reportdata = array();
+            
+            foreach($annualgrads as $a){
+                $reportdata[$a['dateacquired']] = $a['count'];
+            }
+            foreach($hiredgrads as $b){
+                $reportdata2[$b['dateacquired']] = $b['count'];
+            }
+            //print_r($reportdata);
+            
+            $indexedReportData = array();
+            
+            
+            while($monthctr <= 2){
+                if(isset($reportdata[$monthctr])){
+                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
+                }else{
+                    $indexedReportData[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+            
+            $indexedReportData2 = array();
+            $monthctr = 1;
+            
+            while($monthctr <=2){
+                if(isset($reportdata2[$monthctr])){
+                    $indexedReportData2[$monthctr] = $reportdata2[$monthctr];
+                }else{
+                    $indexedReportData2[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+            $data['indexedReportData'] = $reportdata;
+            $data['indexedReportData2'] = $reportdata2;
+            print_r($annualgrads);
+            echo "<Br><BR>";
+            print_r($hiredgrads);
+
+            $this->load->view('tesda/header');
+            $this->load->view('employer/EReport3',$data);
+            $this->load->view('footer2');
+        }
         public function employer_header()
     {
         $this->load->model('model_main');

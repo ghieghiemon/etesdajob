@@ -153,14 +153,32 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
-    public function get_graduates($year)
+    public function get_annualGraduates($year1,$year2)
     {
-        $dbconn = $this->load->database('local', TRUE);
+        $dbconn = $this->load->database('default', TRUE);
         
         //insert query
-        $query1 = "SELECT COUNT(distinct appid) FROM applicants_certificates where year(dateacquired) = ? group by month(dateacquired)";
+        $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired from applicants_certificates c
+            join applicants a on a.appid = c.appid
+            where a.employment = 1 AND ( year(c.dateacquired) = ?
+                or year(c.dateacquired) = ?)
+            group by c.dateacquired ORDER BY  year(c.dateacquired) asc";
         
-        $result = $dbconn->query($query1, array($year))->result_array();
+        $result = $dbconn->query($query1, array($year1,$year2))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+    public function get_hiredGraduates($year1,$year2)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired from applicants_certificates c
+                join applicants a on a.appid = c.appid where year(c.dateacquired) = ?
+                or year(c.dateacquired) = ?
+                group by year(c.dateacquired) ORDER BY  c.dateacquired asc";
+        
+        $result = $dbconn->query($query1, array($year1,$year2))->result_array();
         return $result;
         $dbconn->close();
     }
@@ -176,6 +194,8 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
+    
+    
 }
 
 /* End of file nutella.php */
