@@ -140,14 +140,14 @@ $(document).ready(function(){
 //          alert(timeFH);
 //          alert(timeTH);
 //          alert(timeFH > timeTH);
-          alert("haha");
+         
           
           if(parseInt(timeFH) > parseInt(timeTH)){
-              alert("lol");
+            
               alert("Invalid time selected ");
               return false;
           }else if(timeFH == timeTH && parseInt(timeFM) > parseInt(timeTM)){
-              alert("dito");
+             
               alert("Invalid time selected ");
               return false;
           }else{
@@ -169,14 +169,14 @@ $(document).ready(function(){
                              newtimeM = "00";
                          }
                          
-                         htmlOutput +=  '<input name="t1" class="checkbox" type="checkbox" value="">'+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }else if(duration == "1"){
-                         alert(newtimeH);
+                        
                          newtimeH++;
                          newtimeM = "00";
-                         htmlOutput +=  '<input name="t1" class="checkbox" type="checkbox" value="">'+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }
@@ -199,13 +199,13 @@ $(document).ready(function(){
                              newtimeM = 60-newtimeM;
                          }
                          
-                         htmlOutput +=  '<input name="t1" class="checkbox" type="checkbox" value="">'+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         htmlOutput += ' '+ oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                     }else if(duration == "1"){
                          newtimeH++;
                          newtimeM = "00";
-                         htmlOutput +=  '<input name="t1" class="checkbox" type="checkbox" value="">'+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }
@@ -216,7 +216,7 @@ $(document).ready(function(){
           }
       }
       
-      alert()
+
       $('#times').append(htmlOutput);
       
       
