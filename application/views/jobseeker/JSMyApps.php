@@ -42,7 +42,50 @@ foreach ($invites as $a)
 }
 ?>
 <!--end job invite content-->
-    
+ <!--choose schedule modal start-->
+<div class="modal hide fade" id="chSched">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3 class="inModEm2">
+            <img src="assets/img/a10.jpg" style="width:90px">Toon City
+        </h3>
+  	</div>
+
+	<div class="modal-body">
+		<p>
+        	<strong><em>Greetings,</em></strong>
+            <br><br>
+            Following consideration of your application for <font class="inModEm">Software Developer</font> 
+            - <em><strong>develops software</strong></em> -, 
+            we are pleased to inform that you have been short-listed for 
+            <b>EXAM.</b>
+            This will be held in <strong>(Address)</strong>. 
+            <br><br>
+            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
+            <br>
+            
+            <h5>
+            	February 8, 2014
+            </h5>
+            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
+            &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
+            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM
+            <br><br>
+            Should you need more assistance, please contact <strong>(Contact Info)</strong> at <strong>(Contact Details)</strong>. Thank you and we look forward in seeing you.
+            
+            <br><br>
+            <strong>Best Regards,</strong>
+            <br>
+            <em><strong>Toon City</strong></em>
+        </p>
+	</div>
+  
+  	<div class="modal-footer"> 
+    	<button class="btn btn-info btn-mini">Done</button>
+        <button class="btn btn-danger btn-mini">Cancel</button>
+  	</div>
+</div>
+<!--choose schedule modal end-->   
     <?php
 foreach($invites as $a)
 {
@@ -457,11 +500,25 @@ foreach($invites as $a)
                             }
                             else if ($status == "Exam")
                             {
-                                echo "For Exam on";
+                                ?>
+                                <div class="statusB">
+                                    	For Exam <br>
+                                        <a href="#chSched" data-toggle="modal" class="more">
+                                            Choose Schedule
+                                        </a>
+                                    </div>
+                                <?php
                             }
                             else if ($status == "Interview")
                             {
-                                echo "For Interview on";
+                                 ?>
+                                <div class="statusB">
+                                    	For Interview <br>
+                                        <a href="#chSched" data-toggle="modal" class="more">
+                                            Choose Schedule
+                                        </a>
+                                    </div>
+                                <?php
                             }
                             else if ($status == "Denied")
                             {
