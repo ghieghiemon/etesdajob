@@ -99,7 +99,7 @@ $(document).ready(function(){
           return false;
       }
       
-      if (typeof recepients !== 'undefined' && recepients.length > 0) {
+      if (typeof recepients == 'undefined' && recepients.length == 0) {
           alert("Please select applicants");
           return false;
       }
