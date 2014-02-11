@@ -1313,6 +1313,8 @@ class Employer extends CI_Controller {
     public function setEI($what,$jobno)
     {
         $this->load->model('model_employer');
+          $this->load->model('model_main');
+       
         
         $data['details'] = $this->model_employer->get_jobdetails($jobno);
         $data['alldetails'] = $this->model_employer->get_alljobdetails($jobno);
@@ -1324,7 +1326,7 @@ class Employer extends CI_Controller {
         $data['hired'] = $this->model_employer->get_hired($jobno);
         $data['what'] = $what;
         $data['invites'] = $this->model_employer->get_jobInvites($jobno);
-        
+        $data['name'] = $this->model_employer->get_ename();
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
         

@@ -1,4 +1,5 @@
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
+
 <!--<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   -->
 <!--<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>-->
 
@@ -11,10 +12,10 @@
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap-timepicker.min.css" />
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
-
-<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-timepicker.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-timepicker.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-timepicker.min.js"></script>
 
+<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/setSched.js"></script>
      <?php
 foreach ($details as $a)
 {
@@ -743,33 +744,40 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
   	</div>
 
 	<div class="modal-body">
-    	<strong>To:</strong> Angelica Guerrero, Shenne Layug
+    	<strong>To:</strong> <span id="tos"></span>
     	<hr class="hrDiscuss">
 		<p>
         	<strong><em>Greetings,</em></strong>
             <br><br>
-            Following consideration of your application for <font class="inModEm">Software Developer</font> 
-            - <em><strong>develops software</strong></em> -, 
-            we are pleased to inform that you have been short-listed for 
-            <b>EXAM.</b>
-            This will be held in <strong>(Address)</strong>. 
+          
+            Following consideration of your application for <font class="inModEm"><?php echo $details[0]['jobtitle'] ?></font> 
+            - <em><strong><?php echo $details[0]['description'] ?></strong></em> -, 
+            we are pleased to inform that you have been short-listed for an
+            <b><?php echo $what ?>.</b>
+            This will be held in <strong><span id="iAddress"></span></strong>. 
             <br><br>
             We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
             <br>
             
             <h5>
-            	February 8, 2014
+                <span id="iMonth"> </span> <span id="iDay"></span>, <span id="iYear"></span>
             </h5>
-            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
+                <div id="times">
+<!--            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
             &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
-            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM
+            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM-->
+            </div>
             <br><br>
-            Should you need more assistance, please contact <strong>(Contact Info)</strong> at <strong>(Contact Details)</strong>. Thank you and we look forward in seeing you.
+            Should you need more assistance, please contact <strong><span id="contI">(Contact Info)</span></strong> at <strong><span id="contD" >(Contact Details)</span></strong>. Thank you and we look forward in seeing you.
             
             <br><br>
             <strong>Best Regards,</strong>
             <br>
-            <em><strong>(Company Name)</strong></em>
+            <em><strong>  <?php foreach($name as $a)
+                                            {
+                                                echo $a['companyName'];
+                                            }
+                                            ?> </strong></em>
         </p>
 	</div>
   
@@ -1081,7 +1089,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                               {
                               ?> 
                         <div align="right"  style="margin-top:-65px;margin-bottom:10px;">
-                	<a href="#setSchedP" data-toggle="modal" class="btn btn-info">
+                	<a id="preview" href="#setSchedP" data-toggle="modal" class="btn btn-info">
                     	Preview
                     </a>
                 </div><!--end div-->
@@ -1154,7 +1162,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                      <tr>
                                       <td class="vdDesc">
                                           <div class="myStyleSetS">
-                                            <input type="text" id="DR" name="DR" placeholder="Duration">
+                                            <?php echo form_dropdown("duration", array('30'=>'30 mins','1'=>'1 hr','130'=>'1hr 30mins','2'=>'2 hrs','230'=>'2 hrs 30 mins','3'=>'3 hrs', '330'=>'3 hrs 30 mins'),'30','id="DR"') ?>
                                           </div>
                                       </td>
                                       
@@ -1282,7 +1290,18 @@ Following consideration of your application we are pleased to inform that you ha
                                       <tr>
                                           <td>
                                               <input id="check1" type="checkbox" class="chk" name="check1" value="<?php echo $a['applicationid']?>">
-                                              <?php
+                                              <input type='hidden' id="chknName" value="<?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>">
+                                                  <?php
                                               if (count($invites)>0)
                                               {
                                                     foreach ($invites as $c)
@@ -1406,7 +1425,18 @@ Following consideration of your application we are pleased to inform that you ha
                                       <tr>
                                           <td>
                                               <input id='check2' type="checkbox" class="chk2" name="check2" value="<?php echo $a['applicationid']?>">
-                                              <?php
+                                              <input type='hidden' id="chkeName" value="<?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>">
+                                                  <?php
                                               if (count($invites)>0)
                                               {
                                                   foreach ($invites as $c)
@@ -1534,6 +1564,18 @@ Following consideration of your application we are pleased to inform that you ha
                                       <tr>
                                           <td>
                                               <input id='check3' type="checkbox" class="chk3" name="check3" value="<?php echo $a['applicationid']?>">
+                                              <input type='hidden' id="chkiName" value="<?php
+                                                  $name = $this->model_employer->get_jsName($a['appid']);
+                                                  foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['middlename'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                                  ?>">
+                                              
                                               <?php
                                               if (count($invites)>0)
                                               {
@@ -2001,11 +2043,12 @@ function year_install(f)
 
     <script>
 $("#date1").datepicker( {
-    format: 'yyyy-mm-dd'
+    format: 'mm-dd-yyyy'
 });
 </script>
     <script>
 $('#TR1').timepicker();
+
     </script>
         <script>
 $('#TR2').timepicker();
