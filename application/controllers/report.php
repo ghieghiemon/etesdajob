@@ -565,9 +565,9 @@ class Report extends CI_Controller {
             }
             $data['indexedReportData'] = $reportdata;
             $data['indexedReportData2'] = $reportdata2;
-            print_r($annualgrads);
-            echo "<Br><BR>";
-            print_r($hiredgrads);
+//            print_r($annualgrads);
+//            echo "<Br><BR>";
+//            print_r($hiredgrads);
 
             $this->load->view('tesda/header');
             $this->load->view('employer/EReport3',$data);
