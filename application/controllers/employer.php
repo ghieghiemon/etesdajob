@@ -605,7 +605,7 @@ class Employer extends CI_Controller {
         }
         
     }
-    public function employer_changeStatus()
+    public function employer_changeStatus($jobno)
     {
         @session_start();
         $this->load->model('model_employer'); 
@@ -618,39 +618,61 @@ class Employer extends CI_Controller {
         //$date = $month.",".$day.",".$year; 
         $location = $this->input->post('location');
         
-        $ids = $_SESSION['ids'];
+        //$ids = $_SESSION['ids'];
+        $id1 = $this->input->post('chk1');
+        $id2 = $this->input->post('check2');
+        $id3 = $this->input->post('check3');
         
-        foreach ($ids as $a)
-        {
-            $jobno = $this->model_employer->get_jobno($a);
-            $details = $this->model_employer->get_jobdetails($jobno);
-            foreach ($details as $b)
-            {
-                $jobtitle = $b['jobtitle'];
-                $company = $b['companyID'];
-            }
-            $name = $this->model_employer->get_companyName($company);
-            if ($status == "Hired")
-            {
-                $this->model_employer->fill_vacancy($jobno);
-                $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
-            } else if ($status == "Exam")
-            {
-                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
-            } else if ($status == "Interview")
-            {
-                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
-            } else if ($status == "Denied")
-            {
-                $notif = "We have reviewed your qualifications and, unfortunately, 
-                    are not able to pursue your application for $jobtitle further.";
-            }
-            $this->model_employer->change_status($a,$status,$date,$time,$location);
-            $appid = $this->model_employer->get_appid($a);
-            $this->model_employer->add_notification($appid,$notif,$jobno);
-        }
+        print_r($id1);
+        echo "<br>";
+        print_r($id2);
+        echo "<br>";
+        print_r($id3);
+        echo "<br>";
+        $ids = array();
+//        foreach($id1 as $a)
+//        {
+//            array_push($ids,$a);
+//        }
+//        foreach($id2 as $a)
+//        {
+//            array_push($ids,$a);
+//        }
+//        foreach($id3 as $a)
+//        {
+//            array_push($ids,$a);
+//        }
+//        foreach ($ids as $a)
+//        {
+//            $jobno = $this->model_employer->get_jobno($a);
+//            $details = $this->model_employer->get_jobdetails($jobno);
+//            foreach ($details as $b)
+//            {
+//                $jobtitle = $b['jobtitle'];
+//                $company = $b['companyID'];
+//            }
+//            $name = $this->model_employer->get_companyName($company);
+//            if ($status == "Hired")
+//            {
+//                $this->model_employer->fill_vacancy($jobno);
+//                $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
+//            } else if ($status == "Exam")
+//            {
+//                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
+//            } else if ($status == "Interview")
+//            {
+//                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
+//            } else if ($status == "Denied")
+//            {
+//                $notif = "We have reviewed your qualifications and, unfortunately, 
+//                    are not able to pursue your application for $jobtitle further.";
+//            }
+//            $this->model_employer->change_status($a,$status,$date,$time,$location);
+//            $appid = $this->model_employer->get_appid($a);
+//            $this->model_employer->add_notification($appid,$notif,$jobno);
+//        }
         
-        $this->employer_appsperjob($jobno);
+        //$this->employer_appsperjob($jobno);
     }
     public function employer_viewchecked()
     {
@@ -1329,6 +1351,7 @@ class Employer extends CI_Controller {
         $data['name'] = $this->model_employer->get_ename();
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
+        $data['jobno'] = $jobno;
         
         $this->employer_header();
         $this->load->view('employer/ESetSched',$data);

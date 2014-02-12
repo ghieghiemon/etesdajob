@@ -736,57 +736,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
 <!--change status modal end-->
  <!--change status modal end-->
 
-<!--set schedule modal start-->
-<div class="modal hide fade" id="setSchedP">
-  	<div class="modal-header">
-    	<a class="close" data-dismiss="modal">x</a>
-    	<h3>Set Schedule For <?php echo $what?></h3>
-  	</div>
 
-	<div class="modal-body">
-    	<strong>To:</strong> <span id="tos"></span>
-    	<hr class="hrDiscuss">
-		<p>
-        	<strong><em>Greetings,</em></strong>
-            <br><br>
-          
-            Following consideration of your application for <font class="inModEm"><?php echo $details[0]['jobtitle'] ?></font> 
-            - <em><strong><?php echo $details[0]['description'] ?></strong></em> -, 
-            we are pleased to inform that you have been short-listed for an
-            <b><?php echo $what ?>.</b>
-            This will be held in <strong><span id="iAddress"></span></strong>. 
-            <br><br>
-            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
-            <br>
-            
-            <h5>
-                <span id="iMonth"> </span> <span id="iDay"></span>, <span id="iYear"></span>
-            </h5>
-                <div id="times">
-<!--            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
-            &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
-            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM-->
-            </div>
-            <br><br>
-            Should you need more assistance, please contact <strong><span id="contI">(Contact Info)</span></strong> at <strong><span id="contD" >(Contact Details)</span></strong>. Thank you and we look forward in seeing you.
-            
-            <br><br>
-            <strong>Best Regards,</strong>
-            <br>
-            <em><strong>  <?php foreach($name as $a)
-                                            {
-                                                echo $a['companyName'];
-                                            }
-                                            ?> </strong></em>
-        </p>
-	</div>
-  
-  	<div class="modal-footer"> 
-    	<button class="btn btn-info btn-mini">Done</button>
-        <button class="btn btn-danger btn-mini">Cancel</button>
-  	</div>
-</div>
-<!--set schedule modal end-->
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
@@ -1075,7 +1025,58 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15"> - Invited 
                         </font>
                     </h4>
-                    
+                    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $jobno?>">
+                    <!--set schedule modal start-->
+<div class="modal hide fade" id="setSchedP">
+  	<div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Set Schedule For <?php echo $what?></h3>
+  	</div>
+
+	<div class="modal-body">
+    	<strong>To:</strong> <span id="tos"></span>
+    	<hr class="hrDiscuss">
+		<p>
+        	<strong><em>Greetings,</em></strong>
+            <br><br>
+          
+            Following consideration of your application for <font class="inModEm"><?php echo $details[0]['jobtitle'] ?></font> 
+            - <em><strong><?php echo $details[0]['description'] ?></strong></em> -, 
+            we are pleased to inform that you have been short-listed for an
+            <b><?php echo $what ?>.</b>
+            This will be held in <strong><span id="iAddress"></span></strong>. 
+            <br><br>
+            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
+            <br>
+            
+            <h5>
+                <span id="iMonth"> </span> <span id="iDay"></span>, <span id="iYear"></span>
+            </h5>
+                <div id="times">
+<!--            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
+            &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
+            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM-->
+            </div>
+            <br><br>
+            Should you need more assistance, please contact <strong><span id="contI">(Contact Info)</span></strong> at <strong><span id="contD" >(Contact Details)</span></strong>. Thank you and we look forward in seeing you.
+            
+            <br><br>
+            <strong>Best Regards,</strong>
+            <br>
+            <em><strong>  <?php foreach($name as $a)
+                                            {
+                                                echo $a['companyName'];
+                                            }
+                                            ?> </strong></em>
+        </p>
+	</div>
+  
+  	<div class="modal-footer"> 
+    	<button class="btn btn-info btn-mini" type="submit">Done</button>
+        <button class="btn btn-danger btn-mini">Cancel</button>
+  	</div>
+</div>
+<!--set schedule modal end-->
                 </div><!--end legend-->
                 <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> 
                 <div align="right" class="changeBtnMarg">
@@ -1289,7 +1290,7 @@ Following consideration of your application we are pleased to inform that you ha
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id="check1" type="checkbox" class="chk" name="check1" value="<?php echo $a['applicationid']?>">
+                                              <input id="check1" type="checkbox" class="chk" name="chk1[]" value="<?php echo $a['applicationid']?>">
                                               <input type='hidden' id="chknName" value="<?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
@@ -1424,7 +1425,7 @@ Following consideration of your application we are pleased to inform that you ha
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id='check2' type="checkbox" class="chk2" name="check2" value="<?php echo $a['applicationid']?>">
+                                              <input id='check2' type="checkbox" class="chk2" name="check2[]" value="<?php echo $a['applicationid']?>">
                                               <input type='hidden' id="chkeName" value="<?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
@@ -1563,7 +1564,7 @@ Following consideration of your application we are pleased to inform that you ha
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input id='check3' type="checkbox" class="chk3" name="check3" value="<?php echo $a['applicationid']?>">
+                                              <input id='check3' type="checkbox" class="chk3" name="check3[]" value="<?php echo $a['applicationid']?>">
                                               <input type='hidden' id="chkiName" value="<?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
