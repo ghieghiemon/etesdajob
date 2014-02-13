@@ -609,70 +609,80 @@ class Employer extends CI_Controller {
     {
         @session_start();
         $this->load->model('model_employer'); 
-        $status = $this->input->post('group1');
+        $status = $this->input->post('what');
         //$day =  $this->input->post('day');
         //$month =  $this->input->post('month');
         //$year = $this->input->post('year');
         $time = $this->input->post('time');
         $date = $this->input->post('date');
         //$date = $month.",".$day.",".$year; 
-        $location = $this->input->post('location');
+        $location = $this->input->post('VN');
+        $cp = $this->input->post('CP');
+        $cd = $this->input->post('CD');
         
         //$ids = $_SESSION['ids'];
+        $id1 = array();
+        $id2 = array();
+        $id3 = array();
+        $id1 = $this->input->post('chk1');
         $id1 = $this->input->post('chk1');
         $id2 = $this->input->post('check2');
         $id3 = $this->input->post('check3');
         
-        print_r($id1);
-        echo "<br>";
-        print_r($id2);
-        echo "<br>";
-        print_r($id3);
-        echo "<br>";
         $ids = array();
-//        foreach($id1 as $a)
-//        {
-//            array_push($ids,$a);
-//        }
-//        foreach($id2 as $a)
-//        {
-//            array_push($ids,$a);
-//        }
-//        foreach($id3 as $a)
-//        {
-//            array_push($ids,$a);
-//        }
-//        foreach ($ids as $a)
-//        {
-//            $jobno = $this->model_employer->get_jobno($a);
-//            $details = $this->model_employer->get_jobdetails($jobno);
-//            foreach ($details as $b)
-//            {
-//                $jobtitle = $b['jobtitle'];
-//                $company = $b['companyID'];
-//            }
-//            $name = $this->model_employer->get_companyName($company);
+        if(!empty($id1))
+        {
+            foreach($id1 as $a)
+            {
+                array_push($ids,$a);
+            }
+        }
+        if(!empty($id2))
+        {
+            foreach($id2 as $a)
+            {
+                array_push($ids,$a);
+            }
+        }
+        if(!empty($id3))
+        {
+            foreach($id3 as $a)
+            {
+                array_push($ids,$a);
+            }
+        }
+        foreach ($ids as $a)
+        {
+            $jobno = $this->model_employer->get_jobno($a);
+            $details = $this->model_employer->get_jobdetails($jobno);
+            foreach ($details as $b)
+            {
+                $jobtitle = $b['jobtitle'];
+                $company = $b['companyID'];
+            }
+            $name = $this->model_employer->get_companyName($company);
 //            if ($status == "Hired")
 //            {
 //                $this->model_employer->fill_vacancy($jobno);
 //                $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
-//            } else if ($status == "Exam")
-//            {
-//                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
-//            } else if ($status == "Interview")
-//            {
-//                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
-//            } else if ($status == "Denied")
-//            {
-//                $notif = "We have reviewed your qualifications and, unfortunately, 
-//                    are not able to pursue your application for $jobtitle further.";
-//            }
-//            $this->model_employer->change_status($a,$status,$date,$time,$location);
-//            $appid = $this->model_employer->get_appid($a);
-//            $this->model_employer->add_notification($appid,$notif,$jobno);
-//        }
+//            } else 
+            if ($status == "Exam")
+            {
+                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
+            } else if ($status == "Interview")
+            {
+                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
+            } else if ($status == "Denied")
+            {
+                $notif = "We have reviewed your qualifications and, unfortunately, 
+                    are not able to pursue your application for $jobtitle further.";
+            }
+            $this->model_employer->change_status($a,$status,$date,$time,$location);
+            $appid = $this->model_employer->get_appid($a);
+            $this->model_employer->add_notification($appid,$notif,$jobno);
+        }
         
-        //$this->employer_appsperjob($jobno);
+        $this->employer_appsperjob($jobno);
     }
     public function employer_viewchecked()
     {

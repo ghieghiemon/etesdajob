@@ -663,10 +663,12 @@ class Model_employer extends CI_Model {
      public function change_status($appno,$status,$date,$time,$location)
     {
         $db1 = $this->load->database('local', TRUE);
-        $db1->query("UPDATE applications SET status = '$status' WHERE applicationid = $appno");
-        $db1->query("UPDATE applications SET requirementtime ='$time' WHERE applicationid = $appno");
-        $db1->query("UPDATE applications SET requirementdate ='$date'   WHERE applicationid = $appno"); 
-        $db1->query("UPDATE applications SET  location = '$location' WHERE applicationid = $appno");
+        $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno) VALUES(?,?,?,?)";
+        $db1->query($sql,array($scheduledate, $venue, $contactperson, $contactno));
+        $scheduleid = $db1->insert_id();
+        $db1->query("UPDATE applications SET scheduleid = $scheduleid");
+        $sql2 = "INSERT INTO schedule_slots(scheduleid, timeslot, appid) VALUES(?,?,?)";
+        $db1->query($sql2,array($scheduleid, $timeslot, $appid));
         $db1->close();
     }
      public function fill_vacancy($jobno)

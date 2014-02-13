@@ -1006,7 +1006,9 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
         </div><!--end span left folumn-->
         
         <div class="span9">
-        	<div class="well">
+             <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $jobno?>">
+        	
+                 <div class="well">
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
                     Applications
@@ -1025,7 +1027,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15"> - Invited 
                         </font>
                     </h4>
-                    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $jobno?>">
+                   
                     <!--set schedule modal start-->
 <div class="modal hide fade" id="setSchedP">
   	<div class="modal-header">
@@ -1044,6 +1046,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
             - <em><strong><?php echo $details[0]['description'] ?></strong></em> -, 
             we are pleased to inform that you have been short-listed for an
             <b><?php echo $what ?>.</b>
+            
             This will be held in <strong><span id="iAddress"></span></strong>. 
             <br><br>
             We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
@@ -1078,7 +1081,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
 </div>
 <!--set schedule modal end-->
                 </div><!--end legend-->
-                <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> 
+<!--                <form method="post" action="<?php echo base_url()?>employer/employer_viewchecked"> -->
                 <div align="right" class="changeBtnMarg">
                 	<!--<button type="submit" >-->
                         
@@ -1280,7 +1283,7 @@ Following consideration of your application we are pleased to inform that you ha
                                           <th class="span3" style="text-align:center">Date</th>
                                       </tr>
                                   </thead>
-                                  
+                                  <input type="hidden" value="<?php echo $what?>" name="what" id="what">
                                   <tbody class="recName">
                                   <?php
                                   
@@ -1814,8 +1817,9 @@ Following consideration of your application we are pleased to inform that you ha
                      
                   </div> <!--end tab content-->
                   </div> <!--end tabbable-->
-                </form>
+                
             </div><!--end well-->
+            </form>
         </div><!--end span right column-->
     </div><!--end row-->
 
