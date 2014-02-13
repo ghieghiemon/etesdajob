@@ -12,7 +12,7 @@ class Survey extends CI_Controller {
     }
     
     public function answerSurvey($courseid){
-       
+         $coursedetails = $this->model_survey->getCourseDetails($courseid);
         $questions = $this->model_survey->getQuestions($courseid);
         $modules = $this->model_survey->getModules($courseid);
         
@@ -120,13 +120,13 @@ class Survey extends CI_Controller {
            
         }
         
-       
+      //print_r($coursedetails);
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
         $data['name'] = $this->model_jobseeker->get_jsname();
         $data['pic'] = $this->model_jobseeker->get_jspic();
         $this->load->view('jobseeker/header', $data);
-        $this->load->view('survey/JSSurvey',array('questions' => $questions,'modules'=>$modules));
+        $this->load->view('survey/JSSurvey',array('questions' => $questions,'modules'=>$modules,'details'=>$coursedetails));
         $this->load->view('footer2');
         
     }
