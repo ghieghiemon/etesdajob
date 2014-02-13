@@ -40,7 +40,9 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="<?php echo base_url()?>jobseeker/jobseeker_myappspage">
-                    <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img>
+                      <img src="<?php echo base_url()?>assets/bootstrap/img/tagline3.png" width="200" style="margin-left:-15px;margin-top:4px;"></img>
+                    </a>
                     
                     <div class="nav" style="margin-left:250px;margin-top:-2px;">
                                  <a href="<?php echo base_url()?>jobseeker/jobseeker_briefcase" class="btn btn-group transBtn">
@@ -65,6 +67,12 @@
                                 </h5>
                                 </a>
                                 
+                         <a href="<?php echo base_url()?>survey/answerSurvey/1" class="btn btn-group transBtn">
+                                <h5 class="media-heading">
+                                   	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_114_list.png" width="18">
+                                    <br>Survey
+                                </h5>
+                                </a>
                         
                                 <a href="<?php echo base_url()?>jobseeker/jobseeker_jobmarketpage" class="btn btn-group transBtn">
                                     <h5 class="media-heading">

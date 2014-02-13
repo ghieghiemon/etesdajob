@@ -50,9 +50,11 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="<?php echo base_url()?>tesda/tesda_dashboard">
-                    <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img></a>
-                    
-                    <div class="nav" style="margin-left:260px;margin-top:-2px;">
+                    <img src="<?php echo base_url()?>assets/bootstrap/img/work-logo.png"  width ="120" ></img>
+                       <img src="<?php echo base_url()?>assets/bootstrap/img/tagline3.png" width="200" style="margin-left:-15px;margin-top:4px;"></img>
+                    </a>
+                 
+                    <div class="nav" style="margin-left:200px;margin-top:-2px;">
                         
                          <a href="<?php echo base_url()?>tesda/tesda_smspage" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
@@ -71,6 +73,12 @@
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> 
                                     <br>Events
+                                </h5>
+                                </a>
+                                 <a href="<?php echo base_url()?>adminsurvey" class="btn btn-group transBtn">
+                                <h5 class="media-heading">
+                                   	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_114_list.png" width="18">
+                                    <br>Manage Survey
                                 </h5>
                                 </a>
                                 
