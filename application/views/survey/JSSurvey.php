@@ -11,9 +11,9 @@
                 </h3>
                 
                 <h4 class="proDetCol media header" style="margin-top:-10px;margin-left:30px;">
-                    Information & Communication Technology
+                    <?php echo $details->sectorName ?>
                      <font class="media-heading vName2">
-                          | Animation
+                          | <?php echo $details->coursename ?>
                       </font>
                 </h4>
                 
