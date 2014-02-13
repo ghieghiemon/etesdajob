@@ -179,7 +179,16 @@ $(document).ready(function(){
                          htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
+                     }else if(duration == "2"){
+                        
+                         newtimeH+=2;
+                         
+                         newtimeM = "00";
+                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
                      }
+                     
                      
                  }
                   

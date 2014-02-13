@@ -338,6 +338,10 @@ class Tesda extends CI_Controller {
             {
                 redirect('report/employment_region/'.$month.'/'.$year);
             }
+            else if ($type == 6)
+            {
+                redirect('report/big_contribute/'.$month.'/'.$year);
+            }
         }
 }
 ?>

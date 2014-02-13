@@ -92,6 +92,7 @@
                                 <option value = "5">Employment per Region</option>
                                 <option value = "2">In Demand Jobs</option>
                                 <option value = "3">In Demand Industries</option>
+                                 <option value = "6">Biggest Employment Contributor</option>
                             </select>
                             
                             <br>
