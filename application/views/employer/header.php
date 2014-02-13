@@ -115,7 +115,7 @@ function checkall3(el){
                       <img src="<?php echo base_url()?>assets/bootstrap/img/tagline3.png" width="200" style="margin-left:-15px;margin-top:4px;"></img>
                     </a>
                     
-                    <div class="nav" style="margin-left:210px; margin-top:-2px;">
+                    <div class="nav" style="margin-left:30px; margin-top:-2px;">
                                 <a href="<?php echo base_url()?>employer/view_ecalendar" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 
