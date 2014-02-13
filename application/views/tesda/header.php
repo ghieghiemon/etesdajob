@@ -54,7 +54,7 @@
                        <img src="<?php echo base_url()?>assets/bootstrap/img/tagline3.png" width="200" style="margin-left:-15px;margin-top:4px;"></img>
                     </a>
                  
-                    <div class="nav" style="margin-left:200px;margin-top:-2px;">
+                    <div class="nav" style="margin-left:100px;margin-top:-2px;">
                         
                          <a href="<?php echo base_url()?>tesda/tesda_smspage" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">

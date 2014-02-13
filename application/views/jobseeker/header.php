@@ -44,7 +44,7 @@
                       <img src="<?php echo base_url()?>assets/bootstrap/img/tagline3.png" width="200" style="margin-left:-15px;margin-top:4px;"></img>
                     </a>
                     
-                    <div class="nav" style="margin-left:250px;margin-top:-2px;">
+                    <div class="nav" style="margin-left:60px;margin-top:-2px;">
                                  <a href="<?php echo base_url()?>jobseeker/jobseeker_briefcase" class="btn btn-group transBtn">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="18"> 
