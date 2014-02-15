@@ -1133,14 +1133,14 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
             <!--<input id="TR1" type="text" class="TR1">-->
             
              <div class="input-append bootstrap-timepicker">
-            <input id="TR1" type="text" data-default-time="false" class="input-small"placeholder ="Start">
+            <input id="TR1" name="TR1" type="text" data-default-time="false" class="input-small"placeholder ="Start">
             <span class="add-on">
                 <i class="icon-time"></i>
             </span>
             
         </div>
             <div class="input-append bootstrap-timepicker">
-            <input id="TR2" type="text" data-default-time="false" class="input-small" placeholder ="End" >
+            <input id="TR2" name="TR2" type="text" data-default-time="false" class="input-small" placeholder ="End" >
             <span class="add-on">
                 <i class="icon-time"></i>
             </span>
@@ -1149,11 +1149,6 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
 <!--            <br>
             <input id="TR2" type="text" class="TR2">
         -->
-        
-
-                            
-                
-       
                                         </div>
                                         
                                       </td>
@@ -1166,7 +1161,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                      <tr>
                                       <td class="vdDesc">
                                           <div class="myStyleSetS">
-                                            <?php echo form_dropdown("duration", array('30'=>'30 mins','1'=>'1 hr','130'=>'1hr 30mins','2'=>'2 hrs','230'=>'2 hrs 30 mins','3'=>'3 hrs', '330'=>'3 hrs 30 mins'),'30','id="DR"') ?>
+                                            <?php echo form_dropdown("duration", array('.5'=>'30 mins','1'=>'1 hr','1.5'=>'1hr 30mins','2'=>'2 hrs','2.5'=>'2 hrs 30 mins','3'=>'3 hrs', '3.5'=>'3 hrs 30 mins'),'30','id="DR"') ?>
                                           </div>
                                       </td>
                                       

@@ -660,15 +660,21 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
-     public function change_status($appno,$status,$date,$time,$location)
+     public function add_schedule($scheduledate,$what, $venue, $contactperson, $contactno)
     {
         $db1 = $this->load->database('local', TRUE);
         $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno) VALUES(?,?,?,?)";
-        $db1->query($sql,array($scheduledate, $venue, $contactperson, $contactno));
+        $db1->query($sql,array($scheduledate,$venue, $contactperson, $contactno));
         $scheduleid = $db1->insert_id();
-        $db1->query("UPDATE applications SET scheduleid = $scheduleid");
-        $sql2 = "INSERT INTO schedule_slots(scheduleid, timeslot, appid) VALUES(?,?,?)";
-        $db1->query($sql2,array($scheduleid, $timeslot, $appid));
+        $db1->query("UPDATE applications SET scheduleid = $scheduleid, status = $what");
+        return $scheduleid;
+        $db1->close();
+    }
+    public function add_scheduleslot($scheduleid, $starttime,$endtime, $appid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $sql2 = "INSERT INTO schedule_slots(scheduleid, starttime,endtime, appid) VALUES(?,?,?,?)";
+        $db1->query($sql2,array($scheduleid, $starttime,$endtime, $appid));
         $db1->close();
     }
      public function fill_vacancy($jobno)

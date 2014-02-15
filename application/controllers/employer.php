@@ -613,10 +613,12 @@ class Employer extends CI_Controller {
         //$day =  $this->input->post('day');
         //$month =  $this->input->post('month');
         //$year = $this->input->post('year');
-        $time = $this->input->post('time');
-        $date = $this->input->post('date');
+        $starttime = $this->input->post('TR1');
+        $endtime = $this->input->post('TR2');
+        $date = $this->input->post('date1');
+        $duration = $this->input->post('duration');
         //$date = $month.",".$day.",".$year; 
-        $location = $this->input->post('VN');
+        $venue = $this->input->post('VN');
         $cp = $this->input->post('CP');
         $cd = $this->input->post('CD');
         
@@ -624,7 +626,6 @@ class Employer extends CI_Controller {
         $id1 = array();
         $id2 = array();
         $id3 = array();
-        $id1 = $this->input->post('chk1');
         $id1 = $this->input->post('chk1');
         $id2 = $this->input->post('check2');
         $id3 = $this->input->post('check3');
@@ -677,9 +678,18 @@ class Employer extends CI_Controller {
                 $notif = "We have reviewed your qualifications and, unfortunately, 
                     are not able to pursue your application for $jobtitle further.";
             }
-            $this->model_employer->change_status($a,$status,$date,$time,$location);
             $appid = $this->model_employer->get_appid($a);
-            $this->model_employer->add_notification($appid,$notif,$jobno);
+            $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd);
+            $y=0;
+            do
+            {
+               $starttime += $duration;
+               $y = $starttime + $duration;
+               $this->model_employer->add_scheduleslot($scheduleid, $starttime,$y, $appid);
+            }
+            while($y!=$endtime);
+            
+            //$this->model_employer->add_notification($appid,$notif,$jobno);
         }
         
         $this->employer_appsperjob($jobno);
