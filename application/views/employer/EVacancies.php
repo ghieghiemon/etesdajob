@@ -553,7 +553,7 @@ foreach ($myvacancies as $a)
 
                     ?>
   	<div class="modal-footer">
-        <button type="submit" class="btn btn-info" >Renew</button>
+        <button type="submit" class="btn btn-info" >Repost</button>
         <a href="" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
        </form>
@@ -686,7 +686,7 @@ foreach ($myvacancies as $a)
                                                   else 
                                                   {
                                                 ?>
-                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Renew</a>
+                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                 ?>
@@ -812,7 +812,7 @@ foreach ($myvacancies as $a)
                                                   else 
                                                   {
                                                 ?>
-                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Renew</a>
+                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                 ?>
