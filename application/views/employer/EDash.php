@@ -253,7 +253,7 @@ foreach ($myvacancies as $a)
 
                     ?>
   	<div class="modal-footer">
-        <button type="submit" class="btn btn-info" >Renew</button>
+        <button type="submit" class="btn btn-info" >Repost</button>
         <a href="" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
        </form>
