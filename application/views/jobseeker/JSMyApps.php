@@ -47,36 +47,79 @@ foreach ($invites as $a)
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3 class="inModEm2">
-            <img src="assets/img/a10.jpg" style="width:90px">Toon City
+            <img src="assets/img/a10.jpg" style="width:90px">
+                <?php
+                foreach ($jobdetails as $a)
+                {
+                    echo $a['companyName'];
+                ?>
         </h3>
   	</div>
 
 	<div class="modal-body">
 		<p>
+            
         	<strong><em>Greetings,</em></strong>
             <br><br>
-            Following consideration of your application for <font class="inModEm">Software Developer</font> 
+            Following consideration of your application for <font class="inModEm"><?php echo $a['jobtitle'] ?></font> 
             - <em><strong>develops software</strong></em> -, 
+                <?php
+                }
+                ?>
             we are pleased to inform that you have been short-listed for 
-            <b>EXAM.</b>
-            This will be held in <strong>(Address)</strong>. 
+            <b>
+                <?php 
+                foreach($appdetails as $a)
+                {
+                    echo $a['status'];
+                }
+                ?>
+            </b>
+            This will be held in <strong><?php 
+            foreach ($schedule as $a)
+            {
+            echo $a['venue'];?></strong>. 
             <br><br>
             We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
             <br>
             
             <h5>
-            	February 8, 2014
+            	<?php 
+                echo $a['scheduledate'];
+                }
+                ?>
             </h5>
-            <input name="t1" class="checkbox" type="checkbox" value=""> 08:00-08:30 AM
-            &nbsp;<input name="t2" class="checkbox" type="checkbox" value=""> 08:30-09:00 AM
-            &nbsp;<input name="t3" class="checkbox" type="checkbox" value=""> 09:00-09:30 AM
+                <?php 
+                $ctr=1;
+                foreach ($scheduleslots as $a)
+                {
+                ?>
+            <input name="t<?php echo $ctr?>" class="checkbox" type="checkbox" value=""> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
+                &nbsp;
+                <?php 
+                $ctr++;
+                }
+                ?>
+            
             <br><br>
-            Should you need more assistance, please contact <strong>(Contact Info)</strong> at <strong>(Contact Details)</strong>. Thank you and we look forward in seeing you.
+            Should you need more assistance, please contact <strong>
+                <?php 
+                foreach ($schedule as $a)
+                {
+                    echo $a['contactperson'];
+                    ?>
+                </strong> at <strong>
+                <?php echo $a['contactno']; }?></strong>. Thank you and we look forward in seeing you.
             
             <br><br>
             <strong>Best Regards,</strong>
             <br>
-            <em><strong>Toon City</strong></em>
+            <em><strong> <?php
+                foreach ($jobdetails as $a)
+                {
+                    echo $a['companyName'];
+                }
+                ?></strong></em>
         </p>
 	</div>
   

@@ -605,7 +605,7 @@ class Employer extends CI_Controller {
         }
         
     }
-    public function employer_changeStatus($jobno)
+    public function employer_setSched($jobno)
     {
         @session_start();
         $this->load->model('model_employer'); 
@@ -669,10 +669,10 @@ class Employer extends CI_Controller {
 //            } else 
             if ($status == "Exam")
             {
-                $notif = "Invitation for an Exam as Result of application for $jobtitle.";
+                $notif = "You are qualified for the next step for $jobtitle, please choose a schedule for exam";
             } else if ($status == "Interview")
             {
-                $notif = "Invitation for an Interview as Result of application for $jobtitle. ";
+                $notif = "You are qualified for the next step for $jobtitle, please choose a schedule for interview ";
             } else if ($status == "Denied")
             {
                 $notif = "We have reviewed your qualifications and, unfortunately, 
@@ -690,7 +690,7 @@ class Employer extends CI_Controller {
             }
             while($y!=$endtime);
             
-            //$this->model_employer->add_notification($appid,$notif,$jobno);
+            $this->model_employer->add_notification($appid,$notif,$jobno);
         }
         
         $this->employer_appsperjob($jobno);

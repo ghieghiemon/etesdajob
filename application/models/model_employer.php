@@ -670,10 +670,10 @@ class Model_employer extends CI_Model {
         return $scheduleid;
         $db1->close();
     }
-    public function add_scheduleslot($scheduleid, $starttime,$endtime, $appid)
+    public function add_scheduleslot($scheduleid, $starttime,$endtime)
     {
         $db1 = $this->load->database('local', TRUE);
-        $sql2 = "INSERT INTO schedule_slots(scheduleid, starttime,endtime, appid) VALUES(?,?,?,?)";
+        $sql2 = "INSERT INTO schedule_slots(scheduleid, starttime,endtime, appid) VALUES(?,?,?,0)";
         $db1->query($sql2,array($scheduleid, $starttime,$endtime, $appid));
         $db1->close();
     }

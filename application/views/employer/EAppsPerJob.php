@@ -539,7 +539,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
   	
 </div> 
 <div class="modal hide fade modal-wide" id="changeStatus">
-    <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus">
+    <form method="post" action="<?php echo base_url()?>employer/employer_setSched">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Change Status</h3>
