@@ -1,5 +1,6 @@
  <!--choose schedule modal start-->
 <div class="modal hide fade" id="chSched">
+    <form method="post" action="<?php echo base_url()?>jobseeker/add_schedule/<?php echo $jobno?>"
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3 class="inModEm2">
@@ -10,7 +11,7 @@
                     echo $a['companyName'];
                 ?>
         </h3>
-  	</div>
+  	
 
 	<div class="modal-body">
 		<p>
@@ -50,7 +51,7 @@
                 foreach ($scheduleslots as $a)
                 {
                 ?>
-            <input name="t<?php echo $ctr?>" class="checkbox" type="checkbox" value=""> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
+            <input name="check" class="checkbox" type="radio" value="<?php echo $a['slotid'];?>"> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
                 &nbsp;
                 <?php 
                 $ctr++;
@@ -83,6 +84,7 @@
     	<button class="btn btn-info btn-mini">Done</button>
         <button class="btn btn-danger btn-mini">Cancel</button>
   	</div>
+</form>
 </div>
 <!--choose schedule modal end-->  
 

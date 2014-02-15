@@ -49,7 +49,7 @@ class Jobseeker extends CI_Controller {
         $data['myapps'] =$this->model_jobseeker->get_mysideapplications($id,$jobno);
         $data['cert'] = $this->model_jobseeker->get_jobCerts($jobno);
         $data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
-        
+        $data['jobno'] = $jobno;
         $this->model_jobseeker->seen_notif($jobno);
         
         foreach($appdetails as $a)
@@ -63,6 +63,18 @@ class Jobseeker extends CI_Controller {
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyAppDetail',$data);
         $this->load->view('footer');
+    }
+    public function add_schedule($jobno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        
+        $slotid = $this->input->post('check');
+        
+        $this->model_jobseeker->add_schedule($slotid,$id);
+        
+        $this->jobseeker_myappsdetail($jobno);
     }
     public function match($jobno, $id)
     {

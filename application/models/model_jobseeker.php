@@ -218,6 +218,14 @@ class Model_jobseeker extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
+    public function add_schedule($slotid,$appid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("UPDATE schedule_slots
+            set appid = $appid
+            where slotid = $slotid");
+        $db1->close();
+    }
     public function get_myapplications($userid){
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
