@@ -679,13 +679,14 @@ class Employer extends CI_Controller {
                     are not able to pursue your application for $jobtitle further.";
             }
             $appid = $this->model_employer->get_appid($a);
-            $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd);
+            $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd,$a);
             $y=0;
             do
             {
-               $starttime += $duration;
+               
                $y = $starttime + $duration;
                $this->model_employer->add_scheduleslot($scheduleid, $starttime,$y, $appid);
+               $starttime += $duration;
             }
             while($y!=$endtime);
             
