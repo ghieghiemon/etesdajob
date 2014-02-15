@@ -10,7 +10,7 @@
                 </h3>
                 
                 <h4 class="proDetCol media header" style="margin-top:-10px;margin-left:30px;">
-                    Information & Communication Technology
+                    <span id="sectorTitle">Select Sector/Industry </span>
                 </h4>
 
                 <div align="right" style="margin-top:-40px;">

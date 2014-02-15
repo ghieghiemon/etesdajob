@@ -5,7 +5,7 @@ $('#sectorsDrop').val(0);
     $('#sectorsDrop').change(function(){
 
         var sectorid = $(this).val();
-   
+        $('#sectorTitle').text($('#sectorsDrop :selected').text());
         $('div #report').load(siteurl+'adminsurvey/showCourses?id='+sectorid);
 
     })

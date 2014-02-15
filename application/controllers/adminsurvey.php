@@ -49,8 +49,7 @@ class Adminsurvey extends CI_Controller {
             //$row['count'] = $this->model_survey->getQCount($row['courseid']);
             $tableEntries[$key] = $row;
         }
-         print_r($tableEntries);
-        
+           
        $this->load->view('survey/courseTableRows',array('entries' =>$tableEntries));
     }
     
