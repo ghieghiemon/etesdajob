@@ -342,6 +342,14 @@ class Tesda extends CI_Controller {
             {
                 redirect('report/big_contribute/'.$month.'/'.$year);
             }
+            else if ($type == 7)
+            {
+                redirect('report/generate_activeGrads/'.$year);
+            }
+            else if ($type == 8)
+            {
+                redirect('report/annual_hired/'.$year);
+            }
         }
 }
 ?>

@@ -270,7 +270,7 @@ foreach ($myvacancies as $a)
         	<div class="well">
             	<h5 class="media-heading">
             		<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="20"> Notifications
-                     <a href="<?php echo base_url()?>report/annual_hired" > Generate </a> 
+                     
                 </h5>
                     
                     <div style="width:380px;height:140px;overflow:auto;"><!--start scrollable table-->

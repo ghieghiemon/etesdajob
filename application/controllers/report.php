@@ -554,11 +554,11 @@ class Report extends CI_Controller {
             $this->load->view('footer2');
 //            
         }
-        public function generate_activeGrads()
+        public function generate_activeGrads($year)
         {
             $this->load->model('model_reports');
             
-            $activegrads = $this->model_reports->get_activeGraduates(2013);
+            $activegrads = $this->model_reports->get_activeGraduates($year);
            
             $monthctr = 1;
             
@@ -590,12 +590,12 @@ class Report extends CI_Controller {
             $this->load->view('footer2');
         }
         
-        public function annual_hired()
+        public function annual_hired($year)
         {
             $this->load->model('model_reports');
             
-            $annualgrads = $this->model_reports->get_annualGraduates(2011,2012);
-            $hiredgrads = $this->model_reports->get_hiredGraduates(2011,2012);
+            $annualgrads = $this->model_reports->get_annualGraduates($year-1,$year);
+            $hiredgrads = $this->model_reports->get_hiredGraduates($year-1,$year);
             $monthctr = 1;
             
             $reportdata = array();
