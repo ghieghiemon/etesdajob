@@ -74,7 +74,7 @@ class Model_employer extends CI_Model {
                 AND (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 
                                         order by lastname asc  ");
         }
-        else if ($sex == "Both")
+        else if ($sex == "Not Specified")
         {
             $query = $db1->query("SELECT * from applicants a where 
                 (year(curdate())-year(a.birthday)  BETWEEN $startage AND $endage) 

@@ -149,7 +149,7 @@ class Model_jobseeker extends CI_Model {
     public function apply_job($userid, $jobno)
     {    
         $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived) VALUES(?,?,'New Applicant', 1,CURDATE(), CURTIME())";
+        $sql = "INSERT INTO applications(appid, jobno, status,statusno, datereceived, timereceived, scheduleid) VALUES(?,?,'New Applicant', 1,CURDATE(), CURTIME(),0)";
         $db1->query($sql,array($userid, $jobno));
         $db1->close();
     }
@@ -316,7 +316,7 @@ class Model_jobseeker extends CI_Model {
             join job_certifications c on j.jobno = c.jobno 
             JOIN etesda.reference_region r ON r.regionid = j.region
             JOIN etesda.reference_city ci ON ci.cityid = j.city
-                                    where (j.sex = '$sex' or j.sex = 'Both') 
+                                    where (j.sex = '$sex' or j.sex = 'Not Specified') 
                                     AND ($age BETWEEN j.agestart AND j.ageend) 
                                     AND j.expirationdate >= curdate()    
                                     GROUP BY j.jobno");

@@ -48,18 +48,20 @@
                                       </font>
                                   </td>
                               </tr>
-                               <tr>
+                              
+<!--                               <tr>
                                   <td class="previewDet">
                                       Industry:
                                   </td>
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<!--<input type="hidden" id="industry" name="industry">-->
+                                      	<input type="hidden" id="industry" name="industry">
                                       <span id="industryname" name="industryname"></span>
                                       </font>
                                   </td>
-                              </tr>
+                              </tr>-->
+                              
                           </tbody>
                       </table>
                 </div><!--end span-->
@@ -259,7 +261,8 @@
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Industry: &nbsp;</label>
                                                             <div class="controls">
-                                                             <input type="text" id="JN" name="JN" value="Information Technology" placeholder="" readonly>
+                                                                 <input type="hidden" id="industry" name="industry" value="<?php echo $a['sectorid']?>" placeholder="" readonly>
+                                                             <input type="text" id="industryname" name="industryname" value="<?php echo $a['sectorName']?>" placeholder="" readonly>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         
@@ -330,55 +333,35 @@
                             
                         </div> <!--end tab pane general info-->
                         
-                        <div class="tab-pane" id="tab2">
-                        	<!--<div style="width:1010px;height:650px;overflow:auto;">start scrollable table-->
+                       <!--ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE-->
+                           <div class="tab-pane" id="tab2">
                             <div class="row-fluid">
                             	<div class="span12">
                                 <div class="well">
-                                    <div class="form-horizontal4 qualiMarg">
+                                    <form class="form-horizontal4 qualiMarg">
                                         <div class="row-fluid">
                                             <div class="span7">
                                                 <div class="control-group">
-                                                    <label class="control-label lLabel2" style="margin-left:126px;">Sex: &nbsp;</label>
-                                                    <div class="controls">
-                                                         <?php 
-                                                        $options = array(
-                                                        'Female'  => 'Female',
-                                                        'Male'    => 'Male',
-                                                        'Not Specified'   => 'Not Specified',
-
-                                                        );
-                                                        $js = 'id="sex"';
-
-                                                        echo form_dropdown('sex', $options, 'Male', $js);
-
-                                                        ?>
-                                                    </div>
+                                                    <!--<label class="control-label lLabel2" style="margin-right:-26px;">Sex: &nbsp;</label>-->
+                                                  <strong>  Sex:</strong>  <input type="text" id="sex" name="sex" value="<?php echo $a['sex']?>" placeholder="" readonly>
                                                 </div> <!--end sex field-->
                                             </div><!--end span-->
                                             
                                             <div class="span5">
                                                 <div class="control-group">
-                                                    <label class="control-label lLabel2" style="margin-left:-84px;">Age Range: &nbsp;</label>
+                                                    <!--<label class="control-label lLabel2" style="margin-left:-184px;">Age Range: &nbsp;</label>-->
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                       <input type="text" id="ageto" name="ageto"><strong> to </strong>
-                                                       <input type="text" id="agefrom" name="agefrom">
+                                                       <strong> Age: </strong><input type="text" id="ageto" name="ageto"value="<?php echo $a['agestart']?>" readonly><strong> to </strong>
+                                                       <input type="text" id="agefrom" name="agefrom"value="<?php echo $a['ageend']?> "readonly>
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
                                             </div><!--end span-->
                                         </div><!--end row-fluid-->
-                                    </div>
-                             <hr class="hrDicussBig">
-                                   <h4 class="media-heading previewColor">
-                                                    | CERTIFICATION/S
-                                                </h4>
-                            
-                                    
-                                    
-                                    
-                                        <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
+                                        <br>
+                                      
+                                          <div class="myStyle2VD" style="margin-top:5px;" >
                                                        <?php    
                                                                 $industry['0'] = 'Choose Industry';
                                                                 $params = 'id="industrycert" style="width:40%" '; 
@@ -387,94 +370,115 @@
                                                           ?> 
                                                 
                                                 </div>
-
-                                           <div class="row-fluid marg17 margCCS">
-                                         <?php 
+                                    </form>
+                                    
+                                    
+                                    <hr class="hrDicussBig">
+                                    <div class="row-fluid">
+                                        <div class="span4">
+                                            <h5 class="media-heading previewColor">
+                                                | CERTIFICATION/S
+                                            </h5>
+                                            
+                                            
+                                                <?php 
              
-                                        $params = 'multiple="multiple" style="width:25%" name= "cert[]" id="lstcert1"'; 
+                                        $params = 'multiple="multiple" style="width:75%" size="10" name= "cert[]" id="lstcert1"'; 
                                         echo form_multiselect('certs', $cert, '#', $params ); ?> 
-                                     <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddCert">
+                                            
+                                            <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                    
-                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelCert">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
-                                     
-                                        <!--<input id="btnAddCert" type="button" class ="btn btn-mini btn-info" style="margin-top:-30px;margin-left:7px;"value="  Add  " />-->
-                                        <!--<input id="btnDelCert" type="button" class ="btn btn-mini btn-danger" style="margin-left:-55px;margin-bottom:-20px;"value="Remove" />-->
-                                    
-                                         <select id="lstcert2" name= "certselect[]"multiple="multiple">
-                                         </select>
-                                  </div> <!--end row-fluid-->
+                                       
+
+                                        </div><!--end span4-->	
+                                        
+                                         <div class="span4">
+                                            <h5 class="media-heading previewColor">
+                                                | COMPETENCIES
+                                            </h5>
+                                            
+                                              <?php 
+                                         
+                                         $params = 'multiple="multiple"style="width:70%" size="10" name= "comp[]" id="lstcomp1"'; 
+                                         echo form_multiselect('competencies', $comp, '#', $params); ?>   
+                                            
+                                               <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                   
-                                    <h5 class="media-heading previewColor">
+                                        </div><!--end span4-->	
+                                        
+                                           <div class="span4">
+                                            <h5 class="media-heading previewColor">
+                                                | YOUR CHOSEN CERTIFICATION/S
+                                            </h5>
+                                            
+                                           <select id="lstcert2" name= "certselect[]"multiple="multiple">
+                                         </select>
+                                               <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                      
+                                            <h5 class="media-heading previewColor">
+                                                | YOUR CHOSEN COMPETENCIES
+                                            </h5>
+                                            
+                                             <select id="lstcomp2" name= "compselect[]" multiple="multiple">
+
+                                        </select>
+                                               
+                                                    <a class="btn btn-mini actionPHMarg"style ="margin-left:10px; margin-top:-10px;"id="btnDelComp">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                        </div><!--end span4-->	
+                                        
+                                    </div><!--end row-fluid-->
+                                    
+                                    <br>
+<!--                                    <div class="row-fluid" align="center">
+                                      	<textarea name="Desc" rows="10" class="span7" readonly style="margin-left:-120px;"></textarea>
+                                    </div>end row-fluid-->
+                                    
+                             <h5 class="media-heading previewColor">
                                         | CERTIFICATION DETAILS
                                     </h5>
                                   
                                  
-                          <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
                           <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
-                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                          &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                           &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
         
                          <span style="font-weight:bold">Level:</span>
                          <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:8%" name= "certlevel[]"multiple="multiple"> </select>
                          <br>
                           <span style="font-weight:bold">Description:</span>
-                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "certdesc[]"multiple="multiple"> </select>
+                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "certdesc[]"multiple="multiple"> </select>
                                  
-                          
+                          <br>
                                   </div> <!--end row-fluid-->
-
-                                 <hr class="hrDicussBig">  
-                                    <h4 class="media-heading previewColor">
-                                        | COMPETENCIES
-                                    </h4>
-                                     <div class="myStyle2VD" style="margin-top:5px;margin-left:270px;" >
-                                                       <input class="myStyle4" style="width: 520px;"  type="text" id="txtComps" placeholder="Search for competencies">
-                                               
-                                                </div>
-                                          <div class="row-fluid marg17 margCCS">
-                                            
-                                         <?php 
-                                         
-                                         $params = 'multiple="multiple"style="width:25%" name= "comp[]" id="lstcomp1"'; 
-                                         echo form_multiselect('competencies', $comp, '#', $params); ?>                                   
-                                         <a class="btn btn-mini actionPHMarg"style="margin-top:-30px;" id="btnAddComp">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
-                                       <a class="btn btn-mini actionPHMarg"style ="margin-left:-65px; margin-top:20px;"id="btnDelComp">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
-                                        <select id="lstcomp2" name= "compselect[]" multiple="multiple">
-
-                                        </select>
-                                  </div> <!--end row-fluid-->
-                                  
-                                  
-                                    
-                                   
-         <h5 class="media-heading previewColor">
+                                      <h5 class="media-heading previewColor">
                                         | COMPETENCY DETAILS
                                     </h5>
                                   
                                   
-                          <div class="row-fluid marg17 margCCS">
-                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
                           <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
                          &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
         
                       
                           <span style="font-weight:bold">Description:</span>
-                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:45%" name= "compdesc[]"multiple="multiple"> </select>
+                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "compdesc[]"multiple="multiple"> </select>
                                  
                           
                                   </div> <!--end row-fluid-->
-                           
-                            
-                            
-
-                            	</div><!--end well-->
+                                    	
+                                  </div><!--end well-->
                             	</div><!--end span-->
                             </div><!--end row-fluid-->
-                       	<!--</div>end scrollable table-->
                             
                         </div> <!--end tab pane qualifications-->
                         
