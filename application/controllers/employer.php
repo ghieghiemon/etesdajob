@@ -545,8 +545,8 @@ class Employer extends CI_Controller {
       
         $jobno = $this->input->post('jobvacancy');   
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
-       // $data['cert'] = $this->model_employer->get_jobCerts($jobno);
-      //  $data['comp'] = $this->model_employer->get_jobComps($jobno);
+       $data['cert'] = $this->model_employer->get_jobCerts($jobno);
+       $data['comp'] = $this->model_employer->get_jobComps($jobno);
         $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
         $data['industry'] = $this->model_main->get_drpindustries();
