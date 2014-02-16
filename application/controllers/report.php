@@ -517,9 +517,9 @@ class Report extends CI_Controller {
         {
             $this->load->model('model_reports');
             $this->load->model('model_main');
-        
+            $year = $this->input->post('year');
             $id = $this->model_main->get_userid($this->session->userdata('email'));
-            $report1 = $this->model_reports->get_vacancies(2013,$id);
+            $report1 = $this->model_reports->get_vacancies($year,$id);
             
             $reportdata = array();
             

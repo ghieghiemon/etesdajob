@@ -116,6 +116,12 @@ function checkall3(el){
                     </a>
                     
                     <div class="nav" style="margin-left:30px; margin-top:-2px;">
+                        <a href="<?php echo base_url()?>employer/employer_reports" class="btn btn-group transBtn">
+                                <h5 class="media-heading">
+                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_041_charts.png" width="20"> 
+                                    <br>Reports
+                                </h5>
+                                </a>
                                 <a href="<?php echo base_url()?>employer/view_ecalendar" class="btn btn-group transBtn" style="margin-left:5px;">
                                 <h5 class="media-heading">
                                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="18"> 

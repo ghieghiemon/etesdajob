@@ -1416,5 +1416,10 @@ class Employer extends CI_Controller {
         $this->load->view('employer/ESetSched',$data);
         $this->load->view('footer2');
     }
+    public function employer_reports()
+    {
+        $this->employer_header();
+        $this->load->view('employer/EReports');
+    }
 }
 ?>
