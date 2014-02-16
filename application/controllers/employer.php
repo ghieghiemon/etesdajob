@@ -695,6 +695,44 @@ class Employer extends CI_Controller {
         
         $this->employer_appsperjob($jobno);
     }
+    public function employer_changeStatus($jobno,$applicationid)
+    {
+        @session_start();
+        $this->load->model('model_employer'); 
+        
+        $status = $this->input->post('group1');
+        $details = $this->model_employer->get_jobdetails($jobno);
+            foreach ($details as $b)
+            {
+                $jobtitle = $b['jobtitle'];
+                $company = $b['companyID'];
+            }
+            $name = $this->model_employer->get_companyName($company);    
+        if ($status == "Hired")
+        {
+            $this->model_employer->fill_vacancy($jobno);
+            $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
+        } 
+        else if ($status == "Denied")
+        {
+            $notif = "We have reviewed your qualifications and, unfortunately, 
+                are not able to pursue your application for $jobtitle further.";
+        }
+        $appid = $this->model_employer->get_appid($applicationid);
+        $left = $this->model_employer->change_status($status,$applicationid,$jobno); 
+        
+        $this->model_employer->add_notification($appid,$notif,$jobno);
+        if($left != 0)
+        {
+            foreach($left as $b)
+            {
+             $notif = "Vacancy closed.";
+             $this->model_employer->add_notification($b,$notif,$jobno);
+            }
+        }
+            
+        $this->employer_appsperjob($jobno);
+    }
     public function employer_viewchecked()
     {
         print_r($this->input->post('check'));

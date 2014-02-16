@@ -660,6 +660,25 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db2->close();
     }
+    public function change_status($what,$applicationid,$jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        $db1->query("UPDATE applications SET status = '$what' where applicationid = $applicationid");
+        $this->fill_vacancy($jobno);
+        $query1 = $db2->query("SELECT vacanciesleft from job_vacancies where jobno = $jobno");
+        foreach ($query1->result() as $row)
+        {
+          $left = $row->vacanciesleft;
+        }
+        if($left <= 0)
+        {
+            $query2 = $db2->query("SELECT appid from applications WHERE status != 'Hired'");
+            return $query2->result_array();
+        }
+        else return 0;
+        $db1->close();
+    }
      public function add_schedule($scheduledate,$what, $venue, $contactperson, $contactno,$applicationid)
     {
         $db1 = $this->load->database('local', TRUE);
