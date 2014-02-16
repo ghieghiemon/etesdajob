@@ -345,7 +345,7 @@
                                                         $options = array(
                                                         'Female'  => 'Female',
                                                         'Male'    => 'Male',
-                                                        'Both'   => 'Not Specified',
+                                                        'Not Specified'   => 'Not Specified',
 
                                                         );
                                                         $js = 'id="sex"';
@@ -447,7 +447,44 @@
                                       	<textarea name="Desc" rows="10" class="span7" readonly style="margin-left:-120px;"></textarea>
                                     </div>end row-fluid-->
                                     
-                                   
+                             <h5 class="media-heading previewColor">
+                                        | CERTIFICATION DETAILS
+                                    </h5>
+                                  
+                                 
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                          <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                          &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                           &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+        
+                         <span style="font-weight:bold">Level:</span>
+                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:8%" name= "certlevel[]"multiple="multiple"> </select>
+                         <br>
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "certdesc[]"multiple="multiple"> </select>
+                                 
+                          <br>
+                                  </div> <!--end row-fluid-->
+                                      <h5 class="media-heading previewColor">
+                                        | COMPETENCY DETAILS
+                                    </h5>
+                                  
+                                  
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
+        
+                      
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "compdesc[]"multiple="multiple"> </select>
+                                 
+                          
+                                  </div> <!--end row-fluid-->
                                     	
                                   </div><!--end well-->
                             	</div><!--end span-->

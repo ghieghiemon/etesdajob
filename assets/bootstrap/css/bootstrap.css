@@ -5239,6 +5239,11 @@ input[type="submit"].btn.btn-mini {
   overflow-y: auto;
 }
 
+.modal-wide {
+    width: 60%; /* respsonsive width */
+    margin-left:-30%; /* width/2) */ 
+}
+
 .modal-form {
   margin-bottom: 0;
 }

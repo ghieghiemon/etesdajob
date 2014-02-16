@@ -6,7 +6,7 @@
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <body>
 <!--publish vacancy modal start-->
-<div class="modal hide fade" id="pubV">
+<div class="modal hide fade modal-wide" id="pubV">
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3>Vacancy Preview</h3>
@@ -55,7 +55,7 @@
                                   
                                   <td>
                                 	  <font class="previewDet2">
-                                      	<input type="hidden" id="industry" name="industry">
+                                      	<!--<input type="hidden" id="industry" name="industry">-->
                                       <span id="industryname" name="industryname"></span>
                                       </font>
                                   </td>
@@ -345,7 +345,7 @@
                                                         $options = array(
                                                         'Female'  => 'Female',
                                                         'Male'    => 'Male',
-                                                        'Both'   => 'Both',
+                                                        'Not Specified'   => 'Not Specified',
 
                                                         );
                                                         $js = 'id="sex"';
