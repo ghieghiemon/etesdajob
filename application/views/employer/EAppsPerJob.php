@@ -1045,7 +1045,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
-                                          <td></td>
+                                          <td><a  href="#changeStatus<?php echo $a['applicationid']?>" data-toggle="modal" class="btn btn-info">Change Status</a> </td>
                                       </tr>
                                   <?php
                                         

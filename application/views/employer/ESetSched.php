@@ -1006,7 +1006,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
         </div><!--end span left folumn-->
         
         <div class="span9">
-             <form method="post" action="<?php echo base_url()?>employer/employer_changeStatus/<?php echo $jobno?>">
+             <form method="post" action="<?php echo base_url()?>employer/employer_setSched/<?php echo $jobno?>">
         	
                  <div class="well">
             	<h3 class="media-heading">
