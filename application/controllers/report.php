@@ -133,8 +133,8 @@ class Report extends CI_Controller {
                                 <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Location</th>
                                 <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Title</th>
                                 <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Description</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Effectivity</th>
- 			<th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Slots Left</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">No. of Applications</th>
+ 			<th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Hired</th>
                                 
                               
                                 </tr>
@@ -148,12 +148,22 @@ class Report extends CI_Controller {
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->companyName . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->city . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->jobtitle . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->expirationdate . '</td>
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->vacanciesleft . '</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>');
+                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
+                                    $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
+                                    foreach($applicants as $a):
+                                        $mpdf->writeHTML(''.$a->count.'');
+                                    endforeach;
+                                            $mpdf->writeHTML('</td>
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">');
+                                    $hired = $this->model_reports->get_hiredno($vacancy->jobno);
+                                    foreach($hired as $b):
+                                        $mpdf->writeHTML(''.$b->count.'');
+                                    endforeach;
+                                    $mpdf->writeHTML('</td>
 
-                                </tr>
-                                ');
+                             </tr>');
+                              
                 
             endforeach;
             
