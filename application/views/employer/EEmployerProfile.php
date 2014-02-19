@@ -185,9 +185,8 @@
                                                         <th class="span3" style="text-align:center">Job Title </th>
                                                         <th class="span3" style="text-align:center">Location</th>
                                                         <th class="span4" style="text-align:center">Effectivity</th>
-                                                        <th class="span1" style="text-align:center"></th>
-                                                        <th class="span1" style="text-align:center"></th>
-                                                        <th class="span1" style="text-align:center">Action</th>
+                                                  
+
                                                     <tr>
                                                 </thead>
                                                 
@@ -220,24 +219,11 @@
                                                             ?>
                                                         </td>
                                                         
-                                                        <td>
-                                                            <span class="label label-info">
-                                                                 <?php
-                                                                $appcount = $this->model_pub->count_jobApplications($a['jobno']);
-                                                                echo $appcount;
-                                                                ?> Applied
-                                                            </span>
-                                                        </td>
+                                                     
                                                         
-                                                        <td>
-                                                            <span class="label"><?php echo $a['vacanciesleft']?> Left</span>
-                                                        </td>
+                                                    
                                                         
-                                                        <td>
-                                                        	<a href="#signIn" data-toggle="modal" class="btn btn-info btn-mini">
-                                                            	Apply
-                                                            </a>
-                                                        </td>
+                                                       
                                                     </tr>
                                                     <?php
                                                     }

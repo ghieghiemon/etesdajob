@@ -88,8 +88,16 @@
                                     <th class="span7"></th>
                                 </tr>
                             </thead>
+                                            <div style="margin-left: 92%;" >
+                                <a href="<?php echo base_url()?>jobseeker/jobseeker_editprofilepage" class="btn btn-primary btn-mini">
+		Edit Profile
+	</a>
+                                    </div>
                             
                             <tbody>
+                                
+                
+                                        
                             	<tr>
                                 	<td>
                                     <?php foreach ($jsdetails as $a)
@@ -236,10 +244,8 @@
                                                     }
                                                 ?>
                                                     <div class="row-fluid">
-<div align="pull-right">
-	<a href="<?php echo base_url()?>jobseeker/jobseeker_editprofilepage" class="btn btn-primary btn-mini">
-		Edit Profile
-	</a>
+<div style="margin-left: 6%;">
+	
         <a href="<?php echo base_url()?>report/generate_cv/<?php echo $appid?>" class="btn btn-info btn-mini">
 		Generate Resume
 	</a>
