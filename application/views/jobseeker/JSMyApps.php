@@ -272,7 +272,7 @@ foreach($invites as $a)
   	<div class="modal-footer">
         
   	
-    	<a href="<?php echo base_url()?>jobseeker/apply_jobinvite/<?php echo $a['jobno']?>/<?php echo $a['invitationno']?>" class="btn btn-mini">
+    	<a href="<?php echo base_url()?>jobseeker/apply_job/<?php echo $a['jobno']?>" class="btn btn-mini">
                                         <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_190_circle_plus.png" width="12"> Accept 
                                     </a>
             <button type="button" data-toggle="modal" data-target="#decline<?php echo $a['jobno']?>" class="btn btn-mini">

@@ -330,6 +330,7 @@ class Jobseeker extends CI_Controller {
         }
         $this->jobseeker_myappsdetail($jobno);
     }
+    
     public function decline_job($invno)
     {
         $this->load->model('model_main');
