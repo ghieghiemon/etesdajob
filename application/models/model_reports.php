@@ -140,6 +140,30 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
+    public function get_applicationno($jobno)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT Count(*) as count from applications a 
+                where jobno = ?";
+        
+        $result = $dbconn->query($query1, array($jobno))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+    public function get_hiredno($jobno)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT Count(*) as count from applications a 
+                where jobno = ? AND status = 'Hired' ";
+        
+        $result = $dbconn->query($query1, array($jobno))->result_array();
+        return $result;
+        $dbconn->close();
+    }
     public function get_applicants($jobno)
     {
         $dbconn = $this->load->database('local', TRUE);
