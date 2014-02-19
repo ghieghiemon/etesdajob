@@ -29,7 +29,8 @@ class Pub extends CI_Controller {
     public function search_regions($region)
    {	
         $this->load->model('model_pub');
-        
+         $this->load->model('model_jobseeker');
+        $data['jobs'] =  $this->model_jobseeker->get_alljobs();     
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['vacancies'] = $this->model_pub->get_perRegionVacancies($region);
       //  $data['sectorName'] = $this->model_pub->get_industryName($sectorid);
@@ -42,6 +43,8 @@ class Pub extends CI_Controller {
    public function pub_jobmarketpage()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $data['jobs'] =  $this->model_jobseeker->get_alljobs();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $this->load->view('public/header');
@@ -72,6 +75,8 @@ class Pub extends CI_Controller {
         public function pub_alljob()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
+        $data['jobs'] =  $this->model_jobseeker->get_alljobs();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $data['search'] = $this->all_job();
