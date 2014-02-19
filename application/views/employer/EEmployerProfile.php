@@ -31,6 +31,11 @@
             	<div class="span12">
                 	<div class="bigMarg2">
                     <hr class="hrPro">
+                    <div class="row-fluid">
+                        	<div class="pull-right ">
+                            	<a href="<?php echo base_url()?>employer/employer_editprofilepage" class="btn btn-primary btn-mini">Edit Profile</a>
+                            </div>
+                        </div><!--end row-fluid-->
                     	<table class="tblMarg">
                         	<thead>
                             	<tr>

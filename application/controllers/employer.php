@@ -1421,5 +1421,24 @@ class Employer extends CI_Controller {
         $this->employer_header();
         $this->load->view('employer/EReports');
     }
+    public function employer_editprofilepage()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        
+        $id = $this->model_main->get_appid($this->session->userdata('email'));
+        
+//        $data['educ'] = $this->model_jobseeker->get_educ($id);
+//        $data['work'] =$this->model_jobseeker->get_work($id);
+//        $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
+//        $userid = $this->model_employer->get_userid($id);
+//        $data['email'] = $this->model_employer->get_email($userid);
+//        $data['cert'] = $this->model_jobseeker->get_certifications($id);
+        
+        $this->employer_header();
+        $this->load->view('employer/EUpdateProf');
+         $this->load->view("footer");
+    }
+    
 }
 ?>
