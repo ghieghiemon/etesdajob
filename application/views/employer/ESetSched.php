@@ -2043,7 +2043,7 @@ function year_install(f)
 
     <script>
 $("#date1").datepicker( {
-    format: 'mm-dd-yyyy'
+    format: 'yy/mm/dd'
 });
 </script>
     <script>
