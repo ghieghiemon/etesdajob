@@ -144,13 +144,16 @@
                                          <font color="black">&nbsp; Location: &nbsp;</font>
                                           <?php
                                           echo $b['location']; 
-                                       }
-                                      }
-                                      ?>
-                                      <br>
+                                          ?>
+                                          <br>
                                         <a href="#chSched" data-toggle="modal" class="more">
                                             Choose Schedule
                                         </a>
+                                          <?php
+                                       }
+                                      }
+                                      ?>
+                                      
                                       <?php
                                           //For Exam on 09/28/2012
                                       echo '</strong></font> </p>

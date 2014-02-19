@@ -666,7 +666,7 @@ class Model_employer extends CI_Model {
         
         $db1->query("UPDATE applications SET status = '$what' where applicationid = $applicationid");
         $this->fill_vacancy($jobno);
-        $query1 = $db2->query("SELECT vacanciesleft from job_vacancies where jobno = $jobno");
+        $query1 = $db1->query("SELECT vacanciesleft from job_vacancies where jobno = $jobno");
         foreach ($query1->result() as $row)
         {
           $left = $row->vacanciesleft;

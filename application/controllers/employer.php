@@ -662,11 +662,7 @@ class Employer extends CI_Controller {
                 $company = $b['companyID'];
             }
             $name = $this->model_employer->get_companyName($company);
-//            if ($status == "Hired")
-//            {
-//                $this->model_employer->fill_vacancy($jobno);
-//                $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
-//            } else 
+
             if ($status == "Exam")
             {
                 $notif = "You are qualified for the next step for $jobtitle, please choose a schedule for exam";
@@ -699,7 +695,9 @@ class Employer extends CI_Controller {
     {
         @session_start();
         $this->load->model('model_employer'); 
-        
+        $this->load->model('model_main');
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
         $status = $this->input->post('group1');
         $details = $this->model_employer->get_jobdetails($jobno);
             foreach ($details as $b)
@@ -707,7 +705,7 @@ class Employer extends CI_Controller {
                 $jobtitle = $b['jobtitle'];
                 $company = $b['companyID'];
             }
-            $name = $this->model_employer->get_companyName($company);    
+            $name = $this->model_employer->get_companyName($id);    
         if ($status == "Hired")
         {
             $this->model_employer->fill_vacancy($jobno);
@@ -715,8 +713,7 @@ class Employer extends CI_Controller {
         } 
         else if ($status == "Denied")
         {
-            $notif = "We have reviewed your qualifications and, unfortunately, 
-                are not able to pursue your application for $jobtitle further.";
+            $notif = "We have reviewed your qualifications and, unfortunately, are not able to pursue your application for $jobtitle further.";
         }
         $appid = $this->model_employer->get_appid($applicationid);
         $left = $this->model_employer->change_status($status,$applicationid,$jobno); 
