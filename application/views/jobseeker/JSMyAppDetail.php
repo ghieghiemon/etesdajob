@@ -144,10 +144,10 @@
                                         {
                                         ?>
                                          <font color="black">&nbsp; Date and Time: </font>
-                                         <?php $c['scheduledate']; ?>
+                                         <?php echo $c['scheduledate']; ?>
                                        
                                         <font color="black"> &nbsp;- &nbsp;</font>
-                                        <?php  $c['starttime']. " - ".$c['endtime']; ?>
+                                        <?php  echo $c['starttime']. " - ".$c['endtime']; ?>
                                         <br>
                                          <font color="black">&nbsp; Location: &nbsp;</font>
                                           <?php
