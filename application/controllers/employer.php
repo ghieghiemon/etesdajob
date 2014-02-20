@@ -1422,18 +1422,17 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_employer');
+        $this->load->model('model_pub');
         
-        $id = $this->model_main->get_appid($this->session->userdata('email'));
-        
-//        $data['educ'] = $this->model_jobseeker->get_educ($id);
-//        $data['work'] =$this->model_jobseeker->get_work($id);
-//        $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
-//        $userid = $this->model_employer->get_userid($id);
-//        $data['email'] = $this->model_employer->get_email($userid);
-//        $data['cert'] = $this->model_jobseeker->get_certifications($id);
+       
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+        $data['profile'] = $this->model_pub->get_employerProfile($id);
+        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
+        $data['events'] = $this->model_pub->get_postedEvents($id);
+        $data['leagues'] = $this->model_pub->get_createdLeagues($id);
         
         $this->employer_header();
-        $this->load->view('employer/EUpdateProf');
+        $this->load->view('employer/EUpdateProf',$data);
          $this->load->view("footer");
     }
     

@@ -142,7 +142,12 @@
                                         <div class="control-group"><!-- start div nm-->
                                             <div class="myStyleEPrN">
                                                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
-                                                <input type="text" id="nm" name="nm">
+                                                 <?php
+                                        foreach($profile as $a)
+                                        {
+                                            ?>
+                                                <input type="text" id="nm" name="nm" value="<?php echo $a['companyName']?>">
+                                                 
                                             </div>
                                         </div><!-- end div name -->
 
@@ -185,7 +190,7 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div ce-->
                                                                 <div class="myStyleEPrB">
-                                                                    <input type="text" id="ce" name="ce">
+                                                                    <input type="text" id="ce" name="ce" value="<?php echo $a['companyEmail']?>">
                                                                 </div>
                                                             </div><!-- end div ce-->
                                                         	
@@ -198,7 +203,7 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div cn-->
                                                                 <div class="myStyleEPrB">
-                                                                    <input type="text" id="cn" name="cn">
+                                                                    <input type="text" id="cn" name="cn" value="<?php echo $a['companyContact']?>">
                                                                 </div>
                                                             </div><!-- end div cn-->
                                                         	
@@ -241,7 +246,7 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div ADD -->
                                                                 <div class="myStyleEPrN">
-                                                                    <input type="text" id="ADD" name="ADD">
+                                                                    <input type="text" id="ADD" name="ADD" value="<?php echo $a['companyContactPerson']?>">
                                                                 </div>
                                                             </div><!-- end ADD-->
                                                         </td>
@@ -270,9 +275,11 @@
                                         </h4>
                                         
                                         <div style="width:500px;height:80px;overflow:auto;"><!--start scrollable table-->
-                                        <textarea class="span12" rows="3"></textarea>
+                                        <textarea class="span12" rows="3" ><?php echo $a['companyBG']?></textarea>
                                         </div><!--end scrollable-->
-                                        
+                                        <?php
+                                        }
+                                            ?>
                                         <h4 class="proDetCol media header">
                                         	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="20"> Events
                                         </h4>
