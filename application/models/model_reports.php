@@ -148,7 +148,7 @@ class Model_reports extends CI_Model {
         $query1 = "SELECT Count(*) as count from applications a 
                 where jobno = ?";
         
-        $result = $dbconn->query($query1, array($jobno))->result_array();
+        $result = $dbconn->query($query1, array($jobno))->result();
         return $result;
         $dbconn->close();
     }
@@ -160,7 +160,7 @@ class Model_reports extends CI_Model {
         $query1 = "SELECT Count(*) as count from applications a 
                 where jobno = ? AND status = 'Hired' ";
         
-        $result = $dbconn->query($query1, array($jobno))->result_array();
+        $result = $dbconn->query($query1, array($jobno))->result();
         return $result;
         $dbconn->close();
     }

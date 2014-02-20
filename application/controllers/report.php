@@ -139,7 +139,6 @@ class Report extends CI_Controller {
                               
                                 </tr>
                              ');
-            
             foreach($vacancies as $vacancy):
                 
                $mpdf->writeHTML('
@@ -151,7 +150,9 @@ class Report extends CI_Controller {
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>');
                                     $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
                                     $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
+            
                                     foreach($applicants as $a):
+                                        print_r($a->count);
                                         $mpdf->writeHTML(''.$a->count.'');
                                     endforeach;
                                             $mpdf->writeHTML('</td>
