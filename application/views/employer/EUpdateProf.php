@@ -155,46 +155,44 @@
                                         <div class="row-fluid">
                                         	<div class="span12">
                                             	<table class="proPIMarg" style="margin-left:-5px;">
-                                            	<thead>
-                                                	<tr>
-                                                    	<th class="span2"></th>
-                                                        <th class="span3"></th>
-                                                        <th class="span3"></th>
-                                                        <th class="span3"></th>
-                                                        <th class="span2"></th>
-                                                        <th class="span3"></th>
-                                                    </tr>
-                                                </thead>
+                                          
                                                 
-                                                <tbody class="proPI">
+                                              
                                                 	<tr>
-                                                    	<td class="lLabel4">
+<!--                                                    	<td class="lLabel4">
                                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="15">  INDUSTRY:
                                                         </td>
                                                         
                                                         <td>
-                                                        	<div class="control-group"><!-- start div IND-->
+                                                        
                                                                 <div class="myStyleEPr2">
-                                                                    <select>
-                                                                        <option>Information & Technology</option>
+                                                                    
+                                                                    <select id="ind" name="ind">
+                                                                
+                                                                        <option value='<?php echo $a['companyIndustry']?>' </option>
+                                                                   
                                                                     </select>
+
+                                                                   
+                                                                
                                                                 </div>
-                                                            </div><!-- end div IND -->
+                                                   
                                                         	
-                                                        </td>
+                                                        </td>-->
                                                         
                                                         <td class="lLabel4">
                                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_419_e-mail.png" width="15"> COMPANY EMAIL: 
                                                         </td>
                                                         
                                                         <td>
-                                                        	<div class="control-group"><!-- start div ce-->
+                                                        	
                                                                 <div class="myStyleEPrB">
-                                                                    <input type="text" id="ce" name="ce" value="<?php echo $a['companyEmail']?>">
+                                                                    <input  style="width:100%" type="text" id="ce" name="ce" value="<?php echo $a['companyEmail']?>">
                                                                 </div>
-                                                            </div><!-- end div ce-->
+                                                           
                                                         	
                                                         </td>
+                                              
                                                         
                                                         <td class="lLabel4">
                                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_087_log_book.png"  width="15"> CONTACT NO: 
@@ -203,56 +201,46 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div cn-->
                                                                 <div class="myStyleEPrB">
-                                                                    <input type="text" id="cn" name="cn" value="<?php echo $a['companyContact']?>">
+                                                                    <input style="width:100%" type="text" id="cn" name="cn" value="<?php echo $a['companyContact']?>">
                                                                 </div>
                                                             </div><!-- end div cn-->
                                                         	
                                                         </td>
                                                     </tr>
-                                              </tbody>
+                                       
                                               </table>
                                               <table class="proPIMarg" style="margin-left:-5px;">
-                                              <thead>
-                                                  <tr>
-                                                      <th class="span2"></th>
-                                                      <th class="span3"></th>
-                                                      <th class="span3"></th>
-                                                      <th class="span3"></th>
-                                                      <th class="span2"></th>
-                                                      <th class="span3"></th>
-                                                  </tr>
-                                              </thead>
+                                          
                                               
-                                              <tbody class="proPI">
-                                                    <tr>
+                                          
+                                                         <tr>
+                                                    	<td class="lLabel4">
+                                                        	CONTACT PERSON:
+                                                        </td>
+                                                        <br>
+                                                        <td>
+                                                        	
+                                                                    <input type="text" id="ADD" name="ADD" value="<?php echo $a['companyContactPerson']?>">
+                                                           
+                                                        </td>
+                                          
                                                     	<td class="lLabel4">
                                                         	ADDRESS
                                                         </td>
                                                         
                                                         <td>
-                                                        	<div class="control-group"><!-- start div ADD -->
+                                                        	
                                                                 <div class="myStyleEPrN">
-                                                                    <input type="text" id="ADD" name="ADD">
+                                                                          <textarea type="text" rows="4" id="desc" name="desc"><?php echo $a['companyLocations']?></textarea>
+                                                                   
                                                                 </div>
-                                                            </div><!-- end ADD-->
+                                                          
                                                         </td>
                                                     </tr>
                                                     
-                                                    <tr>
-                                                    	<td class="lLabel4">
-                                                        	CONTACT PERSON
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	<div class="control-group"><!-- start div ADD -->
-                                                                <div class="myStyleEPrN">
-                                                                    <input type="text" id="ADD" name="ADD" value="<?php echo $a['companyContactPerson']?>">
-                                                                </div>
-                                                            </div><!-- end ADD-->
-                                                        </td>
-                                                    </tr>
+                                             
                                                     
-                                                </tbody>
+                                              
                                             </table>
                                             </div>
                                             
@@ -280,115 +268,16 @@
                                         <?php
                                         }
                                             ?>
-                                        <h4 class="proDetCol media header">
-                                        	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="20"> Events
-                                        </h4>
+                                    
                                         
-                                        <div style="width:590px;height:100px;overflow:auto;" class="PProfE2" ><!--start scrollable table-->
+                                     
                                         
-                                        	<a href=""><img src="<?php echo base_url()?>assets/bootstrap/img/b1.jpg" class="PProfE"/></a>
-                                            <a href=""><img src="<?php echo base_url()?>assets/bootstrap/img/b2.jpg" class="PProfE"/></a>
-                                               
-                                        </div> <!--end scrillable-->
                                         
-                                        <h4 class="proDetCol media header">
-                                        	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues
-                                        </h4>
-                                        
-                                         <div style="width:590px;height:100px;overflow:auto;" class="PProfE2" ><!--start scrollable table-->
-                                        
-                                        	<a href=""><img src="<?php echo base_url()?>assets/bootstrap/img/b3.jpg" class="PProfE"/></a>
-                                               
-                                        </div> <!--end scrillable-->
                                     </div><!--end well-->
                                 </div><!--end span-->
                                 
                                 <div class="span6">
-                                	<div class="well wellMarg">
-                                    	
-                                        <div style="width:600px;height:388px;overflow:auto;"><!--start scrollable table-->
-                                        	<h4 class="media-heading">
-                                            	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_264_vcard.png" width="25" height="15"> Job Market |
-                                                <font class="pJTitle2">
-                                                    Posted Vacancies
-                                                </font>
-                                             </h4>
-											
-                                            <table class="table-condensed table-striped" width="530px">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="span3" style="text-align:center">Job Title </th>
-                                                        <th class="span3" style="text-align:center">Location</th>
-                                                        <th class="span4" style="text-align:center">Effectivity</th>
-                                                        <th class="span1" style="text-align:center"></th>
-                                                        <th class="span1" style="text-align:center"></th>
-                                                        <th class="span1" style="text-align:center">Action</th>
-                                                    <tr>
-                                                </thead>
-                                                
-                                                <tbody class="recName">
-                                                    <tr>
-                                                        <td>
-                                                            Animator 
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	NCR | Makati City
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            09/23/2013 to 10/28/2013
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <span class="label label-info">5 Applied</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <span class="label">20 Left</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	<a href="#signIn" data-toggle="modal" class="btn btn-info btn-mini">
-                                                            	Apply
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                    <tr>
-                                                        <td>
-                                                            Mobile App Developer 
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	NCR | Pasig City
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            09/12/2013 to 10/26/2013
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <span class="label label-info">1 Applied</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <span class="label">5 Left</span>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	<a href="#signIn" data-toggle="modal" class="btn btn-info btn-mini">
-                                                            	Apply
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                            </table>
-
-                                        
-                                       </div><!--end scrollable-->
-                                    </div><!--end well-->
+                                	
                                 </div><!--end span-->
                             </div> <!--end row-fluid-->
                         	
@@ -404,6 +293,12 @@
     </div> <!--end row-->
     </div> <!--end div-->
     </div> <!--end container-->
+    <br>
+    <br>
+    <br>
+     <br>
+    <br>
+ 
  
  <!-- END OF CONTENT -->   
         

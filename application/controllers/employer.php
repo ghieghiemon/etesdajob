@@ -1427,9 +1427,6 @@ class Employer extends CI_Controller {
        
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['profile'] = $this->model_pub->get_employerProfile($id);
-        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
-        $data['events'] = $this->model_pub->get_postedEvents($id);
-        $data['leagues'] = $this->model_pub->get_createdLeagues($id);
         
         $this->employer_header();
         $this->load->view('employer/EUpdateProf',$data);
