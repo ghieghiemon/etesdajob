@@ -226,6 +226,17 @@ class Model_jobseeker extends CI_Model {
             where slotid = $slotid");
         $db1->close();
     }
+    public function get_myschedule($appid,$schedid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $query = $db1->query("SELECT * from schedule_slots ss 
+                        join schedule s on s.scheduleid = ss.scheduleid
+                        where appid = $appid and s.scheduleid = $schedid
+                            ");
+        return $query->result_array();
+        $db1->close();
+    }
+    
     public function get_myapplications($userid){
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);

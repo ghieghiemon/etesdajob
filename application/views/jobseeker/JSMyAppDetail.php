@@ -4,10 +4,13 @@
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3 class="inModEm2">
-            <img src="assets/img/a10.jpg" style="width:90px">
-                <?php
-                foreach ($jobdetails as $a)
+            <?php
+            foreach ($jobdetails as $a)
                 {
+            ?>
+            <img src="<?php echo base_url()?>employerpics/<?php echo $a['companypic']?>" style="width:90px">
+                <?php
+                
                     echo $a['companyName'];
                 ?>
         </h3>
@@ -81,8 +84,8 @@
 	</div>
   
   	<div class="modal-footer"> 
-    	<button class="btn btn-info btn-mini">Done</button>
-        <button class="btn btn-danger btn-mini">Cancel</button>
+    	<button type="submit" class="btn btn-info btn-mini">Done</button>
+        <button data-dismiss="modal" class="btn btn-danger btn-mini">Cancel</button>
   	</div>
 </form>
 </div>
@@ -115,6 +118,7 @@
                                       <p class="vdDesc2"><font color ="blue"><strong>';
                                       foreach ($appdetails as $b)
                                       {
+                                          $sched = $this->model_jobseeker->get_myschedule($b['appid'],$b['scheduleid']);
                                        ?>   <font color="black">&nbsp; Status:&nbsp;</font>
                                           
                                               <?php
@@ -135,20 +139,30 @@
                                        {
                                            ?>
                                          <br>
-                                       <font color="black">&nbsp; Date and Time: </font>
-                                         <?php echo $b['requirementdate']; ?>
+                                         <?php
+                                        foreach($sched as $c)
+                                        {
+                                        ?>
+                                         <font color="black">&nbsp; Date and Time: </font>
+                                         <?php $c['scheduledate']; ?>
                                        
                                         <font color="black"> &nbsp;- &nbsp;</font>
-                                        <?php  echo $b['requirementtime']; ?>
+                                        <?php  $c['starttime']. " - ".$c['endtime']; ?>
                                         <br>
                                          <font color="black">&nbsp; Location: &nbsp;</font>
                                           <?php
-                                          echo $b['location']; 
+                                          echo $c['venue']; 
                                           ?>
                                           <br>
+                                        <?php
+                                        }
+                                        ?>
+                                       <?php if(empty($sched))
+                                        {?>
                                         <a href="#chSched" data-toggle="modal" class="more">
                                             Choose Schedule
                                         </a>
+                                          <?php }?>
                                           <?php
                                        }
                                       }

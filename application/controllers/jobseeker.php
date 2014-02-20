@@ -30,8 +30,8 @@ class Jobseeker extends CI_Controller {
         $data['briefcase'] = $this->model_jobseeker->js_briefcase($id);
         $data['notif'] = $this->model_jobseeker->get_notifications($id);
         
-        //$data['cert'] = $this->model_jobseeker->get_jobCerts($jobno);
-        //$data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
+        $data['id'] = $id;
+        
         
         
         $this->jobseeker_header();
@@ -50,6 +50,7 @@ class Jobseeker extends CI_Controller {
         $data['cert'] = $this->model_jobseeker->get_jobCerts($jobno);
         $data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
         $data['jobno'] = $jobno;
+        
         $this->model_jobseeker->seen_notif($jobno);
         
         foreach($appdetails as $a)

@@ -41,20 +41,43 @@ foreach ($invites as $a)
 <?php
 }
 ?>
+
 <!--end job invite content-->
- <!--choose schedule modal start-->
-<div class="modal hide fade" id="chSched">
+<?php 
+foreach ($myapp as $z)
+{
+?>
+ <div class="modal hide fade" id="chSched<?php echo $z['jobno']?>">
+    <form method="post" action="<?php echo base_url()?>jobseeker/add_schedule/<?php echo $z['jobno']?>"
+          <?php
+          $jobno = $z['jobno'];
+     $appdetails = $this->model_jobseeker->get_appdetails($jobno,$id);
+        $jobdetails = $this->model_jobseeker->get_jobdetails($jobno);
+        $myapps =$this->model_jobseeker->get_mysideapplications($id,$jobno);
+        
+        
+        foreach($appdetails as $a)
+        {
+            $scheduleid = $a['scheduleid'];
+        }
+        
+        $schedule = $this->model_jobseeker->get_schedule($scheduleid);
+        $scheduleslots = $this->model_jobseeker->get_scheduleSlots($scheduleid);
+     ?>
   	<div class="modal-header">
     	<a class="close" data-dismiss="modal">x</a>
     	<h3 class="inModEm2">
-            <img src="assets/img/a10.jpg" style="width:90px">
-                <?php
-                foreach ($jobdetails as $a)
+            <?php
+            foreach ($jobdetails as $a)
                 {
+            ?>
+            <img src="<?php echo base_url()?>employerpics/<?php echo $a['companypic']?>" style="width:90px">
+                <?php
+                
                     echo $a['companyName'];
                 ?>
         </h3>
-  	</div>
+  	
 
 	<div class="modal-body">
 		<p>
@@ -94,7 +117,7 @@ foreach ($invites as $a)
                 foreach ($scheduleslots as $a)
                 {
                 ?>
-            <input name="t<?php echo $ctr?>" class="checkbox" type="checkbox" value=""> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
+            <input name="check" class="checkbox" type="radio" value="<?php echo $a['slotid'];?>"> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
                 &nbsp;
                 <?php 
                 $ctr++;
@@ -124,10 +147,14 @@ foreach ($invites as $a)
 	</div>
   
   	<div class="modal-footer"> 
-    	<button class="btn btn-info btn-mini">Done</button>
-        <button class="btn btn-danger btn-mini">Cancel</button>
+    	<button type="submit" class="btn btn-info btn-mini">Done</button>
+        <button data-dismiss="modal" class="btn btn-danger btn-mini">Cancel</button>
   	</div>
+</form>
 </div>
+          <?php
+}
+?>
 <!--choose schedule modal end-->   
     <?php
 foreach($invites as $a)
@@ -506,8 +533,10 @@ foreach($invites as $a)
                         </thead>
                         <tbody class="recName">
                         <?php
+                       
                         foreach($myapp as $a)
                         {
+                             $sched = $this->model_jobseeker->get_myschedule($a['appid'],$a['scheduleid']);
                             echo '<tr>
                                 
                                 
@@ -546,9 +575,12 @@ foreach($invites as $a)
                                 ?>
                                 <div class="statusB">
                                     	For Exam <br>
-                                        <a href="#chSched" data-toggle="modal" class="more">
+                                        <?php if(empty($sched))
+                                        {?>
+                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
                                             Choose Schedule
                                         </a>
+                                        <?php }?>
                                     </div>
                                 <?php
                             }
@@ -556,10 +588,12 @@ foreach($invites as $a)
                             {
                                  ?>
                                 <div class="statusB">
-                                    	For Interview <br>
-                                        <a href="#chSched" data-toggle="modal" class="more">
+                                    	<?php if(empty($sched))
+                                        {?>
+                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
                                             Choose Schedule
                                         </a>
+                                        <?php }?>
                                     </div>
                                 <?php
                             }
@@ -569,13 +603,18 @@ foreach($invites as $a)
                             }
                             echo '
                                         <font class="more">';
-                            if($a['status']!= "New Applicant")
+                            if($a['status']!= "New Applicant" && $a['status'] != 'Denied')
                             {
-                                echo $a['requirementdate'];
+                                
+                                foreach($sched as $c)
+                                {
+                                echo $c['scheduledate'];
                                 echo '<br>';
-                                echo $a['requirementtime'];
+                                echo $c['starttime']. " - ".$c['endtime'];
                                 echo " at ";
-                                echo $a['location'];
+                                echo $c['venue'];
+                                }
+                                
                             }
                             echo '</font>
                                     </div>
