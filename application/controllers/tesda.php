@@ -5,11 +5,40 @@ class Tesda extends CI_Controller {
     public function tesda_dashboard()
     {
         $this->load->model('model_tesda');
-         $this->load->model('model_pub');
+        $this->load->model('model_pub');
+        $this->load->model('model_reports');
         $data['employerverify'] = $this->model_tesda->get_employertoverify();
-          $data['event'] = $this->model_tesda->all_events();
-           $data['leagues'] = $this->model_tesda->get_allleagues();
+        $data['event'] = $this->model_tesda->all_events();
+        $data['leagues'] = $this->model_tesda->get_allleagues();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
+           
+            
+            $activegrads = $this->model_reports->get_activeGraduates($year);
+           
+            $monthctr = 1;
+            
+            $reportdata = array();
+            
+            foreach($activegrads as $a){
+                $reportdata[$a['month(datereceived)']] = $a['COUNT(appid)'];
+            }
+            
+            //print_r($reportdata);
+            
+            $indexedReportData = array();
+            
+            
+            while($monthctr <=12){
+                if(isset($reportdata[$monthctr])){
+                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
+                }else{
+                    $indexedReportData[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+
+           // print_r($indexedReportData);
+            $data['indexedReportData'] = $indexedReportData;
         $this->tesda_header();
         $this->load->view('tesda/TesdaDash',$data);
            $this->load->view('footer');

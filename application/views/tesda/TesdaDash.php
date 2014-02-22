@@ -10,7 +10,74 @@
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+     <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script>
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Active and Inactive Applicants'
+            },
+            subtitle: {
+                text: 'TESDA'
+            },
+            xAxis: {
+                categories: [
+                    'Jan',
+                    'Feb',
+                    'Mar',
+                    'Apr',
+                    'May',
+                    'Jun',
+                    'Jul',
+                    'Aug',
+                    'Sep',
+                    'Oct',
+                    'Nov',
+                    'Dec'
+                ]
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Number of Users'
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} applicants</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{ name: 'Active Users',
+                      data: [ <?php
+                      $ctr = count($indexedReportData);
+                      foreach ($indexedReportData as $a)
+                      {
+                          echo $a;
+                          if($ctr > 1)
+                              echo ", ";
+                          $ctr--;
+                      }
+                      ?>
+                        ]}
+                ]
+        });
+    });
     
+		</script>
+           
 <!--invite modal start-->
 <div class="modal hide fade" id="invE">
   	<div class="modal-header">
@@ -216,74 +283,7 @@ foreach($employerverify as $a)
                 	<div class="well wellMarg wellUpMarg">
                     	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
                     	<div style="width:508px;height:295px;overflow:auto;"><!--start scrollable table-->
-                            
-                            <?php
-                            $count = 1;
-                            foreach ($leagues as $a)
-                            {
-                                if($count<3)
-                                {
-                            ?>
-                            <div class="row-fluid"> <!--start row fluid universal leagues-->
-                                <div class="span3">
-                                    <a data-toggle="modal" href="#">
-                                        <img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="pubLpic" alt="">
-                                    </a>
-                                </div> <!--end span3-->
-                                
-                                <div class="span8">
-                                    <p class="marg2 evDetails3">
-                                        <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>" class="Name4"><?php echo $a['leaguename']?></a><br>
-                                        <a href="<?php echo base_url('pub/search_industries/' . $a['leagueindustry']); ?>" class="label label-info">
-                                            <?php
-                                            $sector = $this->model_pub->get_industryName($a['leagueindustry']);
-                                            echo $sector;
-                                            ?>
-                                        </a>
-                                        <br>
-                                        
-                                        <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_003_user.png" width="11">
-<!--                                        by <a href="#" class="Name2">
-                                            
-                                            <?php
-//                                            $type = $this->model_pub->get_userType($a['createdby']);
-//                                            if($type == 'EMPLOYER')
-//                                                $by = $this->model_pub->get_companyName($a['createdby']);
-//                                            
-//                                            else if ($type == 'JOBADMIN')
-//                                                $by = 'TESDA';
-//                                            echo $by;
-                                            ?>
-                                        </a>-->
-                                        
-                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['createdby']?>" class="Name4">
-                                            <?php
-                                            $companyName = $this->model_pub->get_companyName($a['createdby']);
-                                            echo $companyName;
-                                            ?>
-                                        </a>
-                                        | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_054_clock.png" width="11"> since <?php echo $a['since']?> <br>
-                                    </p>
-                                    
-                                    <p class="evDetails3">
-                                        <?php echo $a['leaguedescription']?> <br>
-                                    
-                                      
-                                    </p>
-                                     <hr class="hrLeagTab">
-                                </div> <!--end span7-->
-                            </div> <!--end row-fluid-->
-                                <br>
-                            <?php
-                                    $count +=1;
-                                }
-                            }
-                            ?>
-                        <div align="right">
-                                <a href="<?php echo base_url()?>pub/leaguepage">
-                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
-                                </a>
-                            </div>
+                                                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div><!--end scrollable table-->
                     </div><!--end well-->
              
