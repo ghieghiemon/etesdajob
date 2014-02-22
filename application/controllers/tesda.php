@@ -312,8 +312,6 @@ class Tesda extends CI_Controller {
             $year = $this->input->post('year');
             $cert = $this->input->post('certs');
             
-            
-            //print_r($type);
             if( $type == 2)
             {
                 //echo "IN DEMAND JOBS";
@@ -350,6 +348,7 @@ class Tesda extends CI_Controller {
             {
                 redirect('report/annual_hired/'.$year);
             }
+            
         }
 }
 ?>

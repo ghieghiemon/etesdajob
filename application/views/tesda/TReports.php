@@ -25,7 +25,7 @@
                                ?> 
                               <br>
                             <select name="month" id="month" class="formlist">
-                           <option>Choose Month</option>
+                           <option value="0">Choose Month</option>
                              <option value = "1">January</option>
                             <option value = "2">February</option>
                             <option value = "3">March</option>
@@ -87,7 +87,7 @@
                             <br>
                             <select name="reporttype" id="cert">
                                 <option>Choose type of report</option>
-                                <option value = "1">Job Vacancies</option>
+                                <option value = "1">Executive Summary</option>
                                 <option value = "4">Employment per Industry</option>
                                 <option value = "5">Employment per Region</option>
                                 <option value = "2">In Demand Jobs</option>
@@ -99,7 +99,7 @@
                             
                             <br>
                             <select name="month" id="month" class="formlist">
-                           
+                           <option value="0">Choose Month</option>
                             <option value = "1">January</option>
                             <option value = "2">February</option>
                             <option value = "3">March</option>

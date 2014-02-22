@@ -23,7 +23,14 @@ class Report extends CI_Controller {
         function company_vacancies($month, $year){
             
             $this->load->model('model_reports');
-            $vacancies = $this->model_reports->get_company_vacancies($month, $year);
+            if($month == 0)
+            {
+                $vacancies = $this->model_reports->get_company_vacancies2($year);
+            }
+            elseif ($month != 0)
+            {
+                $vacancies = $this->model_reports->get_company_vacancies($month, $year);
+            }
             $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
             
@@ -95,7 +102,14 @@ class Report extends CI_Controller {
             
             $this->load->model('model_reports');
             $this->load->model('model_employer');
-            $vacancies = $this->model_reports->get_companyindustry_vacancies($month, $year,$cert);
+            if($month == 0)
+            {
+                $vacancies = $this->model_reports->get_companyindustry_vacancies2($year,$cert);
+            }
+            elseif ($month != 0)
+            {            
+                $vacancies = $this->model_reports->get_companyindustry_vacancies($month, $year,$cert);
+            }
             $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
             
@@ -108,7 +122,7 @@ class Report extends CI_Controller {
                                 
                               <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
                               <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
-                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;JOB VACANCIES REPORT</h3>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EXECUTIVE SUMMARY REPORT</h3>
                              </div>');
       
              
@@ -183,7 +197,14 @@ class Report extends CI_Controller {
 		
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
-                        $trends = $this->model_reports->get_indemand_jobs($month, $year);
+                        if($month == 0)
+                        {
+                            $trends = $this->model_reports->get_indemand_jobs2($year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $trends = $this->model_reports->get_indemand_jobs($month, $year);
+                        }
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			
@@ -253,7 +274,14 @@ class Report extends CI_Controller {
 		
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
-                        $trends = $this->model_reports->get_indemand_industries($month, $year);
+                        if($month == 0)
+                        {
+                            $trends = $this->model_reports->get_indemand_industries2( $year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $trends = $this->model_reports->get_indemand_industries($month, $year);
+                        }
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			
@@ -322,7 +350,14 @@ class Report extends CI_Controller {
 		
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
-                        $employment = $this->model_reports->get_employment_industry($month, $year);
+                        if($month == 0)
+                        {
+                            $employment = $this->model_reports->get_employment_industry2($year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $employment = $this->model_reports->get_employment_industry($month, $year);
+                        }  
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			
@@ -391,7 +426,14 @@ class Report extends CI_Controller {
 		
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
-                        $employment = $this->model_reports->get_employment_region($month, $year);
+                        if($month == 0)
+                        {
+                            $employment = $this->model_reports->get_employment_region2( $year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $employment = $this->model_reports->get_employment_region($month, $year);
+                        }
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			
@@ -460,7 +502,10 @@ class Report extends CI_Controller {
 		
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
+                        if($month == 0)
+            
                         $employment = $this->model_reports->get_bigContributor($month, $year);
+            
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			

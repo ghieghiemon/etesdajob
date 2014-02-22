@@ -31,7 +31,36 @@ class Model_reports extends CI_Model {
                     join etesda.reference_city c on c.cityid = j.city
 					join etesda.job_certifications jc on jc.jobno = j.jobno
                    where month(dateposted) = ? and year(dateposted) = ? and jc.ncid = ?";
-        $result = $dbconn->query($query1, array($month, $year,$sectorid))->result();
+        $result = $dbconn->query($query1, array($month,$year,$sectorid))->result();
+        $dbconn->close();
+        return $result;
+        
+    }
+    public function get_company_vacancies2($year){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        $query1 = "select j.jobno, j.companyID, j.jobtitle, j.vacanciesleft, j.description, j.expirationdate, e.companyName, c.city from etesda.job_vacancies j 
+                    join tesda_centraldb.employer_profile e on j.companyID = e.userID
+                    join etesda.reference_city c on c.cityid = j.city
+                   where year(dateposted) = ?";
+        $result = $dbconn->query($query1, array( $year))->result();
+        $dbconn->close();
+        return $result;
+        
+    }//end report JV
+    public function get_companyindustry_vacancies2( $year, $sectorid){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        $query1 = "select j.jobno, j.companyID, j.jobtitle, j.vacanciesleft, j.description, j.expirationdate, e.companyName, c.city from etesda.job_vacancies j 
+                    join tesda_centraldb.employer_profile e on j.companyID = e.userID
+                    join etesda.reference_city c on c.cityid = j.city
+					join etesda.job_certifications jc on jc.jobno = j.jobno
+                   where year(dateposted) = ? and jc.ncid = ?";
+        $result = $dbconn->query($query1, array($year,$sectorid))->result();
         $dbconn->close();
         return $result;
         
@@ -52,12 +81,7 @@ class Model_reports extends CI_Model {
   
         $dbconn = $this->load->database('local', TRUE);
         $dbconn2 = $this->load->database('default', TRUE);
-        //insert query
-//        $query1 = "select COUNT(*) as noapplicants,j.jobtitle, s.sectorName from etesda.applications a 
-//        join etesda.job_vacancies j on j.jobno = a.jobno 
-//        join tesda_centraldb.sectors s on j.sectorid = s.sectorID
-//        where month(j.dateposted) = ? and year(j.dateposted) = ?
-//        group by a.jobno order by noapplicants DESC limit 15";
+
         $query1 = "SELECT count(v.jobno) as totalopenings, n.ncname, n.level from etesda.job_vacancies v 
                               JOIN etesda.job_certifications c ON c.jobno = v.jobno
                               JOIN tesda_centraldb.nc_reference n ON c.ncid = n.ncid
@@ -73,12 +97,6 @@ class Model_reports extends CI_Model {
   
         $dbconn = $this->load->database('local', TRUE);
         $dbconn2 = $this->load->database('default', TRUE);
-        //insert query
-//        $query1 = "select COUNT(*) as noapplicants, s.sectorName from etesda.applications a 
-//        join etesda.job_vacancies j on j.jobno = a.jobno 
-//        join tesda_centraldb.sectors s on j.sectorid = s.sectorID
-//        where month(j.dateposted) = ? and year(j.dateposted) = ?
-//        group by j.sectorid order by noapplicants DESC limit 15";
         $query1 = "SELECT count(j.jobno) as totalopenings,s.* from etesda.job_vacancies j 
                               JOIN tesda_centraldb.sectors s ON j.sectorid = s.sectorID
                               where month(j.dateposted) = ? and year(j.dateposted) = ?
@@ -126,7 +144,73 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();  
     }
+     public function get_indemand_jobs2($year){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+
+        $query1 = "SELECT count(v.jobno) as totalopenings, n.ncname, n.level from etesda.job_vacancies v 
+                              JOIN etesda.job_certifications c ON c.jobno = v.jobno
+                              JOIN tesda_centraldb.nc_reference n ON c.ncid = n.ncid
+                              where year(v.dateposted) = ?
+                              GROUP BY c.ncid ORDER BY totalopenings DESC limit 15";
+        $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();
+        
+    }//end report Indemand jobs
     
+     public function get_indemand_industries2($year){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        $query1 = "SELECT count(j.jobno) as totalopenings,s.* from etesda.job_vacancies j 
+                              JOIN tesda_centraldb.sectors s ON j.sectorid = s.sectorID
+                              where year(j.dateposted) = ?
+                              GROUP BY j.sectorid ORDER BY totalopenings DESC limit 15";
+        $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();
+        
+        //print_r($result);
+        
+    }//end report Indemand jobs
+    
+     public function get_employment_industry2($year){
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        
+        
+        $query1 = "select COUNT(*) as noapplicants, s.sectorName from etesda.applications a 
+        join etesda.job_vacancies j on j.jobno = a.jobno 
+        join tesda_centraldb.sectors s on j.sectorid = s.sectorID
+        where year(j.dateposted) = ? and a.status = 'Hired'
+        group by j.sectorid order by noapplicants DESC limit 15";
+        $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();
+        
+        //print_r($result);
+        
+    }//end report Indemand jobs
+    public function get_employment_region2($year)
+    {
+  
+        $dbconn = $this->load->database('local', TRUE);
+        $dbconn2 = $this->load->database('default', TRUE);
+        //insert query
+        $query1 = "select COUNT(*) as noapplicants, s.sectorName, r.region  from etesda.applications a 
+        join etesda.job_vacancies j on j.jobno = a.jobno 
+        join tesda_centraldb.sectors s on j.sectorid = s.sectorID
+		join etesda.reference_region r on r.regionid = j.region
+        where year(j.dateposted) = ? and a.status = 'Hired'
+        group by r.region order by noapplicants DESC limit 15";
+        $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();  
+    }
     public function get_vacancies($year,$id)
     {
         $dbconn = $this->load->database('local', TRUE);
