@@ -679,6 +679,14 @@ class Model_employer extends CI_Model {
         else return 0;
         $db1->close();
     }
+    public function change_employment($appid)
+    {
+        $db1 = $this->load->database('default', TRUE);
+        
+        $db1->query("UPDATE applicants SET employment = 1 where appid = $appid");
+        
+        $db1->close();
+    }
      public function add_schedule($scheduledate,$what, $venue, $contactperson, $contactno,$applicationid)
     {
         $db1 = $this->load->database('local', TRUE);

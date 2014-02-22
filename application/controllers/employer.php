@@ -700,6 +700,7 @@ class Employer extends CI_Controller {
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $status = $this->input->post('group1');
         $details = $this->model_employer->get_jobdetails($jobno);
+        $appid = $this->model_employer->get_appid($applicationid);
             foreach ($details as $b)
             {
                 $jobtitle = $b['jobtitle'];
@@ -709,13 +710,14 @@ class Employer extends CI_Controller {
         if ($status == "Hired")
         {
             $this->model_employer->fill_vacancy($jobno);
+            $this->model_employer->change_employment($appid);
             $notif = "We at $name are pleased to announce that you have been accepted as $jobtitle!";
         } 
         else if ($status == "Denied")
         {
             $notif = "We have reviewed your qualifications and, unfortunately, are not able to pursue your application for $jobtitle further.";
         }
-        $appid = $this->model_employer->get_appid($applicationid);
+        
         $left = $this->model_employer->change_status($status,$applicationid,$jobno); 
         
         $this->model_employer->add_notification($appid,$notif,$jobno);
