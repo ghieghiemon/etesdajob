@@ -11,24 +11,25 @@ class Tesda extends CI_Controller {
         $data['event'] = $this->model_tesda->all_events();
         $data['leagues'] = $this->model_tesda->get_allleagues();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
-           
-            
-            $activegrads = $this->model_reports->get_activeGraduates(date("Y"));
-           
+           $year =date("Y");
+          $annualgrads = $this->model_reports->get_annualGraduates($year-1,$year);
+            $hiredgrads = $this->model_reports->get_hiredGraduates($year-1,$year);
             $monthctr = 1;
             
             $reportdata = array();
-            
-            foreach($activegrads as $a){
-                $reportdata[$a['month(datereceived)']] = $a['COUNT(appid)'];
+            $reportdata2 = array();
+            foreach($annualgrads as $a){
+                $reportdata[$a['dateacquired']] = $a['count'];
             }
-            
+            foreach($hiredgrads as $b){
+                $reportdata2[$b['dateacquired']] = $b['count'];
+            }
             //print_r($reportdata);
             
             $indexedReportData = array();
             
             
-            while($monthctr <=12){
+            while($monthctr <= 2){
                 if(isset($reportdata[$monthctr])){
                     $indexedReportData[$monthctr] = $reportdata[$monthctr];
                 }else{
@@ -36,12 +37,23 @@ class Tesda extends CI_Controller {
                 }
                 $monthctr++;
             }
-
-           // print_r($indexedReportData);
-            $data['indexedReportData'] = $indexedReportData;
+            
+            $indexedReportData2 = array();
+            $monthctr = 1;
+            
+            while($monthctr <=2){
+                if(isset($reportdata2[$monthctr])){
+                    $indexedReportData2[$monthctr] = $reportdata2[$monthctr];
+                }else{
+                    $indexedReportData2[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+            $data['indexedReportData'] = $reportdata;
+            $data['indexedReportData2'] = $reportdata2;
         $this->tesda_header();
         $this->load->view('tesda/TesdaDash',$data);
-           $this->load->view('footer');
+           $this->load->view('footer2');
     }
     public function tesda_header()
     {
