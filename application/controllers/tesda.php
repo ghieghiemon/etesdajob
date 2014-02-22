@@ -4,16 +4,16 @@ class Tesda extends CI_Controller {
 
     public function tesda_dashboard()
     {
+        $this->load->model('model_reports');
         $this->load->model('model_tesda');
         $this->load->model('model_pub');
-        $this->load->model('model_reports');
         $data['employerverify'] = $this->model_tesda->get_employertoverify();
         $data['event'] = $this->model_tesda->all_events();
         $data['leagues'] = $this->model_tesda->get_allleagues();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
            
             
-            $activegrads = $this->model_reports->get_activeGraduates($year);
+            $activegrads = $this->model_reports->get_activeGraduates(date("Y"));
            
             $monthctr = 1;
             
