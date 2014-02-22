@@ -120,9 +120,7 @@
                     <hr class="hrPro">
                     	
                         <div class="row-fluid">
-                        	<div class="pull-right ">
-                            	<a href="#" class="btn btn-primary btn-mini">Done</a>
-                            </div>
+                        
                         </div><!--end row-fluid-->
                     	<table class="tblMarg">
                         	<thead>
@@ -134,19 +132,26 @@
                             
                             <tbody>
                             	<tr>
+                                     <?php
+                                        foreach($profile as $a)
+                                        {
+                                            ?>
                                 	<td>
-                                    	<img src="<?php echo base_url()?>assets/bootstrap/img/a10.jpg" class="thumbnail11">
+                                    	<img src="<?php echo base_url()?>employerpics/<?php echo $a['companypic']?>" class="thumbnail11">
                                     </td>
                                     
                                     <td>
                                         <div class="control-group"><!-- start div nm-->
                                             <div class="myStyleEPrN">
+                                                       <form method ="post" action ="<?php echo base_url()?>employer/employer_editprofile/">
                                                 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_352_nameplate.png" width="20"> &nbsp;
-                                                 <?php
-                                        foreach($profile as $a)
-                                        {
-                                            ?>
-                                                <input type="text" id="nm" name="nm" value="<?php echo $a['companyName']?>">
+                               
+                                         
+                  <div class="pull-right ">
+<button type="submit" class="btn btn-primary btn-mini">Done</button>
+</div>                               
+
+                                                <input type="text" id="CName" name="CName" value="<?php echo $a['companyName']?>">
                                                  
                                             </div>
                                         </div><!-- end div name -->
@@ -159,26 +164,6 @@
                                                 
                                               
                                                 	<tr>
-<!--                                                    	<td class="lLabel4">
-                                                        	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_089_building.png" width="15">  INDUSTRY:
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        
-                                                                <div class="myStyleEPr2">
-                                                                    
-                                                                    <select id="ind" name="ind">
-                                                                
-                                                                        <option value='<?php echo $a['companyIndustry']?>' </option>
-                                                                   
-                                                                    </select>
-
-                                                                   
-                                                                
-                                                                </div>
-                                                   
-                                                        	
-                                                        </td>-->
                                                         
                                                         <td class="lLabel4">
                                                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_419_e-mail.png" width="15"> COMPANY EMAIL: 
@@ -187,7 +172,7 @@
                                                         <td>
                                                         	
                                                                 <div class="myStyleEPrB">
-                                                                    <input  style="width:100%" type="text" id="ce" name="ce" value="<?php echo $a['companyEmail']?>">
+                                                                    <input  style="width:100%" type="text" id="CE" name="CE" value="<?php echo $a['companyEmail']?>">
                                                                 </div>
                                                            
                                                         	
@@ -201,7 +186,7 @@
                                                         <td>
                                                         	<div class="control-group"><!-- start div cn-->
                                                                 <div class="myStyleEPrB">
-                                                                    <input style="width:100%" type="text" id="cn" name="cn" value="<?php echo $a['companyContact']?>">
+                                                                    <input style="width:100%" type="text" id="CN" name="CN" value="<?php echo $a['companyContact']?>">
                                                                 </div>
                                                             </div><!-- end div cn-->
                                                         	
@@ -209,6 +194,7 @@
                                                     </tr>
                                        
                                               </table>
+
                                               <table class="proPIMarg" style="margin-left:-5px;">
                                           
                                               
@@ -220,7 +206,7 @@
                                                         <br>
                                                         <td>
                                                         	
-                                                                    <input type="text" id="ADD" name="ADD" value="<?php echo $a['companyContactPerson']?>">
+                                                                    <input type="text" id="CP" name="CP" value="<?php echo $a['companyContactPerson']?>">
                                                            
                                                         </td>
                                           
@@ -231,7 +217,7 @@
                                                         <td>
                                                         	
                                                                 <div class="myStyleEPrN">
-                                                                          <textarea type="text" rows="4" id="desc" name="desc"><?php echo $a['companyLocations']?></textarea>
+                                                                          <textarea type="text" rows="4" id="Br" name="Br"><?php echo $a['companyLocations']?></textarea>
                                                                    
                                                                 </div>
                                                           
@@ -251,6 +237,7 @@
                                 </tr>
                             </tbody>
                         </table>
+
                         
                         <hr class="hrPro">
                         
@@ -263,14 +250,14 @@
                                         </h4>
                                         
                                         <div style="width:500px;height:80px;overflow:auto;"><!--start scrollable table-->
-                                        <textarea class="span12" rows="3" ><?php echo $a['companyBG']?></textarea>
+                                        <textarea id="CB" name="CB" class="span12" rows="3" ><?php echo $a['companyBG']?></textarea>
                                         </div><!--end scrollable-->
                                         <?php
                                         }
                                             ?>
                                     
                                         
-                                     
+
                                         
                                         
                                     </div><!--end well-->
@@ -290,6 +277,10 @@
        	 
     	</div><!--end well-->
    	</div> <!--end span12-->
+        
+
+</form>
+                                                
     </div> <!--end row-->
     </div> <!--end div-->
     </div> <!--end container-->

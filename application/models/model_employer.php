@@ -1129,5 +1129,25 @@ public function check_if_linvite($id, $lno)
       $db1->query($sql,array($userid,$eventno));
       
     }
+    
+       public function update_edetails($userid,$cname,$cb,$cp,$ce,$cn,$br)
+   {
+        $db2 = $this->load->database('default', TRUE);
+
+        $db2->query("UPDATE employer_profile SET companyName = '$cname' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET companyBG = '$cb' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET companyContactPerson = '$cp' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET companyEmail = '$ce' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET companyContact = '$cn' WHERE userid = $userid");
+        $db2->query("UPDATE employer_profile SET  companyLocations = '$br' WHERE userid = $userid");
+
+     
+   
+        
+         $db2->close();
+
+        
+    
+    }
 }
 ?>
