@@ -1434,6 +1434,27 @@ class Employer extends CI_Controller {
         $this->load->view('employer/EUpdateProf',$data);
          $this->load->view("footer");
     }
+      public function employer_editprofile()
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+  
+       $userid= $this->model_main->get_userid($this->session->userdata('email'));
+       // $userid = $this->model_employer->get_userid($id);
+       
+
+           
+                $cname = $this->input->post('CName');
+                $cb = $this->input->post('CB');
+                $cp = $this->input->post('CP');
+                $ce = $this->input->post('CE');
+                $cn = $this->input->post('CN');
+                $br = $this->input->post('Br');
+                
+        $this->model_employer->update_edetails($userid,$cname,$cb,$cp,$ce,$cn,$br);
+            redirect(base_url()."employer/employer_profilepage/");
+
+    }
     
 }
 ?>
