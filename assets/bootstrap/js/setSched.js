@@ -201,7 +201,8 @@ $(document).ready(function(){
                  while(newtimeH <= parseInt(timeTH)){
                      
                      if(duration == "30"){
-                         parseInt(newtimeM) +=30;
+                           newtimeM = parseInt(newtimeM);
+                        newtimeM +=30;
                          
                          if(newtimeM >= 60){
                              newtimeH++;
