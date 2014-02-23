@@ -258,6 +258,7 @@ foreach($employerverify as $a)
                         	<table id ="newtabletd" >
                             	<thead>
                                 	<tr>
+                                        <th class="span3">Date Registered</th>
                                         <th class="span3">Company Name</th>
                                         <th class="span3">License Number</th>
                                         <th class="span2"></th>
@@ -270,11 +271,20 @@ foreach($employerverify as $a)
                                 {
                                 ?>
                                 	<tr>
-                                        <td>
-                                        	<a href="#" class="recAppName">
-                                                <?php echo $a['companyName']?>
-                                            </a>
+                                               <td>
+                                        	<?php echo $a['dateregistered']?>
                                         </td>
+                                        <td>
+                                        	
+                                                  <a href="<?php echo base_url()?>tesda/employer_profilepage/<?php echo $a['userID']?>" class="Name4">
+                                            <?php
+                                            $companyName = $this->model_pub->get_companyName($a['userID']);
+                                            echo $companyName;
+                                            ?>
+                                        </a>
+                                        </td>
+                                        
+                                        
                                         
                                         <td>
                                         	<?php echo $a['license']?>

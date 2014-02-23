@@ -391,5 +391,19 @@ class Tesda extends CI_Controller {
             }
             
         }
+        
+           public function employer_profilepage($id)
+   {
+        $this->load->model('model_pub');
+        
+        $data['profile'] = $this->model_pub->get_employerProfile($id);
+        $data['postedvacancies'] = $this->model_pub->get_postedVacancies($id);
+        $data['events'] = $this->model_pub->get_postedEvents($id);
+        $data['leagues'] = $this->model_pub->get_createdLeagues($id);
+                
+           $this->tesda_header();
+        $this->load->view("tesda/TEmployerProfile",$data);
+        $this->load->view("footer");
+   }
 }
 ?>
