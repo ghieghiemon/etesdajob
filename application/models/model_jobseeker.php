@@ -818,7 +818,7 @@ class Model_jobseeker extends CI_Model {
         $db2->close();
     }
     
-          public function update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ){
+          public function update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ,$ref1name,$ref1contact,$ref1relation,$ref2name,$ref2contact,$ref2relation){
      
         $db2 = $this->load->database('default', TRUE);
         $db2->query("UPDATE applicants SET firstname = '$fn' WHERE userID = $userid");
@@ -829,6 +829,15 @@ class Model_jobseeker extends CI_Model {
       //  $db2->query("UPDATE applicants SET telno = '$tn' WHERE userID = $userid");
         $db2->query("UPDATE applicants SET cellno = '$cn' WHERE userID = $userid");
         $db2->query("UPDATE applicants SET civilstatus = '$civ' WHERE userID = $userid");
+        
+        $db2->query("UPDATE applicants SET ref1name = '$ref1name' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET ref1contact = '$ref1contact' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET ref1relation = '$ref1relation' WHERE userID = $userid");
+        
+           $db2->query("UPDATE applicants SET ref2name = '$ref2name' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET ref2contact = '$ref2contact' WHERE userID = $userid");
+        $db2->query("UPDATE applicants SET ref2relation = '$ref2relation' WHERE userID = $userid");
+    
 
                   
            $db2->close();

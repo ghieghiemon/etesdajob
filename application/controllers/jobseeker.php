@@ -233,9 +233,19 @@ class Jobseeker extends CI_Controller {
             $brgy = $this->input->post('brgy');
             $district = $this->input->post('dis');
             $cityprov = $this->input->post('cityid');
+            
+            $ref1name = $this->input->post('ref1name');
+            $ref1contact = $this->input->post('ref1contact');
+            $ref1relation = $this->input->post('ref1relation');
+            
+               $ref2name = $this->input->post('ref2name');
+            $ref2contact = $this->input->post('ref2contact');
+            $ref2relation = $this->input->post('ref2relation');
+            
+            
          //   $employerpic = $u['file_name'];
 
-            $this->model_jobseeker->update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ);
+            $this->model_jobseeker->update_jsdetails($userid,$fn,$mn,$ln,$bday,$gender,$cn,$civ,$ref1name,$ref1contact,$ref1relation,$ref2name,$ref2contact,$ref2relation);
             $appid = $this->model_main->get_jsappid($userid);
             $this->model_jobseeker->update_jsadd($appid,$streetno,$brgy,$district,$cityprov);
 

@@ -220,8 +220,26 @@
                                                         echo $a['district'];
                                                         echo ' ';
                                                         echo $a['cityprov'];
+                                                         echo '<br>';
                                                         echo '</td>
                                                     </tr>
+                                                    
+    <tr>
+                                                    	<td class="lLabel4">
+                                                        	<img src="'.base_url().'assets/img/icons/glyphicons_419_e-mail.png" width="15"> REFERENCE 1: <br>                                                        </td>
+                                                     
+                                                          <td>';
+                                                        echo '<strong> NAME:  </strong>';  
+                                                        echo $a['ref1name'];
+                                                        echo '<br> ';   
+                                                         echo '<strong> Contact No.  :  </strong>';  
+                                                        echo $a['ref1contact'];
+                                                        echo '<br>';
+                                                         echo '<strong> Relationship:  </strong>';  
+                                                        echo $a['ref1relation'];
+                                                        echo '</td>
+                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                             </div>
