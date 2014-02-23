@@ -94,7 +94,7 @@
                                                                     <strong>CONTACTNO. <?php echo $a['companyContact']?></strong>
                                                                     
                                                                     <br>
-                                                                    <strong>ADDRESS:</strong> 60 Dr. Sixto Ave. cor. Dr. Pilapil St., Sagad, Pasig City 1552
+                                                                    <strong>ADDRESS:<?php echo $a['companyLocations']?></strong>
                                                                     
                                                                     <br>
                                                                     <strong>CONTACT PERSON:</strong> <?php echo $a['companyContactPerson']?>

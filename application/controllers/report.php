@@ -655,7 +655,7 @@ class Report extends CI_Controller {
             $monthctr = 1;
             
             $reportdata = array();
-            
+                 $reportdata2 = array();
             foreach($annualgrads as $a){
                 $reportdata[$a['dateacquired']] = $a['count'];
             }

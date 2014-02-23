@@ -1,5 +1,5 @@
 
- <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
+<!-- <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
     
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
@@ -9,59 +9,71 @@
  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/regions.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/region.js"></script>-->
      <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script>
 $(function () {
-        $('#container').highcharts({
+        $('#container1').highcharts({
             chart: {
-                type: 'column'
+                zoomType: 'xy'
             },
             title: {
-                text: 'Active and Inactive Applicants'
+                text: 'Annual Graduates Vs. Hired Graduates'
             },
             subtitle: {
                 text: 'TESDA'
             },
-            xAxis: {
-                categories: [
-                    'Jan',
-                    'Feb',
-                    'Mar',
-                    'Apr',
-                    'May',
-                    'Jun',
-                    'Jul',
-                    'Aug',
-                    'Sep',
-                    'Oct',
-                    'Nov',
-                    'Dec'
-                ]
-            },
-            yAxis: {
-                min: 0,
+            xAxis: [{
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
                 title: {
-                    text: 'Number of Users'
+                    text: 'No. of Graduates',
+                    style: {
+                        color: '#89A54E'
+                    }
                 }
-            },
+            }, { // Secondary yAxis
+                title: {
+                    text: 'Rainfall',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                labels: {
+                    format: '{value}',
+                    style: {
+                        color: '#4572A7'
+                    }
+                },
+                opposite: true
+            }],
             tooltip: {
-                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} applicants</b></td></tr>',
-                footerFormat: '</table>',
-                shared: true,
-                useHTML: true
+                shared: true
             },
-            plotOptions: {
-                column: {
-                    pointPadding: 0.2,
-                    borderWidth: 0
-                }
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 100,
+                floating: true,
+                backgroundColor: '#FFFFFF'
             },
-            series: [{ name: 'Active Users',
-                      data: [ <?php
+            series: [{
+                name: 'Annual Graduates',
+                color: '#4572A7',
+                type: 'column',
+                yAxis: 1,
+                data: [<?php
                       $ctr = count($indexedReportData);
                       foreach ($indexedReportData as $a)
                       {
@@ -70,12 +82,33 @@ $(function () {
                               echo ", ";
                           $ctr--;
                       }
-                      ?>
-                        ]}
-                ]
+                      ?>],
+                tooltip: {
+                    valueSuffix: ' mm'
+                }
+    
+            }, {
+                name: 'Hired Graduates',
+                color: '#89A54E',
+                type: 'spline',
+                data: [<?php
+                      $ctr = count($indexedReportData2);
+                      foreach ($indexedReportData2 as $b)
+                      {
+                          echo $b;
+                          if($ctr > 1)
+                              echo ", ";
+                          $ctr--;
+                      }
+                      ?>],
+                tooltip: {
+                    valueSuffix: '°C'
+                }
+            }]
         });
     });
     
+
 		</script>
            
 <!--invite modal start-->
@@ -283,7 +316,7 @@ foreach($employerverify as $a)
                 	<div class="well wellMarg wellUpMarg">
                     	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
                     	<div style="width:508px;height:295px;overflow:auto;"><!--start scrollable table-->
-                                                <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                                                <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div><!--end scrollable table-->
                     </div><!--end well-->
              
