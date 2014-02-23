@@ -24,7 +24,7 @@ $(document).ready(function(){
         if(this.checked) {
            name= $('#chkeName',$(this).closest("td")).val();
             recepients.push(name);
-            alert(recepients);
+           
         }else{
             name = $('#chkeName',$(this).closest("td")).val();
             var index = recepients.indexOf(name);
@@ -136,6 +136,88 @@ $(document).ready(function(){
       
       if(timeFD[1] == "AM" && timeTD[1] == "PM"){
           
+           if(timeTM == "00" && timeFM == "00"){
+              
+                 var newtimeH = parseInt(timeFH);
+                 var newtimeM = parseInt(timeFM);
+                 var oldtimeH = timeFH;
+                 var oldtimeM = timeFM;
+                 while(newtimeH < parseInt(timeTH)+12){
+                    
+                     if(duration == ".5"){
+                        newtimeM = parseInt(newtimeM);
+                        newtimeM +=30;
+                         
+                         if(newtimeM >= 60){
+                             newtimeH++;
+                             newtimeM = "00";
+                         }
+                         
+                         if(parseInt(newtimeH) > 12){
+                               var temptimeFH = oldtimeH;
+                               
+                               if(parseInt(oldtimeH)> 12){
+                                   temptimeFH = oldtimeH-12
+                               }
+                               
+                               var temptimeTH = parseInt(newtimeH)-12;
+                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                           
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }else if(duration == "1"){
+                       
+                         newtimeH++;
+                         newtimeM = "00";
+                         
+                           if(parseInt(newtimeH) > 12){
+                               var temptimeFH = oldtimeH;
+                               
+                               if(parseInt(oldtimeH)> 12){
+                                   temptimeFH = oldtimeH-12
+                               }
+                               
+                               var temptimeTH = parseInt(newtimeH)-12;
+                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                         
+                        
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }else if(duration == "2"){
+                        
+                         newtimeH+=2;
+                         
+                         newtimeM = "00";
+                         
+                         if(parseInt(newtimeH) > 12){
+                               var temptimeFH = oldtimeH;
+                               
+                               if(parseInt(oldtimeH)> 12){
+                                   temptimeFH = oldtimeH-12
+                               }
+                               
+                               var temptimeTH = parseInt(newtimeH)-12;
+                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                           
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }
+                     
+                     
+                 }
+                  
+              }
+          
+          
       }else{ // SAME  SILA AM OR PM
 //          alert(timeFH);
 //          alert(timeTH);
@@ -160,7 +242,7 @@ $(document).ready(function(){
                  var oldtimeM = timeFM;
                  while(newtimeH < parseInt(timeTH)){
                     
-                     if(duration == "30"){
+                     if(duration == ".5"){
                          newtimeM = parseInt(newtimeM);
                         newtimeM +=30;
                          
@@ -200,13 +282,13 @@ $(document).ready(function(){
                  var oldtimeM = timeFM;
                  while(newtimeH <= parseInt(timeTH)){
                      
-                     if(duration == "30"){
+                     if(duration == ".5"){
                            newtimeM = parseInt(newtimeM);
                         newtimeM +=30;
                          
                          if(newtimeM >= 60){
                              newtimeH++;
-                             newtimeM = 60-newtimeM;
+                             newtimeM = newtimeM-60;
                          }
                          
                          htmlOutput += ' '+ oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
@@ -215,7 +297,20 @@ $(document).ready(function(){
                     }else if(duration == "1"){
                          newtimeH++;
                          newtimeM = "00";
-                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         
+                       if(parseInt(newtimeH) > 12){
+                               var temptimeFH = oldtimeH;
+                               
+                               if(parseInt(oldtimeH)> 12){
+                                   temptimeFH = oldtimeH-12
+                               }
+                               
+                               var temptimeTH = parseInt(newtimeH)-12;
+                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                           
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }
