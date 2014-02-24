@@ -254,6 +254,8 @@
                                                             </div><!-- end div cs -->	
                                                         </td>
                                                     </tr>
+                                                 
+                                                
                                                     
                                                 </tbody>
                                             </table>
@@ -332,15 +334,68 @@
                                                   ?>">
                                                         	<strong> City/ Prov</strong>
                                                                 
-                                                            
-                                                                <?php
-                                                                }
-                                                                ?>
+                                                          
                                                         </td>
                                                                <br>
                                                                
                                                     </tr>
-
+                                                          </tbody>
+                                                          </table>
+                                                                            <hr class="hrPro">
+                                                     	<table class="proPIMarg3">
+                                            	<thead>
+                                                	<tr>
+                                                    	<th class="span4"></th>
+                                                        <th class="span7"></th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody class="proPI">
+                                                        <tr>
+                                                    	<td class="lLabel4">
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="15"> Reference 1: 
+                                                        </td>
+                                                        
+                                                        <td>
+                                                        	<div class="control-group"><!-- start div cs-->
+                                                                <div class="myStyleEPr2">
+                                            <input style="width:170px;" type="text" id="ref1name" name="ref1name" value="<?php echo $a['ref1name'];
+                                                    
+                                                  ?>"><strong> Name</strong>
+                                               <input style="width:170px;" type="text" id="ref1contact" name="ref1contact" value="<?php echo $a['ref1contact'];
+                                                    
+                                                  ?>"><strong> Contact No.</strong>
+                                                  <input style="width:170px;" type="text" id="ref1relation" name="ref1relation" value="<?php echo $a['ref1relation'];
+                                                    
+                                                  ?>"><strong> Rel.</strong>
+                                                                </div>
+                                                            </div><!-- end div cs -->	
+                                                        </td>
+                                                    </tr>
+                                                               <tr>
+                                                    	<td class="lLabel4">
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="15"> Reference 2: 
+                                                        </td>
+                                                        
+                                                        <td>
+                                                        	<div class="control-group"><!-- start div cs-->
+                                                                <div class="myStyleEPr2">
+                                            <input style="width:170px;" type="text" id="ref2name" name="ref2name" value="<?php echo $a['ref2name'];
+                                                    
+                                                  ?>"><strong> Name</strong>
+                                               <input style="width:170px;" type="text" id="ref2contact" name="ref2contact" value="<?php echo $a['ref2contact'];
+                                                    
+                                                  ?>"><strong> Contact No.</strong>
+                                                  <input style="width:170px;" type="text" id="ref2relation" name="ref2relation" value="<?php echo $a['ref2relation'];
+                                                    
+                                                  ?>"><strong> Rel.</strong>
+                                                                </div>
+                                                            </div><!-- end div cs -->	
+                                                        </td>
+                                                    </tr>
+       <?php
+                                                                }
+                                                                ?>
                                                 </tbody>
                                             </table>
                                             </div>
@@ -479,6 +534,32 @@
                                             ;
                                                 }
                                                 ?>
+                                            <br>
+                                            <table>
+                                                    <?php 
+                                                                foreach($jsdetails as $a)
+                                                                {
+                                                                ?>
+                                               <tr>
+                                                    	<td class="lLabel4">
+                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="15"> Reference 1: 
+                                                        </td>
+                                                        
+                                                        <td>
+                                                        	<div class="control-group"><!-- start div cs-->
+                                                                <div class="myStyleEPr2">
+                                            <input style="width:170px;" type="text" id="ref1name" name="ref1name" value="<?php echo $a['ref1name'];
+                                                    
+                                                  ?>">
+                                                                </div>
+                                                            </div><!-- end div cs -->	
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                    </table>
 <!--                                        <div class="control-group"> start div CoN 
                                             <div class="myStyleEPrCN">
                                                 
