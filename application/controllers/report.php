@@ -497,7 +497,85 @@ class Report extends CI_Controller {
 	
   
         }
-        
+        function scholar_employment($month, $year){
+		
+                        $this->load->model('model_reports');
+			$this->load->helper('mpdf'); 
+                        if($month == 0)
+                        {
+                            $employment = $this->model_reports->get_scholars2($year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $employment = $this->model_reports->get_scholars($month, $year);
+                        }
+			$mpdf = new mPDF();
+                        $mpdf->setFooter('{PAGENO}');
+			
+                       $mpdf->WriteHTML('<html><div style="text-align:center;">
+                             
+                              
+                              <img src="' . base_url() . 'assets/img/tesda.jpg" width="30" height="30" style="margin-top:2%;">   
+                                
+                              <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
+                              <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EXECUTIVE SUMMARY REPORT</h3>
+                             </div>');
+      
+             
+              $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
+                             <table>
+                              <tbody>
+                                <tr>
+                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                    <td width="350">Year: ' . $year . ' &nbsp;</td>
+                                </tr>
+                                
+                              </tbody>
+                              
+                              </table>
+                              </div>
+                             
+                                      <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
+                              <tr>
+                        
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Name</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Certificate</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Date Acquired</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Employment Status</th>
+                              
+                                </tr>
+                             ');
+            foreach($employment as $job):
+                
+               $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->firstname . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->ncname . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->dateacquired . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' );
+                                    if($job->employment == 1)
+                                         $mpdf->writeHTML('Employed');
+                                    else
+                                         $mpdf->writeHTML('Unemployed');
+
+            $mpdf->writeHTML('</td> 
+
+                             </tr>');
+                              
+                
+            endforeach;
+            
+            $mpdf->writeHTML('</table></html>');
+            
+            //print_r($employment);
+    
+            $mpdf->Output();
+            exit;
+	
+  
+        }
            function big_contribute($month, $year){
 		
                         $this->load->model('model_reports');
@@ -536,9 +614,9 @@ class Report extends CI_Controller {
                              
                                       <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
                               <tr>
-                        
+                                                        <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Company Name</th>
+
                                 <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Job Vacancies</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Company Name</th>
                               
                                 
                               
@@ -549,9 +627,9 @@ class Report extends CI_Controller {
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
-                                    
+                                                                        <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->companyName . '</td> 
+
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->vacancies . '</td> 
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->companyName . '</td> 
                                     
                                         
                                    

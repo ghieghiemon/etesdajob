@@ -261,6 +261,33 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
+    public function get_scholars($month,$year)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "select * from applicants_certificates c join applicants a on a.appid = c.appid
+                join nc_reference n on c.certificateid = n.ncid where a.scholar = 1
+                and year(c.dateacquired) = ? and month(c.dateacquired) = ?
+                group by a.appid ";
+        
+        $result = $dbconn->query($query1, array($year,$month))->result();
+        return $result;
+        $dbconn->close();
+    }
+    public function get_scholars2($year)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "select * from applicants_certificates c join applicants a on a.appid = c.appid
+                join nc_reference n on c.certificateid = n.ncid where a.scholar = 1
+                and year(c.dateacquired) = ? group by a.appid ";
+        
+        $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();
+    }
     public function get_annualGraduates($year1,$year2)
     {
         $dbconn = $this->load->database('default', TRUE);

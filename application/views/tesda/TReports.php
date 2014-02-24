@@ -95,6 +95,7 @@
                                  <option value = "6">Biggest Employment Contributor</option>
                                  <option value = "7">Active and Inactive Applicants</option>
                                  <option value = "8">Annual Graduates Vs. Hired Graduates</option>
+                                 <option value = "9">Employment of Scholars</option>
                             </select>
                             
                             <br>
