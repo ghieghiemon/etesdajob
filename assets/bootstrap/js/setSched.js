@@ -52,6 +52,7 @@ $(document).ready(function(){
     });
         
     $('#preview').click(function(){
+        $('#times').empty();
       var date = $('#date1').val();
       var month = monthNames[parseInt(date.substring(0,2))];
       var day = date.substring(3, 5);
@@ -118,6 +119,13 @@ $(document).ready(function(){
       var timeTH = timeT[0];
       var timeTM = timeTD[0];
       var htmlOutput = "";
+      
+        var totalmins = 0;
+       if(timeTM != timeFM){ 
+            totalmins = parseInt(timeTM)+parseInt(timeFM);
+       }
+       alert(totalmins);
+        
       $('#times').empty();
       
       if(parseInt(timeFH) > 10 && timeFD[1] =="PM"){
@@ -136,6 +144,8 @@ $(document).ready(function(){
       
       if(timeFD[1] == "AM" && timeTD[1] == "PM"){
           
+          totalmins +=  ((parseInt(timeTH)+12)-parseInt(timeFH))*60;
+          alert(totalmins);
            if(timeTM == "00" && timeFM == "00"){
               
                  var newtimeH = parseInt(timeFH);
@@ -208,6 +218,107 @@ $(document).ready(function(){
                                 htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
                            }
                            
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }
+                     
+                     
+                 }
+                  
+              }
+              
+             else{
+                  
+               var newtimeH = parseInt(timeFH);
+                 var newtimeM = parseInt(timeFM);
+                 var oldtimeH = timeFH;
+                 var oldtimeM = timeFM;
+               
+                 
+                 
+                 
+                 while(newtimeH < parseInt(timeTH)+12){
+                    
+                     if(duration == ".5"){
+                        newtimeM = parseInt(newtimeM);
+                        newtimeM +=30;
+                         
+                         if(newtimeM >= 60){
+                             newtimeH++;
+                             newtimeM = parseInt(newtimeM)-60;
+                             
+                             if(newtimeM == 0){
+                                 newtimeM = "00";
+                             }
+                            
+                         }
+                         
+                          alert(totalmins);
+                         if(parseInt(totalmins) >= 30){
+                         totalmins = totalmins-30; 
+                         
+                            if(parseInt(newtimeH) > 12){
+                                  var temptimeFH = oldtimeH;
+
+                                  if(parseInt(oldtimeH)> 12){
+                                      temptimeFH = oldtimeH-12
+                                  }
+
+                                  var temptimeTH = parseInt(newtimeH)-12;
+                                   htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                              }else{
+                                   htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                              }
+                         }
+                           
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }else if(duration == "1"){
+                       
+                         newtimeH++;
+                         alert(totalmins);
+                         if(parseInt(totalmins) >= 60){
+                         totalmins = totalmins-60;   
+                             
+                             
+                                if(parseInt(newtimeH) > 12){
+                                    var temptimeFH = oldtimeH;
+
+                                    if(parseInt(oldtimeH)> 12){
+                                        temptimeFH = oldtimeH-12
+                                    }
+                                     alert(temptimeFH+':'+newtimeM);
+                                    var temptimeTH = parseInt(newtimeH)-12;
+                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                         }
+                         
+                        
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                     }else if(duration == "2"){
+                        
+                         newtimeH+=2;
+                         
+                          alert(totalmins);
+                         if(parseInt(totalmins) >= 120){
+                         totalmins = totalmins-120; 
+                         
+                                if(parseInt(newtimeH) > 12){
+                                      var temptimeFH = oldtimeH;
+
+                                      if(parseInt(oldtimeH)> 12){
+                                          temptimeFH = oldtimeH-12
+                                      }
+
+                                      var temptimeTH = parseInt(newtimeH)-12;
+                                       htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                  }else{
+                                       htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                  }
+                         }
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }
@@ -296,21 +407,52 @@ $(document).ready(function(){
                          oldtimeH = newtimeH;
                     }else if(duration == "1"){
                          newtimeH++;
-                         newtimeM = "00";
-                         
-                       if(parseInt(newtimeH) > 12){
-                               var temptimeFH = oldtimeH;
-                               
-                               if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12
-                               }
-                               
-                               var temptimeTH = parseInt(newtimeH)-12;
-                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                           }else{
-                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                           }
+                        
+                        
+                        
+                       if(parseInt(timeTH)-parseInt(oldtimeH)<=1 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
+                       
+                       }else{
+                     
+                            if(parseInt(newtimeH) > 12){
+                                    var temptimeFH = oldtimeH;
+
+                                    if(parseInt(oldtimeH)> 12){
+                                        temptimeFH = oldtimeH-12
+                                    }
+
+                                    var temptimeTH = parseInt(newtimeH)-12;
+                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                        }  
                            
+                         oldtimeM = newtimeM;
+                         oldtimeH = newtimeH;
+                         
+                         
+                     }
+                     else if(duration == "2"){
+                        
+                         newtimeH+=2;
+                        if(parseInt(timeTH)-parseInt(oldtimeH)<=2 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
+                       
+                       }else{
+                     
+                            if(parseInt(newtimeH) > 12){
+                                    var temptimeFH = oldtimeH;
+
+                                    if(parseInt(oldtimeH)> 12){
+                                        temptimeFH = oldtimeH-12
+                                    }
+
+                                    var temptimeTH = parseInt(newtimeH)-12;
+                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                        }  
                          oldtimeM = newtimeM;
                          oldtimeH = newtimeH;
                      }
