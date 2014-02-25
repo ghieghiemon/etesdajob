@@ -621,6 +621,7 @@ class Employer extends CI_Controller {
         $venue = $this->input->post('VN');
         $cp = $this->input->post('CP');
         $cd = $this->input->post('CD');
+       
         
         //$ids = $_SESSION['ids'];
         $id1 = array();
@@ -677,21 +678,408 @@ class Employer extends CI_Controller {
             $appid = $this->model_employer->get_appid($a);
             $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd,$a);
             $y=0;
-            do
-            {
-               
-               $y = $starttime + $duration;
-               $this->model_employer->add_scheduleslot($scheduleid, $starttime,$y, $appid);
-               $starttime += $duration;
-            }
-            while($y!=$endtime);
+            $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
             
             $this->model_employer->add_notification($appid,$notif,$jobno);
         }
         
         $this->employer_appsperjob($jobno);
     }
-    public function employer_changeStatus($jobno,$applicationid)
+    
+    public function set_intervals($scheduleid,$duration,$starttime,$endtime){
+        $timeF = explode(":", $starttime);
+        $timeT = explode(":", $endtime);
+        print_r($timeF);
+        $timeFH = $timeF[0];
+        $timeF1 = explode(" ",$timeF[1]);
+        $timeFM = $timeF1[0];
+        $timeFD = $timeF1[1];
+        
+        $timeTH = $timeT[0];
+        $timeT1 = explode(" ",$timeT[1]);
+        $timeTM = $timeT1[0];
+        $timeTD = $timeT1[1];
+        
+        $timeslotsF = array();
+        $timeslotsT = array();
+        
+        $temptimeFH = 0;
+        $totalmins = 0;
+        
+         if($timeTM != $timeFM){ 
+            $totalmins = $timeTM+$timeFM;
+        }
+        
+        
+        if($timeFD == "AM" && $timeTD == "PM"){
+          
+          $totalmins +=  (($timeTH+12)-$timeFH)*60;
+          
+           if($timeTM == "00" && $timeFM == "00"){
+              
+                 $newtimeH = $timeFH;
+                 $newtimeM = $timeFM;
+                 $oldtimeH = $timeFH;
+                 $oldtimeM = $timeFM;
+                 
+                 
+                 while($newtimeH < $timeTH+12){
+                    
+                     if($duration == ".5"){
+                        $newtimeM = $newtimeM;
+                        $newtimeM +=30;
+                         
+                         if($newtimeM >= 60){
+                             $newtimeH++;
+                             $newtimeM = "00";
+                         }
+                         
+                         if($newtimeH > 12){
+                               $temptimeFH = $oldtimeH;
+                               
+                               if($oldtimeH > 12){
+                                   $temptimeFH = $oldtimeH-12;
+                               }
+                               
+                               $temptimeTH = $newtimeH-12;
+                               
+                               array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                               array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                               
+                               array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                               array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                           
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     else if($duration == "1"){
+                       
+                         $newtimeH++;
+                         $newtimeM = "00";
+                         
+                           if($newtimeH > 12){
+                               $temptimeFH = $oldtimeH;
+                               
+                               if($oldtimeH > 12){
+                                   $temptimeFH = $oldtimeH-12;
+                               }
+                               
+                                $temptimeTH = $newtimeH-12;
+                                
+                               array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                               array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                               array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                               array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                               // htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                         
+                        
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     else if($duration == "2"){
+                        
+                         $newtimeH+=2;
+                         
+                         $newtimeM = "00";
+                         
+                         if($newtimeH > 12){
+                               $temptimeFH = $oldtimeH;
+                               
+                               if($oldtimeH > 12){
+                                   $temptimeFH = $oldtimeH-12;
+                               }
+                               
+                               $temptimeTH = $newtimeH-12;
+                               
+                                array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                               array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                           }else{
+                               array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                               array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                           }
+                           
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     
+                     
+                 }
+                  
+              }
+              
+             else{
+                  
+               $newtimeH = $timeFH;
+               $newtimeM = $timeFM;
+               $oldtimeH = $timeFH;
+               $oldtimeM = $timeFM;
+               
+                 
+                 
+                 
+                 while($newtimeH < $timeTH+12){
+                    
+                     if($duration == ".5"){
+                        $newtimeM = $newtimeM;
+                        $newtimeM +=30;
+                         
+                         if($newtimeM >= 60){
+                             $newtimeH++;
+                             $newtimeM = $newtimeM-60;
+                             
+                             if($newtimeM == 0){
+                                 $newtimeM = "00";
+                             }
+                            
+                         }
+                         
+                         
+                         if($totalmins >= 30){
+                         $totalmins = $totalmins-30; 
+                         
+                            if($newtimeH > 12){
+                                  $temptimeFH = $oldtimeH;
+
+                                  if($oldtimeH > 12){
+                                      $temptimeFH = $oldtimeH-12;
+                                  }
+
+                                  $temptimeTH = $newtimeH-12;
+                                    array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                   //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                              }else{
+                                    array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                   //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                              }
+                         }
+                           
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     else if($duration == "1"){
+                       
+                         $newtimeH++;
+                     
+                         if($totalmins >= 60){
+                         $totalmins = $totalmins-60;   
+                             
+                             
+                                if($newtimeH > 12){
+                                    $temptimeFH = $oldtimeH;
+
+                                    if($oldtimeH > 12){
+                                        $temptimeFH = $oldtimeH-12;
+                                    }
+                                     
+                                    $temptimeTH = $newtimeH-12;
+                                    array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                    array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                         }
+                         
+                        
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }else if($duration == "2"){
+                        
+                         $newtimeH+=2;
+                         
+                          
+                         if($totalmins >= 120){
+                         $totalmins = $totalmins-120; 
+                         
+                                if($newtimeH > 12){
+                                      $temptimeFH = $oldtimeH;
+
+                                      if($oldtimeH> 12){
+                                          $temptimeFH = $oldtimeH-12;
+                                      }
+
+                                      $temptimeTH = $newtimeH-12;
+                                       array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                       //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                  }else{
+                                       array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                       //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                  }
+                         }
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     
+                     
+                 }
+                  
+              }
+          
+          
+      }
+      else{ 
+          
+              if($timeTM == "00" && $timeFM == "00"){
+                 $newtimeH = $timeFH;
+                 $newtimeM = $timeFM;
+                 $oldtimeH = $timeFH;
+                 $oldtimeM = $timeFM;
+                 while($newtimeH < $timeTH){
+                    
+                     if($duration == ".5"){
+                         $newtimeM = $newtimeM;
+                        $newtimeM +=30;
+                         
+                         if($newtimeM >= 60){
+                             $newtimeH++;
+                             $newtimeM = "00";
+                         }
+                         
+                          array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                          array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                         
+                         //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }else if($duration == "1"){
+                        
+                         $newtimeH++;
+                         $newtimeM = "00";
+                         
+                          array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                          array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                         //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }else if($duration == "2"){
+                        
+                         $newtimeH+=2;
+                         
+                         $newtimeM = "00";
+                          array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                          array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                         //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     
+                     
+                 }
+                  
+              }
+              else{
+                  
+                $newtimeH = $timeFH;
+                 $newtimeM = $timeFM;
+                  $oldtimeH = $timeFH;
+                 $oldtimeM = $timeFM;
+                 while($newtimeH <= $timeTH){
+                     
+                     if($duration == ".5"){
+                           $newtimeM = $newtimeM;
+                        $newtimeM +=30;
+                         
+                         if($newtimeM >= 60){
+                             $newtimeH++;
+                             $newtimeM = $newtimeM-60;
+                         }
+                          array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                          array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                         //htmlOutput += ' '+ oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                    }else if($duration == "1"){
+                         $newtimeH++;
+                        
+                        
+                        
+                       if($timeTH-$oldtimeH<=1 && $timeTM-$newtimeM!= 0){
+                       
+                       }else{
+                     
+                            if($newtimeH > 12){
+                                    $temptimeFH = $oldtimeH;
+
+                                    if($oldtimeH> 12){
+                                        $temptimeFH = $oldtimeH-12;
+                                    }
+
+                                    $temptimeTH = $newtimeH-12;
+                                    array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                    array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                        }  
+                           
+                         $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                         
+                         
+                     }
+                     else if($duration == "2"){
+                        
+                         $newtimeH+=2;
+                        if($timeTH-$oldtimeH<=2 && $timeTM-$newtimeM!= 0){
+                       
+                       }else{
+                     
+                            if($newtimeH > 12){
+                                    $temptimeFH = $oldtimeH;
+
+                                    if($oldtimeH> 12){
+                                        $temptimeFH = $oldtimeH-12;
+                                    }
+
+                                    $temptimeTH = $newtimeH-12;
+                                    array_push($timeslotsF, $temptimeFH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $temptimeTH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+                                }else{
+                                    array_push($timeslotsF, $oldtimeH.':'.$oldtimeM);
+                                    array_push($timeslotsT, $newtimeH.':'.$newtimeM);
+                                     //htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+                                }
+                        }  
+                        $oldtimeM = $newtimeM;
+                         $oldtimeH = $newtimeH;
+                     }
+                     
+                 }
+                  
+              }
+          
+      }
+        $ctr = 0;
+      foreach($timeslotsF as $t){
+           $this->model_employer->add_scheduleslot($scheduleid, $t,$timeslotsT[$ctr], 0);
+          $ctr++;
+      }
+        print_r($timeslotsF);
+        print_r($timeslotsT);
+        
+    }
+    
+    
+    public function employerpchangeStatus($jobno,$applicationid)
     {
         @session_start();
         $this->load->model('model_employer'); 

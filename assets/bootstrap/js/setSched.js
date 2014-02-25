@@ -167,7 +167,7 @@ $(document).ready(function(){
                                var temptimeFH = oldtimeH;
                                
                                if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12
+                                   temptimeFH = oldtimeH-12;
                                }
                                
                                var temptimeTH = parseInt(newtimeH)-12;
@@ -187,7 +187,7 @@ $(document).ready(function(){
                                var temptimeFH = oldtimeH;
                                
                                if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12
+                                   temptimeFH = oldtimeH-12;
                                }
                                
                                var temptimeTH = parseInt(newtimeH)-12;
@@ -209,7 +209,7 @@ $(document).ready(function(){
                                var temptimeFH = oldtimeH;
                                
                                if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12
+                                   temptimeFH = oldtimeH-12;
                                }
                                
                                var temptimeTH = parseInt(newtimeH)-12;
@@ -261,7 +261,7 @@ $(document).ready(function(){
                                   var temptimeFH = oldtimeH;
 
                                   if(parseInt(oldtimeH)> 12){
-                                      temptimeFH = oldtimeH-12
+                                      temptimeFH = oldtimeH-12;
                                   }
 
                                   var temptimeTH = parseInt(newtimeH)-12;
@@ -285,7 +285,7 @@ $(document).ready(function(){
                                     var temptimeFH = oldtimeH;
 
                                     if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12
+                                        temptimeFH = oldtimeH-12;
                                     }
                                      alert(temptimeFH+':'+newtimeM);
                                     var temptimeTH = parseInt(newtimeH)-12;
@@ -310,7 +310,7 @@ $(document).ready(function(){
                                       var temptimeFH = oldtimeH;
 
                                       if(parseInt(oldtimeH)> 12){
-                                          temptimeFH = oldtimeH-12
+                                          temptimeFH = oldtimeH-12;
                                       }
 
                                       var temptimeTH = parseInt(newtimeH)-12;
@@ -418,7 +418,7 @@ $(document).ready(function(){
                                     var temptimeFH = oldtimeH;
 
                                     if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12
+                                        temptimeFH = oldtimeH-12;
                                     }
 
                                     var temptimeTH = parseInt(newtimeH)-12;
@@ -444,7 +444,7 @@ $(document).ready(function(){
                                     var temptimeFH = oldtimeH;
 
                                     if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12
+                                        temptimeFH = oldtimeH-12;
                                     }
 
                                     var temptimeTH = parseInt(newtimeH)-12;
