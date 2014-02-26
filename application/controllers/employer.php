@@ -696,7 +696,7 @@ class Employer extends CI_Controller {
     public function set_intervals($scheduleid,$duration,$starttime,$endtime){
         $timeF = explode(":", $starttime);
         $timeT = explode(":", $endtime);
-        print_r($timeF);
+        //print_r($timeF);
         $timeFH = $timeF[0];
         $timeF1 = explode(" ",$timeF[1]);
         $timeFM = $timeF1[0];
