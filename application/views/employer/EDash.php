@@ -330,9 +330,9 @@ foreach ($myvacancies as $a)
                         <a href="<?php echo base_url()?>employer/view_ecalendar/" class="Comm">
                             <?php echo'<div class="notifAgenda">
                                 <font class="boldSched">';
-                                	  echo $a['requirementdate'];
+                                	  echo $a['scheduledate'];
                                        echo' |';
-                                        echo $a['requirementtime'];
+                                        echo $a['starttime'];
                                echo' </font>
                     			<br> 
                                 

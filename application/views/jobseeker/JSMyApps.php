@@ -370,9 +370,9 @@ foreach($invites as $a)
                             <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="Comm">
                          <?php echo'   <div class="notifAgenda">
                                 <font class="boldSched">';
-                                	  echo $a['requirementdate'];
+                                	  echo $a['scheduledate'];
                                        echo' |';
-                                        echo $a['requirementtime'];
+                                        echo $a['starttime'];
                                echo' </font>
                     			<br> 
                                 
