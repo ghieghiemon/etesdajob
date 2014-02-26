@@ -284,7 +284,7 @@ class Model_employer extends CI_Model {
                            JOIN etesda.reference_region r ON r.regionid = v.region
                            JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                            WHERE companyID = $id AND vacanciesleft >0
-                           ORDER BY lastedited DESC
+                           ORDER BY dateposted DESC
                            
                            ");
         return $sql->result_array();
