@@ -114,8 +114,6 @@
                                 </a>
                                 
                                 <ul class="dropdown-menu">
-                                   
-                                    <li class="divider"></li>
                                     <li><a href="<?php echo base_url()?>main/logout">Sign Out</a></li>
                                 </ul>
                             </li>

@@ -197,8 +197,6 @@ function checkall3(el){
                                 </a>
                                 
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">FAQ</a></li>
-                                    <li class="divider"></li>
                                     <li><a href="<?php echo base_url()?>logout">Sign Out</a></li>
                                 </ul>
                             </li>
