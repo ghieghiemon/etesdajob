@@ -79,7 +79,7 @@
                                             <input type="text" class="span2" style="margin-top:-10px;margin-bottom:-40px;"id="email" name="email" placeholder="Email Address">
                                             <input type="password" class="span2" style="margin-top:-10px;margin-bottom:-40px;" id="userpassword" name="userpassword" placeholder="Password">
                                         
-                                        <button type='submit' class="btn" style="margin-top:-9px;margin-left:4px;"><strong>Login</strong></button>
+                                        <button type='submit' class="btn" style="margin-top:-9px;margin-left:4px;"><strong>Sign In</strong></button>
                                         </form>
                                     </li>
                                 </ul>

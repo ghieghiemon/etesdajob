@@ -293,7 +293,7 @@
     <div class="accordion-heading">
       <!--<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">-->
        <h5 class="media-heading accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseThree">
-           <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Sign up to e-TESDA WORK &#9660;
+           <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_358_file_import.png" width="20"> Register to e-TESDA WORK &#9660;
          </h5>
       <!--</a>-->
    
