@@ -45,7 +45,7 @@
                             echo $a['jobtitle'];
                             echo '</a></td>
                               <td>'?>
-                              <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyID']?>" class="recAppName">
+                              <a href="<?php echo base_url()?>jobseeker/employer_profilepage/<?php echo $a['companyid']?>" class="recAppName">
                             <?php echo $a['companyName'];
                             echo '</a>
                               </td>
@@ -61,7 +61,7 @@
                               <td>
                               	  <strong>
                              <font class="more">';
-                            echo $a['requirementdate'];
+                            echo $a['scheduledate'];
                              echo' </div>
                               </font>
                               </td>
@@ -69,14 +69,14 @@
                               <td>
                                   <strong>
                              <font class="more">';
-                            echo $a['requirementtime'];
+                            echo $a['starttime'];
                              echo' </div>
                               </font>
                               </td>
                               
                               <td>
                               	<div class="">';
-                            echo $a['location'];
+                            echo $a['venue'];
                              echo' </div>
                               </td>
                               
