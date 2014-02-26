@@ -710,7 +710,7 @@ class Model_employer extends CI_Model {
         $db1->query("UPDATE job_vacancies SET vacanciesleft = vacanciesleft-1 WHERE jobno=$jobno");
         $db1->close();
     }
-        public function employer_briefcase($id)
+        public function employer_briefcase2($id)
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
@@ -729,6 +729,27 @@ class Model_employer extends CI_Model {
 
         $db1->close();
   }
+          public function employer_briefcase($id)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*, ss.*,
+            a.appid, ap.firstname,ap.lastname
+        from etesda.applications a 
+        join etesda.job_vacancies j on a.jobno = j.jobno
+        JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
+        join etesda.schedule sc on sc.scheduleid = a.scheduleid
+        join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
+        JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
+        where (a.status = 'Interview' or a.status ='Exam') and j.companyid =$id
+                 AND scheduledate >= curdate()
+                            ");
+        return $query->result_array();
+
+
+        $db1->close();
+  }
+  
   public function get_applicantDetails($appid)
   {
         $db2 = $this->load->database('default', TRUE);
