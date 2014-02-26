@@ -463,7 +463,14 @@ foreach ($myvacancies as $a)
                     <div class="tab-content"> <!--start tab content-->
                         <div class="tab-pane active" id="UR">
                         	<div style="width:830px;height:172px;overflow:auto;"><!--start scrollable table-->
-                            	
+                            	<?php
+                                    if(count($newapplicant) == 0)
+                                    {
+                                        echo "<br><p class = 'noCommYet'>No new applicants yet.</p>";
+                                    }
+                                    else
+                                    {
+                                ?>
                             	<table class="tableUA table-hover table-condensed table-striped">
                                 	<thead>
                                     	<tr>
@@ -477,7 +484,9 @@ foreach ($myvacancies as $a)
                                             <th class="span1" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
-                                    
+                                    <?php
+                                    }
+                                    ?>
                                     <tbody class="recName">
                                     	<?php 
                                         foreach ($newapplicant as $a)
@@ -592,6 +601,14 @@ foreach ($myvacancies as $a)
                     <div class="tab-pane" id="Inv">
                     	<div style="width:830px;height:172px;overflow:auto;"><!--start scrollable table-->
                             	<table class="tableUA table-hover table-condensed table-striped">
+                                    <?php
+                                    if(count($invites) == 0)
+                                    {
+                                        echo "<br><p class = 'noCommYet'>No invited applicants yet.</p>";
+                                    }
+                                    else
+                                    {
+                                ?>
                                 	<thead>
                                     	<tr>
                                             <th class="span2" style="text-align:center">Job Title</th>
@@ -604,7 +621,9 @@ foreach ($myvacancies as $a)
                                             <th class="span2" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
-                                    
+                                    <?php
+                                    }
+                                    ?>
                                     <tbody class="recName">
                                     <?php 
                                         foreach ($invites as $b)

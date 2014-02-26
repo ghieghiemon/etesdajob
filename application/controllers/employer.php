@@ -1085,8 +1085,8 @@ class Employer extends CI_Controller {
            $this->model_employer->add_scheduleslot($scheduleid, $t,$timeslotsT[$ctr], 0);
           $ctr++;
       }
-        print_r($timeslotsF);
-        print_r($timeslotsT);
+//        print_r($timeslotsF);
+//        print_r($timeslotsT);
         
     }
     
