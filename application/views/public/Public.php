@@ -379,7 +379,7 @@
                     	 <?php 
                       
                 echo" <input class='btn btn-primary'";
-                echo form_submit('submit', 'Sign-up');
+                echo form_submit('submit', 'Register');
                 echo form_close(); 
                 ?>
                         
