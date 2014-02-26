@@ -62,14 +62,15 @@ class Pub extends CI_Controller {
         public function pub_searchjob()
     {
         $this->load->model('model_main');
+        $this->load->model('model_jobseeker');
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
         $data['search'] = $this->search_job();
-   
+         $data['jobs'] =  $this->model_jobseeker->get_alljobs();
         
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket',$data);
-         $this->load->view("footer");
+         $this->load->view("footer2");
     }
     
         public function pub_alljob()
@@ -90,9 +91,15 @@ class Pub extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_pub');
-        $search = $this->model_pub->search_job($this->input->post('JT'),
-                 ($this->input->post('industry')),($this->input->post('cityid')),
-                 ($this->input->post('COMP')));
+        $jobtitle = $this->input->post('JT');
+        $industry = $this->input->post('industry');
+        $city = $this->input->post('cityid');
+        $company = $this->input->post('COMP');
+        $search = $this->model_pub->search_job($jobtitle,$industry,$city,$company);
+        
+        
+        
+        
         return $search;        
    }
    

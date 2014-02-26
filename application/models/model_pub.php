@@ -134,7 +134,150 @@ where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC
          $db1 = $this->load->database('local', TRUE);
          $db2 = $this->load->database('default', TRUE);
        
-        $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+        if($industry == 0 && $cityid == 0 && ($company == null || $company == ""))
+        {
+            $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                                WHERE v.jobtitle like '%$jobtitle%' AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        }
+        else if($industry == 0 && $cityid == 0 && ($jobtitle == null || $jobtitle == ""))
+        {
+            $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                                WHERE p.companyName like '%$company%' AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        }
+        else if($cityid == 0 && ($jobtitle == null || $jobtitle == "") && ($company == null || $company == ""))
+        {
+            $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                                WHERE v.sectorid =  $industry AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        }
+        else if($industry == 0 && ($jobtitle == null || $jobtitle == "") && ($company == null || $company == ""))
+        {
+            $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.city= $cityid AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        }
+        else if($industry == 0 && $cityid == 0 )
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%' AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else if($cityid == 0 && ($company == null || $company == ""))
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND v.sectorid =  $industry AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else if($cityid == 0 && ($jobtitle == null || $jobtitle == ""))
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE p.companyName like '%$company%' AND v.sectorid =  $industry  AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else if($cityid == 0 )
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND  v.sectorid =  $industry  AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else if($industry == 0 && ($jobtitle == null || $jobtitle == "") )
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE p.companyName like '%$company%' AND v.city= $cityid AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else if($industry == 0 && ($company == null || $company == "") )
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND v.city= $cityid AND status = 1
+                                ORDER BY dateposted DESC");
+        }
+        else
+        {
+            $query = $db1->query("SELECT v.jobno, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
                                 DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
                                 p.companyName FROM 
                                 etesda.job_vacancies v
@@ -146,12 +289,12 @@ where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC
                                 WHERE v.jobtitle like '%$jobtitle%' AND p.companyName like '%$company%'  AND v.sectorid =  $industry  
                                 AND v.city= $cityid AND status = 1
                                 ORDER BY dateposted DESC");
+        }
         return $query->result_array();
         
 
         $db1->close();
     }
-    
        public function all_job(){
          $db1 = $this->load->database('local', TRUE);
          $db2 = $this->load->database('default', TRUE);

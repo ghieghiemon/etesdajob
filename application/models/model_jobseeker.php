@@ -449,7 +449,88 @@ class Model_jobseeker extends CI_Model {
 
         $db1->close();
     }
-    
+    public function search_jobtitle($jobtitle){
+         $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+       
+        $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.jobtitle like '%$jobtitle%' AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        return $query->result_array();
+        
+
+        $db1->close();
+    }
+    public function search_jobindustry($industry){
+         $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+       
+        $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.sectorid =  $industry AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        return $query->result_array();
+        
+
+        $db1->close();
+    }public function search_jobcity($cityid){
+         $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+       
+        $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE v.city= $cityid AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        return $query->result_array();
+        
+
+        $db1->close();
+    }
+    public function search_jobcompany($company){
+         $db1 = $this->load->database('local', TRUE);
+         $db2 = $this->load->database('default', TRUE);
+       
+        $query = $db1->query("SELECT *,v.jobno,curdate() as currentdate, v.jobtitle,v.vacanciesleft,v.sectorid, v.description,r.region, c.city,i.sectorName, 
+                                DATE_FORMAT(expirationdate, '%M %d, %Y') as expirationdate,v.dateposted,
+                                p.companyName FROM 
+                                etesda.job_vacancies v
+                                JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
+                                JOIN etesda.reference_city c ON c.cityid = v.city
+                                JOIN etesda.reference_region r ON r.regionid = v.region
+                                JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID
+                               
+                                WHERE p.companyName like '%$company%' AND v.status = 1
+                                AND expirationdate >= curdate() 
+                                ORDER BY dateposted DESC");
+        return $query->result_array();
+        
+        $db1->close();
+    }
     public function js_briefcase($id)
     {
         $db1 = $this->load->database('local', TRUE);
