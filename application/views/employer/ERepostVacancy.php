@@ -208,7 +208,7 @@
 </div>
 <!--publish vacancy modal end-->
                
-<form class="container" method="post" action="employer_postvacancy" id="publish">
+<form class="container" method="post" action="<?php echo base_url()?>employer/employer_postvacancy" id="publish">
 <div style="margin-left: 1%; margin-top: 1%; margin-bottom:-7%">
 	<div class="row-fluid">
     	<div class="span12">

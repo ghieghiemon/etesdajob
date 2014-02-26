@@ -806,13 +806,13 @@ foreach ($myvacancies as $a)
                                                   {
                                                     ?>
                                                 
-                                                <a href="#extend<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <a href="<?php echo base_url()?>employer/employer_repostjob/<?php echo $a['jobno'] ?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                   else 
                                                   {
                                                 ?>
-                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <a href="<?php echo base_url()?>employer/employer_repostjob/<?php echo $a['jobno'] ?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                 ?>
