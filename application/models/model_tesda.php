@@ -246,6 +246,7 @@ public function add_eventvenue($eventno,$eventvenue,$region,$city)
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT count(v.jobno) as totalopenings,s.* from etesda.job_vacancies v 
                               JOIN tesda_centraldb.sectors s ON v.sectorid = s.sectorID
+                               where expirationdate >= curdate()
                               GROUP BY v.sectorid ORDER BY totalopenings DESC");
         return $query->result_array();
         $db1->close();

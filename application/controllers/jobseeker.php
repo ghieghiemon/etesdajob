@@ -410,9 +410,13 @@ class Jobseeker extends CI_Controller {
     {
         $this->load->model('model_main');
         $this->load->model('model_jobseeker');
-        $search = $this->model_jobseeker->search_job($this->input->post('JT'),
-                 ($this->input->post('industry')),($this->input->post('cityid')),
-                 ($this->input->post('COMP')));
+         $this->load->model('model_pub');
+         
+        $jobtitle = $this->input->post('JT');
+        $industry = $this->input->post('industry');
+        $city = $this->input->post('cityid');
+        $company = $this->input->post('COMP');
+        $search = $this->model_pub->search_job($jobtitle,$industry,$city,$company);
         return $search;        
    }
        public function jobseeker_eventspage()
