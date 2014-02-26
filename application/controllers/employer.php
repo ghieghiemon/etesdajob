@@ -514,10 +514,17 @@ class Employer extends CI_Controller {
     {
         $this->load->model('model_employer');
         $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
+          
+      
+        
         
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
         $data['appdetails'] = $this->model_employer->get_applicantDetails($appid);  
         $data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
+        
+       // $data['email'] = $this->model_employer->get_email($userid);
+        
         $data['educ'] = $this->model_jobseeker->get_educ($appid);
         $data['work'] =$this->model_jobseeker->get_work($appid);
         $data['appid'] = $appid;
