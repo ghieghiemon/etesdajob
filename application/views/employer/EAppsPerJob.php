@@ -738,7 +738,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                                   else 
                                                   {
                                                 ?>
-                                               <a href="#renew" data-toggle="modal" class="btn btn-mini btn-info">Extend</a>
+                                               <a href="#extend" data-toggle="modal" class="btn btn-mini btn-info">Extend</a>
                                                 <?php
                                                   }
                                                 ?>
