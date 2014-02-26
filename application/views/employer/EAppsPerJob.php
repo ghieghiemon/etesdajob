@@ -521,7 +521,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                     ?>
                                       
   	<div class="modal-footer">
-        <button type="submit" class="btn btn-info" >Repost</button>
+        <button type="submit" class="btn btn-info" >Extend</button>
         <a href="" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
                     </form>
