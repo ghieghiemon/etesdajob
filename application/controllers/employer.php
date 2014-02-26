@@ -424,7 +424,10 @@ class Employer extends CI_Controller {
     public function employer_appsperjob($jobno)
     {
         $this->load->model('model_employer');
+        $this->load->model('model_jobseeker');
+        $this->load->model('model_main');
         
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
         $data['jobno'] = $jobno;
         $data['details'] = $this->model_employer->get_jobdetails($jobno);
         $data['alldetails'] = $this->model_employer->get_alljobdetails($jobno);
@@ -439,6 +442,8 @@ class Employer extends CI_Controller {
         
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
+        
+        $this->model_jobseeker->seen_notif($jobno,$id);
         
         $this->employer_header();
         $this->load->view('employer/EAppsPerJob',$data);

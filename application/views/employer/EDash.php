@@ -285,7 +285,7 @@ foreach ($myvacancies as $a)
                         {
                         ?>
                         <li>
-                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" class="Comm">
+                            <a href="<?php echo base_url()?>employer/employer_appsperjob/<?php echo $a['jobno']?>" class="Comm">
                                 <p class="notifAgenda3">
                                    <?php
                                     if($a['seen'] == 0)

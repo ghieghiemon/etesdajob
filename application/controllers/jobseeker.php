@@ -51,7 +51,7 @@ class Jobseeker extends CI_Controller {
         $data['comp'] = $this->model_jobseeker->get_jobComps($jobno); 
         $data['jobno'] = $jobno;
         
-        $this->model_jobseeker->seen_notif($jobno);
+        $this->model_jobseeker->seen_notif($jobno,$id);
         
         foreach($appdetails as $a)
         {

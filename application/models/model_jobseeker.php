@@ -46,12 +46,12 @@ class Model_jobseeker extends CI_Model {
             return $sql->result_array();
         $db1->close();
     }
-    public function seen_notif($jobno)
+    public function seen_notif($jobno,$id)
     {
         $db1 = $this->load->database('local', TRUE);
         $db1->query("UPDATE notifications
                                     SET seen = 1
-                                    WHERE jobno = $jobno");
+                                    WHERE jobno = $jobno AND userid = $id");
         $db1->close();
     }
     public function get_jscert()
