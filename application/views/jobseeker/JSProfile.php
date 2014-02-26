@@ -535,31 +535,7 @@
                                                 }
                                                 ?>
                                             <br>
-                                            <table>
-                                                    <?php 
-                                                                foreach($jsdetails as $a)
-                                                                {
-                                                                ?>
-                                               <tr>
-                                                    	<td class="lLabel4">
-                                                        	<img src="<?php echo base_url()?>assets/img/icons/glyphicons_248_asterisk.png" width="15"> Reference 1: 
-                                                        </td>
-                                                        
-                                                        <td>
-                                                        	<div class="control-group"><!-- start div cs-->
-                                                                <div class="myStyleEPr2">
-                                            <input style="width:170px;" type="text" id="ref1name" name="ref1name" value="<?php echo $a['ref1name'];
-                                                    
-                                                  ?>">
-                                                                </div>
-                                                            </div><!-- end div cs -->	
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                                <?php
-                                                                }
-                                                                ?>
-                                                    </table>
+                                          
 <!--                                        <div class="control-group"> start div CoN 
                                             <div class="myStyleEPrCN">
                                                 
