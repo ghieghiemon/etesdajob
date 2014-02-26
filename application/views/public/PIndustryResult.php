@@ -342,6 +342,7 @@ foreach ($jobs as $a)
                                     <th class="span3" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
+                                    <th class="span1" style="text-align:center">Vacancies</th>
                                
                                     <th class="span1" style="text-align:center">Action</th>
                             </thead>
@@ -383,6 +384,15 @@ foreach ($jobs as $a)
                                         ?>
                                     </td>
                                     
+                                      <?php echo'
+                                    
+                               
+                                    
+                                    <td>';
+                                        echo'<span class="label">';
+                                       echo $a['vacanciesleft'];
+                                       echo' Left </span>
+                                    </td>'?>
                                 
                                     
                                     

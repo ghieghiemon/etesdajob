@@ -353,7 +353,7 @@ foreach ($jobs as $a)
                  
                     	<div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
                             
-                        	<table class="tableJM table-hover table-condensed table-striped">
+                        	<table id="test">
                             <thead>
                                 <tr>
                                     <?php
@@ -363,6 +363,8 @@ foreach ($jobs as $a)
                              <th class="span4" style="text-align:center">Description</th>
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
+                                        <th class="span3" style="text-align:center">Effectivity</th>
+                                       <th class="span1" style="text-align:center">Vacancies</th>
                              
                                   
                                   
@@ -417,10 +419,31 @@ foreach ($jobs as $a)
                                         echo ' |  ';
                                         echo $row['city'];
                                      
-                                        echo' </td>
+                                        echo' </td>';
+                                        
+                                            echo' <td>
                                     
                                               ' ?>
-                                                          
+                                                       
+                                                            <?php
+                                                            $date2 = $row['expirationdate'];
+                                                            $date = date('Y-m-d');
+                                                            $diff = abs(strtotime($date2) - strtotime($date));
+
+                                                            $days = round((($diff/24)/60)/60);
+                                                            echo $days. " days left";
+                                                            ?>
+                                
+                                                       <?php echo' </td>
+                                    
+                               
+                                    
+                                    <td>';
+                                        echo'<span class="label">';
+                                       echo $row['vacanciesleft'];
+                                       echo' Left </span>
+                                    </td>'?>
+                                        
                                 
                                                        <?php echo'                                     
                                  

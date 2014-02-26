@@ -343,7 +343,7 @@ foreach ($jobs as $a)
                                     <th class="span2" style="text-align:center">Company Name</th>
                                     <th class="span3" style="text-align:center">Location</th>
                                     <th class="span3" style="text-align:center">Effectivity</th>
-                    
+                                   <th class="span1" style="text-align:center">Vacancies</th>
                                     <th class="span1" style="text-align:center">Action</th>';
                      }
                      ?>
@@ -397,10 +397,19 @@ foreach ($jobs as $a)
 
                                                             $days = round((($diff/24)/60)/60);
                                                             echo $days. " days left";
+                                                            echo' </td>';
                                                             ?>
                                 
-                                                       <?php echo' </td>
-                                
+                                                 
+                                    <?php echo'
+                                    
+                               
+                                    
+                                    <td>';
+                                        echo'<span class="label">';
+                                       echo $a['vacanciesleft'];
+                                       echo' Left </span>
+                                    </td>
                                     
                                     
                                     <td>

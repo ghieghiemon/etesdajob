@@ -40,6 +40,7 @@ class Model_pub extends CI_Model {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT count(v.jobno) as totalopenings,s.* from etesda.job_vacancies v 
                               JOIN tesda_centraldb.sectors s ON v.sectorid = s.sectorID
+                              where expirationdate >= curdate()
                               GROUP BY sectorid ORDER BY totalopenings DESC");
         return $query->result_array();
         $db1->close();
@@ -53,7 +54,7 @@ class Model_pub extends CI_Model {
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
 		     	    JOIN etesda.reference_city c ON c.cityid = j.city
                             JOIN etesda.reference_region r ON r.regionid = j.region
-                            WHERE sectorid = $sectorid
+                            WHERE sectorid = $sectorid and expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC ");
         return $query->result_array();
         $db1->close();
@@ -67,7 +68,7 @@ class Model_pub extends CI_Model {
                             JOIN tesda_centraldb.employer_profile e ON e.userID = j.companyID
 			    JOIN etesda.reference_city c ON c.cityid = j.city
                             JOIN etesda.reference_region r ON r.regionid = j.region
-                            WHERE j.region = $region
+                            WHERE j.region = $region and expirationdate >= curdate()
                             GROUP BY j.jobno ORDER BY j.dateposted DESC ");
         return $query->result_array();
         $db1->close();

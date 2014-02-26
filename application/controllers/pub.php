@@ -84,7 +84,7 @@ class Pub extends CI_Controller {
    
         $this->load->view('public/header');
         $this->load->view('public/PJobMarket',$data);
-         $this->load->view("footer");
+        $this->load->view("footer");
     }
     
     public function search_job()
