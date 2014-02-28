@@ -121,17 +121,33 @@
                                   <thead>
                                       <tr>
                                           <th class="span7" style="text-align:left">Modules</th>
+                                          <th>Average Rating </th>
                                       </tr>
+                                      
                                   </thead>
                                   
                                   <tbody class="recName">
-                                      
+                                      <?php $rc = 0; ?>
                                       <?php foreach($modules as $m): ?>
                                       
                                       <tr>
                                           <td>
                                              <?php echo $m['modulename'] ?>
                                           </td>
+                                          
+                                          <td style="text-align:center" >
+                                              <?php if($ratings[$rc] >= 3):?>
+                                              <span class="label label-info">
+                                              <?php echo $ratings[$rc].'/5';  ?>
+                                              </span>
+                                              <?php else: ?>
+                                               <span class="label label-warning">
+                                              <?php echo $ratings[$rc].'/5';  ?>
+                                              </span>
+                                              <?php endif; ?>
+                                          </td>
+                                          
+                                          <?php $rc++ ?>
                                       </tr>
                                       <?php endforeach; ?>
                                                        

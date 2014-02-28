@@ -6,7 +6,7 @@ class Model_survey extends CI_Model {
     public function __construct()
     {		
 		parent::__construct();
-		
+		$this->load->helper('date');
     }
         
     public function getAllSectors(){
@@ -161,10 +161,26 @@ class Model_survey extends CI_Model {
         return $query;
     }
     
-    public function addModuleRating($moduleID,$rating){
+    public function addRatingDetail($appid){
+          $db = $this->load->database('local', TRUE);
+        
+        $data = array(
+           'date' => date('Y-m-d H:i:s', now()),
+           'appID' => $appid,
+           
+          
+        );
+
+        $db->insert('survey_results_details', $data); 
+        
+        return $this->db->insert_id();
+    }
+    
+    public function addModuleRating($moduleID,$rating,$resultID){
          $db = $this->load->database('local', TRUE);
         
         $data = array(
+            'resultID' => $resultID,
            'moduleID' => $moduleID,
             'rating' => $rating,
           
@@ -173,10 +189,11 @@ class Model_survey extends CI_Model {
         $db->insert('survey_results_modules', $data); 
     }
     
-     public function addItemRating($itemID,$rating,$text){
+     public function addItemRating($itemID,$rating,$text,$resultID){
          $db = $this->load->database('local', TRUE);
         
         $data = array(
+            'resultID' =>$resultID,
            'itemID' => $itemID,
             'rating' => $rating,
             'text' => $text
@@ -186,6 +203,23 @@ class Model_survey extends CI_Model {
         $db->insert('survey_results_questions', $data); 
     }
     
+     public function getAverageRating($moduleid){
+        $db = $this->load->database('local', TRUE);
+            $result = $db->select('rating')
+                ->where('moduleID',$moduleid)
+                ->get('survey_results_modules')
+                ->result_array();
+            
+            $rating = 0;
+            $ctr = 0;
+            foreach($result as $r){
+                $rating += $r['rating'];
+                $ctr++;
+            }
+            
+            
+            return $rating/$ctr;
+    }
     
         
 }

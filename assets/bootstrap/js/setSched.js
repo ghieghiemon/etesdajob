@@ -124,7 +124,7 @@ $(document).ready(function(){
        if(timeTM != timeFM){ 
             totalmins = parseInt(timeTM)+parseInt(timeFM);
        }
-       alert(totalmins);
+       //alert(totalmins);
         
       $('#times').empty();
       
@@ -145,7 +145,7 @@ $(document).ready(function(){
       if(timeFD[1] == "AM" && timeTD[1] == "PM"){
           
           totalmins +=  ((parseInt(timeTH)+12)-parseInt(timeFH))*60;
-          alert(totalmins);
+          //alert(totalmins);
            if(timeTM == "00" && timeFM == "00"){
               
                  var newtimeH = parseInt(timeFH);
@@ -253,7 +253,7 @@ $(document).ready(function(){
                             
                          }
                          
-                          alert(totalmins);
+                          //alert(totalmins);
                          if(parseInt(totalmins) >= 30){
                          totalmins = totalmins-30; 
                          
@@ -276,7 +276,7 @@ $(document).ready(function(){
                      }else if(duration == "1"){
                        
                          newtimeH++;
-                         alert(totalmins);
+                         //alert(totalmins);
                          if(parseInt(totalmins) >= 60){
                          totalmins = totalmins-60;   
                              
@@ -287,7 +287,7 @@ $(document).ready(function(){
                                     if(parseInt(oldtimeH)> 12){
                                         temptimeFH = oldtimeH-12;
                                     }
-                                     alert(temptimeFH+':'+newtimeM);
+                                    // alert(temptimeFH+':'+newtimeM);
                                     var temptimeTH = parseInt(newtimeH)-12;
                                      htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
                                 }else{
@@ -302,7 +302,7 @@ $(document).ready(function(){
                         
                          newtimeH+=2;
                          
-                          alert(totalmins);
+                          //alert(totalmins);
                          if(parseInt(totalmins) >= 120){
                          totalmins = totalmins-120; 
                          
