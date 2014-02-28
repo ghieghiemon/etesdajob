@@ -3,7 +3,6 @@
 
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
