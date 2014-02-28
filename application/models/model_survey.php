@@ -161,10 +161,11 @@ class Model_survey extends CI_Model {
         return $query;
     }
     
-    public function addRatingDetail($appid){
+    public function addRatingDetail($appid,$courseid){
           $db = $this->load->database('local', TRUE);
         
         $data = array(
+            'courseID' => $courseid,
            'date' => date('Y-m-d H:i:s', now()),
            'appID' => $appid,
            
@@ -220,6 +221,8 @@ class Model_survey extends CI_Model {
             
             return $rating/$ctr;
     }
+    
+    //public function getResults($courseid)
     
         
 }

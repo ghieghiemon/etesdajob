@@ -102,7 +102,7 @@ class Survey extends CI_Controller {
             
             $ctrd = 0;
             $id = $this->model_main->get_appid($this->session->userdata('email'));
-            $ratingID = $this->model_survey->addRatingDetail($id);
+            $ratingID = $this->model_survey->addRatingDetail($id,$courseid);
             
             foreach($modules as $m){
                 $this->model_survey->addModuleRating($m['moduleid'],$postModules[$ctrd],$ratingID);
