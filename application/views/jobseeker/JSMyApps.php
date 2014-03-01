@@ -373,6 +373,8 @@ foreach($invites as $a)
                                 	  echo $a['scheduledate'];
                                        echo' |';
                                         echo $a['starttime'];
+                                           echo' -';
+                                          echo $a['endtime'];
                                echo' </font>
                     			<br> 
                                 

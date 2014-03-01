@@ -156,7 +156,7 @@ class Jobseeker extends CI_Controller {
         $data['job'] = $this->model_jobseeker->get_alljobs();
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSJobMarket',$data);
-      //  $this->load->view('footer');
+        $this->load->view('footer2');
     }  
     
     public function jobseeker_profilepage()
