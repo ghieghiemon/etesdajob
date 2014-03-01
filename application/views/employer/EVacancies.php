@@ -3,7 +3,7 @@
     
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
         <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+     
         <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
  <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/certification.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/competency.js"></script>
@@ -806,13 +806,13 @@ foreach ($myvacancies as $a)
                                                   {
                                                     ?>
                                                 
-                                                <a href="#extend<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <a href="<?php echo base_url()?>employer/employer_repostjob/<?php echo $a['jobno'] ?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                   else 
                                                   {
                                                 ?>
-                                                <a href="#renew<?php echo $a['jobno']?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Extend</a>
+                                                <a href="<?php echo base_url()?>employer/employer_repostjob/<?php echo $a['jobno'] ?>" data-toggle="modal" class="invJS btn btn-primary btn-mini">Repost</a>
                                                 <?php
                                                   }
                                                 ?>

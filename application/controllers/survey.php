@@ -8,6 +8,7 @@ class Survey extends CI_Controller {
 	parent::__construct();
          $this->load->model('model_survey');
          $this->load->library('form_validation');
+            $this->load->model('model_main');
 		
     }
     
@@ -60,7 +61,7 @@ class Survey extends CI_Controller {
             $opencount = 0;
             
             foreach($_POST as $key=>$p){
-                echo $ctra;
+                //echo $ctra;
                 if($ctra < $arraycount){
                     
                     $postModules[] = $p;
@@ -100,8 +101,11 @@ class Survey extends CI_Controller {
             }
             
             $ctrd = 0;
+            $id = $this->model_main->get_appid($this->session->userdata('email'));
+            $ratingID = $this->model_survey->addRatingDetail($id,$courseid);
+            
             foreach($modules as $m){
-                $this->model_survey->addModuleRating($m['moduleid'],$postModules[$ctrd]);
+                $this->model_survey->addModuleRating($m['moduleid'],$postModules[$ctrd],$ratingID);
                 $ctrd++;
             }
             
@@ -109,10 +113,10 @@ class Survey extends CI_Controller {
             $ctrf = 0;
             foreach($questions as $q){
                 if($q['type']=='rating'){
-                   $this->model_survey->AddItemRating($q['itemID'],$postAnsRate[$ctre],''); 
+                   $this->model_survey->AddItemRating($q['itemID'],$postAnsRate[$ctre],'',$ratingID); 
                     $ctre++;
                 }else{
-                    $this->model_survey->addItemRating($q['itemID'],'',$postAnsOpen[$ctrf]);
+                    $this->model_survey->addItemRating($q['itemID'],'',$postAnsOpen[$ctrf],$ratingID);
                     $ctrf++;
                 }
             }
