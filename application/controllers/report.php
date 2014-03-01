@@ -1077,12 +1077,14 @@ class Report extends CI_Controller {
         {
             $this->load->model('model_reports');
             $this->load->model('model_employer');
+            $this->load->model('model_survey');
             $q1 = $this->model_reports->get_resultsQ1($year,$cert);
             $q2 = $this->model_reports->get_resultsQ2($year,$cert);
 //            $q3 = $this->model_reports->get_resultsQ3($year,$cert);
 //            $q4 = $this->model_reports->get_resultsQ4($year,$cert);
-
+            $modules = $this->model_survey->getModules($cert);
             $certification = $this->model_employer->get_certName($cert);
+            
              $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
             
@@ -1124,16 +1126,16 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                               
                                 </tr>
                              ');
-            foreach($q1 as $a):
+            foreach($modules as $a):
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>
-                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>');
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . '</td>');
 //                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
 //                                    $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
 //            
