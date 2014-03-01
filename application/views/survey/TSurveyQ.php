@@ -121,7 +121,7 @@
                                   <thead>
                                       <tr>
                                           <th class="span7" style="text-align:left">Modules</th>
-                                          <th>Average Rating </th>
+                                         <!-- <th>Average Rating </th>  -->
                                       </tr>
                                       
                                   </thead>
@@ -135,7 +135,7 @@
                                              <?php echo $m['modulename'] ?>
                                           </td>
                                           
-                                          <td style="text-align:center" >
+<!--                                          <td style="text-align:center" >
                                               <?php if($ratings[$rc] >= 3):?>
                                               <span class="label label-info">
                                               <?php echo $ratings[$rc].'/5';  ?>
@@ -145,7 +145,7 @@
                                               <?php echo $ratings[$rc].'/5';  ?>
                                               </span>
                                               <?php endif; ?>
-                                          </td>
+                                          </td>-->
                                           
                                           <?php $rc++ ?>
                                       </tr>
