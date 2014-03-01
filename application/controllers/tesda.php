@@ -393,7 +393,10 @@ class Tesda extends CI_Controller {
             {
                 redirect('report/scholar_employment/'.$month.'/'.$year);
             }
-
+            else if($type==10)
+            {
+                redirect('report/results/'.$year.'/'.$cert);
+            }
         }
         
            public function employer_profilepage($id)

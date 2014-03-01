@@ -280,5 +280,6 @@ public function add_eventvenue($eventno,$eventvenue,$region,$city)
         return $query->result_array();
         $db2->close();
     }
+     
 }
 ?>

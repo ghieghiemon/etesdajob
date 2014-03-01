@@ -43,6 +43,7 @@
                             <br>
                              <select name="year">
                                  <option>Choose Year</option>
+                                 <option>2014</option>
                                 <option>2013</option>
                                 <option>2012</option>
                                 <option>2011</option>
@@ -61,7 +62,47 @@
         </form>  
 </div>
 <!--end modcert-->
-               
+      
+<div class="modal hide fade" id="useful">
+            <div class="modal-header">
+    	<a class="close" data-dismiss="modal">x</a>
+    	<h3>Generate Report</h3>
+  	</div>
+                        
+         <form method="post" action="<?php echo base_url()?>tesda/generate_report">
+  	<div class="modal-body"> <!--Modal members-->
+  		<div style="margin-left: 5%; margin-top: 1%">
+                    
+  			<div class="nav" style="height:220px;margin-bottom:-5px;margin-left:140px;overflow:auto;">
+                        <input type="hidden" value="10" name="reporttype">
+                           <?php    
+                            $cert['0'] = 'Choose Certification';
+                            $params = 'id="lstcert1" '; 
+                           echo form_dropdown('certs', $cert,'0',$params);    
+                                                               
+                               ?> 
+                            <br>
+                             <select name="year">
+                                 <option>Choose Year</option>
+                                 <option>2014</option>
+                                <option>2013</option>
+                                <option>2012</option>
+                                <option>2011</option>
+                                <option>2010</option>
+                                <option>2009</option>
+                            </select>
+                        
+                </div><!--end scrollable-->
+            
+    	</div><!--end modal cert-->
+ 	</div><!--end modal-footer-->
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info" >Generate</button>
+            <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
+        </div>
+        </form>  
+</div>
+
 <div class="container">
 <div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	<div class="row-fluid">    
@@ -96,6 +137,7 @@
                                  <option value = "7">Active and Inactive Applicants</option>
                                  <option value = "8">Annual Graduates Vs. Hired Graduates</option>
                                  <option value = "9">Employment of Scholars</option>
+                                 <option value = "10">Results of Survey (Useful Courses)</option>
                             </select>
                             
                             <br>
@@ -116,7 +158,7 @@
                             </select>
                             
                             <br>
-                            <select name="year">
+                            <select name="year"><option>2014</option>
                                 <option>2013</option>
                                 <option>2012</option>
                                 <option>2011</option>
@@ -134,10 +176,6 @@
                     </div><!--end scrollable-->
                 </div><!--end span-->
             </div><!--end row-fluid-->
-            
-            
-       	 	
-            
             
             
     	</div><!--end well-->
@@ -162,6 +200,10 @@
               {  
                   $('#certmodal').modal('show');
               }
+              else if($(this).val() === '10')
+                  {
+                      $('#useful').modal('show');
+                  }
           });    
        }); 
   

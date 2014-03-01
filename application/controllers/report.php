@@ -1073,6 +1073,86 @@ class Report extends CI_Controller {
             
         }
 
-
-
+        public function results ($year,$cert)
+        {
+            $this->load->model('model_reports');
+            $this->load->model('model_employer');
+            $result = $this->model_reports->get_resultsQ1($year,$cert);
+            $certification = $this->model_employer->get_certName($cert);
+             $mpdf = new mPDF();
+            $mpdf->setFooter('{PAGENO}');
+            
+            
+              $mpdf->WriteHTML('<html><div style="text-align:center;">
+                             
+                              
+                              <img src="' . base_url() . 'assets/img/tesda.jpg" width="30" height="30" style="margin-top:2%;">   
+                                
+                              <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
+                              <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EXECUTIVE SUMMARY REPORT</h3>
+                             </div>');
+      
+             
+              $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
+                             <table>
+                              <tbody>
+                                <tr>
+                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                    <td width="350">Year: ' . $year . ' &nbsp;</td>
+                                        <td width="350">Certification: ' . $certification . ' &nbsp;</td>
+                                </tr>
+                                
+                              </tbody>
+                              
+                              </table>
+                              </div>
+                             
+                                      <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
+                              <tr>
+                        
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Module</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q1</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q2</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q3</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q4</th>
+                                
+                              
+                                </tr>
+                             ');
+            foreach($result as $a):
+                
+               $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a[0] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a. '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' .$a->moduleid . '</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a->moduleid . '</td>');
+//                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
+//                                    $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
+//            
+//                                    foreach($applicants as $a):
+//                                        print_r($a->count);
+//                                        $mpdf->writeHTML(''.$a->count.'');
+//                                    endforeach;
+//                                            $mpdf->writeHTML('</td>
+//                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">');
+//                                    $hired = $this->model_reports->get_hiredno($vacancy->jobno);
+//                                    foreach($hired as $b):
+//                                        $mpdf->writeHTML(''.$b->count.'');
+//                                    endforeach;
+//                                    $mpdf->writeHTML('</td>
+//
+//                             </tr>');
+                              
+                
+            endforeach;
+            
+            $mpdf->writeHTML('</table></html>');
+        
+    
+            $mpdf->Output();
+            exit;
+        }
 }
