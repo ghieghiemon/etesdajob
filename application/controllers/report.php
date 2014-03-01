@@ -1077,13 +1077,17 @@ class Report extends CI_Controller {
         {
             $this->load->model('model_reports');
             $this->load->model('model_employer');
-            $result = $this->model_reports->get_resultsQ1($year,$cert);
+            $q1 = $this->model_reports->get_resultsQ1($year,$cert);
+            $q2 = $this->model_reports->get_resultsQ2($year,$cert);
+//            $q3 = $this->model_reports->get_resultsQ3($year,$cert);
+//            $q4 = $this->model_reports->get_resultsQ4($year,$cert);
+
             $certification = $this->model_employer->get_certName($cert);
              $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
             
             
-              $mpdf->WriteHTML('<html><div style="text-align:center;">
+$mpdf->WriteHTML('<html><div style="text-align:center;">
                              
                               
                               <img src="' . base_url() . 'assets/img/tesda.jpg" width="30" height="30" style="margin-top:2%;">   
@@ -1100,7 +1104,7 @@ class Report extends CI_Controller {
                                 <tr>
                                     <td width="350">Month: ' . $month . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
-                                        <td width="350">Certification: ' . $certification . ' &nbsp;</td>
+                                        <td width="350">Course: ' . $certification . ' &nbsp;</td>
                                 </tr>
                                 
                               </tbody>
@@ -1111,24 +1115,25 @@ class Report extends CI_Controller {
                                       <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
                               <tr>
                         
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Module</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q1</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q2</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q3</th>
-                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Q4</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Modules</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">1st Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">2nd Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">3rd Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">4th Quarter</th>
                                 
                               
                                 </tr>
                              ');
-            foreach($result as $a):
+            foreach($q1 as $a):
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a[0] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a. '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' .$a->moduleid . '</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a->moduleid . '</td>');
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a . '</td>');
 //                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
 //                                    $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
 //            
@@ -1142,7 +1147,7 @@ class Report extends CI_Controller {
 //                                    foreach($hired as $b):
 //                                        $mpdf->writeHTML(''.$b->count.'');
 //                                    endforeach;
-//                                    $mpdf->writeHTML('</td>
+////                                    $mpdf->writeHTML('</td>
 //
 //                             </tr>');
                               

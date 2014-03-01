@@ -387,48 +387,101 @@ class Model_reports extends CI_Model {
          
         $db1->close();
     }
-    public function getResultsQ1($courseid){
-        $db = $this->load->database('local', TRUE);
-        $result = $db->select('resultID')
-                ->where('MONTH(date)','1',FALSE)
-                ->where('MONTH(date)','2',FALSE)
-                ->where('MONTH(date)','3',FALSE)
-                ->get('survey_results_modules')
-                ->result_array();
+    public function get_resultsQ2($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
         
-        $modules = $this->getModules($courseid);           
+        $modules = $this->getModules($courseid);
+       // print_r($modules);
+        $moduleResults = array();
+        foreach($modules as $a)
+        {
+            $moduleid = $a['moduleid'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_modules m ON  d.resultID =  m.resultID
+            WHERE (MONTH(d.DATE ) =4
+            OR MONTH( d.DATE ) =5
+            OR MONTH( d.DATE ) =6) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $moduleResults[$moduleid] = $rating/$ctr;
+        }
+       return $moduleResults;
+         
+        $db1->close();
     }
-    public function getResultsQ2($courseid){
-        $db = $this->load->database('local', TRUE);
-        $result = $db->select('resultID')
-                ->where('MONTH(date)','4',FALSE)
-                ->where('MONTH(date)','5',FALSE)
-                ->where('MONTH(date)','6',FALSE)
-                ->get('survey_results_modules')
-                ->result_array();
+    public function get_resultsQ3($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
         
-        $modules = $this->getModules($courseid);           
-    }public function getResultsQ3($courseid){
-        $db = $this->load->database('local', TRUE);
-        $result = $db->select('resultID')
-                ->where('MONTH(date)','7',FALSE)
-                ->where('MONTH(date)','8',FALSE)
-                ->where('MONTH(date)','9',FALSE)
-                ->get('survey_results_modules')
-                ->result_array();
-        
-        $modules = $this->getModules($courseid);           
+        $modules = $this->getModules($courseid);
+       // print_r($modules);
+        $moduleResults = array();
+        foreach($modules as $a)
+        {
+            $moduleid = $a['moduleid'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_modules m ON  d.resultID =  m.resultID
+            WHERE (MONTH(d.DATE ) =7
+            OR MONTH( d.DATE ) =8
+            OR MONTH( d.DATE ) =9) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $moduleResults[$moduleid] = $rating/$ctr;
+        }
+       return $moduleResults;
+         
+        $db1->close();
     }
-    public function getResultsQ4($courseid){
-        $db = $this->load->database('local', TRUE);
-        $result = $db->select('resultID')
-                ->where('MONTH(date)','10',FALSE)
-                ->where('MONTH(date)','11',FALSE)
-                ->where('MONTH(date)','12',FALSE)
-                ->get('survey_results_modules')
-                ->result_array();
+    public function get_resultsQ4($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
         
-        $modules = $this->getModules($courseid);           
+        $modules = $this->getModules($courseid);
+       // print_r($modules);
+        $moduleResults = array();
+        foreach($modules as $a)
+        {
+            $moduleid = $a['moduleid'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_modules m ON  d.resultID =  m.resultID
+            WHERE (MONTH(d.DATE ) =10
+            OR MONTH( d.DATE ) =11
+            OR MONTH( d.DATE ) =12) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $moduleResults[$moduleid] = $rating/$ctr;
+        }
+       return $moduleResults;
+         
+        $db1->close();
     }
     public function getAverageRatingMonthly($moduleid,$resultID){
         $db = $this->load->database('local', TRUE);
