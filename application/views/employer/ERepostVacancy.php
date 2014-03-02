@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/jquery.dataTables_themeroller.css" type="text/css" media="screen" />
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.js"></script>   
+<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script> 
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <body>
 <!--publish vacancy modal start-->
@@ -339,6 +338,7 @@
                         
                        <!--ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE-->
                            <div class="tab-pane" id="tab2">
+                     
                             <div class="row-fluid">
                             	<div class="span12">
                                 <div class="well">
@@ -349,6 +349,12 @@
                                                     <!--<label class="control-label lLabel2" style="margin-right:-26px;">Sex: &nbsp;</label>-->
                                                   <strong>  Sex:</strong>  <input type="text" id="sex" name="sex" value="<?php echo $a['sex']?>" placeholder="" readonly>
                                                 </div> <!--end sex field-->
+                                            <strong>   Industry: </strong> <?php    
+                                            $industry['0'] = 'Choose Industry';
+                                            $params = 'id="industrycert" style="width:40%" '; 
+                                            echo form_dropdown('industrycert', $industry,'0',$params);    
+
+                                            ?> 
                                             </div><!--end span-->
                                             
                                             <div class="span5">
@@ -361,17 +367,13 @@
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
+                                                   
                                             </div><!--end span-->
+                                            
                                         </div><!--end row-fluid-->
-                                        <br>
-                                      
+                                                                           
 <!--                                          <div class="myStyle2VD" style="margin-top:5px;" >
-                                                       <?php    
-                                                                $industry['0'] = 'Choose Industry';
-                                                                $params = 'id="industrycert" style="width:40%" '; 
-                                                               echo form_dropdown('industrycert', $industry,'0',$params);    
-                                                               
-                                                          ?> 
+                                                     
                                                 
                                                 </div>-->
                                     </form>
@@ -384,36 +386,14 @@
                                                 | CERTIFICATION/S
                                             </h5>
                                             
-                                                         <input type="hidden" id="lstcert2" name= "certselect[]"
-                                                                value="<?php
-                                                         $count = count($cert);
-                                                         foreach ($cert as $a)
-                                                         {
-                                                             echo $a['ncid'];
-                                                             if ($count >1)
-                                                                echo ", ";
-                                                             
-                                                             $count--;
-                                                         }
-                                                         ?>"
-                                                                placeholder="" readonly>
-                                                         
-                                    
                                             
-                                    
-                                         
-                                           <textarea readonly type="text" rows="5" id="lstcert2name" 
-                                              name="certselectname[]"> <?php
-                                                         $count = count($cert);
-                                                         foreach ($cert as $a)
-                                                         {
-                                                             echo $a['ncname'];
-                                                             if ($count >1)
-                                                                echo ", ";
-                                                             
-                                                             $count--;
-                                                         }
-                                                         ?></textarea>
+                                                <?php 
+             
+                                        $params = 'multiple="multiple" style="width:75%" size="10" name= "cert[]" id="lstcert1"'; 
+                                        echo form_multiselect('certs', $cert, '#', $params ); ?> 
+                                            
+                                            <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                    
                                        
 
@@ -424,39 +404,47 @@
                                                 | COMPETENCIES
                                             </h5>
                                             
-                                                         <input type="hidden" id="lstcomp2" name= "compselect[]" 
-                                                                value=" <?php
-                                                         $count = count($cert);
-                                                         foreach ($comp as $a)
-                                                         {
-                                                             echo $a['ncoid'];
-                                                             if ($count >1)
-                                                                echo ", ";
-                                                             
-                                                             $count--;
-                                                         }
-                                                         ?>"
-                                                                placeholder="" readonly>
-                                                         
-                          
-                                               
-                                                    <textarea readonly type="text" rows="5" id="lstcomp2name" 
-                                              name="compselectname[]">
-                                                   <?php
-                                                         $count = count($cert);
-                                                         foreach ($comp as $a)
-                                                         {
-                                                             echo $a['cocname'];
-                                                             if ($count >1)
-                                                                echo ", ";
-                                                             
-                                                             $count--;
-                                                         }
-                                                         ?>
-                                                    </textarea>
+                                              <?php 
+                                         
+                                         $params = 'multiple="multiple"style="width:70%" size="10" name= "comp[]" id="lstcomp1"'; 
+                                         echo form_multiselect('competencies', $comp, '#', $params); ?>   
+                                            
+                                               <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
+                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                  
                                         </div><!--end span4-->	
                                         
+                                           <div class="span4">
+                                            <h5 class="media-heading previewColor">
+                                                | YOUR CHOSEN CERTIFICATION/S
+                                            </h5>
+                                            
+                                           <select id="lstcert2" name= "certselect[]"multiple="multiple" value="<?php
+                                                         $count = count($cert);
+                                                         foreach ($cert as $a)
+                                                         {
+                                                             echo $a['ncid'];
+                                                             if ($count >1)
+                                                                echo ", ";
+                                                             
+                                                             $count--;
+                                                         }
+                                                         ?>">
+                                         </select>
+                                               <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                       
+                                            <h5 class="media-heading previewColor">
+                                                | YOUR CHOSEN COMPETENCIES
+                                            </h5>
+                                            
+                                             <select id="lstcomp2" name= "compselect[]" multiple="multiple">
+
+                                        </select>
+                                               
+                                                    <a class="btn btn-mini actionPHMarg"style ="margin-left:10px; margin-top:-10px;"id="btnDelComp">
+                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                        </div><!--end span4-->	
                                         
                                     </div><!--end row-fluid-->
                                     
@@ -465,11 +453,50 @@
                                       	<textarea name="Desc" rows="10" class="span7" readonly style="margin-left:-120px;"></textarea>
                                     </div>end row-fluid-->
                                     
-                     
+                             <h5 class="media-heading previewColor">
+                                        | CERTIFICATION DETAILS
+                                    </h5>
+                                  
+                                 
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+                          <select id="ncname" style="background-color:#f5f5f5; height:2em; width:30%" name= "certname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                          &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                           &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp; 
+                         &nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp;
+        
+                         <span style="font-weight:bold">Level:</span>
+                         <select id="nclevel" style="background-color:#f5f5f5; height:2em;width:8%" name= "certlevel[]"multiple="multiple"> </select>
+                         <br>
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncdesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "certdesc[]"multiple="multiple"> </select>
+                                 
+                          <br>
+                                  </div> <!--end row-fluid-->
+                                      <h5 class="media-heading previewColor">
+                                        | COMPETENCY DETAILS
+                                    </h5>
+                                  
+                                  
+                          <div class="row-fluid">
+                          <span style="font-weight:bold">Name:</span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+                          <select id="nconame" style="background-color:#f5f5f5; height:2em; width:30%" name= "compname[]"multiple="multiple"> </select>
+                         &nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;<br>
+        
+                      
+                          <span style="font-weight:bold">Description:</span>
+                         <select id="ncodesc" style="background-color:#f5f5f5; height:2em;width:85%" name= "compdesc[]"multiple="multiple"> </select>
+                                 
+                          
+                                  </div> <!--end row-fluid-->
                                     	
                                   </div><!--end well-->
                             	</div><!--end span-->
                             </div><!--end row-fluid-->
+                            
+                        </div> <!--end tab pane qualifications-->
                             
                         </div> <!--end tab pane qualifications-->
                         

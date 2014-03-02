@@ -220,7 +220,7 @@ function checkall3(el){
                     <form method="post" action="<?php echo base_url()?>employer/employer_repost">
             	<div class="well">
                 	<h5 class="media-heading previewColor">| Repost Existing Vacancy</h5>
-                    <div style="width:298px;height:150px;overflow:auto;"><!--start scrollable table-->
+                    <div style="width:410px;height:150px;overflow:auto;"><!--start scrollable table-->
                     	
                         	<div class="control-group2"><!-- start div Keyword -->
                                 <div class="controls">
@@ -243,7 +243,7 @@ function checkall3(el){
                                        echo $a['jobtitle'];
                                        echo '</td>';?>
                                        </font>
-                                       
+                                  
                                        
                                        <?php echo '<td>';
                                        echo $a['city'];
@@ -275,7 +275,7 @@ function checkall3(el){
             <div class="span4">
             	<div class="well">
                 	<h5 class="media-heading previewColor">| Create a New Vacancy</h5>
-                    <div style="width:190px;height:159px;overflow:auto;"><!--start scrollable table-->
+                    <div style="width:235px;height:159px;overflow:auto;"><!--start scrollable table-->
                         <div align="center" style="margin-top:15px; margin-left:17px; " >
                             <br><br>
                             <a href="<?php echo base_url()?>employer/employer_postvacancypage" class="btn btn-info btn-mini">Post New Vacancy</a>
