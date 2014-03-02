@@ -172,13 +172,12 @@
                       </table>
                 </div><!--end span-->
                 
-                <div class="span6">
+                   <div class="span6">
                 	<p class="previewCCS">
                 		<strong>CERTIFICATION/S:</strong> 
                         <font class="previewCCS2">
-                          <input type="hidden" id="cert1" name="cert1">
-<!--                        <span id="cert1" name= "cert1"></span>-->
-                        <span id="cert1name" name= "cert1name"></span>
+                        <span id="cert1" name= "cert1"></span>
+                          
                         	
                         </font>
                     </p>
@@ -186,10 +185,7 @@
                    <p class="previewCCS">
                 		<strong>COMPETENCIES:</strong> 
                         <font class="previewCCS2">
-
-                                   <input type="hidden" id="comp" name="comp">
-<!--               <span id="comp" name= "comp"></span></span>-->
-                        <span id="compname" name= "compname"></span>
+                        	<span id="comp" name= "comp"></span>
                         </font>
                     </p>
                     
@@ -419,17 +415,7 @@
                                                 | YOUR CHOSEN CERTIFICATION/S
                                             </h5>
                                             
-                                           <select id="lstcert2" name= "certselect[]"multiple="multiple" value="<?php
-                                                         $count = count($cert);
-                                                         foreach ($cert as $a)
-                                                         {
-                                                             echo $a['ncid'];
-                                                             if ($count >1)
-                                                                echo ", ";
-                                                             
-                                                             $count--;
-                                                         }
-                                                         ?>">
+                                        <select id="lstcert2" name= "certselect[]"multiple="multiple">
                                          </select>
                                                <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
                                      <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>

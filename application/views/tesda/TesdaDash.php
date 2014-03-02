@@ -324,7 +324,7 @@ foreach($employerverify as $a)
                    <div class="row-fluid">
             	
                 	<div class="well wellMarg wellUpMarg">
-                    	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues</h5>
+                    	<h5 class="media-heading"><img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Reports</h5>
                     	<div style="width:508px;height:295px;overflow:auto;"><!--start scrollable table-->
                                                 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
                         </div><!--end scrollable table-->
