@@ -223,8 +223,11 @@ class Employer extends CI_Controller {
 
        $co = $this->input->post('compselect');
        $ce = $this->input->post('certselect');
-
-       if(count($co)>=0)
+       
+      
+       
+       
+       if(!empty($co))
        {
             foreach ($co as $a)
             {
@@ -233,7 +236,7 @@ class Employer extends CI_Controller {
        }
        
 
-         if(count($ce)>=0)
+         if(!empty($ce))
       {
           foreach ($ce as $a)
           {
