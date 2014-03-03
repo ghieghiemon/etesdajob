@@ -349,7 +349,7 @@
                                             <strong>   Industry: </strong> <?php    
                                             $industry['0'] = 'Choose Industry';
                                             $params = 'id="industrycert" style="width:40%" '; 
-                                            echo form_dropdown('industrycert', $industry,'0',$params);    
+                                            echo form_dropdown('industrycert', $industry,$jobdetails[0]['sectorid'],$params);    
                                             
                                             ?> 
                                             <input type="hidden" id="industry" value="<?php echo $jobdetails[0]['sectorid']; ?>">

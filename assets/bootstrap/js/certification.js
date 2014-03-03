@@ -1,3 +1,14 @@
+$(document).ready(function(){
+    
+    $('.taa').click(function(){
+        
+       $("#btnAddCert").trigger('click');
+       
+
+    });
+    
+});
+
 $(document).ready(function(){       
     $('#industrycert').change(function(){ //any select change on the dropdown with id country trigger this code         
             $("#lstcert1 > option").remove(); //first of all clear select items
@@ -172,9 +183,9 @@ $(this).remove().appendTo("#lstcert1");
 $(function(){
 $("#btnAddCert").click(function(){
 $("#lstcert1 > option:selected").each(function(){
-     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
-                 if (children[i].tagName === "OPTION") children[i].selected = true;
-}
+//     for (var i = 0, children = lstcomp1.childNodes, l = children.length; i < l; i++) {
+//                 if (children[i].tagName === "OPTION") children[i].selected = true;
+//}
 $(this).remove().appendTo("#lstcert2");
 $("#lstcomp1 > option:selected").each(function(){
 $(this).remove().appendTo("#lstcomp2");

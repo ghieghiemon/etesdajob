@@ -565,7 +565,7 @@ class Employer extends CI_Controller {
        //$data['comp'] = $this->model_employer->get_jobComps($jobno);
         $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
-        print_r($job);
+        //print_r($job);
         $competency = $this->model_employer->getCompetencies($job[0]['jobno']);
         $certification = $this->model_employer->getCertifications($job[0]['jobno']);
         //print_r($competency);
