@@ -2,6 +2,7 @@
 <script type="text/javascript" src="<?php echo base_url()?>assets/bootstrap/js/jquery-1.9.0.min.js"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-2.0.2.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.dataTables.min.js" type="text/javascript"></script> 
+<!--<script src="<?php echo base_url()?>assets/bootstrap/js/certification1.js" type="text/javascript"></script> -->
 <link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/bootstrap.css">
 <body>
 <!--publish vacancy modal start-->
@@ -224,7 +225,7 @@
             	<div class="tabbable tabs-left PVDetMarg"> <!-- start tabs-->
                     <ul class="nav nav-tabs">
                         <li class="active rTabLink"><a href="#tab1" data-toggle="tab">General Information</a></li>
-                        <li class="rTabLink"><a href="#tab2" data-toggle="tab">Qualifications</a></li>
+                        <li class="rTabLink"><a href="#tab2" data-toggle="tab" class="taa">Qualifications</a></li>
                       
                     </ul>
           
@@ -333,7 +334,7 @@
                         </div> <!--end tab pane general info-->
                         
                        <!--ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE ADD HERE-->
-                           <div class="tab-pane" id="tab2">
+                           <div class="tab-pane" id="tab2" >
                      
                             <div class="row-fluid">
                             	<div class="span12">
@@ -349,8 +350,22 @@
                                             $industry['0'] = 'Choose Industry';
                                             $params = 'id="industrycert" style="width:40%" '; 
                                             echo form_dropdown('industrycert', $industry,'0',$params);    
-
+                                            
                                             ?> 
+                                            <input type="hidden" id="industry" value="<?php echo $jobdetails[0]['sectorid']; ?>">
+                                           
+                                            <?php 
+                                            
+                                            $tempcert = "";
+                                            
+                                            foreach($certificationID as $certID){
+                                               $tempcert = $tempcert.','.$certID;
+                                            }
+                                            
+                                            ?>
+                                            
+                                            <input type="hidden" id="cert" value="<?php echo $tempcert ?>">
+                                            
                                             </div><!--end span-->
                                             
                                             <div class="span5">
@@ -386,7 +401,7 @@
                                                 <?php 
              
                                         $params = 'multiple="multiple" style="width:75%" size="10" name= "cert[]" id="lstcert1"'; 
-                                        echo form_multiselect('certs', $cert, '#', $params ); ?> 
+                                        echo form_multiselect('certs', $cert, $certificationID, $params ); //$certificationID?> 
                                             
                                             <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
@@ -403,7 +418,7 @@
                                               <?php 
                                          
                                          $params = 'multiple="multiple"style="width:70%" size="10" name= "comp[]" id="lstcomp1"'; 
-                                         echo form_multiselect('competencies', $comp, '#', $params); ?>   
+                                         echo form_multiselect('competencies', $comp, $competencyID, $params); ?>   
                                             
                                                <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
                                      <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
