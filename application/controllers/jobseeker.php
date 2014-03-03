@@ -36,7 +36,7 @@ class Jobseeker extends CI_Controller {
         
         $this->jobseeker_header();
         $this->load->view('jobseeker/JSMyApps', $data);
-        $this->load->view('footer2');
+      //  $this->load->view('footer');
     }
     public function jobseeker_myappsdetail($jobno)
     {
@@ -172,7 +172,7 @@ class Jobseeker extends CI_Controller {
         $data['jsdetails'] = $this->model_jobseeker->get_jsdetails($id);
         $userid = $this->model_employer->get_userid($id);
         $data['email'] = $this->model_employer->get_email($userid);
-        $data['cert'] = $this->model_jobseeker->get_certifications($id);
+        $data['cert'] = $this->model_jobseeker->get_certifications2($id);
         $data['appid'] = $id;
         
         $this->jobseeker_header();

@@ -405,6 +405,16 @@ class Model_jobseeker extends CI_Model {
         
         return $query->result_array();
     }
+    
+      public function get_certifications2($id)
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT *,YEAR(dateacquired) as dateacquired from applicants_certificates ac JOIN nc_reference nc ON ac.certificateid = nc.ncid
+                                where ac.appid = $id order by ac.dateacquired desc
+                            ");
+        
+        return $query->result_array();
+    }
     public function get_jobComps($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
