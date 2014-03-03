@@ -526,7 +526,7 @@ foreach($invites as $a)
                                 <th class="span2" style="text-align:center">Description</th>
                                 <th class="span2" style="text-align:center">Company Name</th>
                                 <th class="span1" style="text-align:center">Location</th>
-                                <th class="span1" style="text-align:center">Date Applied</th>
+                                <th class="span3" style="text-align:center">Date Applied</th>
                                 <th class="span4" style="text-align:center">Status</th>
                         <?php
                         }
