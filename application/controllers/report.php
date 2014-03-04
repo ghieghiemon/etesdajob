@@ -162,7 +162,7 @@ class Report extends CI_Controller {
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->city . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->jobtitle . '</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $vacancy->description . '</td>');
-                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
+                                    $mpdf->writeHTML('<td align="right" style="font-family:Arial, Helvetica, sans-serif;">'); 
                                     $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
             
                                     foreach($applicants as $a):
@@ -478,7 +478,7 @@ class Report extends CI_Controller {
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->sectorName . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->region . '</td> 
                                     <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->noapplicants . '</td> 
                                     
                                         
@@ -552,9 +552,9 @@ class Report extends CI_Controller {
                                 <tr style="align:center;">
                                     
                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->firstname . '</td> 
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->ncname . '</td> 
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->dateacquired . '</td> 
-                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' );
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->ncname . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->dateacquired . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' );
                                     if($job->employment == 1)
                                          $mpdf->writeHTML('Employed');
                                     else
@@ -627,9 +627,9 @@ class Report extends CI_Controller {
                 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
-                                                                        <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->companyName . '</td> 
+                                                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->companyName . '</td> 
 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->vacancies . '</td> 
+                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif;">' . $job->vacancies . '</td> 
                                     
                                         
                                    
