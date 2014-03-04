@@ -358,10 +358,10 @@
                                             
                                             $tempcert = "";
                                             
-                                            foreach($certificationID as $certID){
-                                               $tempcert = $tempcert.','.$certID;
-                                            }
-                                            
+//                                            foreach($certificationID as $certID){
+//                                               $tempcert = $tempcert.','.$certID;
+//                                            }
+//                                            
                                             ?>
                                             
                                             <input type="hidden" id="cert" value="<?php echo $tempcert ?>">
