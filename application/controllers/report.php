@@ -1068,8 +1068,10 @@ class Report extends CI_Controller {
         </h3>');
         foreach($data['appdetails'] as $c):
          
-        $mpdf->WriteHTML('<font class="resWrkHead">'.
-            $c['ref1name'].
+          $mpdf->WriteHTML('<font class="resWrkHead">'.
+            $c['ref1name']. '<br>' .
+                   $c['ref1relation']. '<br>' .
+                 $c['ref1contact']. '<br>' .
         '</font>
         
         <br>
