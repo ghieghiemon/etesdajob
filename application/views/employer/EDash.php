@@ -273,7 +273,7 @@ foreach ($myvacancies as $a)
                      
                 </h5>
                     
-                    <div style="width:380px;height:140px;overflow:auto;"><!--start scrollable table-->
+                    <div style="width:380px;height:230px;overflow:auto;"><!--start scrollable table-->
       				<ul class="nav nav-list">
                          
                         <?php
@@ -368,86 +368,7 @@ foreach ($myvacancies as $a)
                     </div>
                 </div> <!--end row fluid-->   
             </div>
-            <div class="well wellUpMarg">
-            	<h5 class="media-heading">
-                	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_266_flag.png" width="15"> Upcoming Events
-                </h5>
-                
-                <div style="width:380px;height:290px;overflow:auto;"><!--start scrollable table-->
-      		  <!--start row fluid upcoming events-->		
-                   
-                  	<?php
-                    $ctr = 1;
-                    if(count($event) == 0)
-                     {
-                         echo '<p class = "noCommYet"> You have no upcoming events</p>';
-                     }
-                     else
-                     {
-                    foreach ($event as $row)
-                     {
-                        if($ctr <3){
-                echo'
-                  <div class="row-fluid"> 
-                                  
-						
-                        <div class="span2">
-                        	<a data-toggle="modal" href="#ModEventDes">'?>
-                            	<img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>"  class="thumbnail" alt="">
-                                
-                           <?php echo' </a>
-                        </div>
-        				
-        				<div class="span9">
-							<p class="marg2">'?>
-              
-                        		<a href='<?php echo base_url()?>employer/employer_evcreated/<?php echo $row['eventno']?>' class="Name4">
-                                            
-                                            
-                                       <?php echo $row['eventtitle'];
-                                      echo'  </a>
-                            </p>
-          		
-                			<p class="evDetails3">
-                            	<em>
-                                '?><img src="<?php echo base_url()?>assets/img/icons/glyphicons_045_calendar.png" width="11">
-                                <?php echo $row['startdate'];
-                                	echo ' | '?>
-                                        <img src="<?php echo base_url()?>assets/img/icons/glyphicons_054_clock.png" width="11">
-                                           <?php echo $row['starttime'];
-                               echo' </em><br>
-                                <strong>Location</strong>: ';
-                                echo $row['region'];
-                               echo' | ';
-                               echo $row['city'];
-                               echo' <br>
-                                <strong>Venue:</strong>';
-                                echo $row['venue'];
-                               echo'<br>
-                            	 <hr class="hrLeagTab">
-                            </p>
-					
-						</div>
-					</div>';
-                                         }
-                     $ctr += 1;
-                     }
-                     }
-                    ?>
-                  
-                    <!--end row-fluid-->
-    				
-     			
-                    </div><!--end scrollable table-->
-                    
-    				<div class="row-fluid">
-    					<div align="right" style="margin-top:-15px">
-                            <a href="#">
-                                <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_187_more.png">
-                            </a>
-                        </div>
-    				</div> <!--end row fluid upcoming events-->
-            </div><!--end well-->
+<!--         //events here-->
         </div><!--end span left folumn-->
         
         <div class="span8">
