@@ -403,7 +403,24 @@ class Model_jobseeker extends CI_Model {
         
         return $query->result_array();
     }
-    
+    public function get_invitationno($jobno,$appid)
+    {
+         $db2 = $this->load->database('local', TRUE);
+        $query = $db2->query("SELECT invitationno from job_invitation where appid = $appid and jobno = $jobno");
+        foreach ($query->result() as $row)
+        {
+            return $row->invitationno;
+        }
+        $db2->close();
+    }
+     public function get_jobnoAndAppid($notifid)
+    {
+        $db2 = $this->load->database('local', TRUE);
+        $query = $db2->query("SELECT * from notifications where notifid = $notifid
+                            ");
+        
+        return $query->result_array();
+    }
       public function get_certifications2($id)
     {
         $db2 = $this->load->database('default', TRUE);

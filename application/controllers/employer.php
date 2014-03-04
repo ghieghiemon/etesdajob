@@ -173,8 +173,10 @@ class Employer extends CI_Controller {
         $this->employer_header();
         $this->load->view('employer/ESurvey',$data);
     }
+    
     public function employer_postvacancypage()
     {
+        
         $this->load->model('model_main');
         $this->load->model('model_employer');
         $jobpost = array(
@@ -184,6 +186,8 @@ class Employer extends CI_Controller {
         'industry' =>$this->model_main->get_drpindustries()
         );
 
+        
+        
         $this->employer_header();
         $this->load->view('employer/EPostVacancy', $jobpost);
         $this->load->view('footer');
@@ -193,7 +197,25 @@ class Employer extends CI_Controller {
     {
        $this->load->model('model_main');
        $this->load->model('model_employer');
+       	
+       $this->load->library('form_validation');
+       $this->form_validation->set_rules('JN', 'Job Name', 'required');
+       $this->form_validation->set_rules('effectivity', 'Effectivity', 'required');
+       $this->form_validation->set_rules('NOV', '# of Vacancy', 'required');
+       $this->form_validation->set_rules('regionid', 'Region', 'required');
+       $this->form_validation->set_rules('cityid', 'City', 'required');
+       $this->form_validation->set_rules('desc', 'Description', 'required');
+       $this->form_validation->set_rules('industry', 'Industry', 'required');
+       $this->form_validation->set_rules('sex', 'Sex', 'required');
+       $this->form_validation->set_rules('ageto', 'Age', 'required|numeric');
+       $this->form_validation->set_rules('agefrom', 'Age', 'required|numeric');
        
+       if ($this->form_validation->run())
+	{
+            
+	
+        
+
        $companyid = $this->model_main->get_userid($this->session->userdata('email'));
        $jobname = $this->input->post('JN');
        $effect = $this->input->post('effectivity');
@@ -247,6 +269,11 @@ class Employer extends CI_Controller {
       
       //invite
       $this->invite_jobseekers($jobpost_id);
+        }
+        else{
+            print_r(validation_errors());
+            $this->employer_postvacancypage();
+        }
     }
     
      public function match($jobno, $id)

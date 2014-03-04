@@ -1062,6 +1062,21 @@ class Report extends CI_Controller {
             </font>
             <br>');
         endforeach;
+          $mpdf->WriteHTML('<hr class="hrCV">       
+         <h3>
+            | References
+        </h3>');
+        foreach($data['appdetails'] as $c):
+         
+        $mpdf->WriteHTML('<font class="resWrkHead">'.
+            $c['ref1name'].
+        '</font>
+        
+        <br>
+        
+            </font>
+            <br>');
+        endforeach;
         $mpdf->WriteHTML('</div><!--end course details-->
         </div><!--end span-->
     </div><!--end row-fluid-->
