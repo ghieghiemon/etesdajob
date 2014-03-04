@@ -90,7 +90,8 @@
                                                                     </strong> 
                                                                     | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_419_e-mail.png" width="15"> 
                                                                     <strong>COMPANY EMAIL: <?php echo $a['companyEmail']?></strong> 
-                                                                    | <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_087_log_book.png"  width="15">
+                                                                    <br>
+                                                                    <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_087_log_book.png"  width="15">
                                                                     <strong>CONTACTNO. <?php echo $a['companyContact']?></strong>
                                                                     
                                                                     <br>

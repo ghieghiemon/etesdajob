@@ -101,7 +101,7 @@
                                     </td>
                                    
                                     <td>
-                                        <a href="<?php echo base_url()?>pub/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
+                                        <a href="<?php echo base_url()?>tesda/employer_profilepage/<?php echo $a['companyID']?>" class="Name4">
                                             <?php
                                             $companyName = $this->model_pub->get_companyName($a['companyID']);
                                             echo $companyName;

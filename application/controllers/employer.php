@@ -223,9 +223,13 @@ class Employer extends CI_Controller {
 
        $co = $this->input->post('compselect');
        $ce = $this->input->post('certselect');
-
-       if(count($co)>=0)
+//       print_r($_POST);
+      
+       
+       
+       if(!empty($co))
        {
+         
             foreach ($co as $a)
             {
                 $this->model_employer->add_competencies($jobpost_id, $a);
@@ -233,7 +237,7 @@ class Employer extends CI_Controller {
        }
        
 
-         if(count($ce)>=0)
+         if(!empty($ce))
       {
           foreach ($ce as $a)
           {
@@ -551,16 +555,49 @@ class Employer extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_employer');
         $this->load->model('model_jobseeker'); 
-      $data['cert'] = $this->model_employer->getAllComp();  
-      $data['comp'] = $this->model_employer->getAllCerts();
+      $data['comp'] = $this->model_employer->getAllComp();  
+      $data['cert'] = $this->model_employer->getAllCerts();
          
       
         $jobno = $this->input->post('jobvacancy');   
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   
-       $data['cert'] = $this->model_employer->get_jobCerts($jobno);
-       $data['comp'] = $this->model_employer->get_jobComps($jobno);
+       //$data['cert'] = $this->model_employer->get_jobCerts($jobno);
+       //$data['comp'] = $this->model_employer->get_jobComps($jobno);
         $job = $this->model_employer->get_jobdetails($jobno);
         $data['jobdetails'] = $job;
+        //print_r($job);
+        $competency = $this->model_employer->getCompetencies($job[0]['jobno']);
+        $certification = $this->model_employer->getCertifications($job[0]['jobno']);
+        //print_r($competency);
+        if(!empty($competency)){
+            $competencies = array();
+            
+            foreach($competency as $comp){
+                array_push($competencies,$comp['ncoid']);
+            }
+            //print_r($competencies);
+          $data['competencyID'] = $competencies;  
+        }else{
+            
+            
+            
+            $data['competencyID'] = '#';  
+        }
+        
+        if(!empty($certification)){
+            
+            $certifications = array();
+            
+            foreach($certification as $cert){
+                array_push($certifications, $cert['ncid']);
+            }
+            
+           $data['certificationID'] = $certifications;
+        }else{
+            $data['certificationID'] = '#';
+        }
+        
+        
         $data['industry'] = $this->model_main->get_drpindustries();
         $data['drpindustries'] = $this->model_main->get_drpindustries();
         $data['regions'] = $this->model_main->get_regions();
@@ -578,8 +615,8 @@ class Employer extends CI_Controller {
         $this->load->model('model_main');
         $this->load->model('model_employer');
         $this->load->model('model_jobseeker'); 
-        $data['cert'] = $this->model_employer->getAllComp();  
-        $data['comp'] = $this->model_employer->getAllCerts();
+        $data['comp'] = $this->model_employer->getAllComp();  
+      $data['cert'] = $this->model_employer->getAllCerts();
          
      
         $data['jobdetails'] = $this->model_employer->get_jobdetails($jobno);   

@@ -132,39 +132,9 @@
                                         <?php
                                         }
                                         ?>
-                                        <h4 class="proDetCol media header">
-                                        	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_045_calendar.png" width="20"> Events
-                                        </h4>
+                                 
                                         
-                                        <div style="width:590px;height:100px;overflow:auto;" class="PProfE2" ><!--start scrollable table-->
-                                        <?php
-                                        foreach ($events as $a)
-                                        {
-                                            ?>   
-                                            <a href='<?php echo base_url()?>pub/pevent_details/<?php echo $a['eventno']?>'>
-                                            <img src="<?php echo base_url()?>eventpics/<?php echo $a['eventpic']?>" class="PProfE"/></a>
-                                            <?php
-                                        }
-                                        ?>
-                                               
-                                        </div> <!--end scrillable-->
-                                        
-                                        <h4 class="proDetCol media header">
-                                        	 <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_043_group.png" width="25"> Leagues
-                                        </h4>
-                                        
-                                         <div style="width:590px;height:100px;overflow:auto;" class="PProfE2" ><!--start scrollable table-->
-                                        <?php
-                                        foreach($leagues as $a)
-                                        {
-                                            ?>
-                                             <a href="<?php echo base_url()?>pub/leagueviewpage/<?php echo $a['leagueno']?>"><img src="<?php echo base_url()?>leaguepics/<?php echo $a['leaguepic']?>" class="PProfE"/></a>
-                                            <?php
-                                        }
-                                        ?>
-                                        
-                                               
-                                        </div> <!--end scrillable-->
+                                     
                                     </div><!--end well-->
                                 </div><!--end span-->
                                 

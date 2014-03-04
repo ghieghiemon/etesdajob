@@ -796,7 +796,7 @@ class Report extends CI_Controller {
             //$data['application'] = $this->model_employer->get_applicationDetails($appid,$jobno);  
             $data['educ'] = $this->model_jobseeker->get_educ($appid);
             $data['work'] =$this->model_jobseeker->get_work($appid);
-            $data['cert'] = $this->model_jobseeker->get_certifications($appid);
+            $data['cert'] = $this->model_jobseeker->get_certifications2($appid);
             
             $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');

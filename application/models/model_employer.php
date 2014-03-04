@@ -1171,5 +1171,28 @@ public function check_if_linvite($id, $lno)
         
     
     }
+    
+    public function getCompetencies($jobno){
+          $db1 = $this->load->database('local', TRUE);
+          echo $jobno;
+          $result = $db1->select('ncoid')
+                  ->where('jobno',$jobno)
+                  ->get('job_competencies')
+                  ->result_array();
+          
+          return $result;
+       $db1->close();
+    }
+    
+    public function getCertifications($jobno){
+           $db1 = $this->load->database('local', TRUE);
+          $result = $db1->select('ncid')
+                  ->where('jobno',$jobno)
+                  ->get('job_certifications')
+                  ->result_array();
+          
+          return $result;
+       $db1->close();
+    }
 }
 ?>
