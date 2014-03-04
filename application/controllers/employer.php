@@ -212,9 +212,6 @@ class Employer extends CI_Controller {
        
        if ($this->form_validation->run())
 	{
-            
-	
-        
 
        $companyid = $this->model_main->get_userid($this->session->userdata('email'));
        $jobname = $this->input->post('JN');
@@ -667,99 +664,116 @@ class Employer extends CI_Controller {
 	{
         $this->load->model('model_main');
        
-
-        $jobtitle = $this->input->post('jobtitle');
-        $region = $this->input->post('regionid');
-        $city = $this->input->post('cityid');
-        if($this->model_main->employer_checkjobstatus($jobtitle,$region,$city))
-        {
-            echo json_encode(array('result' => true));
-        }
-        else 
-        {
-            echo json_encode(array('result' => false));
-        }
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('jobtitle', 'Age', 'required');
+        $this->form_validation->set_rules('regionid', 'Age', 'required');
+        $this->form_validation->set_rules('cityid', 'Age', 'required');
         
+        if ($this->form_validation->run())
+	{
+            $jobtitle = $this->input->post('jobtitle');
+            $region = $this->input->post('regionid');
+            $city = $this->input->post('cityid');
+            if($this->model_main->employer_checkjobstatus($jobtitle,$region,$city))
+            {
+                echo json_encode(array('result' => true));
+            }
+            else 
+            {
+                echo json_encode(array('result' => false));
+            }
+        }
     }
     public function employer_setSched($jobno)
     {
         @session_start();
         $this->load->model('model_employer'); 
-        $status = $this->input->post('what');
-        //$day =  $this->input->post('day');
-        //$month =  $this->input->post('month');
-        //$year = $this->input->post('year');
-        $starttime = $this->input->post('TR1');
-        $endtime = $this->input->post('TR2');
-        $date = $this->input->post('date1');
-        $duration = $this->input->post('duration');
-        //$date = $month.",".$day.",".$year; 
-        $venue = $this->input->post('VN');
-        $cp = $this->input->post('CP');
-        $cd = $this->input->post('CD');
-       
         
-        //$ids = $_SESSION['ids'];
-        $id1 = array();
-        $id2 = array();
-        $id3 = array();
-        $id1 = $this->input->post('chk1');
-        $id2 = $this->input->post('check2');
-        $id3 = $this->input->post('check3');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('what', 'Age', 'required');
+        $this->form_validation->set_rules('TR1', 'Age', 'required');
+        $this->form_validation->set_rules('TR2', 'Age', 'required');
+        $this->form_validation->set_rules('date1', 'Age', 'required');
+        $this->form_validation->set_rules('duration', 'Age', 'required');
+        $this->form_validation->set_rules('VN', 'Age', 'required');
+        $this->form_validation->set_rules('CP', 'Age', 'required');
+        $this->form_validation->set_rules('CD', 'Age', 'required');
         
-        $ids = array();
-        if(!empty($id1))
-        {
-            foreach($id1 as $a)
-            {
-                array_push($ids,$a);
-            }
-        }
-        if(!empty($id2))
-        {
-            foreach($id2 as $a)
-            {
-                array_push($ids,$a);
-            }
-        }
-        if(!empty($id3))
-        {
-            foreach($id3 as $a)
-            {
-                array_push($ids,$a);
-            }
-        }
-        foreach ($ids as $a)
-        {
-            $jobno = $this->model_employer->get_jobno($a);
-            $details = $this->model_employer->get_jobdetails($jobno);
-            foreach ($details as $b)
-            {
-                $jobtitle = $b['jobtitle'];
-                $company = $b['companyID'];
-            }
-            $name = $this->model_employer->get_companyName($company);
+        if ($this->form_validation->run())
+	{
+            $status = $this->input->post('what');
+            $starttime = $this->input->post('TR1');
+            $endtime = $this->input->post('TR2');
+            $date = $this->input->post('date1');
+            $duration = $this->input->post('duration');
+            //$date = $month.",".$day.",".$year; 
+            $venue = $this->input->post('VN');
+            $cp = $this->input->post('CP');
+            $cd = $this->input->post('CD');
 
-            if ($status == "Exam")
+
+            //$ids = $_SESSION['ids'];
+            $id1 = array();
+            $id2 = array();
+            $id3 = array();
+            $id1 = $this->input->post('chk1');
+            $id2 = $this->input->post('check2');
+            $id3 = $this->input->post('check3');
+
+            $ids = array();
+            if(!empty($id1))
             {
-                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for exam";
-            } else if ($status == "Interview")
-            {
-                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for interview ";
-            } else if ($status == "Denied")
-            {
-                $notif = "We have reviewed your qualifications and, unfortunately, 
-                    are not able to pursue your application for <font color ='blue'>$jobtitle </font> further.";
+                foreach($id1 as $a)
+                {
+                    array_push($ids,$a);
+                }
             }
-            $appid = $this->model_employer->get_appid($a);
-            $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd,$a);
-            $y=0;
-            $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
-            
-            $this->model_employer->add_notification($appid,$notif,$jobno);
+            if(!empty($id2))
+            {
+                foreach($id2 as $a)
+                {
+                    array_push($ids,$a);
+                }
+            }
+            if(!empty($id3))
+            {
+                foreach($id3 as $a)
+                {
+                    array_push($ids,$a);
+                }
+            }
+            foreach ($ids as $a)
+            {
+                $jobno = $this->model_employer->get_jobno($a);
+                $details = $this->model_employer->get_jobdetails($jobno);
+                foreach ($details as $b)
+                {
+                    $jobtitle = $b['jobtitle'];
+                    $company = $b['companyID'];
+                }
+                $name = $this->model_employer->get_companyName($company);
+
+                if ($status == "Exam")
+                {
+                    $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for exam";
+                } else if ($status == "Interview")
+                {
+                    $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for interview ";
+                } else if ($status == "Denied")
+                {
+                    $notif = "We have reviewed your qualifications and, unfortunately, 
+                        are not able to pursue your application for <font color ='blue'>$jobtitle </font> further.";
+                }
+                $appid = $this->model_employer->get_appid($a);
+                $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd,$a);
+                $y=0;
+                $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
+
+                $this->model_employer->add_notification($appid,$notif,$jobno);
+            }
+
+            $this->employer_appsperjob($jobno);
         }
-        
-        $this->employer_appsperjob($jobno);
     }
     
     public function set_intervals($scheduleid,$duration,$starttime,$endtime){

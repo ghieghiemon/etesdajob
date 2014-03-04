@@ -219,7 +219,20 @@ class Main extends CI_Controller {
 //                $this->upload->do_upload();
 //                $data = $this->upload->data();
 //                $u = $this->upload->data();
-       
+       $this->load->library('form_validation');
+        $this->form_validation->set_rules('industry', 'industry', 'required');
+        $this->form_validation->set_rules('CName', 'CName', 'required');
+        $this->form_validation->set_rules('Yr', 'Yr', 'required');
+        $this->form_validation->set_rules('CB', 'CB', 'required');
+        $this->form_validation->set_rules('LIN', 'LIN', 'required');
+        $this->form_validation->set_rules('CP', 'CP', 'required');
+        $this->form_validation->set_rules('Pos', 'Pos', 'required');
+        $this->form_validation->set_rules('CE', 'CE', 'required');
+        $this->form_validation->set_rules('CN', 'CN', 'required');
+        $this->form_validation->set_rules('Br', 'Br', 'required');
+
+        if ($this->form_validation->run())
+	{
                 $in = $this->input->post('industry');
                 $cname = $this->input->post('CName');
                 $yr = $this->input->post('Yr');
@@ -246,7 +259,7 @@ class Main extends CI_Controller {
 //		}
 //                redirect('eleague');
       // $this->model_main->add_eaddress($infoid);
-
+        }
     }
     function do_upload()
 {
@@ -284,7 +297,32 @@ class Main extends CI_Controller {
 		$config['max_size']	= '10000000';
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';
-                
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('FN', 'FN', 'required');
+        $this->form_validation->set_rules('MN', 'MN', 'required');
+        $this->form_validation->set_rules('LN', 'LN', 'required');
+        $this->form_validation->set_rules('bday', 'bday', 'required');
+        $this->form_validation->set_rules('gender', 'gender', 'required');
+        $this->form_validation->set_rules('TN', 'TN', 'required');
+        $this->form_validation->set_rules('CN', 'CN', 'required');
+        $this->form_validation->set_rules('civstatus', 'civstatus', 'required');
+        $this->form_validation->set_rules('COMP', 'COMP', 'required');
+        $this->form_validation->set_rules('POS', 'POS', 'required');
+        $this->form_validation->set_rules('WSY1', 'WSY1', 'required');
+        $this->form_validation->set_rules('WEY1', 'WEY1', 'required');
+        $this->form_validation->set_rules('IN1', 'IN1', 'required');
+        $this->form_validation->set_rules('LVL1', 'LVL1', 'required');
+        $this->form_validation->set_rules('CO1', 'CO1', 'required');
+        $this->form_validation->set_rules('SY1', 'SY1', 'required');
+        $this->form_validation->set_rules('EY1', 'EY1', 'required');
+        $this->form_validation->set_rules('SN', 'SN', 'required');
+        $this->form_validation->set_rules('cityid', 'cityid', 'required');
+        $this->form_validation->set_rules('brgy', 'brgy', 'required');
+        $this->form_validation->set_rules('dis', 'dis', 'required');
+        $this->form_validation->set_rules('zip', 'zip', 'required|numeric');
+        $this->form_validation->set_rules('regionid', 'regionid', 'required');
+        if ($this->form_validation->run())
+	{         
                 $this->load->library('upload', $config);
                 $this->upload->do_upload();
                 $data = $this->upload->data();
@@ -336,7 +374,7 @@ class Main extends CI_Controller {
                    redirect('main/publicpage');
 		}
                   redirect('main/publicpage');
-
+        }
 
     }
     public function login_validation()
