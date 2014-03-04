@@ -1174,7 +1174,7 @@ public function check_if_linvite($id, $lno)
     
     public function getCompetencies($jobno){
           $db1 = $this->load->database('local', TRUE);
-          echo $jobno;
+//          echo $jobno;
           $result = $db1->select('ncoid')
                   ->where('jobno',$jobno)
                   ->get('job_competencies')
