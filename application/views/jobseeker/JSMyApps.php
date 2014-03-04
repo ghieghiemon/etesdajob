@@ -426,12 +426,7 @@ foreach($invites as $a)
                             $jobnoappid = $this->model_jobseeker->get_jobnoAndAppid($a['notifid']);
                         ?>
                         <li>
-                            <a href="#jInv<?php
-                            foreach($jobnoappid as $z)
-                            {
-                                echo $this->model_jobseeker->get_invitationno($z['jobno'],$z['userid']);
-                            }
-                                ?>" data-toggle="modal" class="Comm">
+                            <a href="<?php echo base_url()?>jobseeker/jobseeker_myappsdetail/<?php echo $a['jobno']?>" data-toggle="modal" class="Comm">
                                 <p class="notifAgenda3">
                                    <?php
                                     if($a['seen'] == 0)

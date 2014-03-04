@@ -397,8 +397,7 @@ class Employer extends CI_Controller {
              
            foreach($data as $a)
             {
-                $this->model_employer->invite_jobseeker($a, $jobpost_id,$message);
-                $this->model_employer->add_notification($a,$notif,$jobpost_id);
+                $this->model_employer->invite_jobseeker($a, $jobpost_id,$message)
             }
 //       }
        
