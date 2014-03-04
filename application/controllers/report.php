@@ -1096,7 +1096,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 
                               <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
                               <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
-                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EXECUTIVE SUMMARY REPORT</h3>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;RESULTS OF SURVEY (USEFUL COURSES)/h3>
                              </div>');
       
              
@@ -1104,7 +1104,6 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                              <table>
                               <tbody>
                                 <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                         <td width="350">Course: ' . $certification . ' &nbsp;</td>
                                 </tr>
