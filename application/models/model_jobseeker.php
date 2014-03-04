@@ -72,8 +72,6 @@ class Model_jobseeker extends CI_Model {
                                 JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
                                 JOIN etesda.reference_city c ON c.cityid = v.city
 				JOIN etesda.reference_region r ON r.regionid = v.region
-                                 join etesda.job_certifications jc on jc.jobno = v.jobno 
-                                join etesda.job_competencies jco on jco.jobno = v.jobno 
                                 WHERE j.appid = $userid AND j.applied = 0 AND expirationdate >= curdate() 
                ORDER BY dateposted DESC");
         return $query->result_array();
