@@ -673,10 +673,19 @@ class Model_employer extends CI_Model {
         }
         if($left <= 0)
         {
-            $query2 = $db2->query("SELECT appid from applications WHERE status != 'Hired' and jobno = $jobno");
+            $query2 = $db1->query("SELECT appid from applications WHERE (status != 'Hired' or status!= 'Denied') and jobno = $jobno");
             return $query2->result_array();
         }
         else return 0;
+        $db1->close();
+    }
+    public function get_left($jobno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        $query2 = $db1->query("SELECT appid from applications WHERE (status != 'Hired' or status!= 'Denied') and jobno = $jobno");
+        return $query2->result_array();
+      
         $db1->close();
     }
     public function change_employment($appid)

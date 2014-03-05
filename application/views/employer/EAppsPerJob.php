@@ -1044,7 +1044,18 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
+                                          <?php
+                                            foreach ($details as $b)
+                                            {
+                                                $left =  $b['vacanciesleft'];
+                                                if ($left >=1)
+                                                {
+                                                ?> 
                                           <td><a  href="#changeStatus<?php echo $a['applicationid']?>" data-toggle="modal" class="btn btn-info">Change Status</a> </td>
+                                          <?php
+                                                }
+                                            }
+                                          ?>
                                       </tr>
                                   <?php
                                         
@@ -1342,16 +1353,20 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                       <tr>
                                           <td>
                                               <?php
-                                              foreach ($invites as $c)
+                                              if (count($invites)>0)
                                               {
-                                                  $appid[] = $c['appid'];
-                                              }
-                                              if(in_array($a['appid'],$appid))
-                                              {
+                                                  foreach ($invites as $c)
+                                                  {
+                                                      $appid[] = $c['appid'];
+                                                  }
+                                                  if(in_array($a['appid'],$appid))
+                                                  {
+                                              
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } ?>
+                                              <?php }
+                                              }?>
                                           </td>
                                           
                                           <td>

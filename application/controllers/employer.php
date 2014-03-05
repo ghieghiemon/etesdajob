@@ -1169,7 +1169,7 @@ class Employer extends CI_Controller {
     }
     
     
-    public function employerpchangeStatus($jobno,$applicationid)
+    public function employer_changeStatus($jobno,$applicationid)
     {
         @session_start();
         $this->load->model('model_employer'); 
@@ -1203,12 +1203,12 @@ class Employer extends CI_Controller {
         {
             foreach($left as $b)
             {
-             $notif = "Vacancy closed.";
-             $this->model_employer->add_notification($b,$notif,$jobno);
+             $notif = "We are sorry to inform you that the vacancy, $jobtitle, you are applying for has already been filled. Nonetheless, we will keep your records for future purposes. Thank you for your time and effort.";
+             $this->model_employer->add_notification($b['appid'],$notif,$jobno);
             }
         }
-            
-        $this->employer_appsperjob($jobno);
+        //print_r($status);     
+        redirect(base_url().'employer/employer_appsperjob/'.$jobno);
     }
     public function employer_viewchecked()
     {
