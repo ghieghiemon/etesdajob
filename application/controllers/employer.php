@@ -1187,7 +1187,7 @@ class Employer extends CI_Controller {
             $name = $this->model_employer->get_companyName($id);    
         if ($status == "Hired")
         {
-            $this->model_employer->fill_vacancy($jobno);
+            //$this->model_employer->fill_vacancy($jobno);
             $this->model_employer->change_employment($appid);
             $notif = "We at $name are pleased to announce that you have been accepted as <font color ='blue'> $jobtitle!</font>";
         } 
