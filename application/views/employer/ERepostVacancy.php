@@ -373,8 +373,8 @@
                                                     <!--<label class="control-label lLabel2" style="margin-left:-184px;">Age Range: &nbsp;</label>-->
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                       <strong> Age: </strong><input type="text" id="ageto" name="ageto"value="<?php echo $a['agestart']?>" readonly><strong> to </strong>
-                                                       <input type="text" id="agefrom" name="agefrom"value="<?php echo $a['ageend']?> "readonly>
+                                                       <strong> Age: </strong><input style="width:10%" type="text" id="ageto" name="ageto"value="<?php echo $a['agestart']?>" readonly><strong> to </strong>
+                                                       <input style="width:10%" type="text" id="agefrom" name="agefrom"value="<?php echo $a['ageend']?> "readonly>
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->

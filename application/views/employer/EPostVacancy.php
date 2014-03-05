@@ -361,8 +361,8 @@
                                                     <!--<label class="control-label lLabel2" style="margin-left:-184px;">Age Range: &nbsp;</label>-->
                                                     <div class="control-group"><!-- start div age -->
                                                         <div class="myStyle12 ">
-                                                       <strong> Age: </strong><input type="text" id="ageto" name="ageto"><strong> to </strong>
-                                                       <input type="text" id="agefrom" name="agefrom">
+                                                       <strong> Age: </strong><input style="width:10%" type="number" id="ageto" name="ageto"><strong> to </strong>
+                                                       <input style="width:10%" type="number" id="agefrom" name="agefrom">
                                                         </div>
                                                     </div>
                                                    </div> <!--end age range field-->
