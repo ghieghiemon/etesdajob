@@ -298,7 +298,81 @@ class Employer extends CI_Controller {
             return false;
         } 
     }
-
+public function invite_jobseekers2($jobpost_id)
+    {
+        $this->load->model('model_employer');
+        $this->load->model('model_jobseeker');
+        $jobseekers = $this->model_employer->get_jobseekers();
+        $applied = $this->model_employer->get_jobApplications($jobpost_id);
+        $sex = $this->model_employer->get_jobsex($jobpost_id);
+        $startage = $this->model_employer->get_jobagestart($jobpost_id);
+        $endage = $this->model_employer->get_jobageend($jobpost_id);
+        
+        $qualified = $this->model_employer->get_qualifiedjs($sex, $startage, $endage);
+        
+        $stack = array(); 
+        foreach($jobseekers as $a)
+        {
+            if($this->match($jobpost_id, $a['appid'])== "True")
+            {
+                array_push($stack, $a['appid']);
+            }
+        }
+        foreach($qualified as $a)
+        {
+            $appid[]= $a['appid'];
+        }
+        $suggested = array();
+        foreach($stack as $a)
+        {
+           // if(in_array($a['appid'],$appid))
+            if(in_array($a,$appid))
+                    array_push($suggested, $a);
+        }
+        $data  = array();
+        
+       foreach ($suggested as $a)
+       {
+           $name =$this->model_employer->get_jsName($a);
+           
+           $row['name'] = $name;
+           $row['appid'] = $a;
+           $row['pic'] = $this->model_jobseeker->get_jspic2($a);
+//           $row['competencies'] = $this->model_main->get_jscomp($a);
+//           $row['details'] = $this->model_main->get_jsdetails($a);
+           //$row['certifications'] = 
+           if($this->model_employer->check_if_invite($a, $jobpost_id))
+           {
+                array_push($data, $row);
+           }
+       }
+       
+       foreach ($applied as $a)
+       {
+           $appid[] = $a['appid'];
+       }
+       
+       $final = array();
+       if (count($applied) != 0)
+       {
+            foreach($data as $a)
+            {
+                if(!(in_array($a['appid'],$appid)))
+                         array_push($final, $a);
+            }
+            $invite['invites'] = $final;
+       }
+       else
+       {
+           $invite['invites'] = $data;
+       }
+            
+       
+       $invite['jobno'] = $jobpost_id;
+       
+      $this->employer_header();
+      $this->load->view("employer/EInviteJSSkip",$invite);
+    }
    public function invite_jobseekers($jobpost_id)
     {
         $this->load->model('model_employer');

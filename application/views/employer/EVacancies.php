@@ -698,7 +698,7 @@ foreach ($myvacancies as $a)
                                                   {
                                                     ?>
                                                 
-                                                <a href="<?php echo base_url()?>employer/invite_jobseekers/<?php echo $a['jobno']?>" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
+                                                <a href="<?php echo base_url()?>employer/invite_jobseekers2/<?php echo $a['jobno']?>" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
                                                 <?php
                                                   }
                                                   ?>
