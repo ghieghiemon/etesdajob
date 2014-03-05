@@ -54,9 +54,10 @@ $(document).ready(function(){
     $('#preview').click(function(){
         $('#times').empty();
       var date = $('#date1').val();
-      var month = monthNames[parseInt(date.substring(0,2))];
-      var day = date.substring(3, 5);
-      var year = date.substring(6, 10);
+      alert(date.substring(5,7));
+      var month = monthNames[parseInt(date.substring(5,7))];
+      var day = date.substring(8, 10);
+      var year = date.substring(0, 4);
       var timeF = $('#TR1').val();
       var timeT = $('#TR2').val();
       var contactP = $('#CP').val();
