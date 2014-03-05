@@ -207,8 +207,8 @@ class Employer extends CI_Controller {
        $this->form_validation->set_rules('desc', 'Description', 'required');
        $this->form_validation->set_rules('industry', 'Industry', 'required');
        $this->form_validation->set_rules('sex', 'Sex', 'required');
-       $this->form_validation->set_rules('ageto', 'Age', 'required|numeric');
-       $this->form_validation->set_rules('agefrom', 'Age', 'required|numeric');
+       $this->form_validation->set_rules('ageto', 'Age', 'numeric');
+       $this->form_validation->set_rules('agefrom', 'Age', 'numeric');
        
        if ($this->form_validation->run())
 	{
