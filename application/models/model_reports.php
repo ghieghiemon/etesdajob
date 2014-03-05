@@ -387,6 +387,8 @@ class Model_reports extends CI_Model {
          
         $db1->close();
     }
+    
+    
     public function get_resultsQ2($year,$courseid)
     {
         $db1 = $this->load->database('local', TRUE);
@@ -500,6 +502,217 @@ class Model_reports extends CI_Model {
             
             return $rating/$ctr;
     }
+    
+    public function getTestBankID($courseid){
+        $db = $this->load->database('local', TRUE);
+        
+        $result = $db->select('testbankID')
+                ->where('courseid',$courseid)
+                ->get('survey_testbank')
+                ->row();
+        
+        return $result;
+    }
+    
+    public function getAddQMc($testbankid){
+          $db = $this->load->database('local', TRUE);
+        
+        $result = $db->select('*')
+                ->where('testbankID',$testbankid)
+                ->where('type','rating')
+                ->get('survey_itembank')
+                ->result_array();
+        
+        return $result;
+    }
+    
+    public function getAddQOf($testbankid){
+          $db = $this->load->database('local', TRUE);
+        
+        $result = $db->select('*')
+                ->where('testbankID',$testbankid)
+                ->where('type','open')
+                ->get('survey_itembank')
+                ->result_array();
+        
+        return $result;
+    }
+    
+    public function getAllOpenForm($year,$courseid){
+        $db1 = $this->load->database('local', TRUE);
+        
+        
+        $testbankid = $this->getTestBankID($courseid);
+        $mc = $this->getAddQOf($testbankid->testbankID);
+       // print_r($modules);
+        $ofResults = array();
+        foreach($mc as $a)
+        {
+            $itemid = $a['itemID'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_questions q ON  d.resultID =  q.resultID
+            WHERE YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid
+            AND q.rating = 0
+            ORDER BY d.DATE DESC"
+                    
+                    );
+            $results = $query->result_array();
+            
+            $ofResults[$itemid] = $results;
+        }
+       return $ofResults;
+         
+        $db1->close();
+    }
+    
+     public function get_AresultsQ1($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        
+        $testbankid = $this->getTestBankID($courseid);
+        $mc = $this->getAddQMc($testbankid->testbankID);
+       // print_r($modules);
+        $mcResults = array();
+        foreach($mc as $a)
+        {
+            $itemid = $a['itemID'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_questions q ON  d.resultID =  q.resultID
+            WHERE (MONTH(d.DATE ) =1
+            OR MONTH( d.DATE ) =2
+            OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid
+            AND q.rating != 0");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $mcResults[$itemid] = $rating/$ctr;
+        }
+       return $mcResults;
+         
+        $db1->close();
+    }
+    
+    public function get_AresultsQ2($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        
+        $testbankid = $this->getTestBankID($courseid);
+        $mc = $this->getAddQMc($testbankid->testbankID);
+       // print_r($modules);
+        $mcResults = array();
+        foreach($mc as $a)
+        {
+            $itemid = $a['itemID'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_questions q ON  d.resultID =  q.resultID
+            WHERE (MONTH(d.DATE ) =1
+            OR MONTH( d.DATE ) =2
+            OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid
+            AND q.rating != 0");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $mcResults[$itemid] = $rating/$ctr;
+        }
+       return $mcResults;
+         
+        $db1->close();
+    }
+    
+    public function get_AresultsQ3($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        
+        $testbankid = $this->getTestBankID($courseid);
+        $mc = $this->getAddQMc($testbankid->testbankID);
+       // print_r($modules);
+        $mcResults = array();
+        foreach($mc as $a)
+        {
+            $itemid = $a['itemID'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_questions q ON  d.resultID =  q.resultID
+            WHERE (MONTH(d.DATE ) =1
+            OR MONTH( d.DATE ) =2
+            OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid
+            AND q.rating != 0");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $mcResults[$itemid] = $rating/$ctr;
+        }
+       return $mcResults;
+         
+        $db1->close();
+    }
+    
+    public function get_AresultsQ4($year,$courseid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+        
+        $testbankid = $this->getTestBankID($courseid);
+        $mc = $this->getAddQMc($testbankid->testbankID);
+       // print_r($modules);
+        $mcResults = array();
+        foreach($mc as $a)
+        {
+            $itemid = $a['itemID'];
+            
+            $query = $db1->query("SELECT * 
+            FROM  etesda.survey_results_details d
+            JOIN  etesda.survey_results_questions q ON  d.resultID =  q.resultID
+            WHERE (MONTH(d.DATE ) =1
+            OR MONTH( d.DATE ) =2
+            OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
+            AND  d.courseID = $courseid
+            AND q.rating != 0");
+            $results = $query->result_array();
+            $rating = 0;
+            $ctr=0;
+            foreach($results as $b)
+            {
+                $rating += $b['rating'];
+                $ctr++;
+            }
+            $mcResults[$itemid] = $rating/$ctr;
+        }
+       return $mcResults;
+         
+        $db1->close();
+    }
+    
+    
 }
 
 /* End of file nutella.php */

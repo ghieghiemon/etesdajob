@@ -1095,13 +1095,52 @@ class Report extends CI_Controller {
             $this->load->model('model_reports');
             $this->load->model('model_employer');
             $this->load->model('model_survey');
-            $q1 = $this->model_reports->get_resultsQ1($year,$cert);
-            $q2 = $this->model_reports->get_resultsQ2($year,$cert);
-//            $q3 = $this->model_reports->get_resultsQ3($year,$cert);
-//            $q4 = $this->model_reports->get_resultsQ4($year,$cert);
-            $modules = $this->model_survey->getModules($cert);
-            $certification = $this->model_employer->get_certName($cert);
             
+            
+
+            $modules = $this->model_survey->getModules($cert);
+            $testbankid = $this->model_reports->getTestBankID($cert);
+            $mc = $this->model_reports->getAddQMc($testbankid->testbankID);
+            $certification = $this->model_employer->get_certName($cert);
+            $numericMonth = date("n");
+            
+            
+             if($numericMonth <6 && $numericMonth >=3){
+                 $q1 = $this->model_reports->get_resultsQ1($year,$cert);
+                 
+                 $aq1 = $this->model_reports->get_AresultsQ1($year,$cert);
+                 
+             }elseif($numericMonth <9){
+                 $q1 = $this->model_reports->get_resultsQ1($year,$cert);
+                 $q2 = $this->model_reports->get_resultsQ2($year,$cert);
+                 
+                  $aq1 = $this->model_reports->get_AresultsQ1($year,$cert);
+                 $aq2 = $this->model_reports->get_AresultsQ2($year,$cert);
+             }elseif($numericMonth <12){
+                $q1 = $this->model_reports->get_resultsQ1($year,$cert);
+                $q2 = $this->model_reports->get_resultsQ2($year,$cert);
+                $q3 = $this->model_reports->get_resultsQ3($year,$cert);
+                
+                 $aq1 = $this->model_reports->get_AresultsQ1($year,$cert);
+                $aq2 = $this->model_reports->get_AresultsQ2($year,$cert);
+                $aq3 = $this->model_reports->get_AresultsQ3($year,$cert);
+                
+             }elseif($numericMonth <=12){
+                 $q1 = $this->model_reports->get_resultsQ1($year,$cert);
+                $q2 = $this->model_reports->get_resultsQ2($year,$cert);
+                $q3 = $this->model_reports->get_resultsQ3($year,$cert);
+                $q4 = $this->model_reports->get_resultsQ4($year,$cert);
+                
+                 $aq1 = $this->model_reports->get_AresultsQ1($year,$cert);
+                $aq2 = $this->model_reports->get_AresultsQ2($year,$cert);
+                $aq3 = $this->model_reports->get_AresultsQ3($year,$cert);
+                $aq4 = $this->model_reports->get_AresultsQ4($year,$cert);
+             }
+             
+             $openFormQuestions = $this->model_reports->getAddQOf($testbankid->testbankID);
+             $openFormResults = $this->model_reports->getAllOpenForm($year,$cert);
+            
+//             print_r($openFormResults);
              $mpdf = new mPDF();
             $mpdf->setFooter('{PAGENO}');
             
@@ -1113,11 +1152,13 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 
                               <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
                               <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
-                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;RESULTS OF SURVEY (USEFUL COURSES)/h3>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;RESULTS OF SURVEY (USEFUL COURSES)</h3>
                              </div>');
       
              
-              $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
+              $mpdf->WriteHTML('
+                  
+                <div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
                                 <tr>
@@ -1129,7 +1170,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                               
                               </table>
                               </div>
-                             
+                             <h4> Average Rating per Modules </h4>
                                       <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
                               <tr>
                         
@@ -1143,15 +1184,63 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 </tr>
                              ');
             foreach($modules as $a):
-                
+                if($numericMonth <6 && $numericMonth >=3): 
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' .'</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . '</td>
-                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . '</td>');
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+            
+               elseif($numericMonth <9 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+               
+               elseif($numericMonth <12 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q3[$a['moduleid']] . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+               
+               elseif($numericMonth <= 12 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q3[$a['moduleid']] . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q4[$a['moduleid']] . '</td></tr>');
+               
+               else:
+                  $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>'); 
+              endif;
+              
+              
+              
+              
+              
+              
+              
 //                                    $mpdf->writeHTML('<td align="left" style="font-family:Arial, Helvetica, sans-serif;">'); 
 //                                    $applicants = $this->model_reports->get_applicationno($vacancy->jobno);
 //            
@@ -1172,7 +1261,121 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                 
             endforeach;
             
-            $mpdf->writeHTML('</table></html>');
+            $mpdf->writeHTML('</table>');
+            
+            if(!empty($mc)){
+            $mpdf->WriteHTML('
+                  
+                
+                             <h4> Average Rating per Additional Question </h4>
+                                      <table border="1" style="border-collapse:collapse;width:700px;margin-top:1.5%;">
+                              <tr>
+                        
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">Question</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">1st Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">2nd Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">3rd Quarter</th>
+                                <th style="font-family:Arial, Helvetica, sans-serif;background-color:#606060;color:#FFFFFF;">4th Quarter</th>
+                                
+                              
+                                </tr>
+                             ');
+            
+            
+            
+            foreach($mc as $a):
+                if($numericMonth <6 && $numericMonth >=3): 
+               $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+            
+               elseif($numericMonth <9 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                 <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+               
+               elseif($numericMonth <12 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq2[$a['itemID']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq3[$a['itemID']] . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
+               
+               elseif($numericMonth <= 12 ):
+                     $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                  <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq2[$a['itemID']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq3[$a['itemID']] . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq4[$a['itemID']] . '</td></tr>');
+               
+               else:
+                  $mpdf->writeHTML('
+                                <tr style="align:center;">
+                                    
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td> 
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>'); 
+              endif;
+            endforeach;
+            
+            
+            
+               $mpdf->writeHTML('</table>');
+               
+               
+            }
+            if(!empty($openFormQuestions)){
+                $mpdf->WriteHTML('
+                <br/>
+                <div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
+                <h4>Open Form Questions Results</h4>');
+                
+                $ctrOF = 0;
+                foreach($openFormQuestions as $ofq):
+                $ctrOF ++;    
+                    
+                $mpdf->WriteHTML('
+                
+                <b>'.$ctrOF.'. '.$ofq['question'].'</b>');
+                $aa = '<li>AAA</li>';
+               
+                 $texts ="";     
+                
+                    foreach($openFormResults[$ofq['itemID']] as $ofqres):
+                        
+                        $texts .= '<li>'.$ofqres['text'].'</li>';
+                        //$mpdf->WriteHTML('<li>'.$ofqres['text'].'</li>');
+                    
+                      endforeach;
+                  $mpdf->WriteHTML('<ul>'.$texts.'</ul>');
+                      
+                
+                      
+                endforeach;
+                $mpdf->WriteHTML('</div>');
+            }
+              
+                $mpdf->WriteHTML('</html>');
+               
+            
         
     
             $mpdf->Output();

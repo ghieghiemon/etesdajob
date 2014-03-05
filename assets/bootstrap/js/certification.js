@@ -1,5 +1,7 @@
 $(document).ready(function(){
     
+    
+    
     $('.taa').click(function(){
         
        $("#btnAddCert").trigger('click');
