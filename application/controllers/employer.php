@@ -268,7 +268,7 @@ class Employer extends CI_Controller {
       $this->invite_jobseekers($jobpost_id);
         }
         else{
-            print_r(validation_errors());
+//            print_r(validation_errors());
             $this->employer_postvacancypage();
         }
     }
