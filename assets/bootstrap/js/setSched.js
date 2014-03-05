@@ -54,7 +54,7 @@ $(document).ready(function(){
     $('#preview').click(function(){
         $('#times').empty();
       var date = $('#date1').val();
-      alert(date.substring(5,7));
+      //alert(date.substring(5,7));
       var month = monthNames[parseInt(date.substring(5,7))];
       var day = date.substring(8, 10);
       var year = date.substring(0, 4);
