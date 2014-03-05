@@ -1189,7 +1189,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q1[$a['moduleid']],2) . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
@@ -1199,8 +1199,8 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q1[$a['moduleid']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q2[$a['moduleid']],2) .'</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
                
@@ -1209,9 +1209,9 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q3[$a['moduleid']] . '</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q1[$a['moduleid']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q2[$a['moduleid']],2) .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q3[$a['moduleid']],2) . '</td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
                
                elseif($numericMonth <= 12 ):
@@ -1219,10 +1219,10 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['modulename'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q1[$a['moduleid']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q3[$a['moduleid']] . '</td>
-                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q4[$a['moduleid']] . '</td></tr>');
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q1[$a['moduleid']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q2[$a['moduleid']],2) .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q3[$a['moduleid']],2) . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q4[$a['moduleid']],2) . '</td></tr>');
                
                else:
                   $mpdf->writeHTML('
@@ -1289,7 +1289,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq1[$a['itemID']],2) . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
@@ -1299,8 +1299,8 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                  <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $q2[$a['moduleid']] .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq1[$a['itemID']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($q2[$a['moduleid']],2) .'</td>
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
                
@@ -1309,9 +1309,9 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                 <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq2[$a['itemID']] .'</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq3[$a['itemID']] . '</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq1[$a['itemID']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq2[$a['itemID']],2) .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq3[$a['itemID']],2) . '</td>
                                         <td align="left" style="font-family:Arial, Helvetica, sans-serif;"> N/A </td></tr>');
                
                elseif($numericMonth <= 12 ):
@@ -1319,10 +1319,10 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                                 <tr style="align:center;">
                                     
                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $a['question'] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq1[$a['itemID']] . '</td> 
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq2[$a['itemID']] .'</td>
-                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq3[$a['itemID']] . '</td>
-                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $aq4[$a['itemID']] . '</td></tr>');
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq1[$a['itemID']],2) . '</td> 
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq2[$a['itemID']],2) .'</td>
+                                    <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq3[$a['itemID']],2) . '</td>
+                                        <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . round($aq4[$a['itemID']],2) . '</td></tr>');
                
                else:
                   $mpdf->writeHTML('

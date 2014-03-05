@@ -372,7 +372,9 @@ class Model_reports extends CI_Model {
             WHERE (MONTH(d.DATE ) =1
             OR MONTH( d.DATE ) =2
             OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
-            AND  d.courseID = $courseid");
+            AND m.moduleID = $moduleid
+            AND  d.courseID = $courseid"
+            );
             $results = $query->result_array();
             $rating = 0;
             $ctr=0;
@@ -381,6 +383,7 @@ class Model_reports extends CI_Model {
                 $rating += $b['rating'];
                 $ctr++;
             }
+            print_r($rating);
             $moduleResults[$moduleid] = $rating/$ctr;
         }
        return $moduleResults;
@@ -406,6 +409,7 @@ class Model_reports extends CI_Model {
             WHERE (MONTH(d.DATE ) =4
             OR MONTH( d.DATE ) =5
             OR MONTH( d.DATE ) =6) AND YEAR(d.DATE) = $year
+                AND m.moduleID = $moduleid
             AND  d.courseID = $courseid");
             $results = $query->result_array();
             $rating = 0;
@@ -438,6 +442,7 @@ class Model_reports extends CI_Model {
             WHERE (MONTH(d.DATE ) =7
             OR MONTH( d.DATE ) =8
             OR MONTH( d.DATE ) =9) AND YEAR(d.DATE) = $year
+                AND m.moduleID = $moduleid
             AND  d.courseID = $courseid");
             $results = $query->result_array();
             $rating = 0;
@@ -470,6 +475,7 @@ class Model_reports extends CI_Model {
             WHERE (MONTH(d.DATE ) =10
             OR MONTH( d.DATE ) =11
             OR MONTH( d.DATE ) =12) AND YEAR(d.DATE) = $year
+                AND m.moduleID = $moduleid
             AND  d.courseID = $courseid");
             $results = $query->result_array();
             $rating = 0;
@@ -588,6 +594,7 @@ class Model_reports extends CI_Model {
             OR MONTH( d.DATE ) =2
             OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
             AND  d.courseID = $courseid
+                AND q.itemID = $itemid
             AND q.rating != 0");
             $results = $query->result_array();
             $rating = 0;
@@ -624,6 +631,7 @@ class Model_reports extends CI_Model {
             OR MONTH( d.DATE ) =2
             OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
             AND  d.courseID = $courseid
+                AND q.itemID = $itemid
             AND q.rating != 0");
             $results = $query->result_array();
             $rating = 0;
@@ -659,7 +667,8 @@ class Model_reports extends CI_Model {
             WHERE (MONTH(d.DATE ) =1
             OR MONTH( d.DATE ) =2
             OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
-            AND  d.courseID = $courseid
+            AND d.courseID = $courseid
+                AND q.itemID = $itemid
             AND q.rating != 0");
             $results = $query->result_array();
             $rating = 0;
@@ -696,6 +705,7 @@ class Model_reports extends CI_Model {
             OR MONTH( d.DATE ) =2
             OR MONTH( d.DATE ) =3) AND YEAR(d.DATE) = $year
             AND  d.courseID = $courseid
+                AND q.itemID = $itemid
             AND q.rating != 0");
             $results = $query->result_array();
             $rating = 0;
