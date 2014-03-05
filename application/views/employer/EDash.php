@@ -308,7 +308,7 @@ foreach ($myvacancies as $a)
                     </ul>
                 </div><!--end scrollable table-->
             </div><!--end well-->
-            <div class="well wellUpMarg">
+            <div class="well wellUpMarg" style="height:330px">
             <h5 class="media-heading">
             		<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="20"> Briefcase
                 </h5>
@@ -537,7 +537,6 @@ foreach ($myvacancies as $a)
                                             <th class="span1" style="text-align:center">Sex</th>
                                             <th class="span2" style="text-align:center">Certification</th>
                                             <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span2" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -632,9 +631,6 @@ foreach ($myvacancies as $a)
                                                   ?> 
                                               
                                               </td>
-                                                <td>
-                                                    <?php echo $a['datereceived']?> 
-                                                </td>
                                             </tr>
                                         <?php  
                                             }

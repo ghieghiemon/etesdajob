@@ -206,7 +206,11 @@
 	<div class="row-fluid">
     	<div class="span12">
         	<div class="well">
-                      
+                      <?php
+//                      if(!empty(validation_errors())){
+                        print_r(validation_errors());
+//                       }
+                      ?>
             	<h4 class="media-heading">Post Vacancy</h4>
                 
                 <div class="row-fluid">
@@ -575,10 +579,3 @@
     });
 </script>
     
-<script>
-$('#trigger').click(function(){
-        alert("The Job Vacancy has been Posted");
-
-    });
-    
-    </script>
