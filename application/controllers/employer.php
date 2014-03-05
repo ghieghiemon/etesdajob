@@ -222,8 +222,8 @@ class Employer extends CI_Controller {
        $desc = $this->input->post('desc');
        $industry = $this->input->post('industry');
        $gender = $this->input->post('sex');
-       $ageto = $this->input->post('ageto');
-       $agefrom = $this->input->post('agefrom');
+//       $ageto = $this->input->post('ageto');
+//       $agefrom = $this->input->post('agefrom');
 
        if($effect == 2)
        {    

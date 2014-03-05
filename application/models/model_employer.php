@@ -716,7 +716,10 @@ class Model_employer extends CI_Model {
      public function fill_vacancy($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
-        $db1->query("UPDATE job_vacancies SET vacanciesleft = vacanciesleft-1 WHERE jobno=$jobno");
+        $number = 1;
+        $query = $db1->query("SELECT vacancies left from job_vacancies where jobno = $jobno");
+        foreach($query->result_array();
+        $db1->query("UPDATE job_vacancies SET vacanciesleft = vacanciesleft - $number WHERE jobno=$jobno");
         $db1->close();
     }
         public function employer_briefcase2($id)
