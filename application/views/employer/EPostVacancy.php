@@ -240,14 +240,14 @@
                                                             <label class="control-label lLabel2">Job Title: &nbsp;</label>
                                                             <div class="controls">
                                                              
-                                                                <input type="text" id="JN" name="JN" placeholder="" >
+                                                                <input type="text" id="JN" name="JN" placeholder="" value="<?php echo set_value('JN'); ?>" >
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
                                                             <div class="controls">
-                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ></textarea>
+                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ><?php echo set_value('desc'); ?></textarea>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         
@@ -290,7 +290,7 @@
                                                 		<div class="control-group">
                                                             <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
                                                             <div class="controls">
-                                                                    <input type="text" id="NOV" name="NOV" placeholder="" >
+                                                                    <input type="text" id="NOV" name="NOV" placeholder="" value="<?php echo set_value('NOV'); ?>" >
                                                             </div>
                                                         </div> <!--end NOV field-->
                                                         

@@ -404,7 +404,6 @@ foreach ($myvacancies as $a)
                                             <th class="span1" style="text-align:center">Sex</th>
                                             <th class="span3" style="text-align:center">Certification</th>
                                             <th class="span2" style="text-align:center">Competencies</th>
-                                            <th class="span1" style="text-align:center">Date Applied</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -500,9 +499,6 @@ foreach ($myvacancies as $a)
                                                  
                                               </font>
                                           </td>
-                                            <td>
-                                            	   <?php echo $a['datereceived']?> 
-                                            </td>
                                         </tr>
                                         <?php  
                                         }
