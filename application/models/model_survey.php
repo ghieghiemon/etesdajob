@@ -30,9 +30,9 @@ class Model_survey extends CI_Model {
     public function getCourses($sectorid){
          $db = $this->load->database('default', TRUE);
          
-         $query = $db->select('courseid,coursename')
+         $query = $db->select('ncid as courseid, ncname as coursename')
                  ->where('sectorid',$sectorid)
-                 ->get('courses')
+                 ->get('nc_reference')
                  ->result_array();
          
          return $query;
@@ -43,10 +43,10 @@ class Model_survey extends CI_Model {
     public function getCourseDetails($courseid){
         $db = $this->load->database('default', TRUE);
          
-         $query = $db->select('courses.coursename,sectors.sectorName')
-                 ->where('courses.courseid',$courseid)
-                 ->join('sectors','sectors.sectorID = courses.sectorID')
-                 ->get('courses')
+         $query = $db->select('nc_reference.ncname as coursename,sectors.sectorName')
+                 ->where('nc_reference.ncid',$courseid)
+                 ->join('sectors','sectors.sectorID = nc_reference.sectorID')
+                 ->get('nc_reference')
                  ->row();
          
          return $query;
@@ -160,6 +160,8 @@ class Model_survey extends CI_Model {
         
         return $query;
     }
+    
+    
     
     public function addRatingDetail($appid,$courseid){
           $db = $this->load->database('local', TRUE);
