@@ -509,6 +509,50 @@ class Model_main extends CI_Model {
         return $sql->result_array();
         $db1->close();
     }
+    
+    public function hasCert($appid){
+        $db1 = $this->load->database('default', TRUE);
+        
+        $result = $db1->select('*')
+                ->where('appid',$appid)
+                ->get('applicants_certificates')
+                ->result_array();
+        
+        return $result;
+    }
+    
+    public function hasAnsweredSurvey($appid){
+        $db1 = $this->load->database('local',TRUE);
+        $date = date("n");
+
+         $query = $db1->query("SELECT * 
+            FROM survey_results_details 
+            WHERE MONTH(date) = $date AND appID = $appid");
+            $results = $query->result_array();
+            $hasAns = true;
+            if(empty($results)){
+                $hasAns = false;
+            }
+           
+            return $hasAns;
+    }
+    
+    public function hasSurvey($courseid){
+        $db1 = $this->load->database('local',TRUE);
+        
+         $db = $this->load->database('local', TRUE);
+            $testbankID = $db->select('testbankID')
+                ->where('courseID',$courseid)
+                ->get('survey_testbank')
+                ->result_array();
+            
+            $return = true;
+           if(empty($testbankID)){
+               $return = false;
+           }
+           
+           return $return;
+    }
 
 }
 

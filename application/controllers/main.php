@@ -395,7 +395,29 @@ class Main extends CI_Controller {
             $this->load->model('model_main');
             if($this->model_main->get_usertype()=='APPLICANT')
             {
+                $id = $this->model_main->get_appid($email);
+                $cert = $this->model_main->hasCert($id);
+                $hasCert = true;
+                
+                if(empty($cert)){
+                    $hasCert = false;
+                }else{
+                    $hasCert = true;
+                }
+                //echo $hasCert;
+                //echo date("n");
+                echo $this->model_main->hasAnsweredSurvey($id);
+                if((date("n")==3 || date("n")==6 || date("n")==9 || date("n")==12)&& $hasCert && $this->model_main->hasAnsweredSurvey($id) == false){
+//                    if($this->model_main->hasSurvey($cert[0]['certificateid'])){
+//                    
+                    redirect(base_url().'survey/answerSurvey/'.$cert[0]['certificateid']);
+////                    }else{
+//                        redirect(base_url().'jobseeker/jobseeker_myappspage');
+//                    }
+                    
+                }else{
                 redirect(base_url().'jobseeker/jobseeker_myappspage');
+                }
             }
             else if($this->model_main->get_usertype()=='EMPLOYER')
             {
