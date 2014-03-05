@@ -2041,11 +2041,11 @@ function year_install(f)
             });
         </script>-->
 
-    <script>
+<!--    <script>
 $("#date1").datepicker( {
     format: 'mm/dd/yyyy'
 });
-</script>
+</script>-->
     <script>
 $('#TR1').timepicker();
 
@@ -2054,3 +2054,10 @@ $('#TR1').timepicker();
 $('#TR2').timepicker();
     </script>
 </body>
+
+<script>
+$('#date1').datepicker({ 
+startDate: new Date() 
+}
+);
+</script>
