@@ -2057,7 +2057,8 @@ $('#TR2').timepicker();
 
 <script>
 $('#date1').datepicker({ 
-startDate: new Date() 
+startDate: new Date(),
+format: "yyyy/mm/dd"
 }
 );
 </script>
