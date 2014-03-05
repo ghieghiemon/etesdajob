@@ -91,7 +91,7 @@
                         	<h4>
                             	Additional Questions
                             </h4>
-                            
+                            <?php if(!empty($questions)): ?>
                             <div style="width:590px;height:300px;overflow:auto;"><!--start scrollable table-->
                                 <table class="tableRate table-hover table-condensed table-striped">
                                   <thead>
@@ -161,6 +161,7 @@
                                     <?php endif; ?>
                                  <?php endforeach; ?>
                             </div><!--end scrollable-->
+                            <?php endif; ?>
                         </div><!--end well-->
                     </div><!--end additional questions-->
                 </div><!--end row-fluid-->

@@ -224,6 +224,23 @@ class Model_survey extends CI_Model {
             return $rating/$ctr;
     }
     
+    public function hasSurvey($courseid){
+        $db1 = $this->load->database('local',TRUE);
+        
+         $db = $this->load->database('local', TRUE);
+            $testbankID = $db->select('testbankID')
+                ->where('courseID',$courseid)
+                ->get('survey_testbank')
+                ->result_array();
+            
+            $return = true;
+           if(empty($testbankID)){
+               $return = false;
+           }
+           
+           return $return;
+    }
+    
     //public function getResults($courseid)
     
         

@@ -13,10 +13,10 @@ class Survey extends CI_Controller {
     }
     
     public function answerSurvey($courseid){
-         $coursedetails = $this->model_survey->getCourseDetails($courseid);
-        $questions = $this->model_survey->getQuestions($courseid);
-        $modules = $this->model_survey->getModules($courseid);
+        $coursedetails = $this->model_survey->getCourseDetails($courseid);
         
+        $modules = $this->model_survey->getModules($courseid);
+        $questions = array();
         $ctr = 0;
         foreach($modules as $m){
             //print_r($section);
@@ -28,22 +28,25 @@ class Survey extends CI_Controller {
             $ctr++;
         }
         
-        foreach($questions as $q){
-            $ctr1 = $ctr+1;
-            if($q['type']=='rating'){
-                $this->form_validation->set_rules('a'.$ctr, 'Question '.$ctr1, 'required');
-                $ctr++;
+        if($this->model_survey->hasSurvey($courseid)){
+            $questions = $this->model_survey->getQuestions($courseid);
+            foreach($questions as $q){
+                $ctr1 = $ctr+1;
+                if($q['type']=='rating'){
+                    $this->form_validation->set_rules('a'.$ctr, 'Question '.$ctr1, 'required');
+                    $ctr++;
+                }
+
             }
-            
-        }
-        
-        foreach($questions as $q){
-            $ctr1 = $ctr+1;
-            if($q['type']=='open'){
-                $this->form_validation->set_rules('a'.$ctr, 'Question '.$ctr1, 'required');
-                $ctr++;
+
+            foreach($questions as $q){
+                $ctr1 = $ctr+1;
+                if($q['type']=='open'){
+                    $this->form_validation->set_rules('a'.$ctr, 'Question '.$ctr1, 'required');
+                    $ctr++;
+                }
+
             }
-            
         }
         
         
@@ -120,6 +123,8 @@ class Survey extends CI_Controller {
                     $ctrf++;
                 }
             }
+            
+            redirect(base_url().'jobseeker/jobseeker_myappspage');
             
            
         }
