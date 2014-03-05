@@ -308,7 +308,7 @@ foreach ($myvacancies as $a)
                     </ul>
                 </div><!--end scrollable table-->
             </div><!--end well-->
-            <div class="well wellUpMarg">
+            <div class="well wellUpMarg" style="height:330px">
             <h5 class="media-heading">
             		<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_341_briefcase.png" width="20"> Briefcase
                 </h5>
