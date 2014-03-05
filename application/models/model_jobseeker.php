@@ -240,14 +240,14 @@ class Model_jobseeker extends CI_Model {
         $db2 = $this->load->database('default', TRUE);
         $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%b. %d, %Y') as datereceived,a.status, 
                                 DATE_FORMAT(a.requirementdate, '%b. %d, %Y') as requirementdate,
-                                DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime
+                                DATE_FORMAT(a.requirementtime, '%h:%i %p') as requirementtime,
+                                CURDATE() as currentdate
                                 from etesda.applications a
                                 JOIN etesda.job_vacancies v ON v.jobno = a.jobno
                                 JOIN tesda_centraldb.employer_profile e ON e.userID = v.companyID
                                 JOIN etesda.reference_city c ON c.cityid = v.city
 				JOIN etesda.reference_region r ON r.regionid = v.region
-                                WHERE a.appid = $userid 
-                                AND v.expirationdate >= curdate()    
+                                WHERE a.appid = $userid     
                                 GROUP BY v.jobno
 
                                 ORDER BY a.datereceived DESC

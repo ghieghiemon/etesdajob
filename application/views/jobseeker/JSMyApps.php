@@ -576,6 +576,10 @@ foreach($invites as $a)
                             {
                                 echo "Processing";
                             }
+                            if($status == "Hired")
+                            {
+                                echo "Hired";
+                            }
                             else if ($status == "Exam")
                             {
                                 ?>

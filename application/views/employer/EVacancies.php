@@ -145,7 +145,7 @@ foreach ($myvacancies as $a)
                                                   $diff = abs(strtotime($date2) - strtotime($date));
 
                                                   $days = round((($diff/24)/60)/60);
-                                                  if ($a['exp'] > $a['currentdate'])
+                                                  if ($a['expirationdate'] > $a['currentdate'])
                                                   {
                                                   echo $days;
                                                   echo " days left";
