@@ -54,7 +54,7 @@
                                       <?php foreach($modules as $m): ?>
                                       <tr>
                                           <td>
-                                            <?php echo $m['modulename'] ?>
+                                            <?php echo $m['cocname'] ?>
                                           </td>
                                           
                                           <td>
