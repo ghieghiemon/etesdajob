@@ -720,7 +720,8 @@ class Model_employer extends CI_Model {
         $query = $db1->query("SELECT vacanciesleft from job_vacancies where jobno = $jobno");
         foreach ($query->result() as $row)
         {
-         $left = $row->vacanciesleft;}
+         $left = $row->vacanciesleft;
+        }  
         $vleft = $left-$number;
         $db1->query("UPDATE job_vacancies SET vacanciesleft = $vleft WHERE jobno=$jobno");
         $db1->close();

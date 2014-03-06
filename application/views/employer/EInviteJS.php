@@ -16,6 +16,7 @@
     <div class="row-fluid">
     	<div class="span12">
         	<div class="well">
+                    <h3 class="media-heading"><font color="violet">    Job Vacancy has been Posted!</font> </hr>
             	<h3 class="media-heading">
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_195_circle_info.png" width="25"> Invite Job Seekers
                 </h3>

@@ -742,7 +742,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
 	
     <div class="row-fluid">
     	<div class="span3">
-        	<div class="well wellMarg2b">
+        	<div class="well wellMarg2b" style="height:792px">
             	<div class="row-fluid">
                   <div align="center">
                   <span class="badge badge-important">
@@ -1076,7 +1076,6 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
   
   	<div class="modal-footer"> 
     	<button class="btn btn-info btn-mini" type="submit">Done</button>
-        <button class="btn btn-danger btn-mini">Cancel</button>
   	</div>
 </div>
 <!--set schedule modal end-->

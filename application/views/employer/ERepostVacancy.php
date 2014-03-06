@@ -209,7 +209,11 @@
 	<div class="row-fluid">
     	<div class="span12">
         	<div class="well">
-                      
+                    <?php
+                     // if(!empty(validation_errors())){
+                        print_r(validation_errors());
+                       //}
+                      ?>
             	<h4 class="media-heading">Post Vacancy</h4>
                 
                 <div class="row-fluid">
@@ -404,7 +408,7 @@
                                         echo form_multiselect('certs', $cert, $certificationID, $params ); //$certificationID?> 
                                             
                                             <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                    
                                        
 
@@ -421,7 +425,7 @@
                                          echo form_multiselect('competencies', $comp, $competencyID, $params); ?>   
                                             
                                                <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                   
                                         </div><!--end span4-->	
                                         
@@ -433,7 +437,7 @@
                                         <select id="lstcert2" name= "certselect[]"multiple="multiple">
                                          </select>
                                                <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                       
                                             <h5 class="media-heading previewColor">
                                                 | YOUR CHOSEN COMPETENCIES
@@ -444,7 +448,7 @@
                                         </select>
                                                
                                                     <a class="btn btn-mini actionPHMarg"style ="margin-left:10px; margin-top:-10px;"id="btnDelComp">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                         </div><!--end span4-->	
                                         
                                     </div><!--end row-fluid-->

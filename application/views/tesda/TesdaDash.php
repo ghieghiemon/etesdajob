@@ -42,19 +42,8 @@ $(function () {
                     }
                 }
             }, { // Secondary yAxis
-                title: {
-                    text: 'Rainfall',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                labels: {
-                    format: '{value}',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                opposite: true
+                
+               
             }],
             tooltip: {
                 shared: true
@@ -186,7 +175,7 @@ foreach($employerverify as $a)
 	
     <div class="row-fluid">
     	<div class="span7">
-            <div class="well">
+            <div class="well" style="height:315px">
                 <form method="post" action ="<?php echo base_url()?>tesda/send_invite">
             	<h4 class="media-heading">
                 	| Invite companies to join TESDA Job Portal
@@ -225,8 +214,15 @@ foreach($employerverify as $a)
                                 </td>
                                 
                                 <td>
-                                	<textarea type="input" id="msg" name="msg" class="span9" placeholder="" rows="3">Join TESDA Job Portal and look for potential applicants that could help your organization.
-                                    </textarea>
+                                	<textarea type="input" id="msg" name="msg" class="span9" placeholder="" rows="5">Greetings from TESDA,
+
+Want to post a vacancy? Concerned about the advertising expense? Worry no more for TESDA is pleased to inform you that we have provided a job portal that you can use. This is part of the e-TESDA program which consists of e-Learn, e-Certify and e-Work. You are given the chance to post a vacancy, invite matched job seekers, manage applications, schedule an exam/interview, create events and participate in leagues and discussions. 
+
+What's unique about this portal is that most job seekers have acquired their respective certificate/s from TESDA that's why we are ensuring we're presenting quality people with quality trainings. We look forward to your participation in giving possible employment and opportunities to our graduates. 
+
+
+Register now.
+                                        </textarea>
                                 </td>
                             </tr>
                         </tbody>

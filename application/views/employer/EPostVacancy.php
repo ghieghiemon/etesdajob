@@ -206,7 +206,11 @@
 	<div class="row-fluid">
     	<div class="span12">
         	<div class="well">
-                      
+                      <?php
+//                      if(!empty(validation_errors())){
+                        print_r(validation_errors());
+//                       }
+                      ?>
             	<h4 class="media-heading">Post Vacancy</h4>
                 
                 <div class="row-fluid">
@@ -240,14 +244,14 @@
                                                             <label class="control-label lLabel2">Job Title: &nbsp;</label>
                                                             <div class="controls">
                                                              
-                                                                <input type="text" id="JN" name="JN" placeholder="" >
+                                                                <input type="text" id="JN" name="JN" placeholder="" value="<?php echo set_value('JN'); ?>" >
                                                             </div>
                                                         </div> <!--end JT field-->
                                                         
                                                         <div class="control-group">
                                                             <label class="control-label lLabel2">Description: &nbsp;</label>
                                                             <div class="controls">
-                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ></textarea>
+                                                                <textarea type="text" rows="7" id="desc" name="desc" placeholder="" ><?php echo set_value('desc'); ?></textarea>
                                                             </div>
                                                         </div> <!--end Desc field-->
                                                         
@@ -290,7 +294,7 @@
                                                 		<div class="control-group">
                                                             <label class="control-label lLabel2">Number of Vacancies: &nbsp;</label>
                                                             <div class="controls">
-                                                                    <input type="text" id="NOV" name="NOV" placeholder="" >
+                                                                    <input type="text" id="NOV" name="NOV" placeholder="" value="<?php echo set_value('NOV'); ?>" >
                                                             </div>
                                                         </div> <!--end NOV field-->
                                                         
@@ -396,7 +400,7 @@
                                         echo form_multiselect('certs', $cert, '#', $params ); ?> 
                                             
                                             <a class="btn btn-mini actionPHMarg"style="margin-left:15px; margin-top:-30px;" id="btnAddCert">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                    
                                        
 
@@ -413,7 +417,7 @@
                                          echo form_multiselect('competencies', $comp, '#', $params); ?>   
                                             
                                                <a class="btn btn-mini actionPHMarg"style="margin-left:20px; margin-top:-30px;" id="btnAddComp">
-                                     <img src="assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_190_circle_plus.png" width="12"> &nbsp;Add&nbsp;&nbsp;  </a>
                                   
                                         </div><!--end span4-->	
                                         
@@ -425,7 +429,7 @@
                                            <select id="lstcert2" name= "certselect[]"multiple="multiple">
                                          </select>
                                                <a class="btn btn-mini actionPHMarg"style ="margin-left:15; margin-top:-10px;"id="btnDelCert">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                       
                                             <h5 class="media-heading previewColor">
                                                 | YOUR CHOSEN COMPETENCIES
@@ -436,7 +440,7 @@
                                         </select>
                                                
                                                     <a class="btn btn-mini actionPHMarg"style ="margin-left:10px; margin-top:-10px;"id="btnDelComp">
-                                     <img src="assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
+                                     <img src="<?php echo base_url()?>assets/img/icons/glyphicons_191_circle_minus.png" width="12"> Remove</a>
                                         </div><!--end span4-->	
                                         
                                     </div><!--end row-fluid-->
@@ -575,10 +579,3 @@
     });
 </script>
     
-<script>
-$('#trigger').click(function(){
-        alert("The Job Vacancy has been Posted");
-
-    });
-    
-    </script>

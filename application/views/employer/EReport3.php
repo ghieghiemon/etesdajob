@@ -32,19 +32,7 @@ $(function () {
                     }
                 }
             }, { // Secondary yAxis
-                title: {
-                    text: 'Rainfall',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                labels: {
-                    format: '{value}',
-                    style: {
-                        color: '#4572A7'
-                    }
-                },
-                opposite: true
+               
             }],
             tooltip: {
                 shared: true
