@@ -1274,7 +1274,7 @@ Following consideration of your application we are pleased to inform that you ha
                                           <th class="span1" style="text-align:center">Sex</th>
                                           <th class="span2" style="text-align:center">Certification</th>
                                           <th class="span2" style="text-align:center">Competencies</th>
-                                          <th class="span3" style="text-align:center">Date</th>
+                                          <th class="span3" style="text-align:center">Date Applied</th>
                                       </tr>
                                   </thead>
                                   <input type="hidden" value="<?php echo $what?>" name="what" id="what">
