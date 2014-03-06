@@ -6,7 +6,7 @@
     	<div class="span12">
         	<div class="well">
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_114_list.png" width="25"> Manage Survey
+                    <img src="<?php echo base_url()?>assets/img/icons/glyphicons_114_list.png" width="25"> Manage Survey
                 </h3>
                 
                 <h4 class="proDetCol media header" style="margin-top:-10px;margin-left:30px;">

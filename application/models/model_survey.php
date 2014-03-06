@@ -207,21 +207,21 @@ class Model_survey extends CI_Model {
     }
     
      public function getAverageRating($moduleid){
-        $db = $this->load->database('local', TRUE);
-            $result = $db->select('rating')
-                ->where('moduleID',$moduleid)
-                ->get('survey_results_modules')
-                ->result_array();
-            
-            $rating = 0;
-            $ctr = 0;
-            foreach($result as $r){
-                $rating += $r['rating'];
-                $ctr++;
-            }
-            
-            
-            return $rating/$ctr;
+//        $db = $this->load->database('local', TRUE);
+//            $result = $db->select('rating')
+//                ->where('moduleID',$moduleid)
+//                ->get('survey_results_modules')
+//                ->result_array();
+//            
+//            $rating = 0;
+//            $ctr = 0;
+//            foreach($result as $r){
+//                $rating += $r['rating'];
+//                $ctr++;
+//            }
+//            
+//            
+//            return $rating/$ctr;
     }
     
     public function hasSurvey($courseid){

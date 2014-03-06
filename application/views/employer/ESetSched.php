@@ -1160,7 +1160,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                      <tr>
                                       <td class="vdDesc">
                                           <div class="myStyleSetS">
-                                            <?php echo form_dropdown("duration", array('.5'=>'30 mins','1'=>'1 hr','1.5'=>'1hr 30mins','2'=>'2 hrs','2.5'=>'2 hrs 30 mins','3'=>'3 hrs', '3.5'=>'3 hrs 30 mins'),'30','id="DR"') ?>
+                                            <?php echo form_dropdown("duration", array('.5'=>'30 mins','1'=>'1 hr','2'=>'2 hrs'),'30','id="DR"') ?>
                                           </div>
                                       </td>
                                       
