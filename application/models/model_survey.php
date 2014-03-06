@@ -152,9 +152,9 @@ class Model_survey extends CI_Model {
         $db = $this->load->database('default', TRUE);
        
         $query = $db->select('*')
-                ->where('courseid',$courseid)
+                ->where('ncid',$courseid)
                
-                ->get('modules')
+                ->get('nccoc')
                 
                 ->result_array();
         

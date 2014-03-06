@@ -347,9 +347,9 @@ class Model_reports extends CI_Model {
         $db = $this->load->database('default', TRUE);
        
         $query = $db->select('*')
-                ->where('courseid',$courseid)
+                ->where('ncid',$courseid)
                
-                ->get('modules')
+                ->get('nccoc')
                 
                 ->result_array();
         
@@ -364,7 +364,7 @@ class Model_reports extends CI_Model {
         $moduleResults = array();
         foreach($modules as $a)
         {
-            $moduleid = $a['moduleid'];
+            $moduleid = $a['ncoid'];
             
             $query = $db1->query("SELECT * 
             FROM  etesda.survey_results_details d
@@ -401,7 +401,7 @@ class Model_reports extends CI_Model {
         $moduleResults = array();
         foreach($modules as $a)
         {
-            $moduleid = $a['moduleid'];
+            $moduleid = $a['ncoid'];
             
             $query = $db1->query("SELECT * 
             FROM  etesda.survey_results_details d
@@ -434,7 +434,7 @@ class Model_reports extends CI_Model {
         $moduleResults = array();
         foreach($modules as $a)
         {
-            $moduleid = $a['moduleid'];
+            $moduleid = $a['ncoid'];
             
             $query = $db1->query("SELECT * 
             FROM  etesda.survey_results_details d
@@ -467,7 +467,7 @@ class Model_reports extends CI_Model {
         $moduleResults = array();
         foreach($modules as $a)
         {
-            $moduleid = $a['moduleid'];
+            $moduleid = $a['ncoid'];
             
             $query = $db1->query("SELECT * 
             FROM  etesda.survey_results_details d

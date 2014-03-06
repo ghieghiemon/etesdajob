@@ -132,7 +132,7 @@
                                       
                                       <tr>
                                           <td>
-                                             <?php echo $m['modulename'] ?>
+                                             <?php echo $m['cocname'] ?>
                                           </td>
                                           
 <!--                                          <td style="text-align:center" >

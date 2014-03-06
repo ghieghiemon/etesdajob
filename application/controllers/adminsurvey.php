@@ -34,7 +34,7 @@ class Adminsurvey extends CI_Controller {
         $ratings = array();
         
         foreach($modules as $m){
-            $rating =  $this->model_survey->getAverageRating($m['moduleid']);
+            $rating =  $this->model_survey->getAverageRating($m['ncoid']);
             array_push($ratings, $rating);
         }
         
