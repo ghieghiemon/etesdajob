@@ -7,7 +7,7 @@
         	<div class="well">
                      <?php echo form_open($this->uri->uri_string()) ?>
             	<h3 class="media-heading">
-                    <img src="assets/img/icons/glyphicons_114_list.png" width="25"> Survey
+                    <img src="<?php echo base_url()?>assets/img/icons/glyphicons_114_list.png" width="25"> Survey
                 </h3>
                 
                 <h4 class="proDetCol media header" style="margin-top:-10px;margin-left:30px;">
