@@ -309,7 +309,7 @@ where expirationdate >=curdate()  GROUP BY companyid ORDER BY totalopenings DESC
                                 JOIN etesda.reference_region r ON r.regionid = v.region
                                 JOIN tesda_centraldb.employer_profile p ON p.userID = v.companyID     
                                  WHERE v.status = 1 and expirationdate >= curdate()
-                                ORDER BY dateposted DESC");
+                                ORDER BY jobtitle ASC");
         return $query->result_array();
         
 

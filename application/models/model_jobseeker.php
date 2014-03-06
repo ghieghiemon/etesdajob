@@ -301,7 +301,7 @@ class Model_jobseeker extends CI_Model {
                             JOIN tesda_centraldb.sectors i ON i.sectorID = j.sectorid
                             JOIN etesda.reference_city c ON c.cityid = j.city
                             WHERE j.status = 1 AND j.expirationdate >= curdate()
-                            GROUP BY j.jobno ORDER BY j.dateposted DESC 
+                            GROUP BY j.jobno ORDER BY j.jobtitle ASC 
                             ");
         return $query->result_array();
         $db1->close();
