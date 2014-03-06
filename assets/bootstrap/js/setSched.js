@@ -3,11 +3,12 @@ $(document).ready(function(){
 
     var recepients = new Array();
     
-    $("#check1").change(function() {
+    $(".chk1").change(function() {
          var name ="";
         if(this.checked) {
            name= $('#chknName',$(this).closest("td")).val();
             recepients.push(name);
+            //alert(recepients);
            
         }else{
             name = $('#chknName',$(this).closest("td")).val();
@@ -19,11 +20,12 @@ $(document).ready(function(){
         
     });
     
-     $("#check2").change(function() {
+     $(".chk2").change(function() {
          var name ="";
         if(this.checked) {
            name= $('#chkeName',$(this).closest("td")).val();
             recepients.push(name);
+            //alert(recepients);
            
         }else{
             name = $('#chkeName',$(this).closest("td")).val();
@@ -35,11 +37,12 @@ $(document).ready(function(){
         
     });
     
-     $("#check3").change(function() {
+     $(".chk3").change(function() {
          var name ="";
         if(this.checked) {
            name= $('#chkiName',$(this).closest("td")).val();
             recepients.push(name);
+            //alert(recepients);
            
         }else{
             name = $('#chkiName',$(this).closest("td")).val();
@@ -66,7 +69,7 @@ $(document).ready(function(){
       var duration = $('#DR').val();
      
       var names = "";
-      
+      //alert(recepients);
       $.each(recepients, function( index, value ) {
            names += value+" ;";
       });
