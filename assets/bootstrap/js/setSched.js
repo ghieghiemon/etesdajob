@@ -2,8 +2,8 @@ $(document).ready(function(){
     var monthNames = ["0","January","February","March","April","April","June","July","August","September","October","November","December"];
 
     var recepients = new Array();
-   // $("#check1").change(function() {
-    $(".chk1").change(function() {
+    $("#check1").change(function() {
+    //$(".chk1").change(function() {
          var name ="";
         if(this.checked) {
            name= $('#chknName',$(this).closest("td")).val();
