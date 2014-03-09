@@ -696,7 +696,7 @@ class Model_employer extends CI_Model {
         
         $db1->close();
     }
-     public function add_schedule($scheduledate,$what, $venue, $contactperson, $contactno,$applicationid)
+     public function add_schedule1($scheduledate,$what, $venue, $contactperson, $contactno,$applicationid)
     {
         $db1 = $this->load->database('local', TRUE);
         $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno) VALUES(?,?,?,?)";
@@ -704,6 +704,24 @@ class Model_employer extends CI_Model {
         $scheduleid = $db1->insert_id();
         $db1->query("UPDATE applications SET scheduleid = $scheduleid, status = '$what' where applicationid = $applicationid");
         return $scheduleid;
+        $db1->close();
+    }
+    
+         public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno) VALUES(?,?,?,?)";
+        $db1->query($sql,array($scheduledate,$venue, $contactperson, $contactno));
+        $scheduleid = $db1->insert_id();
+        return $scheduleid;
+        $db1->close();
+    }
+    
+    public function update_app($what,$applicationid,$scheduleid)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        $db1->query("UPDATE applications SET scheduleid = $scheduleid, status = '$what' where applicationid = $applicationid");
+       // return $scheduleid;
         $db1->close();
     }
     public function add_scheduleslot($scheduleid, $starttime,$endtime)

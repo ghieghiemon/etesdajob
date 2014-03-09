@@ -85,7 +85,7 @@ foreach ($myapp as $z)
         	<strong><em>Greetings,</em></strong>
             <br><br>
             Following consideration of your application for <font class="inModEm"><?php echo $a['jobtitle'] ?></font> 
-            - <em><strong>develops software</strong></em> -, 
+             <em><strong></strong></em>, 
                 <?php
                 }
                 ?>

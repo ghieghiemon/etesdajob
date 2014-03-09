@@ -820,6 +820,7 @@ public function invite_jobseekers2($jobpost_id)
             {
                 $jobno = $this->model_employer->get_jobno($a);
                 $details = $this->model_employer->get_jobdetails($jobno);
+                $applicationid = $a;
                 foreach ($details as $b)
                 {
                     $jobtitle = $b['jobtitle'];
@@ -839,16 +840,24 @@ public function invite_jobseekers2($jobpost_id)
                         are not able to pursue your application for <font color ='blue'>$jobtitle </font> further.";
                 }
                 $appid = $this->model_employer->get_appid($a);
-                $scheduleid = $this->model_employer->add_schedule($date,$status, $venue, $cp, $cd,$a);
+          
                 $y=0;
-                $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
+                
 
                 $this->model_employer->add_notification($appid,$notif,$jobno);
             }
-
-            $this->employer_appsperjob($jobno);
+              foreach ($ids as $a) // public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
+            {
+         $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd);
+         $this->model_employer->update_app($status,$applicationid,$scheduleid);
+       
+   
+            }
+              }
+          
+      $this->employer_appsperjob($jobno);
         }
-    }
+    
     
     public function set_intervals($scheduleid,$duration,$starttime,$endtime){
         $timeF = explode(":", $starttime);

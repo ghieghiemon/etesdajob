@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     var recepients = new Array();
     
-    $(".chk1").change(function() {
+    $(".chk").change(function() {
          var name ="";
         if(this.checked) {
            name= $('#chknName',$(this).closest("td")).val();
