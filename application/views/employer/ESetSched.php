@@ -1287,8 +1287,7 @@ Following consideration of your application we are pleased to inform that you ha
                                   ?>   
                                       <tr>
                                           <td>
-                                       
-                                              <input id="check1" type="checkbox" class="chk1" name="check1[]" value="<?php echo $a['applicationid']?>">
+                                              <input id="check1" type="checkbox" class="chk" name="chk1[]" value="<?php echo $a['applicationid']?>">
                                               <input type='hidden' id="chknName" value="<?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
