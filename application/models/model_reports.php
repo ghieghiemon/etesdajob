@@ -337,9 +337,22 @@ class Model_reports extends CI_Model {
         //insert query
         $query1 = "SELECT COUNT(j.companyID) as vacancies, e.companyName from etesda.job_vacancies j
                     join tesda_centraldb.employer_profile e on e.userID = j.companyID
-                    group by j.companyID";
+                    where month(j.dateposted) = ? and year(j.dateposted) = ? group by j.companyID ";
 
        $result = $dbconn->query($query1, array($month, $year))->result();
+        return $result;
+        $dbconn->close();
+    }
+     public function get_bigContributor2($year)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(j.companyID) as vacancies, e.companyName from etesda.job_vacancies j
+                    join tesda_centraldb.employer_profile e on e.userID = j.companyID
+                    where year(j.dateposted) = ? group by j.companyID ";
+
+       $result = $dbconn->query($query1, array($year))->result();
         return $result;
         $dbconn->close();
     }

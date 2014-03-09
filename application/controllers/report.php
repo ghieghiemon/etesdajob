@@ -581,8 +581,14 @@ class Report extends CI_Controller {
                         $this->load->model('model_reports');
 			$this->load->helper('mpdf'); 
                         if($month == 0)
-            
-                        $employment = $this->model_reports->get_bigContributor($month, $year);
+                        {
+                           $employment = $this->model_reports->get_bigContributor2($year);
+                        }
+                        elseif ($month != 0)
+                        {
+                            $employment = $this->model_reports->get_bigContributor($month, $year);
+                        }
+                        
             
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
