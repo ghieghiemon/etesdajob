@@ -816,11 +816,13 @@ public function invite_jobseekers2($jobpost_id)
                     array_push($ids,$a);
                 }
             }
+            $applicationid = array();
             foreach ($ids as $a)
             {
                 $jobno = $this->model_employer->get_jobno($a);
                 $details = $this->model_employer->get_jobdetails($jobno);
-                $applicationid = $a;
+                
+                array_push($applicationid,$a);
                 foreach ($details as $b)
                 {
                     $jobtitle = $b['jobtitle'];
@@ -846,13 +848,13 @@ public function invite_jobseekers2($jobpost_id)
 
                 $this->model_employer->add_notification($appid,$notif,$jobno);
             }
-              foreach ($ids as $a) // public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
+            $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd);
+              foreach ($applicationid as $a) // public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
             {
-         $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd);
-         $this->model_employer->update_app($status,$applicationid,$scheduleid);
-       
-   
+         
+                $this->model_employer->update_app($status,$a,$scheduleid);
             }
+            $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
               }
           
       $this->employer_appsperjob($jobno);
