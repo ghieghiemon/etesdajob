@@ -566,7 +566,7 @@ class Model_jobseeker extends CI_Model {
         join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
         JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
         where (a.status = 'Interview' or a.status ='Exam') and ss.appid =$id
-                 AND scheduledate >= curdate() ");
+                 AND scheduledate >= curdate()group by ss.slotid ");
         return $query->result_array();
 
 
