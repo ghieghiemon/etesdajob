@@ -767,6 +767,8 @@ class Report extends CI_Controller {
             }
             $data['indexedReportData'] = $reportdata;
             $data['indexedReportData2'] = $reportdata2;
+            $data['year1'] = $year-1;
+            $data['year2'] = $year;
 //            print_r($annualgrads);
 //            echo "<Br><BR>";
 //            print_r($hiredgrads);
