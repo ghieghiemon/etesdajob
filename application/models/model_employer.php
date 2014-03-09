@@ -673,7 +673,7 @@ class Model_employer extends CI_Model {
         }
         if($left <= 0)
         {
-            $query2 = $db1->query("SELECT appid from applications WHERE (status != 'Hired' or status!= 'Denied') and jobno = $jobno");
+            $query2 = $db1->query("SELECT appid from applications WHERE status != 'Hired' and status!= 'Denied' and jobno = $jobno");
             return $query2->result_array();
         }
         else return 0;
