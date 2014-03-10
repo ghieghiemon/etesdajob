@@ -83,7 +83,7 @@ class Tuna extends CI_Model {
                                     AND scheduledate >= curdate()
                                     and a.jobno in 
                                     (select jobno from job_vacancies where
-                                    companyid = ?)" ;
+                                    companyid = ?) group by ss.slotid" ;
 			$results = $dbconn->query($query, array($month, $year, $id));
 		else:
                     
@@ -101,7 +101,7 @@ class Tuna extends CI_Model {
                                     AND scheduledate >= curdate()
                                         and a.jobno in 
                                     (select jobno from job_vacancies where
-                                    companyid = ?)";
+                                    companyid = ?)group by ss.slotid";
 			$results = $dbconn->query($query, array($month, $year, $day, $id));
 		endif;
 		$dbconn->close();

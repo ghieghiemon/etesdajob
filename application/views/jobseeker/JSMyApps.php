@@ -582,6 +582,7 @@ foreach($invites as $a)
                             }
                             else if ($status == "Exam")
                             {
+                                echo "For Exam";
                                 ?>
                                 <div class="statusB">
                                     	For Exam <br>
@@ -596,6 +597,7 @@ foreach($invites as $a)
                             }
                             else if ($status == "Interview")
                             {
+                                echo "For Interview";
                                  ?>
                                 <div class="statusB">
                                     	<?php if(empty($sched))
