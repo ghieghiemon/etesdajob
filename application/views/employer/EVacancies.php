@@ -138,8 +138,8 @@ foreach ($myvacancies as $a)
                                   
                                   <td>
                                       <font class="previewDet2">
-                                      	 <?php
-                                                    $date2 = $a['expirationdate'];
+                        <?php
+                                                  $date2 = $a['expirationdate'];
 //                                                  
                                                   $date = date('Y-m-d');
                                                   $diff = abs(strtotime($date2) - strtotime($date));
@@ -152,7 +152,7 @@ foreach ($myvacancies as $a)
                                                   }
                                                   else
                                                   {
-                                                    echo "<font color ='red'>EXPIRED </font>";
+                                                    echo "EXPIRED";
                                                   }
                                                 ?>
                                       
@@ -792,7 +792,7 @@ foreach ($myvacancies as $a)
                                                 <?php
                                                 if ($a['expirationdate'] > $a['currentdate'])
                                                 {
-                                                    echo "Active";
+                                                    echo "Closed";
                                                 }
                                                 else
                                                 {
