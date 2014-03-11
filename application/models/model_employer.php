@@ -311,7 +311,7 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         
-       $sql = $db1->query("SELECT *,jobno, jobtitle, DATE_FORMAT(expirationdate, '%M %d %Y') as expirationdate, 
+       $sql = $db1->query("SELECT *,jobno, jobtitle, DATE_FORMAT(expirationdate, '%M %d %Y') as expirationdate, expirationdate as exp,
                            DATE_FORMAT(dateposted, '%M %d %Y') as dateposted, CURDATE() as currentdate, vacanciesleft
                            from job_vacancies v
                            JOIN etesda.reference_city c ON c.cityid = v.city
