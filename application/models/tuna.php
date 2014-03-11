@@ -70,7 +70,7 @@ class Tuna extends CI_Model {
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
 			$query = " select j.jobtitle, day(scheduledate) as eday ,a.status,sc.scheduledate, ss.starttime,ss.endtime,
-                                    a.appid
+                                    ss.appid
                                     from etesda.applications a 
                                     join etesda.job_vacancies j on a.jobno = j.jobno
                                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
@@ -88,7 +88,7 @@ class Tuna extends CI_Model {
 		else:
                     
 			$query = "select j.jobtitle, day(scheduledate) as eday , a.status,sc.scheduledate, ss.starttime,ss.endtime,
-                                    a.appid
+                                    ss.appid
                                     from etesda.applications a 
                                     join etesda.job_vacancies j on a.jobno = j.jobno
                                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid

@@ -784,8 +784,7 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*, ss.*,
-            a.appid, ap.firstname,ap.lastname
+        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*, ss.*
         from etesda.applications a 
         join etesda.job_vacancies j on a.jobno = j.jobno
         JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid

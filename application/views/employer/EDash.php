@@ -341,9 +341,14 @@ foreach ($myvacancies as $a)
                                 <p class="notifAgenda2">';
                                 	echo $a['status'];
                                        echo' - ';
-                                        echo $a['firstname'];
-                                        echo' ';
-                                        echo $a['lastname'];
+                                       $name = $this->model_employer->get_jsName($a['appid']);
+                         foreach($name as $b)
+                                                  {
+                                                      echo $b['firstname'];
+                                                      echo " ";
+                                                      echo $b['lastname'];
+                                                  }
+                                                  
                                         echo' for ';
                                         echo $a['jobtitle'];
                                echo' </p>
