@@ -1345,7 +1345,7 @@ public function invite_jobseekers2($jobpost_id)
         {
             foreach($left as $b)
             {
-             $notif = "We are sorry to inform you that the vacancy, $jobtitle, you are applying for has already been filled. Nonetheless, we will keep your records for future purposes. Thank you for your time and effort.";
+             $notif = "We are sorry to inform you that the vacancy, $jobtitle, you are applying for has already been filled. Thank you for your time and effort.";
              $this->model_employer->add_notification($b['appid'],$notif,$jobno);
              $this->model_employer->change_status2("Denied",$b['appid'],$jobno); 
             }
