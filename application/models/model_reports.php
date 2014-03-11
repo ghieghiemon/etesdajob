@@ -294,10 +294,9 @@ class Model_reports extends CI_Model {
         
         //insert query
         $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired from applicants_certificates c
-            join applicants a on a.appid = c.appid
-            where a.employment = 1 AND ( year(c.dateacquired) = ?
-                or year(c.dateacquired) = ?)
-            group by c.dateacquired ORDER BY  year(c.dateacquired) asc";
+                join applicants a on a.appid = c.appid where year(c.dateacquired) = ?
+                or year(c.dateacquired) = ?
+                group by year(c.dateacquired) ORDER BY  c.dateacquired asc";
         
         $result = $dbconn->query($query1, array($year1,$year2))->result_array();
         return $result;
@@ -309,9 +308,11 @@ class Model_reports extends CI_Model {
         
         //insert query
         $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired from applicants_certificates c
-                join applicants a on a.appid = c.appid where year(c.dateacquired) = ?
+            join applicants a on a.appid = c.appid
+            where a.employment = 1 AND  year(c.dateacquired) = ?
                 or year(c.dateacquired) = ?
-                group by year(c.dateacquired) ORDER BY  c.dateacquired asc";
+            group by c.dateacquired ORDER BY  year(c.dateacquired) asc";
+        
         
         $result = $dbconn->query($query1, array($year1,$year2))->result_array();
         return $result;

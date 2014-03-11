@@ -25,8 +25,7 @@ $(function () {
                 text: 'TESDA'
             },
             xAxis: [{
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: ['<?php echo $year1?>', '<?php echo $year2?>']
             }],
             yAxis: [{ // Primary yAxis
                 labels: {

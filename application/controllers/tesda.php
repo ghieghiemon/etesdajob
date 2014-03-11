@@ -12,6 +12,8 @@ class Tesda extends CI_Controller {
         $data['leagues'] = $this->model_tesda->get_allleagues();
         //$data['jsverify'] = $this->model_tesda->get_jstoverify();
            $year =date("Y");
+           $data['year1'] = $year-1;
+           $data['year2'] = $year;
           $annualgrads = $this->model_reports->get_annualGraduates($year-1,$year);
             $hiredgrads = $this->model_reports->get_hiredGraduates($year-1,$year);
             $monthctr = 1;
