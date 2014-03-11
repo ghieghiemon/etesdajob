@@ -283,7 +283,7 @@ class Model_employer extends CI_Model {
                            JOIN etesda.reference_city c ON c.cityid = v.city
                            JOIN etesda.reference_region r ON r.regionid = v.region
                            JOIN tesda_centraldb.sectors i ON i.sectorID = v.sectorid
-                           WHERE companyID = $id AND vacanciesleft >0
+                           WHERE companyID = $id AND vacanciesleft >0 AND expirationdate >CURDATE()
                            ORDER BY dateposted DESC
                            
                            ");
