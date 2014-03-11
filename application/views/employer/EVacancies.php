@@ -730,7 +730,7 @@ foreach ($myvacancies as $a)
                                       <th class="span2" style="text-align:center">Number of Applications</th>
                                       <th class="span1" style="text-align:center">Status</th>
                                       <th class="span1" style="text-align:center"></th>
-                                      <th class="span2" style="text-align:center"></th>
+                                    
                                   </tr>
                               </thead>
                               
@@ -818,17 +818,7 @@ foreach ($myvacancies as $a)
                                                 ?>
                                                 
                                             </td>
-                                            <td>
-                                                 <?php
-                                                if ($a['expirationdate'] > $a['currentdate'])
-                                                  {
-                                                    ?>
-                                                
-                                                <a href="<?php echo base_url()?>employer/invite_jobseekers/<?php echo $a['jobno']?>" class="invJS btn btn-info btn-mini">Invite Job Seekers</a>
-                                                <?php
-                                                  }
-                                                  ?>
-                                            </td>
+                                         
                                         </tr>
                                         <?php
                                   }
