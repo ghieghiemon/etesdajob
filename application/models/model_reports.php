@@ -311,7 +311,7 @@ class Model_reports extends CI_Model {
             join applicants a on a.appid = c.appid
             where a.employment = 1 AND  year(c.dateacquired) = ?
                 or year(c.dateacquired) = ?
-            group by c.dateacquired ORDER BY  year(c.dateacquired) asc";
+            group by year(c.dateacquired) ORDER BY  year(c.dateacquired) asc";
         
         
         $result = $dbconn->query($query1, array($year1,$year2))->result_array();

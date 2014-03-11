@@ -73,7 +73,7 @@ class Model_jobseeker extends CI_Model {
                                 JOIN etesda.reference_city c ON c.cityid = v.city
 				JOIN etesda.reference_region r ON r.regionid = v.region
                                 WHERE j.appid = $userid AND j.applied = 0 AND expirationdate >= curdate() 
-               ORDER BY dateposted DESC");
+               ORDER BY dateposted ASC");
         return $query->result_array();
        $db1->close();
        $db2->close();
