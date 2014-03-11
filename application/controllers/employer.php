@@ -117,10 +117,11 @@ class Employer extends CI_Controller {
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
         $myvacancies = $this->model_employer->get_myvacancies($id);
-        
+        $postedvac = $this->model_employer->get_postedvacancies($id);
         $data['briefcase'] = $this->model_employer->employer_briefcase($id);
         $data['newapplicant'] = $this->model_employer->get_allNewApplicant($id);
         $data['myvacancies'] = $myvacancies;
+        $data['postedvac'] = $postedvac;
         $data['invites'] = $this->model_employer->get_jobInvitesApps($id);
         $data['event'] = $this->model_employer->get_createdevents($id);
         $data['notif'] = $this->model_jobseeker->get_notifications($id);

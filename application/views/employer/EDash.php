@@ -667,7 +667,7 @@ foreach ($myvacancies as $a)
                         
                         <?php 
                         $ctr1 = 1;
-                        foreach($myvacancies as $a)
+                        foreach($postedvac as $a)
                         {
                             if($ctr1 == 1)
                             {
@@ -689,7 +689,7 @@ foreach ($myvacancies as $a)
                      <div class="tab-content">
                     <?php 
                     $ctr = 1;
-                    foreach ($myvacancies as $a)
+                    foreach ($postedvac as $a)
                     {
                         if($ctr == 1)
                         {
@@ -763,7 +763,7 @@ foreach ($myvacancies as $a)
     
     <script type="application/javascript">
     <?php
-    foreach($myvacancies as $a)
+    foreach($postedvac as $a)
     {
         $new = $this->model_employer->count_jobApplicationsNew($a['jobno']);
         $exam = $this->model_employer->count_jobApplicationsExam($a['jobno']);
