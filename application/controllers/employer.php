@@ -559,7 +559,7 @@ public function invite_jobseekers2($jobpost_id)
         $this->load->model('model_jobseeker');
         
         $id = $this->model_main->get_userid($this->session->userdata('email'));
-        $data['myvacancies'] = $this->model_employer->get_myvacancies($id);
+        $data['myvacancies'] = $this->model_employer->get_myvacancies2($id);
         $data['closed'] = $this->model_employer->get_myClosedvacancies($id);
         $this->employer_header();
         $this->load->view('employer/EVacancies',$data);
