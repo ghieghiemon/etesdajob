@@ -625,7 +625,7 @@ class Model_employer extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-    public function get_hired($jobno)
+    public function get_denied($jobno)
     {
         $db1 = $this->load->database('local', TRUE);
         $query = $db1->query("SELECT *,DATE_FORMAT(datereceived, '%M %d %Y') as datereceived 
