@@ -771,7 +771,7 @@ class Model_employer extends CI_Model {
     public function update_app($what,$applicationid,$scheduleid)
     {
         $db1 = $this->load->database('local', TRUE);
-        $db1->query("UPDATE applications SET scheduleid = $scheduleid, status = '$what' where applicationid = $applicationid");
+        $db1->query("UPDATE applications SET scheduleid = $scheduleid, status = '$what', confirmed = 0 where applicationid = $applicationid");
        // return $scheduleid;
         $db1->close();
     }

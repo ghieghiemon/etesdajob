@@ -548,7 +548,7 @@ public function invite_jobseekers2($jobpost_id)
         $this->model_jobseeker->seen_notif($jobno,$id);
         
         $this->employer_header();
-        $this->load->view('employer/EAppsPerJob',$data);
+        $this->load->view('employer/ESetSched',$data);
         $this->load->view('footer2');
     }
     
@@ -911,7 +911,7 @@ public function invite_jobseekers2($jobpost_id)
          
                 $this->model_employer->update_app($status,$a,$scheduleid);
             }
-            $this->set_intervals($scheduleid, $duration, $starttime, $endtime);
+            //$this->set_intervals($scheduleid, $duration, $starttime, $endtime);
               }
           
       $this->employer_appsperjob($jobno);
