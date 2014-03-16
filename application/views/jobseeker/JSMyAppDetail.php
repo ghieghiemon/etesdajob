@@ -125,7 +125,7 @@
                                         $status =  $b['status'];
                                         if($status == "New Applicant")
                                         {
-                                            echo "Processing";
+                                            echo "In Process";
                                         }
                                         else if ($status == "Exam")
                                         {

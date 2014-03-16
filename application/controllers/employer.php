@@ -539,7 +539,7 @@ public function invite_jobseekers2($jobpost_id)
         $data['interview'] = $this->model_employer->get_interview($jobno);
         $data['all'] = $this->model_employer->get_allapps($jobno);
         $data['hired'] = $this->model_employer->get_hired($jobno);
-        
+         $data['denied'] = $this->model_employer->get_denied($jobno);
         $data['invites'] = $this->model_employer->get_jobInvites($jobno);
         
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);

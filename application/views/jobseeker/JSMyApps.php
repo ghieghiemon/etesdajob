@@ -574,7 +574,7 @@ foreach($invites as $a)
                             $status =  $a['status'];
                             if($status == "New Applicant")
                             {
-                                echo "Processing";
+                                echo "In Process";
                             }
                             if($status == "Hired")
                             {

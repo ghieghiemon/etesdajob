@@ -33,6 +33,11 @@
                     </div>
                                  <br>
                                  <table id ="newtableinv" >
+                                     <?php 
+                                     echo "Coungratulations! ";
+                                     echo count($invites);
+                                     echo "Job Seekers matched your vacancy, you can select the names of those you want to invite. ";
+                                     ?>
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">

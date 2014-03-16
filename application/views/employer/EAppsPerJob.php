@@ -925,6 +925,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                           <li><a href="#tab2" data-toggle="tab">Exam</a></li>
                           <li><a href="#tab3" data-toggle="tab">Interview</a></li>
                           <li><a href="#tab4" data-toggle="tab">Hired</a></li>
+                          <li><a href="#tab5" data-toggle="tab">Denied</a></li>
                       </ul>
             
                       <div class="tab-content"> <!--start tab content-->
@@ -1453,13 +1454,13 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                           </div><!--end scrollable-->
                       </div> <!--end tab pane 2ns int-->
                       
-<!--                      <div class="tab-pane" id="tab5">
-                          <div style="width:920px;height:420px;overflow:auto;">start scrollable table
-                               <div id="container">
-                        	<table  id="all" >
+                      <div class="tab-pane" id="tab5">
+                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+                              <div id="container">
+                        	<table  id="denied" >
                                   <thead>
                                       <tr>
-                                          <th class="span1" style="text-align:center"><input type="checkbox" onclick="checkall(this);"></th>
+                                          <th class="span1" style="text-align:center">     </th>
                                           <th class="span2" style="text-align:center">Name</th>
                                           <th class="span1" style="text-align:center">Age</th>
                                           <th class="span1" style="text-align:center">Sex</th>
@@ -1472,12 +1473,11 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                   
                                   <tbody class="recName">
                                   <?php
-                                  foreach ($all as $a)
+                                  foreach ($denied as $a)
                                   {
                                   ?>   
                                       <tr>
                                           <td>
-                                              <input type="checkbox" class="chk" name="check[]" value="<?php echo $a['applicationid']?>">
                                               <?php
                                               if (count($invites)>0)
                                               {
@@ -1487,16 +1487,16 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                                   }
                                                   if(in_array($a['appid'],$appid))
                                                   {
+                                              
                                                   
                                               ?>
                                               <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15" style="margin-right:-20px;">
-                                              <?php } 
-                                              }
-                                              ?>
+                                              <?php }
+                                              }?>
                                           </td>
                                           
                                           <td>
-                                              <a href="EAppsProf.html" class="recAppName">
+                                                <a href="<?php echo base_url()?>employer/employer_appsprof/<?php echo $a['appid'] ?>/<?php echo $a['jobno'] ?>" class="recAppName">
                                                   <?php
                                                   $name = $this->model_employer->get_jsName($a['appid']);
                                                   foreach($name as $b)
@@ -1569,15 +1569,16 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
+                                         
                                       </tr>
                                   <?php
                                   }
                                   ?>
                                   </tbody>
                               </table>
-                               </div>
-                          </div>end scrollable
-                      </div> end tab pane hire-->
+                              </div>
+                          </div><!--end scrollable-->
+                      </div> <!--end tab pane 2ns int-->
                       
                       
                      
@@ -1735,6 +1736,17 @@ function year_install(f)
        $(document).ready(function(){
           
            $('#hired').dataTable({
+                "sPaginationType": "full_numbers"
+            });
+		   
+       });
+        
+</script>
+<script type="text/javascript">
+       
+       $(document).ready(function(){
+          
+           $('#denied').dataTable({
                 "sPaginationType": "full_numbers"
             });
 		   
