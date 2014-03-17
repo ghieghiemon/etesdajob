@@ -777,6 +777,8 @@ foreach($invites as $a)
 	  
 	   $('#inv').dataTable({
 			"sPaginationType": "full_numbers"
+                      ,
+                  "aaSorting": []
 		});
 	   
    });
