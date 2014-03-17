@@ -228,12 +228,13 @@
                                                          echo '<br>';
                                                         echo '</td>
                                                     </tr>
+                                               
                                                     
     <tr>
                                                     	<td class="lLabel4">
                                                         	<img src="'.base_url().'assets/img/icons/glyphicons_419_e-mail.png" width="15"> REFERENCE 1: <br>                                                        </td>
                                                      
-                                                          <td>';
+                                                          <td> <br>';
                                                         echo '<strong> NAME:  </strong>';  
                                                         echo $a['ref1name'];
                                                         echo '<br> ';   
@@ -266,6 +267,7 @@
                         </div><!--end row-fluid-->';
                                                     }
                                                 ?>
+                                                    
                                                     <div class="row-fluid">
 <div style="margin-left: 6%;">
 	
@@ -274,6 +276,21 @@
 	</a>
 </div>
 </div>
+                                                <br>
+                                                  <div class="well" align="left" >
+                        	<h4 class="media-heading">
+                            	| NOTES
+                            </h4>
+                            
+                            <div style="width:400px;height:150px;overflow:auto;"><!--start scrollable table-->
+                            	<textarea class="span12" rows="5" id="notes"></textarea>
+                                
+                                <a href="<?php echo base_url()?>save_applsicantnotes" class="btn pull-right">
+                                      
+                                    <strong>SAVE</strong>
+                                </a>
+                            </div><!--end scrollable-->
+                            </div>
                         
                         <hr class="hrPro">
                         
@@ -414,6 +431,11 @@
                                         
                                         
                                        </div><!--end scrollable-->
+                                       
+                                        
+                      
+                        </div><!--end well-->
+                  
                                     </div><!--end well-->
                                     
                                    

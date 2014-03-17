@@ -589,7 +589,7 @@ foreach($invites as $a)
                                         <?php if(empty($sched))
                                         {?>
                                         <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
-                                            Choose Schedule
+                                            Confirm Schedule
                                         </a>
                                         <?php }?>
                                     </div>

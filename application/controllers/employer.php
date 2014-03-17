@@ -635,12 +635,12 @@ public function invite_jobseekers2($jobpost_id)
         $data['educ'] = $this->model_jobseeker->get_educ($appid);
         $data['work'] =$this->model_jobseeker->get_work($appid);
         $data['appid'] = $appid;
-        $data['cert'] = $this->model_jobseeker->get_certifications($appid);
+        $data['cert'] = $this->model_jobseeker->get_certifications2($appid);
         
         $this->employer_header();
         $this->load->view('employer/EAppsProf',$data);
     }
-    public function save_applicantnotes($applicationid,$appid,$jobno)
+    public function save_applsicantnotes($applicationid,$appid,$jobno)
     {
         $this->load->model('model_employer');
         
