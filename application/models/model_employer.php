@@ -1134,6 +1134,31 @@ class Model_employer extends CI_Model {
    
             }
             
+    public function up_event($eventno,$eventname,$startdate,$timestart,$details,$eventpic)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+            $db1->query("UPDATE events SET eventtitle = '$eventname' where eventno = $eventno");
+            $db1->query("UPDATE events SET startdate = '$startdate' where eventno = $eventno");
+            $db1->query("UPDATE events SET starttime = '$timestart' where eventno = $eventno");
+            $db1->query("UPDATE events SET purpose = '$details' where eventno = $eventno");
+            $db1->query("UPDATE events SET eventpic = '$eventpic' where eventno = $eventno");
+
+        
+        $db1->close();
+    }
+    
+       public function up_eventvenue($eventno,$eventvenue)
+    {
+        $db1 = $this->load->database('local', TRUE);
+        
+            $db1->query("UPDATE event_venue SET venue = '$eventvenue' where eventno = $eventno");
+
+
+        
+        $db1->close();
+    }
+            
 public function add_eventvenue($eventno,$eventvenue,$region,$city)
     {
       $db1 = $this->load->database('local', TRUE);    

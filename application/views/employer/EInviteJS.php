@@ -39,6 +39,9 @@
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">
+                                        <div align="left">
+                	<button type ="submit" class="btn btn-primary" >Invite</button>
+                    </div>
                               	<input type="checkbox" onclick="checkall(this);">
                               </th>
                               <th class="span1" style="text-align:center"></th>
@@ -57,6 +60,7 @@
                               ?>
                           
                           <tr>
+                  
                           	  <td>
                               	<input type="checkbox" name="check[]" value="<?php echo $a['appid']?>">
                               </td>
@@ -143,9 +147,7 @@
 
                       </div>
                     <br>
-                     <div align="right">
-                	<button type ="submit" class="btn btn-primary" >Invite</button>
-                    </div>
+                 
                        </form>
                   </div><!--end scrollable-->   
             </div><!--end well-->

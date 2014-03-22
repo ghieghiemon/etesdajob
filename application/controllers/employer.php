@@ -1676,7 +1676,7 @@ public function invite_jobseekers2($jobpost_id)
         $data['attendees'] = $this->model_employer->event_attendees($eno);    
         $this->employer_header();
         $this->load->view('employer/EEventDetailsCreated', $data);
-        $this->load->view('footer2');
+        $this->load->view('footer');
     }
     public function ematch($userid, $eventno)
     {
@@ -1754,6 +1754,41 @@ public function invite_jobseekers2($jobpost_id)
         $this->model_employer->attend_event($id,$eventno);
            
         $this->employer_evcreated($eventno);
+    }
+    
+     public function employer_evupdate($eventno)
+    {
+        $this->load->model('model_main');
+        $this->load->model('model_employer');
+        $this->load->model('model_pub');
+        $id = $this->model_main->get_userid($this->session->userdata('email'));
+
+        $config['upload_path'] = './eventpics/';
+        $config['allowed_types'] = 'gif|jpg|png|docx|zip';
+        $config['max_size']	= '10000000';
+        $config['max_width']  = '1024';
+        $config['max_height']  = '768';
+
+        $this->load->library('upload', $config);
+        $this->upload->do_upload();
+        $data = $this->upload->data();
+        $u = $this->upload->data();
+        $eventpic= $u['file_name'];
+          
+         $eventname = $this->input->post('EN');  
+         $startdate = $this->input->post('date');
+         $timestart = $this->input->post('time');
+         $details = $this->input->post('Det');
+      
+        
+        $eventvenue = $this->input->post('VEN');
+ 
+        
+        $this->model_employer->up_event($eventno,$eventname,$startdate,$timestart,$details,$eventpic);   
+        $this->model_employer->up_eventvenue($eventno,$eventvenue);
+           
+         redirect(base_url()."employer/employer_evcreated/".$eventno);
+   
     }
     
      public function employer_lcreate()

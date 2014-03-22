@@ -1,4 +1,10 @@
-<!--start edit event details-->
+<link type="text/css" rel="stylesheet" href="<?php echo base_url()?>assets/bootstrap/css/datepicker.css"> 
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap-datepicker.js"></script>
+<?php
+foreach ($details as $a)
+{
+?> 
+<form method="post" action='<?php echo base_url()?>employer/employer_evupdate/<?php echo $a['eventno']?>'>
 <div class="modal hide fade" id="editED">
   	<div class="modal-header">
             <a class="close" data-dismiss="modal">x</a>
@@ -13,57 +19,43 @@
   		<div class="well" style="margin-left: 1%; margin-top: 1%">
             	<div class="control-group"><!-- start div EN-->
                     <div class="myStyleQS3">
-                        <input type="text" id="EN" name="EN" placeholder="Event Name">
+                         <!--<label class="ePicUpload2">Title:</label>-->
+                        Title: &nbsp;&nbsp; <input type="text" id="EN" name="EN" value="<?php echo $a['eventtitle']?>">
                     </div>
                 </div><!-- end div EN -->
                 
-                <div class="control-group" style="margin-top:-10px"><!-- start div HST-->
-                    <div class="myStyleQS3">
-                        <input type="text" id="HST" name="HST" placeholder="Hosts">
-                    </div>
-                </div><!-- end div HST -->
                 
                 <div class="control-group" style="margin-top:-10px;"><!-- start div Details-->
                     <div class="myStyle3EventDet">
-                        <textarea id="Dets" name="Det" rows="3" placeholder="Details"></textarea>
+                         
+                        Details:<textarea id="Det" name="Det" rows="3"><?php echo $a['purpose']?> </textarea>
+                        
                     </div>
                 </div><!-- end div Details -->
                 
-                <div class="myStyle3QS" style="margin-top:-10px">
-                    <select>
-                        <option>Choose Industry</option>
-                        <option>Agriculture & Fishery</option>
-                        <option>Automotive & Land Transportation</option>
-                        <option>Construction</option>
-                        <option>Decorative Arts</option>
-                    </select>
-                </div><!--end industry-->
+              
                 
                 <div class="control-group" a>
-                      <label class="ePicUpload2">Date:</label>
-                       <div class="myStyle3EventDate" style="margin-left:60px;margin-top:-25px;">
-                            <input type="text" id="Mn" name="Mn" placeholder="MM" class="span2">
-                            <input type="text" id="Dy" name="Dy" placeholder="DD" class="span2">
-                            <input type="text" id="Yr" name="Yr" placeholder="YYYY" class="span2">
+                    
+                       <div class="myStyleQS3" style="margin-left:20px;">
+                             Date:<input type="text" id="date" name="date" value="<?php echo $a['startdate']?>">
                         </div>
                   </div><!--end date-->
                   
                   <div class="control-group">
-                      <label class="ePicUpload2">Time: </label>
-                       <div class="myStyle3EventDate" style="margin-left:60px;margin-top:-35px;">
-                            <input type="text" id="ST" name="ST" placeholder="Start" class="span3">
-                            <input type="text" id="ET" name="ET" placeholder="End" class="span3">
+                  
+                       <div class="myStyleQS3" style="margin-left:20px;">
+                          Time: <input type="text" id="time" name="time" value="<?php echo $a['starttime']?>">
                         </div>
                   </div><!--end date-->
                 
                 <div class="control-group eWellMarg">
-                    <label class="ePicUpload" style="margin-left:0px">Picture: &nbsp;</label>
-                    <div class="controls" style="margin-left:60px; margin-top:-30px;">
-                        <form method="post" action="upload-page.php" enctype="multipart/form-data">
-                            <input name="pic" id="pic" type="file" style="font-size:10px" />
-                        </form>  
+                    
+                    <div class="controls" style="margin-left:20px;">
+                          Picture: &nbsp;<input value ="upload" name="userfile" id="pic" type="file" />
                     </div>
                 </div> <!--end Picture field-->
+                <br><br>
     	</div><!--end well-->
         
         <h5 class="media-heading previewColor">
@@ -71,31 +63,21 @@
             </h5>
             
             <div class="well" style="margin-left: 1%; margin-top: 1%">
-            	<div class="myStyle3QS2">
-                      <select name="Region">
-                          <option>NCR</option>
-                          <option>Region I</option>
-                      </select>
-                  </div><!--end region-->
-              
-                  <div class="myStyle3QS2" style="margin-top:-10px;">                        
-                      <select name="City">
-                          <option>Pasig</option>
-                          <option>Makati</option>
-                      </select>
-                  </div><!--end city-->
+            	
                   
                   <div class="control-group eWellMarg2"><!-- start div VEN-->
                       <div class="myStyleQS3" style="margin-top:-6px;">
-                          <input type="text" id="VEN" name="VEN" placeholder="Venue">
+                          <input type="text" id="VEN" name="VEN" value="<?php echo $a['venue']?>">
                       </div>
                   </div><!-- end div VEN -->
             </div><!--end well-->
   	</div><!--end modal-body-->
     
     <div class="modal-footer">
-    	<button data-dismiss="modal" class="btn btn-info">Save</button>
+    	<button  type="submit" class="btn btn-info">Save</button>
+      
     </div>
+        </form>
 </div>
 <!--end edit event details-->
 
@@ -116,6 +98,7 @@
             <div class="row-fluid">
               	<div class="span11">
                 	<div class="well" style="margin-left:120px;">
+                            	
                     	<table style="margin-left:10px;">
                         	<thead>
                             	<tr>
@@ -125,9 +108,19 @@
                             </thead>
                              <?php foreach ($details as $row)
                      {
-                           echo' <tbody>
+                                 ?>
+                                   <div class="pull-right" style="margin-top:2px">
+                                         	<span>
+                                            	<a href="#editED" data-toggle="modal" role="button" class="btn btn-mini btn-info">
+                                                    &nbsp; Edit Event Details
+                                                </a>
+                                            </span>
+                                        </div>
+                                 
+                         <?php  echo' <tbody>
                             	<tr>
                                 	<td>';?>
+                          
                             <img src="<?php echo base_url()?>eventpics/<?php echo $row['eventpic']?>"class="thumbnail3 "/>
                                  
                                     </td>
@@ -243,9 +236,14 @@
                         </tbody>
                      ';}  ?>
                     </table><!--end table-->
+                    
                     </div><!--end scrollable table-->
+                             
                     </div><!--end well-->
+                    
                 </div><!--end span-->
+                
+                                             
               </div><!--end row-fluid-->
             
             </div><!--end events-->
@@ -266,3 +264,11 @@
 
     
 </body>
+    <script>
+$("#date").datepicker( {
+    format: 'yyyy-mm-dd'
+});
+</script>
+       <?php
+                                  }
+                                  ?>

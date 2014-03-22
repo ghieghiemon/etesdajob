@@ -34,6 +34,9 @@
                       <thead>
                           <tr>
                           	  <th class="span1" style="text-align:center">
+                      <div align="left">
+                	<button type ="submit" class="btn btn-primary" >Invite</button>
+                    </div>
                               	<input type="checkbox" onclick="checkall(this);">
                               </th>
                               <th class="span1" style="text-align:center"></th>
@@ -50,12 +53,13 @@
                           foreach($invites as $a)
                           {
                               ?>
-                          
+                     
                           <tr>
+                      
                           	  <td>
                               	<input type="checkbox" name="check[]" value="<?php echo $a['appid']?>">
                               </td>
-                              
+                       
                               <td>
                  
                                   <img src='<?php echo base_url()?>profilepics/<?php echo $a['pic'];?>' class="attendeesPic">
@@ -129,6 +133,7 @@
                               
                           </tr>
                           
+                          
                           <?php } ?>                  
                           
                       </tbody>
@@ -137,9 +142,7 @@
                    
                       </div>
                                 <br>
-                       <div align="right">
-                	<button type ="submit" class="btn btn-primary" >Invite</button>
-                    </div>
+                    
                                  </form>
                   </div><!--end scrollable-->   
             </div><!--end well-->
