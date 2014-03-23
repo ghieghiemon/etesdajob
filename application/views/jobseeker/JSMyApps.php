@@ -576,7 +576,7 @@ foreach($invites as $a)
                                 ?>
                                 <div class="statusB">
                                     	 <br>
-                                        <?php if(empty($sched))
+                                        <?php if($a['confirmed'] == 0)
                                         {?>
                                         <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
                                             Confirm Schedule
