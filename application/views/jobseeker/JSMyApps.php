@@ -137,8 +137,8 @@ foreach ($myapp as $z)
 	</div>
   
   	<div class="modal-footer"> 
-    	<button type="submit" class="btn btn-info btn-mini">Done</button>
-        <button data-dismiss="modal" class="btn btn-danger btn-mini">Cancel</button>
+    	<button type="submit" class="btn btn-info ">Done</button>
+        <button data-dismiss="modal" class="btn btn-danger ">Cancel</button>
   	</div>
 </form>
 </div>
@@ -575,10 +575,10 @@ foreach($invites as $a)
                                 echo "For Exam";
                                 ?>
                                 <div class="statusB">
-                                    	 <br>
+                                    	
                                         <?php if($a['confirmed'] == 0)
                                         {?>
-                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
+                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="btn btn-info">
                                             Confirm Schedule
                                         </a>
                                         <?php }?>
@@ -592,7 +592,7 @@ foreach($invites as $a)
                                 <div class="statusB">
                                     	<?php if($a['confirmed'] == 0)
                                         {?>
-                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
+                                        <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="btn btn-info ">
                                             Choose Schedule
                                         </a>
                                         <?php }?>
