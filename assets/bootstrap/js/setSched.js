@@ -67,7 +67,7 @@ $(document).ready(function(){
       var contactD = $('#CD').val();
       var venue = $('#VN').val();
       var duration = $('#DR').val();
-     
+      
       var names = "";
       //alert(recepients);
       $.each(recepients, function( index, value ) {
@@ -104,10 +104,7 @@ $(document).ready(function(){
           return false;
       }
       
-      if (typeof recepients == 'undefined' || recepients.length == 0) {
-          alert("Please select applicants");
-          return false;
-      }
+      
       
       
 

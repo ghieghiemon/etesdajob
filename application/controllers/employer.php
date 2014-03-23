@@ -815,7 +815,7 @@ public function invite_jobseekers2($jobpost_id)
             }
         }
     }
-    public function employer_setSched($jobno)
+    public function employer_setSched($jobno,$applicationid)
     {
         @session_start();
         $this->load->model('model_employer'); 
@@ -843,78 +843,39 @@ public function invite_jobseekers2($jobpost_id)
             $cd = $this->input->post('CD');
 
 
-            //$ids = $_SESSION['ids'];
-            $id1 = array();
-            $id2 = array();
-            $id3 = array();
-            $id1 = $this->input->post('chk1');
-            $id2 = $this->input->post('check2');
-            $id3 = $this->input->post('check3');
+            $jobno = $this->model_employer->get_jobno($applicationid);
+            $details = $this->model_employer->get_jobdetails($jobno);  
+               
+            foreach ($details as $b)
+            {
+                $jobtitle = $b['jobtitle'];
+                $company = $b['companyID'];
+            }
+            $name = $this->model_employer->get_companyName($company);
 
-            $ids = array();
-            if(!empty($id1))
+            if ($status == "Exam")
             {
-                foreach($id1 as $a)
-                {
-                    array_push($ids,$a);
-                }
+                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for exam";
+            } else if ($status == "Interview")
+            {
+                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for interview ";
+            } else if ($status == "Denied")
+            {
+                $notif = "We have reviewed your qualifications and, unfortunately, 
+                    are not able to pursue your application for <font color ='blue'>$jobtitle </font> further.";
             }
-            if(!empty($id2))
-            {
-                foreach($id2 as $a)
-                {
-                    array_push($ids,$a);
-                }
-            }
-            if(!empty($id3))
-            {
-                foreach($id3 as $a)
-                {
-                    array_push($ids,$a);
-                }
-            }
-            $applicationid = array();
-            foreach ($ids as $a)
-            {
-                $jobno = $this->model_employer->get_jobno($a);
-                $details = $this->model_employer->get_jobdetails($jobno);
-                
-                array_push($applicationid,$a);
-                foreach ($details as $b)
-                {
-                    $jobtitle = $b['jobtitle'];
-                    $company = $b['companyID'];
-                }
-                $name = $this->model_employer->get_companyName($company);
+            $appid = $this->model_employer->get_appid($applicationid);
 
-                if ($status == "Exam")
-                {
-                    $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for exam";
-                } else if ($status == "Interview")
-                {
-                    $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for interview ";
-                } else if ($status == "Denied")
-                {
-                    $notif = "We have reviewed your qualifications and, unfortunately, 
-                        are not able to pursue your application for <font color ='blue'>$jobtitle </font> further.";
-                }
-                $appid = $this->model_employer->get_appid($a);
-          
-                $y=0;
-                
+            $this->model_employer->add_notification($appid,$notif,$jobno);
 
-                $this->model_employer->add_notification($appid,$notif,$jobno);
-            }
             $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd);
-              foreach ($applicationid as $a) // public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
-            {
-         
-                $this->model_employer->update_app($status,$a,$scheduleid);
-            }
-            //$this->set_intervals($scheduleid, $duration, $starttime, $endtime);
-              }
-          
-      $this->employer_appsperjob($jobno);
+
+            $this->model_employer->update_app($status,$applicationid,$scheduleid);
+            print_r($status);
+            
+          }
+
+        //$this->employer_appsperjob($jobno);
         }
     
     
@@ -1339,11 +1300,11 @@ public function invite_jobseekers2($jobpost_id)
         }
         else if($status == "Exam")
         {
-            redirect(base_url().'employer/setEI/Exam/'.$jobno);
+            redirect(base_url().'employer/setEI/Exam/'.$jobno.'/'.$applicationid);
         }
         else if($status == "Interview")
         {
-            redirect(base_url().'employer/setEI/Interview/'.$jobno);
+            redirect(base_url().'employer/setEI/Interview/'.$jobno.'/'.$applicationid);
         }
         $left = $this->model_employer->change_status($status,$applicationid,$jobno); 
         
@@ -1895,7 +1856,7 @@ public function invite_jobseekers2($jobpost_id)
        }
         redirect(base_url()."employer/employer_evcreated/".$eventno);
     }
-    public function setEI($what,$jobno)
+    public function setEI($what,$jobno,$applicationid)
     {
         $this->load->model('model_employer');
           $this->load->model('model_main');
@@ -1915,6 +1876,7 @@ public function invite_jobseekers2($jobpost_id)
         $data['cert'] = $this->model_employer->get_jobCerts($jobno);
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
         $data['jobno'] = $jobno;
+        $data['applicationid'] = $applicationid;
         
         $this->employer_header();
         $this->load->view('employer/ESetSched',$data);

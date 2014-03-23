@@ -595,7 +595,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
               </table>
                     </div>
   	<div class="modal-footer">
-  		<button type="submit" class="btn btn-info" >Save</button>
+  		<button type="submit" class="btn btn-info" >Next</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
 
@@ -922,9 +922,10 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                               {
                               ?> 
                         <!--id="change"-->
-                        <a  href="#setSched" data-toggle="modal" class="btn btn-info">
+<!--                        <a  href="#setSched" data-toggle="modal" class="btn btn-info">
                             Set Schedule
-                            </a>
+                            </a>-->
+<br><br>
                         <?php
                               }
                               else
@@ -1240,7 +1241,6 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                   ?>   
                                       <tr>
                                           <td>
-                                              
                                               <?php
                                               if (count($invites)>0)
                                               {
