@@ -393,7 +393,7 @@ class Tesda extends CI_Controller {
             }
             else if ($type == 9)
             {
-                redirect('report/scholar_employment/'.$month.'/'.$year);
+                redirect('report/scholar_employment/'.$month.'/'.$year.'/'.$cert);
             }
             else if($type==10)
             {

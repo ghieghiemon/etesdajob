@@ -261,30 +261,30 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
-    public function get_scholars($month,$year)
+    public function get_scholars($month,$year,$cert)
     {
         $dbconn = $this->load->database('default', TRUE);
-        
         //insert query
         $query1 = "select * from applicants_certificates c join applicants a on a.appid = c.appid
                 join nc_reference n on c.certificateid = n.ncid where a.scholar = 1
-                and year(c.dateacquired) = ? and month(c.dateacquired) = ?
+                and year(c.dateacquired) = ? and month(c.dateacquired) = ? and c.certificateid = ?
                 group by a.appid ";
         
-        $result = $dbconn->query($query1, array($year,$month))->result();
+        $result = $dbconn->query($query1, array($year,$month,$cert))->result();
         return $result;
         $dbconn->close();
     }
-    public function get_scholars2($year)
+    public function get_scholars2($year,$cert)
     {
         $dbconn = $this->load->database('default', TRUE);
         
         //insert query
         $query1 = "select * from applicants_certificates c join applicants a on a.appid = c.appid
                 join nc_reference n on c.certificateid = n.ncid where a.scholar = 1
-                and year(c.dateacquired) = ? group by a.appid ";
+                and year(c.dateacquired) = ?  and c.certificateid = ?
+                group by a.appid ";
         
-        $result = $dbconn->query($query1, array($year))->result();
+        $result = $dbconn->query($query1, array($year,$cert))->result();
         return $result;
         $dbconn->close();
     }

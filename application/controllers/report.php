@@ -813,18 +813,20 @@ class Report extends CI_Controller {
 	
   
         }
-        function scholar_employment($month, $year){
+        function scholar_employment($month, $year, $cert){
 		
                         $this->load->model('model_reports');
+                        $this->load->model('model_employer');
 			$this->load->helper('mpdf'); 
                         if($month == 0)
                         {
-                            $employment = $this->model_reports->get_scholars2($year);
+                            $employment = $this->model_reports->get_scholars2($year,$cert);
                         }
                         elseif ($month != 0)
                         {
-                            $employment = $this->model_reports->get_scholars($month, $year);
+                            $employment = $this->model_reports->get_scholars($month, $year,$cert);
                         }
+                        $certification = $this->model_employer->get_certName($cert);
 			$mpdf = new mPDF();
                         $mpdf->setFooter('{PAGENO}');
 			
@@ -844,6 +846,7 @@ class Report extends CI_Controller {
                               <tbody>
                                 <tr>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
+                                    <td width="350">Certification: ' . $certification . ' &nbsp;</td>
                                 </tr>
                                 
                               </tbody>
