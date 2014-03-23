@@ -69,39 +69,39 @@ class Tuna extends CI_Model {
 	
 		$dbconn = $this->load->database('local', TRUE);
 		if($day == -1):
-			$query = " select j.jobtitle, day(scheduledate) as eday ,a.status,sc.scheduledate, ss.starttime,ss.endtime,
-                                    ss.appid
+			$query = " select j.jobtitle, day(scheduledate) as eday ,a.status,sc.scheduledate, sc.starttime,sc.endtime,
+                                    a.appid
                                     from etesda.applications a 
                                     join etesda.job_vacancies j on a.jobno = j.jobno
                                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
 
                                     join etesda.schedule sc on sc.scheduleid = a.scheduleid
-                                    join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
+                                  
                                     JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
                                     where month(sc.scheduledate) = ? and year(sc.scheduledate) = ? 
-                                    AND (a.status = 'Interview' or a.status ='Exam') and ss.appid!=0
+                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0
                                     AND scheduledate >= curdate()
                                     and a.jobno in 
                                     (select jobno from job_vacancies where
-                                    companyid = ?) group by ss.slotid" ;
+                                    companyid = ?) " ;
 			$results = $dbconn->query($query, array($month, $year, $id));
 		else:
                     
-			$query = "select j.jobtitle, day(scheduledate) as eday , a.status,sc.scheduledate, ss.starttime,ss.endtime,
-                                    ss.appid
+			$query = "select j.jobtitle, day(scheduledate) as eday , a.status,sc.scheduledate, sc.starttime,sc.endtime,
+                                    a.appid
                                     from etesda.applications a 
                                     join etesda.job_vacancies j on a.jobno = j.jobno
                                     JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
 
                                     join etesda.schedule sc on sc.scheduleid = a.scheduleid
-                                    join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
+                     
                                     JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
                                     where month(sc.scheduledate) = ? and year(sc.scheduledate) = ?  and day(sc.scheduledate) = ? 
-                                    AND (a.status = 'Interview' or a.status ='Exam') and ss.appid!=0
+                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0
                                     AND scheduledate >= curdate()
                                         and a.jobno in 
                                     (select jobno from job_vacancies where
-                                    companyid = ?)group by ss.slotid";
+                                    companyid = ?)";
 			$results = $dbconn->query($query, array($month, $year, $day, $id));
 		endif;
 		$dbconn->close();
