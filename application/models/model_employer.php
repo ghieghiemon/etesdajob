@@ -707,7 +707,7 @@ class Model_employer extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         
-        $db1->query("UPDATE applications SET status = '$what' where applicationid = $applicationid");
+        $db1->query("UPDATE applications SET status = '$what', confirmed = 0 where applicationid = $applicationid");
         $this->fill_vacancy($jobno);
         $query1 = $db1->query("SELECT vacanciesleft from job_vacancies where jobno = $jobno");
         foreach ($query1->result() as $row)
