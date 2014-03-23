@@ -68,11 +68,11 @@ $(document).ready(function(){
       var venue = $('#VN').val();
       var duration = $('#DR').val();
       
-      var names = "";
+      var names = $('#res').val();
       //alert(recepients);
-      $.each(recepients, function( index, value ) {
-           names += value+" ;";
-      });
+//      $.each(recepients, function( index, value ) {
+//           names += value+" ;";
+//      });
       
       if(date ==""){
           alert("Please select a Date");
@@ -105,369 +105,369 @@ $(document).ready(function(){
       }
       
       
-      
-      
-
-      timeF = timeF.split(':');
-      var timeFD = timeF[1].split(' '); //AM or PM
-      
-      timeT = timeT.split(':');
-      var timeTD = timeT[1].split(' '); // AM o PM
-      
-      var timeFH = timeF[0];
-      var timeFM = timeFD[0];
-      
-      var timeTH = timeT[0];
-      var timeTM = timeTD[0];
-      var htmlOutput = "";
-      
-        var totalmins = 0;
-       if(timeTM != timeFM){ 
-            totalmins = parseInt(timeTM)+parseInt(timeFM);
-       }
-       //alert(totalmins);
-        
-      $('#times').empty();
-      
-      if(parseInt(timeFH) > 10 && timeFD[1] =="PM"){
-          alert("Invalid time selected");
-          return false;
-      }else if(parseInt(timeTH) > 10 && timeTD[1] =="PM"){
-          alert("Invalid time selected");
-           return false;
-      }else if(parseInt(timeFH) < 6 && timeFD[1] =="AM"){
-          alert("Invalid time selected");
-           return false;
-      }else if(parseInt(timeTH) < 6 && timeTD[1] =="AM"){
-          alert("Invalid time selected");
-           return false;
-      }
-      
-      if(timeFD[1] == "AM" && timeTD[1] == "PM"){
-          
-          totalmins +=  ((parseInt(timeTH)+12)-parseInt(timeFH))*60;
-          //alert(totalmins);
-           if(timeTM == "00" && timeFM == "00"){
-              
-                 var newtimeH = parseInt(timeFH);
-                 var newtimeM = parseInt(timeFM);
-                 var oldtimeH = timeFH;
-                 var oldtimeM = timeFM;
-                 while(newtimeH < parseInt(timeTH)+12){
-                    
-                     if(duration == ".5"){
-                        newtimeM = parseInt(newtimeM);
-                        newtimeM +=30;
-                         
-                         if(newtimeM >= 60){
-                             newtimeH++;
-                             newtimeM = "00";
-                         }
-                         
-                         if(parseInt(newtimeH) > 12){
-                               var temptimeFH = oldtimeH;
-                               
-                               if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12;
-                               }
-                               
-                               var temptimeTH = parseInt(newtimeH)-12;
-                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                           }else{
-                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                           }
-                           
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "1"){
-                       
-                         newtimeH++;
-                         newtimeM = "00";
-                         
-                           if(parseInt(newtimeH) > 12){
-                               var temptimeFH = oldtimeH;
-                               
-                               if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12;
-                               }
-                               
-                               var temptimeTH = parseInt(newtimeH)-12;
-                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                           }else{
-                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                           }
-                         
-                        
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "2"){
-                        
-                         newtimeH+=2;
-                         
-                         newtimeM = "00";
-                         
-                         if(parseInt(newtimeH) > 12){
-                               var temptimeFH = oldtimeH;
-                               
-                               if(parseInt(oldtimeH)> 12){
-                                   temptimeFH = oldtimeH-12;
-                               }
-                               
-                               var temptimeTH = parseInt(newtimeH)-12;
-                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                           }else{
-                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                           }
-                           
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }
-                     
-                     
-                 }
-                  
-              }
-              
-             else{
-                  
-               var newtimeH = parseInt(timeFH);
-                 var newtimeM = parseInt(timeFM);
-                 var oldtimeH = timeFH;
-                 var oldtimeM = timeFM;
-               
-                 
-                 
-                 
-                 while(newtimeH < parseInt(timeTH)+12){
-                    
-                     if(duration == ".5"){
-                        newtimeM = parseInt(newtimeM);
-                        newtimeM +=30;
-                         
-                         if(newtimeM >= 60){
-                             newtimeH++;
-                             newtimeM = parseInt(newtimeM)-60;
-                             
-                             if(newtimeM == 0){
-                                 newtimeM = "00";
-                             }
-                            
-                         }
-                         
-                          //alert(totalmins);
-                         if(parseInt(totalmins) >= 30){
-                         totalmins = totalmins-30; 
-                         
-                            if(parseInt(newtimeH) > 12){
-                                  var temptimeFH = oldtimeH;
-
-                                  if(parseInt(oldtimeH)> 12){
-                                      temptimeFH = oldtimeH-12;
-                                  }
-
-                                  var temptimeTH = parseInt(newtimeH)-12;
-                                   htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                              }else{
-                                   htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                              }
-                         }
-                           
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "1"){
-                       
-                         newtimeH++;
-                         //alert(totalmins);
-                         if(parseInt(totalmins) >= 60){
-                         totalmins = totalmins-60;   
-                             
-                             
-                                if(parseInt(newtimeH) > 12){
-                                    var temptimeFH = oldtimeH;
-
-                                    if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12;
-                                    }
-                                    // alert(temptimeFH+':'+newtimeM);
-                                    var temptimeTH = parseInt(newtimeH)-12;
-                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                                }else{
-                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                                }
-                         }
-                         
-                        
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "2"){
-                        
-                         newtimeH+=2;
-                         
-                          //alert(totalmins);
-                         if(parseInt(totalmins) >= 120){
-                         totalmins = totalmins-120; 
-                         
-                                if(parseInt(newtimeH) > 12){
-                                      var temptimeFH = oldtimeH;
-
-                                      if(parseInt(oldtimeH)> 12){
-                                          temptimeFH = oldtimeH-12;
-                                      }
-
-                                      var temptimeTH = parseInt(newtimeH)-12;
-                                       htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                                  }else{
-                                       htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                                  }
-                         }
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }
-                     
-                     
-                 }
-                  
-              }
-          
-          
-      }else{ // SAME  SILA AM OR PM
-//          alert(timeFH);
-//          alert(timeTH);
-//          alert(timeFH > timeTH);
-         
-          
-          if(parseInt(timeFH) > parseInt(timeTH)){
-            
-              alert("Invalid time selected ");
-              return false;
-          }else if(timeFH == timeTH && parseInt(timeFM) > parseInt(timeTM)){
-             
-              alert("Invalid time selected ");
-              return false;
-          }else{
-              //if 00 ung minutes
-             
-              if(timeTM == "00" && timeFM == "00"){
-                 var newtimeH = parseInt(timeFH);
-                 var newtimeM = parseInt(timeFM);
-                 var oldtimeH = timeFH;
-                 var oldtimeM = timeFM;
-                 while(newtimeH < parseInt(timeTH)){
-                    
-                     if(duration == ".5"){
-                         newtimeM = parseInt(newtimeM);
-                        newtimeM +=30;
-                         
-                         if(newtimeM >= 60){
-                             newtimeH++;
-                             newtimeM = "00";
-                         }
-                         
-                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "1"){
-                        
-                         newtimeH++;
-                         newtimeM = "00";
-                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }else if(duration == "2"){
-                        
-                         newtimeH+=2;
-                         
-                         newtimeM = "00";
-                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }
-                     
-                     
-                 }
-                  
-              }else{
-                  
-                 var newtimeH = parseInt(timeFH);
-                 var newtimeM = parseInt(timeFM);
-                  var oldtimeH = timeFH;
-                 var oldtimeM = timeFM;
-                 while(newtimeH <= parseInt(timeTH)){
-                     
-                     if(duration == ".5"){
-                           newtimeM = parseInt(newtimeM);
-                        newtimeM +=30;
-                         
-                         if(newtimeM >= 60){
-                             newtimeH++;
-                             newtimeM = newtimeM-60;
-                         }
-                         
-                         htmlOutput += ' '+ oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                    }else if(duration == "1"){
-                         newtimeH++;
-                        
-                        
-                        
-                       if(parseInt(timeTH)-parseInt(oldtimeH)<=1 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
-                       
-                       }else{
-                     
-                            if(parseInt(newtimeH) > 12){
-                                    var temptimeFH = oldtimeH;
-
-                                    if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12;
-                                    }
-
-                                    var temptimeTH = parseInt(newtimeH)-12;
-                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                                }else{
-                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                                }
-                        }  
-                           
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                         
-                         
-                     }
-                     else if(duration == "2"){
-                        
-                         newtimeH+=2;
-                        if(parseInt(timeTH)-parseInt(oldtimeH)<=2 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
-                       
-                       }else{
-                     
-                            if(parseInt(newtimeH) > 12){
-                                    var temptimeFH = oldtimeH;
-
-                                    if(parseInt(oldtimeH)> 12){
-                                        temptimeFH = oldtimeH-12;
-                                    }
-
-                                    var temptimeTH = parseInt(newtimeH)-12;
-                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
-                                }else{
-                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
-                                }
-                        }  
-                         oldtimeM = newtimeM;
-                         oldtimeH = newtimeH;
-                     }
-                     
-                 }
-                  
-              }
-          }
-      }
-      
-
-      $('#times').append(htmlOutput);
-      
-      
+//      
+//      
+//
+//      timeF = timeF.split(':');
+//      var timeFD = timeF[1].split(' '); //AM or PM
+//      
+//      timeT = timeT.split(':');
+//      var timeTD = timeT[1].split(' '); // AM o PM
+//      
+//      var timeFH = timeF[0];
+//      var timeFM = timeFD[0];
+//      
+//      var timeTH = timeT[0];
+//      var timeTM = timeTD[0];
+//      var htmlOutput = "";
+//      
+//        var totalmins = 0;
+//       if(timeTM != timeFM){ 
+//            totalmins = parseInt(timeTM)+parseInt(timeFM);
+//       }
+//       //alert(totalmins);
+//        
+//      $('#times').empty();
+//      
+//      if(parseInt(timeFH) > 10 && timeFD[1] =="PM"){
+//          alert("Invalid time selected");
+//          return false;
+//      }else if(parseInt(timeTH) > 10 && timeTD[1] =="PM"){
+//          alert("Invalid time selected");
+//           return false;
+//      }else if(parseInt(timeFH) < 6 && timeFD[1] =="AM"){
+//          alert("Invalid time selected");
+//           return false;
+//      }else if(parseInt(timeTH) < 6 && timeTD[1] =="AM"){
+//          alert("Invalid time selected");
+//           return false;
+//      }
+//      
+//      if(timeFD[1] == "AM" && timeTD[1] == "PM"){
+//          
+//          totalmins +=  ((parseInt(timeTH)+12)-parseInt(timeFH))*60;
+//          //alert(totalmins);
+//           if(timeTM == "00" && timeFM == "00"){
+//              
+//                 var newtimeH = parseInt(timeFH);
+//                 var newtimeM = parseInt(timeFM);
+//                 var oldtimeH = timeFH;
+//                 var oldtimeM = timeFM;
+//                 while(newtimeH < parseInt(timeTH)+12){
+//                    
+//                     if(duration == ".5"){
+//                        newtimeM = parseInt(newtimeM);
+//                        newtimeM +=30;
+//                         
+//                         if(newtimeM >= 60){
+//                             newtimeH++;
+//                             newtimeM = "00";
+//                         }
+//                         
+//                         if(parseInt(newtimeH) > 12){
+//                               var temptimeFH = oldtimeH;
+//                               
+//                               if(parseInt(oldtimeH)> 12){
+//                                   temptimeFH = oldtimeH-12;
+//                               }
+//                               
+//                               var temptimeTH = parseInt(newtimeH)-12;
+//                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                           }else{
+//                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                           }
+//                           
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "1"){
+//                       
+//                         newtimeH++;
+//                         newtimeM = "00";
+//                         
+//                           if(parseInt(newtimeH) > 12){
+//                               var temptimeFH = oldtimeH;
+//                               
+//                               if(parseInt(oldtimeH)> 12){
+//                                   temptimeFH = oldtimeH-12;
+//                               }
+//                               
+//                               var temptimeTH = parseInt(newtimeH)-12;
+//                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                           }else{
+//                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                           }
+//                         
+//                        
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "2"){
+//                        
+//                         newtimeH+=2;
+//                         
+//                         newtimeM = "00";
+//                         
+//                         if(parseInt(newtimeH) > 12){
+//                               var temptimeFH = oldtimeH;
+//                               
+//                               if(parseInt(oldtimeH)> 12){
+//                                   temptimeFH = oldtimeH-12;
+//                               }
+//                               
+//                               var temptimeTH = parseInt(newtimeH)-12;
+//                                htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                           }else{
+//                                htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                           }
+//                           
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }
+//                     
+//                     
+//                 }
+//                  
+//              }
+//              
+//             else{
+//                  
+//               var newtimeH = parseInt(timeFH);
+//                 var newtimeM = parseInt(timeFM);
+//                 var oldtimeH = timeFH;
+//                 var oldtimeM = timeFM;
+//               
+//                 
+//                 
+//                 
+//                 while(newtimeH < parseInt(timeTH)+12){
+//                    
+//                     if(duration == ".5"){
+//                        newtimeM = parseInt(newtimeM);
+//                        newtimeM +=30;
+//                         
+//                         if(newtimeM >= 60){
+//                             newtimeH++;
+//                             newtimeM = parseInt(newtimeM)-60;
+//                             
+//                             if(newtimeM == 0){
+//                                 newtimeM = "00";
+//                             }
+//                            
+//                         }
+//                         
+//                          //alert(totalmins);
+//                         if(parseInt(totalmins) >= 30){
+//                         totalmins = totalmins-30; 
+//                         
+//                            if(parseInt(newtimeH) > 12){
+//                                  var temptimeFH = oldtimeH;
+//
+//                                  if(parseInt(oldtimeH)> 12){
+//                                      temptimeFH = oldtimeH-12;
+//                                  }
+//
+//                                  var temptimeTH = parseInt(newtimeH)-12;
+//                                   htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                              }else{
+//                                   htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                              }
+//                         }
+//                           
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "1"){
+//                       
+//                         newtimeH++;
+//                         //alert(totalmins);
+//                         if(parseInt(totalmins) >= 60){
+//                         totalmins = totalmins-60;   
+//                             
+//                             
+//                                if(parseInt(newtimeH) > 12){
+//                                    var temptimeFH = oldtimeH;
+//
+//                                    if(parseInt(oldtimeH)> 12){
+//                                        temptimeFH = oldtimeH-12;
+//                                    }
+//                                    // alert(temptimeFH+':'+newtimeM);
+//                                    var temptimeTH = parseInt(newtimeH)-12;
+//                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                                }else{
+//                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                                }
+//                         }
+//                         
+//                        
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "2"){
+//                        
+//                         newtimeH+=2;
+//                         
+//                          //alert(totalmins);
+//                         if(parseInt(totalmins) >= 120){
+//                         totalmins = totalmins-120; 
+//                         
+//                                if(parseInt(newtimeH) > 12){
+//                                      var temptimeFH = oldtimeH;
+//
+//                                      if(parseInt(oldtimeH)> 12){
+//                                          temptimeFH = oldtimeH-12;
+//                                      }
+//
+//                                      var temptimeTH = parseInt(newtimeH)-12;
+//                                       htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                                  }else{
+//                                       htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                                  }
+//                         }
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }
+//                     
+//                     
+//                 }
+//                  
+//              }
+//          
+//          
+//      }else{ // SAME  SILA AM OR PM
+////          alert(timeFH);
+////          alert(timeTH);
+////          alert(timeFH > timeTH);
+//         
+//          
+//          if(parseInt(timeFH) > parseInt(timeTH)){
+//            
+//              alert("Invalid time selected ");
+//              return false;
+//          }else if(timeFH == timeTH && parseInt(timeFM) > parseInt(timeTM)){
+//             
+//              alert("Invalid time selected ");
+//              return false;
+//          }else{
+//              //if 00 ung minutes
+//             
+//              if(timeTM == "00" && timeFM == "00"){
+//                 var newtimeH = parseInt(timeFH);
+//                 var newtimeM = parseInt(timeFM);
+//                 var oldtimeH = timeFH;
+//                 var oldtimeM = timeFM;
+//                 while(newtimeH < parseInt(timeTH)){
+//                    
+//                     if(duration == ".5"){
+//                         newtimeM = parseInt(newtimeM);
+//                        newtimeM +=30;
+//                         
+//                         if(newtimeM >= 60){
+//                             newtimeH++;
+//                             newtimeM = "00";
+//                         }
+//                         
+//                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "1"){
+//                        
+//                         newtimeH++;
+//                         newtimeM = "00";
+//                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }else if(duration == "2"){
+//                        
+//                         newtimeH+=2;
+//                         
+//                         newtimeM = "00";
+//                         htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }
+//                     
+//                     
+//                 }
+//                  
+//              }else{
+//                  
+//                 var newtimeH = parseInt(timeFH);
+//                 var newtimeM = parseInt(timeFM);
+//                  var oldtimeH = timeFH;
+//                 var oldtimeM = timeFM;
+//                 while(newtimeH <= parseInt(timeTH)){
+//                     
+//                     if(duration == ".5"){
+//                           newtimeM = parseInt(newtimeM);
+//                        newtimeM +=30;
+//                         
+//                         if(newtimeM >= 60){
+//                             newtimeH++;
+//                             newtimeM = newtimeM-60;
+//                         }
+//                         
+//                         htmlOutput += ' '+ oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                    }else if(duration == "1"){
+//                         newtimeH++;
+//                        
+//                        
+//                        
+//                       if(parseInt(timeTH)-parseInt(oldtimeH)<=1 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
+//                       
+//                       }else{
+//                     
+//                            if(parseInt(newtimeH) > 12){
+//                                    var temptimeFH = oldtimeH;
+//
+//                                    if(parseInt(oldtimeH)> 12){
+//                                        temptimeFH = oldtimeH-12;
+//                                    }
+//
+//                                    var temptimeTH = parseInt(newtimeH)-12;
+//                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                                }else{
+//                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                                }
+//                        }  
+//                           
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                         
+//                         
+//                     }
+//                     else if(duration == "2"){
+//                        
+//                         newtimeH+=2;
+//                        if(parseInt(timeTH)-parseInt(oldtimeH)<=2 && parseInt(timeTM)-parseInt(newtimeM)!= parseInt('0')){
+//                       
+//                       }else{
+//                     
+//                            if(parseInt(newtimeH) > 12){
+//                                    var temptimeFH = oldtimeH;
+//
+//                                    if(parseInt(oldtimeH)> 12){
+//                                        temptimeFH = oldtimeH-12;
+//                                    }
+//
+//                                    var temptimeTH = parseInt(newtimeH)-12;
+//                                     htmlOutput +=  ' '+temptimeFH+':'+oldtimeM+'-'+temptimeTH+':'+newtimeM+' '+timeTD[1]+'&nbsp;';
+//                                }else{
+//                                     htmlOutput +=  ' '+oldtimeH+':'+oldtimeM+'-'+newtimeH+':'+newtimeM+' '+timeFD[1]+'&nbsp;';
+//                                }
+//                        }  
+//                         oldtimeM = newtimeM;
+//                         oldtimeH = newtimeH;
+//                     }
+//                     
+//                 }
+//                  
+//              }
+//          }
+//      }
+//      
+//
+//      $('#times').append(htmlOutput);
+//      
+//      
 
       
         $('#tos').text(names);

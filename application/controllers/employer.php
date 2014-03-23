@@ -819,20 +819,22 @@ public function invite_jobseekers2($jobpost_id)
     {
         @session_start();
         $this->load->model('model_employer'); 
+//        
+//        $this->load->library('form_validation');
+////        $this->form_validation->set_rules('what', 'Age', 'required');
+////        $this->form_validation->set_rules('TR1', 'Age', 'required');
+////        $this->form_validation->set_rules('TR2', 'Age', 'required');
+//        $this->form_validation->set_rules('date1', 'Date', 'required');
+////        $this->form_validation->set_rules('duration', 'Age', 'required');
+//        $this->form_validation->set_rules('VN', '', 'required');
+//        $this->form_validation->set_rules('CP', 'Age', 'required');
+//        $this->form_validation->set_rules('CD', 'Age', 'required');
         
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('what', 'Age', 'required');
-        $this->form_validation->set_rules('TR1', 'Age', 'required');
-        $this->form_validation->set_rules('TR2', 'Age', 'required');
-        $this->form_validation->set_rules('date1', 'Age', 'required');
-        $this->form_validation->set_rules('duration', 'Age', 'required');
-        $this->form_validation->set_rules('VN', 'Age', 'required');
-        $this->form_validation->set_rules('CP', 'Age', 'required');
-        $this->form_validation->set_rules('CD', 'Age', 'required');
-        
-        if ($this->form_validation->run())
-	{
+//        if ($this->form_validation->run())
+//	{
+            
             $status = $this->input->post('what');
+//            echo $status;
             $starttime = $this->input->post('TR1');
             $endtime = $this->input->post('TR2');
             $date = $this->input->post('date1');
@@ -868,14 +870,16 @@ public function invite_jobseekers2($jobpost_id)
 
             $this->model_employer->add_notification($appid,$notif,$jobno);
 
-            $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd);
+            $scheduleid = $this->model_employer->add_schedule($date, $venue, $cp, $cd, $starttime, $endtime);
 
             $this->model_employer->update_app($status,$applicationid,$scheduleid);
-            print_r($status);
+//            print_r($status);
             
-          }
+//          }else{
+//              print_r(validation_errors());
+//          }
 
-        //$this->employer_appsperjob($jobno);
+        $this->employer_appsperjob($jobno);
         }
     
     
@@ -1877,6 +1881,12 @@ public function invite_jobseekers2($jobpost_id)
         $data['comp'] = $this->model_employer->get_jobComps($jobno);
         $data['jobno'] = $jobno;
         $data['applicationid'] = $applicationid;
+        
+        $appid = $this->model_employer->get_appid($applicationid);
+        $name = $this->model_employer->get_jsName($appid);
+        
+        $data['appname'] = $name;
+        
         
         $this->employer_header();
         $this->load->view('employer/ESetSched',$data);

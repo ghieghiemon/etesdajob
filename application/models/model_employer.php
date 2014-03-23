@@ -758,11 +758,11 @@ class Model_employer extends CI_Model {
         $db1->close();
     }
     
-         public function add_schedule($scheduledate, $venue, $contactperson, $contactno)
+         public function add_schedule($scheduledate, $venue, $contactperson, $contactno, $starttime, $endtime)
     {
         $db1 = $this->load->database('local', TRUE);
-        $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno) VALUES(?,?,?,?)";
-        $db1->query($sql,array($scheduledate,$venue, $contactperson, $contactno));
+        $sql = "INSERT INTO schedule(scheduledate, venue, contactperson,contactno,starttime, endtime) VALUES(?,?,?,?,?,?)";
+        $db1->query($sql,array($scheduledate,$venue, $contactperson, $contactno, $starttime, $endtime));
         $scheduleid = $db1->insert_id();
         return $scheduleid;
         $db1->close();

@@ -1202,6 +1202,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                       <td class="vdDesc">
                                           <div class="myStyleSetS">
                                             <input type="text" id="CP" name="CP" placeholder="Contact Person">
+                                             <input type="hidden" id="res" name="applicant" value="<?php echo $appname[0]['firstname'].' '.$appname[0]['middlename'].', '.$appname[0]['lastname'] ?>">
                                           </div>
                                       </td>
                                       
@@ -1271,7 +1272,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                           <th class="span3" style="text-align:center">Date Applied</th>
                                       </tr>
                                   </thead>
-                                  <input type="hidden" value="<?php echo $what?>" name="what" id="what">
+-->                                  <input type="hidden" value="<?php echo $what?>" name="what" id="what"><!--
                                   <tbody class="recName">
                                   <?php
                                   
