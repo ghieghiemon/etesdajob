@@ -28,13 +28,12 @@
                             
                             <form method="post" action="<?php echo base_url()?>employer/invite_jobseeker/<?php echo $jobno?>">
                                 
-                    
-                                 <br>
+                       <br>
                                  <table id ="newtableinv" >
-                                     <?php 
-                                     echo "Coungratulations! ";
+                                      <?php 
+                                     echo "<strong> Coungratulations! <font color=blue>";
                                      echo count($invites);
-                                     echo "Job Seekers matched your vacancy, you can select the names of those you want to invite. ";
+                                     echo "&nbsp; Job Seekers </font>matched your vacancy, you can select the names of those you want to invite. </strong>";
                                      ?>
                       <thead>
                           <tr>

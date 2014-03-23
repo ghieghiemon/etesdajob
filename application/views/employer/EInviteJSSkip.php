@@ -31,7 +31,14 @@
                 
                                  <br>
                                  <table id ="newtableinv" >
+                                      <?php 
+                                     echo "<strong> Coungratulations! <font color=blue>";
+                                     echo count($invites);
+                                     echo "&nbsp; Job Seekers </font>matched your vacancy, you can select the names of those you want to invite. </strong>";
+                                     ?>
+                                    
                       <thead>
+                          
                           <tr>
                           	  <th class="span1" style="text-align:center">
                       <div align="left">
