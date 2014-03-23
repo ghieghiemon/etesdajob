@@ -519,7 +519,7 @@ class Report extends CI_Controller {
                                 
                               <h4 style="margin-top:0.5%;margin-bottom:0%;font-family:Arial, Helvetica, sans-serif;">TECHNICAL EDUCATION AND SKILLS DEVELOPMENT AUTHORITY</h4>
                               <span style="margin-top:-1.7%;font-family:Arial, Helvetica, sans-serif;">East Service Road, South Superhighway, Taguig City</span>
-                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EXECUTIVE SUMMARY REPORT</h3>
+                              <h3 style="margin-top:1%;margin-bottom:1%;font-family:Arial, Helvetica, sans-serif;width:700px;background-color:#606060;color:#FFFFFF;">&nbsp;EMPLOYMENT OF SCHOLARS REPORT</h3>
                              </div>');
       
              
@@ -527,7 +527,6 @@ class Report extends CI_Controller {
                              <table>
                               <tbody>
                                 <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -551,7 +550,7 @@ class Report extends CI_Controller {
                $mpdf->writeHTML('
                                 <tr style="align:center;">
                                     
-                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->firstname . '</td> 
+                                   <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->firstname .' '.$job->middlename.'. '.$job->lastname. '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->ncname . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' . $job->dateacquired . '</td> 
                                     <td align="left" style="font-family:Arial, Helvetica, sans-serif;">' );
