@@ -216,20 +216,20 @@ class Model_jobseeker extends CI_Model {
         return $query->result_array();
         $db1->close();
     }
-    public function add_schedule($slotid,$appid)
+    public function add_schedule($jobno,$appid)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("UPDATE schedule_slots
-            set appid = $appid
-            where slotid = $slotid");
+        $query = $db1->query("UPDATE applications
+            set confirmed = 1
+            where appid = $appid
+                and jobno = $jobno");
         $db1->close();
     }
-    public function get_myschedule($appid,$schedid)
+    public function get_myschedule($schedid)
     {
         $db1 = $this->load->database('local', TRUE);
-        $query = $db1->query("SELECT * from schedule_slots ss 
-                        join schedule s on s.scheduleid = ss.scheduleid
-                        where appid = $appid and s.scheduleid = $schedid
+        $query = $db1->query("SELECT * from schedule 
+                        where scheduleid = $schedid
                             ");
         return $query->result_array();
         $db1->close();

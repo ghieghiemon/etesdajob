@@ -98,30 +98,20 @@ foreach ($myapp as $z)
                 }
                 ?>
             </b>
-            This will be held in <strong><?php 
+             This will be held in <strong><?php 
             foreach ($schedule as $a)
             {
-            echo $a['venue'];?></strong>. 
-            <br><br>
-            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
-            <br>
+            echo $a['venue'];?></strong> on
             
-            <h5>
             	<?php 
                 echo $a['scheduledate'];
-                }
+               
                 ?>
-            </h5>
+           
                 <?php 
-                $ctr=1;
-                foreach ($scheduleslots as $a)
-                {
-                ?>
-            <input name="check" class="checkbox" type="radio" value="<?php echo $a['slotid'];?>"> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
-                &nbsp;
-                <?php 
-                $ctr++;
-                }
+                echo $a['starttime']. " - ". $a['endtime'];
+                
+             }
                 ?>
             
             <br><br>
@@ -542,7 +532,7 @@ foreach($invites as $a)
                        
                         foreach($myapp as $a)
                         {
-                             $sched = $this->model_jobseeker->get_myschedule($a['appid'],$a['scheduleid']);
+                             $sched = $this->model_jobseeker->get_myschedule($a['scheduleid']);
                             echo '<tr>
                                 
                                 
@@ -585,7 +575,7 @@ foreach($invites as $a)
                                 echo "For Exam";
                                 ?>
                                 <div class="statusB">
-                                    	For Exam <br>
+                                    	 <br>
                                         <?php if(empty($sched))
                                         {?>
                                         <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
@@ -600,7 +590,7 @@ foreach($invites as $a)
                                 echo "For Interview";
                                  ?>
                                 <div class="statusB">
-                                    	<?php if(empty($sched))
+                                    	<?php if($a['confirmed'] == 0)
                                         {?>
                                         <a href="#chSched<?php echo $a['jobno']?>" data-toggle="modal" class="more">
                                             Choose Schedule

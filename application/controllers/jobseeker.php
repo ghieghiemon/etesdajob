@@ -73,7 +73,7 @@ class Jobseeker extends CI_Controller {
         
         $slotid = $this->input->post('check');
         
-        $this->model_jobseeker->add_schedule($slotid,$id);
+        $this->model_jobseeker->add_schedule($jobno,$id);
         
         $this->jobseeker_myappsdetail($jobno);
     }
