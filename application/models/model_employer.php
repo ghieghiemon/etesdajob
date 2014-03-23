@@ -61,7 +61,7 @@ class Model_employer extends CI_Model {
      public function get_qualifiedjs($sex, $startage, $endage)
     {
         $db1 = $this->load->database('default', TRUE);
-        
+        $query="";
         if ($sex=='Male')
         {
             $query = $db1->query("SELECT * from applicants a where (a.ismale = '1' ) 

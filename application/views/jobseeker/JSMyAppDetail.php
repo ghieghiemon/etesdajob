@@ -38,27 +38,17 @@
             This will be held in <strong><?php 
             foreach ($schedule as $a)
             {
-            echo $a['venue'];?></strong>. 
-            <br><br>
-            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
-            <br>
+            echo $a['venue'];?></strong> on
             
-            <h5>
             	<?php 
                 echo $a['scheduledate'];
-                }
+               
                 ?>
-            </h5>
+           
                 <?php 
-                $ctr=1;
-                foreach ($scheduleslots as $a)
-                {
-                ?>
-            <input name="check" class="checkbox" type="radio" value="<?php echo $a['slotid'];?>"> <?php echo $a['starttime']. '-'. $a['endtime']; ?>
-                &nbsp;
-                <?php 
-                $ctr++;
-                }
+                echo $a['starttime']. " - ". $a['endtime'];
+                
+             }
                 ?>
             
             <br><br>
@@ -118,7 +108,7 @@
                                       <p class="vdDesc2"><font color ="blue"><strong>';
                                       foreach ($appdetails as $b)
                                       {
-                                          $sched = $this->model_jobseeker->get_myschedule($b['appid'],$b['scheduleid']);
+                                          $sched = $this->model_jobseeker->get_myschedule($b['scheduleid']);
                                        ?>   <font color="black">&nbsp; Status:&nbsp;</font>
                                           
                                               <?php
@@ -157,13 +147,14 @@
                                         <?php
                                         }
                                         ?>
-                                       <?php if(empty($sched))
+                                       <?php if($b['confirmed'] == 0)
                                         {?>
                                         <a href="#chSched" data-toggle="modal" class="more">
-                                            Choose Schedule
+                                            Confirm Schedule
                                         </a>
                                           <?php }?>
                                           <?php
+                                          
                                        }
                                       }
                                       ?>
