@@ -49,8 +49,60 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                                if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('<td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -129,8 +181,60 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('<td width="350">Month: ' . $m. ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                         <td width="350">Certification: ' . $certification . ' &nbsp;</td>
                                 </tr>
@@ -223,8 +327,61 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('
+                                    <td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -300,8 +457,61 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('
+                                    <td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -376,8 +586,61 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('
+                                    <td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -452,8 +715,61 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('
+                                    <td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
@@ -607,8 +923,62 @@ class Report extends CI_Controller {
               $mpdf->WriteHTML('<div style="text-align:left;font-family: Arial, Helvetica, sans-serif;position:relative;">
                              <table>
                               <tbody>
-                                <tr>
-                                    <td width="350">Month: ' . $month . ' &nbsp;</td>
+                                <tr>');
+              
+                      if ($month == 1)
+                                {
+                                    $m = "January";
+                                }
+                                else if($month == 2)
+                                {
+                                    $m = "February";
+                                }
+                                else if($month == 3)
+                                {
+                                    $m = "March";
+                                }
+                                else if($month == 4)
+                                {
+                                    $m = "April";
+                                }
+                                else if($month == 5)
+                                {
+                                    $m = "May";
+                                }
+                                else if($month == 6)
+                                {
+                                   $m = "June";
+                                }
+                                else if($month == 7)
+                                {
+                                    $m = "July";
+                                }
+                                else if($month == 8)
+                                {
+                                    $m = "August";
+                                }
+                                else if($month == 9)
+                                {
+                                    $m = "September";
+                                }
+                                else if($month == 10)
+                                {
+                                    $m = "October";
+                                }
+                                else if($month == 11)
+                                {
+                                    $m = "November";
+                                }
+                                else if($month == 12)
+                                {
+                                    $m= "December";
+                                }
+                                else if ($month == 0)
+                                {
+                                    $m = "";
+                                }
+                                    $mpdf->WriteHTML('
+                                    <td width="350">Month: ' . $m . ' &nbsp;</td>
                                     <td width="350">Year: ' . $year . ' &nbsp;</td>
                                 </tr>
                                 
