@@ -558,6 +558,24 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                   <tbody>
                       <tr>                                           
                           <td>
+                              <input type="radio" name="group1" value="Exam" style="margin-left:40px;margin-top:-10px;">
+                              <label class="checkbox jCrNC3">
+                                  Set Schedule For Exam
+                              </label>
+                              
+                          </td>
+                      </tr>
+                      <tr>                                           
+                          <td>
+                              <input type="radio" name="group1" value="Interview" style="margin-left:40px;margin-top:-10px;">
+                              <label class="checkbox jCrNC3">
+                                  Set Schedule For Interview
+                              </label>
+                              
+                          </td>
+                      </tr>
+                      <tr>                                           
+                          <td>
                               <input type="radio" name="group1" value="Hired" style="margin-left:40px;margin-top:-10px;">
                               <label class="checkbox jCrNC3">
                                   Hired
@@ -575,13 +593,14 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                           </td>
                       </tr>
               </table>
-
-	</div>
-  
+                    </div>
   	<div class="modal-footer">
   		<button type="submit" class="btn btn-info" >Save</button>
     	<a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a> 
   	</div>
+
+	
+  
         </div>
     </form>
 </div>

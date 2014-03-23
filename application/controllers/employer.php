@@ -548,7 +548,7 @@ public function invite_jobseekers2($jobpost_id)
         $this->model_jobseeker->seen_notif($jobno,$id);
         
         $this->employer_header();
-        $this->load->view('employer/ESetSched',$data);
+        $this->load->view('employer/EAppsPerJob',$data);
         $this->load->view('footer2');
     }
     
@@ -1337,7 +1337,14 @@ public function invite_jobseekers2($jobpost_id)
         {
             $notif = "We have reviewed your qualifications and, unfortunately, are not able to pursue your application for <font color='blue'>$jobtitle</font> further.";
         }
-        
+        else if($status == "Exam")
+        {
+            redirect(base_url().'employer/setEI/Exam/'.$jobno);
+        }
+        else if($status == "Interview")
+        {
+            redirect(base_url().'employer/setEI/Interview/'.$jobno);
+        }
         $left = $this->model_employer->change_status($status,$applicationid,$jobno); 
         
         $this->model_employer->add_notification($appid,$notif,$jobno);

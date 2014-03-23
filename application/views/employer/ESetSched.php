@@ -1157,12 +1157,12 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                      
                                     </tr>
                                     
-                                     <tr>
+<!--                                     <tr>
                                       <td class="vdDesc">
                                           <div class="myStyleSetS">
                                             <?php echo form_dropdown("duration", array('.5'=>'30 mins','1'=>'1 hr','2'=>'2 hrs'),'30','id="DR"') ?>
                                           </div>
-                                      </td>
+                                      </td>-->
                                       
                                       <td>
                                          
@@ -1222,13 +1222,6 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                                     </tr>
 
                                     <tr>
-                                      <td class="vdDesc">
-                                          <div class="myStyle3SetS2" style="margin-top:-5px;">
-                                              <textarea id="MSG" name="MSG" rows="1" placeholder="">Greetings,
-Following consideration of your application we are pleased to inform that you have been short-listed for (Exam/Interview). This will be held in (Address). We have provided the available dates. Please choose from the choices below. Should you need more assistance, please contact (Contact Info) at (Contact Details). Thank you and we look forward in seeing you.
-                                              </textarea>
-                                          </div>
-                                      </td>
                                       
                                       <td>
                                           
@@ -1254,16 +1247,16 @@ Following consideration of your application we are pleased to inform that you ha
 
                    <div class="tabbable"> <!-- start tabs-->
                       <ul class="nav nav-tabs">
-                          <li class="active"><a href="#tab1" data-toggle="tab">New Applicants</a></li>
+<!--                          <li class="active"><a href="#tab1" data-toggle="tab">New Applicants</a></li>
                           <li><a href="#tab2" data-toggle="tab">Exam</a></li>
-                          <li><a href="#tab3" data-toggle="tab">Interview</a></li>
+                          <li><a href="#tab3" data-toggle="tab">Interview</a></li>-->
                          
                       </ul>
             
-                      <div class="tab-content"> <!--start tab content-->
+<!--                      <div class="tab-content"> start tab content
                       <div class="tab-pane active" id="tab1">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
-                              <!--<table class="tableUR2 table-hover table-condensed table-striped">-->
+                          <div style="width:920px;height:420px;overflow:auto;">start scrollable table
+                              <table class="tableUR2 table-hover table-condensed table-striped">
                                <div id="container">
                         	<table id ="newapplicant">
                                   <thead>
@@ -1395,11 +1388,11 @@ Following consideration of your application we are pleased to inform that you ha
                                   </tbody>
                               </table>
                                </div>
-                          </div><!--end scrollable-->   	
-                      </div> <!--end tab pane unscreened-->
+                          </div>end scrollable   	
+                      </div> end tab pane unscreened
                       
                       <div class="tab-pane" id="tab2">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+                          <div style="width:920px;height:420px;overflow:auto;">start scrollable table
                               <div id="container">
                         	<table  id="exam">
                                   <thead>
@@ -1533,11 +1526,11 @@ Following consideration of your application we are pleased to inform that you ha
                                   </tbody>
                               </table>
                           </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane Exam-->
+                          </div>end scrollable
+                      </div> end tab pane Exam
                       
                       <div class="tab-pane" id="tab3">
-                          <div style="width:920px;height:420px;overflow:auto;"><!--start scrollable table-->
+                          <div style="width:920px;height:420px;overflow:auto;">start scrollable table
                               
                                    <div id="container">
                         	<table  id="interview1" >
@@ -1664,11 +1657,11 @@ Following consideration of your application we are pleased to inform that you ha
                                           <td>
                                               <?php echo $a['datereceived']?> 
                                           </td>
-<!--                                          <td>
+                                          <td>
                                                <a href="#changeStat<?php echo $a['applicationid']?>" data-toggle="modal" class="cStatLink">
                                               	CHANGE STATUS
                                               </a>
-                                          </td>-->
+                                          </td>
                                       </tr>
                                   <?php
                                   }
@@ -1676,8 +1669,8 @@ Following consideration of your application we are pleased to inform that you ha
                                   </tbody>
                               </table>
                                    </div>
-                          </div><!--end scrollable-->
-                      </div> <!--end tab pane 1st int-->
+                          </div>end scrollable
+                      </div> end tab pane 1st int-->
                       
                         
                       
