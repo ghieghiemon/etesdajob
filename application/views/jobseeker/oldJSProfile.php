@@ -228,7 +228,7 @@
                                                     	<td class="lLabel4">
                                                         	<img src="'.base_url().'assets/img/icons/glyphicons_419_e-mail.png" width="15"> REFERENCE 1: <br>                                                        </td>
                                                      
-                                                          <td>';
+                                                          <td><br>';
                                                         echo '<strong> NAME:  </strong>';  
                                                         echo $a['ref1name'];
                                                         echo '<br> ';   

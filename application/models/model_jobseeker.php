@@ -560,13 +560,12 @@ class Model_jobseeker extends CI_Model {
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*, ss.* 
+        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*
         from etesda.applications a join etesda.job_vacancies j on a.jobno = j.jobno
         join etesda.schedule sc on sc.scheduleid = a.scheduleid
-        join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
         JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
-        where (a.status = 'Interview' or a.status ='Exam') and ss.appid =$id
-                 AND scheduledate >= curdate()group by ss.slotid ORDER BY scheduledate ASC ");
+        where (a.status = 'Interview' or a.status ='Exam') and a.appid =$id and a.confirmed = 1
+                 AND scheduledate >= curdate() ORDER BY scheduledate ASC ");
         return $query->result_array();
 
 

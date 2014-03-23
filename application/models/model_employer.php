@@ -814,20 +814,19 @@ class Model_employer extends CI_Model {
 
         $db1->close();
   }
-          public function employer_briefcase($id)
+     public function employer_briefcase($id)
     {
         $db1 = $this->load->database('local', TRUE);
         $db2 = $this->load->database('default', TRUE);
-        $query = $db1->query("select j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*, ss.*
+        $query = $db1->query("select a.appid, j.jobtitle, p.companyName, j.jobno,j.companyid, a.status,sc.*
         from etesda.applications a 
         join etesda.job_vacancies j on a.jobno = j.jobno
         JOIN tesda_centraldb.applicants ap ON ap.appid = a.appid
         
         join etesda.schedule sc on sc.scheduleid = a.scheduleid
-        join etesda.schedule_slots ss on ss.scheduleid = sc.scheduleid
         JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
-        where (a.status = 'Interview' or a.status ='Exam') and j.companyid =$id and ss.appid!=0
-                 AND scheduledate >= curdate() group by ss.slotid ORDER BY sc.scheduledate ASC,sc.starttime ASC
+        where (a.status = 'Interview' or a.status ='Exam') and j.companyid =$id and a.confirmed=1
+                 AND scheduledate >= curdate() ORDER BY sc.scheduledate ASC,sc.starttime ASC
                             ");
         return $query->result_array();
 
