@@ -1761,4 +1761,40 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             $mpdf->Output();
             exit;
         }
+        public function execsummary($year,$industry)
+        {
+            $this->load->model('model_reports');
+            $this->load->model('model_pub');
+
+            $postings = $this->model_reports->get_postings($year,$industry);
+            $data['industry'] = $this->model_pub->get_industryName($industry);
+//            $monthctr = 1;
+//            
+//            $reportdata = array();
+//            
+//            foreach($activegrads as $a){
+//                $reportdata[$a['month(datereceived)']] = $a['COUNT(appid)'];
+//            }
+//            
+//            //print_r($reportdata);
+//            
+//            $indexedReportData = array();
+//            
+//            
+//            while($monthctr <=12){
+//                if(isset($reportdata[$monthctr])){
+//                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
+//                }else{
+//                    $indexedReportData[$monthctr] = 0;
+//                }
+//                $monthctr++;
+//            }
+//
+//           // print_r($indexedReportData);
+//            $data['indexedReportData'] = $indexedReportData;
+            
+            $this->load->view('tesda/header');
+            $this->load->view('employer/EReport2',$data);
+            $this->load->view('footer2');
+        }
 }

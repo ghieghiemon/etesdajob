@@ -309,6 +309,8 @@ class Tesda extends CI_Controller {
     public function tesda_reports()
     {
         $this->load->model('model_reports');
+        $this->load->model('model_main');
+
         $this->tesda_header();
         $data['cert'] = $this->model_reports->getAllCerts();
         $data['industry'] = $this->model_main->get_drpindustries();
@@ -355,6 +357,7 @@ class Tesda extends CI_Controller {
             $month = $this->input->post('month');
             $year = $this->input->post('year');
             $cert = $this->input->post('certs');
+            $industry = $this->input->post('industry');
             
             if( $type == 2)
             {
@@ -399,6 +402,10 @@ class Tesda extends CI_Controller {
             else if($type==10)
             {
                 redirect('report/results/'.$year.'/'.$cert);
+            }
+            else if($type==11)
+            {
+                redirect('report/execsummary/'.$year.'/'.$industry);
             }
         }
         

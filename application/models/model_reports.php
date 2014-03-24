@@ -741,14 +741,38 @@ class Model_reports extends CI_Model {
         $dbconn = $this->load->database('default', TRUE);
         
         //insert query
-        $query1 = "SELECT COUNT(ep.userID) as companies from tesda_centraldb.employer_profile ep
-        where year(ep.dateregistered) = ? and companyIndustry = $industry";
+        $query1 = "SELECT COUNT(ep.userID) as companies,month(ep.dateregistered) as month  from tesda_centraldb.employer_profile ep
+        where year(ep.dateregistered) = ? and companyIndustry = ? group by month(ep.dateregistered)";
 
-       $result = $dbconn->query($query1, array($year))->result();
+       $result = $dbconn->query($query1, array($year,$industry))->result_array();
         return $result;
         $dbconn->close();
     }
-    
+    public function get_totalPartner($year,$industry)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(ep.userID) as companies, month(ep.dateregistered) as month from tesda_centraldb.employer_profile ep
+        where  year(ep.dateregistered) <= ?  and companyIndustry = ? group by month(ep.dateregistered)";
+
+       $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        return $result;
+        $dbconn->close();
+        
+    }
+    public function get_postings($year,$industry)
+    {
+        $dbconn = $this->load->database('local', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(*) as count, month(dateposted) as month from job_vacancies where 
+            year(dateposted) = ? and sectorid = ? group by month(dateposted)";
+
+       $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        return $result;
+        $dbconn->close();
+    }
     
 }
 

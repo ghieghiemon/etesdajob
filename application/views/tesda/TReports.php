@@ -130,28 +130,12 @@
   		<div style="margin-left: 5%; margin-top: 1%">
                     
   			<div class="nav" style="height:220px;margin-bottom:-5px;margin-left:140px;overflow:auto;">
-                        <input type="hidden" value="9" name="reporttype">
+                        <input type="hidden" value="11" name="reporttype">
                                <?php    
                                 $industry['0'] = 'Choose Industry';
                                 $params = 'id="industries"'; 
                                echo form_dropdown('industry', $industry,'0',$params);     
                                ?> 
-                              <br>
-                            <select name="month" id="month" class="formlist">
-                           <option value="0">Choose Month</option>
-                             <option value = "1">January</option>
-                            <option value = "2">February</option>
-                            <option value = "3">March</option>
-                            <option value = "4">April</option>
-                            <option value = "5">May</option>
-                            <option value = "6">June</option>
-                            <option value = "7">July</option>
-                            <option value = "8">August</option>
-                            <option value = "9">September</option>
-                            <option value = "10">October</option>
-                            <option value = "11">November</option>
-                            <option value = "12">December</option> 
-                            </select>
                             
                             <br>
                              <select name="year">
@@ -320,6 +304,10 @@
                else if($(this).val() === '9')
               {  
                   $('#certmodal2').modal('show');
+              }
+              else if($(this).val() === '11')
+              {  
+                  $('#industries').modal('show');
               }
           });    
        }); 
