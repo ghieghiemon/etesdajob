@@ -184,7 +184,7 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: 'Graduates & Hired'
+                text: 'Graduates & Hired Per Month'
             },
             subtitle: {
                 text: 'TESDA'
@@ -281,8 +281,12 @@ $(function () {
     });
     
 		</script>
-           
-
+           <center>
+                <h4>Executive Summary</h4>
+                <h5><?php echo $industry?></h5>
+                <h5><?php echo "Year ".$year?></h5></center>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br>
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br>
 <div id="container2" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
