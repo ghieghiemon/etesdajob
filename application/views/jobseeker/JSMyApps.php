@@ -137,7 +137,7 @@ foreach ($myapp as $z)
 	</div>
   
   	<div class="modal-footer"> 
-    	<button type="submit" class="btn btn-info ">Done</button>
+    	<button type="submit" class="btn btn-info ">Confirm</button>
         <button data-dismiss="modal" class="btn btn-danger ">Cancel</button>
   	</div>
 </form>
