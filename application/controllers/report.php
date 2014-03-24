@@ -1797,7 +1797,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             $data['totalP'] = $totalP;
             
             $data['industry'] = $this->model_pub->get_industryName($industry);
-
+            $data['year'] = $year;
             
             /* Monthly Grads vs Employed */
             $annualgrads = $this->model_reports->get_monthlyGraduates($industry,$year);
