@@ -1765,35 +1765,16 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
         {
             $this->load->model('model_reports');
             $this->load->model('model_pub');
-
+            
+            //for postings
             $postings = $this->model_reports->get_postings($year,$industry);
+            
+            //for partners
+            $newParters = $this->model_reports->get_newPartner($year,$industry);
+            $totalPartners = $this->model_reports->get_totalPartner($year,$industry);
+            
             $data['industry'] = $this->model_pub->get_industryName($industry);
-//            $monthctr = 1;
-//            
-//            $reportdata = array();
-//            
-//            foreach($activegrads as $a){
-//                $reportdata[$a['month(datereceived)']] = $a['COUNT(appid)'];
-//            }
-//            
-//            //print_r($reportdata);
-//            
-//            $indexedReportData = array();
-//            
-//            
-//            while($monthctr <=12){
-//                if(isset($reportdata[$monthctr])){
-//                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
-//                }else{
-//                    $indexedReportData[$monthctr] = 0;
-//                }
-//                $monthctr++;
-//            }
-//
-//           // print_r($indexedReportData);
-//            $data['indexedReportData'] = $indexedReportData;
-            
-            
+
             $annualgrads = $this->model_reports->get_monthlyGraduates($industry,$year);
             $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,$year);
             $monthctr = 1;
