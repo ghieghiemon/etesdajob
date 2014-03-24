@@ -82,7 +82,7 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: 'Total Job Postings Per Month'
+                text: 'Number of Partners Per Month'
             },
             xAxis: {
                 categories: [
@@ -184,7 +184,7 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: 'Annual Graduates Vs. Hired Graduates'
+                text: 'Graduates & Hired'
             },
             subtitle: {
                 text: 'TESDA'
@@ -208,7 +208,7 @@ $(function () {
             yAxis: {
                 min: 0,
                 title: {
-                   text: '# of Graduates & Applicants'
+                   text: '# of Graduates & Hired'
                 }
             },
             tooltip: {
@@ -226,7 +226,7 @@ $(function () {
                 }
             },
             series: [{
-                name: 'Annual Graduates',
+                name: 'Graduates',
                 data: [<?php
                       //$ctr = count($indexedReportData);
                       $ctra = 1;
@@ -256,7 +256,7 @@ $(function () {
                       ?>]
     
             }, {
-                name: 'Hired Graduates',
+                name: 'Hired',
                 data: [<?php
                        $ctrb = 1;
                       while($ctrb <= 12){
