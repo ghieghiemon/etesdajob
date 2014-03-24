@@ -773,6 +773,50 @@ class Model_reports extends CI_Model {
         return $result;
         $dbconn->close();
     }
+   
+    
+
+
+
+   
+    public function get_monthlyGraduates($industry,$year)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired,  month(c.dateacquired) as montha from applicants_certificates c
+                join applicants a on a.appid = c.appid
+                join nc_reference nc on nc.ncid = c.certificateid
+                where year(c.dateacquired) = ? AND
+                 nc.sectorid= ?
+                
+                group by month(c.dateacquired) ORDER BY  month(c.dateacquired) asc";
+        
+        $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+    
+    public function get_mhiredGraduates($industry, $year)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired, month(c.dateacquired) as montha from applicants_certificates c
+            join applicants a on a.appid = c.appid
+             join nc_reference nc on nc.ncid = c.certificateid
+            where a.employment = 1 AND  year(c.dateacquired) = ?
+            AND  nc.sectorid= ?
+            group by month(c.dateacquired) ORDER BY  month(c.dateacquired) asc";
+        
+        
+        $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        return $result;
+        $dbconn->close();
+    }
+
+
+    
     
 }
 

@@ -1793,8 +1793,51 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
 //           // print_r($indexedReportData);
 //            $data['indexedReportData'] = $indexedReportData;
             
+            
+            $annualgrads = $this->model_reports->get_monthlyGraduates($industry,$year);
+            $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,$year);
+            $monthctr = 1;
+           
+            
+            $reportdata = array();
+            $reportdata2 = array();
+            foreach($annualgrads as $a){
+                $reportdata[$a['montha']] = $a['count'];
+            }
+            foreach($hiredgrads as $b){
+                $reportdata2[$b['montha']] = $b['count'];
+            }
+        
+            
+            $indexedReportData = array();
+            
+            
+            while($monthctr <= 12){
+                if(isset($reportdata[$monthctr])){
+                    $indexedReportData[$monthctr] = $reportdata[$monthctr];
+                }else{
+                    $indexedReportData[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+            
+            $indexedReportData2 = array();
+            $monthctr = 1;
+            
+            while($monthctr <=12){
+                if(isset($reportdata2[$monthctr])){
+                    $indexedReportData2[$monthctr] = $reportdata2[$monthctr];
+                }else{
+                    $indexedReportData2[$monthctr] = 0;
+                }
+                $monthctr++;
+            }
+            $data['mreportData'] = $reportdata;
+            $data['mreportData2'] = $reportdata2;
+
+            
             $this->load->view('tesda/header');
-            $this->load->view('employer/EReport2',$data);
+            $this->load->view('tesda/TExecutiveSummary',$data);
             $this->load->view('footer2');
         }
 }
