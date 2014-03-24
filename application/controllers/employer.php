@@ -857,10 +857,10 @@ public function invite_jobseekers2($jobpost_id)
 
             if ($status == "Exam")
             {
-                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for exam";
+                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please confirm your schedule for exam";
             } else if ($status == "Interview")
             {
-                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please choose a schedule for interview ";
+                $notif = "You are qualified for the next step for <font color ='blue'>$jobtitle </font> , please confirm your schedule for interview ";
             } else if ($status == "Denied")
             {
                 $notif = "We have reviewed your qualifications and, unfortunately, 

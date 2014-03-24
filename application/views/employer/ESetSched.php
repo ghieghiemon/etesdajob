@@ -1049,7 +1049,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
             
             This will be held in <strong><span id="iAddress"></span></strong>. 
             <br><br>
-            We have provided the available dates. Please <strong>CHOOSE</strong> from the choices below.
+            We have provided the available dates. Please <strong>Confirm schedule</strong> below.
             <br>
             
             <h5>

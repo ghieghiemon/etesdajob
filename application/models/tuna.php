@@ -79,7 +79,7 @@ class Tuna extends CI_Model {
                                   
                                     JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
                                     where month(sc.scheduledate) = ? and year(sc.scheduledate) = ? 
-                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0
+                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0 and a.confirmed=1
                                     AND scheduledate >= curdate()
                                     and a.jobno in 
                                     (select jobno from job_vacancies where
@@ -97,7 +97,7 @@ class Tuna extends CI_Model {
                      
                                     JOIN tesda_centraldb.employer_profile p ON p.userID = j.companyid
                                     where month(sc.scheduledate) = ? and year(sc.scheduledate) = ?  and day(sc.scheduledate) = ? 
-                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0
+                                    AND (a.status = 'Interview' or a.status ='Exam') and a.appid!=0 and a.confirmed=1
                                     AND scheduledate >= curdate()
                                         and a.jobno in 
                                     (select jobno from job_vacancies where
