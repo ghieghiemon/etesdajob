@@ -736,6 +736,19 @@ class Model_reports extends CI_Model {
         $db1->close();
     }
     
+       public function get_newPartner($year,$industry)
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+        //insert query
+        $query1 = "SELECT COUNT(ep.userID) as companies from tesda_centraldb.employer_profile ep
+        where year(ep.dateregistered) = ? and companyIndustry = $industry";
+
+       $result = $dbconn->query($query1, array($year))->result();
+        return $result;
+        $dbconn->close();
+    }
+    
     
 }
 
