@@ -1769,9 +1769,32 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             //for postings
             $postings = $this->model_reports->get_postings($year,$industry);
             
+            $posting1 = array();
+            
+            foreach ($postings as $a)
+            {
+                $posting1[$a['month']] = $a['count'];
+            }
+            
+            $data['posting1'] = $posting1;
             //for partners
             $newParters = $this->model_reports->get_newPartner($year,$industry);
             $totalPartners = $this->model_reports->get_totalPartner($year,$industry);
+            
+            $newP = array();
+            $totalP = array();
+            
+            foreach($newParters as $a)
+            {
+                $newP[$a['month']] = $a['companies'];
+            }
+            foreach($totalPartners as $a)
+            {
+                $totalP[$a['month']] = $a['companies'];
+            }
+            
+            $data['$newP'] = $newP;
+            $data['$totalP'] = $totalP;
             
             $data['industry'] = $this->model_pub->get_industryName($industry);
 
