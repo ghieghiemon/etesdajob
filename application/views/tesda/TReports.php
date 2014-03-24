@@ -131,11 +131,10 @@
                     
   			<div class="nav" style="height:220px;margin-bottom:-5px;margin-left:140px;overflow:auto;">
                         <input type="hidden" value="9" name="reporttype">
-                           <?php    
-                            $cert['0'] = 'Choose Certification';
-                            $params = 'id="lstcert1" '; 
-                           echo form_dropdown('certs', $cert,'0',$params);    
-                                                               
+                               <?php    
+                                $industry['0'] = 'Choose Industry';
+                                $params = 'id="industries"'; 
+                               echo form_dropdown('industry', $industry,'0',$params);     
                                ?> 
                               <br>
                             <select name="month" id="month" class="formlist">

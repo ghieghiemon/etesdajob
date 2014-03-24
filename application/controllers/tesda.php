@@ -311,6 +311,7 @@ class Tesda extends CI_Controller {
         $this->load->model('model_reports');
         $this->tesda_header();
         $data['cert'] = $this->model_reports->getAllCerts();
+        $data['industry'] = $this->model_main->get_drpindustries();
         $this->load->view('tesda/TReports',$data);
     }
     public function tesda_industries()
