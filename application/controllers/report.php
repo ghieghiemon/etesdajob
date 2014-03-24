@@ -1793,8 +1793,8 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                 $totalP[$a['month']] = $a['companies'];
             }
             
-            $data['$newP'] = $newP;
-            $data['$totalP'] = $totalP;
+            $data['newP'] = $newP;
+            $data['totalP'] = $totalP;
             
             $data['industry'] = $this->model_pub->get_industryName($industry);
 
