@@ -400,6 +400,13 @@ class Model_main extends CI_Model {
            return FALSE;
           }
     }
+     function get_industries()
+    {
+        $db2 = $this->load->database('default', TRUE);
+        $query = $db2->query("SELECT  sectorID, sectorName FROM sectors");
+        return $query->result_array();
+        
+    }
     
     function get_regions()
     {  

@@ -281,10 +281,128 @@ $(function () {
     });
     
 		</script>
+                <script> 
+                $(function () {
+        $('#hiringRatio').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Hiring Ratio'
+            },
+            subtitle: {
+                text: 'Source: Wikipedia.org'
+            },
+            xAxis: {
+                categories: [<?php 
+                $ctr = count($industries);
+                    foreach($industries as $a)
+                    {
+                        echo "'";
+                        echo $a['sectorName'];
+                        echo "'";
+                        if($ctr > 1)
+                            echo ",";
+                        $ctr--;
+                    }
+                ?>],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Population (millions)',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' millions'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Graduates',
+                data: [<?php
+                $ctr = count($industries);
+                foreach ($industries as $a)
+                {
+                    $annualgrads = $this->model_reports->get_monthlyGraduates($a['sectorID'],2014);
+                    
+                    foreach($annualgrads as $b)
+                    {
+                        echo $b['count'];
+                    }
+                    if($ctr > 1)
+                        echo ",";
+                    $ctr--;
+                }
+                ?>]
+            }, {
+                name: 'Hired',
+                data: [<?php
+                $ctr = count($industries);
+                foreach ($industries as $a)
+                {
+                    $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,2014);
+                    foreach($hiredgrads as $b)
+                    {
+                        echo $b['count'];
+                    }
+                    if($ctr > 1)
+                        echo ",";
+                    $ctr--;
+                }
+                ?>]
+            }]
+        });
+    });
+                </script>
+
            <center>
                 <h4>Executive Summary</h4>
                 <h5><?php echo $industry?></h5>
                 <h5><?php echo "Year ".$year?></h5></center>
+                <?php
+                $ctr = count($industries);
+                foreach ($industries as $a)
+                {
+                    $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,2014);
+                    echo $a['sectorName']."-";
+                    foreach($hiredgrads as $b)
+                    {
+                        echo $b['count'];
+                    }
+                    if($ctr > 1)
+                        echo ",";
+                    $ctr--;
+                }
+                ?>
+<div id="hiringRatio" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
 <div id="container1" style="min-width: 310px; height: 400px; margin: 0 auto"></div>

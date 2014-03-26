@@ -1765,7 +1765,10 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
         {
             $this->load->model('model_reports');
             $this->load->model('model_pub');
-            
+            $this->load->model('model_main');
+
+            //hiring ratio
+            $data['industries'] = $this->model_main->get_industries();
             //for postings
             $postings = $this->model_reports->get_postings($year,$industry);
             
