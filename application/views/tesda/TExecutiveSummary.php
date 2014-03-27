@@ -385,7 +385,7 @@ $(function () {
                 <script>
                 
                 $(function () {
-        $('#container').highcharts({
+        $('#postings').highcharts({
             title: {
                 text: 'Monthly Postings',
                 x: -20 //center
