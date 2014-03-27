@@ -1842,11 +1842,21 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                 }
             }
             
+            $monthlyPostings = array();
+            
+            $monthCtr = 1;
+            
+            while($monthCtr <=12){
+                $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($monthCtr,$year);
+                $monthCtr++;
+            }
+            
             
             
            // print_r($yhired);
             $data['ygraduates'] = $ygraduates;
             $data['yhired'] = $yhired;
+            $data['monthlyPostings'] = $monthlyPostings;
             $this->load->view('tesda/header');
             $this->load->view('tesda/TExecutiveSummary',$data);
             $this->load->view('footer2');

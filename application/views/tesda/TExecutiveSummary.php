@@ -381,6 +381,64 @@ $(function () {
         });
     });
                 </script>
+                
+                <script>
+                
+                $(function () {
+        $('#container').highcharts({
+            title: {
+                text: 'Monthly Postings',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'TESDA',
+                x: -20
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Volume'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: 'Postings',
+                data: [<?php
+                $ctr = 1;
+                 
+                    foreach($monthlyPostings as $b)
+                    { 
+                        echo $b;
+                         if($ctr < 12){
+                            echo ",";
+                         }
+                        $ctr++;
+                    }
+                   
+                ?>]
+            }]
+        });
+    });
+    
+
+                </script>
+                                                
 
            <center>
                 <h4>Executive Summary</h4>
@@ -402,6 +460,8 @@ $(function () {
                 }
                 ?>
 <div id="hiringRatio" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<br>
+<div id="postings" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
