@@ -1819,8 +1819,34 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
 
             $data['mreportData'] = $reportdata;
             $data['mreportData2'] = $reportdata2;
-
             
+            $ygraduates = array();
+            $yhired = array();
+            
+            foreach($data['industries'] as $a){
+                $annualgrads = $this->model_reports->get_monthlyGraduates($a['sectorID'],2014);
+                if(empty($annualgrads)){
+                    array_push($ygraduates, 0);
+                }else{
+                    array_push($ygraduates, $annualgrads[0]['count']);
+                }
+            }
+            
+            foreach($data['industries'] as $a){
+                $hiredgrads = $this->model_reports->get_mhiredGraduates($a['sectorID'],2014);
+                //print_r($hiredgrads);
+                if(empty($hiredgrads)){
+                    array_push($yhired, 0);
+                }else{
+                    array_push($yhired, $hiredgrads[0]['count']);
+                }
+            }
+            
+            
+            
+           // print_r($yhired);
+            $data['ygraduates'] = $ygraduates;
+            $data['yhired'] = $yhired;
             $this->load->view('tesda/header');
             $this->load->view('tesda/TExecutiveSummary',$data);
             $this->load->view('footer2');

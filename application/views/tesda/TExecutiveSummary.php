@@ -348,34 +348,34 @@ $(function () {
                 name: 'Graduates',
                 data: [<?php
                 $ctr = count($industries);
-                foreach ($industries as $a)
-                {
-                    $annualgrads = $this->model_reports->get_monthlyGraduates($a['sectorID'],2014);
+                
+                
                     
-                    foreach($annualgrads as $b)
-                    {
-                        echo $b['count'];
+                    foreach($ygraduates as $b)
+                    { 
+                        echo $b;
+                         if($ctr > 1){
+                            echo ",";
+                         }
+                        $ctr--;
                     }
-                    if($ctr > 1)
-                        echo ",";
-                    $ctr--;
-                }
+                   
+                
                 ?>]
             }, {
                 name: 'Hired',
                 data: [<?php
                 $ctr = count($industries);
-                foreach ($industries as $a)
-                {
-                    $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,2014);
-                    foreach($hiredgrads as $b)
-                    {
-                        echo $b['count'];
+                 
+                    foreach($yhired as $b)
+                    { 
+                        echo $b;
+                         if($ctr > 1){
+                            echo ",";
+                         }
+                        $ctr--;
                     }
-                    if($ctr > 1)
-                        echo ",";
-                    $ctr--;
-                }
+                   
                 ?>]
             }]
         });
