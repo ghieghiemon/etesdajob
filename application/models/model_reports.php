@@ -826,6 +826,20 @@ class Model_reports extends CI_Model {
         return $result->num_rows();
 
     }
+    
+      public function get_population()
+    {
+        $dbconn = $this->load->database('default', TRUE);
+        
+            $result = "select userid,
+            sum(case when usertype = 'employer' then 1 else 0 end) as employers,
+            sum(case when usertype= 'applicant' then 1 else 0 end) as graduates
+            from users
+            ";
+        
+        return $result;
+        $dbconn->close();
+    }
 
 
     

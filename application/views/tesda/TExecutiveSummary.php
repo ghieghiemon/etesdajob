@@ -438,6 +438,51 @@ $(function () {
     
 
                 </script>
+                
+<script> //JOB PORTAL POPULATION
+$(function () {
+    var chart;
+    
+    $(document).ready(function () {
+    	
+    	// Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Job Portal'
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                   
+                    ['Employer',    8.5],
+                    ['Graduates',     6.2]
+                ]
+            }]
+        });
+    });
+    
+});
+
+</script>
                                                 
 
            <center>
