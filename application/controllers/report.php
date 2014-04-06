@@ -1824,7 +1824,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             $yhired = array();
             
             foreach($data['industries'] as $a){
-                $annualgrads = $this->model_reports->get_monthlyGraduates($a['sectorID'],2014);
+                $annualgrads = $this->model_reports->get_cmonthlyGraduates($a['sectorID'],$year);
                 if(empty($annualgrads)){
                     array_push($ygraduates, 0);
                 }else{
@@ -1833,7 +1833,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             }
             
             foreach($data['industries'] as $a){
-                $hiredgrads = $this->model_reports->get_mhiredGraduates($a['sectorID'],2014);
+                $hiredgrads = $this->model_reports->get_cmhiredGraduates($a['sectorID'],$year);
                 //print_r($hiredgrads);
                 if(empty($hiredgrads)){
                     array_push($yhired, 0);

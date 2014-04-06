@@ -381,7 +381,7 @@ $(function () {
         });
     });
                 </script>
-                
+<!--                
                 <script>
                 
                 $(function () {
@@ -438,7 +438,7 @@ $(function () {
     
 
                 </script>
-                
+                -->
 <script> //JOB PORTAL POPULATION
 $(function () {
     var chart;
