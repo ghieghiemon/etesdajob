@@ -453,7 +453,7 @@ $(function () {
                 plotShadow: false
             },
             title: {
-                text: 'Job Portal'
+                text: 'Job Portal Population'
             },
             tooltip: {
         	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -487,23 +487,9 @@ $(function () {
 
            <center>
                 <h4>Executive Summary</h4>
-                <h5><?php echo $industry?></h5>
+               
                 <h5><?php echo "Year ".$year?></h5></center>
-                <?php
-                $ctr = count($industries);
-                foreach ($industries as $a)
-                {
-                    $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,2014);
-                    echo $a['sectorName']."-";
-                    foreach($hiredgrads as $b)
-                    {
-                        echo $b['count'];
-                    }
-                    if($ctr > 1)
-                        echo ",";
-                    $ctr--;
-                }
-                ?>
+       
 <div id="hiringRatio" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
 <div id="postings" style="min-width: 310px; height: 400px; margin: 0 auto"></div>

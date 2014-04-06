@@ -736,40 +736,40 @@ class Model_reports extends CI_Model {
         $db1->close();
     }
     
-       public function get_newPartner($year,$industry)
+       public function get_newPartner($year)
     {
         $dbconn = $this->load->database('default', TRUE);
         
         //insert query
         $query1 = "SELECT COUNT(ep.userID) as companies,month(ep.dateregistered) as month  from tesda_centraldb.employer_profile ep
-        where year(ep.dateregistered) = ? and companyIndustry = ? group by month(ep.dateregistered)";
+        where year(ep.dateregistered) = ? group by month(ep.dateregistered)";
 
-       $result = $dbconn->query($query1, array($year,$industry))->result_array();
+       $result = $dbconn->query($query1, array($year))->result_array();
         return $result;
         $dbconn->close();
     }
-    public function get_totalPartner($year,$industry)
+    public function get_totalPartner($year)
     {
         $dbconn = $this->load->database('default', TRUE);
         
         //insert query
         $query1 = "SELECT COUNT(ep.userID) as companies, month(ep.dateregistered) as month from tesda_centraldb.employer_profile ep
-        where  year(ep.dateregistered) <= ?  and companyIndustry = ? group by month(ep.dateregistered)";
+        where  year(ep.dateregistered) <= ?  group by month(ep.dateregistered)";
 
-       $result = $dbconn->query($query1, array($year,$industry))->result_array();
+       $result = $dbconn->query($query1, array($year))->result_array();
         return $result;
         $dbconn->close();
         
     }
-    public function get_postings($year,$industry)
+    public function get_postings($year)
     {
         $dbconn = $this->load->database('local', TRUE);
         
         //insert query
         $query1 = "SELECT COUNT(*) as count, month(dateposted) as month from job_vacancies where 
-            year(dateposted) = ? and sectorid = ? group by month(dateposted)";
+            year(dateposted) = ?  group by month(dateposted)";
 
-       $result = $dbconn->query($query1, array($year,$industry))->result_array();
+       $result = $dbconn->query($query1, array($year))->result_array();
         return $result;
         $dbconn->close();
     }
@@ -779,7 +779,7 @@ class Model_reports extends CI_Model {
 
 
    
-    public function get_monthlyGraduates($industry,$year)
+    public function get_monthlyGraduates($year)
     {
         $dbconn = $this->load->database('default', TRUE);
         
@@ -787,18 +787,20 @@ class Model_reports extends CI_Model {
         $query1 = "SELECT COUNT(c.appid) as count, year(c.dateacquired) as dateacquired,  month(c.dateacquired) as montha from applicants_certificates c
                 join applicants a on a.appid = c.appid
                 join nc_reference nc on nc.ncid = c.certificateid
-                where year(c.dateacquired) = ? AND
-                 nc.sectorid= ?
+                where year(c.dateacquired) = ?
+                
+               
                 
                 group by month(c.dateacquired) ORDER BY  month(c.dateacquired) asc";
         
-        $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        $result = $dbconn->query($query1, array($year))->result_array();
         return $result;
         $dbconn->close();
     }
     
-    public function get_mhiredGraduates($industry, $year)
+    public function get_mhiredGraduates($year)
     {
+        
         $dbconn = $this->load->database('default', TRUE);
         
         //insert query
@@ -806,11 +808,11 @@ class Model_reports extends CI_Model {
             join applicants a on a.appid = c.appid
              join nc_reference nc on nc.ncid = c.certificateid
             where a.employment = 1 AND  year(c.dateacquired) = ?
-            AND  nc.sectorid= ?
             group by month(c.dateacquired) ORDER BY  month(c.dateacquired) asc";
         
         
-        $result = $dbconn->query($query1, array($year,$industry))->result_array();
+        $result = $dbconn->query($query1, array($year))->result_array();
+      // $result = $dbconn->query($query1, array($year,$industry))->result_array();
         return $result;
         $dbconn->close();
     }

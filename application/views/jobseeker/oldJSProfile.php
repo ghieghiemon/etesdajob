@@ -89,9 +89,9 @@
                                 </tr>
                             </thead>
                                             <div style="margin-left: 92%;" >
-                                <a href="<?php echo base_url()?>jobseeker/jobseeker_editprofilepage" class="btn btn-primary btn-mini">
+<!--                                <a href="<?php echo base_url()?>jobseeker/jobseeker_editprofilepage" class="btn btn-primary btn-mini">
 		Edit Profile
-	</a>
+	</a>-->
                                     </div>
                             
                             <tbody>
