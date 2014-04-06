@@ -815,15 +815,11 @@ class Model_reports extends CI_Model {
         $dbconn->close();
     }
     
-    
-
- public function get_monthlyPostings($industry,$month,$year)
+     public function get_monthlyPostings($month,$year)
     {
         $dbconn = $this->load->database('local', TRUE);
         $where = "MONTH(job_vacancies.dateposted) = '".$month."' AND YEAR(job_vacancies.dateposted) = '".$year."'";
-        $result = $dbconn->select('*')
-                ->join('job_certifications','job_certifications.jobno = job_vacancies.jobno')
-                ->where('job_certifications.ncid',$industry)
+        $result = $dbconn->select('*')               
                 ->where($where)
                 ->get('job_vacancies');
         

@@ -1842,29 +1842,21 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
                 }
             }
             
-          $industriesPostings = array();
+            $monthlyPostings = array();
             
-             foreach($data['industries'] as $a){
-             
-               $monthCtr = 1;
-               $monthlyPostings = array();
-           
-                    while($monthCtr <=12){
-                        $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($a['sectorID'],$monthCtr,$year);
-                        $monthCtr++;
-                    }
-                $industriesPostings[$a['sectorID']] = $monthlyPostings;
-                    
-                    
-             }
+            $monthCtr = 1;
+            
+            while($monthCtr <=12){
+                $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($monthCtr,$year);
+                $monthCtr++;
+            }
             
             
-           
+            
+           // print_r($yhired);
             $data['ygraduates'] = $ygraduates;
             $data['yhired'] = $yhired;
-            $data['industriesPostings'] = $industriesPostings;
-
-
+            $data['monthlyPostings'] = $monthlyPostings;
             $this->load->view('tesda/header');
             $this->load->view('tesda/TExecutiveSummary',$data);
             $this->load->view('footer2');

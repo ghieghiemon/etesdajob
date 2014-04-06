@@ -382,7 +382,7 @@ $(function () {
     });
                 </script>
                 
-                 <script>
+                <script>
                 
                 $(function () {
         $('#postings').highcharts({
@@ -417,15 +417,12 @@ $(function () {
                 verticalAlign: 'middle',
                 borderWidth: 0
             },
-            series: [
-                <?php foreach($industries as $a): ?>
-                {
-                
-                name: '<?php echo $a['sectorName']?>',
+            series: [{
+                name: 'Postings',
                 data: [<?php
                 $ctr = 1;
                  
-                    foreach($industriesPostings[$a['sectorID']] as $b)
+                    foreach($monthlyPostings as $b)
                     { 
                         echo $b;
                          if($ctr < 12){
@@ -435,10 +432,7 @@ $(function () {
                     }
                    
                 ?>]
-                                                                    
-             
-                                                                   
-                },<?php                endforeach; ?>]
+            }]
         });
     });
     
@@ -510,7 +504,7 @@ $(function () {
                     $ctr--;
                 }
                 ?>
-<div id="hiringRatio" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+<div id="hiringRatio" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
 <div id="postings" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>
