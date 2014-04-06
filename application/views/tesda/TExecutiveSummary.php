@@ -483,14 +483,76 @@ $(function () {
 });
 
 </script>
-                                                
+                
+      <script>
+                
+                $(function () {
+        $('#postings').highcharts({
+            title: {
+                text: 'Monthly Postings',
+                x: -20 //center
+            },
+            subtitle: {
+                text: 'TESDA',
+                x: -20
+            },
+            xAxis: {
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            yAxis: {
+                title: {
+                    text: 'Volume'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [
+                <?php foreach($industries as $a): ?>
+                {
+                
+                name: '<?php echo $a['sectorName']?>',
+                data: [<?php
+                $ctr = 1;
+                 
+                    foreach($industriesPostings[$a['sectorID']] as $b)
+                    { 
+                        echo $b;
+                         if($ctr < 12){
+                            echo ",";
+                         }
+                        $ctr++;
+                    }
+                   
+                ?>]
+                                                                    
+             
+                                                                   
+                },<?php                endforeach; ?>]
+        });
+    });
+    
+
+                </script>
 
            <center>
                 <h4>Executive Summary</h4>
                
                 <h5><?php echo "Year ".$year?></h5></center>
        
-<div id="hiringRatio" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="hiringRatio" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
 <br>
 <div id="postings" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <br>

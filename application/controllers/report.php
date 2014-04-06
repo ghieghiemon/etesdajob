@@ -1844,14 +1844,32 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             
             $monthlyPostings = array();
             
-            $monthCtr = 1;
+//            $monthCtr = 1;
+//            
+////            while($monthCtr <=12){
+////                $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($monthCtr,$year);
+////                $monthCtr++;
+////            }
             
-            while($monthCtr <=12){
-                $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($monthCtr,$year);
-                $monthCtr++;
-            }
+             $industriesPostings = array();
             
-            
+             foreach($data['industries'] as $a){
+             
+               $monthCtr = 1;
+               $monthlyPostings = array();
+           
+                    while($monthCtr <=12){
+                        $monthlyPostings[$monthCtr] = $this->model_reports->get_monthlyPostings($a['sectorID'],$monthCtr,$year);
+                        $monthCtr++;
+                    }
+                $industriesPostings[$a['sectorID']] = $monthlyPostings;
+                    
+                    
+             }
+            $data['industriesPostings'] = $industriesPostings;
+
+
+
             
            // print_r($yhired);
             $data['ygraduates'] = $ygraduates;
