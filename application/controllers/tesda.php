@@ -328,6 +328,8 @@ class Tesda extends CI_Controller {
      public function search_industries($sectorid)
    {	
         $this->load->model('model_pub');
+          $this->load->model('model_jobseeker');
+        $data['jobs'] =  $this->model_jobseeker->get_alljobs();
         
         $data['industries'] = $this->model_pub->get_industryVacancies();
         $data['vacancies'] = $this->model_pub->get_perIndustryVacancies($sectorid);
