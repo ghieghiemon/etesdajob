@@ -131,11 +131,7 @@
                     
   			<div class="nav" style="height:220px;margin-bottom:-5px;margin-left:140px;overflow:auto;">
                         <input type="hidden" value="11" name="reporttype">
-                               <?php    
-                                $industry['0'] = 'Choose Industry';
-                                $params = 'id="industries"'; 
-                               echo form_dropdown('industry', $industry,'0',$params);     
-                               ?> 
+                               
                             
                             <br>
                              <select name="year">

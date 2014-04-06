@@ -1761,7 +1761,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             $mpdf->Output();
             exit;
         }
-        public function execsummary($year,$industry)
+        public function execsummary($year)
         {
             $this->load->model('model_reports');
             $this->load->model('model_pub');
@@ -1770,7 +1770,7 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             //hiring ratio
             $data['industries'] = $this->model_main->get_industries();
             //for postings
-            $postings = $this->model_reports->get_postings($year,$industry);
+            $postings = $this->model_reports->get_postings($year);
             
             $posting1 = array();
             
@@ -1781,8 +1781,8 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             
             $data['posting1'] = $posting1;
             //for partners
-            $newParters = $this->model_reports->get_newPartner($year,$industry);
-            $totalPartners = $this->model_reports->get_totalPartner($year,$industry);
+            $newParters = $this->model_reports->get_newPartner($year);
+            $totalPartners = $this->model_reports->get_totalPartner($year);
             
             $newP = array();
             $totalP = array();
@@ -1799,12 +1799,12 @@ $mpdf->WriteHTML('<html><div style="text-align:center;">
             $data['newP'] = $newP;
             $data['totalP'] = $totalP;
             
-            $data['industry'] = $this->model_pub->get_industryName($industry);
+          // $data['industry'] = $this->model_pub->get_industryName($industry);
             $data['year'] = $year;
             
             /* Monthly Grads vs Employed */
-            $annualgrads = $this->model_reports->get_monthlyGraduates($industry,$year);
-            $hiredgrads = $this->model_reports->get_mhiredGraduates($industry,$year);
+            $annualgrads = $this->model_reports->get_monthlyGraduates($year);
+            $hiredgrads = $this->model_reports->get_mhiredGraduates($year);
             
             $reportdata = array();
             $reportdata2 = array();

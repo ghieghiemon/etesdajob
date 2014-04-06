@@ -737,12 +737,12 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
  <!--change status modal end-->
 
 
-<div class="container">
-<div style="margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
+<div class="container" >
+<div style=" margin-left: 1%; margin-top: 1%;  margin-bottom:-7%">
 	
     <div class="row-fluid">
-    	<div class="span3">
-        	<div class="well wellMarg2b" style="height:792px">
+    	<div  class="span3">
+        	<div class="well wellMarg2b" style="height:470px">
             	<div class="row-fluid">
                   <div align="center">
                   <span class="badge badge-important">
@@ -1009,8 +1009,9 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
              <form method="post" action="<?php echo base_url()?>employer/employer_setSched/<?php echo $jobno?>/<?php echo $applicationid?>">
         	
                  <div class="well">
-            	<h3 class="media-heading">
+            	<h3 class="media-heading">  
                     <img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_144_folder_open.png" width="30"> 
+                  
                     Applications
                     
                     <font>
@@ -1027,7 +1028,7 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                         	<img src="<?php echo base_url()?>assets/bootstrap/img/icons/glyphicons_049_star.png" width="15"> - Invited 
                         </font>
                     </h4>
-                   
+                   <br>
                     <!--set schedule modal start-->
 <div class="modal hide fade" id="setSchedP">
   	<div class="modal-header">
@@ -1244,8 +1245,8 @@ echo'<div class="modal hide fade modal-wide" id="renew">';?>
                         ?>
                         
                 </div>
-                <br>
-                <hr class="hrDicussBigA">
+                <br> <br> <br> <br> <br> <br> <br> <br><br>
+              
 
                    <div class="tabbable"> <!-- start tabs-->
                       <ul class="nav nav-tabs">

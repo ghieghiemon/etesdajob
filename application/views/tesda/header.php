@@ -123,10 +123,9 @@
                </div> <!--/.navbar-inner -->
                </div> <!--/.navbar -->
                
-<script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
+       <script src="<?php echo base_url()?>assets/bootstrap/js/jquery.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-modal.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-alert.js"></script> 
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-dropdown.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-scrollspy.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-tab.js"></script>
@@ -136,6 +135,9 @@
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-collapse.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-carousel.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap-typeahead.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="<?php echo base_url()?>assets/bootstrap/js/jquery-latest.js"></script>
+
     <script src="<?php echo base_url()?>assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>assets/bootstrap/js/datatable.js"></script>
+    
+    
